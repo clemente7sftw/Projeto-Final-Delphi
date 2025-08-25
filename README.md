@@ -1,1 +1,1 @@
-# Projeto-Sistema-de-Gest-o-para-Sal-es-de-Beleza
+# Projeto Sistema de Gestão para Salões de Beleza
