@@ -17,9 +17,7 @@ object Form1: TForm1
     Width = 945
     Height = 1061
     Align = alRight
-    ExplicitLeft = 1008
-    ExplicitTop = 16
-    ExplicitHeight = 1100
+    ExplicitLeft = 985
   end
   object LadoEsquerdo: TPanel
     Left = 0
@@ -30,10 +28,11 @@ object Form1: TForm1
     Color = 1186595
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -6
+    ExplicitLeft = 24
+    ExplicitTop = 32
     object Image1: TImage
-      Left = 368
-      Top = 64
+      Left = 360
+      Top = 32
       Width = 161
       Height = 161
       Picture.Data = {
@@ -371,8 +370,8 @@ object Form1: TForm1
         928D646BC9642926A3F0FF3B2B353B471BCAE20000000049454E44AE426082}
     end
     object LbEmail: TLabel
-      Left = 272
-      Top = 504
+      Left = 264
+      Top = 336
       Width = 38
       Height = 19
       Caption = 'Email'
@@ -384,8 +383,8 @@ object Form1: TForm1
       ParentFont = False
     end
     object LbSenha: TLabel
-      Left = 272
-      Top = 597
+      Left = 264
+      Top = 453
       Width = 44
       Height = 19
       Caption = 'Senha'
@@ -396,9 +395,74 @@ object Form1: TForm1
       Font.Style = [fsBold]
       ParentFont = False
     end
+    object LbEsqSenha: TLabel
+      Left = 483
+      Top = 527
+      Width = 134
+      Height = 19
+      Caption = 'Esqueceu a senha?'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LbFacaLoginCom: TLabel
+      Left = 386
+      Top = 639
+      Width = 135
+      Height = 19
+      Caption = 'Ou fa'#231'a Login com'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LbNaoTemConta: TLabel
+      Left = 285
+      Top = 775
+      Width = 304
+      Height = 19
+      Caption = 'N'#227'o tem uma conta? Fa'#231'a o Cadastro aqui'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LbBeautyStage: TLabel
+      Left = 491
+      Top = 174
+      Width = 106
+      Height = 19
+      Caption = 'BeautyStage'#169
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label1: TLabel
+      Left = 395
+      Top = 215
+      Width = 88
+      Height = 40
+      Caption = 'Login'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -32
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
     object EdEmail: TEdit
-      Left = 272
-      Top = 536
+      Left = 264
+      Top = 376
       Width = 353
       Height = 33
       Color = 14277081
@@ -406,12 +470,107 @@ object Form1: TForm1
       OnKeyDown = EdEmailKeyDown
     end
     object EdSenha: TEdit
-      Left = 272
-      Top = 632
+      Left = 264
+      Top = 488
       Width = 353
       Height = 33
       Color = 14277081
       TabOrder = 1
+    end
+    object PbtnEntrar: TPanel
+      Left = 360
+      Top = 576
+      Width = 185
+      Height = 41
+      Caption = 'Entrar'
+      Color = clBackground
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 2
+    end
+    object PbtnGoogle: TPanel
+      Left = 264
+      Top = 688
+      Width = 137
+      Height = 57
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 3
+      object Image2: TImage
+        Left = 48
+        Top = 8
+        Width = 41
+        Height = 41
+        Picture.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000280000
+          002808060000008CFEB86D000000097048597300000B1300000B1301009A9C18
+          000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000002
+          674944415478DAD5998155C2301086CF0D708332813281750275027102740270
+          027102EB04EA0474037502B3816CA0F99B4443A5B94B4801FFF7EE3DD034FD7A
+          E95D2EC701A5EB585BA9EDC87E1E682BBCFF2B6B6FDADEB5D5F67B940E22C703
+          62A26DDC82910A908FDAAADC800EECDA7EDE544ADBAD045402586A7BA0348F71
+          AA2CA84A059C6A9BF500E60B701764DED52840786DDC339CD33D99D7470CB817
+          705D80B1CBBAA4DF54E296C9A51CA4A03270ED2D77AF36E0988CF72452F6E92B
+          0BD9A5C2424E6935D058B836202E5E101FAD4B3BF95CF820FEFC00BA94C2B501
+          25EF1DBC764A093B82A7924CC216C901E2E93EB600172D0728F1DE70DB703E20
+          BC5704C689DF993E004B32C1D12545C67B3B110067645240972A6D57BB047CD2
+          761E1833A28E7D725B80AF640ACE7542CE3B8C9C13F9F12C13DF1B003FA9BBC6
+          83E7469193566492710E29007E0506D46472DFAE00E95F00EEF3123780A1249D
+          122439019792348325AE7704D84431AAD9BBC0A060C5BBA14A0AEF622F92AD0E
+          CB3CA470519A2AAE48B971C5422850A0BE8A05AE48193940DC7CCA4C967BCBE3
+          CE3E4ADBD0010EECD30C980B7215ACD85A5F9931CDAAF925FF8C782FE68004DC
+          82F8164A5320FB80122F42A9872668621DC1DDA3225BE2B58F9DC8874FC29B29
+          92358006D66B589D5238EFCF2AAD3BB8CFED934A058FD6640EEECAFB3B0EED85
+          858AE988A14FF3ECBE74B53EE0956CFB6984FEA4B350F368DB906B732DD77EC3
+          055C64F7062701841038D8AB8B1EC0149968ADBB06C4B4805130E4F226020B45
+          C89C983D3EB6895ED0FA4E95548A4C139D054B05F4E57E8638B1B0303F9D285A
+          ED1DD694B0977F035D6C91C2358DE47F0000000049454E44AE426082}
+      end
+    end
+    object PbtnFacebook: TPanel
+      Left = 480
+      Top = 688
+      Width = 137
+      Height = 57
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 4
+      object Image3: TImage
+        Left = 48
+        Top = 8
+        Width = 41
+        Height = 41
+        Picture.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000280000
+          002808060000008CFEB86D000000097048597300000B1300000B1301009A9C18
+          000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000002
+          6D4944415478DABD988B51C3300C86D50D6002DC0980096827A04C4099009880
+          74026002B2016582860928136026A01B80FF44E672691E92ED54773A9AC38FCF
+          922DC99E50B8CC9C9E39BDE0BF47AC909D53CBFAE9B46055CB44D91E00B74EEF
+          6A3052B10CB9E2DF490101F3C060292497824A00AF9D3E91DE62436219328F01
+          7CA47456EB122CFE5E0B086BBD5275100E216BA737541D2E1120E0160782AB43
+          5E490053B875CBFACD56F1FBF7C4A9A16ECFECB9BB09B874FA12080590679E64
+          37D076D303092BAEDB000D77340170D6E99CE4F1AD0F108B9BFA45D60161B9E5
+          01E0860021FFAEF680C6E957001C04A72F57F61902841C3BDD79C018EB4D03FA
+          490011C4330F08EB99808972AA2CD82700413171CADFD85B0BC17C68773CE101
+          36017010EC93A79EFF237F67816343E60044CC7B0C1D80BACB2858ED2302AE34
+          000063B2461F6046950563E46DC2AB3C0B1CC050952DDA04AEBF8D04B400FCA1
+          F052AA0F30A7AA548B9132CCFC460C30362069019B31CFF6B4ADDF519A8B1247
+          0DAD8BB57798369929004B176B82740AC08CE4A77BAB0D33290035F315985013
+          0E52006AC2DA4A9BEA6201B1D77F14EDE77E42E941291ADF4BEA0E3348A1972D
+          8052EB59A7530F181AF50D8D1707D1FFC6038626F6310111736D7D4F85140D63
+          01A26F5967362F4DB0A2262F8F05585AAF0908D1D686630096A5BEFF680B1B1A
+          57A706DC7B5D6803848B111725E12025A0757A4E8D4B7F57E03524BBC4A70204
+          5CEBDDBA2F33485EB852001654B9B5F5B94492BA32EAAE3E6201876E85E2DC0A
+          105CEE6789000B86DB0E4DAC4DFE005CD626D602026C458A17FFD0EAC4302CC2
+          42D7531B002F18E67DA06DA7FC01BE41A092D0D602310000000049454E44AE42
+          6082}
+      end
     end
   end
 end

@@ -16,8 +16,20 @@ type
     EdSenha: TEdit;
     LbEmail: TLabel;
     LbSenha: TLabel;
+    PbtnEntrar: TPanel;
+    LbEsqSenha: TLabel;
+    LbFacaLoginCom: TLabel;
+    LbNaoTemConta: TLabel;
+    PbtnGoogle: TPanel;
+    PbtnFacebook: TPanel;
+    Image2: TImage;
+    Image3: TImage;
+    LbBeautyStage: TLabel;
+    Label1: TLabel;
     procedure EdEmailKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+
+
 
 
   private
@@ -42,5 +54,8 @@ begin
 if Key = VK_RETURN then
    perform(WM_NEXTDLGCTL,0,0);
 end;
+
+
+
 
 end.
