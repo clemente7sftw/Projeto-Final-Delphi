@@ -9,25 +9,27 @@ uses
 
 type
   TForm1 = class(TForm)
-    FotoLogin: TImage;
     LadoEsquerdo: TPanel;
-    Image1: TImage;
+    ImagemDeFundo: TImage;
     EdEmail: TEdit;
     EdSenha: TEdit;
+    Image1: TImage;
+    LbBeautyStage: TLabel;
     LbEmail: TLabel;
-    LbSenha: TLabel;
-    PbtnEntrar: TPanel;
     LbEsqSenha: TLabel;
     LbFacaLoginCom: TLabel;
+    LbLogin: TLabel;
     LbNaoTemConta: TLabel;
-    PbtnGoogle: TPanel;
+    LbSenha: TLabel;
+    PbtnEntrar: TPanel;
     PbtnFacebook: TPanel;
-    Image2: TImage;
     Image3: TImage;
-    LbBeautyStage: TLabel;
-    Label1: TLabel;
+    PbtnGoogle: TPanel;
+    Image2: TImage;
     procedure EdEmailKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+
+
 
 
 
@@ -54,8 +56,6 @@ begin
 if Key = VK_RETURN then
    perform(WM_NEXTDLGCTL,0,0);
 end;
-
-
 
 
 end.
