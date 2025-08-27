@@ -9,13 +9,17 @@ type
 TMetodos = class
   private
   public
+
 end;
 
 implementation
 
 
 
+
+
 { TMetodos }
+
 
 
 end.

@@ -28,6 +28,7 @@ type
     procedure LbTemContaClick(Sender: TObject);
     procedure EdEmailKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,6 +50,11 @@ procedure TForm2.EdEmailKeyDown(Sender: TObject; var Key: Word;
 begin
 if Key = VK_RETURN then
    perform(WM_NEXTDLGCTL,0,0);
+end;
+
+procedure TForm2.FormCreate(Sender: TObject);
+begin
+    Form2.WindowState:=wsMaximized;
 end;
 
 procedure TForm2.LbTemContaClick(Sender: TObject);

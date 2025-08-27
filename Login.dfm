@@ -10,6 +10,7 @@ object Form1: TForm1
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnCreate = FormCreate
   TextHeight = 15
   object LadoEsquerdo: TPanel
     Left = 0
@@ -36685,6 +36686,7 @@ object Form1: TForm1
       ParentBackground = False
       ParentFont = False
       TabOrder = 2
+      OnClick = PbtnEntrarClick
     end
     object PbtnFacebook: TPanel
       Left = 480
