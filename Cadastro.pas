@@ -26,6 +26,8 @@ type
     PbtnGoogle: TPanel;
     Image2: TImage;
     procedure LbTemContaClick(Sender: TObject);
+    procedure EdEmailKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -41,6 +43,13 @@ implementation
 {$R *.dfm}
 
 uses Login;
+
+procedure TForm2.EdEmailKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+if Key = VK_RETURN then
+   perform(WM_NEXTDLGCTL,0,0);
+end;
 
 procedure TForm2.LbTemContaClick(Sender: TObject);
 begin

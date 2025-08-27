@@ -40395,6 +40395,7 @@ object Form2: TForm2
       Height = 23
       Color = 14277081
       TabOrder = 0
+      OnKeyDown = EdEmailKeyDown
     end
     object EdSenha: TEdit
       Left = 264

@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Cadastro, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
+  Vcl.Controls, UMetodos, Cadastro, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
   Vcl.StdCtrls;
 
 type
@@ -48,6 +48,7 @@ begin
 if Key = VK_RETURN then
    perform(WM_NEXTDLGCTL,0,0);
 end;
+
 
 
 procedure TForm1.LbNaoTemContaClick(Sender: TObject);

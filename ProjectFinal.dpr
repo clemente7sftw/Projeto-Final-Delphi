@@ -3,7 +3,8 @@ program ProjectFinal;
 uses
   Vcl.Forms,
   Login in 'Login.pas' {Form1},
-  Cadastro in 'Cadastro.pas' {Form2};
+  Cadastro in 'Cadastro.pas' {Form2},
+  UMetodos in 'UMetodos.pas';
 
 {$R *.res}
 
