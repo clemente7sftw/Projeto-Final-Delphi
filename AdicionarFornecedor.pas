@@ -1,4 +1,4 @@
-unit AdicionarCliente;
+unit AdicionarFornecedor;
 
 interface
 
@@ -8,8 +8,17 @@ uses
   Vcl.ExtCtrls;
 
 type
-  TForm5 = class(TForm)
+  TForm6 = class(TForm)
     Fundo: TPanel;
+    LbNome: TLabel;
+    LbEmail: TLabel;
+    LbCPF: TLabel;
+    LbCEP: TLabel;
+    LbNumero: TLabel;
+    LbTele: TLabel;
+    LbCidade: TLabel;
+    LbBairro: TLabel;
+    LbRua: TLabel;
     Barra: TPanel;
     Image2: TImage;
     LbBS: TLabel;
@@ -18,6 +27,7 @@ type
     LbHorarios: TLabel;
     LbMarketing: TLabel;
     LbFornecedores: TLabel;
+    LbDashboard: TLabel;
     Panel3: TPanel;
     PbtnVoltar: TPanel;
     PbtnCadastrar: TPanel;
@@ -32,21 +42,9 @@ type
     EdCidade: TEdit;
     EdBairro: TEdit;
     EdRua: TEdit;
-    LbNome: TLabel;
-    LbEmail: TLabel;
-    LbCPF: TLabel;
-    LbCEP: TLabel;
-    LbNumero: TLabel;
-    LbTele: TLabel;
-    LbCidade: TLabel;
-    LbBairro: TLabel;
-    LbRua: TLabel;
     PbtnLimpar: TPanel;
     Image4: TImage;
-    LbDashboard: TLabel;
     procedure FormCreate(Sender: TObject);
-    procedure LbClientesClick(Sender: TObject);
-    procedure PbtnVoltarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -54,30 +52,15 @@ type
   end;
 
 var
-  Form5: TForm5;
+  Form6: TForm6;
 
 implementation
 
 {$R *.dfm}
 
-uses CClientes;
-
-procedure TForm5.FormCreate(Sender: TObject);
+procedure TForm6.FormCreate(Sender: TObject);
 begin
-  Form5.WindowState:=wsMaximized;
-end;
-
-procedure TForm5.LbClientesClick(Sender: TObject);
-begin
-  Form5.Hide;
-  Form4.Show;
-end;
-
-procedure TForm5.PbtnVoltarClick(Sender: TObject);
-begin
-//  colocar condiçao do if e  ShowMessage('Cliente Cadastrado com Sucesso');
-    Form5.Hide;
-    Form4.Show;
+  Form6.WindowState:=wsMaximized;
 end;
 
 end.

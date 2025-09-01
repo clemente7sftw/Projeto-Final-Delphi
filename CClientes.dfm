@@ -162,7 +162,7 @@ object Form4: TForm4
     Color = 7110284
     ParentBackground = False
     TabOrder = 3
-    object ImageLogo: TImage
+    object Image4: TImage
       Left = 48
       Top = 48
       Width = 105
@@ -402,7 +402,7 @@ object Form4: TForm4
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object ImageUser: TImage
+    object Image5: TImage
       Left = 1824
       Top = 64
       Width = 73
@@ -432,8 +432,8 @@ object Form4: TForm4
         A26702A98069A248B4DE434541129D074E51636802159B6A9F8752B5190942A3
         04010942A30441EB173AE76C3C77BA892E0000000049454E44AE426082}
     end
-    object Clientes: TLabel
-      Left = 416
+    object Label2: TLabel
+      Left = 995
       Top = 160
       Width = 60
       Height = 20
@@ -445,8 +445,8 @@ object Form4: TForm4
       Font.Style = []
       ParentFont = False
     end
-    object Label2: TLabel
-      Left = 744
+    object Label3: TLabel
+      Left = 672
       Top = 160
       Width = 142
       Height = 20
@@ -458,8 +458,8 @@ object Form4: TForm4
       Font.Style = []
       ParentFont = False
     end
-    object Label3: TLabel
-      Left = 1144
+    object Label4: TLabel
+      Left = 1248
       Top = 160
       Width = 78
       Height = 20
@@ -471,7 +471,7 @@ object Form4: TForm4
       Font.Style = []
       ParentFont = False
     end
-    object Label4: TLabel
+    object Label6: TLabel
       Left = 1464
       Top = 160
       Width = 102
@@ -484,8 +484,21 @@ object Form4: TForm4
       Font.Style = []
       ParentFont = False
     end
-    object Linha: TPanel
-      Left = 384
+    object Label15: TLabel
+      Left = 403
+      Top = 160
+      Width = 83
+      Height = 20
+      Caption = 'Dashboard'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Panel3: TPanel
+      Left = 965
       Top = 186
       Width = 129
       Height = 4

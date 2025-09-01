@@ -148,7 +148,9 @@
         </DCCReference>
         <DCCReference Include="AdicionarCliente.pas">
             <Form>Form5</Form>
-            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="AdicionarFornecedor.pas">
+            <Form>Form6</Form>
         </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

@@ -36658,16 +36658,18 @@ object Form1: TForm1
       Left = 264
       Top = 400
       Width = 353
-      Height = 23
+      Height = 41
+      BorderStyle = bsNone
       Color = 14277081
       TabOrder = 0
       OnKeyDown = EdEmailKeyDown
     end
     object EdSenha: TEdit
       Left = 264
-      Top = 504
+      Top = 494
       Width = 353
-      Height = 23
+      Height = 43
+      BorderStyle = bsNone
       Color = 14277081
       TabOrder = 1
     end
@@ -36677,10 +36679,10 @@ object Form1: TForm1
       Width = 185
       Height = 41
       Caption = 'Entrar'
-      Color = clBackground
+      Color = clBlack
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -15
+      Font.Height = -21
       Font.Name = '@Microsoft JhengHei'
       Font.Style = [fsBold]
       ParentBackground = False

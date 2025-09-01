@@ -1,10 +1,10 @@
-object Form5: TForm5
+object Form6: TForm6
   Left = 0
   Top = 0
-  Caption = 'Adicionar Cliente'
+  Caption = 'Adicionar Fornecedor'
   ClientHeight = 1061
   ClientWidth = 1924
-  Color = clWhite
+  Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
@@ -21,6 +21,8 @@ object Form5: TForm5
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = -1300
+    ExplicitTop = -620
     object LbNome: TLabel
       Left = 152
       Top = 266
@@ -428,7 +430,6 @@ object Form5: TForm5
         Font.Name = '@Microsoft JhengHei'
         Font.Style = []
         ParentFont = False
-        OnClick = LbClientesClick
       end
       object LbHorarios: TLabel
         Left = 672
@@ -483,10 +484,12 @@ object Form5: TForm5
         ParentFont = False
       end
       object Panel3: TPanel
-        Left = 965
+        Left = 1453
         Top = 186
         Width = 129
         Height = 4
+        Color = clWindow
+        ParentBackground = False
         TabOrder = 0
       end
     end
@@ -506,7 +509,6 @@ object Form5: TForm5
       ParentBackground = False
       ParentFont = False
       TabOrder = 1
-      OnClick = PbtnVoltarClick
     end
     object PbtnCadastrar: TPanel
       Left = 1616
@@ -524,7 +526,6 @@ object Form5: TForm5
       ParentBackground = False
       ParentFont = False
       TabOrder = 2
-      OnClick = PbtnVoltarClick
     end
     object EdTelefone: TEdit
       Left = 152
