@@ -9,7 +9,8 @@ uses
   CClientes in 'CClientes.pas' {Form4},
   AdicionarCliente in 'AdicionarCliente.pas' {Form5},
   AdicionarFornecedor in 'AdicionarFornecedor.pas' {Form6},
-  CFornecedores in 'CFornecedores.pas' {Form7};
+  CFornecedores in 'CFornecedores.pas' {Form7},
+  CProfissionais in 'CProfissionais.pas' {Form8};
 
 {$R *.res}
 
@@ -23,5 +24,6 @@ begin
   Application.CreateForm(TForm5, Form5);
   Application.CreateForm(TForm6, Form6);
   Application.CreateForm(TForm7, Form7);
+  Application.CreateForm(TForm8, Form8);
   Application.Run;
 end.

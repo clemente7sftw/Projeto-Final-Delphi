@@ -25,11 +25,11 @@ type
     Image1: TImage;
     Label5: TLabel;
     ListBox1: TListBox;
-    PbtnAddCliente: TPanel;
+    PbtnAdd: TPanel;
     Image2: TImage;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
-    procedure PbtnAddClienteClick(Sender: TObject);
+    procedure PbtnAddClick(Sender: TObject);
     procedure Label2Click(Sender: TObject);
   private
     { Private declarations }
@@ -44,7 +44,7 @@ implementation
 
 {$R *.dfm}
 
-uses TelaPrincipalN1, CClientes;
+uses TelaPrincipalN1, CClientes, AdicionarCliente;
 
 procedure TForm7.FormCreate(Sender: TObject);
 begin
@@ -63,7 +63,7 @@ begin
   Form4.Show;
 end;
 
-procedure TForm7.PbtnAddClienteClick(Sender: TObject);
+procedure TForm7.PbtnAddClick(Sender: TObject);
 begin
   Form6.Show;
   Form7.Hide;

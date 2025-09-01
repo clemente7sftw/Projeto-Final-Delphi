@@ -44,12 +44,26 @@ type
     PbtnLimpar: TPanel;
     Image4: TImage;
     LbDashboard: TLabel;
+    Menu: TPanel;
+    LbnSalao: TLabel;
+    LbnClientes: TLabel;
+    LbnFornecedores: TLabel;
+    LbnHM: TLabel;
+    LbnMarketing: TLabel;
+    LbnDB: TLabel;
+    LbnProfissionais: TLabel;
+    LbnServicos: TLabel;
+    LbnCargos: TLabel;
+    LbnPP: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure LbClientesClick(Sender: TObject);
     procedure PbtnVoltarClick(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure FundoClick(Sender: TObject);
   private
     { Private declarations }
   public
+
     { Public declarations }
   end;
 
@@ -64,7 +78,18 @@ uses CClientes;
 
 procedure TForm5.FormCreate(Sender: TObject);
 begin
+  TirarMenu;
   Form5.WindowState:=wsMaximized;
+end;
+
+procedure TForm5.FundoClick(Sender: TObject);
+begin
+TirarMenu;
+end;
+
+procedure TForm5.Image2Click(Sender: TObject);
+begin
+Menu.Visible := True;
 end;
 
 procedure TForm5.LbClientesClick(Sender: TObject);
@@ -73,11 +98,14 @@ begin
   Form4.Show;
 end;
 
+
+
 procedure TForm5.PbtnVoltarClick(Sender: TObject);
 begin
 //  colocar condiçao do if e  ShowMessage('Cliente Cadastrado com Sucesso');
     Form5.Hide;
     Form4.Show;
 end;
+
 
 end.

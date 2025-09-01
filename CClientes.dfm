@@ -52,7 +52,7 @@ object Form4: TForm4
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object PbtnAddCliente: TPanel
+  object PbtnAdd: TPanel
     Left = 48
     Top = 288
     Width = 217
@@ -68,7 +68,7 @@ object Form4: TForm4
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
-    OnClick = PbtnAddClienteClick
+    OnClick = PbtnAddClick
     object Image2: TImage
       Left = 16
       Top = 8

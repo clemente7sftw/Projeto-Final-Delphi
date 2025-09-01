@@ -1,7 +1,7 @@
-object Form7: TForm7
+object Form8: TForm8
   Left = 0
   Top = 0
-  Caption = 'Form7'
+  Caption = 'Form8'
   ClientHeight = 1061
   ClientWidth = 1924
   Color = clBtnFace
@@ -10,7 +10,6 @@ object Form7: TForm7
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  OnCreate = FormCreate
   TextHeight = 15
   object Image1: TImage
     Left = 8
@@ -37,14 +36,13 @@ object Form7: TForm7
       2E39203132342E38203233332E34203133372E334C37332E34203239372E337A
       222F3E3C2F7376673E}
     Stretch = True
-    OnClick = Image1Click
   end
   object Label5: TLabel
     Left = 920
     Top = 232
-    Width = 233
+    Width = 218
     Height = 49
-    Caption = 'Fornecedores'
+    Caption = 'Profissionais'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -37
@@ -342,7 +340,6 @@ object Form7: TForm7
       Font.Name = '@Microsoft JhengHei'
       Font.Style = []
       ParentFont = False
-      OnClick = Label2Click
     end
     object Label3: TLabel
       Left = 672
@@ -395,13 +392,6 @@ object Form7: TForm7
       Font.Name = '@Microsoft JhengHei'
       Font.Style = []
       ParentFont = False
-    end
-    object Panel3: TPanel
-      Left = 1453
-      Top = 186
-      Width = 129
-      Height = 4
-      TabOrder = 0
     end
   end
   object CDados: TPanel
@@ -467,7 +457,7 @@ object Form7: TForm7
     Width = 249
     Height = 57
     Alignment = taRightJustify
-    Caption = 'Adicionar Fornecedor   '
+    Caption = 'Adicionar Profissional   '
     Color = 2700608
     Font.Charset = ANSI_CHARSET
     Font.Color = clWhite
@@ -477,7 +467,6 @@ object Form7: TForm7
     ParentBackground = False
     ParentFont = False
     TabOrder = 3
-    OnClick = PbtnAddClick
     object Image2: TImage
       Left = 16
       Top = 8

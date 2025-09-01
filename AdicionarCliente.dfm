@@ -21,6 +21,7 @@ object Form5: TForm5
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    OnClick = FundoClick
     object LbNome: TLabel
       Left = 152
       Top = 266
@@ -372,6 +373,7 @@ object Form5: TForm5
           A74E9D2A1FA7A8033BDE2C362EE27C06913832424254158C1E148E29E83553D0
           FBC4BA4D0BBF860D1BFAFDF1C71F7ECF9F3FB7085B868260EA8B0556415822FB
           078585FF03A7176BA1A20CEA8F0000000049454E44AE426082}
+        OnClick = Image2Click
       end
       object LbBS: TLabel
         Left = 168
@@ -692,6 +694,145 @@ object Form5: TForm5
           C89072AC77A041FE21EE91D78C0A3A51CA944083A45FBD893CBF62D4E9113813
           FF930F76E5C920C1CE0000000049454E44AE426082}
         Stretch = True
+      end
+    end
+    object Menu: TPanel
+      Left = 0
+      Top = 199
+      Width = 281
+      Height = 875
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 14
+      object LbnSalao: TLabel
+        Left = 10
+        Top = 13
+        Width = 94
+        Height = 37
+        Caption = 'Meu Sal'#227'o'#10
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = '@Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+      end
+      object LbnClientes: TLabel
+        Left = 10
+        Top = 77
+        Width = 73
+        Height = 48
+        Caption = 'Clientes'#10
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = '@Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+      end
+      object LbnFornecedores: TLabel
+        Left = 10
+        Top = 141
+        Width = 123
+        Height = 24
+        Caption = 'Fornecedores'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = '@Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+      end
+      object LbnHM: TLabel
+        Left = 10
+        Top = 209
+        Width = 168
+        Height = 24
+        Caption = 'Hor'#225'rios Marcados'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = '@Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+      end
+      object LbnMarketing: TLabel
+        Left = 10
+        Top = 282
+        Width = 92
+        Height = 24
+        Caption = 'Marketing'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = '@Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+      end
+      object LbnDB: TLabel
+        Left = 10
+        Top = 350
+        Width = 98
+        Height = 24
+        Caption = 'Dashboard'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = '@Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+      end
+      object LbnProfissionais: TLabel
+        Left = 10
+        Top = 423
+        Width = 112
+        Height = 24
+        Caption = 'Profissionais'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = '@Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+      end
+      object LbnServicos: TLabel
+        Left = 10
+        Top = 498
+        Width = 74
+        Height = 24
+        Caption = 'Servi'#231'os'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = '@Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+      end
+      object LbnCargos: TLabel
+        Left = 10
+        Top = 568
+        Width = 63
+        Height = 24
+        Caption = 'Cargos'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = '@Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
+      end
+      object LbnPP: TLabel
+        Left = 10
+        Top = 642
+        Width = 196
+        Height = 24
+        Caption = 'Pacotes Promocionais'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = '@Microsoft JhengHei'
+        Font.Style = []
+        ParentFont = False
       end
     end
   end

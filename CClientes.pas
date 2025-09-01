@@ -10,7 +10,7 @@ uses
 type
   TForm4 = class(TForm)
     Image1: TImage;
-    PbtnAddCliente: TPanel;
+    PbtnAdd: TPanel;
     Image2: TImage;
     Label5: TLabel;
     ListBox1: TListBox;
@@ -29,7 +29,7 @@ type
     Panel3: TPanel;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
-    procedure PbtnAddClienteClick(Sender: TObject);
+    procedure PbtnAddClick(Sender: TObject);
     procedure Label2Click(Sender: TObject);
     procedure Label6Click(Sender: TObject);
   private
@@ -70,7 +70,7 @@ begin
   Form7.Show;
 end;
 
-procedure TForm4.PbtnAddClienteClick(Sender: TObject);
+procedure TForm4.PbtnAddClick(Sender: TObject);
 begin
   Form5.Show;
   Form4.Hide;
