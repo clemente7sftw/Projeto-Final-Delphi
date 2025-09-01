@@ -8,7 +8,8 @@ uses
   TelaPrincipalN1 in 'TelaPrincipalN1.pas' {Form3},
   CClientes in 'CClientes.pas' {Form4},
   AdicionarCliente in 'AdicionarCliente.pas' {Form5},
-  AdicionarFornecedor in 'AdicionarFornecedor.pas' {Form6};
+  AdicionarFornecedor in 'AdicionarFornecedor.pas' {Form6},
+  CFornecedores in 'CFornecedores.pas' {Form7};
 
 {$R *.res}
 
@@ -21,5 +22,6 @@ begin
   Application.CreateForm(TForm4, Form4);
   Application.CreateForm(TForm5, Form5);
   Application.CreateForm(TForm6, Form6);
+  Application.CreateForm(TForm7, Form7);
   Application.Run;
 end.

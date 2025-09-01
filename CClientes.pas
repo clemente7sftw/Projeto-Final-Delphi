@@ -30,6 +30,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure PbtnAddClienteClick(Sender: TObject);
+    procedure Label2Click(Sender: TObject);
+    procedure Label6Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -43,7 +45,7 @@ implementation
 
 {$R *.dfm}
 
-uses TelaPrincipalN1;
+uses TelaPrincipalN1, CFornecedores;
 
 procedure TForm4.FormCreate(Sender: TObject);
 begin
@@ -54,6 +56,18 @@ procedure TForm4.Image1Click(Sender: TObject);
 begin
   Form3.Show;
   Form4.Hide;
+end;
+
+procedure TForm4.Label2Click(Sender: TObject);
+begin
+  Form4.Hide;
+  Form3.Show;
+end;
+
+procedure TForm4.Label6Click(Sender: TObject);
+begin
+  Form4.Hide;
+  Form7.Show;
 end;
 
 procedure TForm4.PbtnAddClienteClick(Sender: TObject);

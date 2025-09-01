@@ -21,8 +21,6 @@ object Form6: TForm6
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -1300
-    ExplicitTop = -620
     object LbNome: TLabel
       Left = 152
       Top = 266
@@ -430,6 +428,7 @@ object Form6: TForm6
         Font.Name = '@Microsoft JhengHei'
         Font.Style = []
         ParentFont = False
+        OnClick = LbClientesClick
       end
       object LbHorarios: TLabel
         Left = 672
@@ -509,6 +508,7 @@ object Form6: TForm6
       ParentBackground = False
       ParentFont = False
       TabOrder = 1
+      OnClick = PbtnVoltarClick
     end
     object PbtnCadastrar: TPanel
       Left = 1616

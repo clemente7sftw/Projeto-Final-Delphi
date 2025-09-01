@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls,AdicionarFornecedor,AdicionarCliente, CClientes, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
+  Vcl.Controls,CFornecedores,AdicionarCliente, CClientes, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
   Vcl.StdCtrls;
 
 type
@@ -47,7 +47,7 @@ end;
 
 procedure TForm3.Label5Click(Sender: TObject);
 begin
-  Form6.Show;
+  Form7.Show;
   Form3.Hide;
 end;
 

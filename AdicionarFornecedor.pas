@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
+  Vcl.Controls,CClientes, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
   Vcl.ExtCtrls;
 
 type
@@ -45,6 +45,8 @@ type
     PbtnLimpar: TPanel;
     Image4: TImage;
     procedure FormCreate(Sender: TObject);
+    procedure PbtnVoltarClick(Sender: TObject);
+    procedure LbClientesClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -58,9 +60,23 @@ implementation
 
 {$R *.dfm}
 
+uses CFornecedores;
+
 procedure TForm6.FormCreate(Sender: TObject);
 begin
   Form6.WindowState:=wsMaximized;
+end;
+
+procedure TForm6.LbClientesClick(Sender: TObject);
+begin
+  Form6.Hide;
+  Form4.Show;
+end;
+
+procedure TForm6.PbtnVoltarClick(Sender: TObject);
+begin
+  Form7.Show;
+  Form6.Hide;
 end;
 
 end.

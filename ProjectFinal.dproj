@@ -152,6 +152,10 @@
         <DCCReference Include="AdicionarFornecedor.pas">
             <Form>Form6</Form>
         </DCCReference>
+        <DCCReference Include="CFornecedores.pas">
+            <Form>Form7</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
