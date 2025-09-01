@@ -344,11 +344,4 @@ object Form3: TForm3
       ParentFont = False
     end
   end
-  object Linha: TPanel
-    Left = 352
-    Top = 186
-    Width = 185
-    Height = 4
-    TabOrder = 1
-  end
 end

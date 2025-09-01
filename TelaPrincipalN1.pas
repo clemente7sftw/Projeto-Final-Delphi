@@ -17,7 +17,6 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    Linha: TPanel;
     procedure FormCreate(Sender: TObject);
     procedure ClientesClick(Sender: TObject);
   private
@@ -41,5 +40,6 @@ end;
 procedure TForm3.ClientesClick(Sender: TObject);
 begin
   Form4.Show;
+  Form3.Hide;
 end;
 end.
