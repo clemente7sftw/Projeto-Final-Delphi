@@ -10,9 +10,6 @@ TMetodos = class
   Menu : TPanel;
   private
   public
-  procedure MostrarMenu;
-  procedure TirarMenu;
-
 
 end;
 
@@ -25,15 +22,5 @@ implementation
 { TMetodos }
 
 
-
-procedure TMetodos.MostrarMenu;
-begin
-    Menu.Visible := True;
-end;
-
-procedure TMetodos.TirarMenu;
-begin
-
-end;
 
 end.

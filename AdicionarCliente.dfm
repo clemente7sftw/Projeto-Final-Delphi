@@ -147,7 +147,7 @@ object Form5: TForm5
       Color = 7110284
       ParentBackground = False
       TabOrder = 0
-      object Image2: TImage
+      object LogoBS: TImage
         Left = 48
         Top = 48
         Width = 105
@@ -373,7 +373,7 @@ object Form5: TForm5
           A74E9D2A1FA7A8033BDE2C362EE27C06913832424254158C1E148E29E83553D0
           FBC4BA4D0BBF860D1BFAFDF1C71F7ECF9F3FB7085B868260EA8B0556415822FB
           078585FF03A7176BA1A20CEA8F0000000049454E44AE426082}
-        OnClick = Image2Click
+        OnClick = LogoBSClick
       end
       object LbBS: TLabel
         Left = 168
@@ -708,7 +708,7 @@ object Form5: TForm5
         Left = 10
         Top = 13
         Width = 94
-        Height = 37
+        Height = 48
         Caption = 'Meu Sal'#227'o'#10
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText

@@ -11,7 +11,7 @@ type
   TForm5 = class(TForm)
     Fundo: TPanel;
     Barra: TPanel;
-    Image2: TImage;
+    LogoBS: TImage;
     LbBS: TLabel;
     Image3: TImage;
     LbClientes: TLabel;
@@ -58,13 +58,14 @@ type
     procedure FormCreate(Sender: TObject);
     procedure LbClientesClick(Sender: TObject);
     procedure PbtnVoltarClick(Sender: TObject);
-    procedure Image2Click(Sender: TObject);
+    procedure LogoBSClick(Sender: TObject);
     procedure FundoClick(Sender: TObject);
   private
     { Private declarations }
   public
-
     { Public declarations }
+    procedure MostrarMenu;
+    procedure TirarMenu;
   end;
 
 var
@@ -74,7 +75,7 @@ implementation
 
 {$R *.dfm}
 
-uses CClientes;
+uses CClientes, UMetodos;
 
 procedure TForm5.FormCreate(Sender: TObject);
 begin
@@ -82,14 +83,24 @@ begin
   Form5.WindowState:=wsMaximized;
 end;
 
-procedure TForm5.FundoClick(Sender: TObject);
+procedure TForm5.MostrarMenu;
 begin
-TirarMenu;
+  Menu.Visible := True;
 end;
 
-procedure TForm5.Image2Click(Sender: TObject);
+procedure TForm5.TirarMenu;
 begin
-Menu.Visible := True;
+  Menu.Visible := False;
+end;
+
+procedure TForm5.FundoClick(Sender: TObject);
+begin
+  TirarMenu;
+end;
+
+procedure TForm5.LogoBSClick(Sender: TObject);
+begin
+  MostrarMenu;
 end;
 
 procedure TForm5.LbClientesClick(Sender: TObject);
@@ -100,12 +111,15 @@ end;
 
 
 
+
 procedure TForm5.PbtnVoltarClick(Sender: TObject);
 begin
 //  colocar condiçao do if e  ShowMessage('Cliente Cadastrado com Sucesso');
     Form5.Hide;
     Form4.Show;
 end;
+
+
 
 
 end.
