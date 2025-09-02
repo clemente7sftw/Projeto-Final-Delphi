@@ -30,6 +30,16 @@ type
     LbnServicos: TLabel;
     LbnCargos: TLabel;
     LbnPP: TLabel;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Image6: TImage;
+    Image7: TImage;
+    Image8: TImage;
+    Image9: TImage;
+    Image10: TImage;
+    Image11: TImage;
+    Image12: TImage;
     procedure FormCreate(Sender: TObject);
     procedure Label2Click(Sender: TObject);
     procedure Label5Click(Sender: TObject);
