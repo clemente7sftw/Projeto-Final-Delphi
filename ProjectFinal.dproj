@@ -160,6 +160,42 @@
             <Form>Form8</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="AdicionarProfissional.pas">
+            <Form>Form9</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="AdicionarServico.pas">
+            <Form>Form10</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="AdicionarCargo.pas">
+            <Form>Form11</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="AdicionarPP.pas">
+            <Form>Form12</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="AdicionarHorario.pas">
+            <Form>Form13</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="CCargos.pas">
+            <Form>Form14</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="CServicos.pas">
+            <Form>Form15</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="CPacotesPromocionais.pas">
+            <Form>Form16</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="CHorarios.pas">
+            <Form>Form17</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

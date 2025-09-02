@@ -22,10 +22,6 @@ object Form3: TForm3
     ParentBackground = False
     TabOrder = 0
     OnClick = FundoClick
-    ExplicitLeft = 224
-    ExplicitTop = 200
-    ExplicitWidth = 185
-    ExplicitHeight = 41
   end
   object Barra: TPanel
     Left = -16
@@ -332,6 +328,7 @@ object Form3: TForm3
       Font.Name = '@Microsoft JhengHei'
       Font.Style = []
       ParentFont = False
+      OnClick = Label3Click
     end
     object Label4: TLabel
       Left = 1248
@@ -358,6 +355,7 @@ object Form3: TForm3
       Font.Name = '@Microsoft JhengHei'
       Font.Style = []
       ParentFont = False
+      OnClick = Label6Click
     end
     object Label15: TLabel
       Left = 403
@@ -406,6 +404,7 @@ object Form3: TForm3
       Font.Name = '@Microsoft JhengHei'
       Font.Style = []
       ParentFont = False
+      OnClick = LbnClientesClick
     end
     object LbnFornecedores: TLabel
       Left = 10
@@ -419,6 +418,7 @@ object Form3: TForm3
       Font.Name = '@Microsoft JhengHei'
       Font.Style = []
       ParentFont = False
+      OnClick = LbnFornecedoresClick
     end
     object LbnHM: TLabel
       Left = 10
@@ -432,6 +432,7 @@ object Form3: TForm3
       Font.Name = '@Microsoft JhengHei'
       Font.Style = []
       ParentFont = False
+      OnClick = LbnHMClick
     end
     object LbnMarketing: TLabel
       Left = 10
@@ -471,6 +472,7 @@ object Form3: TForm3
       Font.Name = '@Microsoft JhengHei'
       Font.Style = []
       ParentFont = False
+      OnClick = LbnProfissionaisClick
     end
     object LbnServicos: TLabel
       Left = 10
@@ -484,6 +486,7 @@ object Form3: TForm3
       Font.Name = '@Microsoft JhengHei'
       Font.Style = []
       ParentFont = False
+      OnClick = LbnServicosClick
     end
     object LbnCargos: TLabel
       Left = 10
@@ -497,6 +500,7 @@ object Form3: TForm3
       Font.Name = '@Microsoft JhengHei'
       Font.Style = []
       ParentFont = False
+      OnClick = LbnCargosClick
     end
     object LbnPP: TLabel
       Left = 10
@@ -510,6 +514,7 @@ object Form3: TForm3
       Font.Name = '@Microsoft JhengHei'
       Font.Style = []
       ParentFont = False
+      OnClick = LbnPPClick
     end
   end
 end

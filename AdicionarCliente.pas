@@ -60,6 +60,7 @@ type
     procedure PbtnVoltarClick(Sender: TObject);
     procedure LogoBSClick(Sender: TObject);
     procedure FundoClick(Sender: TObject);
+    procedure LbFornecedoresClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -75,7 +76,7 @@ implementation
 
 {$R *.dfm}
 
-uses CClientes, UMetodos;
+uses CClientes, UMetodos, CFornecedores;
 
 procedure TForm5.FormCreate(Sender: TObject);
 begin
@@ -111,6 +112,12 @@ end;
 
 
 
+
+procedure TForm5.LbFornecedoresClick(Sender: TObject);
+begin
+  Form5.Hide;
+  Form7.Show;
+end;
 
 procedure TForm5.PbtnVoltarClick(Sender: TObject);
 begin

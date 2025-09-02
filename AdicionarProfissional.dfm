@@ -1,7 +1,7 @@
-object Form7: TForm7
+object Form9: TForm9
   Left = 0
   Top = 0
-  Caption = 'Form7'
+  Caption = 'Form9'
   ClientHeight = 1061
   ClientWidth = 1924
   Color = clBtnFace
@@ -22,58 +22,135 @@ object Form7: TForm7
     ParentBackground = False
     TabOrder = 0
     ExplicitLeft = 408
-    ExplicitTop = 320
+    ExplicitTop = 304
     ExplicitWidth = 185
     ExplicitHeight = 41
-    object Image1: TImage
-      Left = 8
-      Top = 216
-      Width = 33
-      Height = 33
-      Picture.Data = {
-        0D54536B537667477261706869633C73766720786D6C6E733D22687474703A2F
-        2F7777772E77332E6F72672F323030302F737667222076696577426F783D2230
-        20302036343020363430223E3C212D2D21466F6E7420417765736F6D65204672
-        656520372E302E302062792040666F6E74617765736F6D65202D206874747073
-        3A2F2F666F6E74617765736F6D652E636F6D204C6963656E7365202D20687474
-        70733A2F2F666F6E74617765736F6D652E636F6D2F6C6963656E73652F667265
-        6520436F70797269676874203230323520466F6E7469636F6E732C20496E632E
-        2D2D3E3C7061746820643D224D37332E34203239372E344336302E3920333039
-        2E392036302E39203333302E322037332E34203334322E374C3233332E342035
-        30322E37433234352E39203531352E32203236362E32203531352E3220323738
-        2E37203530322E37433239312E32203439302E32203239312E32203436392E39
-        203237382E37203435372E344C3137332E33203335324C353434203335324335
-        36312E372033353220353736203333372E372035373620333230433537362033
-        30322E33203536312E372032383820353434203238384C3137332E3320323838
-        4C3237382E37203138322E36433239312E32203137302E31203239312E322031
-        34392E38203237382E37203133372E33433236362E32203132342E3820323435
-        2E39203132342E38203233332E34203133372E334C37332E34203239372E337A
-        222F3E3C2F7376673E}
-      Stretch = True
-      OnClick = Image1Click
-    end
-    object Label5: TLabel
-      Left = 920
-      Top = 232
-      Width = 233
-      Height = 49
-      Caption = 'Fornecedores'
+    object LbBairro: TLabel
+      Left = 933
+      Top = 434
+      Width = 53
+      Height = 24
+      Caption = 'Bairro'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -37
-      Font.Name = 'Segoe UI Emoji'
-      Font.Style = [fsBold]
+      Font.Height = -19
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LbCEP: TLabel
+      Left = 160
+      Top = 426
+      Width = 34
+      Height = 24
+      Caption = 'CEP'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LbCidade: TLabel
+      Left = 552
+      Top = 434
+      Width = 63
+      Height = 24
+      Caption = 'Cidade'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LbCPF: TLabel
+      Left = 1280
+      Top = 266
+      Width = 34
+      Height = 24
+      Caption = 'CPF'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LbEmail: TLabel
+      Left = 720
+      Top = 266
+      Width = 48
+      Height = 24
+      Caption = 'Email'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LbNome: TLabel
+      Left = 160
+      Top = 266
+      Width = 56
+      Height = 24
+      Caption = 'Nome'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LbNumero: TLabel
+      Left = 160
+      Top = 570
+      Width = 75
+      Height = 24
+      Caption = 'Numero'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LbRua: TLabel
+      Left = 1280
+      Top = 426
+      Width = 34
+      Height = 24
+      Caption = 'Rua'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LbTele: TLabel
+      Left = 160
+      Top = 682
+      Width = 79
+      Height = 24
+      Caption = 'Telefone'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
       ParentFont = False
     end
     object Barra: TPanel
-      Left = -16
+      Left = -8
       Top = 0
       Width = 1940
       Height = 193
       Color = 7110284
       ParentBackground = False
       TabOrder = 0
-      object Image4: TImage
+      object LogoBS: TImage
         Left = 48
         Top = 48
         Width = 105
@@ -300,7 +377,7 @@ object Form7: TForm7
           FBC4BA4D0BBF860D1BFAFDF1C71F7ECF9F3FB7085B868260EA8B0556415822FB
           078585FF03A7176BA1A20CEA8F0000000049454E44AE426082}
       end
-      object Label1: TLabel
+      object LbBS: TLabel
         Left = 168
         Top = 88
         Width = 92
@@ -313,7 +390,7 @@ object Form7: TForm7
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object Image5: TImage
+      object Image3: TImage
         Left = 1824
         Top = 64
         Width = 73
@@ -343,7 +420,7 @@ object Form7: TForm7
           A26702A98069A248B4DE434541129D074E51636802159B6A9F8752B5190942A3
           04010942A30441EB173AE76C3C77BA892E0000000049454E44AE426082}
       end
-      object Label2: TLabel
+      object LbClientes: TLabel
         Left = 995
         Top = 160
         Width = 60
@@ -355,9 +432,8 @@ object Form7: TForm7
         Font.Name = '@Microsoft JhengHei'
         Font.Style = []
         ParentFont = False
-        OnClick = Label2Click
       end
-      object Label3: TLabel
+      object LbHorarios: TLabel
         Left = 672
         Top = 160
         Width = 142
@@ -370,7 +446,7 @@ object Form7: TForm7
         Font.Style = []
         ParentFont = False
       end
-      object Label4: TLabel
+      object LbMarketing: TLabel
         Left = 1248
         Top = 160
         Width = 78
@@ -383,7 +459,7 @@ object Form7: TForm7
         Font.Style = []
         ParentFont = False
       end
-      object Label6: TLabel
+      object LbFornecedores: TLabel
         Left = 1464
         Top = 160
         Width = 102
@@ -396,7 +472,7 @@ object Form7: TForm7
         Font.Style = []
         ParentFont = False
       end
-      object Label15: TLabel
+      object LbDashboard: TLabel
         Left = 403
         Top = 160
         Width = 83
@@ -410,114 +486,353 @@ object Form7: TForm7
         ParentFont = False
       end
       object Panel3: TPanel
-        Left = 1453
+        Left = 965
         Top = 186
         Width = 129
         Height = 4
         TabOrder = 0
       end
     end
-    object CDados: TPanel
-      Left = 1264
-      Top = 392
-      Width = 569
-      Height = 561
-      Color = clWindow
-      ParentBackground = False
+    object EdBairro: TEdit
+      Left = 933
+      Top = 464
+      Width = 169
+      Height = 41
+      BorderStyle = bsNone
+      Color = clGrayText
       TabOrder = 1
-      object editar: TImage
-        Left = 472
-        Top = 32
-        Width = 25
-        Height = 25
-        Picture.Data = {
-          0954506E67496D61676589504E470D0A1A0A0000000D494844520000003E0000
-          001508060000001EAA5DB1000000097048597300000B1300000B1301009A9C18
-          000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000001
-          854944415478DAED98F151C23014C65F37C00D3A826C0013A8135837C0090C13
-          A0135026800DC0096403EB04BA01BEEF92DCD194A449AF69E3E177F7FD5392DC
-          FB25EFBDB46474A5CAC60EE02F823FB205FB87BD632F476228D8B9F1AC629731
-          C05F14F4B9C408F000FEB4FC7643F2507A039FB03FA8B9CBD033FB3522E8A50D
-          F7552DB650F082645A037E7F01FEC09E47045FB0571DE7221B451770BDDB4705
-          07F82DFBF66C4CC97E8A08DE9B7CC1CD14D3F0D05EC1E3D903C9C61253F754DF
-          6C1F21B65D28F89A648A9BAA143C1A086A67418E66D2A304C98308512DCD7DC0
-          6DD0267C3500B056973AF7069FA8C50BF77AB4A1E14E5A0B31AD03E7A0EF946D
-          E0BA63B7D5D1C66363620835BE0D9C83DEE3ACF1D4A1A1998A314428C7830B1C
-          306D69D4A897819593FD6DCDA629C9CE6E05C74ECE1286EE0A8E395F36F0B605
-          5380D63A058ECF5C0F0AB2A7794AD0D037C97ED40BB87967E38A425DBC91D111
-          13103233F71C0B86A90B5CB0EFD8EF0AF448C3DECF21F27D8941FCC8D6C617E3
-          FF3F30D7A65F97CE511645B36BED0000000049454E44AE426082}
-      end
-      object Image3: TImage
-        Left = 503
-        Top = 32
-        Width = 25
-        Height = 25
-        Picture.Data = {
-          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000160000
-          00140806000000897CCD30000000097048597300000B1300000B1301009A9C18
-          000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000000
-          BE4944415478DA6364A0116024424D02102BA0893D00E20594180C32F03E0E39
-          4120FE40ACC1F540DC40A6EF0B8178022E830B80B89F4C831B911D454C189305
-          B0191C00C406249A73018837103218E49D7A4A820197C1E4843351062700F17C
-          120D4E64404BD7B8C2783D890607321011C60E40BC9F44831D81F80021831518
-          70E7365CC090019232A86E3048CF43420683C07F120D6624280005EF81588016
-          06DF67C02C2A710150D81A126B30B19904546C8232C7047409BA164254010044
-          DF1F15CF9AE7E50000000049454E44AE426082}
-      end
     end
-    object ListBox1: TListBox
-      Left = 48
-      Top = 392
-      Width = 601
-      Height = 561
-      ItemHeight = 15
+    object EdCEP: TEdit
+      Left = 160
+      Top = 456
+      Width = 153
+      Height = 41
+      BorderStyle = bsNone
+      Color = clGrayText
       TabOrder = 2
     end
-    object PbtnAdd: TPanel
-      Left = 48
-      Top = 288
-      Width = 249
+    object EdCidade: TEdit
+      Left = 552
+      Top = 464
+      Width = 201
+      Height = 41
+      BorderStyle = bsNone
+      Color = clGrayText
+      TabOrder = 3
+    end
+    object EdCPF: TEdit
+      Left = 1280
+      Top = 296
+      Width = 305
+      Height = 41
+      BorderStyle = bsNone
+      Color = clGrayText
+      TabOrder = 4
+    end
+    object EdEmail: TEdit
+      Left = 720
+      Top = 296
+      Width = 313
+      Height = 41
+      BorderStyle = bsNone
+      Color = clGrayText
+      TabOrder = 5
+    end
+    object EdNome: TEdit
+      Left = 160
+      Top = 296
+      Width = 265
+      Height = 41
+      BorderStyle = bsNone
+      Color = clGrayText
+      TabOrder = 6
+    end
+    object EdNumero: TEdit
+      Left = 160
+      Top = 600
+      Width = 153
+      Height = 41
+      BorderStyle = bsNone
+      Color = clGrayText
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 7
+    end
+    object EdRua: TEdit
+      Left = 1280
+      Top = 456
+      Width = 305
+      Height = 41
+      BorderStyle = bsNone
+      Color = clGrayText
+      TabOrder = 8
+    end
+    object EdTelefone: TEdit
+      Left = 160
+      Top = 712
+      Width = 265
+      Height = 39
+      BorderStyle = bsNone
+      Color = clGrayText
+      TabOrder = 9
+    end
+    object Lupa: TPanel
+      Left = 366
+      Top = 454
+      Width = 43
+      Height = 41
+      Cursor = crHandPoint
+      Color = clBackground
+      ParentBackground = False
+      TabOrder = 10
+      object Image1: TImage
+        Left = 8
+        Top = 8
+        Width = 25
+        Height = 25
+        Picture.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D494844520000001F0000
+          0021080600000021DE70E4000000097048597300000B1300000B1301009A9C18
+          000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000001
+          E24944415478DAED57815583400C0D1BE806ED04B61BD009D409A413B49DA074
+          833A813881DD4036284E204E201BE0CF23D8E3B83B38FAD03E9F792F8F72BDE4
+          27B95C1202FA450AFEC15D5496E5151E33F02D987F4FC019F80D9C0641908F02
+          0EE02D1E6B01B55102DEF91A610507287BF7221EF7A102BC840187B3C005F895
+          AAF0AA940993FC171AC42318F07C0EF8BB069C5215D6D4606404DE6A2AE6D89B
+          5107B5C0E58C63658941639712C8CC2452755E70122E8680AB5E2750B2EC1342
+          C88562404D0B3D524E7028E0103E294B539F0C863C83877DBDD7C11938F2F5DA
+          E27D01F96B1F70D5F27B9F6B23F27CE69FCAD2043A3EFA82ABE7DD796616037A
+          EBB828F0239D2A1A57AB640078A9BC3AEFBB0ECE600FF2FA08C1B52770486724
+          5C44A7ABC6B59AAF5AE101AEDE16EFABC6D9CA675657AA3D146C0678CDD4796C
+          A60A1753B356C750B2EB00E63CE10E3891A51C32D32E834DE0ECF5919A8D853D
+          68F56BD9BBA276BFEF1531DF969A52BBA5DA868C0D0CD87B83771860A34258DD
+          EFECEDCE314AC2CA215D917B8CE288D47DE0A8EDB596699F01F28EAA027423CB
+          395503E441CD05436FE7682C4CC56694D1D970ED8C068C36B71B66835C0CF88E
+          D2A81F0D06031A556FF42F16AD6865009FFF18B81201FEDAD9A9E77EF9DF6A7F
+          12FC0B1293E6224739C13B0000000049454E44AE426082}
+        Stretch = True
+      end
+    end
+    object PbtnCadastrar: TPanel
+      Left = 1616
+      Top = 871
+      Width = 177
       Height = 57
-      Alignment = taRightJustify
-      Caption = 'Adicionar Fornecedor   '
-      Color = 2700608
+      Cursor = crHandPoint
+      Caption = 'Cadastrar'
+      Color = clBackground
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -16
-      Font.Name = '@Microsoft JhengHei'
-      Font.Style = [fsBold]
+      Font.Height = -21
+      Font.Name = '@Malgun Gothic'
+      Font.Style = []
       ParentBackground = False
       ParentFont = False
-      TabOrder = 3
-      OnClick = PbtnAddClick
-      object Image2: TImage
-        Left = 16
+      TabOrder = 11
+    end
+    object PbtnLimpar: TPanel
+      Left = 1696
+      Top = 224
+      Width = 185
+      Height = 49
+      Cursor = crHandPoint
+      Alignment = taRightJustify
+      Caption = 'Limpar Dados   '
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 12
+      object Image4: TImage
+        Left = 8
         Top = 8
         Width = 41
         Height = 41
         Picture.Data = {
-          0954506E67496D61676589504E470D0A1A0A0000000D494844520000002A0000
-          00280806000000880B6850000000097048597300000B1300000B1301009A9C18
-          000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000001
-          D14944415478DAED98816D83301045CD061981119A0D6082AA1B9009924E103A
-          41D309EA4ED07682B241B241C804ED06F49F0089503BD867C740952F9DAC24D6
-          DDE36CCEE74462268AC606B881CE0EB4AAAA3B0C6471F3D501564451F4330950
-          002618B6B0443345C29E005C8E060A4802CC0DA612E403600FC1412D205BD116
-          58FACAAC112820630C47867FDAB36948D0570C1933460AD8221428653366C678
-          01E8C620066D2D9A57360F77563D0641E16081E1DB21191241570671F6A22E77
-          422856614AA0DD55B3076D9C10E882094A35350F05BAC3B066822A5F26F8DCF4
-          1E7EDDF92C61A7CE6FD21494F6CE9E01A92C4F0DE4B3859FD2A6E0E7A23E3A4D
-          A52DF80C5FE6A0960108EEE2110A5F99382F79EE4BAF08B015EABA4A59FC803D
-          DA76515E5E268D63DAB749270B4E6DDED5407D6B4EA06D2550568AC9800EC9A6
-          3C2518EE457D1E93E94E2ADAAB25ECB3C94E1904D4E0EA3124293C5C4D2E8232
-          BA7A9D08D2E96AA205756C9675CA00FBE60DD46326FBA21A9B7232FB07D4A101
-          31D501A04B1FA0DD4EFB5A5A0156B2410364B395F5EDB40FEAD220DB2A06ECC9
-          74721FF44BF0EBA5ADAC96BF0F1A627FB6A25670C7059D4D46299BEF82FF6783
-          A90A519F54C6BDEBFFEB9EC6D60DD4B77E012C24E01B6D888628000000004945
-          4E44AE426082}
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000290000
+          00270806000000926A6186000000097048597300000B1300000B1301009A9C18
+          000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000002
+          004944415478DACDD8817582301006E0DF0D18816EA01BE806ED04B513582750
+          275027284ED06E5036A81B940DEA08CDBD5C9E012F928408DC7B791608F11372
+          E1E804E38CBD6A4BD52EAA2D26436B1CC0776BBB1C1B72A3DAB6B9734C481188
+          115D4917B0C248E6E44AB5830B489F43235F552B84FD17069E696348E454B51F
+          C7B199010E8924E0B76A9970EC0D8DAB3B043267602E1C5B43989F7D23EF0177
+          9033BC576414303592BE9C1E6994996BFEEC0C4C8D24C49CFF2EA0138022E363
+          53E19C23EACFE95E9136F4C7013C41573AADF14824C5D9012CA1176BAF4889A4
+          DBB6F7E87766E0C5A36F276486EB425C59FBB7D0C5822BA8EF2C04188A241415
+          034BD4B394603B0F2801178D1F9514B9E22FCF1CC7097EB2B60F7C4E5BBF2448
+          427DE236217CA0057495D38C17D5BE52225DCB8714B5F28A43CA78A95F34B2F9
+          421403752DE405AE8B7D3472CE83C744857A821094EE486EF5B929C76290D26D
+          EA02CDADF1685F19329884A4017F3B005DD0E89090CFD0196D07CDB5AC7D3811
+          1ABC78FB20EDC75B093D7F56084F2213C14B8E0F72CEA8232363B2DC8E0502E7
+          A00FD28E0F789653432153007D2E44D4009420E65F6F5DA34440DDE88BBC57EA
+          C744D0A2ED834C0DAC547B4A319041A60652744E181B99C3FDBA191BADAFA9A1
+          C89072AC77A041FE21EE91D78C0A3A51CA944083A45FBD893CBF62D4E9113813
+          FF930F76E5C920C1CE0000000049454E44AE426082}
         Stretch = True
       end
+    end
+    object PbtnVoltar: TPanel
+      Left = 120
+      Top = 871
+      Width = 177
+      Height = 57
+      Cursor = crHandPoint
+      Caption = 'Voltar'
+      Color = clBackground
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -21
+      Font.Name = '@Malgun Gothic'
+      Font.Style = []
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 13
+    end
+  end
+  object Menu: TPanel
+    Left = 8
+    Top = 199
+    Width = 281
+    Height = 875
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 1
+    object LbnSalao: TLabel
+      Left = 10
+      Top = 13
+      Width = 94
+      Height = 48
+      Caption = 'Meu Sal'#227'o'#10
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LbnClientes: TLabel
+      Left = 10
+      Top = 77
+      Width = 73
+      Height = 48
+      Caption = 'Clientes'#10
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LbnFornecedores: TLabel
+      Left = 10
+      Top = 141
+      Width = 123
+      Height = 24
+      Caption = 'Fornecedores'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LbnHM: TLabel
+      Left = 10
+      Top = 209
+      Width = 168
+      Height = 24
+      Caption = 'Hor'#225'rios Marcados'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LbnMarketing: TLabel
+      Left = 10
+      Top = 282
+      Width = 92
+      Height = 24
+      Caption = 'Marketing'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LbnDB: TLabel
+      Left = 10
+      Top = 350
+      Width = 98
+      Height = 24
+      Caption = 'Dashboard'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LbnProfissionais: TLabel
+      Left = 10
+      Top = 423
+      Width = 112
+      Height = 24
+      Caption = 'Profissionais'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LbnServicos: TLabel
+      Left = 10
+      Top = 498
+      Width = 74
+      Height = 24
+      Caption = 'Servi'#231'os'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LbnCargos: TLabel
+      Left = 10
+      Top = 568
+      Width = 63
+      Height = 24
+      Caption = 'Cargos'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LbnPP: TLabel
+      Left = 10
+      Top = 642
+      Width = 196
+      Height = 24
+      Caption = 'Pacotes Promocionais'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = []
+      ParentFont = False
     end
   end
 end

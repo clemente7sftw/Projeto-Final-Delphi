@@ -4,11 +4,12 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Skia,
+  Vcl.Controls,  AdicionarCliente, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Skia,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls;
 
 type
   TForm8 = class(TForm)
+    Fundo: TPanel;
     Barra: TPanel;
     Image4: TImage;
     Label1: TLabel;
@@ -21,14 +22,33 @@ type
     CDados: TPanel;
     editar: TImage;
     Image3: TImage;
-    Image1: TImage;
     Label5: TLabel;
     ListBox1: TListBox;
     PbtnAdd: TPanel;
     Image2: TImage;
+    Image6: TImage;
+    Menu: TPanel;
+    LbnSalao: TLabel;
+    LbnClientes: TLabel;
+    LbnFornecedores: TLabel;
+    LbnHM: TLabel;
+    LbnMarketing: TLabel;
+    LbnDB: TLabel;
+    LbnProfissionais: TLabel;
+    LbnServicos: TLabel;
+    LbnCargos: TLabel;
+    LbnPP: TLabel;
+    Image7: TImage;
+    procedure FormCreate(Sender: TObject);
+    procedure Label2Click(Sender: TObject);
+    procedure Image6Click(Sender: TObject);
+    procedure FundoClick(Sender: TObject);
+    procedure PbtnAddClick(Sender: TObject);
   private
     { Private declarations }
   public
+    procedure MostrarMenu;
+    procedure TirarMenu;
     { Public declarations }
   end;
 
@@ -38,5 +58,48 @@ var
 implementation
 
 {$R *.dfm}
+
+uses CClientes, TelaPrincipalN1, AdicionarProfissional;
+
+procedure TForm8.FormCreate(Sender: TObject);
+begin
+  Form8.WindowState:=wsMaximized;
+  MostrarMenu;
+end;
+
+procedure TForm8.FundoClick(Sender: TObject);
+begin
+  Menu.Visible := False;
+end;
+
+procedure TForm8.Image6Click(Sender: TObject);
+begin
+  Form3.Show;
+  Form8.Hide;
+end;
+
+procedure TForm8.Label2Click(Sender: TObject);
+begin
+  ///Form4.Show;  para mostrar clientes
+  Form8.Hide;
+  Form4.Show;
+
+end;
+
+procedure TForm8.MostrarMenu;
+begin
+  Menu.Visible := True;
+end;
+
+procedure TForm8.PbtnAddClick(Sender: TObject);
+begin
+  Form9.Show;
+  Form8.Hide;
+end;
+
+procedure TForm8.TirarMenu;
+begin
+  Menu.Visible := False;
+end;
 
 end.

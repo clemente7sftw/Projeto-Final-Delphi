@@ -1,7 +1,7 @@
-object Form7: TForm7
+object Form14: TForm14
   Left = 0
   Top = 0
-  Caption = 'Form7'
+  Caption = 'Cargos'
   ClientHeight = 1061
   ClientWidth = 1924
   Color = clBtnFace
@@ -55,9 +55,9 @@ object Form7: TForm7
     object Label5: TLabel
       Left = 920
       Top = 232
-      Width = 233
+      Width = 121
       Height = 49
-      Caption = 'Fornecedores'
+      Caption = 'Cargos'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -37
@@ -355,7 +355,6 @@ object Form7: TForm7
         Font.Name = '@Microsoft JhengHei'
         Font.Style = []
         ParentFont = False
-        OnClick = Label2Click
       end
       object Label3: TLabel
         Left = 672
@@ -408,13 +407,6 @@ object Form7: TForm7
         Font.Name = '@Microsoft JhengHei'
         Font.Style = []
         ParentFont = False
-      end
-      object Panel3: TPanel
-        Left = 1453
-        Top = 186
-        Width = 129
-        Height = 4
-        TabOrder = 0
       end
     end
     object CDados: TPanel
@@ -480,7 +472,7 @@ object Form7: TForm7
       Width = 249
       Height = 57
       Alignment = taRightJustify
-      Caption = 'Adicionar Fornecedor   '
+      Caption = 'Adicionar Cargo     '
       Color = 2700608
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
@@ -490,7 +482,6 @@ object Form7: TForm7
       ParentBackground = False
       ParentFont = False
       TabOrder = 3
-      OnClick = PbtnAddClick
       object Image2: TImage
         Left = 16
         Top = 8

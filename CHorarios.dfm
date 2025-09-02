@@ -1,9 +1,9 @@
-object Form7: TForm7
+object Form17: TForm17
   Left = 0
   Top = 0
-  Caption = 'Form7'
+  Caption = 'Form17'
   ClientHeight = 1061
-  ClientWidth = 1924
+  ClientWidth = 1884
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,16 +15,14 @@ object Form7: TForm7
   object Fundo: TPanel
     Left = 0
     Top = 0
-    Width = 1924
+    Width = 1884
     Height = 1061
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 408
-    ExplicitTop = 320
-    ExplicitWidth = 185
-    ExplicitHeight = 41
+    ExplicitLeft = -40
+    ExplicitWidth = 1924
     object Image1: TImage
       Left = 8
       Top = 216
@@ -53,11 +51,11 @@ object Form7: TForm7
       OnClick = Image1Click
     end
     object Label5: TLabel
-      Left = 920
-      Top = 232
-      Width = 233
+      Left = 800
+      Top = 240
+      Width = 262
       Height = 49
-      Caption = 'Fornecedores'
+      Caption = 'Marcar Hor'#225'rio'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -37
@@ -355,7 +353,6 @@ object Form7: TForm7
         Font.Name = '@Microsoft JhengHei'
         Font.Style = []
         ParentFont = False
-        OnClick = Label2Click
       end
       object Label3: TLabel
         Left = 672
@@ -409,70 +406,6 @@ object Form7: TForm7
         Font.Style = []
         ParentFont = False
       end
-      object Panel3: TPanel
-        Left = 1453
-        Top = 186
-        Width = 129
-        Height = 4
-        TabOrder = 0
-      end
-    end
-    object CDados: TPanel
-      Left = 1264
-      Top = 392
-      Width = 569
-      Height = 561
-      Color = clWindow
-      ParentBackground = False
-      TabOrder = 1
-      object editar: TImage
-        Left = 472
-        Top = 32
-        Width = 25
-        Height = 25
-        Picture.Data = {
-          0954506E67496D61676589504E470D0A1A0A0000000D494844520000003E0000
-          001508060000001EAA5DB1000000097048597300000B1300000B1301009A9C18
-          000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000001
-          854944415478DAED98F151C23014C65F37C00D3A826C0013A8135837C0090C13
-          A0135026800DC0096403EB04BA01BEEF92DCD194A449AF69E3E177F7FD5392DC
-          FB25EFBDB46474A5CAC60EE02F823FB205FB87BD632F476228D8B9F1AC629731
-          C05F14F4B9C408F000FEB4FC7643F2507A039FB03FA8B9CBD033FB3522E8A50D
-          F7552DB650F082645A037E7F01FEC09E47045FB0571DE7221B451770BDDB4705
-          07F82DFBF66C4CC97E8A08DE9B7CC1CD14D3F0D05EC1E3D903C9C61253F754DF
-          6C1F21B65D28F89A648A9BAA143C1A086A67418E66D2A304C98308512DCD7DC0
-          6DD0267C3500B056973AF7069FA8C50BF77AB4A1E14E5A0B31AD03E7A0EF946D
-          E0BA63B7D5D1C66363620835BE0D9C83DEE3ACF1D4A1A1998A314428C7830B1C
-          306D69D4A897819593FD6DCDA629C9CE6E05C74ECE1286EE0A8E395F36F0B605
-          5380D63A058ECF5C0F0AB2A7794AD0D037C97ED40BB87967E38A425DBC91D111
-          13103233F71C0B86A90B5CB0EFD8EF0AF448C3DECF21F27D8941FCC8D6C617E3
-          FF3F30D7A65F97CE511645B36BED0000000049454E44AE426082}
-      end
-      object Image3: TImage
-        Left = 503
-        Top = 32
-        Width = 25
-        Height = 25
-        Picture.Data = {
-          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000160000
-          00140806000000897CCD30000000097048597300000B1300000B1301009A9C18
-          000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000000
-          BE4944415478DA6364A0116024424D02102BA0893D00E20594180C32F03E0E39
-          4120FE40ACC1F540DC40A6EF0B8178022E830B80B89F4C831B911D454C189305
-          B0191C00C406249A73018837103218E49D7A4A820197C1E4843351062700F17C
-          120D4E64404BD7B8C2783D890607321011C60E40BC9F44831D81F80021831518
-          70E7365CC090019232A86E3048CF43420683C07F120D6624280005EF81588016
-          06DF67C02C2A710150D81A126B30B19904546C8232C7047409BA164254010044
-          DF1F15CF9AE7E50000000049454E44AE426082}
-      end
-    end
-    object ListBox1: TListBox
-      Left = 48
-      Top = 392
-      Width = 601
-      Height = 561
-      ItemHeight = 15
-      TabOrder = 2
     end
     object PbtnAdd: TPanel
       Left = 48
@@ -480,7 +413,7 @@ object Form7: TForm7
       Width = 249
       Height = 57
       Alignment = taRightJustify
-      Caption = 'Adicionar Fornecedor   '
+      Caption = 'Adicionar Hor'#225'rio   '
       Color = 2700608
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
@@ -489,7 +422,7 @@ object Form7: TForm7
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 1
       OnClick = PbtnAddClick
       object Image2: TImage
         Left = 16
@@ -518,6 +451,13 @@ object Form7: TForm7
           4E44AE426082}
         Stretch = True
       end
+    end
+    object StringGrid1: TStringGrid
+      Left = 48
+      Top = 480
+      Width = 1721
+      Height = 457
+      TabOrder = 2
     end
   end
 end

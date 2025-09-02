@@ -40393,7 +40393,8 @@ object Form2: TForm2
       Left = 264
       Top = 400
       Width = 353
-      Height = 23
+      Height = 41
+      BorderStyle = bsNone
       Color = 14277081
       TabOrder = 0
       OnKeyDown = EdEmailKeyDown
@@ -40402,7 +40403,8 @@ object Form2: TForm2
       Left = 264
       Top = 504
       Width = 353
-      Height = 23
+      Height = 41
+      BorderStyle = bsNone
       Color = 14277081
       TabOrder = 1
     end

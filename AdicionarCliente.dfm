@@ -470,6 +470,7 @@ object Form5: TForm5
         Font.Name = '@Microsoft JhengHei'
         Font.Style = []
         ParentFont = False
+        OnClick = LbFornecedoresClick
       end
       object LbDashboard: TLabel
         Left = 403

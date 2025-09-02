@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls,CFornecedores,AdicionarCliente, CClientes, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
+  Vcl.Controls, CHorarios,CPacotesPromocionais, AdicionarPP, CCargos, CProfissionais ,CFornecedores,AdicionarCliente, AdicionarHorario, AdicionarProfissional, CServicos, CClientes, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
   Vcl.StdCtrls;
 
 type
@@ -35,6 +35,15 @@ type
     procedure Label5Click(Sender: TObject);
     procedure Image4Click(Sender: TObject);
     procedure FundoClick(Sender: TObject);
+    procedure LbnProfissionaisClick(Sender: TObject);
+    procedure Label6Click(Sender: TObject);
+    procedure LbnClientesClick(Sender: TObject);
+    procedure LbnFornecedoresClick(Sender: TObject);
+    procedure LbnHMClick(Sender: TObject);
+    procedure LbnServicosClick(Sender: TObject);
+    procedure LbnCargosClick(Sender: TObject);
+    procedure LbnPPClick(Sender: TObject);
+    procedure Label3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -82,6 +91,12 @@ begin
   Form3.Hide;
 end;
 
+procedure TForm3.Label3Click(Sender: TObject);
+begin
+  Form3.Hide;
+  Form17.Show;
+end;
+
 procedure TForm3.Label5Click(Sender: TObject);
 begin
   Form7.Show;
@@ -89,6 +104,52 @@ begin
 end;
 
 
+procedure TForm3.Label6Click(Sender: TObject);
+begin
+  Form3.Hide;
+  Form7.Show;
+end;
 
+procedure TForm3.LbnCargosClick(Sender: TObject);
+begin
+  Form3.Hide;
+  Form14.Show;
+end;
+
+procedure TForm3.LbnClientesClick(Sender: TObject);
+begin
+  Form4.Show;
+  Form3.Hide;
+end;
+
+procedure TForm3.LbnFornecedoresClick(Sender: TObject);
+begin
+  Form3.Hide;
+  Form7.Show;
+end;
+
+procedure TForm3.LbnHMClick(Sender: TObject);
+begin
+  Form3.Hide;
+  Form17.Show;
+end;
+
+procedure TForm3.LbnPPClick(Sender: TObject);
+begin
+  Form3.Hide;
+  Form16.Show;
+end;
+
+procedure TForm3.LbnProfissionaisClick(Sender: TObject);
+begin
+  Form8.Show;
+  Form3.Hide;
+end;
+
+procedure TForm3.LbnServicosClick(Sender: TObject);
+begin
+  Form3.Hide;
+  Form15.Show;
+end;
 
 end.

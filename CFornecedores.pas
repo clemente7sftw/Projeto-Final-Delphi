@@ -9,6 +9,7 @@ uses
 
 type
   TForm7 = class(TForm)
+    Fundo: TPanel;
     Barra: TPanel;
     Image4: TImage;
     Label1: TLabel;
