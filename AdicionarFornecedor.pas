@@ -47,6 +47,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure PbtnVoltarClick(Sender: TObject);
     procedure LbClientesClick(Sender: TObject);
+    procedure LbBSClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -60,11 +61,16 @@ implementation
 
 {$R *.dfm}
 
-uses CFornecedores;
+uses CFornecedores, UMetodos;
 
 procedure TForm6.FormCreate(Sender: TObject);
 begin
   Form6.WindowState:=wsMaximized;
+end;
+
+procedure TForm6.LbBSClick(Sender: TObject);
+begin
+TMetodos.TelaPrincipal;
 end;
 
 procedure TForm6.LbClientesClick(Sender: TObject);

@@ -30,6 +30,7 @@ type
     PbtnAdd: TPanel;
     Image2: TImage;
     Image1: TImage;
+    procedure PbtnCadastrarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,5 +43,11 @@ var
 implementation
 
 {$R *.dfm}
+uses UMetodos;
+procedure TForm10.PbtnCadastrarClick(Sender: TObject);
+begin
+///colocar verificação para ver se os dados foram alterados para chamar o metodo
+TMetodos.MensagemCadSucesso;
+end;
 
 end.

@@ -20,8 +20,6 @@ object Form12: TForm12
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = -8
     object LbCEP: TLabel
       Left = 160
       Top = 426
@@ -417,6 +415,7 @@ object Form12: TForm12
         Font.Name = '@Microsoft JhengHei'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = LbBSClick
       end
       object Image3: TImage
         Left = 1824

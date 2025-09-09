@@ -385,6 +385,7 @@ object Form6: TForm6
         Font.Name = '@Microsoft JhengHei'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = LbBSClick
       end
       object Image3: TImage
         Left = 1824

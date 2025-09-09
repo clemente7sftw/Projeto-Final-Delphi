@@ -21,10 +21,6 @@ object Form9: TForm9
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 408
-    ExplicitTop = 304
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object LbBairro: TLabel
       Left = 933
       Top = 434
@@ -633,6 +629,7 @@ object Form9: TForm9
       ParentBackground = False
       ParentFont = False
       TabOrder = 11
+      OnClick = PbtnCadastrarClick
     end
     object PbtnLimpar: TPanel
       Left = 1696

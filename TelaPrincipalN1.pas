@@ -60,6 +60,7 @@ type
     { Public declarations }
     procedure MostrarMenu;
     procedure TirarMenu;
+
   end;
 
 var

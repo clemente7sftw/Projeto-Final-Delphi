@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
+  Vcl.Controls, AdicionarServico, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
   Vcl.Skia, Vcl.ExtCtrls;
 
 type
@@ -30,6 +30,7 @@ type
     ListBox1: TListBox;
     procedure FormCreate(Sender: TObject);
     procedure Image6Click(Sender: TObject);
+    procedure PbtnAddClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -53,6 +54,12 @@ end;
 procedure TForm15.Image6Click(Sender: TObject);
 begin
   Form3.Show;
+  Form15.Hide;
+end;
+
+procedure TForm15.PbtnAddClick(Sender: TObject);
+begin
+  Form10.show;
   Form15.Hide;
 end;
 

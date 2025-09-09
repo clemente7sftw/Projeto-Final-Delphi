@@ -56,6 +56,7 @@ type
     LbnCargos: TLabel;
     LbnPP: TLabel;
     procedure FormCreate(Sender: TObject);
+    procedure PbtnCadastrarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -70,7 +71,7 @@ var
 implementation
 
 {$R *.dfm}
-
+uses UMetodos;
 procedure TForm9.FormCreate(Sender: TObject);
 begin
   Form9.WindowState:=wsMaximized;
@@ -81,6 +82,11 @@ end;
 procedure TForm9.MostrarMenu;
 begin
   Menu.Visible := True;
+end;
+
+procedure TForm9.PbtnCadastrarClick(Sender: TObject);
+begin
+TMetodos.MensagemCadSucesso;
 end;
 
 procedure TForm9.TirarMenu;

@@ -21,10 +21,6 @@ object Form15: TForm15
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 392
-    ExplicitTop = 328
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object Image6: TImage
       Left = 16
       Top = 216
@@ -425,6 +421,7 @@ object Form15: TForm15
       ParentBackground = False
       ParentFont = False
       TabOrder = 1
+      OnClick = PbtnAddClick
       object Image2: TImage
         Left = 16
         Top = 8

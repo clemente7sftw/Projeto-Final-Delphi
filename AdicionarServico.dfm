@@ -20,8 +20,6 @@ object Form10: TForm10
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = -8
     object LbCEP: TLabel
       Left = 160
       Top = 426
@@ -557,6 +555,7 @@ object Form10: TForm10
       ParentBackground = False
       ParentFont = False
       TabOrder = 4
+      OnClick = PbtnCadastrarClick
     end
     object PbtnVoltar: TPanel
       Left = 120

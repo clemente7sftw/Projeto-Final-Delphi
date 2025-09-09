@@ -5,7 +5,8 @@ object DataModule1: TDataModule1
     Params.Strings = (
       'Database=beauty_stage'
       'User_Name=postgres'
-      'Password=ROOT'
+      'Password=root'
+      'Server=localhost'
       'DriverID=PG')
     Left = 120
     Top = 200
