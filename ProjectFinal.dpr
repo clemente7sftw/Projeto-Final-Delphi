@@ -19,7 +19,8 @@ uses
   CCargos in 'CCargos.pas' {Form14},
   CServicos in 'CServicos.pas' {Form15},
   CPacotesPromocionais in 'CPacotesPromocionais.pas' {Form16},
-  CHorarios in 'CHorarios.pas' {Form17};
+  CHorarios in 'CHorarios.pas' {Form17},
+  UDataModule in 'UDataModule.pas' {DataModule1: TDataModule};
 
 {$R *.res}
 
@@ -43,5 +44,6 @@ begin
   Application.CreateForm(TForm15, Form15);
   Application.CreateForm(TForm16, Form16);
   Application.CreateForm(TForm17, Form17);
+  Application.CreateForm(TDataModule1, DataModule1);
   Application.Run;
 end.

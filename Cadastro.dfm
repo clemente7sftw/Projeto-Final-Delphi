@@ -40323,12 +40323,12 @@ object Form2: TForm2
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object LbEmail: TLabel
+    object LbNome: TLabel
       Left = 264
       Top = 360
-      Width = 38
+      Width = 45
       Height = 19
-      Caption = 'Email'
+      Caption = 'Nome'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -15
@@ -40337,8 +40337,8 @@ object Form2: TForm2
       ParentFont = False
     end
     object LbCadastreseCom: TLabel
-      Left = 386
-      Top = 679
+      Left = 387
+      Top = 735
       Width = 122
       Height = 19
       Caption = 'Se Cadastre com'
@@ -40364,7 +40364,7 @@ object Form2: TForm2
     end
     object LbTemConta: TLabel
       Left = 293
-      Top = 839
+      Top = 871
       Width = 264
       Height = 19
       Caption = 'J'#225' tem uma conta? Fa'#231'a o Login aqui'
@@ -40376,9 +40376,22 @@ object Form2: TForm2
       ParentFont = False
       OnClick = LbTemContaClick
     end
-    object LbSenha: TLabel
+    object LbEmail: TLabel
       Left = 264
       Top = 469
+      Width = 38
+      Height = 19
+      Caption = 'Email'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = '@Microsoft JhengHei'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LbSenha: TLabel
+      Left = 264
+      Top = 581
       Width = 44
       Height = 19
       Caption = 'Senha'
@@ -40396,6 +40409,12 @@ object Form2: TForm2
       Height = 41
       BorderStyle = bsNone
       Color = 14277081
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 0
       OnKeyDown = EdEmailKeyDown
     end
@@ -40406,11 +40425,17 @@ object Form2: TForm2
       Height = 41
       BorderStyle = bsNone
       Color = 14277081
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 1
     end
     object PbtnCadastrar: TPanel
       Left = 360
-      Top = 592
+      Top = 688
       Width = 185
       Height = 41
       Caption = 'Cadastrar'
@@ -40426,7 +40451,7 @@ object Form2: TForm2
     end
     object PbtnFacebook: TPanel
       Left = 480
-      Top = 736
+      Top = 776
       Width = 137
       Height = 57
       Color = clWhite
@@ -40466,7 +40491,7 @@ object Form2: TForm2
     end
     object PbtnGoogle: TPanel
       Left = 264
-      Top = 736
+      Top = 776
       Width = 137
       Height = 57
       Color = clWhite
@@ -40502,6 +40527,21 @@ object Form2: TForm2
           C89C983D3EB6895ED0FA4E95548A4C139D054B05F4E57E8638B1B0303F9D285A
           ED1DD694B0977F035D6C91C2358DE47F0000000049454E44AE426082}
       end
+    end
+    object Edit1: TEdit
+      Left = 264
+      Top = 617
+      Width = 353
+      Height = 41
+      BorderStyle = bsNone
+      Color = 14277081
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 5
     end
   end
 end

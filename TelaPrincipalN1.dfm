@@ -517,10 +517,10 @@ object Form3: TForm3
       OnClick = LbnPPClick
     end
     object Image1: TImage
-      Left = 219
-      Top = 0
-      Width = 46
-      Height = 41
+      Left = 230
+      Top = 13
+      Width = 38
+      Height = 28
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D494844520000003C0000
         00330806000000CBAA6BA7000000097048597300000B1300000B1301009A9C18
@@ -546,10 +546,10 @@ object Form3: TForm3
       Stretch = True
     end
     object Image2: TImage
-      Left = 219
-      Top = 64
+      Left = 225
+      Top = 77
       Width = 43
-      Height = 33
+      Height = 25
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000290000
         001D0806000000378B454D000000097048597300000B1300000B1301009A9C18
@@ -577,10 +577,10 @@ object Form3: TForm3
       Stretch = True
     end
     object Image3: TImage
-      Left = 219
-      Top = 135
-      Width = 43
-      Height = 46
+      Left = 227
+      Top = 141
+      Width = 38
+      Height = 36
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D494844520000002A0000
         002B08060000000E9F1AFE000000097048597300000B1300000B1301009A9C18
@@ -606,10 +606,10 @@ object Form3: TForm3
       Stretch = True
     end
     object Image6: TImage
-      Left = 227
-      Top = 203
+      Left = 230
+      Top = 200
       Width = 35
-      Height = 30
+      Height = 33
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000240000
         001E080600000044E1BC53000000097048597300000B1300000B1301009A9C18
@@ -625,10 +625,10 @@ object Form3: TForm3
       Stretch = True
     end
     object Image7: TImage
-      Left = 222
+      Left = 230
       Top = 266
-      Width = 40
-      Height = 37
+      Width = 35
+      Height = 31
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D494844520000002C0000
         00230806000000EFD2E8D4000000097048597300000B1300000B1301009A9C18
@@ -646,10 +646,10 @@ object Form3: TForm3
       Stretch = True
     end
     object Image8: TImage
-      Left = 230
+      Left = 225
       Top = 337
-      Width = 35
-      Height = 22
+      Width = 40
+      Height = 24
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D494844520000002D0000
         00190806000000A5F1A721000000097048597300000B1300000B1301009A9C18
@@ -666,9 +666,9 @@ object Form3: TForm3
       Stretch = True
     end
     object Image9: TImage
-      Left = 219
+      Left = 225
       Top = 391
-      Width = 46
+      Width = 40
       Height = 32
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D494844520000002D0000

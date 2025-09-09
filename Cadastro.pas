@@ -13,11 +13,11 @@ type
     ImagemDeFundo: TImage;
     Image1: TImage;
     LbBeautyStage: TLabel;
-    LbEmail: TLabel;
+    LbNome: TLabel;
     LbCadastreseCom: TLabel;
     LbLogin: TLabel;
     LbTemConta: TLabel;
-    LbSenha: TLabel;
+    LbEmail: TLabel;
     EdEmail: TEdit;
     EdSenha: TEdit;
     PbtnCadastrar: TPanel;
@@ -25,6 +25,8 @@ type
     Image3: TImage;
     PbtnGoogle: TPanel;
     Image2: TImage;
+    LbSenha: TLabel;
+    Edit1: TEdit;
     procedure LbTemContaClick(Sender: TObject);
     procedure EdEmailKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
