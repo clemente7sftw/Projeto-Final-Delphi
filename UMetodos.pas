@@ -27,9 +27,6 @@ implementation
 
 
 
-
-
-
 procedure TMetodos.FecharForm;
 begin
  if Screen.ActiveForm <> nil then

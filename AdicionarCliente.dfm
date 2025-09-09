@@ -144,7 +144,7 @@ object Form5: TForm5
       Top = 0
       Width = 1940
       Height = 193
-      Color = 7110284
+      Color = clGray
       ParentBackground = False
       TabOrder = 0
       object LogoBS: TImage

@@ -143,7 +143,7 @@ object Form6: TForm6
       Top = 0
       Width = 1940
       Height = 193
-      Color = 7110284
+      Color = clGray
       ParentBackground = False
       TabOrder = 0
       object Image2: TImage

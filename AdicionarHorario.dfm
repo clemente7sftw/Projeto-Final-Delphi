@@ -21,8 +21,6 @@ object Form13: TForm13
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = -8
     object LbNome: TLabel
       Left = 152
       Top = 266
@@ -144,7 +142,7 @@ object Form13: TForm13
       Top = 0
       Width = 1940
       Height = 193
-      Color = 7110284
+      Color = clGray
       ParentBackground = False
       TabOrder = 0
       object LogoBS: TImage

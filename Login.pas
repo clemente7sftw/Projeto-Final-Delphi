@@ -26,6 +26,8 @@ type
     Image3: TImage;
     PbtnGoogle: TPanel;
     Image2: TImage;
+    senha: TImage;
+    Panel1: TPanel;
     procedure EdEmailKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure LbNaoTemContaClick(Sender: TObject);

@@ -22,10 +22,6 @@ object Form8: TForm8
     ParentBackground = False
     TabOrder = 0
     OnClick = FundoClick
-    ExplicitLeft = 392
-    ExplicitTop = 328
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object Image6: TImage
       Left = 16
       Top = 216
@@ -71,7 +67,7 @@ object Form8: TForm8
       Top = 0
       Width = 1940
       Height = 193
-      Color = 7110284
+      Color = clGray
       ParentBackground = False
       TabOrder = 0
       object Image4: TImage
@@ -418,7 +414,7 @@ object Form8: TForm8
       Height = 57
       Alignment = taRightJustify
       Caption = 'Adicionar Profissional   '
-      Color = 2700608
+      Color = clGray
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -16

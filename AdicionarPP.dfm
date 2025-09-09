@@ -173,7 +173,7 @@ object Form12: TForm12
       Top = 0
       Width = 1940
       Height = 193
-      Color = 7110284
+      Color = clGray
       ParentBackground = False
       TabOrder = 0
       object LogoBS: TImage
@@ -572,7 +572,7 @@ object Form12: TForm12
       Height = 57
       Alignment = taRightJustify
       Caption = 'Adicionar Foto      '
-      Color = 2700608
+      Color = clGray
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -16

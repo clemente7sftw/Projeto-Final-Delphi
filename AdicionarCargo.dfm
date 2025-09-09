@@ -20,8 +20,6 @@ object Form11: TForm11
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = -8
     object LbCEP: TLabel
       Left = 160
       Top = 426
@@ -175,7 +173,7 @@ object Form11: TForm11
       Top = 0
       Width = 1940
       Height = 193
-      Color = 7110284
+      Color = clGray
       ParentBackground = False
       TabOrder = 0
       object LogoBS: TImage
@@ -573,7 +571,7 @@ object Form11: TForm11
       Height = 57
       Alignment = taRightJustify
       Caption = 'Adicionar Foto      '
-      Color = 2700608
+      Color = clGray
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -16

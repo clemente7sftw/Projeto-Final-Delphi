@@ -21,10 +21,6 @@ object Form14: TForm14
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 408
-    ExplicitTop = 320
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object Image1: TImage
       Left = 8
       Top = 216
@@ -70,7 +66,7 @@ object Form14: TForm14
       Top = 0
       Width = 1940
       Height = 193
-      Color = 7110284
+      Color = clGray
       ParentBackground = False
       TabOrder = 0
       object Image4: TImage
@@ -473,7 +469,7 @@ object Form14: TForm14
       Height = 57
       Alignment = taRightJustify
       Caption = 'Adicionar Cargo     '
-      Color = 2700608
+      Color = clGray
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -16

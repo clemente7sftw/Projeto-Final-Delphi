@@ -28,7 +28,7 @@ object Form3: TForm3
     Top = 0
     Width = 1940
     Height = 193
-    Color = 7110284
+    Color = clGray
     ParentBackground = False
     TabOrder = 1
     object Image4: TImage

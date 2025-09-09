@@ -22,10 +22,6 @@ object Form4: TForm4
     ParentBackground = False
     TabOrder = 0
     OnClick = FundoClick
-    ExplicitLeft = 616
-    ExplicitTop = 288
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object Image1: TImage
       Left = 16
       Top = 216
@@ -67,11 +63,11 @@ object Form4: TForm4
       ParentFont = False
     end
     object Barra: TPanel
-      Left = -8
+      Left = 0
       Top = 0
       Width = 1940
       Height = 193
-      Color = 7110284
+      Color = clGray
       ParentBackground = False
       TabOrder = 0
       object Logo: TImage
@@ -484,7 +480,7 @@ object Form4: TForm4
       Height = 57
       Alignment = taRightJustify
       Caption = 'Adicionar Cliente   '
-      Color = 2700608
+      Color = clGray
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -16
