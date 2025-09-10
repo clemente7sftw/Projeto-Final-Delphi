@@ -64,12 +64,12 @@ end;
 procedure TForm2.Label2Click(Sender: TObject);
 begin
   Form1.Show;
-  Form2.Hide;
+  Form2.close;
 end;
 
 procedure TForm2.LbTemContaClick(Sender: TObject);
 begin
-  Form2.Hide;
+  Form2.close;
   Form1.Show;
 end;
 
