@@ -1,6 +1,6 @@
 object DataModule1: TDataModule1
-  Height = 249
-  Width = 306
+  Height = 356
+  Width = 569
   object FDConnection1: TFDConnection
     Params.Strings = (
       'Database=beauty_stage'
@@ -9,8 +9,8 @@ object DataModule1: TDataModule1
       'Server=localhost'
       'DriverID=PG')
     Connected = True
-    Left = 120
-    Top = 88
+    Left = 128
+    Top = 56
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
     VendorLib = 
@@ -24,6 +24,10 @@ object DataModule1: TDataModule1
     SQL.Strings = (
       'select * from usuarios')
     Left = 208
-    Top = 136
+    Top = 56
+  end
+  object DataSource1: TDataSource
+    Left = 296
+    Top = 56
   end
 end

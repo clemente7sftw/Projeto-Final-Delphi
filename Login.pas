@@ -11,28 +11,25 @@ type
   TForm1 = class(TForm)
     LadoEsquerdo: TPanel;
     ImagemDeFundo: TImage;
-    EdEmail: TEdit;
-    EdSenha: TEdit;
-    Image1: TImage;
-    LbBeautyStage: TLabel;
-    LbEmail: TLabel;
-    LbEsqSenha: TLabel;
-    LbFacaLoginCom: TLabel;
-    LbLogin: TLabel;
-    LbNaoTemConta: TLabel;
-    LbSenha: TLabel;
-    PbtnEntrar: TPanel;
+    BS: TImage;
+    BtnCad: TPanel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    LogoM: TImage;
     PbtnFacebook: TPanel;
     Image3: TImage;
     PbtnGoogle: TPanel;
     Image2: TImage;
-    senha: TImage;
-    Panel1: TPanel;
+    Image1: TImage;
+    LbUser: TLabel;
+    LbSenha: TLabel;
+    Label1: TLabel;
+    Label2: TLabel;
     procedure EdEmailKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure LbNaoTemContaClick(Sender: TObject);
     procedure PbtnEntrarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure Label2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,10 +56,11 @@ if Key = VK_RETURN then
    perform(WM_NEXTDLGCTL,0,0);
 end;
 
-procedure TForm1.LbNaoTemContaClick(Sender: TObject);
+procedure TForm1.Label2Click(Sender: TObject);
 begin
   Form2.Show;
 end;
+
 
 procedure TForm1.PbtnEntrarClick(Sender: TObject);
 begin

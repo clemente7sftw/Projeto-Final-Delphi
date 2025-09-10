@@ -5,32 +5,33 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls;
 
 type
   TForm2 = class(TForm)
     LadoEsquerdo: TPanel;
     ImagemDeFundo: TImage;
-    Image1: TImage;
-    LbBeautyStage: TLabel;
+    LogoM: TImage;
+    BS: TImage;
+    LbUser: TLabel;
     LbNome: TLabel;
-    LbCadastreseCom: TLabel;
-    LbLogin: TLabel;
-    LbTemConta: TLabel;
-    LbEmail: TLabel;
-    EdEmail: TEdit;
-    EdSenha: TEdit;
-    PbtnCadastrar: TPanel;
+    LbSenha: TLabel;
+    BtnCad: TPanel;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Edit1: TEdit;
+    CheckBox1: TCheckBox;
+    Label1: TLabel;
+    Label2: TLabel;
     PbtnFacebook: TPanel;
     Image3: TImage;
     PbtnGoogle: TPanel;
     Image2: TImage;
-    LbSenha: TLabel;
-    Edit1: TEdit;
     procedure LbTemContaClick(Sender: TObject);
     procedure EdEmailKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormCreate(Sender: TObject);
+    procedure Label2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -57,6 +58,13 @@ end;
 procedure TForm2.FormCreate(Sender: TObject);
 begin
     Form2.WindowState:=wsMaximized;
+
+end;
+
+procedure TForm2.Label2Click(Sender: TObject);
+begin
+  Form1.Show;
+  Form2.Hide;
 end;
 
 procedure TForm2.LbTemContaClick(Sender: TObject);
