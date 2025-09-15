@@ -20,7 +20,9 @@ uses
   CServicos in 'CServicos.pas' {Form15},
   CPacotesPromocionais in 'CPacotesPromocionais.pas' {Form16},
   CHorarios in 'CHorarios.pas' {Form17},
-  UDataModule in 'UDataModule.pas' {DataModule1: TDataModule};
+  UDataModule in 'UDataModule.pas' {DataModule1: TDataModule},
+  CadClie in 'CadClie.pas' {Form18},
+  UDataCEP in 'UDataCEP.pas' {DataModule2: TDataModule};
 
 {$R *.res}
 
@@ -45,5 +47,7 @@ begin
   Application.CreateForm(TForm16, Form16);
   Application.CreateForm(TForm17, Form17);
   Application.CreateForm(TDataModule1, DataModule1);
+  Application.CreateForm(TForm18, Form18);
+  Application.CreateForm(TDataModule2, DataModule2);
   Application.Run;
 end.

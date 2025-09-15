@@ -46,7 +46,7 @@ implementation
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-    Form1.WindowState:=wsMaximized;
+    WindowState:=wsMaximized;
 end;
 
 procedure TForm1.EdEmailKeyDown(Sender: TObject; var Key: Word;

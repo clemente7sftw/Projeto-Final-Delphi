@@ -44238,8 +44238,8 @@ object Form2: TForm2
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 160
-      Top = 896
+      Left = 145
+      Top = 888
       Width = 376
       Height = 30
       Cursor = crHandPoint
@@ -44251,6 +44251,19 @@ object Form2: TForm2
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = Label2Click
+    end
+    object Label3: TLabel
+      Left = 192
+      Top = 947
+      Width = 270
+      Height = 30
+      Caption = #201' Empresa? Se cadastre aqui'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object BtnCad: TPanel
       Left = 108
@@ -44268,8 +44281,9 @@ object Form2: TForm2
       ParentBackground = False
       ParentFont = False
       TabOrder = 2
+      OnClick = BtnCadClick
     end
-    object Edit2: TEdit
+    object EdEmail: TEdit
       Left = 108
       Top = 416
       Width = 453
@@ -44283,7 +44297,7 @@ object Form2: TForm2
       ParentFont = False
       TabOrder = 1
     end
-    object Edit3: TEdit
+    object EdSenha: TEdit
       Left = 108
       Top = 520
       Width = 453
@@ -44297,7 +44311,7 @@ object Form2: TForm2
       ParentFont = False
       TabOrder = 3
     end
-    object Edit1: TEdit
+    object EdNome: TEdit
       Left = 108
       Top = 312
       Width = 453
@@ -44339,7 +44353,7 @@ object Form2: TForm2
     object Image3: TImage
       Left = 64
       Top = 8
-      Width = 41
+      Width = 49
       Height = 41
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D494844520000002C0000
@@ -44370,7 +44384,7 @@ object Form2: TForm2
     end
   end
   object PbtnGoogle: TPanel
-    Left = 112
+    Left = 108
     Top = 792
     Width = 197
     Height = 57

@@ -10,10 +10,10 @@ TMetodos = class
   Menu : TPanel;
   private
   public
-  ///
   class procedure TelaPrincipal;
   class procedure MensagemCadSucesso;
   procedure FecharForm;
+
 
 end;
 
@@ -32,6 +32,8 @@ begin
  if Screen.ActiveForm <> nil then
     Screen.ActiveForm.Close;
 end;
+
+
 
 class procedure TMetodos.MensagemCadSucesso;
 begin
