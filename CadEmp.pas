@@ -1,46 +1,42 @@
-unit CadClie;
+unit CadEmp;
 
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
-  Vcl.StdCtrls, Vcl.Mask;
+  Vcl.StdCtrls;
 
 type
-  TForm18 = class(TForm)
+  TForm19 = class(TForm)
     Fundo: TImage;
     Image1: TImage;
     BS: TImage;
-    Label2: TLabel;
-    Label1: TLabel;
-    EdNome: TEdit;
-    LbUser: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
+    EdBairro: TEdit;
+    EdCEP: TEdit;
+    EdCidad: TEdit;
+    EdEstad: TEdit;
     EdEmail: TEdit;
     Edit2: TEdit;
     Edit3: TEdit;
-    Label6: TLabel;
-    BtnCad: TPanel;
-    ComboBox1: TComboBox;
+    EdNome: TEdit;
     EdRua: TEdit;
-    EdBairro: TEdit;
-    EdCidad: TEdit;
-    EdEstad: TEdit;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    LbUser: TLabel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
-    Label10: TLabel;
-    Label11: TLabel;
+    BtnCad: TPanel;
     PnlLupa: TPanel;
     Image2: TImage;
-    EdCEP: TEdit;
     procedure FormCreate(Sender: TObject);
-
     procedure Image2Click(Sender: TObject);
-
   private
     { Private declarations }
   public
@@ -48,33 +44,27 @@ type
   end;
 
 var
-  Form18: TForm18;
+  Form19: TForm19;
 
 implementation
 
 {$R *.dfm}
 
-uses UDataCEP, Cadastro, UDataModule;
+uses UDataCEP;
 
-
-
-procedure TForm18.FormCreate(Sender: TObject);
+procedure TForm19.FormCreate(Sender: TObject);
 begin
- WindowState := wsMaximized;
-
+WindowState:=wsMaximized;
 end;
 
-
-procedure TForm18.Image2Click(Sender: TObject);
+procedure TForm19.Image2Click(Sender: TObject);
 begin
   DataModule2.RESTClient1.BaseURL := 'https://viacep.com.br/ws/'+ EdCEP.Text+'/json/';
   DataModule2.RESTRequest1.Execute;
-  ///ShowMessage (DataModule2.RESTResponse1.Content);
   EdRua.Text := DataModule2.FDMemTable1.FieldByName('logradouro').AsString;
   EdBairro.Text := DataModule2.FDMemTable1.FieldByName('bairro').AsString;
   EdCidad.Text := DataModule2.FDMemTable1.FieldByName('localidade').AsString;
   EdEstad.Text := DataModule2.FDMemTable1.FieldByName('estado').AsString;
 end;
-
 
 end.

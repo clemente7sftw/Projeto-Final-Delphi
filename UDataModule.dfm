@@ -3,12 +3,11 @@ object DataModule1: TDataModule1
   Width = 367
   object FDConnection1: TFDConnection
     Params.Strings = (
-      'Database=beauty_stage'
+      'Database=beauty_teste'
       'User_Name=postgres'
       'Password=root'
       'Server=localhost'
       'DriverID=PG')
-    Connected = True
     Left = 152
     Top = 120
   end
@@ -23,7 +22,7 @@ object DataModule1: TDataModule1
     Connection = FDConnection1
     SQL.Strings = (
       'select * from usuarios')
-    Left = 224
+    Left = 232
     Top = 120
   end
 end

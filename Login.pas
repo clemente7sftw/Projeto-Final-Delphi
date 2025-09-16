@@ -14,7 +14,7 @@ type
     BS: TImage;
     BtnCad: TPanel;
     Edit1: TEdit;
-    Edit2: TEdit;
+    EdSenha: TEdit;
     LogoM: TImage;
     PbtnFacebook: TPanel;
     Image3: TImage;
@@ -25,11 +25,15 @@ type
     LbSenha: TLabel;
     Label1: TLabel;
     Label2: TLabel;
+    PnlEscsenha: TPanel;
+    imgsenha: TImage;
     procedure EdEmailKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure PbtnEntrarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Label2Click(Sender: TObject);
+    procedure EdSenhaChange(Sender: TObject);
+    procedure imgsenhaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,15 +42,30 @@ type
 
 var
   Form1: TForm1;
+  MudarImg : Boolean;
 
 implementation
 
 {$R *.dfm}
 
-
 procedure TForm1.FormCreate(Sender: TObject);
 begin
     WindowState:=wsMaximized;
+end;
+
+procedure TForm1.imgsenhaClick(Sender: TObject);
+begin
+if not MudarImg then
+begin
+  imgsenha.Picture.LoadFromFile('C:\Users\gabri\OneDrive\Documentos\Projeto-Final-Delphi\assets\versenha.png');
+  MudarImg := true;
+  EdSenha.PasswordChar := #0;
+  
+end else begin
+  imgsenha.Picture.LoadFromFile('C:\Users\gabri\OneDrive\Documentos\Projeto-Final-Delphi\assets\escsenha.png');
+  MudarImg := false;
+  EdSenha.PasswordChar := '*';
+end;
 end;
 
 procedure TForm1.EdEmailKeyDown(Sender: TObject; var Key: Word;
@@ -54,6 +73,11 @@ procedure TForm1.EdEmailKeyDown(Sender: TObject; var Key: Word;
 begin
 if Key = VK_RETURN then
    perform(WM_NEXTDLGCTL,0,0);
+end;
+
+procedure TForm1.EdSenhaChange(Sender: TObject);
+begin
+   EdSenha.PasswordChar := '*';
 end;
 
 procedure TForm1.Label2Click(Sender: TObject);

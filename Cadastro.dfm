@@ -44185,22 +44185,9 @@ object Form2: TForm2
         1C660B3A54A549629AE1DA1B87E2801586BFC58352C295C87D0FBF621EC72585
         1D6702811C02020248FC1F4BAA1E967F7015910000000049454E44AE426082}
     end
-    object LbUser: TLabel
-      Left = 108
-      Top = 276
-      Width = 75
-      Height = 30
-      Caption = 'Usu'#225'rio'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -21
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
     object LbNome: TLabel
       Left = 108
-      Top = 380
+      Top = 300
       Width = 62
       Height = 30
       Caption = 'E-Mail'
@@ -44212,8 +44199,8 @@ object Form2: TForm2
       ParentFont = False
     end
     object LbSenha: TLabel
-      Left = 110
-      Top = 484
+      Left = 108
+      Top = 420
       Width = 60
       Height = 30
       Caption = 'Senha'
@@ -44226,7 +44213,7 @@ object Form2: TForm2
     end
     object Label1: TLabel
       Left = 248
-      Top = 735
+      Top = 732
       Width = 189
       Height = 30
       Caption = 'Ou se cadastre com'
@@ -44238,8 +44225,8 @@ object Form2: TForm2
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 145
-      Top = 888
+      Left = 153
+      Top = 880
       Width = 376
       Height = 30
       Cursor = crHandPoint
@@ -44252,22 +44239,9 @@ object Form2: TForm2
       ParentFont = False
       OnClick = Label2Click
     end
-    object Label3: TLabel
-      Left = 192
-      Top = 947
-      Width = 270
-      Height = 30
-      Caption = #201' Empresa? Se cadastre aqui'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -21
-      Font.Name = 'Segoe UI Semibold'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
     object BtnCad: TPanel
       Left = 108
-      Top = 608
+      Top = 560
       Width = 453
       Height = 41
       Cursor = crHandPoint
@@ -44280,12 +44254,12 @@ object Form2: TForm2
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 1
       OnClick = BtnCadClick
     end
     object EdEmail: TEdit
       Left = 108
-      Top = 416
+      Top = 344
       Width = 453
       Height = 38
       Color = clWhite
@@ -44295,11 +44269,11 @@ object Form2: TForm2
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 0
     end
     object EdSenha: TEdit
       Left = 108
-      Top = 520
+      Top = 472
       Width = 453
       Height = 38
       Color = clWhite
@@ -44309,25 +44283,26 @@ object Form2: TForm2
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 3
-    end
-    object EdNome: TEdit
-      Left = 108
-      Top = 312
-      Width = 453
-      Height = 38
-      Color = clWhite
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -21
-      Font.Name = 'Segoe UI Semibold'
-      Font.Style = [fsBold]
-      ParentFont = False
-      TabOrder = 0
+      TabOrder = 2
     end
     object CheckBox1: TCheckBox
       Left = 108
-      Top = 688
+      Top = 632
+      Width = 305
+      Height = 17
+      Cursor = crHandPoint
+      Caption = 'Sou Empresa'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 3
+    end
+    object CheckBox2: TCheckBox
+      Left = 108
+      Top = 668
       Width = 305
       Height = 17
       Cursor = crHandPoint
@@ -44340,47 +44315,47 @@ object Form2: TForm2
       ParentFont = False
       TabOrder = 4
     end
-  end
-  object PbtnFacebook: TPanel
-    Left = 384
-    Top = 792
-    Width = 177
-    Height = 57
-    Cursor = crHandPoint
-    Color = 2700608
-    ParentBackground = False
-    TabOrder = 1
-    object Image3: TImage
-      Left = 64
-      Top = 8
-      Width = 49
-      Height = 41
-      Picture.Data = {
-        0954506E67496D61676589504E470D0A1A0A0000000D494844520000002C0000
-        0028080600000085151817000000097048597300000B1300000B1301009A9C18
-        000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000002
-        9B4944415478DABD998D51E3301085571D701DE82A805470A603A8E0A0024805
-        172A80AB005F054005A4034C05880A7007B97DB69C918D6D6925D93BB3132713
-        693FAF9F563F56946087C3E1843F2ED84FD935FB19FB89F5CE8CF58AFD9D7DAF
-        9432B1315524E40D7B613DC600FF37063E18D801BDA57E0653AD64BF0B050F02
-        665880EE3283BA06D892A1EF92801954F3C723C53F7AA9412A9773D99E046658
-        0CA0276A07D39A662C74150C6C615F693909F8AC663F1F83FE066C65F09609B6
-        B2FEE98074FD9EDAEB4202DD03B6B0C8AC4ECC0E4AD60307AB7D7FE698AF33D0
-        867DE3F63304C600BB4A807D66BF0E010D0486A1569F7F03E686007D4C81E58E
-        2FA58D0280611884CF43E00F8A9782A1566F662160C37DFF3C0267C82E8AFE75
-        4CC3406018A45676C0A80A6709C09BA9BAE980B90BA5AE52D4F6371D10A3D1B2
-        B295E12301B6E68E7E786073D575AD32C8A1378A278053C6876B5B0063FABD58
-        0A98FB2FA8CD6E0E2B5506FDFA80918CA74CC01580BF284D5B3EE02B4A939C6B
-        35800F899DAC094C31C08033BD4E66260C5BCEA69E6021BD9918496806FC14FC
-        7FD23836B65BF782268D24A4252727B0B4425531652D27B0B442BDA888C79205
-        D86AFB4BD8AC99380A9215F65CC0D2B8B04DCCE2673FF85EF10D6C3D607FC66E
-        9C6463A7596276C0BB894E836E60A53ADC5B5E424FA8163133DE1AC086EC06C1
-        DD714807DF9AC04D767131DC8486AEFED7043E6E8FC68035C9CF249604C68E64
-        E34EFD63072905C9CACD92C0C7DDF224704490A5808FBAF5023B8130087DF2C8
-        0D0C196CC76067816D304DFEA3AB9CC086664E2EBDC0362032BCA3F6F47D4960
-        9CC7ED7CC75C925706DA82FFCE0CBCA7F695C13E8423E6A54C07FE8B5AA9C400
-        238BFFA83D8F0B028D061EC014D4AEDE4A0F30D629DD39B118D2B5FF3112830C
-        A0651F3D0000000049454E44AE426082}
+    object PbtnFacebook: TPanel
+      Left = 384
+      Top = 792
+      Width = 177
+      Height = 57
+      Cursor = crHandPoint
+      Color = 2700608
+      ParentBackground = False
+      TabOrder = 5
+      object Image3: TImage
+        Left = 64
+        Top = 8
+        Width = 49
+        Height = 41
+        Picture.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D494844520000002C0000
+          0028080600000085151817000000097048597300000B1300000B1301009A9C18
+          000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000002
+          9B4944415478DABD998D51E3301085571D701DE82A805470A603A8E0A0024805
+          172A80AB005F054005A4034C05880A7007B97DB69C918D6D6925D93BB3132713
+          693FAF9F563F56946087C3E1843F2ED84FD935FB19FB89F5CE8CF58AFD9D7DAF
+          9432B1315524E40D7B613DC600FF37063E18D801BDA57E0653AD64BF0B050F02
+          665880EE3283BA06D892A1EF92801954F3C723C53F7AA9412A9773D99E046658
+          0CA0276A07D39A662C74150C6C615F693909F8AC663F1F83FE066C65F09609B6
+          B2FEE98074FD9EDAEB4202DD03B6B0C8AC4ECC0E4AD60307AB7D7FE698AF33D0
+          867DE3F63304C600BB4A807D66BF0E010D0486A1569F7F03E686007D4C81E58E
+          2FA58D0280611884CF43E00F8A9782A1566F662160C37DFF3C0267C82E8AFE75
+          4CC3406018A45676C0A80A6709C09BA9BAE980B90BA5AE52D4F6371D10A3D1B2
+          B295E12301B6E68E7E786073D575AD32C8A1378A278053C6876B5B0063FABD58
+          0A98FB2FA8CD6E0E2B5506FDFA80918CA74CC01580BF284D5B3EE02B4A939C6B
+          35800F899DAC094C31C08033BD4E66260C5BCEA69E6021BD9918496806FC14FC
+          7FD23836B65BF782268D24A4252727B0B4425531652D27B0B442BDA888C79205
+          D86AFB4BD8AC99380A9215F65CC0D2B8B04DCCE2673FF85EF10D6C3D607FC66E
+          9C6463A7596276C0BB894E836E60A53ADC5B5E424FA8163133DE1AC086EC06C1
+          DD714807DF9AC04D767131DC8486AEFED7043E6E8FC68035C9CF249604C68E64
+          E34EFD63072905C9CACD92C0C7DDF224704490A5808FBAF5023B8130087DF2C8
+          0D0C196CC76067816D304DFEA3AB9CC086664E2EBDC0362032BCA3F6F47D4960
+          9CC7ED7CC75C925706DA82FFCE0CBCA7F695C13E8423E6A54C07FE8B5AA9C400
+          238BFFA83D8F0B028D061EC014D4AEDE4A0F30D629DD39B118D2B5FF3112830C
+          A0651F3D0000000049454E44AE426082}
+      end
     end
   end
   object PbtnGoogle: TPanel
@@ -44391,7 +44366,7 @@ object Form2: TForm2
     Cursor = crHandPoint
     Color = 2700608
     ParentBackground = False
-    TabOrder = 2
+    TabOrder = 1
     object Image2: TImage
       Left = 72
       Top = 8

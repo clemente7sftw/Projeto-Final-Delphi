@@ -22,7 +22,8 @@ uses
   CHorarios in 'CHorarios.pas' {Form17},
   UDataModule in 'UDataModule.pas' {DataModule1: TDataModule},
   CadClie in 'CadClie.pas' {Form18},
-  UDataCEP in 'UDataCEP.pas' {DataModule2: TDataModule};
+  UDataCEP in 'UDataCEP.pas' {DataModule2: TDataModule},
+  CadEmp in 'CadEmp.pas' {Form19};
 
 {$R *.res}
 
@@ -49,5 +50,6 @@ begin
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TForm18, Form18);
   Application.CreateForm(TDataModule2, DataModule2);
+  Application.CreateForm(TForm19, Form19);
   Application.Run;
 end.

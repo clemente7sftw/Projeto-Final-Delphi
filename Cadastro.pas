@@ -13,21 +13,19 @@ type
     ImagemDeFundo: TImage;
     LogoM: TImage;
     BS: TImage;
-    LbUser: TLabel;
     LbNome: TLabel;
     LbSenha: TLabel;
     BtnCad: TPanel;
     EdEmail: TEdit;
     EdSenha: TEdit;
-    EdNome: TEdit;
     CheckBox1: TCheckBox;
     Label1: TLabel;
     Label2: TLabel;
-    PbtnFacebook: TPanel;
-    Image3: TImage;
     PbtnGoogle: TPanel;
     Image2: TImage;
-    Label3: TLabel;
+    CheckBox2: TCheckBox;
+    PbtnFacebook: TPanel;
+    Image3: TImage;
     procedure LbTemContaClick(Sender: TObject);
     procedure EdEmailKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -44,11 +42,14 @@ var
   Form2: TForm2;
 
 
+
 implementation
 
 {$R *.dfm}
 
-uses Login, UDataModule, CadClie;
+
+
+uses Login, UDataModule, CadClie, CadEmp, UMetodos;
 procedure TForm2.FormCreate(Sender: TObject);
 begin
   WindowState:=wsMaximized;
@@ -56,8 +57,22 @@ end;
 
 procedure TForm2.BtnCadClick(Sender: TObject);
 begin
-  Form2.Close;
-  Form18.Show;
+  if TMetodos.ValidarEmail(EdEmail.Text) then
+  begin
+   if CheckBox1.Checked then
+    begin
+    Form19.Show;
+    Form19.EdEmail.Text := EdEmail.Text;
+
+    end else begin
+    Form18.Show;
+    Form18.EdEmail.Text := EdEmail.Text;
+    end;
+  end
+  else
+    ShowMessage('Insira um Email válido');
+
+
 end;
 
 procedure TForm2.EdEmailKeyDown(Sender: TObject; var Key: Word;
