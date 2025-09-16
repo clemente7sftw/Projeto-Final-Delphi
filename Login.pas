@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, UMetodos,TelaPrincipalN1, Cadastro, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
-  Vcl.StdCtrls;
+  Vcl.StdCtrls, Data.DB, Vcl.Mask, Vcl.DBCtrls;
 
 type
   TForm1 = class(TForm)
@@ -13,7 +13,6 @@ type
     ImagemDeFundo: TImage;
     BS: TImage;
     BtnCad: TPanel;
-    Edit1: TEdit;
     EdSenha: TEdit;
     LogoM: TImage;
     PbtnFacebook: TPanel;
@@ -27,58 +26,65 @@ type
     Label2: TLabel;
     PnlEscsenha: TPanel;
     imgsenha: TImage;
-    procedure EdEmailKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    EdEmail: TEdit;
     procedure PbtnEntrarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Label2Click(Sender: TObject);
-    procedure EdSenhaChange(Sender: TObject);
     procedure imgsenhaClick(Sender: TObject);
+    procedure BtnCadClick(Sender: TObject);
   private
     { Private declarations }
   public
-
+    MudarImg : Boolean;
   end;
 
 var
   Form1: TForm1;
-  MudarImg : Boolean;
+ 
 
 implementation
 
 {$R *.dfm}
 
+uses UDataModule;
+
 procedure TForm1.FormCreate(Sender: TObject);
 begin
     WindowState:=wsMaximized;
+    EdSenha.PasswordChar := '*';
 end;
+
 
 procedure TForm1.imgsenhaClick(Sender: TObject);
 begin
 if not MudarImg then
-begin
-  imgsenha.Picture.LoadFromFile('C:\Users\gabri\OneDrive\Documentos\Projeto-Final-Delphi\assets\versenha.png');
-  MudarImg := true;
-  EdSenha.PasswordChar := #0;
-  
-end else begin
-  imgsenha.Picture.LoadFromFile('C:\Users\gabri\OneDrive\Documentos\Projeto-Final-Delphi\assets\escsenha.png');
-  MudarImg := false;
-  EdSenha.PasswordChar := '*';
-end;
-end;
-
-procedure TForm1.EdEmailKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-if Key = VK_RETURN then
-   perform(WM_NEXTDLGCTL,0,0);
+  begin
+    imgsenha.Picture.LoadFromFile('C:\Users\gabri\OneDrive\Documentos\Projeto-Final-Delphi\assets\versenha.png');
+    MudarImg := true;
+    EdSenha.PasswordChar := #0;
+  end else begin
+    imgsenha.Picture.LoadFromFile('C:\Users\gabri\OneDrive\Documentos\Projeto-Final-Delphi\assets\escsenha.png');
+    MudarImg := false;
+    EdSenha.PasswordChar := '*';
+  end;
 end;
 
-procedure TForm1.EdSenhaChange(Sender: TObject);
+procedure TForm1.BtnCadClick(Sender: TObject);
 begin
-   EdSenha.PasswordChar := '*';
+if TMetodos.ValidarEmail(EdEmail.Text) then
+  begin
+  if EdSenha.Text <> '' then
+    begin
+        Form3.Show;
+        Form1.Hide;
+    end else begin
+      showmessage('Por favor, digite sua senha');
+    end;
+  end else begin
+    showmessage('Por favor, digite um endereço de e-mail válido');
+  end;
 end;
+
 
 procedure TForm1.Label2Click(Sender: TObject);
 begin

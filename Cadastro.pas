@@ -16,7 +16,6 @@ type
     LbNome: TLabel;
     LbSenha: TLabel;
     BtnCad: TPanel;
-    EdEmail: TEdit;
     EdSenha: TEdit;
     CheckBox1: TCheckBox;
     Label1: TLabel;
@@ -26,12 +25,16 @@ type
     CheckBox2: TCheckBox;
     PbtnFacebook: TPanel;
     Image3: TImage;
+    PnlEscsenha: TPanel;
+    imgsenha: TImage;
+    EdEmail: TEdit;
     procedure LbTemContaClick(Sender: TObject);
     procedure EdEmailKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormCreate(Sender: TObject);
     procedure Label2Click(Sender: TObject);
     procedure BtnCadClick(Sender: TObject);
+    procedure imgsenhaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -53,6 +56,22 @@ uses Login, UDataModule, CadClie, CadEmp, UMetodos;
 procedure TForm2.FormCreate(Sender: TObject);
 begin
   WindowState:=wsMaximized;
+  EdSenha.PasswordChar := '*';
+
+end;
+
+procedure TForm2.imgsenhaClick(Sender: TObject);
+begin
+if not Form1.MudarImg then
+  begin
+    imgsenha.Picture.LoadFromFile('C:\Users\gabri\OneDrive\Documentos\Projeto-Final-Delphi\assets\versenha.png');
+    Form1.MudarImg := true;
+    EdSenha.PasswordChar := #0;
+  end else begin
+    imgsenha.Picture.LoadFromFile('C:\Users\gabri\OneDrive\Documentos\Projeto-Final-Delphi\assets\escsenha.png');
+    Form1.MudarImg := false;
+    EdSenha.PasswordChar := '*';
+  end;
 end;
 
 procedure TForm2.BtnCadClick(Sender: TObject);
@@ -70,9 +89,7 @@ begin
     end;
   end
   else
-    ShowMessage('Insira um Email válido');
-
-
+    ShowMessage('Por favor, digite um endereço de e-mail válido');
 end;
 
 procedure TForm2.EdEmailKeyDown(Sender: TObject; var Key: Word;

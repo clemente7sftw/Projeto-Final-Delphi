@@ -1,7 +1,7 @@
 object Form1: TForm1
   Left = 0
   Top = 0
-  Caption = 'im'
+  Caption = 'Login BeautyStage'
   ClientHeight = 1061
   ClientWidth = 1924
   Color = 1186595
@@ -39970,24 +39970,11 @@ object Form1: TForm1
       ParentBackground = False
       ParentFont = False
       TabOrder = 0
-    end
-    object Edit1: TEdit
-      Left = 108
-      Top = 312
-      Width = 453
-      Height = 38
-      Color = clWhite
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -21
-      Font.Name = 'Segoe UI Semibold'
-      Font.Style = [fsBold]
-      ParentFont = False
-      TabOrder = 1
+      OnClick = BtnCadClick
     end
     object EdSenha: TEdit
       Left = 108
-      Top = 416
+      Top = 417
       Width = 453
       Height = 38
       Color = clWhite
@@ -39997,15 +39984,14 @@ object Form1: TForm1
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 2
-      OnChange = EdSenhaChange
+      TabOrder = 1
     end
     object PnlEscsenha: TPanel
       Left = 519
       Top = 416
       Width = 42
       Height = 38
-      TabOrder = 3
+      TabOrder = 2
       object imgsenha: TImage
         Left = 1
         Top = 1
@@ -40046,6 +40032,20 @@ object Form1: TForm1
         ExplicitLeft = 0
         ExplicitWidth = 32
       end
+    end
+    object EdEmail: TEdit
+      Left = 108
+      Top = 312
+      Width = 453
+      Height = 38
+      Color = clWhite
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 3
     end
   end
   object PbtnFacebook: TPanel

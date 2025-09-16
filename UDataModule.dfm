@@ -8,7 +8,7 @@ object DataModule1: TDataModule1
       'Password=root'
       'Server=localhost'
       'DriverID=PG')
-    Left = 152
+    Left = 160
     Top = 120
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
@@ -21,8 +21,8 @@ object DataModule1: TDataModule1
   object FDQuery1: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
-      'select * from usuarios')
-    Left = 232
-    Top = 120
+      'select * from teste_cad')
+    Left = 264
+    Top = 112
   end
 end

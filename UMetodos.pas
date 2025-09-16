@@ -15,11 +15,14 @@ TMetodos = class
   class procedure MensagemCadSucesso;
   class function ValidarEmail(const Email: string):Boolean;
 
+
 end;
 
 implementation
 
 { TMetodos }
+
+
 
 procedure TMetodos.FecharForm;
 begin

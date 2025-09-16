@@ -5,7 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
-  Vcl.StdCtrls, Vcl.Mask;
+  Vcl.StdCtrls, Vcl.Mask, Data.DB, Vcl.DBCtrls, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TForm18 = class(TForm)
@@ -14,21 +17,13 @@ type
     BS: TImage;
     Label2: TLabel;
     Label1: TLabel;
-    EdNome: TEdit;
     LbUser: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
-    EdEmail: TEdit;
-    Edit2: TEdit;
-    Edit3: TEdit;
     Label6: TLabel;
     BtnCad: TPanel;
     ComboBox1: TComboBox;
-    EdRua: TEdit;
-    EdBairro: TEdit;
-    EdCidad: TEdit;
-    EdEstad: TEdit;
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
@@ -36,10 +31,20 @@ type
     Label11: TLabel;
     PnlLupa: TPanel;
     Image2: TImage;
+    EdSenha: TEdit;
+    EdEmail: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
     EdCEP: TEdit;
+    EdRua: TEdit;
+    EdBairro: TEdit;
+    EdCidad: TEdit;
+    EdEstad: TEdit;
     procedure FormCreate(Sender: TObject);
 
     procedure Image2Click(Sender: TObject);
+
+
 
   private
     { Private declarations }
