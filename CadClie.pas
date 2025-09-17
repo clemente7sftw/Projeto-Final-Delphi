@@ -23,7 +23,7 @@ type
     Label5: TLabel;
     Label6: TLabel;
     BtnCad: TPanel;
-    ComboBox1: TComboBox;
+    CBGenero: TComboBox;
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
@@ -31,10 +31,10 @@ type
     Label11: TLabel;
     PnlLupa: TPanel;
     Image2: TImage;
-    EdSenha: TEdit;
+    EdNome: TEdit;
     EdEmail: TEdit;
-    Edit2: TEdit;
-    Edit3: TEdit;
+    EdCPF: TEdit;
+    EdFone: TEdit;
     EdCEP: TEdit;
     EdRua: TEdit;
     EdBairro: TEdit;
@@ -43,6 +43,7 @@ type
     procedure FormCreate(Sender: TObject);
 
     procedure Image2Click(Sender: TObject);
+    procedure BtnCadClick(Sender: TObject);
 
 
 
@@ -59,8 +60,39 @@ implementation
 
 {$R *.dfm}
 
-uses UDataCEP, Cadastro, UDataModule;
+uses UDataCEP, Cadastro, UDataModule, UMetodos;
 
+
+
+procedure TForm18.BtnCadClick(Sender: TObject);
+begin
+try
+ with DataModule1.FDQueryClientes do
+   begin
+    SQL.Text := 'INSERT INTO clientes_cad (nome_clie, email_clie, senha_clie, cpf_clie, genero_clie, fone_clie, cep_clie, rua_clie, bairro_clie, cidade_clie, estado_clie ) ' +
+                'VALUES (:nome, :email, :senha, :cpf, :genero, :fone, :cep, :rua, :bairro, :cidade, :estado)';
+    ParamByName('nome').AsString := EdNome.Text;
+    ParamByName('senha').AsString := Form2.EdSenha.Text;
+    ParamByName('email').AsString := EdEmail.Text;
+    ParamByName('cpf').AsString := EdCPF.Text;
+    ParamByName('genero').AsString := CBGenero.Text;
+    ParamByName('fone').AsString := EdFone.Text;
+    ParamByName('cep').AsString := EdCEP.Text;
+    ParamByName('rua').AsString := EdRua.Text;
+    ParamByName('bairro').AsString := EdBairro.Text;
+    ParamByName('cidade').AsString := EdCidad.Text;
+    ParamByName('estado').AsString := EdEstad.Text;
+    ExecSQL;
+  end;
+  showmessage ('Cadastro realizado, redirecionanco...');
+  Sleep (1000);
+  Form18.Hide;
+  TMetodos.TelaPrincipal;
+  except
+      on E: Exception do
+        ShowMessage('Erro ao cadastrar: ' + E.Message);
+    end;
+end;
 
 
 procedure TForm18.FormCreate(Sender: TObject);

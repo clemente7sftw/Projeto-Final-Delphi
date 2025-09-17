@@ -8,21 +8,21 @@ object DataModule1: TDataModule1
       'Password=root'
       'Server=localhost'
       'DriverID=PG')
-    Left = 160
-    Top = 120
+    Left = 184
+    Top = 16
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
     VendorLib = 
       'C:\Users\gabri\OneDrive\Documentos\Projeto-Final-Delphi\Win32\De' +
       'bug\lib\libpq.dll'
-    Left = 48
-    Top = 120
+    Left = 56
+    Top = 16
   end
-  object FDQuery1: TFDQuery
+  object FDQueryClientes: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
-      'select * from teste_cad')
-    Left = 264
-    Top = 112
+      'select * from clientes_cad')
+    Left = 32
+    Top = 88
   end
 end

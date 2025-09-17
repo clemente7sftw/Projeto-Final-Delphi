@@ -5223,8 +5223,9 @@ object Form18: TForm18
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
+    OnClick = BtnCadClick
   end
-  object ComboBox1: TComboBox
+  object CBGenero: TComboBox
     Left = 148
     Top = 704
     Width = 453
@@ -5284,7 +5285,7 @@ object Form18: TForm18
       ExplicitHeight = 39
     end
   end
-  object EdSenha: TEdit
+  object EdNome: TEdit
     Left = 148
     Top = 332
     Width = 453
@@ -5304,6 +5305,7 @@ object Form18: TForm18
     Width = 453
     Height = 38
     Color = clWhite
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -21
@@ -5312,7 +5314,7 @@ object Form18: TForm18
     ParentFont = False
     TabOrder = 4
   end
-  object Edit2: TEdit
+  object EdCPF: TEdit
     Left = 148
     Top = 568
     Width = 453
@@ -5326,7 +5328,7 @@ object Form18: TForm18
     ParentFont = False
     TabOrder = 5
   end
-  object Edit3: TEdit
+  object EdFone: TEdit
     Left = 148
     Top = 840
     Width = 453
