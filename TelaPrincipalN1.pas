@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, CHorarios,CPacotesPromocionais, AdicionarPP, CCargos, CProfissionais ,CFornecedores,AdicionarCliente, AdicionarHorario, AdicionarProfissional, CServicos, CClientes, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
-  Vcl.StdCtrls;
+  Vcl.StdCtrls, UDataModule, Data.DB, Vcl.Grids, Vcl.DBGrids;
 
 type
   TForm3 = class(TForm)
@@ -13,6 +13,14 @@ type
     Barra: TPanel;
     Image4: TImage;
     Image5: TImage;
+    BS: TImage;
+    LbEst: TLabel;
+    LbAgn: TLabel;
+    Label1: TLabel;
+    Panel1: TPanel;
+    Image1: TImage;
+    DBGrid1: TDBGrid;
+    DataSource1: TDataSource;
     procedure FormCreate(Sender: TObject);
     procedure Label2Click(Sender: TObject);
     procedure Label5Click(Sender: TObject);
@@ -39,6 +47,8 @@ var
 implementation
 
 {$R *.dfm}
+
+
 
 procedure TForm3.FormCreate(Sender: TObject);
 begin

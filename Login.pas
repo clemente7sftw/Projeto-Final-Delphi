@@ -70,59 +70,33 @@ if not MudarImg then
 end;
 
 procedure TForm1.BtnCadClick(Sender: TObject);
-
 begin
-if TMetodos.ValidarEmail(EdEmail.Text) then
-  begin
-  if EdSenha.Text <> '' then
-    begin
-    with DataModule1.FDQueryClientes do
-    begin
-     Close;
-    SQL.Text := 'SELECT * FROM clientes_cad WHERE email_clie = :email AND senha_clie = :senha';
-    ParamByName('email').AsString := EdEmail.Text;
-    ParamByName('senha').AsString := EdSenha.Text;
-    Open;
-
-    if not IsEmpty then
-    begin
-      ShowMessage('Login realizado com sucesso!');
-      TMetodos.TelaPrincipal;
-      Form1.Hide;
-    end
-    else
-    begin
-      ShowMessage('Email ou senha inválidos!');
-    end;
-    end;
-    end else begin
-      showmessage('Digite sua senha');
-    end;
-  end else begin
-    showmessage('Digite seu endereço de e-mail ');
-  end;
-end;
-//begin
-// with DataModule1.FDQueryClientes do
+//if TMetodos.ValidarEmail(EdEmail.Text) then
 //  begin
-//    Close;
-//    SQL.Text := 'SELECT * FROM clientes_cad WHERE email_clie = :email AND senha_clie = :senha';
-//    ParamByName('email').AsString := EdEmail.Text;
-//    ParamByName('senha').AsString := EdSenha.Text;
-//    Open;
+//  if EdSenha.Text <> '' then
+//    begin
+//    with DataModule1.FDQueryClientes do
+//    begin
+//      Close;
+//      SQL.Text := 'SELECT * FROM clientes_cad WHERE email_clie = :email AND senha_clie = :senha';
+//      ParamByName('email').AsString := EdEmail.Text;
+//      ParamByName('senha').AsString := EdSenha.Text;
+//      Open;
 //
 //    if not IsEmpty then
 //    begin
-//      ShowMessage('Login realizado com sucesso!');
-//      TMetodos.TelaPrincipal;
-//      Form1.Hide;
-//    end
-//    else
-//    begin
-//      ShowMessage('Email ou senha inválidos!');
+      TMetodos.TelaPrincipal;
+//    end else begin
+//          Showmessage('Email ou senha inválidos!');
+//        end;
 //    end;
+//    end else begin
+//      Showmessage('Digite sua senha');
+//    end;
+//  end else begin
+//    Showmessage('Digite seu endereço de e-mail ');
 //  end;
-//end;
+end;
 
 
 

@@ -39969,7 +39969,7 @@ object Form1: TForm1
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
-      TabOrder = 0
+      TabOrder = 2
       OnClick = BtnCadClick
     end
     object EdSenha: TEdit
@@ -39991,7 +39991,7 @@ object Form1: TForm1
       Top = 416
       Width = 42
       Height = 38
-      TabOrder = 2
+      TabOrder = 3
       object imgsenha: TImage
         Left = 1
         Top = 1
@@ -40045,7 +40045,7 @@ object Form1: TForm1
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 0
     end
   end
   object PbtnFacebook: TPanel
