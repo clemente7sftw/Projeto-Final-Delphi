@@ -70,20 +70,60 @@ if not MudarImg then
 end;
 
 procedure TForm1.BtnCadClick(Sender: TObject);
+
 begin
 if TMetodos.ValidarEmail(EdEmail.Text) then
   begin
   if EdSenha.Text <> '' then
     begin
-        Form3.Show;
-        Form1.Hide;
+    with DataModule1.FDQueryClientes do
+    begin
+     Close;
+    SQL.Text := 'SELECT * FROM clientes_cad WHERE email_clie = :email AND senha_clie = :senha';
+    ParamByName('email').AsString := EdEmail.Text;
+    ParamByName('senha').AsString := EdSenha.Text;
+    Open;
+
+    if not IsEmpty then
+    begin
+      ShowMessage('Login realizado com sucesso!');
+      TMetodos.TelaPrincipal;
+      Form1.Hide;
+    end
+    else
+    begin
+      ShowMessage('Email ou senha inválidos!');
+    end;
+    end;
     end else begin
-      showmessage('Por favor, digite sua senha');
+      showmessage('Digite sua senha');
     end;
   end else begin
-    showmessage('Por favor, digite um endereço de e-mail válido');
+    showmessage('Digite seu endereço de e-mail ');
   end;
 end;
+//begin
+// with DataModule1.FDQueryClientes do
+//  begin
+//    Close;
+//    SQL.Text := 'SELECT * FROM clientes_cad WHERE email_clie = :email AND senha_clie = :senha';
+//    ParamByName('email').AsString := EdEmail.Text;
+//    ParamByName('senha').AsString := EdSenha.Text;
+//    Open;
+//
+//    if not IsEmpty then
+//    begin
+//      ShowMessage('Login realizado com sucesso!');
+//      TMetodos.TelaPrincipal;
+//      Form1.Hide;
+//    end
+//    else
+//    begin
+//      ShowMessage('Email ou senha inválidos!');
+//    end;
+//  end;
+//end;
+
 
 
 procedure TForm1.Label2Click(Sender: TObject);

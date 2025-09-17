@@ -87,10 +87,11 @@ try
   showmessage ('Cadastro realizado, redirecionanco...');
   Sleep (1000);
   Form18.Hide;
+  Form2.Hide;
   TMetodos.TelaPrincipal;
   except
       on E: Exception do
-        ShowMessage('Erro ao cadastrar: ' + E.Message);
+        ShowMessage('Erro ao cadastrar: ');
     end;
 end;
 

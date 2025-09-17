@@ -12,39 +12,10 @@ type
     Fundo: TPanel;
     Barra: TPanel;
     Image4: TImage;
-    Label1: TLabel;
     Image5: TImage;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label6: TLabel;
-    Label15: TLabel;
-    Menu: TPanel;
-    LbnSalao: TLabel;
-    LbnClientes: TLabel;
-    LbnFornecedores: TLabel;
-    LbnHM: TLabel;
-    LbnMarketing: TLabel;
-    LbnDB: TLabel;
-    LbnProfissionais: TLabel;
-    LbnServicos: TLabel;
-    LbnCargos: TLabel;
-    LbnPP: TLabel;
-    Image1: TImage;
-    Image2: TImage;
-    Image3: TImage;
-    Image6: TImage;
-    Image7: TImage;
-    Image8: TImage;
-    Image9: TImage;
-    Image10: TImage;
-    Image11: TImage;
-    Image12: TImage;
     procedure FormCreate(Sender: TObject);
     procedure Label2Click(Sender: TObject);
     procedure Label5Click(Sender: TObject);
-    procedure Image4Click(Sender: TObject);
-    procedure FundoClick(Sender: TObject);
     procedure LbnProfissionaisClick(Sender: TObject);
     procedure Label6Click(Sender: TObject);
     procedure LbnClientesClick(Sender: TObject);
@@ -58,8 +29,7 @@ type
     { Private declarations }
   public
     { Public declarations }
-    procedure MostrarMenu;
-    procedure TirarMenu;
+
 
   end;
 
@@ -73,28 +43,8 @@ implementation
 procedure TForm3.FormCreate(Sender: TObject);
 begin
     Form3.WindowState:=wsMaximized;
-    TirarMenu;
 end;
 
-procedure TForm3.MostrarMenu;
-begin
-  Menu.Visible := True;
-end;
-
-procedure TForm3.TirarMenu;
-begin
-  Menu.Visible := False;
-end;
-
-procedure TForm3.FundoClick(Sender: TObject);
-begin
-  TirarMenu;
-end;
-
-procedure TForm3.Image4Click(Sender: TObject);
-begin
-  MostrarMenu;
-end;
 
 procedure TForm3.Label2Click(Sender: TObject);
 begin

@@ -99,8 +99,6 @@ if Key = VK_RETURN then
    perform(WM_NEXTDLGCTL,0,0);
 end;
 
-
-
 procedure TForm2.Label2Click(Sender: TObject);
 begin
   Form1.Show;
