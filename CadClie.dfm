@@ -5384,7 +5384,7 @@ object Form18: TForm18
     ParentFont = False
     TabOrder = 9
   end
-  object EdCidad: TEdit
+  object EdCidade: TEdit
     Left = 1284
     Top = 704
     Width = 453
@@ -5398,7 +5398,7 @@ object Form18: TForm18
     ParentFont = False
     TabOrder = 10
   end
-  object EdEstad: TEdit
+  object EdEstado: TEdit
     Left = 1284
     Top = 840
     Width = 453

@@ -12,7 +12,7 @@ type
     LadoEsquerdo: TPanel;
     ImagemDeFundo: TImage;
     BS: TImage;
-    BtnCad: TPanel;
+    BtnEnt: TPanel;
     EdSenha: TEdit;
     LogoM: TImage;
     PbtnFacebook: TPanel;
@@ -31,7 +31,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure Label2Click(Sender: TObject);
     procedure imgsenhaClick(Sender: TObject);
-    procedure BtnCadClick(Sender: TObject);
+    procedure BtnEntClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -69,33 +69,34 @@ if not MudarImg then
   end;
 end;
 
-procedure TForm1.BtnCadClick(Sender: TObject);
+procedure TForm1.BtnEntClick(Sender: TObject);
 begin
-//if TMetodos.ValidarEmail(EdEmail.Text) then
-//  begin
-//  if EdSenha.Text <> '' then
-//    begin
-//    with DataModule1.FDQueryClientes do
-//    begin
-//      Close;
-//      SQL.Text := 'SELECT * FROM clientes_cad WHERE email_clie = :email AND senha_clie = :senha';
-//      ParamByName('email').AsString := EdEmail.Text;
-//      ParamByName('senha').AsString := EdSenha.Text;
-//      Open;
-//
-//    if not IsEmpty then
-//    begin
+if TMetodos.ValidarEmail(EdEmail.Text) then
+ begin
+ if EdSenha.Text <> '' then
+  begin
+     with DataModule1.FDQueryClientes do
+    begin
+      Close;
+      SQL.Text := 'SELECT * FROM clientes_cad WHERE email_clie = :email AND senha_clie = :senha';
+     ParamByName('email').AsString := EdEmail.Text;
+     ParamByName('senha').AsString := EdSenha.Text;
+      Open;
+
+    if not IsEmpty then
+    begin
       TMetodos.TelaPrincipal;
-//    end else begin
-//          Showmessage('Email ou senha inválidos!');
-//        end;
-//    end;
-//    end else begin
-//      Showmessage('Digite sua senha');
-//    end;
-//  end else begin
-//    Showmessage('Digite seu endereço de e-mail ');
-//  end;
+   end else begin
+         Showmessage('Email ou senha inválidos!');
+       end;
+   end;
+   end else begin
+       Showmessage('Digite sua senha');
+   end;
+
+ end else begin
+   Showmessage('Digite seu endereço de e-mail ');
+end;
 end;
 
 

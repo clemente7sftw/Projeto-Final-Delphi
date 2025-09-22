@@ -21,7 +21,6 @@ object Form3: TForm3
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 8
     object Image4: TImage
       Left = 32
       Top = 48
@@ -420,7 +419,7 @@ object Form3: TForm3
       Left = 1176
       Top = 8
       Width = 242
-      Height = 33
+      Height = 32
       Cursor = crHandPoint
       Caption = 'Meus Agendamentos'
       Font.Charset = DEFAULT_CHARSET

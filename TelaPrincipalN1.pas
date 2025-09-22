@@ -33,6 +33,7 @@ type
     procedure LbnCargosClick(Sender: TObject);
     procedure LbnPPClick(Sender: TObject);
     procedure Label3Click(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -47,6 +48,8 @@ var
 implementation
 
 {$R *.dfm}
+
+
 
 
 

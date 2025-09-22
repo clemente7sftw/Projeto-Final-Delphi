@@ -38,15 +38,11 @@ type
     EdCEP: TEdit;
     EdRua: TEdit;
     EdBairro: TEdit;
-    EdCidad: TEdit;
-    EdEstad: TEdit;
+    EdCidade: TEdit;
+    EdEstado: TEdit;
     procedure FormCreate(Sender: TObject);
-
     procedure Image2Click(Sender: TObject);
     procedure BtnCadClick(Sender: TObject);
-
-
-
   private
     { Private declarations }
   public
@@ -80,18 +76,16 @@ try
     ParamByName('cep').AsString := EdCEP.Text;
     ParamByName('rua').AsString := EdRua.Text;
     ParamByName('bairro').AsString := EdBairro.Text;
-    ParamByName('cidade').AsString := EdCidad.Text;
-    ParamByName('estado').AsString := EdEstad.Text;
+    ParamByName('cidade').AsString := EdCidade.Text;
+    ParamByName('estado').AsString := EdEstado.Text;
     ExecSQL;
   end;
-  showmessage ('Cadastro realizado, redirecionanco...');
-  Sleep (1000);
   Form18.Hide;
   Form2.Hide;
   TMetodos.TelaPrincipal;
   except
       on E: Exception do
-        ShowMessage('Erro ao cadastrar: ');
+        ShowMessage('Erro ao cadastrar: ' + E.Message);
     end;
 end;
 
@@ -110,8 +104,8 @@ begin
   ///ShowMessage (DataModule2.RESTResponse1.Content);
   EdRua.Text := DataModule2.FDMemTable1.FieldByName('logradouro').AsString;
   EdBairro.Text := DataModule2.FDMemTable1.FieldByName('bairro').AsString;
-  EdCidad.Text := DataModule2.FDMemTable1.FieldByName('localidade').AsString;
-  EdEstad.Text := DataModule2.FDMemTable1.FieldByName('estado').AsString;
+  EdCidade.Text := DataModule2.FDMemTable1.FieldByName('localidade').AsString;
+  EdEstado.Text := DataModule2.FDMemTable1.FieldByName('estado').AsString;
 end;
 
 

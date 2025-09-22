@@ -3,7 +3,7 @@ unit Cadastro;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, System.RegularExpressions, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
   Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls, FireDAC.Comp.Client, FireDAC.Stan.Param;
 
@@ -35,10 +35,11 @@ type
     procedure Label2Click(Sender: TObject);
     procedure BtnCadClick(Sender: TObject);
     procedure imgsenhaClick(Sender: TObject);
+
   private
     { Private declarations }
   public
-    { Public declarations }
+
   end;
 
 var
@@ -59,6 +60,7 @@ begin
   EdSenha.PasswordChar := '*';
 
 end;
+
 
 procedure TForm2.imgsenhaClick(Sender: TObject);
 begin

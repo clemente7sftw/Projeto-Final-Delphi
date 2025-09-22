@@ -39954,7 +39954,7 @@ object Form1: TForm1
       ParentFont = False
       OnClick = Label2Click
     end
-    object BtnCad: TPanel
+    object BtnEnt: TPanel
       Left = 108
       Top = 520
       Width = 453
@@ -39970,7 +39970,7 @@ object Form1: TForm1
       ParentBackground = False
       ParentFont = False
       TabOrder = 2
-      OnClick = BtnCadClick
+      OnClick = BtnEntClick
     end
     object EdSenha: TEdit
       Left = 108
