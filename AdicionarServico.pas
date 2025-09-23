@@ -4,33 +4,19 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
+  Vcl.Controls,  Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
   Vcl.Imaging.pngimage;
 
 type
   TForm10 = class(TForm)
     Fundo: TPanel;
-    Barra: TPanel;
-    LogoBS: TImage;
-    LbBS: TLabel;
-    Image3: TImage;
-    LbClientes: TLabel;
-    LbHorarios: TLabel;
-    LbMarketing: TLabel;
-    LbFornecedores: TLabel;
-    LbDashboard: TLabel;
-    EdCEP: TEdit;
-    EdEmail: TEdit;
-    EdNome: TEdit;
-    LbCEP: TLabel;
-    LbEmail: TLabel;
-    LbNome: TLabel;
-    PbtnCadastrar: TPanel;
-    PbtnVoltar: TPanel;
-    PbtnAdd: TPanel;
-    Image2: TImage;
-    Image1: TImage;
-    procedure PbtnCadastrarClick(Sender: TObject);
+    EdNomeS: TEdit;
+    EdDuracao: TEdit;
+    EdPreco: TEdit;
+    PVoltar: TPanel;
+    PCad: TPanel;
+    procedure FormCreate(Sender: TObject);
+    procedure PCadClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -43,11 +29,24 @@ var
 implementation
 
 {$R *.dfm}
-uses UMetodos;
-procedure TForm10.PbtnCadastrarClick(Sender: TObject);
+uses UMetodos, CServicos;
+
+procedure TForm10.FormCreate(Sender: TObject);
 begin
-///colocar verificação para ver se os dados foram alterados para chamar o metodo
-TMetodos.MensagemCadSucesso;
+WindowState:=wsMaximized;
+end;
+
+
+procedure TForm10.PCadClick(Sender: TObject);
+var NovaLinha: integer;
+begin
+  NovaLinha := Form15.GServicos.RowCount;
+  Form15.GServicos.RowCount := NovaLinha + 1;
+  Form15.GServicos.Cells[0, NovaLinha] := EdNomeS.Text;
+  Form15.GServicos.Cells[1, NovaLinha] := EdDuracao.Text;
+  Form15.GServicos.Cells[2, NovaLinha] := EdPreco.Text;
+  Form15.show;
+
 end;
 
 end.
