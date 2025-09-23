@@ -172,6 +172,7 @@ object Form15: TForm15
       Width = 289
       Height = 217
       DataSource = Form10.DataSource1
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -258,6 +259,14 @@ object Form15: TForm15
       DataSource = Form10.DataSource1
       TabOrder = 8
     end
+  end
+  object BtnAddFoto: TPanel
+    Left = 536
+    Top = 216
+    Width = 81
+    Height = 41
+    Caption = 'BtnAddFoto'
+    TabOrder = 1
   end
   object OpenDialog1: TOpenDialog
     Left = 528

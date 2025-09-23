@@ -62,7 +62,7 @@ end;
 
 procedure TForm10.FormShow(Sender: TObject);
 begin
-datamodule1.FDQueryServicos.Append;
+  datamodule1.FDQueryServicos.Append;
 end;
 
 procedure TForm10.PCadClick(Sender: TObject);
@@ -76,8 +76,6 @@ if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and (DBEdit3.Text <> '') then
   end else begin
     Lblrequired.Visible:= true;
   end;
-
-
 end;
 
 procedure TForm10.PVoltarClick(Sender: TObject);

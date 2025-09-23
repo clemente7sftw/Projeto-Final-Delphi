@@ -11,6 +11,7 @@ object Form3: TForm3
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   object Fundo: TPanel
     Left = 0
@@ -338,6 +339,7 @@ object Form3: TForm3
       ParentBackground = False
       ParentFont = False
       TabOrder = 0
+      OnClick = Panel1Click
       object Image1: TImage
         Left = 16
         Top = 0
@@ -358,39 +360,15 @@ object Form3: TForm3
     end
     object DBGrid1: TDBGrid
       Left = 32
-      Top = 504
-      Width = 1833
-      Height = 497
-      DataSource = DataSource1
+      Top = 536
+      Width = 320
+      Height = 120
       TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -12
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
-      Columns = <
-        item
-          Expanded = False
-          FieldName = 'empresa_assi'
-          Width = 156
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'email_assi'
-          Width = 145
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'dt_reserva'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'hr_reserva'
-          Visible = True
-        end>
     end
   end
   object Barra: TPanel
@@ -429,10 +407,5 @@ object Form3: TForm3
       Font.Style = [fsBold]
       ParentFont = False
     end
-  end
-  object DataSource1: TDataSource
-    DataSet = DataModule1.FDQueryReservas
-    Left = 656
-    Top = 408
   end
 end

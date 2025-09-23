@@ -71,32 +71,33 @@ end;
 
 procedure TForm1.BtnEntClick(Sender: TObject);
 begin
-//if TMetodos.ValidarEmail(EdEmail.Text) then
-// begin
-// if EdSenha.Text <> '' then
-//  begin
-//     with DataModule1.FDQueryClientes do
-//    begin
-//      Close;
-//      SQL.Text := 'SELECT * FROM clientes_cad WHERE email_clie = :email AND senha_clie = :senha';
-//     ParamByName('email').AsString := EdEmail.Text;
-//     ParamByName('senha').AsString := EdSenha.Text;
-//      Open;
-//
-//    if not IsEmpty then
-//    begin
-      Form15.show;
-//   end else begin
-//         Showmessage('Email ou senha inválidos!');
-//       end;
-//   end;
-//   end else begin
-//       Showmessage('Digite sua senha');
-//   end;
-//
-// end else begin
-//   Showmessage('Digite seu endereço de e-mail ');
-//end;
+////if TMetodos.ValidarEmail(EdEmail.Text) then
+//// begin
+//// if EdSenha.Text <> '' then
+////  begin
+////     with DataModule1.FDQueryClientes do
+////    begin
+////      Close;
+////      SQL.Text := 'SELECT * FROM clientes_cad WHERE email_clie = :email AND senha_clie = :senha';
+////     ParamByName('email').AsString := EdEmail.Text;
+////     ParamByName('senha').AsString := EdSenha.Text;
+////      Open;
+////
+////    if not IsEmpty then
+////    begin
+//      Form15.show;
+////   end else begin
+////         Showmessage('Email ou senha inválidos!');
+////       end;
+////   end;
+////   end else begin
+////       Showmessage('Digite sua senha');
+////   end;
+////
+//// end else begin
+////   Showmessage('Digite seu endereço de e-mail ');
+////end;
+ Form3.show;
 end;
 
 

@@ -24,6 +24,7 @@ type
     Image1: TImage;
     DBEdCaminhoF: TDBEdit;
     OpenDialog1: TOpenDialog;
+    BtnAddFoto: TPanel;
     procedure FormCreate(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -32,7 +33,6 @@ type
     procedure BtnConfClick(Sender: TObject);
     procedure EditsAtivos;
     procedure EditsInativos;
-    procedure MostrarFoto;
   private
     { Private declarations }
   public
@@ -48,9 +48,25 @@ implementation
 
 uses TelaPrincipalN1, UDataModule;
 
+
+procedure TForm15.FormCreate(Sender: TObject);
+begin
+  Form15.WindowState:=wsMaximized;
+  BtnConf.Visible := false;
+  DBEdCaminhoF.Visible:= false;
+  BtnAddFoto.Visible:= false;
+end;
+
+procedure TForm15.FormShow(Sender: TObject);
+begin
+  datamodule1.FDQueryServicos.Close;
+  datamodule1.FDQueryServicos.Open;
+end;
+
+
 procedure TForm15.BtnConfClick(Sender: TObject);
 begin
-  if (Trim(DBEdit1.Text) <> '') and (Trim(DBEdit2.Text) <> '') and (Trim(DBEdit3.Text) <> '') then
+  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and (DBEdit3.Text <> '') then
   begin
     if not (DataModule1.FDQueryServicos.State in [dsEdit, dsInsert]) then
     DataModule1.FDQueryServicos.Edit;
@@ -68,7 +84,6 @@ begin
   BtnExcluir.Visible:= false;
   EditsAtivos;
   BtnEditar.Visible:= false;
-
 end;
 
 procedure TForm15.BtnExcluirClick(Sender: TObject);
@@ -81,6 +96,7 @@ begin
   DBEdit1.Enabled := true;
   DBEdit2.Enabled := true;
   DBEdit3.Enabled := true;
+  BtnAddFoto.Visible:= true;
 end;
 
 procedure TForm15.EditsInativos;
@@ -88,49 +104,13 @@ begin
   DBEdit1.Enabled := false;
   DBEdit2.Enabled := false;
   DBEdit3.Enabled := false;
-end;
-
-procedure TForm15.FormCreate(Sender: TObject);
-begin
-  Form15.WindowState:=wsMaximized;
-  BtnConf.Visible := false;
-  DBEdCaminhoF.Visible:= false;
-
-
-end;
-
-
-procedure TForm15.FormShow(Sender: TObject);
-begin
-  datamodule1.FDQueryServicos.Close;
-  datamodule1.FDQueryServicos.Open;
-  MostrarFoto;
-
-end;
-
-procedure TForm15.MostrarFoto;
-begin
-var
-  Caminho: string;
-begin
-  if DataModule1.FDQueryServicos.IsEmpty then
-  begin
-    Image1.Picture := nil;
-    Exit;
-  end;
-  Caminho := DataModule1.FDQueryServicos.FieldByName('foto_url').AsString;
-  Caminho := 'C:\meu_app\images\' + Caminho;
-  if FileExists(Caminho) then
-    Image1.Picture.LoadFromFile(Caminho)
-end;
-
+  BtnAddFoto.Visible:= false;
 end;
 
 procedure TForm15.PbtnAddClick(Sender: TObject);
 begin
   Form10.show;
   Form15.Hide;
-
 end;
 
 end.

@@ -27,12 +27,6 @@ type
     FDQueryClientesbairro_clie: TWideStringField;
     FDQueryClientescidade_clie: TWideStringField;
     FDQueryClientesestado_clie: TWideStringField;
-    FDQueryReservas: TFDQuery;
-    FDQueryReservasid_reserva: TIntegerField;
-    FDQueryReservasempresa_assi: TWideStringField;
-    FDQueryReservasemail_assi: TWideStringField;
-    FDQueryReservasdt_reserva: TDateField;
-    FDQueryReservashr_reserva: TTimeField;
     FDQueryServicos: TFDQuery;
     FDQueryServicosid_servicos: TIntegerField;
     FDQueryServicosnome: TWideStringField;
@@ -40,6 +34,14 @@ type
     FDQueryServicospreco: TBCDField;
     FDQueryServicosdata_cadastro: TSQLTimeStampField;
     FDQueryServicosfoto_url: TWideStringField;
+    FDQueryReservas: TFDQuery;
+    FDQueryReservasid_reserva: TIntegerField;
+    FDQueryReservasid_clie: TIntegerField;
+    FDQueryReservasid_servicos: TIntegerField;
+    FDQueryReservasid_pro: TIntegerField;
+    FDQueryReservasemail_clie: TWideStringField;
+    FDQueryReservasdt_reserva: TDateField;
+    FDQueryReservashr_reserva: TTimeField;
   private
     { Private declarations }
   public

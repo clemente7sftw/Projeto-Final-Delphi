@@ -85,37 +85,6 @@ object DataModule1: TDataModule1
       Size = 50
     end
   end
-  object FDQueryReservas: TFDQuery
-    Connection = FDConnection1
-    SQL.Strings = (
-      'select * from reservas')
-    Left = 48
-    Top = 160
-    object FDQueryReservasid_reserva: TIntegerField
-      FieldName = 'id_reserva'
-      Origin = 'id_reserva'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object FDQueryReservasempresa_assi: TWideStringField
-      FieldName = 'empresa_assi'
-      Origin = 'empresa_assi'
-      Size = 8190
-    end
-    object FDQueryReservasemail_assi: TWideStringField
-      FieldName = 'email_assi'
-      Origin = 'email_assi'
-      Size = 100
-    end
-    object FDQueryReservasdt_reserva: TDateField
-      FieldName = 'dt_reserva'
-      Origin = 'dt_reserva'
-    end
-    object FDQueryReservashr_reserva: TTimeField
-      FieldName = 'hr_reserva'
-      Origin = 'hr_reserva'
-      ProviderFlags = [pfInUpdate]
-    end
-  end
   object FDQueryServicos: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
@@ -151,6 +120,45 @@ object DataModule1: TDataModule1
       FieldName = 'foto_url'
       Origin = 'foto_url'
       Size = 255
+    end
+  end
+  object FDQueryReservas: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from reservas'
+      '')
+    Left = 32
+    Top = 168
+    object FDQueryReservasid_reserva: TIntegerField
+      FieldName = 'id_reserva'
+      Origin = 'id_reserva'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object FDQueryReservasid_clie: TIntegerField
+      FieldName = 'id_clie'
+      Origin = 'id_clie'
+    end
+    object FDQueryReservasid_servicos: TIntegerField
+      FieldName = 'id_servicos'
+      Origin = 'id_servicos'
+    end
+    object FDQueryReservasid_pro: TIntegerField
+      FieldName = 'id_pro'
+      Origin = 'id_pro'
+    end
+    object FDQueryReservasemail_clie: TWideStringField
+      FieldName = 'email_clie'
+      Origin = 'email_clie'
+      Size = 100
+    end
+    object FDQueryReservasdt_reserva: TDateField
+      FieldName = 'dt_reserva'
+      Origin = 'dt_reserva'
+    end
+    object FDQueryReservashr_reserva: TTimeField
+      FieldName = 'hr_reserva'
+      Origin = 'hr_reserva'
+      ProviderFlags = [pfInUpdate]
     end
   end
 end

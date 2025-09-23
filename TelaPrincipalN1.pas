@@ -20,7 +20,6 @@ type
     Panel1: TPanel;
     Image1: TImage;
     DBGrid1: TDBGrid;
-    DataSource1: TDataSource;
     procedure FormCreate(Sender: TObject);
     procedure Label2Click(Sender: TObject);
     procedure Label5Click(Sender: TObject);
@@ -33,6 +32,8 @@ type
     procedure LbnCargosClick(Sender: TObject);
     procedure LbnPPClick(Sender: TObject);
     procedure Label3Click(Sender: TObject);
+    procedure Panel1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
 
   private
     { Private declarations }
@@ -58,6 +59,12 @@ begin
     Form3.WindowState:=wsMaximized;
 end;
 
+
+procedure TForm3.FormShow(Sender: TObject);
+begin
+//  datamodule1.FDQueryReservas.close;
+//  datamodule1.FDQueryReservas.Open;
+end;
 
 procedure TForm3.Label2Click(Sender: TObject);
 begin
@@ -124,6 +131,11 @@ procedure TForm3.LbnServicosClick(Sender: TObject);
 begin
   Form3.Hide;
   Form15.Show;
+end;
+
+procedure TForm3.Panel1Click(Sender: TObject);
+begin
+  Form13.show;
 end;
 
 end.
