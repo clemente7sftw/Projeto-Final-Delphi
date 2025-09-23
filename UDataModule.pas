@@ -33,6 +33,13 @@ type
     FDQueryReservasemail_assi: TWideStringField;
     FDQueryReservasdt_reserva: TDateField;
     FDQueryReservashr_reserva: TTimeField;
+    FDQueryServicos: TFDQuery;
+    FDQueryServicosid_servicos: TIntegerField;
+    FDQueryServicosnome: TWideStringField;
+    FDQueryServicosduracao: TIntegerField;
+    FDQueryServicospreco: TBCDField;
+    FDQueryServicosdata_cadastro: TSQLTimeStampField;
+    FDQueryServicosfoto_url: TWideStringField;
   private
     { Private declarations }
   public

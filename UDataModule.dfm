@@ -116,4 +116,41 @@ object DataModule1: TDataModule1
       ProviderFlags = [pfInUpdate]
     end
   end
+  object FDQueryServicos: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from servicos')
+    Left = 152
+    Top = 96
+    object FDQueryServicosid_servicos: TIntegerField
+      FieldName = 'id_servicos'
+      Origin = 'id_servicos'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object FDQueryServicosnome: TWideStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 100
+    end
+    object FDQueryServicosduracao: TIntegerField
+      FieldName = 'duracao'
+      Origin = 'duracao'
+    end
+    object FDQueryServicosdata_cadastro: TSQLTimeStampField
+      FieldName = 'data_cadastro'
+      Origin = 'data_cadastro'
+      ProviderFlags = [pfInUpdate]
+    end
+    object FDQueryServicospreco: TBCDField
+      FieldName = 'preco'
+      Origin = 'preco'
+      Precision = 10
+      Size = 2
+    end
+    object FDQueryServicosfoto_url: TWideStringField
+      FieldName = 'foto_url'
+      Origin = 'foto_url'
+      Size = 255
+    end
+  end
 end
