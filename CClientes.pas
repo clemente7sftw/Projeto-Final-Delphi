@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls,AdicionarCliente, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
   Vcl.Imaging.pngimage, Vcl.Skia, Vcl.Imaging.jpeg, Data.DB, Vcl.Grids,
-  Vcl.DBGrids;
+  Vcl.DBGrids, Vcl.Mask, Vcl.DBCtrls;
 
 type
   TForm4 = class(TForm)
@@ -17,6 +17,10 @@ type
     BtnAdd: TPanel;
     BtnEditar: TPanel;
     BtnExcluir: TPanel;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
@@ -26,6 +30,8 @@ type
     procedure FundoClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure BtnAddClick(Sender: TObject);
+    procedure BtnExcluirClick(Sender: TObject);
+    procedure BtnEditarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,6 +53,16 @@ procedure TForm4.BtnAddClick(Sender: TObject);
 begin
   Form5.Show;
   Form4.close;
+end;
+
+procedure TForm4.BtnEditarClick(Sender: TObject);
+begin
+  datamodule1.QueryClientes.delete;
+end;
+
+procedure TForm4.BtnExcluirClick(Sender: TObject);
+begin
+  datamodule1.QueryClientes.delete;
 end;
 
 procedure TForm4.FormCreate(Sender: TObject);

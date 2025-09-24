@@ -53,6 +53,7 @@ object Form20: TForm20
       Width = 56
       Height = 15
       Caption = 'LbServicos'
+      OnClick = LbServicosClick
     end
   end
 end

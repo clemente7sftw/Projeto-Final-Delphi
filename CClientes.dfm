@@ -2,8 +2,8 @@ object Form4: TForm4
   Left = 0
   Top = 0
   Caption = 'Clientes'
-  ClientHeight = 493
-  ClientWidth = 581
+  ClientHeight = 617
+  ClientWidth = 994
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,8 +16,8 @@ object Form4: TForm4
   object Fundo: TPanel
     Left = 0
     Top = 0
-    Width = 581
-    Height = 493
+    Width = 994
+    Height = 617
     Align = alClient
     Color = clWhite
     ParentBackground = False
@@ -53,6 +53,22 @@ object Form4: TForm4
       Stretch = True
       OnClick = Image1Click
     end
+    object Label1: TLabel
+      Left = 568
+      Top = 168
+      Width = 56
+      Height = 15
+      Caption = 'nome_clie'
+      FocusControl = DBEdit1
+    end
+    object Label2: TLabel
+      Left = 570
+      Top = 232
+      Width = 54
+      Height = 15
+      Caption = 'email_clie'
+      FocusControl = DBEdit2
+    end
     object DBGrid1: TDBGrid
       Left = 24
       Top = 168
@@ -80,8 +96,8 @@ object Form4: TForm4
         end>
     end
     object BtnAdd: TPanel
-      Left = 440
-      Top = 168
+      Left = 208
+      Top = 64
       Width = 65
       Height = 41
       Caption = 'BtnAdd'
@@ -89,25 +105,45 @@ object Form4: TForm4
       OnClick = BtnAddClick
     end
     object BtnEditar: TPanel
-      Left = 440
-      Top = 241
+      Left = 312
+      Top = 64
       Width = 65
       Height = 41
       Caption = 'BtnEditar'
       TabOrder = 2
+      OnClick = BtnEditarClick
     end
     object BtnExcluir: TPanel
-      Left = 440
-      Top = 312
+      Left = 408
+      Top = 64
       Width = 65
       Height = 41
       Caption = 'BtnExcluir'
       TabOrder = 3
+      OnClick = BtnExcluirClick
+    end
+    object DBEdit1: TDBEdit
+      Left = 568
+      Top = 184
+      Width = 199
+      Height = 23
+      DataField = 'nome_clie'
+      DataSource = DataSource1
+      TabOrder = 4
+    end
+    object DBEdit2: TDBEdit
+      Left = 570
+      Top = 253
+      Width = 169
+      Height = 23
+      DataField = 'email_clie'
+      DataSource = DataSource1
+      TabOrder = 5
     end
   end
   object DataSource1: TDataSource
     DataSet = DataModule1.QueryClientes
-    Left = 144
-    Top = 56
+    Left = 40
+    Top = 32
   end
 end

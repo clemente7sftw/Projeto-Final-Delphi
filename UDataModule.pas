@@ -27,13 +27,6 @@ type
     QueryClientesbairro_clie: TWideStringField;
     QueryClientescidade_clie: TWideStringField;
     QueryClientesestado_clie: TWideStringField;
-    QueryServicos: TFDQuery;
-    QueryServicosid_servicos: TIntegerField;
-    QueryServicosnome: TWideStringField;
-    QueryServicosduracao: TIntegerField;
-    QueryServicospreco: TBCDField;
-    QueryServicosdata_cadastro: TSQLTimeStampField;
-    QueryServicosfoto_url: TWideStringField;
     QueryReservas: TFDQuery;
     QueryReservasid_reserva: TIntegerField;
     QueryReservasid_clie: TIntegerField;
@@ -54,9 +47,16 @@ type
     QueryProfissionaisestado: TWideStringField;
     QueryProfissionaisid_servicos: TIntegerField;
     QueryEmpresa: TFDQuery;
+    QueryServicos: TFDQuery;
+    QueryServicosnome: TWideStringField;
+    QueryServicosduracao: TIntegerField;
+    QueryServicospreco: TBCDField;
+    QueryServicosdata_cad: TSQLTimeStampField;
+    QueryServicosid_servico: TIntegerField;
   private
     { Private declarations }
   public
+    IdEmpresaAtual: Integer;
     { Public declarations }
   end;
 

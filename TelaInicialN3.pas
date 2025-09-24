@@ -15,6 +15,7 @@ type
     LbServicos: TLabel;
     procedure LbClieClick(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);
+    procedure LbServicosClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -28,7 +29,7 @@ implementation
 
 {$R *.dfm}
 
-uses CClientes, CProfissionais;
+uses CClientes, CProfissionais, AdicionarServico, CServicos, AdicionarCliente;
 
 procedure TForm20.LbClieClick(Sender: TObject);
 begin
@@ -40,6 +41,11 @@ procedure TForm20.LbProfissionaisClick(Sender: TObject);
 begin
   Form8.Show;
   Form20.Close;
+end;
+
+procedure TForm20.LbServicosClick(Sender: TObject);
+begin
+  Form15.show;
 end;
 
 end.

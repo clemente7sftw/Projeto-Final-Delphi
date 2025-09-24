@@ -51,7 +51,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDataCEP, UDataModule, UMetodos, Cadastro;
+uses UDataCEP, UDataModule, UMetodos, Cadastro, TelaInicialN3;
 
 procedure TForm19.BtnCadClick(Sender: TObject);
 begin
@@ -73,10 +73,10 @@ try
   end;
   Form19.Hide;
   Form2.Hide;
+  Form20.show;
   TMetodos.TelaPrincipal;
   except
-      on E: Exception do
-        ShowMessage('Erro ao cadastrar: ' + E.Message);
+
     end;
 end;
 

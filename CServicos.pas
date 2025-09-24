@@ -12,19 +12,16 @@ type
     Fundo: TPanel;
     PbtnAdd: TPanel;
     DBGServicos: TDBGrid;
+    BtnEditar: TPanel;
+    BtnExcluir: TPanel;
+    BtnConf: TPanel;
+    DataSource1: TDataSource;
     Label1: TLabel;
     DBEdit1: TDBEdit;
     Label2: TLabel;
     DBEdit2: TDBEdit;
     Label3: TLabel;
     DBEdit3: TDBEdit;
-    BtnEditar: TPanel;
-    BtnExcluir: TPanel;
-    BtnConf: TPanel;
-    Image1: TImage;
-    DBEdCaminhoF: TDBEdit;
-    OpenDialog1: TOpenDialog;
-    BtnAddFoto: TPanel;
     procedure FormCreate(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -53,8 +50,6 @@ procedure TForm15.FormCreate(Sender: TObject);
 begin
   Form15.WindowState:=wsMaximized;
   BtnConf.Visible := false;
-  DBEdCaminhoF.Visible:= false;
-  BtnAddFoto.Visible:= false;
 end;
 
 procedure TForm15.FormShow(Sender: TObject);
@@ -88,7 +83,13 @@ end;
 
 procedure TForm15.BtnExcluirClick(Sender: TObject);
 begin
-  datamodule1.QueryServicos.delete;
+  with datamodule1.QueryServicos do
+  begin
+    Edit;
+    FieldByName('ativo').AsBoolean := False;
+    Post;
+  end;
+//  .delete;
 end;
 
 procedure TForm15.EditsAtivos;
@@ -96,7 +97,7 @@ begin
   DBEdit1.Enabled := true;
   DBEdit2.Enabled := true;
   DBEdit3.Enabled := true;
-  BtnAddFoto.Visible:= true;
+
 end;
 
 procedure TForm15.EditsInativos;
@@ -104,7 +105,7 @@ begin
   DBEdit1.Enabled := false;
   DBEdit2.Enabled := false;
   DBEdit3.Enabled := false;
-  BtnAddFoto.Visible:= false;
+
 end;
 
 procedure TForm15.PbtnAddClick(Sender: TObject);

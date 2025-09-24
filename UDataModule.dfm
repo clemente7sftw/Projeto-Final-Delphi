@@ -31,6 +31,7 @@ object DataModule1: TDataModule1
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
     object QueryClientesnome_clie: TWideStringField
+      DisplayWidth = 13
       FieldName = 'nome_clie'
       Origin = 'nome_clie'
       Size = 150
@@ -85,43 +86,6 @@ object DataModule1: TDataModule1
       Size = 50
     end
   end
-  object QueryServicos: TFDQuery
-    Connection = FDConnection1
-    SQL.Strings = (
-      'select * from servicos')
-    Left = 128
-    Top = 88
-    object QueryServicosid_servicos: TIntegerField
-      FieldName = 'id_servicos'
-      Origin = 'id_servicos'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object QueryServicosnome: TWideStringField
-      FieldName = 'nome'
-      Origin = 'nome'
-      Size = 100
-    end
-    object QueryServicosduracao: TIntegerField
-      FieldName = 'duracao'
-      Origin = 'duracao'
-    end
-    object QueryServicosdata_cadastro: TSQLTimeStampField
-      FieldName = 'data_cadastro'
-      Origin = 'data_cadastro'
-      ProviderFlags = [pfInUpdate]
-    end
-    object QueryServicospreco: TBCDField
-      FieldName = 'preco'
-      Origin = 'preco'
-      Precision = 10
-      Size = 2
-    end
-    object QueryServicosfoto_url: TWideStringField
-      FieldName = 'foto_url'
-      Origin = 'foto_url'
-      Size = 255
-    end
-  end
   object QueryReservas: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
@@ -166,7 +130,7 @@ object DataModule1: TDataModule1
     SQL.Strings = (
       '   select * from profissionais'
       '   ')
-    Left = 224
+    Left = 232
     Top = 88
     object QueryProfissionaisid_pro: TIntegerField
       FieldName = 'id_pro'
@@ -224,5 +188,38 @@ object DataModule1: TDataModule1
       'select * from empresas')
     Left = 144
     Top = 168
+  end
+  object QueryServicos: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from servicos '
+      '')
+    Left = 152
+    Top = 296
+    object QueryServicosnome: TWideStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 50
+    end
+    object QueryServicosduracao: TIntegerField
+      FieldName = 'duracao'
+      Origin = 'duracao'
+    end
+    object QueryServicospreco: TBCDField
+      FieldName = 'preco'
+      Origin = 'preco'
+      Precision = 10
+      Size = 2
+    end
+    object QueryServicosdata_cad: TSQLTimeStampField
+      FieldName = 'data_cad'
+      Origin = 'data_cad'
+      ProviderFlags = [pfInUpdate]
+    end
+    object QueryServicosid_servico: TIntegerField
+      FieldName = 'id_servico'
+      Origin = 'id_servico'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
   end
 end

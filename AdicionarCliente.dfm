@@ -2,8 +2,8 @@ object Form5: TForm5
   Left = 0
   Top = 0
   Caption = 'Adicionar Cliente'
-  ClientHeight = 594
-  ClientWidth = 540
+  ClientHeight = 587
+  ClientWidth = 605
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,12 +11,13 @@ object Form5: TForm5
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   object Fundo: TPanel
     Left = 0
     Top = 0
-    Width = 540
-    Height = 594
+    Width = 605
+    Height = 587
     Align = alClient
     Color = clWhite
     ParentBackground = False
@@ -27,7 +28,7 @@ object Form5: TForm5
     ExplicitHeight = 41
     object Image1: TImage
       Left = 24
-      Top = 384
+      Top = 400
       Width = 33
       Height = 41
       Picture.Data = {
@@ -52,5 +53,62 @@ object Form5: TForm5
       Stretch = True
       OnClick = Image1Click
     end
+    object Label1: TLabel
+      Left = 24
+      Top = 99
+      Width = 54
+      Height = 15
+      Caption = 'nome_clie'
+      FocusControl = DBEdit1
+    end
+    object Label2: TLabel
+      Left = 24
+      Top = 176
+      Width = 52
+      Height = 15
+      Caption = 'email_clie'
+      FocusControl = DBEdit2
+    end
+    object Lblrequired: TLabel
+      Left = 24
+      Top = 256
+      Width = 145
+      Height = 15
+      Caption = 'Preencha todos os campos!'
+      Color = clDarkred
+      ParentColor = False
+    end
+    object DBEdit1: TDBEdit
+      Left = 24
+      Top = 120
+      Width = 145
+      Height = 23
+      DataField = 'nome_clie'
+      DataSource = DataSource1
+      TabOrder = 0
+    end
+    object DBEdit2: TDBEdit
+      Left = 24
+      Top = 197
+      Width = 145
+      Height = 23
+      DataField = 'email_clie'
+      DataSource = DataSource1
+      TabOrder = 1
+    end
+    object PCad: TPanel
+      Left = 436
+      Top = 416
+      Width = 121
+      Height = 41
+      Caption = 'PCad'
+      TabOrder = 2
+      OnClick = PCadClick
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = DataModule1.QueryClientes
+    Left = 512
+    Top = 48
   end
 end
