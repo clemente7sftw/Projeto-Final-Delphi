@@ -27,11 +27,13 @@ type
     PnlEscsenha: TPanel;
     imgsenha: TImage;
     EdEmail: TEdit;
+    LbErro: TLabel;
     procedure PbtnEntrarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Label2Click(Sender: TObject);
     procedure imgsenhaClick(Sender: TObject);
     procedure BtnEntClick(Sender: TObject);
+    procedure EdEmailChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,12 +48,18 @@ implementation
 
 {$R *.dfm}
 
-uses UDataModule;
+uses UDataModule, TelaInicialN3;
+
+procedure TForm1.EdEmailChange(Sender: TObject);
+begin
+  LbErro.Visible := False;
+end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
     WindowState:=wsMaximized;
     EdSenha.PasswordChar := '*';
+    LbErro.Visible:= false;
 end;
 
 
@@ -71,33 +79,45 @@ end;
 
 procedure TForm1.BtnEntClick(Sender: TObject);
 begin
-////if TMetodos.ValidarEmail(EdEmail.Text) then
-//// begin
-//// if EdSenha.Text <> '' then
-////  begin
-////     with DataModule1.FDQueryClientes do
-////    begin
-////      Close;
-////      SQL.Text := 'SELECT * FROM clientes_cad WHERE email_clie = :email AND senha_clie = :senha';
-////     ParamByName('email').AsString := EdEmail.Text;
-////     ParamByName('senha').AsString := EdSenha.Text;
-////      Open;
-////
-////    if not IsEmpty then
-////    begin
-//      Form15.show;
-////   end else begin
-////         Showmessage('Email ou senha inválidos!');
-////       end;
-////   end;
-////   end else begin
-////       Showmessage('Digite sua senha');
-////   end;
-////
-//// end else begin
-////   Showmessage('Digite seu endereço de e-mail ');
-////end;
- Form3.show;
+if TMetodos.ValidarEmail(EdEmail.Text) then
+  begin
+ if EdSenha.Text <> '' then
+    begin
+       with DataModule1.QueryClientes do
+        begin
+          Close;
+          SQL.Text := 'SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha';
+         ParamByName('email').AsString := EdEmail.Text;
+         ParamByName('senha').AsString := EdSenha.Text;
+          Open;
+
+         if not IsEmpty then
+          begin
+            Form3.show;
+          end;
+          end;
+     end else begin
+      LbErro.Visible:= true;
+     end;
+ end else begin
+     LbErro.Visible:= true;
+  end;
+
+   with DataModule1.QueryEmpresa do
+    begin
+      Close;
+      SQL.Text := 'SELECT * FROM empresas WHERE email = :email AND senha = :senha';
+     ParamByName('email').AsString := EdEmail.Text;
+     ParamByName('senha').AsString := EdSenha.Text;
+      Open;
+
+     if not IsEmpty then
+      begin
+        Form20.show;
+     end else begin
+          LbErro.Visible:= true;
+         end;
+            end;
 end;
 
 

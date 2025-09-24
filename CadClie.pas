@@ -63,9 +63,9 @@ uses UDataCEP, Cadastro, UDataModule, UMetodos;
 procedure TForm18.BtnCadClick(Sender: TObject);
 begin
 try
- with DataModule1.FDQueryClientes do
+ with DataModule1.QueryClientes do
    begin
-    SQL.Text := 'INSERT INTO clientes_cad (nome_clie, email_clie, senha_clie, cpf_clie, genero_clie, fone_clie, cep_clie, rua_clie, bairro_clie, cidade_clie, estado_clie ) ' +
+    SQL.Text := 'INSERT INTO clientes (nome_clie, email_clie, senha_clie, cpf_clie, genero_clie, fone_clie, cep_clie, rua_clie, bairro_clie, cidade_clie, estado_clie ) ' +
                 'VALUES (:nome, :email, :senha, :cpf, :genero, :fone, :cep, :rua, :bairro, :cidade, :estado)';
     ParamByName('nome').AsString := EdNome.Text;
     ParamByName('senha').AsString := Form2.EdSenha.Text;

@@ -22,10 +22,6 @@ object Form13: TForm13
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 88
-    ExplicitTop = 128
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object BtnCad: TPanel
       Left = 192
       Top = 376
@@ -54,12 +50,10 @@ object Form13: TForm13
     end
   end
   object DataSource1: TDataSource
-    DataSet = DataModule1.FDQueryReservas
     Left = 504
     Top = 80
   end
   object DataSource2: TDataSource
-    DataSet = DataModule1.FDQueryServicos
     Left = 360
     Top = 80
   end

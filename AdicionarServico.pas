@@ -62,15 +62,15 @@ end;
 
 procedure TForm10.FormShow(Sender: TObject);
 begin
-  datamodule1.FDQueryServicos.Append;
+  datamodule1.QueryServicos.Append;
 end;
 
 procedure TForm10.PCadClick(Sender: TObject);
 begin
 if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and (DBEdit3.Text <> '') then
    begin
-    DataModule1.FDQueryServicos.FieldByName('foto_url').AsString := DBEdCaminhoF.Text;
-    datamodule1.FDQueryServicos.Post;
+    DataModule1.QueryServicos.FieldByName('foto_url').AsString := DBEdCaminhoF.Text;
+    datamodule1.QueryServicos.Post;
     Form15.show;
     Form10.Close;
   end else begin

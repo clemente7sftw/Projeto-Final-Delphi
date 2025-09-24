@@ -46,13 +46,13 @@ end;
 
 procedure TForm13.FormShow(Sender: TObject);
 begin
-  datamodule1.FDQueryServicos.close;
-  datamodule1.FDQueryServicos.Open;
-  datamodule1.FDQueryServicos.First;
-  while not datamodule1.FDQueryServicos.EOF do
+  datamodule1.QueryServicos.close;
+  datamodule1.QueryServicos.Open;
+  datamodule1.QueryServicos.First;
+  while not datamodule1.QueryServicos.EOF do
 begin
-  DBComboBox1.Items.Add(datamodule1.FDQueryServicos.FieldByName('nome').AsString);
-  datamodule1.FDQueryServicos.Next;
+  DBComboBox1.Items.Add(datamodule1.QueryServicos.FieldByName('nome').AsString);
+  datamodule1.QueryServicos.Next;
 end;
 end;
 

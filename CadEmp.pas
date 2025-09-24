@@ -14,11 +14,11 @@ type
     BS: TImage;
     EdBairro: TEdit;
     EdCEP: TEdit;
-    EdCidad: TEdit;
-    EdEstad: TEdit;
+    EdCidade: TEdit;
+    EdEstado: TEdit;
     EdEmail: TEdit;
-    Edit2: TEdit;
-    Edit3: TEdit;
+    EdCNPJ: TEdit;
+    EdFone: TEdit;
     EdNome: TEdit;
     EdRua: TEdit;
     Label3: TLabel;
@@ -37,6 +37,7 @@ type
     Image2: TImage;
     procedure FormCreate(Sender: TObject);
     procedure Image2Click(Sender: TObject);
+    procedure BtnCadClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,7 +51,34 @@ implementation
 
 {$R *.dfm}
 
-uses UDataCEP;
+uses UDataCEP, UDataModule, UMetodos, Cadastro;
+
+procedure TForm19.BtnCadClick(Sender: TObject);
+begin
+try
+ with DataModule1.QueryEmpresa do
+   begin
+    SQL.Text := 'INSERT INTO empresas (nome, email, senha, cnpj, cep, rua, bairro, cidade, estado ) ' +
+                'VALUES (:nome, :email, :senha, :cnpj, :cep, :rua, :bairro, :cidade, :estado)';
+    ParamByName('nome').AsString := EdNome.Text;
+    ParamByName('senha').AsString := Form2.EdSenha.Text;
+    ParamByName('email').AsString := EdEmail.Text;
+    ParamByName('cnpj').AsString := EdCNPJ.Text;
+    ParamByName('cep').AsString := EdCEP.Text;
+    ParamByName('rua').AsString := EdRua.Text;
+    ParamByName('bairro').AsString := EdBairro.Text;
+    ParamByName('cidade').AsString := EdCidade.Text;
+    ParamByName('estado').AsString := EdEstado.Text;
+    ExecSQL;
+  end;
+  Form19.Hide;
+  Form2.Hide;
+  TMetodos.TelaPrincipal;
+  except
+      on E: Exception do
+        ShowMessage('Erro ao cadastrar: ' + E.Message);
+    end;
+end;
 
 procedure TForm19.FormCreate(Sender: TObject);
 begin
@@ -63,8 +91,8 @@ begin
   DataModule2.RESTRequest1.Execute;
   EdRua.Text := DataModule2.FDMemTable1.FieldByName('logradouro').AsString;
   EdBairro.Text := DataModule2.FDMemTable1.FieldByName('bairro').AsString;
-  EdCidad.Text := DataModule2.FDMemTable1.FieldByName('localidade').AsString;
-  EdEstad.Text := DataModule2.FDMemTable1.FieldByName('estado').AsString;
+  EdCidade.Text := DataModule2.FDMemTable1.FieldByName('localidade').AsString;
+  EdEstado.Text := DataModule2.FDMemTable1.FieldByName('estado').AsString;
 end;
 
 end.

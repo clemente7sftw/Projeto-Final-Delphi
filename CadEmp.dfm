@@ -5239,7 +5239,7 @@ object Form19: TForm19
     ParentFont = False
     TabOrder = 2
   end
-  object EdCidad: TEdit
+  object EdCidade: TEdit
     Left = 1284
     Top = 704
     Width = 453
@@ -5253,7 +5253,7 @@ object Form19: TForm19
     ParentFont = False
     TabOrder = 3
   end
-  object EdEstad: TEdit
+  object EdEstado: TEdit
     Left = 1284
     Top = 832
     Width = 453
@@ -5273,6 +5273,7 @@ object Form19: TForm19
     Width = 453
     Height = 38
     Color = clWhite
+    Enabled = False
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -21
@@ -5281,7 +5282,7 @@ object Form19: TForm19
     ParentFont = False
     TabOrder = 5
   end
-  object Edit2: TEdit
+  object EdCNPJ: TEdit
     Left = 148
     Top = 584
     Width = 453
@@ -5295,7 +5296,7 @@ object Form19: TForm19
     ParentFont = False
     TabOrder = 6
   end
-  object Edit3: TEdit
+  object EdFone: TEdit
     Left = 148
     Top = 704
     Width = 453
@@ -5353,6 +5354,7 @@ object Form19: TForm19
     ParentBackground = False
     ParentFont = False
     TabOrder = 9
+    OnClick = BtnCadClick
   end
   object PnlLupa: TPanel
     Left = 1759

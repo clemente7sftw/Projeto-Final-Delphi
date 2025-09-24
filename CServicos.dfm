@@ -22,8 +22,6 @@ object Form15: TForm15
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -8
-    ExplicitTop = -8
     object Label1: TLabel
       Left = 408
       Top = 316
@@ -196,7 +194,7 @@ object Form15: TForm15
     object DBEdit1: TDBEdit
       Left = 408
       Top = 337
-      Width = 200
+      Width = 169
       Height = 23
       DataField = 'nome'
       DataSource = Form10.DataSource1
@@ -216,7 +214,7 @@ object Form15: TForm15
     object DBEdit3: TDBEdit
       Left = 408
       Top = 407
-      Width = 154
+      Width = 169
       Height = 23
       DataField = 'duracao'
       DataSource = Form10.DataSource1

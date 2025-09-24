@@ -230,7 +230,6 @@ object Form10: TForm10
     end
   end
   object DataSource1: TDataSource
-    DataSet = DataModule1.FDQueryServicos
     Left = 192
     Top = 104
   end

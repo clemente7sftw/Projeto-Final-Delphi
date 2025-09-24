@@ -59,8 +59,8 @@ end;
 
 procedure TForm15.FormShow(Sender: TObject);
 begin
-  datamodule1.FDQueryServicos.Close;
-  datamodule1.FDQueryServicos.Open;
+  datamodule1.QueryServicos.Close;
+  datamodule1.QueryServicos.Open;
 end;
 
 
@@ -68,9 +68,9 @@ procedure TForm15.BtnConfClick(Sender: TObject);
 begin
   if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and (DBEdit3.Text <> '') then
   begin
-    if not (DataModule1.FDQueryServicos.State in [dsEdit, dsInsert]) then
-    DataModule1.FDQueryServicos.Edit;
-    DataModule1.FDQueryServicos.Post;
+    if not (DataModule1.QueryServicos.State in [dsEdit, dsInsert]) then
+    DataModule1.QueryServicos.Edit;
+    DataModule1.QueryServicos.Post;
     EditsInativos;
     BtnConf.Visible := False;
     BtnExcluir.Visible := True;
@@ -88,7 +88,7 @@ end;
 
 procedure TForm15.BtnExcluirClick(Sender: TObject);
 begin
-  datamodule1.FDQueryServicos.delete;
+  datamodule1.QueryServicos.delete;
 end;
 
 procedure TForm15.EditsAtivos;

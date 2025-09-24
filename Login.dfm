@@ -39954,6 +39954,21 @@ object Form1: TForm1
       ParentFont = False
       OnClick = Label2Click
     end
+    object LbErro: TLabel
+      Left = 108
+      Top = 473
+      Width = 335
+      Height = 30
+      Caption = 'Dados Inv'#225'lidos, tente novamente'
+      Color = clMaroon
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
     object BtnEnt: TPanel
       Left = 108
       Top = 520
@@ -40046,6 +40061,7 @@ object Form1: TForm1
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 0
+      OnChange = EdEmailChange
     end
   end
   object PbtnFacebook: TPanel

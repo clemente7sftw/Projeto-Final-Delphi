@@ -23,7 +23,8 @@ uses
   UDataModule in 'UDataModule.pas' {DataModule1: TDataModule},
   CadClie in 'CadClie.pas' {Form18},
   UDataCEP in 'UDataCEP.pas' {DataModule2: TDataModule},
-  CadEmp in 'CadEmp.pas' {Form19};
+  CadEmp in 'CadEmp.pas' {Form19},
+  TelaInicialN3 in 'TelaInicialN3.pas' {Form20};
 
 {$R *.res}
 
@@ -51,5 +52,6 @@ begin
   Application.CreateForm(TForm18, Form18);
   Application.CreateForm(TDataModule2, DataModule2);
   Application.CreateForm(TForm19, Form19);
+  Application.CreateForm(TForm20, Form20);
   Application.Run;
 end.
