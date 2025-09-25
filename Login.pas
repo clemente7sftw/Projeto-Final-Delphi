@@ -49,7 +49,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDataModule, TelaInicialN3;
+uses UDataModule, TelaInicialN3, AdicionarCliente, CClientes;
 
 
 
@@ -122,7 +122,7 @@ begin
 //          LbErro.Visible:= true;
 //         end;
 //            end;
-Form15.show;
+Form4.show;
 end;
 
 

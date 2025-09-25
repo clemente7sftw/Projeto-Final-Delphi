@@ -2,8 +2,8 @@ object Form15: TForm15
   Left = 0
   Top = 0
   Caption = 'Servi'#231'os'
-  ClientHeight = 568
-  ClientWidth = 880
+  ClientHeight = 556
+  ClientWidth = 789
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,13 +16,14 @@ object Form15: TForm15
   object Fundo: TPanel
     Left = 0
     Top = 0
-    Width = 880
-    Height = 568
+    Width = 789
+    Height = 556
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 8
+    ExplicitWidth = 878
+    ExplicitHeight = 560
     object Label1: TLabel
       Left = 379
       Top = 267
@@ -84,8 +85,8 @@ object Form15: TForm15
         end>
     end
     object BtnEditar: TPanel
-      Left = 608
-      Top = 151
+      Left = 368
+      Top = 63
       Width = 89
       Height = 41
       Caption = 'BtnEditar'
@@ -93,8 +94,8 @@ object Form15: TForm15
       OnClick = BtnEditarClick
     end
     object BtnExcluir: TPanel
-      Left = 608
-      Top = 283
+      Left = 632
+      Top = 63
       Width = 89
       Height = 41
       Caption = 'BtnExcluir'
@@ -102,8 +103,8 @@ object Form15: TForm15
       OnClick = BtnExcluirClick
     end
     object BtnConf: TPanel
-      Left = 608
-      Top = 212
+      Left = 504
+      Top = 63
       Width = 89
       Height = 41
       Caption = 'BtnConf'

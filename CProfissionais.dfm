@@ -2,8 +2,8 @@ object Form8: TForm8
   Left = 0
   Top = 0
   Caption = 'Profissionais'
-  ClientHeight = 543
-  ClientWidth = 822
+  ClientHeight = 545
+  ClientWidth = 872
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,17 +11,19 @@ object Form8: TForm8
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   object Fundo: TPanel
     Left = 0
     Top = 0
-    Width = 822
-    Height = 543
+    Width = 872
+    Height = 545
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitHeight = 515
+    ExplicitWidth = 820
+    ExplicitHeight = 535
     object BtnAddFoto: TPanel
       Left = 472
       Top = 216
@@ -33,13 +35,14 @@ object Form8: TForm8
     object Panel1: TPanel
       Left = 1
       Top = 1
-      Width = 820
-      Height = 541
+      Width = 870
+      Height = 543
       Align = alClient
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitHeight = 513
+      ExplicitWidth = 818
+      ExplicitHeight = 533
       object Image1: TImage
         Left = 24
         Top = 472
@@ -67,23 +70,65 @@ object Form8: TForm8
         Stretch = True
         OnClick = Image1Click
       end
+      object Label1: TLabel
+        Left = 344
+        Top = 339
+        Width = 29
+        Height = 15
+        Caption = 'email'
+        FocusControl = DBEdit1
+      end
+      object Label2: TLabel
+        Left = 342
+        Top = 241
+        Width = 31
+        Height = 15
+        Caption = 'nome'
+        FocusControl = DBEdit2
+      end
       object PbtnAdd: TPanel
-        Left = 48
-        Top = 88
+        Left = 24
+        Top = 112
         Width = 185
         Height = 41
         Caption = 'Adicionar'
         TabOrder = 0
         OnClick = PbtnAddClick
       end
-      object DBGProfissionais: TDBGrid
-        Left = 48
-        Top = 216
-        Width = 353
-        Height = 209
+      object BtnEditar: TPanel
+        Left = 688
+        Top = 199
+        Width = 89
+        Height = 41
+        Caption = 'BtnEditar'
+        TabOrder = 1
+      end
+      object BtnExcluir: TPanel
+        Left = 688
+        Top = 296
+        Width = 89
+        Height = 41
+        Caption = 'BtnExcluir'
+        TabOrder = 2
+        OnClick = BtnExcluirClick
+      end
+      object BtnConf: TPanel
+        Left = 688
+        Top = 199
+        Width = 89
+        Height = 41
+        Caption = 'BtnConf'
+        TabOrder = 3
+        OnClick = BtnConfClick
+      end
+      object DBGrid1: TDBGrid
+        Left = 24
+        Top = 199
+        Width = 241
+        Height = 194
         DataSource = DataSource1
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-        TabOrder = 1
+        TabOrder = 4
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -12
@@ -93,50 +138,49 @@ object Form8: TForm8
           item
             Expanded = False
             FieldName = 'nome'
+            Width = 113
             Visible = True
           end
           item
             Expanded = False
-            Visible = True
-          end
-          item
-            Expanded = False
-            Visible = True
-          end
-          item
-            Expanded = False
+            FieldName = 'email'
             Visible = True
           end>
       end
-      object BtnEditar: TPanel
+      object DBEdit1: TDBEdit
+        Left = 346
+        Top = 368
+        Width = 200
+        Height = 23
+        DataField = 'email'
+        DataSource = DataSource1
+        Enabled = False
+        TabOrder = 5
+      end
+      object DBEdit2: TDBEdit
+        Left = 344
+        Top = 274
+        Width = 200
+        Height = 23
+        DataField = 'nome'
+        DataSource = DataSource1
+        Enabled = False
+        TabOrder = 6
+      end
+      object Panel2: TPanel
         Left = 688
-        Top = 199
+        Top = 120
         Width = 89
         Height = 41
         Caption = 'BtnEditar'
-        TabOrder = 2
-      end
-      object BtnExcluir: TPanel
-        Left = 688
-        Top = 296
-        Width = 89
-        Height = 41
-        Caption = 'BtnExcluir'
-        TabOrder = 3
-      end
-      object BtnConf: TPanel
-        Left = 688
-        Top = 199
-        Width = 89
-        Height = 41
-        Caption = 'BtnConf'
-        TabOrder = 4
+        TabOrder = 7
+        OnClick = Panel2Click
       end
     end
   end
   object DataSource1: TDataSource
     DataSet = DataModule1.QueryProfissionais
-    Left = 513
-    Top = 105
+    Left = 401
+    Top = 57
   end
 end

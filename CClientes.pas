@@ -21,22 +21,20 @@ type
     DBEdit1: TDBEdit;
     Label2: TLabel;
     DBEdit2: TDBEdit;
+    BtnConf: TPanel;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
-    procedure Label2Click(Sender: TObject);
-    procedure Label6Click(Sender: TObject);
-    procedure LogoClick(Sender: TObject);
-    procedure FundoClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure BtnAddClick(Sender: TObject);
     procedure BtnExcluirClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);
+    procedure EditsAtivos;
+    procedure EditsInativos;
+    procedure BtnConfClick(Sender: TObject);
   private
     { Private declarations }
   public
-    procedure MostrarMenu;
-    procedure TirarMenu;
     { Public declarations }
   end;
 
@@ -55,9 +53,26 @@ begin
   Form4.close;
 end;
 
+procedure TForm4.BtnConfClick(Sender: TObject);
+begin
+  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
+  begin
+    if not (DataModule1.QueryServicos.State in [dsEdit, dsInsert]) then
+    DataModule1.QueryClientes.Edit;
+    DataModule1.QueryClientes.Post;
+    EditsInativos;
+    BtnConf.Visible := False;
+    BtnExcluir.Visible := True;
+    BtnEditar.Visible:= true;
+  end;
+end;
+
 procedure TForm4.BtnEditarClick(Sender: TObject);
 begin
-  datamodule1.QueryClientes.delete;
+  BtnConf.Visible:= true;
+  BtnExcluir.Visible:= false;
+  EditsAtivos;
+  BtnEditar.Visible:= false;
 end;
 
 procedure TForm4.BtnExcluirClick(Sender: TObject);
@@ -65,9 +80,20 @@ begin
   datamodule1.QueryClientes.delete;
 end;
 
+procedure TForm4.EditsAtivos;
+begin
+  DBEdit1.Enabled := true;
+  DBEdit2.Enabled := true;
+end;
+
+procedure TForm4.EditsInativos;
+begin
+  DBEdit1.Enabled := false;
+  DBEdit2.Enabled := false;
+end;
+
 procedure TForm4.FormCreate(Sender: TObject);
 begin
-    ///Menu.Visible := False;
     Form4.WindowState:=wsMaximized;
 end;
 
@@ -77,38 +103,12 @@ begin
   datamodule1.QueryClientes.Open;
 end;
 
-procedure TForm4.FundoClick(Sender: TObject);
-begin
-  TirarMenu;
-end;
-
 procedure TForm4.Image1Click(Sender: TObject);
 begin
   Form20.Show;
   Form4.Close;
 end;
 
-procedure TForm4.Label2Click(Sender: TObject);
-begin
-  Form4.Hide;
-  Form3.Show;
-end;
-
-procedure TForm4.Label6Click(Sender: TObject);
-begin
-  Form4.Hide;
-  Form7.Show;
-end;
-
-procedure TForm4.LogoClick(Sender: TObject);
-begin
-  MostrarMenu;
-end;
-
-procedure TForm4.MostrarMenu;
-begin
-  ///Menu.Visible := True;
-end;
 
 procedure TForm4.PbtnAddClick(Sender: TObject);
 begin
@@ -116,9 +116,5 @@ begin
   Form4.Hide;
 end;
 
-procedure TForm4.TirarMenu;
-begin
-  ///Menu.Visible:= False;
-end;
 
 end.

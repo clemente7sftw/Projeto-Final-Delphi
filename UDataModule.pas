@@ -45,7 +45,6 @@ type
     QueryProfissionaisbairro: TWideStringField;
     QueryProfissionaiscidade: TWideStringField;
     QueryProfissionaisestado: TWideStringField;
-    QueryProfissionaisid_servicos: TIntegerField;
     QueryEmpresa: TFDQuery;
     QueryServicos: TFDQuery;
     QueryServicosnome: TWideStringField;

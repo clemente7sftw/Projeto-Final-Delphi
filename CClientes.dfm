@@ -22,10 +22,8 @@ object Form4: TForm4
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 168
-    ExplicitTop = 192
-    ExplicitWidth = 185
-    ExplicitHeight = 41
+    ExplicitWidth = 992
+    ExplicitHeight = 609
     object Image1: TImage
       Left = 24
       Top = 384
@@ -75,6 +73,7 @@ object Form4: TForm4
       Width = 369
       Height = 185
       DataSource = DataSource1
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -96,8 +95,8 @@ object Form4: TForm4
         end>
     end
     object BtnAdd: TPanel
-      Left = 208
-      Top = 64
+      Left = 24
+      Top = 104
       Width = 65
       Height = 41
       Caption = 'BtnAdd'
@@ -129,6 +128,7 @@ object Form4: TForm4
       Height = 23
       DataField = 'nome_clie'
       DataSource = DataSource1
+      Enabled = False
       TabOrder = 4
     end
     object DBEdit2: TDBEdit
@@ -138,7 +138,17 @@ object Form4: TForm4
       Height = 23
       DataField = 'email_clie'
       DataSource = DataSource1
+      Enabled = False
       TabOrder = 5
+    end
+    object BtnConf: TPanel
+      Left = 208
+      Top = 64
+      Width = 89
+      Height = 41
+      Caption = 'BtnConf'
+      TabOrder = 6
+      OnClick = BtnConfClick
     end
   end
   object DataSource1: TDataSource

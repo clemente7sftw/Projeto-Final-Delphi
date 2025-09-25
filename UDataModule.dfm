@@ -1,30 +1,29 @@
 object DataModule1: TDataModule1
-  Height = 491
-  Width = 445
+  Height = 614
+  Width = 556
+  PixelsPerInch = 120
   object FDConnection1: TFDConnection
     Params.Strings = (
-      'Database=beauty_teste'
+      'Database=banco_teste'
       'User_Name=postgres'
-      'Password=root'
+      'Password=2007'
       'Server=localhost'
       'DriverID=PG')
     Connected = True
-    Left = 160
-    Top = 16
+    Left = 200
+    Top = 20
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
-    VendorLib = 
-      'C:\Users\gabri\OneDrive\Documentos\Projeto-Final-Delphi\Win32\De' +
-      'bug\lib\libpq.dll'
-    Left = 56
-    Top = 16
+    VendorLib = 'C:\Users\gabi\Downloads\lib\lib\libpq.dll'
+    Left = 70
+    Top = 20
   end
   object QueryClientes: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
       'select * from clientes')
-    Left = 32
-    Top = 88
+    Left = 40
+    Top = 110
     object QueryClientesid_clie: TIntegerField
       FieldName = 'id_clie'
       Origin = 'id_clie'
@@ -91,8 +90,8 @@ object DataModule1: TDataModule1
     SQL.Strings = (
       'select * from reservas'
       '')
-    Left = 32
-    Top = 168
+    Left = 40
+    Top = 210
     object QueryReservasid_reserva: TIntegerField
       FieldName = 'id_reserva'
       Origin = 'id_reserva'
@@ -130,8 +129,8 @@ object DataModule1: TDataModule1
     SQL.Strings = (
       '   select * from profissionais'
       '   ')
-    Left = 232
-    Top = 88
+    Left = 162
+    Top = 110
     object QueryProfissionaisid_pro: TIntegerField
       FieldName = 'id_pro'
       Origin = 'id_pro'
@@ -177,25 +176,21 @@ object DataModule1: TDataModule1
       Origin = 'estado'
       Size = 50
     end
-    object QueryProfissionaisid_servicos: TIntegerField
-      FieldName = 'id_servicos'
-      Origin = 'id_servicos'
-    end
   end
   object QueryEmpresa: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
       'select * from empresas')
-    Left = 144
-    Top = 168
+    Left = 156
+    Top = 202
   end
   object QueryServicos: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
       'select * from servicos '
       '')
-    Left = 152
-    Top = 296
+    Left = 46
+    Top = 298
     object QueryServicosnome: TWideStringField
       FieldName = 'nome'
       Origin = 'nome'
