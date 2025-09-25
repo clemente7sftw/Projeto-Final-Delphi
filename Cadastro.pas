@@ -82,12 +82,15 @@ begin
   begin
    if CheckBox1.Checked then
     begin
-    Form19.Show;
-    Form19.EdEmail.Text := EdEmail.Text;
-
+    if CheckBox2.Checked then
+    begin
+      Form19.Show;
+      Form19.EdEmail.Text := EdEmail.Text;
+    end;
     end else begin
-    Form18.Show;
-    Form18.EdEmail.Text := EdEmail.Text;
+    if CheckBox2.Checked then
+      Form18.Show;
+      Form18.EdEmail.Text := EdEmail.Text;
     end;
   end
   else

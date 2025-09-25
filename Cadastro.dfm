@@ -21,6 +21,8 @@ object Form2: TForm2
     Color = 1186595
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1922
+    ExplicitHeight = 1053
     object ImagemDeFundo: TImage
       Left = 0
       Top = 0
