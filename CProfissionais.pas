@@ -29,6 +29,8 @@ type
     DBEdit1: TDBEdit;
     Label2: TLabel;
     DBEdit2: TDBEdit;
+    Label3: TLabel;
+    DBEdit3: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure Image6Click(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
@@ -83,12 +85,14 @@ procedure TForm8.EditsAtivos;
 begin
     DBEdit1.Enabled := true;
     DBEdit2.Enabled := true;
+    DBEdit3.Enabled := true;
 end;
 
 procedure TForm8.EditsInativos;
 begin
   DBEdit1.Enabled := false;
   DBEdit2.Enabled := false;
+  DBEdit3.Enabled := false;
 end;
 
 procedure TForm8.FormCreate(Sender: TObject);

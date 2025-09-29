@@ -40,8 +40,8 @@ object Form9: TForm9
       FocusControl = DBEdit2
     end
     object Lblrequired: TLabel
-      Left = 232
-      Top = 413
+      Left = 40
+      Top = 333
       Width = 145
       Height = 15
       Caption = 'Preencha todos os campos!'
@@ -109,15 +109,6 @@ object Form9: TForm9
       TabOrder = 3
       Text = 'ComboBox1'
       OnEnter = ComboBox1Enter
-    end
-    object ComboBox2: TComboBox
-      Left = 208
-      Top = 272
-      Width = 145
-      Height = 23
-      TabOrder = 4
-      Text = 'ComboBox1'
-      OnEnter = ComboBox2Enter
     end
   end
   object DataSource1: TDataSource

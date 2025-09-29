@@ -22,8 +22,6 @@ object Form14: TForm14
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 864
-    ExplicitHeight = 645
     object Image1: TImage
       Left = 32
       Top = 544
@@ -157,7 +155,7 @@ object Form14: TForm14
       Left = 24
       Top = 328
       Width = 320
-      Height = 120
+      Height = 137
       DataSource = DataSource1
       TabOrder = 6
       TitleFont.Charset = DEFAULT_CHARSET
@@ -169,6 +167,7 @@ object Form14: TForm14
         item
           Expanded = False
           FieldName = 'nome_cargo'
+          Width = 200
           Visible = True
         end
         item
@@ -179,7 +178,7 @@ object Form14: TForm14
     object DBEdit1: TDBEdit
       Left = 456
       Top = 288
-      Width = 1504
+      Width = 200
       Height = 23
       DataField = 'nome_cargo'
       DataSource = DataSource1
@@ -187,8 +186,8 @@ object Form14: TForm14
     end
   end
   object DataSource1: TDataSource
-    DataSet = DataModule1.QueryCargos_Servicos
-    Left = 656
-    Top = 200
+    DataSet = DataModule1.QueryCargos
+    Left = 632
+    Top = 32
   end
 end

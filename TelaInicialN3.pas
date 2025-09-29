@@ -4,21 +4,27 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Vcl.Imaging.pngimage;
 
 type
   TForm20 = class(TForm)
     Label1: TLabel;
-    Panel1: TPanel;
+    Fundo: TPanel;
     LbClie: TLabel;
     LbProfissionais: TLabel;
     LbServicos: TLabel;
     LbCargos: TLabel;
     Label2: TLabel;
+    Image4: TImage;
+    BS: TImage;
+    Image1: TImage;
+    Barra: TPanel;
     procedure LbClieClick(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);
     procedure LbServicosClick(Sender: TObject);
     procedure LbCargosClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -34,6 +40,11 @@ implementation
 
 uses CClientes, CProfissionais, AdicionarServico, CServicos, AdicionarCliente,
   CCargos, CFornecedores, Cadastro;
+
+procedure TForm20.FormCreate(Sender: TObject);
+begin
+WindowState:=wsMaximized;
+end;
 
 procedure TForm20.LbCargosClick(Sender: TObject);
 begin

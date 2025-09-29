@@ -20,12 +20,10 @@ type
     PCad: TPanel;
     DataSource2: TDataSource;
     ComboBox1: TComboBox;
-    ComboBox2: TComboBox;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure ComboBox1Enter(Sender: TObject);
     procedure PCadClick(Sender: TObject);
-    procedure ComboBox2Enter(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,18 +46,6 @@ begin
   while not datamodule1.QueryCargos.Eof do
   begin
     ComboBox1.Items.AddObject(datamodule1.QueryCargos.FieldByName('nome_cargo').AsString,
-    TObject(datamodule1.QueryCargos.FieldByName('id_cargo').AsInteger));
-    datamodule1.QueryCargos.Next;
-  end;
-end;
-
-procedure TForm9.ComboBox2Enter(Sender: TObject);
-begin
-     ComboBox2.Items.Clear;
-  datamodule1.QueryCargos.First;
-  while not datamodule1.QueryCargos.Eof do
-  begin
-    ComboBox2.Items.AddObject(datamodule1.QueryCargos.FieldByName('nome_cargo').AsString,
     TObject(datamodule1.QueryCargos.FieldByName('id_cargo').AsInteger));
     datamodule1.QueryCargos.Next;
   end;

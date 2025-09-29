@@ -87,6 +87,14 @@ object Form8: TForm8
         Caption = 'email'
         FocusControl = DBEdit2
       end
+      object Label3: TLabel
+        Left = 464
+        Top = 256
+        Width = 66
+        Height = 15
+        Caption = 'nome_cargo'
+        FocusControl = DBEdit3
+      end
       object PbtnAdd: TPanel
         Left = 24
         Top = 64
@@ -125,7 +133,7 @@ object Form8: TForm8
       object DBGrid1: TDBGrid
         Left = 103
         Top = 359
-        Width = 735
+        Width = 666
         Height = 218
         DataSource = DataSource2
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -230,6 +238,15 @@ object Form8: TForm8
         DataField = 'email'
         DataSource = DataSource2
         TabOrder = 9
+      end
+      object DBEdit3: TDBEdit
+        Left = 464
+        Top = 272
+        Width = 200
+        Height = 23
+        DataField = 'nome_cargo'
+        DataSource = DataSource2
+        TabOrder = 10
       end
     end
   end

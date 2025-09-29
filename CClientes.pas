@@ -26,6 +26,14 @@ type
     EdPesquisa: TEdit;
     Panel1: TPanel;
     Image2: TImage;
+    Barra: TPanel;
+    LbClie: TLabel;
+    LbProfissionais: TLabel;
+    LbServicos: TLabel;
+    LbCargos: TLabel;
+    Label3: TLabel;
+    Image4: TImage;
+    BS: TImage;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
