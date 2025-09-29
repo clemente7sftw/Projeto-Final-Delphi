@@ -65,6 +65,10 @@ type
     Queryfornecedoresnome: TWideStringField;
     Queryfornecedoresemail: TWideStringField;
     Queryfornecedoresdata_cad: TSQLTimeStampField;
+    QueryPC: TFDQuery;
+    QueryPCnome: TWideStringField;
+    QueryPCemail: TWideStringField;
+    QueryPCnome_cargo: TWideStringField;
   private
     { Private declarations }
   public

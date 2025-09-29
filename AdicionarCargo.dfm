@@ -86,7 +86,7 @@ object Form11: TForm11
     object ComboBox1: TComboBox
       Left = 56
       Top = 240
-      Width = 145
+      Width = 201
       Height = 23
       TabOrder = 2
       Text = 'ComboBox1'
@@ -99,8 +99,8 @@ object Form11: TForm11
     Top = 72
   end
   object DataSource2: TDataSource
-    DataSet = DataModule1.QueryServicos
-    Left = 656
-    Top = 136
+    DataSet = DataModule1.QueryCargos
+    Left = 648
+    Top = 144
   end
 end

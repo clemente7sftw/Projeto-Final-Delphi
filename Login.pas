@@ -142,7 +142,7 @@ end;
 
 procedure TForm1.testeClick(Sender: TObject);
 begin
- ShellExecute(0, 'open', 'http://127.0.0.1:5500/Termos-e-condicoes-BS/termos%20bs/termosecondicoes.html', nil, nil, SW_SHOWNORMAL);
+ ShellExecute(0, 'open', 'file:///C:/Users/gabri/OneDrive/Documentos/Termos-e-condicoes-BS/termos%20bs/termosecondicoes.html', nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

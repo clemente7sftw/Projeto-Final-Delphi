@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls,  AdicionarCliente, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Skia,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, Data.DB, Vcl.Mask, Vcl.DBCtrls, Vcl.Grids,
-  Vcl.DBGrids;
+  Vcl.DBGrids, Vcl.CheckLst;
 
 type
   TForm8 = class(TForm)
@@ -15,19 +15,20 @@ type
     Lblrequired: TLabel;
     Panel1: TPanel;
     Image1: TImage;
-    Label1: TLabel;
-    Label2: TLabel;
     PbtnAdd: TPanel;
     BtnEditar: TPanel;
     BtnExcluir: TPanel;
     BtnConf: TPanel;
     DBGrid1: TDBGrid;
-    DBEdit1: TDBEdit;
-    DBEdit2: TDBEdit;
     Panel2: TPanel;
     EdPesquisa: TEdit;
     Panel3: TPanel;
     Image2: TImage;
+    DataSource2: TDataSource;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure Image6Click(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
@@ -77,10 +78,11 @@ begin
 datamodule1.QueryProfissionais.delete;
 end;
 
+
 procedure TForm8.EditsAtivos;
 begin
     DBEdit1.Enabled := true;
-  DBEdit2.Enabled := true;
+    DBEdit2.Enabled := true;
 end;
 
 procedure TForm8.EditsInativos;
@@ -93,6 +95,7 @@ procedure TForm8.FormCreate(Sender: TObject);
 begin
   Form8.WindowState:=wsMaximized;
   Lblrequired.visible:= false;
+  EditsInativos;
 end;
 
 
@@ -100,6 +103,10 @@ procedure TForm8.FormShow(Sender: TObject);
 begin
   datamodule1.QueryProfissionais.Close;
   datamodule1.QueryProfissionais.Open;
+  datamodule1.QueryPC.close;
+  datamodule1.QueryPC.open;
+      datamodule1.QueryCargos.close;
+    datamodule1.QueryCargos.open;
 end;
 
 procedure TForm8.Image1Click(Sender: TObject);

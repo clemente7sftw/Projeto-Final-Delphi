@@ -1,29 +1,30 @@
 object DataModule1: TDataModule1
-  Height = 614
-  Width = 556
-  PixelsPerInch = 120
+  Height = 491
+  Width = 445
   object FDConnection1: TFDConnection
     Params.Strings = (
-      'Database=banco_teste'
+      'Database=beauty_stage'
       'User_Name=postgres'
-      'Password=2007'
+      'Password=root'
       'Server=localhost'
       'DriverID=PG')
     Connected = True
-    Left = 200
-    Top = 20
+    Left = 160
+    Top = 16
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
-    VendorLib = 'C:\Users\gabi\Downloads\lib\lib\libpq.dll'
-    Left = 70
-    Top = 20
+    VendorLib = 
+      'C:\Users\gabri\OneDrive\Documentos\Projeto-Final-Delphi\Win32\De' +
+      'bug\lib\libpq.dll'
+    Left = 56
+    Top = 16
   end
   object QueryClientes: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
       'select * from clientes')
-    Left = 40
-    Top = 110
+    Left = 32
+    Top = 88
     object QueryClientesid_clie: TIntegerField
       FieldName = 'id_clie'
       Origin = 'id_clie'
@@ -90,8 +91,8 @@ object DataModule1: TDataModule1
     SQL.Strings = (
       'select * from reservas'
       '')
-    Left = 40
-    Top = 210
+    Left = 32
+    Top = 168
     object QueryReservasid_reserva: TIntegerField
       FieldName = 'id_reserva'
       Origin = 'id_reserva'
@@ -129,8 +130,8 @@ object DataModule1: TDataModule1
     SQL.Strings = (
       '   select * from profissionais'
       '   ')
-    Left = 162
-    Top = 110
+    Left = 130
+    Top = 88
     object QueryProfissionaisid_pro: TIntegerField
       FieldName = 'id_pro'
       Origin = 'id_pro'
@@ -181,16 +182,16 @@ object DataModule1: TDataModule1
     Connection = FDConnection1
     SQL.Strings = (
       'select * from empresas')
-    Left = 156
-    Top = 202
+    Left = 125
+    Top = 162
   end
   object QueryServicos: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
       'select * from servicos '
       '')
-    Left = 46
-    Top = 298
+    Left = 37
+    Top = 238
     object QueryServicosnome: TWideStringField
       FieldName = 'nome'
       Origin = 'nome'
@@ -229,8 +230,8 @@ object DataModule1: TDataModule1
       'INNER JOIN cargos c ON c.id_cargo = cs.id_cargo'
       'INNER JOIN servicos s ON s.id_servico = cs.id_servico;'
       '')
-    Left = 184
-    Top = 296
+    Left = 147
+    Top = 237
     object QueryCargos_Servicosid_cargo: TIntegerField
       FieldName = 'id_cargo'
       Origin = 'id_cargo'
@@ -257,8 +258,8 @@ object DataModule1: TDataModule1
     SQL.Strings = (
       'select * from cargos'
       '')
-    Left = 328
-    Top = 272
+    Left = 262
+    Top = 218
     object QueryCargosid_cargo: TIntegerField
       FieldName = 'id_cargo'
       Origin = 'id_cargo'
@@ -274,8 +275,8 @@ object DataModule1: TDataModule1
     Connection = FDConnection1
     SQL.Strings = (
       'select * from fornecedores')
-    Left = 328
-    Top = 112
+    Left = 262
+    Top = 90
     object Queryfornecedoresid: TIntegerField
       FieldName = 'id'
       Origin = 'id'
@@ -295,6 +296,41 @@ object DataModule1: TDataModule1
       FieldName = 'data_cad'
       Origin = 'data_cad'
       ProviderFlags = [pfInUpdate]
+    end
+  end
+  object QueryPC: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT '
+      '    p.nome,'
+      '    p.email,'
+      '    c.nome_cargo'
+      'FROM '
+      '    profissionais p'
+      'LEFT JOIN '
+      '    profissionais_cargos pc ON p.id_pro = pc.id_pro'
+      'LEFT JOIN '
+      '    cargos c ON pc.id_cargo = c.id_cargo'
+      'ORDER BY '
+      '    p.nome;'
+      '')
+    Left = 32
+    Top = 312
+    object QueryPCnome: TWideStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 100
+    end
+    object QueryPCemail: TWideStringField
+      FieldName = 'email'
+      Origin = 'email'
+      Size = 100
+    end
+    object QueryPCnome_cargo: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome_cargo'
+      Origin = 'nome_cargo'
+      Size = 100
     end
   end
 end

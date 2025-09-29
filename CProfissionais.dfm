@@ -2,8 +2,8 @@ object Form8: TForm8
   Left = 0
   Top = 0
   Caption = 'Profissionais'
-  ClientHeight = 545
-  ClientWidth = 872
+  ClientHeight = 656
+  ClientWidth = 1063
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,25 +16,25 @@ object Form8: TForm8
   object Fundo: TPanel
     Left = 0
     Top = 0
-    Width = 872
-    Height = 545
+    Width = 1063
+    Height = 656
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 870
-    ExplicitHeight = 537
+    ExplicitWidth = 872
+    ExplicitHeight = 545
     object Panel1: TPanel
       Left = 1
       Top = 1
-      Width = 870
-      Height = 543
+      Width = 1061
+      Height = 654
       Align = alClient
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 868
-      ExplicitHeight = 535
+      ExplicitWidth = 870
+      ExplicitHeight = 543
       object Image1: TImage
         Left = 24
         Top = 472
@@ -62,34 +62,34 @@ object Form8: TForm8
         Stretch = True
         OnClick = Image1Click
       end
-      object Label1: TLabel
-        Left = 344
-        Top = 339
-        Width = 29
-        Height = 15
-        Caption = 'email'
-        FocusControl = DBEdit1
-      end
-      object Label2: TLabel
-        Left = 342
-        Top = 241
-        Width = 31
-        Height = 15
-        Caption = 'nome'
-        FocusControl = DBEdit2
-      end
       object Lblrequired: TLabel
-        Left = 562
-        Top = 416
+        Left = 26
+        Top = 328
         Width = 145
         Height = 15
         Caption = 'Preencha todos os campos!'
         Color = clDarkred
         ParentColor = False
       end
+      object Label1: TLabel
+        Left = 26
+        Top = 208
+        Width = 31
+        Height = 15
+        Caption = 'nome'
+        FocusControl = DBEdit1
+      end
+      object Label2: TLabel
+        Left = 24
+        Top = 259
+        Width = 29
+        Height = 15
+        Caption = 'email'
+        FocusControl = DBEdit2
+      end
       object PbtnAdd: TPanel
         Left = 24
-        Top = 112
+        Top = 64
         Width = 185
         Height = 41
         Caption = 'Adicionar'
@@ -97,16 +97,16 @@ object Form8: TForm8
         OnClick = PbtnAddClick
       end
       object BtnEditar: TPanel
-        Left = 688
-        Top = 199
+        Left = 624
+        Top = 64
         Width = 89
         Height = 41
         Caption = 'BtnEditar'
         TabOrder = 1
       end
       object BtnExcluir: TPanel
-        Left = 688
-        Top = 296
+        Left = 736
+        Top = 64
         Width = 89
         Height = 41
         Caption = 'BtnExcluir'
@@ -114,8 +114,8 @@ object Form8: TForm8
         OnClick = BtnExcluirClick
       end
       object BtnConf: TPanel
-        Left = 688
-        Top = 199
+        Left = 496
+        Top = 64
         Width = 89
         Height = 41
         Caption = 'BtnConf'
@@ -123,11 +123,11 @@ object Form8: TForm8
         OnClick = BtnConfClick
       end
       object DBGrid1: TDBGrid
-        Left = 88
-        Top = 311
-        Width = 241
-        Height = 194
-        DataSource = DataSource1
+        Left = 103
+        Top = 359
+        Width = 735
+        Height = 218
+        DataSource = DataSource2
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         TabOrder = 4
         TitleFont.Charset = DEFAULT_CHARSET
@@ -139,47 +139,34 @@ object Form8: TForm8
           item
             Expanded = False
             FieldName = 'nome'
-            Width = 113
+            Width = 173
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'email'
+            Width = 241
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'nome_cargo'
+            Width = 236
             Visible = True
           end>
       end
-      object DBEdit1: TDBEdit
-        Left = 346
-        Top = 368
-        Width = 200
-        Height = 23
-        DataField = 'email'
-        DataSource = DataSource1
-        Enabled = False
-        TabOrder = 5
-      end
-      object DBEdit2: TDBEdit
-        Left = 344
-        Top = 274
-        Width = 200
-        Height = 23
-        DataField = 'nome'
-        DataSource = DataSource1
-        Enabled = False
-        TabOrder = 6
-      end
       object Panel2: TPanel
-        Left = 688
-        Top = 120
+        Left = 376
+        Top = 64
         Width = 89
         Height = 41
         Caption = 'BtnEditar'
-        TabOrder = 7
+        TabOrder = 5
         OnClick = Panel2Click
       end
       object EdPesquisa: TEdit
         Left = 24
-        Top = 200
+        Top = 157
         Width = 353
         Height = 45
         Font.Charset = ANSI_CHARSET
@@ -188,17 +175,17 @@ object Form8: TForm8
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 8
+        TabOrder = 6
         TextHint = 'Pesquise'
       end
       object Panel3: TPanel
         Left = 336
-        Top = 200
+        Top = 157
         Width = 41
         Height = 45
         Color = clBlack
         ParentBackground = False
-        TabOrder = 9
+        TabOrder = 7
         object Image2: TImage
           Left = 8
           Top = 8
@@ -226,11 +213,34 @@ object Form8: TForm8
             12FC0B1293E6224739C13B0000000049454E44AE426082}
         end
       end
+      object DBEdit1: TDBEdit
+        Left = 26
+        Top = 227
+        Width = 200
+        Height = 23
+        DataField = 'nome'
+        DataSource = DataSource2
+        TabOrder = 8
+      end
+      object DBEdit2: TDBEdit
+        Left = 26
+        Top = 280
+        Width = 200
+        Height = 23
+        DataField = 'email'
+        DataSource = DataSource2
+        TabOrder = 9
+      end
     end
   end
   object DataSource1: TDataSource
     DataSet = DataModule1.QueryProfissionais
-    Left = 401
-    Top = 57
+    Left = 1009
+    Top = 25
+  end
+  object DataSource2: TDataSource
+    DataSet = DataModule1.QueryPC
+    Left = 1009
+    Top = 89
   end
 end
