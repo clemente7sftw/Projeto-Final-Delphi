@@ -2,8 +2,8 @@ object Form20: TForm20
   Left = 0
   Top = 0
   Caption = 'Tela Inicial'
-  ClientHeight = 474
-  ClientWidth = 596
+  ClientHeight = 520
+  ClientWidth = 855
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,16 +14,14 @@ object Form20: TForm20
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 596
-    Height = 474
+    Width = 855
+    Height = 520
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 48
-    ExplicitTop = 56
-    ExplicitWidth = 185
-    ExplicitHeight = 41
+    ExplicitWidth = 853
+    ExplicitHeight = 512
     object Label1: TLabel
       Left = 256
       Top = 168
@@ -54,6 +52,22 @@ object Form20: TForm20
       Height = 15
       Caption = 'LbServicos'
       OnClick = LbServicosClick
+    end
+    object LbCargos: TLabel
+      Left = 368
+      Top = 224
+      Width = 50
+      Height = 15
+      Caption = 'LbCargos'
+      OnClick = LbCargosClick
+    end
+    object Label2: TLabel
+      Left = 456
+      Top = 224
+      Width = 84
+      Height = 15
+      Caption = 'LbFornecedores'
+      OnClick = LbCargosClick
     end
   end
 end

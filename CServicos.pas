@@ -22,6 +22,9 @@ type
     DBEdit2: TDBEdit;
     Label3: TLabel;
     DBEdit3: TDBEdit;
+    EdPesquisa: TEdit;
+    Panel1: TPanel;
+    Image2: TImage;
     procedure FormCreate(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
     procedure FormShow(Sender: TObject);

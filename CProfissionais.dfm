@@ -22,16 +22,8 @@ object Form8: TForm8
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 820
-    ExplicitHeight = 535
-    object BtnAddFoto: TPanel
-      Left = 472
-      Top = 216
-      Width = 81
-      Height = 41
-      Caption = 'BtnAddFoto'
-      TabOrder = 0
-    end
+    ExplicitWidth = 870
+    ExplicitHeight = 537
     object Panel1: TPanel
       Left = 1
       Top = 1
@@ -40,9 +32,9 @@ object Form8: TForm8
       Align = alClient
       Color = clWhite
       ParentBackground = False
-      TabOrder = 1
-      ExplicitWidth = 818
-      ExplicitHeight = 533
+      TabOrder = 0
+      ExplicitWidth = 868
+      ExplicitHeight = 535
       object Image1: TImage
         Left = 24
         Top = 472
@@ -86,6 +78,15 @@ object Form8: TForm8
         Caption = 'nome'
         FocusControl = DBEdit2
       end
+      object Lblrequired: TLabel
+        Left = 562
+        Top = 416
+        Width = 145
+        Height = 15
+        Caption = 'Preencha todos os campos!'
+        Color = clDarkred
+        ParentColor = False
+      end
       object PbtnAdd: TPanel
         Left = 24
         Top = 112
@@ -122,8 +123,8 @@ object Form8: TForm8
         OnClick = BtnConfClick
       end
       object DBGrid1: TDBGrid
-        Left = 24
-        Top = 199
+        Left = 88
+        Top = 311
         Width = 241
         Height = 194
         DataSource = DataSource1
@@ -175,6 +176,55 @@ object Form8: TForm8
         Caption = 'BtnEditar'
         TabOrder = 7
         OnClick = Panel2Click
+      end
+      object EdPesquisa: TEdit
+        Left = 24
+        Top = 200
+        Width = 353
+        Height = 45
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -27
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 8
+        TextHint = 'Pesquise'
+      end
+      object Panel3: TPanel
+        Left = 336
+        Top = 200
+        Width = 41
+        Height = 45
+        Color = clBlack
+        ParentBackground = False
+        TabOrder = 9
+        object Image2: TImage
+          Left = 8
+          Top = 8
+          Width = 32
+          Height = 36
+          Picture.Data = {
+            0954506E67496D61676589504E470D0A1A0A0000000D494844520000001F0000
+            0021080600000021DE70E4000000097048597300000B1300000B1301009A9C18
+            000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000001
+            E24944415478DAED57815583400C0D1BE806ED04B61BD009D409A413B49DA074
+            833A813881DD4036284E204E201BE0CF23D8E3B83B38FAD03E9F792F8F72BDE4
+            27B95C1202FA450AFEC15D5496E5151E33F02D987F4FC019F80D9C0641908F02
+            0EE02D1E6B01B55102DEF91A610507287BF7221EF7A102BC840187B3C005F895
+            AAF0AA940993FC171AC42318F07C0EF8BB069C5215D6D4606404DE6A2AE6D89B
+            5107B5C0E58C63658941639712C8CC2452755E70122E8680AB5E2750B2EC1342
+            C88562404D0B3D524E7028E0103E294B539F0C863C83877DBDD7C11938F2F5DA
+            E27D01F96B1F70D5F27B9F6B23F27CE69FCAD2043A3EFA82ABE7DD796616037A
+            EBB828F0239D2A1A57AB640078A9BC3AEFBB0ECE600FF2FA08C1B52770486724
+            5C44A7ABC6B59AAF5AE101AEDE16EFABC6D9CA675657AA3D146C0678CDD4796C
+            A60A1753B356C750B2EB00E63CE10E3891A51C32D32E834DE0ECF5919A8D853D
+            68F56BD9BBA276BFEF1531DF969A52BBA5DA868C0D0CD87B83771860A34258DD
+            EFECEDCE314AC2CA215D917B8CE288D47DE0A8EDB596699F01F28EAA027423CB
+            395503E441CD05436FE7682C4CC56694D1D970ED8C068C36B71B66835C0CF88E
+            D2A81F0D06031A556FF42F16AD6865009FFF18B81201FEDAD9A9E77EF9DF6A7F
+            12FC0B1293E6224739C13B0000000049454E44AE426082}
+        end
       end
     end
   end

@@ -5,49 +5,25 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls,CClientes, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, Vcl.Skia, Vcl.Mask, Vcl.DBCtrls;
 
 type
   TForm6 = class(TForm)
     Fundo: TPanel;
-    LbNome: TLabel;
-    LbEmail: TLabel;
-    LbCPF: TLabel;
-    LbCEP: TLabel;
-    LbNumero: TLabel;
-    LbTele: TLabel;
-    LbCidade: TLabel;
-    LbBairro: TLabel;
-    LbRua: TLabel;
-    Barra: TPanel;
-    Image2: TImage;
-    LbBS: TLabel;
-    Image3: TImage;
-    LbClientes: TLabel;
-    LbHorarios: TLabel;
-    LbMarketing: TLabel;
-    LbFornecedores: TLabel;
-    LbDashboard: TLabel;
-    Panel3: TPanel;
-    PbtnVoltar: TPanel;
-    PbtnCadastrar: TPanel;
-    EdTelefone: TEdit;
-    EdNumero: TEdit;
-    EdCEP: TEdit;
-    EdNome: TEdit;
-    Lupa: TPanel;
     Image1: TImage;
-    EdEmail: TEdit;
-    EdCPF: TEdit;
-    EdCidade: TEdit;
-    EdBairro: TEdit;
-    EdRua: TEdit;
-    PbtnLimpar: TPanel;
-    Image4: TImage;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
+    Lblrequired: TLabel;
+    PCad: TPanel;
     procedure FormCreate(Sender: TObject);
     procedure PbtnVoltarClick(Sender: TObject);
     procedure LbClientesClick(Sender: TObject);
     procedure LbBSClick(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure PCadClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -61,11 +37,22 @@ implementation
 
 {$R *.dfm}
 
-uses CFornecedores, UMetodos;
+uses CFornecedores, UMetodos, UDataModule;
 
 procedure TForm6.FormCreate(Sender: TObject);
 begin
   Form6.WindowState:=wsMaximized;
+  Lblrequired.Visible:= false;
+end;
+
+procedure TForm6.FormShow(Sender: TObject);
+begin
+ datamodule1.Queryfornecedores.append;
+end;
+
+procedure TForm6.Image1Click(Sender: TObject);
+begin
+Form7.Show;
 end;
 
 procedure TForm6.LbBSClick(Sender: TObject);
@@ -83,6 +70,18 @@ procedure TForm6.PbtnVoltarClick(Sender: TObject);
 begin
   Form7.Show;
   Form6.Hide;
+end;
+
+procedure TForm6.PCadClick(Sender: TObject);
+begin
+if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
+   begin
+    datamodule1.Queryfornecedores.Post;
+    Form7.show;
+    Form6.Close;
+  end else begin
+    Lblrequired.Visible:= true;
+  end;
 end;
 
 end.

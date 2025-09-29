@@ -11,20 +11,23 @@ uses
 type
   TForm8 = class(TForm)
     Fundo: TPanel;
-    BtnAddFoto: TPanel;
+    DataSource1: TDataSource;
+    Lblrequired: TLabel;
     Panel1: TPanel;
+    Image1: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
     PbtnAdd: TPanel;
     BtnEditar: TPanel;
     BtnExcluir: TPanel;
     BtnConf: TPanel;
-    Image1: TImage;
-    DataSource1: TDataSource;
     DBGrid1: TDBGrid;
-    Label1: TLabel;
     DBEdit1: TDBEdit;
-    Label2: TLabel;
     DBEdit2: TDBEdit;
     Panel2: TPanel;
+    EdPesquisa: TEdit;
+    Panel3: TPanel;
+    Image2: TImage;
     procedure FormCreate(Sender: TObject);
     procedure Image6Click(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
@@ -63,6 +66,9 @@ begin
     BtnConf.Visible := False;
     BtnExcluir.Visible := True;
     BtnEditar.Visible:= true;
+    Lblrequired.visible:= false;
+  end else begin
+    Lblrequired.visible:= true;
   end;
 end;
 
@@ -86,6 +92,7 @@ end;
 procedure TForm8.FormCreate(Sender: TObject);
 begin
   Form8.WindowState:=wsMaximized;
+  Lblrequired.visible:= false;
 end;
 
 

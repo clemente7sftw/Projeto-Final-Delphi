@@ -52,6 +52,19 @@ type
     QueryServicospreco: TBCDField;
     QueryServicosdata_cad: TSQLTimeStampField;
     QueryServicosid_servico: TIntegerField;
+    QueryCargos_Servicos: TFDQuery;
+    QueryCargos: TFDQuery;
+    QueryCargosid_cargo: TIntegerField;
+    QueryCargosnome_cargo: TWideStringField;
+    QueryCargos_Servicosid_cargo: TIntegerField;
+    QueryCargos_Servicosid_servico: TIntegerField;
+    QueryCargos_Servicosnome_cargo: TWideStringField;
+    QueryCargos_Servicosnome: TWideStringField;
+    Queryfornecedores: TFDQuery;
+    Queryfornecedoresid: TIntegerField;
+    Queryfornecedoresnome: TWideStringField;
+    Queryfornecedoresemail: TWideStringField;
+    Queryfornecedoresdata_cad: TSQLTimeStampField;
   private
     { Private declarations }
   public

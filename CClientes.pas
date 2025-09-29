@@ -22,6 +22,10 @@ type
     Label2: TLabel;
     DBEdit2: TDBEdit;
     BtnConf: TPanel;
+    Lblrequired: TLabel;
+    EdPesquisa: TEdit;
+    Panel1: TPanel;
+    Image2: TImage;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
@@ -32,6 +36,7 @@ type
     procedure EditsAtivos;
     procedure EditsInativos;
     procedure BtnConfClick(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -57,13 +62,16 @@ procedure TForm4.BtnConfClick(Sender: TObject);
 begin
   if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
   begin
-    if not (DataModule1.QueryServicos.State in [dsEdit, dsInsert]) then
+    if not (DataModule1.QueryClientes.State in [dsEdit, dsInsert]) then
     DataModule1.QueryClientes.Edit;
     DataModule1.QueryClientes.Post;
     EditsInativos;
     BtnConf.Visible := False;
     BtnExcluir.Visible := True;
     BtnEditar.Visible:= true;
+    Lblrequired.visible:= false;
+  end else begin
+    Lblrequired.visible:= true;
   end;
 end;
 
@@ -95,6 +103,8 @@ end;
 procedure TForm4.FormCreate(Sender: TObject);
 begin
     Form4.WindowState:=wsMaximized;
+    BtnConf.Visible := False;
+    lblrequired.Visible:= false;
 end;
 
 procedure TForm4.FormShow(Sender: TObject);
@@ -109,6 +119,18 @@ begin
   Form4.Close;
 end;
 
+
+procedure TForm4.Image2Click(Sender: TObject);
+begin
+  if (EdPesquisa.Text <> '' )then
+  begin
+    datamodule1.QueryClientes.Filtered := true;
+    datamodule1.QueryClientes.filter :=  'UPPER(nome_clie) LIKE ' + QuotedStr('%' + UpperCase(EdPesquisa.Text) + '%');
+ end else
+  begin
+    datamodule1.QueryClientes.Filtered := false;
+  end;
+end;
 
 procedure TForm4.PbtnAddClick(Sender: TObject);
 begin

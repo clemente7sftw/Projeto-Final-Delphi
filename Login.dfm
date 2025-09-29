@@ -39971,6 +39971,14 @@ object Form1: TForm1
       ParentColor = False
       ParentFont = False
     end
+    object teste: TLabel
+      Left = 752
+      Top = 224
+      Width = 47
+      Height = 15
+      Caption = 'teste link'
+      OnClick = testeClick
+    end
     object BtnEnt: TPanel
       Left = 108
       Top = 520

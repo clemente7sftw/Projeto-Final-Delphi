@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, UMetodos,TelaPrincipalN1, Cadastro, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
-  Vcl.StdCtrls, CServicos, Data.DB, Vcl.Mask, Vcl.DBCtrls;
+  Vcl.StdCtrls, CServicos, Data.DB, Vcl.Mask, Vcl.DBCtrls, ShellAPI;
 
 type
   TForm1 = class(TForm)
@@ -28,12 +28,14 @@ type
     imgsenha: TImage;
     EdEmail: TEdit;
     LbErro: TLabel;
+    teste: TLabel;
     procedure PbtnEntrarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Label2Click(Sender: TObject);
     procedure imgsenhaClick(Sender: TObject);
     procedure BtnEntClick(Sender: TObject);
     procedure EdEmailChange(Sender: TObject);
+    procedure testeClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -136,6 +138,11 @@ end;
 procedure TForm1.PbtnEntrarClick(Sender: TObject);
 begin
   Form3.Show;
+end;
+
+procedure TForm1.testeClick(Sender: TObject);
+begin
+ ShellExecute(0, 'open', 'http://127.0.0.1:5500/Termos-e-condicoes-BS/termos%20bs/termosecondicoes.html', nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

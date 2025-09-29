@@ -217,4 +217,84 @@ object DataModule1: TDataModule1
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
   end
+  object QueryCargos_Servicos: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT '
+      '    cs.id_cargo,'
+      '    c.nome_cargo,'
+      '    cs.id_servico, '
+      '    s. nome'
+      'FROM cargos_servicos cs'
+      'INNER JOIN cargos c ON c.id_cargo = cs.id_cargo'
+      'INNER JOIN servicos s ON s.id_servico = cs.id_servico;'
+      '')
+    Left = 184
+    Top = 296
+    object QueryCargos_Servicosid_cargo: TIntegerField
+      FieldName = 'id_cargo'
+      Origin = 'id_cargo'
+    end
+    object QueryCargos_Servicosid_servico: TIntegerField
+      FieldName = 'id_servico'
+      Origin = 'id_servico'
+    end
+    object QueryCargos_Servicosnome_cargo: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome_cargo'
+      Origin = 'nome_cargo'
+      Size = 100
+    end
+    object QueryCargos_Servicosnome: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 50
+    end
+  end
+  object QueryCargos: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from cargos'
+      '')
+    Left = 328
+    Top = 272
+    object QueryCargosid_cargo: TIntegerField
+      FieldName = 'id_cargo'
+      Origin = 'id_cargo'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object QueryCargosnome_cargo: TWideStringField
+      FieldName = 'nome_cargo'
+      Origin = 'nome_cargo'
+      Size = 100
+    end
+  end
+  object Queryfornecedores: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from fornecedores')
+    Left = 328
+    Top = 112
+    object Queryfornecedoresid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Queryfornecedoresnome: TWideStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 150
+    end
+    object Queryfornecedoresemail: TWideStringField
+      FieldName = 'email'
+      Origin = 'email'
+      Size = 100
+    end
+    object Queryfornecedoresdata_cad: TSQLTimeStampField
+      FieldName = 'data_cad'
+      Origin = 'data_cad'
+      ProviderFlags = [pfInUpdate]
+    end
+  end
 end

@@ -137,7 +137,6 @@
             <Form>Form2</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="UMetodos.pas"/>
         <DCCReference Include="TelaPrincipalN1.pas">
             <Form>Form3</Form>
             <FormType>dfm</FormType>
