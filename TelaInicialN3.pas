@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.Imaging.pngimage;
+  Vcl.Imaging.pngimage, Vcl.CheckLst;
 
 type
   TForm20 = class(TForm)
@@ -48,7 +48,7 @@ end;
 
 procedure TForm20.LbCargosClick(Sender: TObject);
 begin
-Form14.show;
+  Form14.show;
 end;
 
 procedure TForm20.LbClieClick(Sender: TObject);

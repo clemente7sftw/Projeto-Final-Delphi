@@ -52,23 +52,28 @@ type
     QueryServicospreco: TBCDField;
     QueryServicosdata_cad: TSQLTimeStampField;
     QueryServicosid_servico: TIntegerField;
-    QueryCargos_Servicos: TFDQuery;
+    QueryCS: TFDQuery;
     QueryCargos: TFDQuery;
-    QueryCargosid_cargo: TIntegerField;
-    QueryCargosnome_cargo: TWideStringField;
-    QueryCargos_Servicosid_cargo: TIntegerField;
-    QueryCargos_Servicosid_servico: TIntegerField;
-    QueryCargos_Servicosnome_cargo: TWideStringField;
-    QueryCargos_Servicosnome: TWideStringField;
     Queryfornecedores: TFDQuery;
     Queryfornecedoresid: TIntegerField;
     Queryfornecedoresnome: TWideStringField;
     Queryfornecedoresemail: TWideStringField;
     Queryfornecedoresdata_cad: TSQLTimeStampField;
     QueryPC: TFDQuery;
-    QueryPCnome: TWideStringField;
-    QueryPCemail: TWideStringField;
-    QueryPCnome_cargo: TWideStringField;
+    QueryRPC: TFDQuery;
+    QueryPCid_pro: TIntegerField;
+    QueryPCid_cargo: TIntegerField;
+    QueryRCS: TFDQuery;
+    QueryCargosid_cargo: TIntegerField;
+    QueryCargosnome_cargo: TWideStringField;
+    QueryCargosdata_cad: TSQLTimeStampField;
+    QueryCSid_cargo: TIntegerField;
+    QueryCSid_servico: TIntegerField;
+    QueryRCSnome_cargo: TWideStringField;
+    QueryRCSnome_servico: TWideStringField;
+    QueryRPCnome: TWideStringField;
+    QueryRPCemail: TWideStringField;
+    QueryRPCnome_cargo: TWideStringField;
   private
     { Private declarations }
   public

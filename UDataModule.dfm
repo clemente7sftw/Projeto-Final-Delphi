@@ -1,6 +1,6 @@
 object DataModule1: TDataModule1
-  Height = 491
-  Width = 445
+  Height = 444
+  Width = 993
   object FDConnection1: TFDConnection
     Params.Strings = (
       'Database=beauty_stage'
@@ -218,39 +218,19 @@ object DataModule1: TDataModule1
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
   end
-  object QueryCargos_Servicos: TFDQuery
+  object QueryCS: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
-      'SELECT '
-      '    cs.id_cargo,'
-      '    c.nome_cargo,'
-      '    cs.id_servico, '
-      '    s. nome'
-      'FROM cargos_servicos cs'
-      'INNER JOIN cargos c ON c.id_cargo = cs.id_cargo'
-      'INNER JOIN servicos s ON s.id_servico = cs.id_servico;'
-      '')
-    Left = 147
+      'SELECT * from cargos_servicos')
+    Left = 131
     Top = 237
-    object QueryCargos_Servicosid_cargo: TIntegerField
+    object QueryCSid_cargo: TIntegerField
       FieldName = 'id_cargo'
       Origin = 'id_cargo'
     end
-    object QueryCargos_Servicosid_servico: TIntegerField
+    object QueryCSid_servico: TIntegerField
       FieldName = 'id_servico'
       Origin = 'id_servico'
-    end
-    object QueryCargos_Servicosnome_cargo: TWideStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'nome_cargo'
-      Origin = 'nome_cargo'
-      Size = 100
-    end
-    object QueryCargos_Servicosnome: TWideStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'nome'
-      Origin = 'nome'
-      Size = 50
     end
   end
   object QueryCargos: TFDQuery
@@ -258,8 +238,8 @@ object DataModule1: TDataModule1
     SQL.Strings = (
       'select * from cargos'
       '')
-    Left = 262
-    Top = 218
+    Left = 582
+    Top = 178
     object QueryCargosid_cargo: TIntegerField
       FieldName = 'id_cargo'
       Origin = 'id_cargo'
@@ -270,13 +250,18 @@ object DataModule1: TDataModule1
       Origin = 'nome_cargo'
       Size = 100
     end
+    object QueryCargosdata_cad: TSQLTimeStampField
+      FieldName = 'data_cad'
+      Origin = 'data_cad'
+      ProviderFlags = [pfInUpdate]
+    end
   end
   object Queryfornecedores: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
       'select * from fornecedores')
-    Left = 262
-    Top = 90
+    Left = 590
+    Top = 346
     object Queryfornecedoresid: TIntegerField
       FieldName = 'id'
       Origin = 'id'
@@ -301,36 +286,83 @@ object DataModule1: TDataModule1
   object QueryPC: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
+      'select * from profissionais_cargos')
+    Left = 32
+    Top = 312
+    object QueryPCid_pro: TIntegerField
+      FieldName = 'id_pro'
+      Origin = 'id_pro'
+    end
+    object QueryPCid_cargo: TIntegerField
+      FieldName = 'id_cargo'
+      Origin = 'id_cargo'
+    end
+  end
+  object QueryRPC: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
       'SELECT '
       '    p.nome,'
       '    p.email,'
-      '    c.nome_cargo'
+      '    STRING_AGG(c.nome_cargo, '#39', '#39')::varchar(500) AS nome_cargo'
       'FROM '
       '    profissionais p'
       'LEFT JOIN '
       '    profissionais_cargos pc ON p.id_pro = pc.id_pro'
       'LEFT JOIN '
       '    cargos c ON pc.id_cargo = c.id_cargo'
+      'GROUP BY '
+      '    p.nome,'
+      'p.email'
       'ORDER BY '
-      '    p.nome;'
-      '')
-    Left = 32
+      '    p.nome;')
+    Left = 120
     Top = 312
-    object QueryPCnome: TWideStringField
+    object QueryRPCnome: TWideStringField
       FieldName = 'nome'
       Origin = 'nome'
       Size = 100
     end
-    object QueryPCemail: TWideStringField
+    object QueryRPCemail: TWideStringField
       FieldName = 'email'
       Origin = 'email'
       Size = 100
     end
-    object QueryPCnome_cargo: TWideStringField
+    object QueryRPCnome_cargo: TWideStringField
       AutoGenerateValue = arDefault
       FieldName = 'nome_cargo'
       Origin = 'nome_cargo'
+      ReadOnly = True
+      Size = 500
+    end
+  end
+  object QueryRCS: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT '
+      '    c.nome_cargo,'
+      '    s.nome AS nome_servico'
+      'FROM '
+      '    cargos c'
+      'LEFT JOIN '
+      '    cargos_servicos cp ON c.id_cargo = cp.id_cargo'
+      'LEFT JOIN '
+      '    servicos s ON cp.id_servico = s.id_servico'
+      'ORDER BY '
+      '    c.nome_cargo;'
+      '')
+    Left = 200
+    Top = 240
+    object QueryRCSnome_cargo: TWideStringField
+      FieldName = 'nome_cargo'
+      Origin = 'nome_cargo'
       Size = 100
+    end
+    object QueryRCSnome_servico: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome_servico'
+      Origin = 'nome_servico'
+      Size = 50
     end
   end
 end

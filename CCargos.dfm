@@ -50,8 +50,8 @@ object Form14: TForm14
       OnClick = Image1Click
     end
     object Lblrequired: TLabel
-      Left = 32
-      Top = 480
+      Left = 464
+      Top = 215
       Width = 145
       Height = 15
       Caption = 'Preencha todos os campos!'
@@ -59,12 +59,20 @@ object Form14: TForm14
       ParentColor = False
     end
     object Label1: TLabel
-      Left = 456
-      Top = 272
+      Left = 24
+      Top = 259
       Width = 66
       Height = 15
       Caption = 'nome_cargo'
       FocusControl = DBEdit1
+    end
+    object Label2: TLabel
+      Left = 304
+      Top = 259
+      Width = 73
+      Height = 15
+      Caption = 'nome_servico'
+      FocusControl = DBEdit2
     end
     object BtnConf: TPanel
       Left = 208
@@ -153,10 +161,10 @@ object Form14: TForm14
     end
     object DBGrid1: TDBGrid
       Left = 24
-      Top = 328
-      Width = 320
-      Height = 137
-      DataSource = DataSource1
+      Top = 336
+      Width = 577
+      Height = 202
+      DataSource = DataSource2
       TabOrder = 6
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -167,27 +175,43 @@ object Form14: TForm14
         item
           Expanded = False
           FieldName = 'nome_cargo'
-          Width = 200
+          Width = 287
           Visible = True
         end
         item
           Expanded = False
+          FieldName = 'nome_servico'
+          Width = 200
           Visible = True
         end>
     end
     object DBEdit1: TDBEdit
-      Left = 456
-      Top = 288
+      Left = 24
+      Top = 280
       Width = 200
       Height = 23
       DataField = 'nome_cargo'
-      DataSource = DataSource1
+      DataSource = DataSource2
       TabOrder = 7
+    end
+    object DBEdit2: TDBEdit
+      Left = 304
+      Top = 280
+      Width = 200
+      Height = 23
+      DataField = 'nome_servico'
+      DataSource = DataSource2
+      TabOrder = 8
     end
   end
   object DataSource1: TDataSource
     DataSet = DataModule1.QueryCargos
-    Left = 632
-    Top = 32
+    Left = 752
+    Top = 72
+  end
+  object DataSource2: TDataSource
+    DataSet = DataModule1.QueryRCS
+    Left = 752
+    Top = 144
   end
 end

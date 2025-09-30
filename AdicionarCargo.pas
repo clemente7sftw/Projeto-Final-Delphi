@@ -11,13 +11,13 @@ type
   TForm11 = class(TForm)
     Fundo: TPanel;
     Image1: TImage;
-    Lblrequired: TLabel;
     PCad: TPanel;
+    ComboBox1: TComboBox;
+    Lblrequired: TLabel;
     DataSource1: TDataSource;
     Label1: TLabel;
     DBEdit1: TDBEdit;
     DataSource2: TDataSource;
-    ComboBox1: TComboBox;
     procedure FormShow(Sender: TObject);
     procedure PCadClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -60,24 +60,35 @@ end;
 
 procedure TForm11.FormShow(Sender: TObject);
 begin
-  datamodule1.QueryCargos_Servicos.append;
-  datamodule1.QueryCargos.close;
-  datamodule1.QueryCargos.open;
-  datamodule1.QueryServicos.close;
-  datamodule1.QueryServicos.open;
-  datamodule1.QueryCargos.append;
+    datamodule1.QueryCargos.Append;
+    datamodule1.QueryServicos.close;
+    datamodule1.QueryServicos.open;
+    datamodule1.QueryCS.close;
+    datamodule1.QueryCS.open;
+    datamodule1.QueryRCS.close;
+    datamodule1.QueryRCS.open;
+
 end;
 
 procedure TForm11.PCadClick(Sender: TObject);
+var id_ser, id_cargo: integer;
 begin
   if DBEdit1.Text <> '' then
   begin
-
+    id_ser := Integer(ComboBox1.Items.Objects[ComboBox1.ItemIndex]);
+    if datamodule1.QueryCargos.State in [dsInsert, dsEdit] then
     datamodule1.QueryCargos.Post;
-    datamodule1.QueryCargos_Servicos.Post;
-
+    datamodule1.QueryCargos.Refresh;
+    id_cargo := datamodule1.QueryCargos.FieldByName('id_cargo').AsInteger;
+    datamodule1.QueryCS.Append;
+    datamodule1.QueryCS.FieldByName('id_servico').AsInteger := id_ser;
+    datamodule1.QueryCS.FieldByName('id_cargo').AsInteger := id_cargo;
+    DataModule1.QueryCargos.Close;
+    DataModule1.QueryCargos.Open;
+    datamodule1.QueryCS.Post;
     Form14.Show;
     Form11.Close;
+    Lblrequired.Visible := false;
   end
   else
     Lblrequired.Visible := true;

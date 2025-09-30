@@ -22,26 +22,9 @@ object Form9: TForm9
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 8
-    object Label1: TLabel
-      Left = 40
-      Top = 112
-      Width = 31
-      Height = 15
-      Caption = 'nome'
-      FocusControl = DBEdit1
-    end
-    object Label2: TLabel
-      Left = 40
-      Top = 192
-      Width = 29
-      Height = 15
-      Caption = 'email'
-      FocusControl = DBEdit2
-    end
     object Lblrequired: TLabel
       Left = 40
-      Top = 333
+      Top = 365
       Width = 145
       Height = 15
       Caption = 'Preencha todos os campos!'
@@ -74,23 +57,21 @@ object Form9: TForm9
         222F3E3C2F7376673E}
       Stretch = True
     end
-    object DBEdit1: TDBEdit
+    object Label1: TLabel
       Left = 40
-      Top = 128
-      Width = 177
-      Height = 23
-      DataField = 'nome'
-      DataSource = DataSource1
-      TabOrder = 0
+      Top = 64
+      Width = 31
+      Height = 15
+      Caption = 'nome'
+      FocusControl = DBEdit1
     end
-    object DBEdit2: TDBEdit
+    object Label2: TLabel
       Left = 40
-      Top = 213
-      Width = 177
-      Height = 23
-      DataField = 'email'
-      DataSource = DataSource1
-      TabOrder = 1
+      Top = 144
+      Width = 29
+      Height = 15
+      Caption = 'email'
+      FocusControl = DBEdit2
     end
     object PCad: TPanel
       Left = 508
@@ -98,17 +79,42 @@ object Form9: TForm9
       Width = 121
       Height = 41
       Caption = 'PCad'
-      TabOrder = 2
+      TabOrder = 0
       OnClick = PCadClick
     end
     object ComboBox1: TComboBox
-      Left = 40
-      Top = 272
+      Left = 312
+      Top = 85
       Width = 145
       Height = 23
-      TabOrder = 3
+      TabOrder = 1
       Text = 'ComboBox1'
-      OnEnter = ComboBox1Enter
+    end
+    object DBEdit1: TDBEdit
+      Left = 40
+      Top = 85
+      Width = 200
+      Height = 23
+      DataField = 'nome'
+      DataSource = DataSource1
+      TabOrder = 2
+    end
+    object DBEdit2: TDBEdit
+      Left = 40
+      Top = 165
+      Width = 200
+      Height = 23
+      DataField = 'email'
+      DataSource = DataSource1
+      TabOrder = 3
+    end
+    object CheckListBox1: TCheckListBox
+      Left = 40
+      Top = 216
+      Width = 121
+      Height = 97
+      ItemHeight = 17
+      TabOrder = 4
     end
   end
   object DataSource1: TDataSource
@@ -120,5 +126,10 @@ object Form9: TForm9
     DataSet = DataModule1.QueryCargos
     Left = 544
     Top = 152
+  end
+  object DataSource3: TDataSource
+    DataSet = DataModule1.QueryPC
+    Left = 544
+    Top = 224
   end
 end

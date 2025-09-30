@@ -22,7 +22,6 @@ object Form20: TForm20
     ParentBackground = False
     TabOrder = 0
     ExplicitLeft = 8
-    ExplicitWidth = 1924
     object Label1: TLabel
       Left = 384
       Top = 320

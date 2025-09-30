@@ -19,10 +19,13 @@ type
     EdPesquisa: TEdit;
     Panel1: TPanel;
     Image2: TImage;
-    DBGrid1: TDBGrid;
     DataSource1: TDataSource;
+    DataSource2: TDataSource;
+    DBGrid1: TDBGrid;
     Label1: TLabel;
     DBEdit1: TDBEdit;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure EditsAtivos;
@@ -50,6 +53,7 @@ uses TelaPrincipalN1, UDataModule, AdicionarCargo;
 procedure TForm14.BtnAddClick(Sender: TObject);
 begin
 Form11.show;
+Form14.Close;
 end;
 
 procedure TForm14.BtnConfClick(Sender: TObject);
@@ -99,12 +103,19 @@ begin
   Form14.WindowState:=wsMaximized;
   BtnConf.Visible := False;
   Lblrequired.visible:= false;
+  EditsInativos;
 end;
 
 procedure TForm14.FormShow(Sender: TObject);
 begin
-  datamodule1.QueryCargos_Servicos.Close;
-  datamodule1.QueryCargos_Servicos.open;
+  datamodule1.QueryCargos.close;
+  datamodule1.QueryCargos.open;
+  datamodule1.QueryServicos.close;
+  datamodule1.QueryServicos.open;
+  datamodule1.QueryCS.close;
+  datamodule1.QueryCS.open;
+ datamodule1.QueryRCS.Close;
+ datamodule1.QueryRCS.open;
 
 end;
 

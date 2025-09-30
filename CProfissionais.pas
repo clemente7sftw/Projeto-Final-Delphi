@@ -19,12 +19,13 @@ type
     BtnEditar: TPanel;
     BtnExcluir: TPanel;
     BtnConf: TPanel;
-    DBGrid1: TDBGrid;
     Panel2: TPanel;
     EdPesquisa: TEdit;
     Panel3: TPanel;
     Image2: TImage;
     DataSource2: TDataSource;
+    DataSource3: TDataSource;
+    DBGrid1: TDBGrid;
     Label1: TLabel;
     DBEdit1: TDBEdit;
     Label2: TLabel;
@@ -41,6 +42,9 @@ type
     procedure EditsAtivos;
     procedure EditsInativos;
     procedure BtnConfClick(Sender: TObject);
+    procedure Pesquisar;
+    procedure Panel3Click(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -109,8 +113,11 @@ begin
   datamodule1.QueryProfissionais.Open;
   datamodule1.QueryPC.close;
   datamodule1.QueryPC.open;
-      datamodule1.QueryCargos.close;
-    datamodule1.QueryCargos.open;
+  datamodule1.QueryCargos.close;
+  datamodule1.QueryCargos.open;
+  DataModule1.QueryRPC.close;
+  DataModule1.QueryRPC.Open;
+
 end;
 
 procedure TForm8.Image1Click(Sender: TObject);
@@ -135,9 +142,27 @@ begin
   BtnEditar.Visible:= false;
 end;
 
+procedure TForm8.Panel3Click(Sender: TObject);
+begin
+  Pesquisar;
+end;
+
 procedure TForm8.PbtnAddClick(Sender: TObject);
 begin
   Form9.Show;
-  Form8.Hide;
+  Form8.Close;
 end;
+procedure TForm8.Pesquisar;
+begin
+  if (EdPesquisa.Text <> '' )then
+  begin
+    datamodule1.QueryClientes.Filtered := true;
+    datamodule1.QueryClientes.filter :=  'UPPER(nome_clie) LIKE ' + QuotedStr('%' + UpperCase(EdPesquisa.Text) + '%');
+ end else
+  begin
+    datamodule1.QueryClientes.Filtered := false;
+  end;
+end;
+
+
 end.

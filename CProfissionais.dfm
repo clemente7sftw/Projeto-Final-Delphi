@@ -22,8 +22,6 @@ object Form8: TForm8
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 872
-    ExplicitHeight = 545
     object Panel1: TPanel
       Left = 1
       Top = 1
@@ -33,8 +31,6 @@ object Form8: TForm8
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 870
-      ExplicitHeight = 543
       object Image1: TImage
         Left = 24
         Top = 472
@@ -63,8 +59,8 @@ object Form8: TForm8
         OnClick = Image1Click
       end
       object Lblrequired: TLabel
-        Left = 26
-        Top = 328
+        Left = 730
+        Top = 378
         Width = 145
         Height = 15
         Caption = 'Preencha todos os campos!'
@@ -72,24 +68,24 @@ object Form8: TForm8
         ParentColor = False
       end
       object Label1: TLabel
-        Left = 26
-        Top = 208
+        Left = 728
+        Top = 144
         Width = 31
         Height = 15
         Caption = 'nome'
         FocusControl = DBEdit1
       end
       object Label2: TLabel
-        Left = 24
-        Top = 259
+        Left = 730
+        Top = 219
         Width = 29
         Height = 15
         Caption = 'email'
         FocusControl = DBEdit2
       end
       object Label3: TLabel
-        Left = 464
-        Top = 256
+        Left = 730
+        Top = 315
         Width = 66
         Height = 15
         Caption = 'nome_cargo'
@@ -130,46 +126,13 @@ object Form8: TForm8
         TabOrder = 3
         OnClick = BtnConfClick
       end
-      object DBGrid1: TDBGrid
-        Left = 103
-        Top = 359
-        Width = 666
-        Height = 218
-        DataSource = DataSource2
-        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-        TabOrder = 4
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -12
-        TitleFont.Name = 'Segoe UI'
-        TitleFont.Style = []
-        Columns = <
-          item
-            Expanded = False
-            FieldName = 'nome'
-            Width = 173
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'email'
-            Width = 241
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'nome_cargo'
-            Width = 236
-            Visible = True
-          end>
-      end
       object Panel2: TPanel
         Left = 376
         Top = 64
         Width = 89
         Height = 41
         Caption = 'BtnEditar'
-        TabOrder = 5
+        TabOrder = 4
         OnClick = Panel2Click
       end
       object EdPesquisa: TEdit
@@ -183,7 +146,7 @@ object Form8: TForm8
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 6
+        TabOrder = 5
         TextHint = 'Pesquise'
       end
       object Panel3: TPanel
@@ -193,7 +156,8 @@ object Form8: TForm8
         Height = 45
         Color = clBlack
         ParentBackground = False
-        TabOrder = 7
+        TabOrder = 6
+        OnClick = Panel3Click
         object Image2: TImage
           Left = 8
           Top = 8
@@ -221,31 +185,62 @@ object Form8: TForm8
             12FC0B1293E6224739C13B0000000049454E44AE426082}
         end
       end
+      object DBGrid1: TDBGrid
+        Left = 24
+        Top = 272
+        Width = 601
+        Height = 185
+        DataSource = DataSource3
+        TabOrder = 7
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -12
+        TitleFont.Name = 'Segoe UI'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'nome'
+            Width = 200
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'email'
+            Width = 200
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'nome_cargo'
+            Visible = True
+          end>
+      end
       object DBEdit1: TDBEdit
-        Left = 26
-        Top = 227
+        Left = 728
+        Top = 160
         Width = 200
         Height = 23
         DataField = 'nome'
-        DataSource = DataSource2
+        DataSource = DataSource3
         TabOrder = 8
       end
       object DBEdit2: TDBEdit
-        Left = 26
-        Top = 280
+        Left = 730
+        Top = 240
         Width = 200
         Height = 23
         DataField = 'email'
-        DataSource = DataSource2
+        DataSource = DataSource3
         TabOrder = 9
       end
       object DBEdit3: TDBEdit
-        Left = 464
-        Top = 272
+        Left = 728
+        Top = 336
         Width = 200
         Height = 23
         DataField = 'nome_cargo'
-        DataSource = DataSource2
+        DataSource = DataSource3
         TabOrder = 10
       end
     end
@@ -259,5 +254,10 @@ object Form8: TForm8
     DataSet = DataModule1.QueryPC
     Left = 1009
     Top = 89
+  end
+  object DataSource3: TDataSource
+    DataSet = DataModule1.QueryRPC
+    Left = 1001
+    Top = 185
   end
 end

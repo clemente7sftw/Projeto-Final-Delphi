@@ -49,8 +49,8 @@ object Form11: TForm11
       Stretch = True
     end
     object Lblrequired: TLabel
-      Left = 32
-      Top = 336
+      Left = 55
+      Top = 352
       Width = 145
       Height = 15
       Caption = 'Preencha todos os campos!'
@@ -58,8 +58,8 @@ object Form11: TForm11
       ParentColor = False
     end
     object Label1: TLabel
-      Left = 56
-      Top = 152
+      Left = 64
+      Top = 120
       Width = 66
       Height = 15
       Caption = 'nome_cargo'
@@ -74,33 +74,33 @@ object Form11: TForm11
       TabOrder = 0
       OnClick = PCadClick
     end
-    object DBEdit1: TDBEdit
-      Left = 56
-      Top = 168
+    object ComboBox1: TComboBox
+      Left = 63
+      Top = 232
       Width = 201
+      Height = 23
+      TabOrder = 1
+      Text = 'ComboBox1'
+      OnEnter = ComboBox1Enter
+    end
+    object DBEdit1: TDBEdit
+      Left = 64
+      Top = 136
+      Width = 200
       Height = 23
       DataField = 'nome_cargo'
       DataSource = DataSource1
-      TabOrder = 1
-    end
-    object ComboBox1: TComboBox
-      Left = 56
-      Top = 240
-      Width = 201
-      Height = 23
       TabOrder = 2
-      Text = 'ComboBox1'
-      OnEnter = ComboBox1Enter
     end
   end
   object DataSource1: TDataSource
     DataSet = DataModule1.QueryCargos
     Left = 648
-    Top = 72
+    Top = 64
   end
   object DataSource2: TDataSource
-    DataSet = DataModule1.QueryCargos
-    Left = 648
-    Top = 144
+    DataSet = DataModule1.QueryCS
+    Left = 552
+    Top = 176
   end
 end
