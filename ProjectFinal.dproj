@@ -175,10 +175,6 @@
             <Form>Form12</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="AdicionarHorario.pas">
-            <Form>Form13</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="CCargos.pas">
             <Form>Form14</Form>
             <FormType>dfm</FormType>
@@ -215,6 +211,10 @@
         </DCCReference>
         <DCCReference Include="TelaInicialN3.pas">
             <Form>Form20</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Agendamentos.pas">
+            <Form>Form13</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

@@ -21,7 +21,6 @@ object Form20: TForm20
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 8
     object Label1: TLabel
       Left = 384
       Top = 320
@@ -329,6 +328,14 @@ object Form20: TForm20
         A26702A98069A248B4DE434541129D074E51636802159B6A9F8752B5190942A3
         04010942A30441EB173AE76C3C77BA892E0000000049454E44AE426082}
       Stretch = True
+    end
+    object Label3: TLabel
+      Left = 672
+      Top = 272
+      Width = 24
+      Height = 15
+      Caption = 'hora'
+      OnClick = Label3Click
     end
     object Barra: TPanel
       Left = 0

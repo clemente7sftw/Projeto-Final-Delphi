@@ -25,13 +25,7 @@ object DataModule1: TDataModule1
       'select * from clientes')
     Left = 32
     Top = 88
-    object QueryClientesid_clie: TIntegerField
-      FieldName = 'id_clie'
-      Origin = 'id_clie'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
     object QueryClientesnome_clie: TWideStringField
-      DisplayWidth = 13
       FieldName = 'nome_clie'
       Origin = 'nome_clie'
       Size = 150
@@ -40,50 +34,6 @@ object DataModule1: TDataModule1
       FieldName = 'email_clie'
       Origin = 'email_clie'
       Size = 100
-    end
-    object QueryClientessenha_clie: TWideStringField
-      FieldName = 'senha_clie'
-      Origin = 'senha_clie'
-      Size = 100
-    end
-    object QueryClientescpf_clie: TWideStringField
-      FieldName = 'cpf_clie'
-      Origin = 'cpf_clie'
-      Size = 14
-    end
-    object QueryClientesgenero_clie: TWideStringField
-      FieldName = 'genero_clie'
-      Origin = 'genero_clie'
-    end
-    object QueryClientesfone_clie: TWideStringField
-      FieldName = 'fone_clie'
-      Origin = 'fone_clie'
-      Size = 11
-    end
-    object QueryClientescep_clie: TWideStringField
-      FieldName = 'cep_clie'
-      Origin = 'cep_clie'
-      Size = 8
-    end
-    object QueryClientesrua_clie: TWideStringField
-      FieldName = 'rua_clie'
-      Origin = 'rua_clie'
-      Size = 100
-    end
-    object QueryClientesbairro_clie: TWideStringField
-      FieldName = 'bairro_clie'
-      Origin = 'bairro_clie'
-      Size = 50
-    end
-    object QueryClientescidade_clie: TWideStringField
-      FieldName = 'cidade_clie'
-      Origin = 'cidade_clie'
-      Size = 50
-    end
-    object QueryClientesestado_clie: TWideStringField
-      FieldName = 'estado_clie'
-      Origin = 'estado_clie'
-      Size = 50
     end
   end
   object QueryReservas: TFDQuery
@@ -363,6 +313,51 @@ object DataModule1: TDataModule1
       FieldName = 'nome_servico'
       Origin = 'nome_servico'
       Size = 50
+    end
+  end
+  object QueryAg: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT '
+      '    a.id_agendamento,'
+      '    c.nome_clie,'
+      '    s.nome,'
+      '    a.data_agendamento,'
+      '    a.hora_inicio'
+      'FROM '
+      '    agendamentos a'
+      'INNER JOIN '
+      '    clientes c ON a.id_clie = c.id_clie'
+      'INNER JOIN'
+      '    servicos s ON a.id_servico = s.id_servico;'
+      '')
+    Left = 768
+    Top = 192
+    object QueryAgid_agendamento: TIntegerField
+      FieldName = 'id_agendamento'
+      Origin = 'id_agendamento'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object QueryAgnome_clie: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome_clie'
+      Origin = 'nome_clie'
+      Size = 150
+    end
+    object QueryAgnome: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 50
+    end
+    object QueryAgdata_agendamento: TDateField
+      FieldName = 'data_agendamento'
+      Origin = 'data_agendamento'
+    end
+    object QueryAghora_inicio: TTimeField
+      FieldName = 'hora_inicio'
+      Origin = 'hora_inicio'
+      ProviderFlags = [pfInUpdate]
     end
   end
 end

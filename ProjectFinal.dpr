@@ -14,7 +14,6 @@ uses
   AdicionarServico in 'AdicionarServico.pas' {Form10},
   AdicionarCargo in 'AdicionarCargo.pas' {Form11},
   AdicionarPP in 'AdicionarPP.pas' {Form12},
-  AdicionarHorario in 'AdicionarHorario.pas' {Form13},
   CCargos in 'CCargos.pas' {Form14},
   CServicos in 'CServicos.pas' {Form15},
   CPacotesPromocionais in 'CPacotesPromocionais.pas' {Form16},
@@ -23,7 +22,8 @@ uses
   CadClie in 'CadClie.pas' {Form18},
   UDataCEP in 'UDataCEP.pas' {DataModule2: TDataModule},
   CadEmp in 'CadEmp.pas' {Form19},
-  TelaInicialN3 in 'TelaInicialN3.pas' {Form20};
+  TelaInicialN3 in 'TelaInicialN3.pas' {Form20},
+  Agendamentos in 'Agendamentos.pas' {Form13};
 
 {$R *.res}
 
@@ -42,7 +42,6 @@ begin
   Application.CreateForm(TForm10, Form10);
   Application.CreateForm(TForm11, Form11);
   Application.CreateForm(TForm12, Form12);
-  Application.CreateForm(TForm13, Form13);
   Application.CreateForm(TForm14, Form14);
   Application.CreateForm(TForm15, Form15);
   Application.CreateForm(TForm16, Form16);
@@ -52,5 +51,6 @@ begin
   Application.CreateForm(TDataModule2, DataModule2);
   Application.CreateForm(TForm19, Form19);
   Application.CreateForm(TForm20, Form20);
+  Application.CreateForm(TForm13, Form13);
   Application.Run;
 end.

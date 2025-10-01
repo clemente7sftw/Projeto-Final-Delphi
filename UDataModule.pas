@@ -15,18 +15,6 @@ type
     FDConnection1: TFDConnection;
     FDPhysPgDriverLink1: TFDPhysPgDriverLink;
     QueryClientes: TFDQuery;
-    QueryClientesid_clie: TIntegerField;
-    QueryClientesnome_clie: TWideStringField;
-    QueryClientesemail_clie: TWideStringField;
-    QueryClientessenha_clie: TWideStringField;
-    QueryClientescpf_clie: TWideStringField;
-    QueryClientesgenero_clie: TWideStringField;
-    QueryClientesfone_clie: TWideStringField;
-    QueryClientescep_clie: TWideStringField;
-    QueryClientesrua_clie: TWideStringField;
-    QueryClientesbairro_clie: TWideStringField;
-    QueryClientescidade_clie: TWideStringField;
-    QueryClientesestado_clie: TWideStringField;
     QueryReservas: TFDQuery;
     QueryReservasid_reserva: TIntegerField;
     QueryReservasid_clie: TIntegerField;
@@ -74,6 +62,14 @@ type
     QueryRPCnome: TWideStringField;
     QueryRPCemail: TWideStringField;
     QueryRPCnome_cargo: TWideStringField;
+    QueryAg: TFDQuery;
+    QueryAgid_agendamento: TIntegerField;
+    QueryAgnome_clie: TWideStringField;
+    QueryAgnome: TWideStringField;
+    QueryAgdata_agendamento: TDateField;
+    QueryAghora_inicio: TTimeField;
+    QueryClientesnome_clie: TWideStringField;
+    QueryClientesemail_clie: TWideStringField;
   private
     { Private declarations }
   public

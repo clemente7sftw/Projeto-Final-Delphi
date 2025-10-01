@@ -95,6 +95,7 @@ begin
 end;
 end;
 
+
 procedure TForm9.Cadastrar;
 begin
   if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and (CheckListBox1.ItemIndex >= 0) then

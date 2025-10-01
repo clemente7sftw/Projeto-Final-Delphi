@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, CHorarios,CPacotesPromocionais, AdicionarPP, CCargos, CProfissionais ,CFornecedores,AdicionarCliente, AdicionarHorario, AdicionarProfissional, CServicos, CClientes, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
+  Vcl.Controls, CHorarios,CPacotesPromocionais, AdicionarPP, CCargos, CProfissionais ,CFornecedores,AdicionarCliente, AdicionarProfissional, CServicos, CClientes, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
   Vcl.StdCtrls, UDataModule, Data.DB, Vcl.Grids, Vcl.DBGrids;
 
 type
@@ -32,7 +32,6 @@ type
     procedure LbnCargosClick(Sender: TObject);
     procedure LbnPPClick(Sender: TObject);
     procedure Label3Click(Sender: TObject);
-    procedure Panel1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
   private
@@ -131,11 +130,6 @@ procedure TForm3.LbnServicosClick(Sender: TObject);
 begin
   Form3.Hide;
   Form15.Show;
-end;
-
-procedure TForm3.Panel1Click(Sender: TObject);
-begin
-  Form13.show;
 end;
 
 end.

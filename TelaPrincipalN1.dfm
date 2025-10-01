@@ -339,7 +339,6 @@ object Form3: TForm3
       ParentBackground = False
       ParentFont = False
       TabOrder = 0
-      OnClick = Panel1Click
       object Image1: TImage
         Left = 16
         Top = 0
