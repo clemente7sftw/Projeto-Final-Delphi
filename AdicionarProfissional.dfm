@@ -82,14 +82,6 @@ object Form9: TForm9
       TabOrder = 0
       OnClick = PCadClick
     end
-    object ComboBox1: TComboBox
-      Left = 312
-      Top = 85
-      Width = 145
-      Height = 23
-      TabOrder = 1
-      Text = 'ComboBox1'
-    end
     object DBEdit1: TDBEdit
       Left = 40
       Top = 85
@@ -97,7 +89,7 @@ object Form9: TForm9
       Height = 23
       DataField = 'nome'
       DataSource = DataSource1
-      TabOrder = 2
+      TabOrder = 1
     end
     object DBEdit2: TDBEdit
       Left = 40
@@ -106,15 +98,15 @@ object Form9: TForm9
       Height = 23
       DataField = 'email'
       DataSource = DataSource1
-      TabOrder = 3
+      TabOrder = 2
     end
     object CheckListBox1: TCheckListBox
       Left = 40
       Top = 216
-      Width = 121
-      Height = 97
+      Width = 313
+      Height = 143
       ItemHeight = 17
-      TabOrder = 4
+      TabOrder = 3
     end
   end
   object DataSource1: TDataSource

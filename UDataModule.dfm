@@ -360,4 +360,9 @@ object DataModule1: TDataModule1
       ProviderFlags = [pfInUpdate]
     end
   end
+  object FDQuery1: TFDQuery
+    Connection = FDConnection1
+    Left = 408
+    Top = 120
+  end
 end

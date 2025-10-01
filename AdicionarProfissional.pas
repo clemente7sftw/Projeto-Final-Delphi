@@ -15,7 +15,6 @@ type
     Image1: TImage;
     PCad: TPanel;
     DataSource2: TDataSource;
-    ComboBox1: TComboBox;
     DataSource3: TDataSource;
     Label1: TLabel;
     DBEdit1: TDBEdit;
@@ -24,9 +23,7 @@ type
     CheckListBox1: TCheckListBox;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
-//    procedure ComboBox1Enter(Sender: TObject);
     procedure PCadClick(Sender: TObject);
-//    procedure PopularCombo;
     procedure Cadastrar;
     procedure PreencherListbox;
 
@@ -63,20 +60,6 @@ begin
 end;
 
 
-//procedure TForm9.PopularCombo;
-//begin
-//  ComboBox1.Items.Clear;
-//  datamodule1.QueryCargos.First;
-//  while not datamodule1.QueryCargos.Eof do
-//  begin
-//    ComboBox1.Items.AddObject(datamodule1.QueryCargos.FieldByName('nome_cargo').AsString,
-//    TObject(datamodule1.QueryCargos.FieldByName('id_cargo').AsInteger));
-//    datamodule1.QueryCargos.Next;
-//  end;
-//end;
-//
-
-
 procedure TForm9.PreencherListbox;
 begin
 if not datamodule1.QueryCargos.IsEmpty then
@@ -97,32 +80,37 @@ end;
 
 
 procedure TForm9.Cadastrar;
+var
+  i: Integer;
 begin
-  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and (CheckListBox1.ItemIndex >= 0) then
+  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
   begin
-    id_cargo := Integer(CheckListBox1.Items.Objects[CheckListBox1.ItemIndex]);
     if datamodule1.QueryProfissionais.State in [dsInsert, dsEdit] then
-    datamodule1.QueryProfissionais.Post;
+      datamodule1.QueryProfissionais.Post;
+
     datamodule1.QueryProfissionais.Refresh;
     id_pro := datamodule1.QueryProfissionais.FieldByName('id_pro').AsInteger;
-    datamodule1.QueryPC.Append;
-    datamodule1.QueryPC.FieldByName('id_cargo').AsInteger := id_cargo;
-    datamodule1.QueryPC.FieldByName('id_pro').AsInteger := id_pro;
-    datamodule1.QueryPC.Post;
-    form9.close;
-    form8.show;
+
+    for i := 0 to CheckListBox1.Count - 1 do
+    begin
+      if CheckListBox1.Checked[i] then
+      begin
+        id_cargo := Integer(CheckListBox1.Items.Objects[i]);
+        datamodule1.QueryPC.Append;
+        datamodule1.QueryPC.FieldByName('id_cargo').AsInteger := id_cargo;
+        datamodule1.QueryPC.FieldByName('id_pro').AsInteger := id_pro;
+        datamodule1.QueryPC.Post;
+      end;
+    end;
+
+    Form9.Close;
+    Form8.Show;
     Lblrequired.Visible := False;
   end
   else
     Lblrequired.Visible := True;
 end;
 
-
-
-//procedure TForm9.ComboBox1Enter(Sender: TObject);
-//begin
-//  PopularCombo;
-//end;
 
 procedure TForm9.PCadClick(Sender: TObject);
 begin

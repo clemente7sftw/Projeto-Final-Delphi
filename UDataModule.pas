@@ -70,6 +70,7 @@ type
     QueryAghora_inicio: TTimeField;
     QueryClientesnome_clie: TWideStringField;
     QueryClientesemail_clie: TWideStringField;
+    FDQuery1: TFDQuery;
   private
     { Private declarations }
   public
