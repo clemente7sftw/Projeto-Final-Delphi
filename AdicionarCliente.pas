@@ -11,7 +11,6 @@ type
   TForm5 = class(TForm)
     Fundo: TPanel;
     Image1: TImage;
-    DataSource1: TDataSource;
     Label1: TLabel;
     DBEdit1: TDBEdit;
     Label2: TLabel;

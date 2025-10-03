@@ -50,6 +50,7 @@ type
     procedure Procurar;
     procedure Editar;
     procedure Salvar;
+    procedure DBEdit1KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -84,6 +85,15 @@ end;
 procedure TForm4.BtnExcluirClick(Sender: TObject);
 begin
   datamodule1.QueryClientes.delete;
+end;
+
+procedure TForm4.DBEdit1KeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    Key := #0;
+    SelectNext(Sender as TWinControl, True, True);
+  end;
 end;
 
 procedure TForm4.Editar;

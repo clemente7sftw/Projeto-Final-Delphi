@@ -22,30 +22,28 @@ object Form15: TForm15
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 787
-    ExplicitHeight = 548
     object Label1: TLabel
-      Left = 379
-      Top = 267
-      Width = 30
+      Left = 440
+      Top = 168
+      Width = 57
       Height = 15
-      Caption = 'preco'
+      Caption = 'nome_serv'
       FocusControl = DBEdit1
     end
     object Label2: TLabel
-      Left = 379
-      Top = 201
+      Left = 440
+      Top = 248
       Width = 43
       Height = 15
       Caption = 'duracao'
       FocusControl = DBEdit2
     end
     object Label3: TLabel
-      Left = 379
-      Top = 140
-      Width = 31
+      Left = 440
+      Top = 312
+      Width = 30
       Height = 15
-      Caption = 'nome'
+      Caption = 'preco'
       FocusControl = DBEdit3
     end
     object PbtnAdd: TPanel
@@ -58,8 +56,8 @@ object Form15: TForm15
       OnClick = PbtnAddClick
     end
     object DBGServicos: TDBGrid
-      Left = 84
-      Top = 267
+      Left = 24
+      Top = 269
       Width = 289
       Height = 272
       DataSource = DataSource1
@@ -73,7 +71,7 @@ object Form15: TForm15
       Columns = <
         item
           Expanded = False
-          FieldName = 'nome'
+          FieldName = 'nome_serv'
           Width = 141
           Visible = True
         end
@@ -111,36 +109,6 @@ object Form15: TForm15
       TabOrder = 4
       OnClick = BtnConfClick
     end
-    object DBEdit1: TDBEdit
-      Left = 379
-      Top = 288
-      Width = 134
-      Height = 23
-      DataField = 'preco'
-      DataSource = DataSource1
-      Enabled = False
-      TabOrder = 5
-    end
-    object DBEdit2: TDBEdit
-      Left = 379
-      Top = 222
-      Width = 134
-      Height = 23
-      DataField = 'duracao'
-      DataSource = DataSource1
-      Enabled = False
-      TabOrder = 6
-    end
-    object DBEdit3: TDBEdit
-      Left = 379
-      Top = 161
-      Width = 134
-      Height = 23
-      DataField = 'nome'
-      DataSource = DataSource1
-      Enabled = False
-      TabOrder = 7
-    end
     object EdPesquisa: TEdit
       Left = 0
       Top = 204
@@ -152,7 +120,7 @@ object Form15: TForm15
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 5
       TextHint = 'Pesquise'
     end
     object Panel1: TPanel
@@ -162,7 +130,7 @@ object Form15: TForm15
       Height = 45
       Color = clBlack
       ParentBackground = False
-      TabOrder = 9
+      TabOrder = 6
       object Image2: TImage
         Left = 8
         Top = 8
@@ -189,6 +157,34 @@ object Form15: TForm15
           D2A81F0D06031A556FF42F16AD6865009FFF18B81201FEDAD9A9E77EF9DF6A7F
           12FC0B1293E6224739C13B0000000049454E44AE426082}
       end
+    end
+    object DBEdit1: TDBEdit
+      Left = 440
+      Top = 184
+      Width = 185
+      Height = 23
+      DataField = 'nome_serv'
+      DataSource = DataSource1
+      TabOrder = 7
+      OnKeyPress = DBEdit1KeyPress
+    end
+    object DBEdit2: TDBEdit
+      Left = 440
+      Top = 269
+      Width = 185
+      Height = 23
+      DataField = 'duracao'
+      DataSource = DataSource1
+      TabOrder = 8
+    end
+    object DBEdit3: TDBEdit
+      Left = 440
+      Top = 344
+      Width = 185
+      Height = 23
+      DataField = 'preco'
+      DataSource = DataSource1
+      TabOrder = 9
     end
   end
   object DataSource1: TDataSource

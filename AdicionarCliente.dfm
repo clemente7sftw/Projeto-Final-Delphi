@@ -24,7 +24,7 @@ object Form5: TForm5
     TabOrder = 0
     object Image1: TImage
       Left = 24
-      Top = 400
+      Top = 336
       Width = 33
       Height = 41
       Picture.Data = {
@@ -80,7 +80,7 @@ object Form5: TForm5
       Width = 265
       Height = 39
       DataField = 'nome_clie'
-      DataSource = DataSource1
+      DataSource = Form4.DataSource1
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -23
@@ -96,7 +96,7 @@ object Form5: TForm5
       Width = 265
       Height = 39
       DataField = 'email_clie'
-      DataSource = DataSource1
+      DataSource = Form4.DataSource1
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -23
@@ -106,18 +106,13 @@ object Form5: TForm5
       TabOrder = 1
     end
     object btnCad: TPanel
-      Left = 436
-      Top = 416
+      Left = 268
+      Top = 336
       Width = 121
       Height = 41
       Caption = 'btnCad'
       TabOrder = 2
       OnClick = btnCadClick
     end
-  end
-  object DataSource1: TDataSource
-    DataSet = DataModule1.QueryClientes
-    Left = 512
-    Top = 48
   end
 end

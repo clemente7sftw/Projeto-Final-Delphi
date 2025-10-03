@@ -22,6 +22,8 @@ object Form4: TForm4
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1918
+    ExplicitHeight = 1053
     object Image1: TImage
       Left = 0
       Top = 223
@@ -595,6 +597,7 @@ object Form4: TForm4
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 8
+      OnKeyPress = DBEdit1KeyPress
     end
   end
   object Barra: TPanel

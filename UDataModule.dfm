@@ -91,50 +91,59 @@ object DataModule1: TDataModule1
       '   ')
     Left = 163
     Top = 110
-    object QueryProfissionaisid_pro: TIntegerField
-      FieldName = 'id_pro'
-      Origin = 'id_pro'
+    object QueryProfissionaisid_profissional: TIntegerField
+      FieldName = 'id_profissional'
+      Origin = 'id_profissional'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
-    object QueryProfissionaisnome: TWideStringField
-      FieldName = 'nome'
-      Origin = 'nome'
-      Size = 100
+    object QueryProfissionaisnome_pro: TWideStringField
+      FieldName = 'nome_pro'
+      Origin = 'nome_pro'
+      Size = 150
     end
     object QueryProfissionaisemail: TWideStringField
       FieldName = 'email'
       Origin = 'email'
-      Size = 100
+      Size = 150
     end
-    object QueryProfissionaiscpf: TWideStringField
-      FieldName = 'cpf'
-      Origin = 'cpf'
-      Size = 14
+    object QueryProfissionaistelefone: TWideStringField
+      FieldName = 'telefone'
+      Origin = 'telefone'
+    end
+    object QueryProfissionaisid_cargo: TIntegerField
+      FieldName = 'id_cargo'
+      Origin = 'id_cargo'
     end
     object QueryProfissionaiscep: TWideStringField
       FieldName = 'cep'
       Origin = 'cep'
-      Size = 10
+      FixedChar = True
+      Size = 8
     end
     object QueryProfissionaisrua: TWideStringField
       FieldName = 'rua'
       Origin = 'rua'
-      Size = 100
+      Size = 150
     end
     object QueryProfissionaisbairro: TWideStringField
       FieldName = 'bairro'
       Origin = 'bairro'
-      Size = 50
+      Size = 100
     end
     object QueryProfissionaiscidade: TWideStringField
       FieldName = 'cidade'
       Origin = 'cidade'
-      Size = 50
+      Size = 100
     end
     object QueryProfissionaisestado: TWideStringField
       FieldName = 'estado'
       Origin = 'estado'
       Size = 50
+    end
+    object QueryProfissionaisdata_cad: TSQLTimeStampField
+      FieldName = 'data_cad'
+      Origin = 'data_cad'
+      ProviderFlags = [pfInUpdate]
     end
   end
   object QueryEmpresa: TFDQuery
@@ -151,10 +160,15 @@ object DataModule1: TDataModule1
       '')
     Left = 46
     Top = 298
-    object QueryServicosnome: TWideStringField
-      FieldName = 'nome'
-      Origin = 'nome'
-      Size = 50
+    object QueryServicosid_servico: TIntegerField
+      FieldName = 'id_servico'
+      Origin = 'id_servico'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object QueryServicosnome_serv: TWideStringField
+      FieldName = 'nome_serv'
+      Origin = 'nome_serv'
+      Size = 150
     end
     object QueryServicosduracao: TIntegerField
       FieldName = 'duracao'
@@ -170,11 +184,6 @@ object DataModule1: TDataModule1
       FieldName = 'data_cad'
       Origin = 'data_cad'
       ProviderFlags = [pfInUpdate]
-    end
-    object QueryServicosid_servico: TIntegerField
-      FieldName = 'id_servico'
-      Origin = 'id_servico'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
   end
   object QueryCS: TFDQuery
@@ -263,7 +272,7 @@ object DataModule1: TDataModule1
       'SELECT '
       '    p.nome_pro,'
       '    p.email,'
-      '    STRING_AGG(c.nome, '#39', '#39')::varchar(500) AS nome_cargo'
+      '    STRING_AGG(c.nome_cargo, '#39', '#39')::varchar(500) AS nome_cargo'
       'FROM '
       '    profissionais p'
       'LEFT JOIN '
@@ -279,15 +288,15 @@ object DataModule1: TDataModule1
       '    p.nome_pro;')
     Left = 150
     Top = 390
-    object QueryRPCnome: TWideStringField
-      FieldName = 'nome'
-      Origin = 'nome'
-      Size = 100
+    object QueryRPCnome_pro: TWideStringField
+      FieldName = 'nome_pro'
+      Origin = 'nome_pro'
+      Size = 150
     end
     object QueryRPCemail: TWideStringField
       FieldName = 'email'
       Origin = 'email'
-      Size = 100
+      Size = 150
     end
     object QueryRPCnome_cargo: TWideStringField
       AutoGenerateValue = arDefault
@@ -301,7 +310,7 @@ object DataModule1: TDataModule1
     Connection = conexao
     SQL.Strings = (
       'SELECT '
-      '    c.nome,'
+      '    c.nome_cargo,'
       '    s.nome_serv AS nome_serv'
       'FROM '
       '    cargos c'
@@ -310,7 +319,7 @@ object DataModule1: TDataModule1
       'LEFT JOIN '
       '    servicos s ON cp.id_servico = s.id_servico'
       'ORDER BY '
-      '    c.nome;'
+      '    c.nome_cargo;'
       '')
     Left = 226
     Top = 308
@@ -319,11 +328,11 @@ object DataModule1: TDataModule1
       Origin = 'nome_cargo'
       Size = 100
     end
-    object QueryRCSnome_servico: TWideStringField
+    object QueryRCSnome_serv: TWideStringField
       AutoGenerateValue = arDefault
-      FieldName = 'nome_servico'
-      Origin = 'nome_servico'
-      Size = 50
+      FieldName = 'nome_serv'
+      Origin = 'nome_serv'
+      Size = 150
     end
   end
   object QueryAg: TFDQuery

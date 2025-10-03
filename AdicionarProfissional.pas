@@ -51,6 +51,8 @@ end;
 
 procedure TForm9.FormShow(Sender: TObject);
 begin
+  datamodule1.QueryProfissionais.Close;
+  datamodule1.QueryProfissionais.Open;
     datamodule1.QueryProfissionais.Append;
     datamodule1.QueryCargos.close;
     datamodule1.QueryCargos.open;
@@ -89,7 +91,7 @@ begin
       datamodule1.QueryProfissionais.Post;
 
     datamodule1.QueryProfissionais.Refresh;
-    id_pro := datamodule1.QueryProfissionais.FieldByName('id_pro').AsInteger;
+    id_pro := datamodule1.QueryProfissionais.FieldByName('id_profissional').AsInteger;
 
     for i := 0 to CheckListBox1.Count - 1 do
     begin
@@ -98,7 +100,7 @@ begin
         id_cargo := Integer(CheckListBox1.Items.Objects[i]);
         datamodule1.QueryPC.Append;
         datamodule1.QueryPC.FieldByName('id_cargo').AsInteger := id_cargo;
-        datamodule1.QueryPC.FieldByName('id_pro').AsInteger := id_pro;
+        datamodule1.QueryPC.FieldByName('id_profissional').AsInteger := id_pro;
         datamodule1.QueryPC.Post;
       end;
     end;

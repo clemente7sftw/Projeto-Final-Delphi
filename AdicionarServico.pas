@@ -23,7 +23,8 @@ type
     procedure PCadClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure PVoltarClick(Sender: TObject);
-//    procedure BtnAddFotoClick(Sender: TObject);
+    procedure DBEdit1KeyPress(Sender: TObject; var Key: Char);
+    procedure Salvar;
   private
     { Private declarations }
   public
@@ -37,21 +38,22 @@ implementation
 
 {$R *.dfm}
 uses UMetodos, CServicos, UDataModule;
-//
-//procedure TForm10.BtnAddFotoClick(Sender: TObject);
-//begin
-//  if OpenDialog1.Execute then
-//  begin
-//    image1.Picture.LoadFromFile(OpenDialog1.FileName);
-//    DBEdCaminhoF.Text := OpenDialog1.FileName;
-//  end;
-//end;
+
+
+procedure TForm10.DBEdit1KeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    Key := #0;
+    SelectNext(Sender as TWinControl, True, True);
+  end;
+end;
 
 procedure TForm10.FormCreate(Sender: TObject);
 begin
   WindowState:=wsMaximized;
   Lblrequired.Visible:= false;
-//  DBEdCaminhoF.Visible:= false;
+//
 end;
 
 
@@ -62,9 +64,20 @@ end;
 
 procedure TForm10.PCadClick(Sender: TObject);
 begin
-if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and (DBEdit3.Text <> '') then
+  Salvar;
+end;
+
+procedure TForm10.PVoltarClick(Sender: TObject);
+begin
+  Form10.Close;
+  Form15.Show;
+end;
+
+procedure TForm10.Salvar;
+begin
+  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and (DBEdit3.Text <> '') then
      begin
-    //DataModule1.QueryServicos.FieldByName('foto_url').AsString := DBEdCaminhoF.Text;
+
       with DataModule1.QueryServicos do
       begin
         datamodule1.QueryServicos.Post;
@@ -73,13 +86,8 @@ if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and (DBEdit3.Text <> '') then
       end;
     end else begin
       Lblrequired.Visible:= true;
-    end;
-end;
 
-procedure TForm10.PVoltarClick(Sender: TObject);
-begin
-  Form10.Close;
-  Form15.Show;
+    end;
 end;
 
 end.
