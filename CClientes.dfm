@@ -55,7 +55,6 @@ object Form4: TForm4
       Width = 59
       Height = 30
       Caption = 'Nome'
-      FocusControl = DBEdit1
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
@@ -69,7 +68,6 @@ object Form4: TForm4
       Width = 51
       Height = 30
       Caption = 'Email'
-      FocusControl = DBEdit2
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
@@ -472,58 +470,50 @@ object Form4: TForm4
       Top = 223
       Width = 65
       Height = 41
-      Caption = 'BtnEditar'
+      Caption = 'Editar'
+      Color = 8612866
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
       TabOrder = 2
       OnClick = BtnEditarClick
     end
     object BtnExcluir: TPanel
-      Left = 480
+      Left = 464
       Top = 223
       Width = 65
       Height = 41
-      Caption = 'BtnExcluir'
+      Caption = 'Excluir'
+      Color = 8612866
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
       TabOrder = 3
       OnClick = BtnExcluirClick
     end
-    object DBEdit1: TDBEdit
-      Left = 1121
-      Top = 410
-      Width = 376
-      Height = 38
-      DataField = 'nome_clie'
-      DataSource = DataSource1
-      Enabled = False
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -21
-      Font.Name = 'Segoe UI Semibold'
+    object BtnConf: TPanel
+      Left = 271
+      Top = 223
+      Width = 82
+      Height = 41
+      Caption = 'Confirmar'
+      Color = 8612866
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
+      ParentBackground = False
       ParentFont = False
       TabOrder = 4
-    end
-    object DBEdit2: TDBEdit
-      Left = 1121
-      Top = 509
-      Width = 376
-      Height = 38
-      DataField = 'email_clie'
-      DataSource = DataSource1
-      Enabled = False
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -21
-      Font.Name = 'Segoe UI Semibold'
-      Font.Style = [fsBold]
-      ParentFont = False
-      TabOrder = 5
-    end
-    object BtnConf: TPanel
-      Left = 247
-      Top = 223
-      Width = 89
-      Height = 41
-      Caption = 'BtnConf'
-      TabOrder = 6
       OnClick = BtnConfClick
     end
     object EdPesquisa: TEdit
@@ -537,7 +527,7 @@ object Form4: TForm4
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 5
       TextHint = 'Pesquise'
     end
     object Panel1: TPanel
@@ -547,7 +537,7 @@ object Form4: TForm4
       Height = 45
       Color = clBlack
       ParentBackground = False
-      TabOrder = 8
+      TabOrder = 6
       object Image2: TImage
         Left = 8
         Top = 9
@@ -575,6 +565,36 @@ object Form4: TForm4
           12FC0B1293E6224739C13B0000000049454E44AE426082}
         OnClick = Image2Click
       end
+    end
+    object DBEdit2: TDBEdit
+      Left = 1121
+      Top = 520
+      Width = 376
+      Height = 39
+      DataField = 'email_clie'
+      DataSource = DataSource1
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -23
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 7
+    end
+    object DBEdit1: TDBEdit
+      Left = 1121
+      Top = 427
+      Width = 376
+      Height = 39
+      DataField = 'nome_clie'
+      DataSource = DataSource1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -23
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 8
     end
   end
   object Barra: TPanel
@@ -653,7 +673,7 @@ object Form4: TForm4
   end
   object DataSource1: TDataSource
     DataSet = DataModule1.QueryClientes
-    Left = 128
-    Top = 232
+    Left = 640
+    Top = 296
   end
 end

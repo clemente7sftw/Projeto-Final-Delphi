@@ -12,17 +12,9 @@ uses
 
 type
   TDataModule1 = class(TDataModule)
-    FDConnection1: TFDConnection;
+    conexao: TFDConnection;
     FDPhysPgDriverLink1: TFDPhysPgDriverLink;
     QueryClientes: TFDQuery;
-    QueryReservas: TFDQuery;
-    QueryReservasid_reserva: TIntegerField;
-    QueryReservasid_clie: TIntegerField;
-    QueryReservasid_servicos: TIntegerField;
-    QueryReservasid_pro: TIntegerField;
-    QueryReservasemail_clie: TWideStringField;
-    QueryReservasdt_reserva: TDateField;
-    QueryReservashr_reserva: TTimeField;
     QueryProfissionais: TFDQuery;
     QueryProfissionaisid_pro: TIntegerField;
     QueryProfissionaisnome: TWideStringField;
@@ -68,9 +60,17 @@ type
     QueryAgnome: TWideStringField;
     QueryAgdata_agendamento: TDateField;
     QueryAghora_inicio: TTimeField;
+    QueryClientesid_clie: TIntegerField;
     QueryClientesnome_clie: TWideStringField;
     QueryClientesemail_clie: TWideStringField;
-    FDQuery1: TFDQuery;
+    QueryClientestelefone: TWideStringField;
+    QueryClientescpf: TWideStringField;
+    QueryClientescep: TWideStringField;
+    QueryClientesrua: TWideStringField;
+    QueryClientesbairro: TWideStringField;
+    QueryClientescidade: TWideStringField;
+    QueryClientesestado: TWideStringField;
+    QueryClientesdata_cad: TSQLTimeStampField;
   private
     { Private declarations }
   public

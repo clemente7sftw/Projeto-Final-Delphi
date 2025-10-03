@@ -16,14 +16,15 @@ type
     DBEdit1: TDBEdit;
     Label2: TLabel;
     DBEdit2: TDBEdit;
-    PCad: TPanel;
+    btnCad: TPanel;
     Lblrequired: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure PbtnVoltarClick(Sender: TObject);
     procedure LbFornecedoresClick(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure PCadClick(Sender: TObject);
+    procedure btnCadClick(Sender: TObject);
+    procedure DBEdit1KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -38,6 +39,15 @@ implementation
 {$R *.dfm}
 
 uses CClientes, UMetodos, CFornecedores, UDataModule;
+
+procedure TForm5.DBEdit1KeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    Key := #0;
+    SelectNext(Sender as TWinControl, True, True);
+  end;
+end;
 
 procedure TForm5.FormCreate(Sender: TObject);
 begin
@@ -70,7 +80,7 @@ begin
     Form4.Show;
 end;
 
-procedure TForm5.PCadClick(Sender: TObject);
+procedure TForm5.btnCadClick(Sender: TObject);
 begin
 if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
    begin

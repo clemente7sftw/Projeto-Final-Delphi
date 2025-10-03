@@ -22,10 +22,6 @@ object Form5: TForm5
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 192
-    ExplicitTop = 240
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object Image1: TImage
       Left = 24
       Top = 400
@@ -81,29 +77,42 @@ object Form5: TForm5
     object DBEdit1: TDBEdit
       Left = 24
       Top = 120
-      Width = 145
-      Height = 23
+      Width = 265
+      Height = 39
       DataField = 'nome_clie'
       DataSource = DataSource1
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -23
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
       TabOrder = 0
+      OnKeyPress = DBEdit1KeyPress
     end
     object DBEdit2: TDBEdit
       Left = 24
       Top = 197
-      Width = 145
-      Height = 23
+      Width = 265
+      Height = 39
       DataField = 'email_clie'
       DataSource = DataSource1
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -23
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
       TabOrder = 1
     end
-    object PCad: TPanel
+    object btnCad: TPanel
       Left = 436
       Top = 416
       Width = 121
       Height = 41
-      Caption = 'PCad'
+      Caption = 'btnCad'
       TabOrder = 2
-      OnClick = PCadClick
+      OnClick = btnCadClick
     end
   end
   object DataSource1: TDataSource
