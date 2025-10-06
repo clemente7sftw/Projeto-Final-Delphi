@@ -342,7 +342,6 @@ object Form20: TForm20
       Top = 552
       Width = 209
       Height = 153
-      OnPaint = PaintBox1Paint
     end
     object Barra: TPanel
       Left = 0
@@ -420,16 +419,22 @@ object Form20: TForm20
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
-        OnClick = LbCargosClick
+        OnClick = Label2Click
       end
-    end
-    object Button1: TButton
-      Left = 480
-      Top = 408
-      Width = 121
-      Height = 25
-      Caption = 'Button1'
-      TabOrder = 1
+      object Label4: TLabel
+        Left = 410
+        Top = 3
+        Width = 146
+        Height = 30
+        Caption = 'Agendamentos'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -21
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+        OnClick = Label4Click
+      end
     end
   end
 end

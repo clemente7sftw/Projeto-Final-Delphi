@@ -47,13 +47,6 @@ type
     QueryRPCemail: TWideStringField;
     QueryRPCnome_cargo: TWideStringField;
     QueryAg: TFDQuery;
-    QueryAgid_agendamento: TIntegerField;
-    QueryAgnome_clie: TWideStringField;
-    QueryAgnome: TWideStringField;
-    QueryAgdata_agendamento: TDateField;
-    QueryAghora_inicio: TTimeField;
-    QueryClientesnome_clie: TWideStringField;
-    QueryClientesemail_clie: TWideStringField;
     QueryRCSnome_cargo: TWideStringField;
     QueryRCSnome: TWideStringField;
     QueryAgendamentos: TFDQuery;
@@ -72,6 +65,32 @@ type
     QueryProfissionaiscidade: TWideStringField;
     QueryProfissionaisestado: TWideStringField;
     QueryFClientes: TFDQuery;
+    QueryClientesid_clie: TIntegerField;
+    QueryClientesnome_clie: TWideStringField;
+    QueryClientesemail_clie: TWideStringField;
+    QueryClientessenha_clie: TWideStringField;
+    QueryClientescpf_clie: TWideStringField;
+    QueryClientesgenero_clie: TWideStringField;
+    QueryClientesfone_clie: TWideStringField;
+    QueryClientescep_clie: TWideStringField;
+    QueryClientesrua_clie: TWideStringField;
+    QueryClientesbairro_clie: TWideStringField;
+    QueryClientescidade_clie: TWideStringField;
+    QueryClientesestado_clie: TWideStringField;
+    QueryClientesdata_cad: TSQLTimeStampField;
+    QueryAgid_agendamento: TIntegerField;
+    QueryAgnome_clie: TWideStringField;
+    QueryAgnome: TWideStringField;
+    QueryAgdata_agendamento: TDateField;
+    QueryAghora_inicio: TTimeField;
+    QueryAgendamentosid_agendamento: TIntegerField;
+    QueryAgendamentosid_clie: TIntegerField;
+    QueryAgendamentosid_pro: TIntegerField;
+    QueryAgendamentosid_servico: TIntegerField;
+    QueryAgendamentosdata_agendamento: TDateField;
+    QueryAgendamentoshora_inicio: TTimeField;
+    QueryAgendamentospreco: TFMTBCDField;
+    QueryAgendamentosstatus: TBooleanField;
   private
     { Private declarations }
   public

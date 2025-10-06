@@ -25,6 +25,11 @@ object DataModule1: TDataModule1
       'select * from clientes')
     Left = 32
     Top = 88
+    object QueryClientesid_clie: TIntegerField
+      FieldName = 'id_clie'
+      Origin = 'id_clie'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
     object QueryClientesnome_clie: TWideStringField
       FieldName = 'nome_clie'
       Origin = 'nome_clie'
@@ -34,6 +39,54 @@ object DataModule1: TDataModule1
       FieldName = 'email_clie'
       Origin = 'email_clie'
       Size = 100
+    end
+    object QueryClientessenha_clie: TWideStringField
+      FieldName = 'senha_clie'
+      Origin = 'senha_clie'
+      Size = 100
+    end
+    object QueryClientescpf_clie: TWideStringField
+      FieldName = 'cpf_clie'
+      Origin = 'cpf_clie'
+      Size = 14
+    end
+    object QueryClientesgenero_clie: TWideStringField
+      FieldName = 'genero_clie'
+      Origin = 'genero_clie'
+    end
+    object QueryClientesfone_clie: TWideStringField
+      FieldName = 'fone_clie'
+      Origin = 'fone_clie'
+    end
+    object QueryClientescep_clie: TWideStringField
+      FieldName = 'cep_clie'
+      Origin = 'cep_clie'
+      Size = 9
+    end
+    object QueryClientesrua_clie: TWideStringField
+      FieldName = 'rua_clie'
+      Origin = 'rua_clie'
+      Size = 100
+    end
+    object QueryClientesbairro_clie: TWideStringField
+      FieldName = 'bairro_clie'
+      Origin = 'bairro_clie'
+      Size = 50
+    end
+    object QueryClientescidade_clie: TWideStringField
+      FieldName = 'cidade_clie'
+      Origin = 'cidade_clie'
+      Size = 50
+    end
+    object QueryClientesestado_clie: TWideStringField
+      FieldName = 'estado_clie'
+      Origin = 'estado_clie'
+      Size = 50
+    end
+    object QueryClientesdata_cad: TSQLTimeStampField
+      FieldName = 'data_cad'
+      Origin = 'data_cad'
+      ProviderFlags = [pfInUpdate]
     end
   end
   object QueryReservas: TFDQuery
@@ -369,6 +422,42 @@ object DataModule1: TDataModule1
       'select * from agendamentos')
     Left = 784
     Top = 360
+    object QueryAgendamentosid_agendamento: TIntegerField
+      FieldName = 'id_agendamento'
+      Origin = 'id_agendamento'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object QueryAgendamentosid_clie: TIntegerField
+      FieldName = 'id_clie'
+      Origin = 'id_clie'
+    end
+    object QueryAgendamentosid_pro: TIntegerField
+      FieldName = 'id_pro'
+      Origin = 'id_pro'
+    end
+    object QueryAgendamentosid_servico: TIntegerField
+      FieldName = 'id_servico'
+      Origin = 'id_servico'
+    end
+    object QueryAgendamentosdata_agendamento: TDateField
+      FieldName = 'data_agendamento'
+      Origin = 'data_agendamento'
+    end
+    object QueryAgendamentoshora_inicio: TTimeField
+      FieldName = 'hora_inicio'
+      Origin = 'hora_inicio'
+      ProviderFlags = [pfInUpdate]
+    end
+    object QueryAgendamentospreco: TFMTBCDField
+      FieldName = 'preco'
+      Origin = 'preco'
+      Precision = 10
+      Size = 9
+    end
+    object QueryAgendamentosstatus: TBooleanField
+      FieldName = 'status'
+      Origin = 'status'
+    end
   end
   object QueryFClientes: TFDQuery
     Connection = FDConnection1
