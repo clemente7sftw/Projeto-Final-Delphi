@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, System.RegularExpressions, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
-  Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls, FireDAC.Comp.Client, FireDAC.Stan.Param;
+  Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls, FireDAC.Comp.Client, FireDAC.Stan.Param,Winapi.ShellAPI;
 
 type
   TForm2 = class(TForm)
@@ -28,6 +28,7 @@ type
     PnlEscsenha: TPanel;
     imgsenha: TImage;
     EdEmail: TEdit;
+    Label3: TLabel;
     procedure LbTemContaClick(Sender: TObject);
     procedure EdEmailKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -35,6 +36,7 @@ type
     procedure Label2Click(Sender: TObject);
     procedure BtnCadClick(Sender: TObject);
     procedure imgsenhaClick(Sender: TObject);
+    procedure Label3Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -108,6 +110,11 @@ procedure TForm2.Label2Click(Sender: TObject);
 begin
   Form1.Show;
   Form2.Close;
+end;
+
+procedure TForm2.Label3Click(Sender: TObject);
+begin
+ShellExecute(0, 'open', 'file:///C:/Users/gabri/OneDrive/Documentos/Termos-e-condicoes-BS/termos%20bs/termosecondicoes.html', nil, nil, SW_SHOWNORMAL);
 end;
 
 procedure TForm2.LbTemContaClick(Sender: TObject);

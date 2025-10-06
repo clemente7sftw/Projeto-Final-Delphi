@@ -1,37 +1,30 @@
 object DataModule1: TDataModule1
-  Height = 555
-  Width = 1241
-  PixelsPerInch = 120
-  object conexao: TFDConnection
+  Height = 444
+  Width = 993
+  object FDConnection1: TFDConnection
     Params.Strings = (
       'Database=beauty_stage'
       'User_Name=postgres'
-      'Password=2007'
+      'Password=root'
       'Server=localhost'
       'DriverID=PG')
     Connected = True
-    Left = 200
-    Top = 20
+    Left = 160
+    Top = 16
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
     VendorLib = 
-      'C:\Users\gabi\OneDrive\Documents\Projeto-Final-Delphi\Win32\Debu' +
-      'g\lib\libpq.dll'
-    Left = 70
-    Top = 20
+      'C:\Users\gabri\OneDrive\Documentos\Projeto-Final-Delphi\Win32\De' +
+      'bug\lib\libpq.dll'
+    Left = 56
+    Top = 16
   end
   object QueryClientes: TFDQuery
-    Connection = conexao
+    Connection = FDConnection1
     SQL.Strings = (
-      'SELECT * FROM clientes;'
-      '')
-    Left = 40
-    Top = 110
-    object QueryClientesid_clie: TIntegerField
-      FieldName = 'id_clie'
-      Origin = 'id_clie'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
+      'select * from clientes')
+    Left = 32
+    Top = 88
     object QueryClientesnome_clie: TWideStringField
       FieldName = 'nome_clie'
       Origin = 'nome_clie'
@@ -40,144 +33,124 @@ object DataModule1: TDataModule1
     object QueryClientesemail_clie: TWideStringField
       FieldName = 'email_clie'
       Origin = 'email_clie'
-      Size = 150
-    end
-    object QueryClientestelefone: TWideStringField
-      FieldName = 'telefone'
-      Origin = 'telefone'
-    end
-    object QueryClientescpf: TWideStringField
-      FieldName = 'cpf'
-      Origin = 'cpf'
-      FixedChar = True
-      Size = 11
-    end
-    object QueryClientescep: TWideStringField
-      FieldName = 'cep'
-      Origin = 'cep'
-      FixedChar = True
-      Size = 8
-    end
-    object QueryClientesrua: TWideStringField
-      FieldName = 'rua'
-      Origin = 'rua'
-      Size = 150
-    end
-    object QueryClientesbairro: TWideStringField
-      FieldName = 'bairro'
-      Origin = 'bairro'
       Size = 100
     end
-    object QueryClientescidade: TWideStringField
-      FieldName = 'cidade'
-      Origin = 'cidade'
+  end
+  object QueryReservas: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from reservas'
+      '')
+    Left = 32
+    Top = 168
+    object QueryReservasid_reserva: TIntegerField
+      FieldName = 'id_reserva'
+      Origin = 'id_reserva'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object QueryReservasid_clie: TIntegerField
+      FieldName = 'id_clie'
+      Origin = 'id_clie'
+    end
+    object QueryReservasid_servicos: TIntegerField
+      FieldName = 'id_servicos'
+      Origin = 'id_servicos'
+    end
+    object QueryReservasid_pro: TIntegerField
+      FieldName = 'id_pro'
+      Origin = 'id_pro'
+    end
+    object QueryReservasemail_clie: TWideStringField
+      FieldName = 'email_clie'
+      Origin = 'email_clie'
       Size = 100
     end
-    object QueryClientesestado: TWideStringField
-      FieldName = 'estado'
-      Origin = 'estado'
-      Size = 50
+    object QueryReservasdt_reserva: TDateField
+      FieldName = 'dt_reserva'
+      Origin = 'dt_reserva'
     end
-    object QueryClientesdata_cad: TSQLTimeStampField
-      FieldName = 'data_cad'
-      Origin = 'data_cad'
+    object QueryReservashr_reserva: TTimeField
+      FieldName = 'hr_reserva'
+      Origin = 'hr_reserva'
       ProviderFlags = [pfInUpdate]
     end
   end
   object QueryProfissionais: TFDQuery
-    Connection = conexao
+    Connection = FDConnection1
     SQL.Strings = (
       '   select * from profissionais'
       '   ')
-    Left = 163
-    Top = 110
-    object QueryProfissionaisid_profissional: TIntegerField
-      FieldName = 'id_profissional'
-      Origin = 'id_profissional'
+    Left = 130
+    Top = 88
+    object QueryProfissionaisid_pro: TIntegerField
+      FieldName = 'id_pro'
+      Origin = 'id_pro'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
-    object QueryProfissionaisnome_pro: TWideStringField
-      FieldName = 'nome_pro'
-      Origin = 'nome_pro'
-      Size = 150
+    object QueryProfissionaisnome: TWideStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 100
     end
     object QueryProfissionaisemail: TWideStringField
       FieldName = 'email'
       Origin = 'email'
-      Size = 150
+      Size = 100
     end
-    object QueryProfissionaistelefone: TWideStringField
-      FieldName = 'telefone'
-      Origin = 'telefone'
-    end
-    object QueryProfissionaisid_cargo: TIntegerField
-      FieldName = 'id_cargo'
-      Origin = 'id_cargo'
+    object QueryProfissionaiscpf: TWideStringField
+      FieldName = 'cpf'
+      Origin = 'cpf'
+      Size = 14
     end
     object QueryProfissionaiscep: TWideStringField
       FieldName = 'cep'
       Origin = 'cep'
-      FixedChar = True
-      Size = 8
+      Size = 10
     end
     object QueryProfissionaisrua: TWideStringField
       FieldName = 'rua'
       Origin = 'rua'
-      Size = 150
+      Size = 100
     end
     object QueryProfissionaisbairro: TWideStringField
       FieldName = 'bairro'
       Origin = 'bairro'
-      Size = 100
+      Size = 50
     end
     object QueryProfissionaiscidade: TWideStringField
       FieldName = 'cidade'
       Origin = 'cidade'
-      Size = 100
+      Size = 50
     end
     object QueryProfissionaisestado: TWideStringField
       FieldName = 'estado'
       Origin = 'estado'
       Size = 50
     end
-    object QueryProfissionaisdata_cad: TSQLTimeStampField
-      FieldName = 'data_cad'
-      Origin = 'data_cad'
-      ProviderFlags = [pfInUpdate]
-    end
   end
   object QueryEmpresa: TFDQuery
-    Connection = conexao
+    Connection = FDConnection1
     SQL.Strings = (
       'select * from empresas')
-    Left = 156
-    Top = 203
+    Left = 125
+    Top = 162
   end
   object QueryServicos: TFDQuery
-    Connection = conexao
+    Connection = FDConnection1
     SQL.Strings = (
       'select * from servicos '
       '')
-<<<<<<< HEAD
     Left = 29
     Top = 238
-    object QueryServicosnome: TWideStringField
-      FieldName = 'nome'
-      Origin = 'nome'
-      Size = 50
-=======
-    Left = 46
-    Top = 298
     object QueryServicosid_servico: TIntegerField
       FieldName = 'id_servico'
       Origin = 'id_servico'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
-    object QueryServicosnome_serv: TWideStringField
-      FieldName = 'nome_serv'
-      Origin = 'nome_serv'
-      Size = 150
->>>>>>> 46fb90981f511c7e067d1f2b8f99f18f161310fc
+    object QueryServicosnome: TWideStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 50
     end
     object QueryServicosduracao: TIntegerField
       FieldName = 'duracao'
@@ -196,11 +169,11 @@ object DataModule1: TDataModule1
     end
   end
   object QueryCS: TFDQuery
-    Connection = conexao
+    Connection = FDConnection1
     SQL.Strings = (
       'SELECT * from cargos_servicos')
-    Left = 140
-    Top = 296
+    Left = 131
+    Top = 237
     object QueryCSid_cargo: TIntegerField
       FieldName = 'id_cargo'
       Origin = 'id_cargo'
@@ -211,12 +184,12 @@ object DataModule1: TDataModule1
     end
   end
   object QueryCargos: TFDQuery
-    Connection = conexao
+    Connection = FDConnection1
     SQL.Strings = (
       'select * from cargos'
       '')
-    Left = 256
-    Top = 239
+    Left = 486
+    Top = 162
     object QueryCargosid_cargo: TIntegerField
       FieldName = 'id_cargo'
       Origin = 'id_cargo'
@@ -234,11 +207,11 @@ object DataModule1: TDataModule1
     end
   end
   object Queryfornecedores: TFDQuery
-    Connection = conexao
+    Connection = FDConnection1
     SQL.Strings = (
       'select * from fornecedores')
-    Left = 738
-    Top = 433
+    Left = 390
+    Top = 122
     object Queryfornecedoresid: TIntegerField
       FieldName = 'id'
       Origin = 'id'
@@ -261,11 +234,11 @@ object DataModule1: TDataModule1
     end
   end
   object QueryPC: TFDQuery
-    Connection = conexao
+    Connection = FDConnection1
     SQL.Strings = (
       'select * from profissionais_cargos')
-    Left = 40
-    Top = 390
+    Left = 32
+    Top = 312
     object QueryPCid_pro: TIntegerField
       FieldName = 'id_pro'
       Origin = 'id_pro'
@@ -276,36 +249,34 @@ object DataModule1: TDataModule1
     end
   end
   object QueryRPC: TFDQuery
-    Connection = conexao
+    Connection = FDConnection1
     SQL.Strings = (
       'SELECT '
-      '    p.nome_pro,'
+      '    p.nome,'
       '    p.email,'
       '    STRING_AGG(c.nome_cargo, '#39', '#39')::varchar(500) AS nome_cargo'
       'FROM '
       '    profissionais p'
       'LEFT JOIN '
-      
-        '    profissionais_cargos pc ON p.id_profissional = pc.id_profiss' +
-        'ional'
+      '    profissionais_cargos pc ON p.id_pro = pc.id_pro'
       'LEFT JOIN '
       '    cargos c ON pc.id_cargo = c.id_cargo'
       'GROUP BY '
-      '    p.nome_pro,'
+      '    p.nome,'
       'p.email'
       'ORDER BY '
-      '    p.nome_pro;')
-    Left = 150
-    Top = 390
-    object QueryRPCnome_pro: TWideStringField
-      FieldName = 'nome_pro'
-      Origin = 'nome_pro'
-      Size = 150
+      '    p.nome;')
+    Left = 120
+    Top = 312
+    object QueryRPCnome: TWideStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 100
     end
     object QueryRPCemail: TWideStringField
       FieldName = 'email'
       Origin = 'email'
-      Size = 150
+      Size = 100
     end
     object QueryRPCnome_cargo: TWideStringField
       AutoGenerateValue = arDefault
@@ -316,15 +287,11 @@ object DataModule1: TDataModule1
     end
   end
   object QueryRCS: TFDQuery
-    Connection = conexao
+    Connection = FDConnection1
     SQL.Strings = (
       'SELECT '
       '    c.nome_cargo,'
-<<<<<<< HEAD
       '    STRING_AGG(s.nome, '#39', '#39')::varchar(500) AS nome'
-=======
-      '    s.nome_serv AS nome_serv'
->>>>>>> 46fb90981f511c7e067d1f2b8f99f18f161310fc
       'FROM '
       '    cargos c'
       'LEFT JOIN '
@@ -336,38 +303,30 @@ object DataModule1: TDataModule1
       'ORDER BY '
       '    c.nome_cargo;'
       '')
-    Left = 226
-    Top = 308
+    Left = 200
+    Top = 240
     object QueryRCSnome_cargo: TWideStringField
       FieldName = 'nome_cargo'
       Origin = 'nome_cargo'
       Size = 100
     end
-<<<<<<< HEAD
     object QueryRCSnome: TWideStringField
       AutoGenerateValue = arDefault
       FieldName = 'nome'
       Origin = 'nome'
       ReadOnly = True
       Size = 500
-=======
-    object QueryRCSnome_serv: TWideStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'nome_serv'
-      Origin = 'nome_serv'
-      Size = 150
->>>>>>> 46fb90981f511c7e067d1f2b8f99f18f161310fc
     end
   end
   object QueryAg: TFDQuery
-    Connection = conexao
+    Connection = FDConnection1
     SQL.Strings = (
       'SELECT '
       '    a.id_agendamento,'
       '    c.nome_clie,'
-      '    s.nome_serv,'
+      '    s.nome,'
       '    a.data_agendamento,'
-      '    a.hora'
+      '    a.hora_inicio'
       'FROM '
       '    agendamentos a'
       'INNER JOIN '
@@ -375,8 +334,8 @@ object DataModule1: TDataModule1
       'INNER JOIN'
       '    servicos s ON a.id_servico = s.id_servico;'
       '')
-    Left = 32
-    Top = 208
+    Left = 888
+    Top = 352
     object QueryAgid_agendamento: TIntegerField
       FieldName = 'id_agendamento'
       Origin = 'id_agendamento'
@@ -403,5 +362,28 @@ object DataModule1: TDataModule1
       Origin = 'hora_inicio'
       ProviderFlags = [pfInUpdate]
     end
+  end
+  object QueryAgendamentos: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from agendamentos')
+    Left = 784
+    Top = 360
+  end
+  object QueryFClientes: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT '
+      '  EXTRACT(MONTH FROM data_cad) AS mes,'
+      '  COUNT(*) AS total'
+      'FROM clientes'
+      
+        'WHERE data_cad >= date_trunc('#39'month'#39', CURRENT_DATE) - INTERVAL '#39 +
+        '5 months'#39
+      'GROUP BY EXTRACT(MONTH FROM data_cad)'
+      'ORDER BY mes;'
+      '')
+    Left = 408
+    Top = 280
   end
 end

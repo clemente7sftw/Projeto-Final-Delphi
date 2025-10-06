@@ -39,19 +39,11 @@ object Form13: TForm13
       Caption = 'email_clie'
       FocusControl = DBEdit2
     end
-    object Label3: TLabel
-      Left = 368
-      Top = 506
-      Width = 30
-      Height = 15
-      Caption = 'preco'
-      FocusControl = DBEdit3
-    end
     object DBGrid1: TDBGrid
       Left = 16
       Top = 72
       Width = 225
-      Height = 193
+      Height = 169
       DataSource = DataSource1
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
@@ -91,55 +83,42 @@ object Form13: TForm13
       DataSource = DataSource1
       TabOrder = 2
     end
-    object CheckListBox1: TCheckListBox
-      Left = 368
-      Top = 176
-      Width = 200
-      Height = 169
-      ItemHeight = 17
-      TabOrder = 3
-      OnClickCheck = CheckListBox1ClickCheck
-    end
-    object MonthCalendar1: TMonthCalendar
-      Left = 16
-      Top = 303
-      Width = 225
-      Height = 170
-      Date = 45931.000000000000000000
-      TabOrder = 4
-    end
-    object CheckListBox2: TCheckListBox
-      Left = 16
-      Top = 479
-      Width = 225
-      Height = 81
-      ItemHeight = 17
-      TabOrder = 5
-    end
-    object DBEdit3: TDBEdit
-      Left = 368
-      Top = 537
-      Width = 200
-      Height = 23
-      DataField = 'preco'
-      DataSource = DataSource2
-      TabOrder = 6
-    end
-    object CheckListBox3: TCheckListBox
-      Left = 368
-      Top = 376
-      Width = 200
-      Height = 113
-      ItemHeight = 17
-      TabOrder = 7
-    end
     object Panel2: TPanel
       Left = 368
       Top = 584
       Width = 97
       Height = 41
       Caption = 'Marcar Hor'#225'rio'
-      TabOrder = 8
+      TabOrder = 3
+    end
+    object CheckListBoxServicos: TCheckListBox
+      Left = 368
+      Top = 176
+      Width = 200
+      Height = 153
+      ItemHeight = 17
+      TabOrder = 4
+    end
+    object TimePicker1: TTimePicker
+      Left = 16
+      Top = 264
+      Height = 25
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      TabOrder = 5
+      Time = 45936.610579814810000000
+      TimeFormat = 'hh:nn'
+    end
+    object CheckListBoxProfissionais: TCheckListBox
+      Left = 368
+      Top = 352
+      Width = 200
+      Height = 153
+      ItemHeight = 17
+      TabOrder = 6
     end
   end
   object DataSource1: TDataSource
@@ -149,7 +128,7 @@ object Form13: TForm13
   end
   object DataSource2: TDataSource
     DataSet = DataModule1.QueryServicos
-    Left = 104
+    Left = 112
     Top = 16
   end
 end

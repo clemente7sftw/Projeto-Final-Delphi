@@ -28,7 +28,6 @@ type
     imgsenha: TImage;
     EdEmail: TEdit;
     LbErro: TLabel;
-    teste: TLabel;
     procedure PbtnEntrarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Label2Click(Sender: TObject);

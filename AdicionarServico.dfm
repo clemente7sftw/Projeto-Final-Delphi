@@ -22,8 +22,6 @@ object Form10: TForm10
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 557
-    ExplicitHeight = 533
     object Lblrequired: TLabel
       Left = 64
       Top = 352
@@ -98,7 +96,7 @@ object Form10: TForm10
       Top = 197
       Width = 154
       Height = 23
-      DataField = 'nome_serv'
+      DataField = 'nome'
       DataSource = Form15.DataSource1
       TabOrder = 0
       OnKeyPress = DBEdit1KeyPress

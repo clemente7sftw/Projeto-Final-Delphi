@@ -21,8 +21,6 @@ object Form2: TForm2
     Color = 1186595
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1922
-    ExplicitHeight = 1053
     object ImagemDeFundo: TImage
       Left = 0
       Top = 0
@@ -44241,6 +44239,21 @@ object Form2: TForm2
       ParentFont = False
       OnClick = Label2Click
     end
+    object Label3: TLabel
+      Left = 279
+      Top = 663
+      Width = 122
+      Height = 25
+      Cursor = crHandPoint
+      Caption = 'Termos de uso'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -19
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+      OnClick = Label3Click
+    end
     object BtnCad: TPanel
       Left = 108
       Top = 560
@@ -44291,10 +44304,10 @@ object Form2: TForm2
     object CheckBox2: TCheckBox
       Left = 108
       Top = 668
-      Width = 305
+      Width = 165
       Height = 17
       Cursor = crHandPoint
-      Caption = 'Eu aceito com os Termos de uso'
+      Caption = 'Eu aceito com os '
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -19

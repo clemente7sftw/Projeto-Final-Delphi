@@ -19,12 +19,12 @@ type
     EdPesquisa: TEdit;
     Panel1: TPanel;
     Image2: TImage;
-    Label1: TLabel;
-    DBEdit1: TDBEdit;
     Label2: TLabel;
     DBEdit2: TDBEdit;
     Label3: TLabel;
     DBEdit3: TDBEdit;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
     procedure FormShow(Sender: TObject);

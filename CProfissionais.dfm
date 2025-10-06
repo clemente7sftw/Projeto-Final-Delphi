@@ -200,7 +200,7 @@ object Form8: TForm8
         Columns = <
           item
             Expanded = False
-            FieldName = 'nome_pro'
+            FieldName = 'nome'
             Width = 200
             Visible = True
           end

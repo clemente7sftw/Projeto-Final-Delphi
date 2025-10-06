@@ -12,9 +12,17 @@ uses
 
 type
   TDataModule1 = class(TDataModule)
-    conexao: TFDConnection;
+    FDConnection1: TFDConnection;
     FDPhysPgDriverLink1: TFDPhysPgDriverLink;
     QueryClientes: TFDQuery;
+    QueryReservas: TFDQuery;
+    QueryReservasid_reserva: TIntegerField;
+    QueryReservasid_clie: TIntegerField;
+    QueryReservasid_servicos: TIntegerField;
+    QueryReservasid_pro: TIntegerField;
+    QueryReservasemail_clie: TWideStringField;
+    QueryReservasdt_reserva: TDateField;
+    QueryReservashr_reserva: TTimeField;
     QueryProfissionais: TFDQuery;
     QueryEmpresa: TFDQuery;
     QueryServicos: TFDQuery;
@@ -30,61 +38,40 @@ type
     QueryPCid_pro: TIntegerField;
     QueryPCid_cargo: TIntegerField;
     QueryRCS: TFDQuery;
+    QueryCargosid_cargo: TIntegerField;
+    QueryCargosnome_cargo: TWideStringField;
+    QueryCargosdata_cad: TSQLTimeStampField;
     QueryCSid_cargo: TIntegerField;
     QueryCSid_servico: TIntegerField;
-<<<<<<< HEAD
     QueryRPCnome: TWideStringField;
     QueryRPCemail: TWideStringField;
     QueryRPCnome_cargo: TWideStringField;
-=======
->>>>>>> 46fb90981f511c7e067d1f2b8f99f18f161310fc
     QueryAg: TFDQuery;
     QueryAgid_agendamento: TIntegerField;
     QueryAgnome_clie: TWideStringField;
     QueryAgnome: TWideStringField;
     QueryAgdata_agendamento: TDateField;
     QueryAghora_inicio: TTimeField;
-    QueryClientesid_clie: TIntegerField;
     QueryClientesnome_clie: TWideStringField;
     QueryClientesemail_clie: TWideStringField;
-<<<<<<< HEAD
-    FDQuery1: TFDQuery;
     QueryRCSnome_cargo: TWideStringField;
     QueryRCSnome: TWideStringField;
-=======
-    QueryClientestelefone: TWideStringField;
-    QueryClientescpf: TWideStringField;
-    QueryClientescep: TWideStringField;
-    QueryClientesrua: TWideStringField;
-    QueryClientesbairro: TWideStringField;
-    QueryClientescidade: TWideStringField;
-    QueryClientesestado: TWideStringField;
-    QueryClientesdata_cad: TSQLTimeStampField;
-    QueryRPCnome_pro: TWideStringField;
-    QueryRPCemail: TWideStringField;
-    QueryRPCnome_cargo: TWideStringField;
-    QueryProfissionaisid_profissional: TIntegerField;
-    QueryProfissionaisnome_pro: TWideStringField;
+    QueryAgendamentos: TFDQuery;
+    QueryServicosid_servico: TIntegerField;
+    QueryServicosnome: TWideStringField;
+    QueryServicosduracao: TIntegerField;
+    QueryServicospreco: TBCDField;
+    QueryServicosdata_cad: TSQLTimeStampField;
+    QueryProfissionaisid_pro: TIntegerField;
+    QueryProfissionaisnome: TWideStringField;
     QueryProfissionaisemail: TWideStringField;
-    QueryProfissionaistelefone: TWideStringField;
-    QueryProfissionaisid_cargo: TIntegerField;
+    QueryProfissionaiscpf: TWideStringField;
     QueryProfissionaiscep: TWideStringField;
     QueryProfissionaisrua: TWideStringField;
     QueryProfissionaisbairro: TWideStringField;
     QueryProfissionaiscidade: TWideStringField;
     QueryProfissionaisestado: TWideStringField;
-    QueryProfissionaisdata_cad: TSQLTimeStampField;
-    QueryCargosid_cargo: TIntegerField;
-    QueryCargosnome_cargo: TWideStringField;
-    QueryCargosdata_cad: TSQLTimeStampField;
-    QueryServicosid_servico: TIntegerField;
-    QueryServicosnome_serv: TWideStringField;
-    QueryServicosduracao: TIntegerField;
-    QueryServicospreco: TBCDField;
-    QueryServicosdata_cad: TSQLTimeStampField;
-    QueryRCSnome_cargo: TWideStringField;
-    QueryRCSnome_serv: TWideStringField;
->>>>>>> 46fb90981f511c7e067d1f2b8f99f18f161310fc
+    QueryFClientes: TFDQuery;
   private
     { Private declarations }
   public

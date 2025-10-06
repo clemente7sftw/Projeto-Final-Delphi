@@ -108,10 +108,12 @@ end;
 procedure TForm8.FormShow(Sender: TObject);
 begin
 
-//  datamodule1.QueryPC.close;
-//  datamodule1.QueryPC.open;
+  datamodule1.QueryPC.close;
+  datamodule1.QueryPC.open;
 //  datamodule1.QueryCargos.close;
 //  datamodule1.QueryCargos.open;
+  datamodule1.Queryprofissionais.close;
+  datamodule1.Queryprofissionais.open;
   DataModule1.QueryRPC.close;
   DataModule1.QueryRPC.Open;
 

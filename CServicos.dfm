@@ -22,14 +22,6 @@ object Form15: TForm15
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    object Label1: TLabel
-      Left = 440
-      Top = 168
-      Width = 57
-      Height = 15
-      Caption = 'nome_serv'
-      FocusControl = DBEdit1
-    end
     object Label2: TLabel
       Left = 440
       Top = 248
@@ -45,6 +37,14 @@ object Form15: TForm15
       Height = 15
       Caption = 'preco'
       FocusControl = DBEdit3
+    end
+    object Label1: TLabel
+      Left = 432
+      Top = 176
+      Width = 31
+      Height = 15
+      Caption = 'nome'
+      FocusControl = DBEdit1
     end
     object PbtnAdd: TPanel
       Left = 24
@@ -71,7 +71,7 @@ object Form15: TForm15
       Columns = <
         item
           Expanded = False
-          FieldName = 'nome_serv'
+          FieldName = 'nome'
           Width = 141
           Visible = True
         end
@@ -110,8 +110,8 @@ object Form15: TForm15
       OnClick = BtnConfClick
     end
     object EdPesquisa: TEdit
-      Left = 0
-      Top = 204
+      Left = 24
+      Top = 198
       Width = 353
       Height = 45
       Font.Charset = ANSI_CHARSET
@@ -124,8 +124,8 @@ object Form15: TForm15
       TextHint = 'Pesquise'
     end
     object Panel1: TPanel
-      Left = 312
-      Top = 204
+      Left = 336
+      Top = 198
       Width = 41
       Height = 45
       Color = clBlack
@@ -158,16 +158,6 @@ object Form15: TForm15
           12FC0B1293E6224739C13B0000000049454E44AE426082}
       end
     end
-    object DBEdit1: TDBEdit
-      Left = 440
-      Top = 184
-      Width = 185
-      Height = 23
-      DataField = 'nome_serv'
-      DataSource = DataSource1
-      TabOrder = 7
-      OnKeyPress = DBEdit1KeyPress
-    end
     object DBEdit2: TDBEdit
       Left = 440
       Top = 269
@@ -175,7 +165,7 @@ object Form15: TForm15
       Height = 23
       DataField = 'duracao'
       DataSource = DataSource1
-      TabOrder = 8
+      TabOrder = 7
     end
     object DBEdit3: TDBEdit
       Left = 440
@@ -183,6 +173,15 @@ object Form15: TForm15
       Width = 185
       Height = 23
       DataField = 'preco'
+      DataSource = DataSource1
+      TabOrder = 8
+    end
+    object DBEdit1: TDBEdit
+      Left = 432
+      Top = 192
+      Width = 754
+      Height = 23
+      DataField = 'nome'
       DataSource = DataSource1
       TabOrder = 9
     end

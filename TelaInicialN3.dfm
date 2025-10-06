@@ -2,7 +2,7 @@ object Form20: TForm20
   Left = 0
   Top = 0
   Caption = 'Tela Inicial'
-  ClientHeight = 585
+  ClientHeight = 674
   ClientWidth = 1908
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,14 +16,14 @@ object Form20: TForm20
     Left = 0
     Top = 0
     Width = 1908
-    Height = 585
+    Height = 674
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
     object Label1: TLabel
-      Left = 384
-      Top = 320
+      Left = 16
+      Top = 240
       Width = 45
       Height = 15
       Caption = 'empresa'
@@ -330,12 +330,19 @@ object Form20: TForm20
       Stretch = True
     end
     object Label3: TLabel
-      Left = 672
-      Top = 272
+      Left = 504
+      Top = 189
       Width = 24
       Height = 15
       Caption = 'hora'
       OnClick = Label3Click
+    end
+    object PaintBox1: TPaintBox
+      Left = 864
+      Top = 552
+      Width = 209
+      Height = 153
+      OnPaint = PaintBox1Paint
     end
     object Barra: TPanel
       Left = 0
@@ -415,6 +422,14 @@ object Form20: TForm20
         ParentFont = False
         OnClick = LbCargosClick
       end
+    end
+    object Button1: TButton
+      Left = 480
+      Top = 408
+      Width = 121
+      Height = 25
+      Caption = 'Button1'
+      TabOrder = 1
     end
   end
 end
