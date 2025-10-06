@@ -180,7 +180,7 @@ object Form14: TForm14
         end
         item
           Expanded = False
-          FieldName = 'nome_servico'
+          FieldName = 'nome'
           Width = 200
           Visible = True
         end>
@@ -199,7 +199,7 @@ object Form14: TForm14
       Top = 280
       Width = 200
       Height = 23
-      DataField = 'nome_servico'
+      DataField = 'nome'
       DataSource = DataSource2
       TabOrder = 8
     end

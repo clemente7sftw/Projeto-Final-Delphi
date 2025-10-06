@@ -57,8 +57,6 @@ type
     QueryCargosdata_cad: TSQLTimeStampField;
     QueryCSid_cargo: TIntegerField;
     QueryCSid_servico: TIntegerField;
-    QueryRCSnome_cargo: TWideStringField;
-    QueryRCSnome_servico: TWideStringField;
     QueryRPCnome: TWideStringField;
     QueryRPCemail: TWideStringField;
     QueryRPCnome_cargo: TWideStringField;
@@ -71,6 +69,8 @@ type
     QueryClientesnome_clie: TWideStringField;
     QueryClientesemail_clie: TWideStringField;
     FDQuery1: TFDQuery;
+    QueryRCSnome_cargo: TWideStringField;
+    QueryRCSnome: TWideStringField;
   private
     { Private declarations }
   public

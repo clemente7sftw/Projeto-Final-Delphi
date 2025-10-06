@@ -140,7 +140,7 @@ object DataModule1: TDataModule1
     SQL.Strings = (
       'select * from servicos '
       '')
-    Left = 37
+    Left = 29
     Top = 238
     object QueryServicosnome: TWideStringField
       FieldName = 'nome'
@@ -291,13 +291,15 @@ object DataModule1: TDataModule1
     SQL.Strings = (
       'SELECT '
       '    c.nome_cargo,'
-      '    s.nome AS nome_servico'
+      '    STRING_AGG(s.nome, '#39', '#39')::varchar(500) AS nome'
       'FROM '
       '    cargos c'
       'LEFT JOIN '
       '    cargos_servicos cp ON c.id_cargo = cp.id_cargo'
       'LEFT JOIN '
       '    servicos s ON cp.id_servico = s.id_servico'
+      'group by'
+      'c.nome_cargo'
       'ORDER BY '
       '    c.nome_cargo;'
       '')
@@ -308,11 +310,12 @@ object DataModule1: TDataModule1
       Origin = 'nome_cargo'
       Size = 100
     end
-    object QueryRCSnome_servico: TWideStringField
+    object QueryRCSnome: TWideStringField
       AutoGenerateValue = arDefault
-      FieldName = 'nome_servico'
-      Origin = 'nome_servico'
-      Size = 50
+      FieldName = 'nome'
+      Origin = 'nome'
+      ReadOnly = True
+      Size = 500
     end
   end
   object QueryAg: TFDQuery

@@ -74,15 +74,6 @@ object Form11: TForm11
       TabOrder = 0
       OnClick = PCadClick
     end
-    object ComboBox1: TComboBox
-      Left = 63
-      Top = 232
-      Width = 201
-      Height = 23
-      TabOrder = 1
-      Text = 'ComboBox1'
-      OnEnter = ComboBox1Enter
-    end
     object DBEdit1: TDBEdit
       Left = 64
       Top = 136
@@ -90,6 +81,14 @@ object Form11: TForm11
       Height = 23
       DataField = 'nome_cargo'
       DataSource = DataSource1
+      TabOrder = 1
+    end
+    object CheckListBox1: TCheckListBox
+      Left = 64
+      Top = 200
+      Width = 217
+      Height = 146
+      ItemHeight = 17
       TabOrder = 2
     end
   end
