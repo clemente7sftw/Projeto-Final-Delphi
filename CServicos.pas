@@ -16,15 +16,15 @@ type
     BtnExcluir: TPanel;
     BtnConf: TPanel;
     DataSource1: TDataSource;
+    EdPesquisa: TEdit;
+    Panel1: TPanel;
+    Image2: TImage;
     Label1: TLabel;
     DBEdit1: TDBEdit;
     Label2: TLabel;
     DBEdit2: TDBEdit;
     Label3: TLabel;
     DBEdit3: TDBEdit;
-    EdPesquisa: TEdit;
-    Panel1: TPanel;
-    Image2: TImage;
     procedure FormCreate(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -33,6 +33,9 @@ type
     procedure BtnConfClick(Sender: TObject);
     procedure EditsAtivos;
     procedure EditsInativos;
+    procedure DBEdit1KeyPress(Sender: TObject; var Key: Char);
+    procedure Editar;
+    procedure Salvar;
   private
     { Private declarations }
   public
@@ -59,40 +62,40 @@ procedure TForm15.FormShow(Sender: TObject);
 begin
   datamodule1.QueryServicos.Close;
   datamodule1.QueryServicos.Open;
+  EditsInativos;
 end;
 
 
 procedure TForm15.BtnConfClick(Sender: TObject);
 begin
-  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and (DBEdit3.Text <> '') then
-  begin
-    if not (DataModule1.QueryServicos.State in [dsEdit, dsInsert]) then
-    DataModule1.QueryServicos.Edit;
-    DataModule1.QueryServicos.Post;
-    EditsInativos;
-    BtnConf.Visible := False;
-    BtnExcluir.Visible := True;
-    BtnEditar.Visible:= true;
-  end;
+  Salvar;
 end;
 
 procedure TForm15.BtnEditarClick(Sender: TObject);
+begin
+  Editar;
+end;
+
+procedure TForm15.BtnExcluirClick(Sender: TObject);
+begin
+  datamodule1.QueryServicos.Delete;
+end;
+
+procedure TForm15.DBEdit1KeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    Key := #0;
+    SelectNext(Sender as TWinControl, True, True);
+  end;
+end;
+
+procedure TForm15.Editar;
 begin
   BtnConf.Visible:= true;
   BtnExcluir.Visible:= false;
   EditsAtivos;
   BtnEditar.Visible:= false;
-end;
-
-procedure TForm15.BtnExcluirClick(Sender: TObject);
-begin
-  with datamodule1.QueryServicos do
-  begin
-    Edit;
-    FieldByName('ativo').AsBoolean := False;
-    Post;
-  end;
-//  .delete;
 end;
 
 procedure TForm15.EditsAtivos;
@@ -115,6 +118,20 @@ procedure TForm15.PbtnAddClick(Sender: TObject);
 begin
   Form10.show;
   Form15.Hide;
+end;
+
+procedure TForm15.Salvar;
+begin
+  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and (DBEdit3.Text <> '') then
+  begin
+    if not (DataModule1.QueryServicos.State in [dsEdit, dsInsert]) then
+    DataModule1.QueryServicos.Edit;
+    DataModule1.QueryServicos.Post;
+    EditsInativos;
+    BtnConf.Visible := False;
+    BtnExcluir.Visible := True;
+    BtnEditar.Visible:= true;
+  end;
 end;
 
 end.

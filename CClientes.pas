@@ -13,14 +13,11 @@ type
     Fundo: TPanel;
     Image1: TImage;
     DBGrid1: TDBGrid;
-    DataSource1: TDataSource;
     BtnAdd: TPanel;
     BtnEditar: TPanel;
     BtnExcluir: TPanel;
     Label1: TLabel;
-    DBEdit1: TDBEdit;
     Label2: TLabel;
-    DBEdit2: TDBEdit;
     BtnConf: TPanel;
     Lblrequired: TLabel;
     EdPesquisa: TEdit;
@@ -36,6 +33,9 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Image3: TImage;
+    DataSource1: TDataSource;
+    DBEdit2: TDBEdit;
+    DBEdit1: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
@@ -47,6 +47,10 @@ type
     procedure EditsInativos;
     procedure BtnConfClick(Sender: TObject);
     procedure Image2Click(Sender: TObject);
+    procedure Procurar;
+    procedure Editar;
+    procedure Salvar;
+    procedure DBEdit1KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -70,32 +74,34 @@ end;
 
 procedure TForm4.BtnConfClick(Sender: TObject);
 begin
-  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
-  begin
-    if not (DataModule1.QueryClientes.State in [dsEdit, dsInsert]) then
-    DataModule1.QueryClientes.Edit;
-    DataModule1.QueryClientes.Post;
-    EditsInativos;
-    BtnConf.Visible := False;
-    BtnExcluir.Visible := True;
-    BtnEditar.Visible:= true;
-    Lblrequired.visible:= false;
-  end else begin
-    Lblrequired.visible:= true;
-  end;
+Salvar;
 end;
 
 procedure TForm4.BtnEditarClick(Sender: TObject);
 begin
-  BtnConf.Visible:= true;
-  BtnExcluir.Visible:= false;
-  EditsAtivos;
-  BtnEditar.Visible:= false;
+Editar;
 end;
 
 procedure TForm4.BtnExcluirClick(Sender: TObject);
 begin
   datamodule1.QueryClientes.delete;
+end;
+
+procedure TForm4.DBEdit1KeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    Key := #0;
+    SelectNext(Sender as TWinControl, True, True);
+  end;
+end;
+
+procedure TForm4.Editar;
+begin
+  BtnConf.Visible:= true;
+  BtnExcluir.Visible:= false;
+  EditsAtivos;
+  BtnEditar.Visible:= false;
 end;
 
 procedure TForm4.EditsAtivos;
@@ -121,6 +127,7 @@ procedure TForm4.FormShow(Sender: TObject);
 begin
   datamodule1.QueryClientes.Close;
   datamodule1.QueryClientes.Open;
+  EditsInativos;
 end;
 
 procedure TForm4.Image1Click(Sender: TObject);
@@ -132,6 +139,18 @@ end;
 
 procedure TForm4.Image2Click(Sender: TObject);
 begin
+  Procurar;
+end;
+
+procedure TForm4.PbtnAddClick(Sender: TObject);
+begin
+  Form5.Show;
+  Form4.Hide;
+end;
+
+
+procedure TForm4.Procurar;
+begin
   if (EdPesquisa.Text <> '' )then
   begin
     datamodule1.QueryClientes.Filtered := true;
@@ -142,11 +161,21 @@ begin
   end;
 end;
 
-procedure TForm4.PbtnAddClick(Sender: TObject);
+procedure TForm4.Salvar;
 begin
-  Form5.Show;
-  Form4.Hide;
+  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
+  begin
+    if not (DataModule1.QueryClientes.State in [dsEdit, dsInsert]) then
+    DataModule1.QueryClientes.Edit;
+    DataModule1.QueryClientes.Post;
+    EditsInativos;
+    BtnConf.Visible := False;
+    BtnExcluir.Visible := True;
+    BtnEditar.Visible:= true;
+    Lblrequired.visible:= false;
+  end else begin
+    Lblrequired.visible:= true;
+  end;
 end;
-
 
 end.

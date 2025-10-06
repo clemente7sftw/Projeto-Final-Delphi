@@ -190,7 +190,7 @@ object Form8: TForm8
         Top = 272
         Width = 601
         Height = 185
-        DataSource = DataSource3
+        DataSource = DataSourceRPC
         TabOrder = 7
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -200,7 +200,7 @@ object Form8: TForm8
         Columns = <
           item
             Expanded = False
-            FieldName = 'nome'
+            FieldName = 'nome_pro'
             Width = 200
             Visible = True
           end
@@ -222,7 +222,6 @@ object Form8: TForm8
         Width = 200
         Height = 23
         DataField = 'nome'
-        DataSource = DataSource3
         TabOrder = 8
       end
       object DBEdit2: TDBEdit
@@ -231,7 +230,6 @@ object Form8: TForm8
         Width = 200
         Height = 23
         DataField = 'email'
-        DataSource = DataSource3
         TabOrder = 9
       end
       object DBEdit3: TDBEdit
@@ -240,24 +238,13 @@ object Form8: TForm8
         Width = 200
         Height = 23
         DataField = 'nome_cargo'
-        DataSource = DataSource3
         TabOrder = 10
       end
     end
   end
-  object DataSource1: TDataSource
-    DataSet = DataModule1.QueryProfissionais
-    Left = 1009
-    Top = 25
-  end
-  object DataSource2: TDataSource
-    DataSet = DataModule1.QueryPC
-    Left = 1009
-    Top = 89
-  end
-  object DataSource3: TDataSource
+  object DataSourceRPC: TDataSource
     DataSet = DataModule1.QueryRPC
-    Left = 1001
-    Top = 185
+    Left = 929
+    Top = 49
   end
 end

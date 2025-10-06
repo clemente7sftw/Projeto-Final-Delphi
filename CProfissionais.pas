@@ -11,7 +11,6 @@ uses
 type
   TForm8 = class(TForm)
     Fundo: TPanel;
-    DataSource1: TDataSource;
     Lblrequired: TLabel;
     Panel1: TPanel;
     Image1: TImage;
@@ -23,8 +22,6 @@ type
     EdPesquisa: TEdit;
     Panel3: TPanel;
     Image2: TImage;
-    DataSource2: TDataSource;
-    DataSource3: TDataSource;
     DBGrid1: TDBGrid;
     Label1: TLabel;
     DBEdit1: TDBEdit;
@@ -32,6 +29,7 @@ type
     DBEdit2: TDBEdit;
     Label3: TLabel;
     DBEdit3: TDBEdit;
+    DataSourceRPC: TDataSource;
     procedure FormCreate(Sender: TObject);
     procedure Image6Click(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
@@ -109,12 +107,11 @@ end;
 
 procedure TForm8.FormShow(Sender: TObject);
 begin
-  datamodule1.QueryProfissionais.Close;
-  datamodule1.QueryProfissionais.Open;
-  datamodule1.QueryPC.close;
-  datamodule1.QueryPC.open;
-  datamodule1.QueryCargos.close;
-  datamodule1.QueryCargos.open;
+
+//  datamodule1.QueryPC.close;
+//  datamodule1.QueryPC.open;
+//  datamodule1.QueryCargos.close;
+//  datamodule1.QueryCargos.open;
   DataModule1.QueryRPC.close;
   DataModule1.QueryRPC.Open;
 

@@ -87,7 +87,7 @@ object Form9: TForm9
       Top = 85
       Width = 200
       Height = 23
-      DataField = 'nome'
+      DataField = 'nome_pro'
       DataSource = DataSource1
       TabOrder = 1
     end

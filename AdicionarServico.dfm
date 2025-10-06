@@ -2,8 +2,8 @@ object Form10: TForm10
   Left = 0
   Top = 0
   Caption = 'Adicionar Servi'#231'o'
-  ClientHeight = 561
-  ClientWidth = 900
+  ClientHeight = 541
+  ClientWidth = 559
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,12 +16,14 @@ object Form10: TForm10
   object Fundo: TPanel
     Left = 0
     Top = 0
-    Width = 900
-    Height = 561
+    Width = 559
+    Height = 541
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 557
+    ExplicitHeight = 533
     object Lblrequired: TLabel
       Left = 64
       Top = 352
@@ -61,7 +63,7 @@ object Form10: TForm10
       Width = 121
       Height = 41
       Caption = 'PVoltar'
-      TabOrder = 0
+      TabOrder = 2
       OnClick = PVoltarClick
     end
     object PCad: TPanel
@@ -70,7 +72,7 @@ object Form10: TForm10
       Width = 121
       Height = 41
       Caption = 'PCad'
-      TabOrder = 1
+      TabOrder = 4
       OnClick = PCadClick
     end
     object DBEdit2: TDBEdit
@@ -80,7 +82,7 @@ object Form10: TForm10
       Height = 23
       DataField = 'duracao'
       DataSource = Form15.DataSource1
-      TabOrder = 2
+      TabOrder = 1
     end
     object DBEdit3: TDBEdit
       Left = 64
@@ -96,9 +98,10 @@ object Form10: TForm10
       Top = 197
       Width = 154
       Height = 23
-      DataField = 'nome'
+      DataField = 'nome_serv'
       DataSource = Form15.DataSource1
-      TabOrder = 4
+      TabOrder = 0
+      OnKeyPress = DBEdit1KeyPress
     end
   end
 end
