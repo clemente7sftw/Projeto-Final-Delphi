@@ -14,19 +14,22 @@ type
     DBGrid1: TDBGrid;
     DataSource1: TDataSource;
     Label1: TLabel;
-    DBEdit1: TDBEdit;
     Label2: TLabel;
     DBEdit2: TDBEdit;
     DataSource2: TDataSource;
     Panel2: TPanel;
     CheckListBoxServicos: TCheckListBox;
     MonthCalendar1: TMonthCalendar;
-    ComboBox1: TComboBox;
+    ComboBoxHorarios: TComboBox;
     Label3: TLabel;
     DBEdit3: TDBEdit;
+    DataSource3: TDataSource;
+    CheckListBoxProfissionais: TCheckListBox;
+    DBEdit1: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure PreencherListBoxServicos;
+    procedure PreencherListBoxProfissionais;
     procedure ListarHorarios;
     procedure Cadastrar;
     procedure Panel2Click(Sender: TObject);
@@ -67,16 +70,33 @@ begin
 var
   i: Integer;
 begin
-  ComboBox1.Items.Clear;
+  ComboBoxHorarios.Items.Clear;
   for i := 8 to 17 do
-    ComboBox1.Items.Add(Format('%.2d:00', [i]));
-  ComboBox1.ItemIndex := 0;
+    ComboBoxHorarios.Items.Add(Format('%.2d:00', [i]));
+  ComboBoxHorarios.ItemIndex := 0;
 end;
 end;
 
 procedure TForm13.Panel2Click(Sender: TObject);
 begin
 Cadastrar;
+end;
+
+procedure TForm13.PreencherListBoxProfissionais;
+begin
+if not datamodule1.QueryProfissionais.IsEmpty then
+begin
+  CheckListBoxProfissionais.Items.Clear;
+  datamodule1.QueryProfissionais.First;
+  while not datamodule1.QueryProfissionais.Eof do
+  begin
+    CheckListBoxProfissionais.Items.AddObject(
+      datamodule1.QueryProfissionais.FieldByName('nome').AsString,
+      TObject(datamodule1.QueryProfissionais.FieldByName('id_pro').AsInteger)
+    );
+    datamodule1.QueryProfissionais.Next;
+  end;
+end;
 end;
 
 procedure TForm13.PreencherListBoxServicos;
@@ -108,9 +128,8 @@ with datamodule1.QueryServicos do
 end;
 
 procedure TForm13.Cadastrar;
-var id_clie, id_servico, id_pro, i:integer;
+var id_clie, id_servico, i:integer;
 var dataselecionada : tdate;
-var preco: Currency;
 begin
   for i := 0 to checklistboxservicos.count -1 do
   begin
@@ -119,11 +138,12 @@ begin
     dataselecionada := MonthCalendar1.Date;
     id_servico:= Integer(CheckListBoxservicos.Items.Objects[i]);
     id_clie := DataModule1.QueryClientes.FieldByName('id_clie').AsInteger;
+//    id_pro := DataModule1.Queryprofissionais.FieldByName('id_pro').AsInteger;
     datamodule1.QueryAgendamentos.FieldByName('id_clie').AsInteger := id_clie;
     datamodule1.QueryAgendamentos.FieldByName('id_servico').AsInteger := id_servico;
-    datamodule1.QueryAgendamentos.FieldByName('id_pro').AsInteger := id_pro;
+//    datamodule1.QueryAgendamentos.FieldByName('id_pro').AsInteger := id_pro;
     DataModule1.QueryAgendamentos.FieldByName('data_agendamento').AsDateTime := dataselecionada;
-    datamodule1.QueryAgendamentos.FieldByName('preco').Ascurrency:= preco;
+    DataModule1.QueryAgendamentos.FieldByName('hora_inicio').AsDateTime := StrToTime(ComboBoxHorarios.Text);
     datamodule1.QueryAgendamentos.post;
   end;
   end;

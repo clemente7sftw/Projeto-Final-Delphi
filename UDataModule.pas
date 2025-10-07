@@ -65,6 +65,20 @@ type
     QueryProfissionaiscidade: TWideStringField;
     QueryProfissionaisestado: TWideStringField;
     QueryFClientes: TFDQuery;
+    QueryAgid_agendamento: TIntegerField;
+    QueryAgnome_clie: TWideStringField;
+    QueryAgnome: TWideStringField;
+    QueryAgdata_agendamento: TDateField;
+    QueryAghora_inicio: TTimeField;
+    QueryAgendamentosid_agendamento: TIntegerField;
+    QueryAgendamentosid_clie: TIntegerField;
+    QueryAgendamentosid_servico: TIntegerField;
+    QueryAgendamentosdata_agendamento: TDateField;
+    QueryAgendamentoshora_inicio: TTimeField;
+    QueryAgendamentospreco: TBCDField;
+    QueryAgendamentosstatus: TBooleanField;
+    QueryFClientesmes: TFMTBCDField;
+    QueryFClientestotal: TLargeintField;
     QueryClientesid_clie: TIntegerField;
     QueryClientesnome_clie: TWideStringField;
     QueryClientesemail_clie: TWideStringField;
@@ -78,19 +92,6 @@ type
     QueryClientescidade_clie: TWideStringField;
     QueryClientesestado_clie: TWideStringField;
     QueryClientesdata_cad: TSQLTimeStampField;
-    QueryAgid_agendamento: TIntegerField;
-    QueryAgnome_clie: TWideStringField;
-    QueryAgnome: TWideStringField;
-    QueryAgdata_agendamento: TDateField;
-    QueryAghora_inicio: TTimeField;
-    QueryAgendamentosid_agendamento: TIntegerField;
-    QueryAgendamentosid_clie: TIntegerField;
-    QueryAgendamentosid_pro: TIntegerField;
-    QueryAgendamentosid_servico: TIntegerField;
-    QueryAgendamentosdata_agendamento: TDateField;
-    QueryAgendamentoshora_inicio: TTimeField;
-    QueryAgendamentospreco: TFMTBCDField;
-    QueryAgendamentosstatus: TBooleanField;
   private
     { Private declarations }
   public

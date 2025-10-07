@@ -431,10 +431,6 @@ object DataModule1: TDataModule1
       FieldName = 'id_clie'
       Origin = 'id_clie'
     end
-    object QueryAgendamentosid_pro: TIntegerField
-      FieldName = 'id_pro'
-      Origin = 'id_pro'
-    end
     object QueryAgendamentosid_servico: TIntegerField
       FieldName = 'id_servico'
       Origin = 'id_servico'
@@ -448,11 +444,11 @@ object DataModule1: TDataModule1
       Origin = 'hora_inicio'
       ProviderFlags = [pfInUpdate]
     end
-    object QueryAgendamentospreco: TFMTBCDField
+    object QueryAgendamentospreco: TBCDField
       FieldName = 'preco'
       Origin = 'preco'
       Precision = 10
-      Size = 9
+      Size = 2
     end
     object QueryAgendamentosstatus: TBooleanField
       FieldName = 'status'
@@ -474,5 +470,19 @@ object DataModule1: TDataModule1
       '')
     Left = 408
     Top = 280
+    object QueryFClientesmes: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'mes'
+      Origin = 'mes'
+      ReadOnly = True
+      Precision = 64
+      Size = 64
+    end
+    object QueryFClientestotal: TLargeintField
+      AutoGenerateValue = arDefault
+      FieldName = 'total'
+      Origin = 'total'
+      ReadOnly = True
+    end
   end
 end

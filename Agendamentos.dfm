@@ -29,7 +29,6 @@ object Form13: TForm13
       Width = 54
       Height = 15
       Caption = 'nome_clie'
-      FocusControl = DBEdit1
     end
     object Label2: TLabel
       Left = 264
@@ -41,7 +40,7 @@ object Form13: TForm13
     end
     object Label3: TLabel
       Left = 264
-      Top = 287
+      Top = 464
       Width = 30
       Height = 15
       Caption = 'preco'
@@ -73,15 +72,6 @@ object Form13: TForm13
           Visible = True
         end>
     end
-    object DBEdit1: TDBEdit
-      Left = 264
-      Top = 37
-      Width = 200
-      Height = 23
-      DataField = 'nome_clie'
-      DataSource = DataSource1
-      TabOrder = 1
-    end
     object DBEdit2: TDBEdit
       Left = 264
       Top = 87
@@ -89,15 +79,15 @@ object Form13: TForm13
       Height = 23
       DataField = 'email_clie'
       DataSource = DataSource1
-      TabOrder = 2
+      TabOrder = 1
     end
     object Panel2: TPanel
       Left = 264
-      Top = 404
+      Top = 532
       Width = 97
       Height = 41
       Caption = 'Marcar Hor'#225'rio'
-      TabOrder = 3
+      TabOrder = 2
       OnClick = Panel2Click
     end
     object CheckListBoxServicos: TCheckListBox
@@ -106,7 +96,7 @@ object Form13: TForm13
       Width = 200
       Height = 153
       ItemHeight = 17
-      TabOrder = 4
+      TabOrder = 3
       OnClickCheck = CheckListBoxServicosClickCheck
     end
     object MonthCalendar1: TMonthCalendar
@@ -115,24 +105,42 @@ object Form13: TForm13
       Width = 225
       Height = 169
       Date = 45936.000000000000000000
-      TabOrder = 5
+      TabOrder = 4
     end
-    object ComboBox1: TComboBox
+    object ComboBoxHorarios: TComboBox
       Left = 16
       Top = 422
       Width = 225
       Height = 23
-      TabOrder = 6
-      Text = 'ComboBox1'
+      TabOrder = 5
+      Text = 'Selecione o Hor'#225'rio'
+      TextHint = 'Selecione o Hor'#225'rio'
     end
     object DBEdit3: TDBEdit
       Left = 264
-      Top = 308
+      Top = 485
       Width = 169
       Height = 23
       DataField = 'preco'
-      DataSource = DataSource2
+      DataSource = DataSource3
+      TabOrder = 6
+    end
+    object CheckListBoxProfissionais: TCheckListBox
+      Left = 264
+      Top = 304
+      Width = 200
+      Height = 141
+      ItemHeight = 17
       TabOrder = 7
+    end
+    object DBEdit1: TDBEdit
+      Left = 264
+      Top = 37
+      Width = 200
+      Height = 23
+      DataField = 'nome_clie'
+      DataSource = DataSource1
+      TabOrder = 8
     end
   end
   object DataSource1: TDataSource
@@ -142,7 +150,12 @@ object Form13: TForm13
   end
   object DataSource2: TDataSource
     DataSet = DataModule1.QueryServicos
-    Left = 112
+    Left = 120
     Top = 16
+  end
+  object DataSource3: TDataSource
+    DataSet = DataModule1.QueryAgendamentos
+    Left = 512
+    Top = 24
   end
 end
