@@ -378,7 +378,7 @@ object DataModule1: TDataModule1
       '    a.id_agendamento,'
       '    c.nome_clie,'
       '    c.email_clie,'
-      '    s.nome,'
+      '    STRING_AGG(s.nome, '#39', '#39')::varchar(500) AS nome_servicos,'
       '    a.data_agendamento,'
       '    a.hora_inicio,'
       '    a.status'
@@ -387,8 +387,20 @@ object DataModule1: TDataModule1
       'INNER JOIN '
       '    clientes c ON a.id_clie = c.id_clie'
       'INNER JOIN'
-      '    servicos s ON a.id_servico = s.id_servico;'
-      ''
+      
+        '    agendamento_servicos ags ON a.id_agendamento = ags.id_agenda' +
+        'mento'
+      'INNER JOIN'
+      '    servicos s ON ags.id_servico = s.id_servico'
+      'GROUP BY'
+      '    a.id_agendamento,'
+      '    c.nome_clie,'
+      '    c.email_clie,'
+      '    a.data_agendamento,'
+      '    a.hora_inicio,'
+      '    a.status'
+      'ORDER BY'
+      '    a.id_agendamento;'
       '')
     Left = 888
     Top = 352
@@ -409,11 +421,12 @@ object DataModule1: TDataModule1
       Origin = 'email_clie'
       Size = 100
     end
-    object QueryAgnome: TWideStringField
+    object QueryAgnome_servicos: TWideStringField
       AutoGenerateValue = arDefault
-      FieldName = 'nome'
-      Origin = 'nome'
-      Size = 50
+      FieldName = 'nome_servicos'
+      Origin = 'nome_servicos'
+      ReadOnly = True
+      Size = 500
     end
     object QueryAgdata_agendamento: TDateField
       FieldName = 'data_agendamento'
@@ -444,10 +457,6 @@ object DataModule1: TDataModule1
     object QueryAgendamentosid_clie: TIntegerField
       FieldName = 'id_clie'
       Origin = 'id_clie'
-    end
-    object QueryAgendamentosid_servico: TIntegerField
-      FieldName = 'id_servico'
-      Origin = 'id_servico'
     end
     object QueryAgendamentosdata_agendamento: TDateField
       FieldName = 'data_agendamento'
@@ -503,7 +512,24 @@ object DataModule1: TDataModule1
     Connection = FDConnection1
     SQL.Strings = (
       '')
-    Left = 824
-    Top = 264
+    Left = 904
+    Top = 280
+  end
+  object QueryRAS: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from agendamento_servicos')
+    Left = 800
+    Top = 272
+    object QueryRASid_agendamento: TIntegerField
+      FieldName = 'id_agendamento'
+      Origin = 'id_agendamento'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object QueryRASid_servico: TIntegerField
+      FieldName = 'id_servico'
+      Origin = 'id_servico'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
   end
 end

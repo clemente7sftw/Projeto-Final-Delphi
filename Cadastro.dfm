@@ -44242,17 +44242,62 @@ object Form2: TForm2
     object Label3: TLabel
       Left = 279
       Top = 663
-      Width = 122
+      Width = 128
       Height = 25
       Cursor = crHandPoint
       Caption = 'Termos de uso'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
+      Font.Color = clBlue
       Font.Height = -19
-      Font.Name = 'Segoe UI Semibold'
+      Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = Label3Click
+    end
+    object LbErro: TLabel
+      Left = 107
+      Top = 524
+      Width = 511
+      Height = 30
+      Caption = 'Para prosseguir, por favor, digite seu e-mail e senha.'
+      Color = clMaroon
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object LbTermos: TLabel
+      Left = 107
+      Top = 696
+      Width = 458
+      Height = 30
+      Caption = 'Leia e aceite os Termos de Uso para prosseguir.'
+      Color = clMaroon
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object LbSenhaErro: TLabel
+      Left = 107
+      Top = 445
+      Width = 404
+      Height = 30
+      Caption = 'A senha deve ter no m'#237'nimo 5 caracteres.'
+      Color = clMaroon
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
     end
     object BtnCad: TPanel
       Left = 108

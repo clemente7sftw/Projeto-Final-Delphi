@@ -83,7 +83,7 @@ object Form15: TForm15
         end>
     end
     object BtnEditar: TPanel
-      Left = 368
+      Left = 409
       Top = 63
       Width = 89
       Height = 41
@@ -92,7 +92,7 @@ object Form15: TForm15
       OnClick = BtnEditarClick
     end
     object BtnExcluir: TPanel
-      Left = 632
+      Left = 599
       Top = 63
       Width = 89
       Height = 41

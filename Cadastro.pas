@@ -29,6 +29,9 @@ type
     imgsenha: TImage;
     EdEmail: TEdit;
     Label3: TLabel;
+    LbErro: TLabel;
+    LbTermos: TLabel;
+    LbSenhaErro: TLabel;
     procedure LbTemContaClick(Sender: TObject);
     procedure EdEmailKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -56,10 +59,14 @@ implementation
 
 
 uses Login, UDataModule, CadClie, CadEmp, UMetodos;
+
 procedure TForm2.FormCreate(Sender: TObject);
 begin
   WindowState:=wsMaximized;
   EdSenha.PasswordChar := '*';
+  lberro.Visible:= false;
+  LbTermos.Visible:= false;
+  Lbsenhaerro.Visible:= false;
 
 end;
 
@@ -80,24 +87,55 @@ end;
 
 procedure TForm2.BtnCadClick(Sender: TObject);
 begin
-  if TMetodos.ValidarEmail(EdEmail.Text) then
-  begin
    if CheckBox1.Checked then
     begin
-    if CheckBox2.Checked then
+    if tmetodos.ValidarEmail (EdEmail.Text) then
+     if edsenha.text <> '' then
+     begin
+       if CheckBox2.Checked then
+        begin
+          if Length(EdSenha.Text) >= 5  then
+          begin
+          Form19.Show;
+          Form19.EdEmail.Text := EdEmail.Text;
+          LbTermos.Visible:= false;
+          Lberro.Visible:= false;
+          end else begin
+          Lbsenhaerro.Visible:= true;
+          end;
+          end else begin
+            LbTermos.Visible:= true;
+          end;
+      end else begin
+        Lbsenhaerro.Visible:= true;
+     end else
+     begin
+      Lbsenhaerro.Visible:= false;
+     end;
+    end;
+    if not checkbox1.Checked then
     begin
-      Form19.Show;
-      Form19.EdEmail.Text := EdEmail.Text;
+      if checkbox2.Checked then
+      begin
+        if tmetodos.ValidarEmail (EdEmail.Text) then
+        if edsenha.text <> '' then
+        begin
+          Form18.Show;
+          Form18.EdEmail.Text := EdEmail.Text;
+          lberro.Visible:= false;
+          LbTermos.Visible:= false;
+          end else begin
+          lberro.Visible:= true;
+        end else
+        begin
+          lberro.Visible:=true;
+        end;
+      end else begin
+        lbtermos.Visible:= true;
+      end;
     end;
-    end else begin
-    if CheckBox2.Checked then
-      Form18.Show;
-      Form18.EdEmail.Text := EdEmail.Text;
-    end;
-  end
-  else
-    ShowMessage('Por favor, digite um endereço de e-mail válido');
 end;
+
 
 procedure TForm2.EdEmailKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
@@ -122,5 +160,6 @@ begin
   Form2.Close;
   Form1.Show;
 end;
+
 
 end.

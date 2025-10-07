@@ -47,8 +47,8 @@ object Form13: TForm13
       FocusControl = DBEdit3
     end
     object Lblrequired: TLabel
-      Left = 520
-      Top = 401
+      Left = 16
+      Top = 488
       Width = 145
       Height = 15
       Caption = 'Preencha todos os campos!'

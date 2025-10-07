@@ -2,7 +2,7 @@ object Form21: TForm21
   Left = 0
   Top = 0
   Caption = 'Form21'
-  ClientHeight = 635
+  ClientHeight = 910
   ClientWidth = 1038
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -10,6 +10,7 @@ object Form21: TForm21
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poDesigned
   OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15
@@ -17,7 +18,7 @@ object Form21: TForm21
     Left = 0
     Top = 0
     Width = 1038
-    Height = 635
+    Height = 910
     Align = alClient
     Color = clWhite
     ParentBackground = False
@@ -25,9 +26,25 @@ object Form21: TForm21
     ExplicitLeft = 8
     ExplicitWidth = 693
     ExplicitHeight = 589
+    object Label1: TLabel
+      Left = 56
+      Top = 264
+      Width = 54
+      Height = 15
+      Caption = 'nome_clie'
+      FocusControl = DBEdit1
+    end
+    object Label2: TLabel
+      Left = 56
+      Top = 328
+      Width = 52
+      Height = 15
+      Caption = 'email_clie'
+      FocusControl = DBEdit2
+    end
     object DBGrid1: TDBGrid
       Left = 24
-      Top = 208
+      Top = 424
       Width = 961
       Height = 321
       DataSource = DataSource1
@@ -52,7 +69,7 @@ object Form21: TForm21
         end
         item
           Expanded = False
-          FieldName = 'nome'
+          FieldName = 'nome_servicos'
           Width = 200
           Visible = True
         end
@@ -70,7 +87,7 @@ object Form21: TForm21
         item
           Expanded = False
           FieldName = 'status'
-          Width = 55
+          Width = 103
           Visible = True
         end>
     end
@@ -118,10 +135,55 @@ object Form21: TForm21
           4E44AE426082}
       end
     end
+    object BtnConf: TPanel
+      Left = 462
+      Top = 147
+      Width = 89
+      Height = 41
+      Caption = 'BtnConf'
+      TabOrder = 2
+      OnClick = BtnConfClick
+    end
+    object BtnEditar: TPanel
+      Left = 351
+      Top = 147
+      Width = 89
+      Height = 41
+      Caption = 'BtnEditar'
+      TabOrder = 3
+      OnClick = BtnEditarClick
+    end
+    object BtnExcluir: TPanel
+      Left = 574
+      Top = 147
+      Width = 89
+      Height = 41
+      Caption = 'BtnExcluir'
+      TabOrder = 4
+      OnClick = BtnExcluirClick
+    end
+    object DBEdit1: TDBEdit
+      Left = 56
+      Top = 280
+      Width = 200
+      Height = 23
+      DataField = 'nome_clie'
+      DataSource = DataSource1
+      TabOrder = 5
+    end
+    object DBEdit2: TDBEdit
+      Left = 56
+      Top = 344
+      Width = 200
+      Height = 23
+      DataField = 'email_clie'
+      DataSource = DataSource1
+      TabOrder = 6
+    end
   end
   object DataSource1: TDataSource
     DataSet = DataModule1.QueryAg
     Left = 536
-    Top = 24
+    Top = 80
   end
 end

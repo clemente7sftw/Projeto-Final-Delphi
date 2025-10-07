@@ -65,13 +65,6 @@ type
     QueryProfissionaiscidade: TWideStringField;
     QueryProfissionaisestado: TWideStringField;
     QueryFClientes: TFDQuery;
-    QueryAgendamentosid_agendamento: TIntegerField;
-    QueryAgendamentosid_clie: TIntegerField;
-    QueryAgendamentosid_servico: TIntegerField;
-    QueryAgendamentosdata_agendamento: TDateField;
-    QueryAgendamentoshora_inicio: TTimeField;
-    QueryAgendamentospreco: TBCDField;
-    QueryAgendamentosstatus: TBooleanField;
     QueryFClientesmes: TFMTBCDField;
     QueryFClientestotal: TLargeintField;
     QueryClientesid_clie: TIntegerField;
@@ -87,14 +80,23 @@ type
     QueryClientescidade_clie: TWideStringField;
     QueryClientesestado_clie: TWideStringField;
     QueryClientesdata_cad: TSQLTimeStampField;
+    QueryUpAg: TFDQuery;
+    QueryRAS: TFDQuery;
+    QueryRASid_agendamento: TIntegerField;
+    QueryRASid_servico: TIntegerField;
     QueryAgid_agendamento: TIntegerField;
     QueryAgnome_clie: TWideStringField;
     QueryAgemail_clie: TWideStringField;
-    QueryAgnome: TWideStringField;
+    QueryAgnome_servicos: TWideStringField;
     QueryAgdata_agendamento: TDateField;
     QueryAghora_inicio: TTimeField;
     QueryAgstatus: TBooleanField;
-    QueryUpAg: TFDQuery;
+    QueryAgendamentosid_agendamento: TIntegerField;
+    QueryAgendamentosid_clie: TIntegerField;
+    QueryAgendamentosdata_agendamento: TDateField;
+    QueryAgendamentoshora_inicio: TTimeField;
+    QueryAgendamentospreco: TBCDField;
+    QueryAgendamentosstatus: TBooleanField;
     procedure QueryAgstatusGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
   private
@@ -113,13 +115,19 @@ implementation
 
 {$R *.dfm}
 
+
+
+
+
 procedure TDataModule1.QueryAgstatusGetText(Sender: TField; var Text: string;
   DisplayText: Boolean);
+begin
 begin
   if Sender.AsBoolean then
     Text := 'Concluído'
   else
     Text := 'Pendente';
+end;
 end;
 
 end.

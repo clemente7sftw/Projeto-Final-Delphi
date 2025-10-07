@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
-  Vcl.ExtCtrls, Vcl.Imaging.pngimage;
+  Vcl.ExtCtrls, Vcl.Imaging.pngimage, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls;
 
 type
   TForm21 = class(TForm)
@@ -14,10 +14,20 @@ type
     DataSource1: TDataSource;
     BtnAdd: TPanel;
     Image3: TImage;
+    BtnConf: TPanel;
+    BtnEditar: TPanel;
+    BtnExcluir: TPanel;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
     procedure BtnAddClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure AtualizarStatus;
+    procedure BtnExcluirClick(Sender: TObject);
+    procedure BtnEditarClick(Sender: TObject);
+    procedure BtnConfClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,6 +59,23 @@ form13.show;
 form21.close;
 end;
 
+procedure TForm21.BtnConfClick(Sender: TObject);
+begin
+btnconf.Visible:= false;
+end;
+
+procedure TForm21.BtnEditarClick(Sender: TObject);
+begin
+btnconf.Visible:= true;
+end;
+
+
+
+procedure TForm21.BtnExcluirClick(Sender: TObject);
+begin
+datamodule1.QueryAg.Delete;
+end;
+
 procedure TForm21.FormCreate(Sender: TObject);
 begin
 WindowState:=wsMaximized;
@@ -59,6 +86,7 @@ begin
 AtualizarStatus;
 datamodule1.QueryAg.close;
 datamodule1.QueryAg.open;
+btnconf.Visible:= false;
 end;
 
 end.
