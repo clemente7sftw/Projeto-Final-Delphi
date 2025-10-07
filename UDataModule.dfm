@@ -377,15 +377,18 @@ object DataModule1: TDataModule1
       'SELECT '
       '    a.id_agendamento,'
       '    c.nome_clie,'
+      '    c.email_clie,'
       '    s.nome,'
       '    a.data_agendamento,'
-      '    a.hora_inicio'
+      '    a.hora_inicio,'
+      '    a.status'
       'FROM '
       '    agendamentos a'
       'INNER JOIN '
       '    clientes c ON a.id_clie = c.id_clie'
       'INNER JOIN'
       '    servicos s ON a.id_servico = s.id_servico;'
+      ''
       '')
     Left = 888
     Top = 352
@@ -399,6 +402,12 @@ object DataModule1: TDataModule1
       FieldName = 'nome_clie'
       Origin = 'nome_clie'
       Size = 150
+    end
+    object QueryAgemail_clie: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'email_clie'
+      Origin = 'email_clie'
+      Size = 100
     end
     object QueryAgnome: TWideStringField
       AutoGenerateValue = arDefault
@@ -414,6 +423,11 @@ object DataModule1: TDataModule1
       FieldName = 'hora_inicio'
       Origin = 'hora_inicio'
       ProviderFlags = [pfInUpdate]
+    end
+    object QueryAgstatus: TBooleanField
+      FieldName = 'status'
+      Origin = 'status'
+      OnGetText = QueryAgstatusGetText
     end
   end
   object QueryAgendamentos: TFDQuery
@@ -484,5 +498,12 @@ object DataModule1: TDataModule1
       Origin = 'total'
       ReadOnly = True
     end
+  end
+  object QueryUpAg: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      '')
+    Left = 824
+    Top = 264
   end
 end

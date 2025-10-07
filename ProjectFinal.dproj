@@ -217,6 +217,10 @@
             <Form>Form13</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="CAgendamentos.pas">
+            <Form>Form21</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

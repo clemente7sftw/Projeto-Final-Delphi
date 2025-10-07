@@ -47,7 +47,8 @@ implementation
 {$R *.dfm}
 
 uses CClientes, CProfissionais, AdicionarServico, CServicos, AdicionarCliente,
-  CCargos, CFornecedores, Cadastro, CHorarios, Agendamentos, UDataModule;
+  CCargos, CFornecedores, Cadastro, CHorarios, Agendamentos, UDataModule,
+  CAgendamentos;
 procedure TForm20.FormCreate(Sender: TObject);
 begin
 WindowState:=wsMaximized;
@@ -67,7 +68,7 @@ end;
 
 procedure TForm20.Label4Click(Sender: TObject);
 begin
- form13.Show;
+ form21.Show;
  form20.close;
 end;
 

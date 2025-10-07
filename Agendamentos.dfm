@@ -46,6 +46,15 @@ object Form13: TForm13
       Caption = 'preco'
       FocusControl = DBEdit3
     end
+    object Lblrequired: TLabel
+      Left = 520
+      Top = 401
+      Width = 145
+      Height = 15
+      Caption = 'Preencha todos os campos!'
+      Color = clDarkred
+      ParentColor = False
+    end
     object DBGrid1: TDBGrid
       Left = 16
       Top = 72

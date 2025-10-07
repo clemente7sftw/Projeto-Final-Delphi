@@ -65,11 +65,6 @@ type
     QueryProfissionaiscidade: TWideStringField;
     QueryProfissionaisestado: TWideStringField;
     QueryFClientes: TFDQuery;
-    QueryAgid_agendamento: TIntegerField;
-    QueryAgnome_clie: TWideStringField;
-    QueryAgnome: TWideStringField;
-    QueryAgdata_agendamento: TDateField;
-    QueryAghora_inicio: TTimeField;
     QueryAgendamentosid_agendamento: TIntegerField;
     QueryAgendamentosid_clie: TIntegerField;
     QueryAgendamentosid_servico: TIntegerField;
@@ -92,6 +87,16 @@ type
     QueryClientescidade_clie: TWideStringField;
     QueryClientesestado_clie: TWideStringField;
     QueryClientesdata_cad: TSQLTimeStampField;
+    QueryAgid_agendamento: TIntegerField;
+    QueryAgnome_clie: TWideStringField;
+    QueryAgemail_clie: TWideStringField;
+    QueryAgnome: TWideStringField;
+    QueryAgdata_agendamento: TDateField;
+    QueryAghora_inicio: TTimeField;
+    QueryAgstatus: TBooleanField;
+    QueryUpAg: TFDQuery;
+    procedure QueryAgstatusGetText(Sender: TField; var Text: string;
+      DisplayText: Boolean);
   private
     { Private declarations }
   public
@@ -107,5 +112,14 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TDataModule1.QueryAgstatusGetText(Sender: TField; var Text: string;
+  DisplayText: Boolean);
+begin
+  if Sender.AsBoolean then
+    Text := 'Concluído'
+  else
+    Text := 'Pendente';
+end;
 
 end.

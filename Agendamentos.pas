@@ -26,6 +26,7 @@ type
     DataSource3: TDataSource;
     CheckListBoxProfissionais: TCheckListBox;
     DBEdit1: TDBEdit;
+    Lblrequired: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure PreencherListBoxServicos;
@@ -48,7 +49,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDataModule;
+uses UDataModule, CAgendamentos;
 
 procedure TForm13.FormShow(Sender: TObject);
 begin
@@ -61,8 +62,8 @@ begin
 //  datamodule1.QueryProfissionais.close;
 //  datamodule1.QueryProfissionais.open;
   PreencherListBoxServicos;
+  DataModule1.QueryAgendamentos.Append;
   ListarHorarios;
-  datamodule1.QueryAgendamentos.append;
 end;
 
 procedure TForm13.ListarHorarios;
@@ -133,21 +134,26 @@ var dataselecionada : tdate;
 begin
   for i := 0 to checklistboxservicos.count -1 do
   begin
-  if checklistboxservicos.Checked[i] then
-  begin
-    dataselecionada := MonthCalendar1.Date;
-    id_servico:= Integer(CheckListBoxservicos.Items.Objects[i]);
-    id_clie := DataModule1.QueryClientes.FieldByName('id_clie').AsInteger;
-//    id_pro := DataModule1.Queryprofissionais.FieldByName('id_pro').AsInteger;
-    datamodule1.QueryAgendamentos.FieldByName('id_clie').AsInteger := id_clie;
-    datamodule1.QueryAgendamentos.FieldByName('id_servico').AsInteger := id_servico;
-//    datamodule1.QueryAgendamentos.FieldByName('id_pro').AsInteger := id_pro;
-    DataModule1.QueryAgendamentos.FieldByName('data_agendamento').AsDateTime := dataselecionada;
-    DataModule1.QueryAgendamentos.FieldByName('hora_inicio').AsDateTime := StrToTime(ComboBoxHorarios.Text);
-    datamodule1.QueryAgendamentos.post;
+  if datamodule1.Queryagendamentos.State in [dsInsert, dsEdit] then
+    begin
+    if (checklistboxservicos.Checked[i]) then
+      begin
+        dataselecionada := MonthCalendar1.Date;
+        id_servico:= Integer(CheckListBoxservicos.Items.Objects[i]);
+        id_clie := DataModule1.QueryClientes.FieldByName('id_clie').AsInteger;
+        datamodule1.QueryAgendamentos.FieldByName('id_clie').AsInteger := id_clie;
+        datamodule1.QueryAgendamentos.FieldByName('id_servico').AsInteger := id_servico;
+        DataModule1.QueryAgendamentos.FieldByName('data_agendamento').AsDateTime := dataselecionada;
+        DataModule1.QueryAgendamentos.FieldByName('hora_inicio').AsDateTime := StrToTime(ComboBoxHorarios.Text);
+        datamodule1.QueryAgendamentos.post;
+        Lblrequired.Visible:= false;
+        Form21.show;
+        form13.close;
+        end else begin
+        Lblrequired.Visible:= true;
+      end;
+    end;
   end;
-  end;
-
 end;
 
 procedure TForm13.CheckListBoxServicosClickCheck(Sender: TObject);
@@ -174,5 +180,7 @@ end;
 procedure TForm13.FormCreate(Sender: TObject);
 begin
 WindowState:=wsMaximized;
+Lblrequired.Visible:= false;
+MonthCalendar1.MinDate:= Date;
 end;
 end.
