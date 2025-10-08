@@ -89,29 +89,29 @@ procedure TForm2.BtnCadClick(Sender: TObject);
 begin
    if CheckBox1.Checked then
     begin
-    if tmetodos.ValidarEmail (EdEmail.Text) then
-     if edsenha.text <> '' then
-     begin
-       if CheckBox2.Checked then
-        begin
-          if Length(EdSenha.Text) >= 5  then
-          begin
-          Form19.Show;
-          Form19.EdEmail.Text := EdEmail.Text;
-          LbTermos.Visible:= false;
-          Lberro.Visible:= false;
+      if tmetodos.ValidarEmail (EdEmail.Text) then
+         if edsenha.text <> '' then
+         begin
+           if CheckBox2.Checked then
+            begin
+              if Length(EdSenha.Text) >= 5  then
+              begin
+              Form19.Show;
+              Form19.EdEmail.Text := EdEmail.Text;
+              LbTermos.Visible:= false;
+              Lberro.Visible:= false;
+              end else begin
+              Lbsenhaerro.Visible:= true;
+              end;
+              end else begin
+                LbTermos.Visible:= true;
+              end;
           end else begin
-          Lbsenhaerro.Visible:= true;
-          end;
-          end else begin
-            LbTermos.Visible:= true;
-          end;
-      end else begin
-        Lbsenhaerro.Visible:= true;
-     end else
-     begin
-      Lbsenhaerro.Visible:= false;
-     end;
+            Lbsenhaerro.Visible:= true;
+         end else
+       begin
+        Lbsenhaerro.Visible:= false;
+       end;
     end;
     if not checkbox1.Checked then
     begin
