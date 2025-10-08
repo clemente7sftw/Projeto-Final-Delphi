@@ -22,6 +22,8 @@ object Form9: TForm9
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 684
+    ExplicitHeight = 520
     object Lblrequired: TLabel
       Left = 40
       Top = 365
@@ -87,7 +89,7 @@ object Form9: TForm9
       Top = 85
       Width = 200
       Height = 23
-      DataField = 'nome_pro'
+      DataField = 'nome'
       DataSource = DataSource1
       TabOrder = 1
     end

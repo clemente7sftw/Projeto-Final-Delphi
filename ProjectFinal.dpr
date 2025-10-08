@@ -24,8 +24,7 @@ uses
   CadEmp in 'CadEmp.pas' {Form19},
   TelaInicialN3 in 'TelaInicialN3.pas' {Form20},
   Agendamentos in 'Agendamentos.pas' {Form13},
-  CAgendamentos in 'CAgendamentos.pas' {Form21},
-  uSuperChartLight in 'uSuperChartLight.pas';
+  CAgendamentos in 'CAgendamentos.pas' {Form21};
 
 {$R *.res}
 

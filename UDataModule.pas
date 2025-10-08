@@ -43,9 +43,6 @@ type
     QueryCargosdata_cad: TSQLTimeStampField;
     QueryCSid_cargo: TIntegerField;
     QueryCSid_servico: TIntegerField;
-    QueryRPCnome: TWideStringField;
-    QueryRPCemail: TWideStringField;
-    QueryRPCnome_cargo: TWideStringField;
     QueryAg: TFDQuery;
     QueryRCSnome_cargo: TWideStringField;
     QueryRCSnome: TWideStringField;
@@ -97,6 +94,9 @@ type
     QueryAgendamentoshora_inicio: TTimeField;
     QueryAgendamentospreco: TBCDField;
     QueryAgendamentosstatus: TBooleanField;
+    QueryRPCnome: TWideStringField;
+    QueryRPCemail: TWideStringField;
+    QueryRPCnome_cargo: TWideStringField;
     procedure QueryAgstatusGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
   private

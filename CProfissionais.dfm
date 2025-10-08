@@ -22,6 +22,8 @@ object Form8: TForm8
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1061
+    ExplicitHeight = 648
     object Panel1: TPanel
       Left = 1
       Top = 1
@@ -31,6 +33,8 @@ object Form8: TForm8
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
+      ExplicitWidth = 1059
+      ExplicitHeight = 646
       object Image1: TImage
         Left = 24
         Top = 472
@@ -222,6 +226,7 @@ object Form8: TForm8
         Width = 200
         Height = 23
         DataField = 'nome'
+        DataSource = DataSourceRPC
         TabOrder = 8
       end
       object DBEdit2: TDBEdit
@@ -230,6 +235,7 @@ object Form8: TForm8
         Width = 200
         Height = 23
         DataField = 'email'
+        DataSource = DataSourceRPC
         TabOrder = 9
       end
       object DBEdit3: TDBEdit
@@ -238,6 +244,7 @@ object Form8: TForm8
         Width = 200
         Height = 23
         DataField = 'nome_cargo'
+        DataSource = DataSourceRPC
         TabOrder = 10
       end
     end
