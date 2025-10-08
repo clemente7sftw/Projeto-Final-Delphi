@@ -25,15 +25,20 @@ type
     calendario: TMonthCalendar;
     CLBServicos: TCheckListBox;
     ComboBoxHorarios: TComboBox;
+    ExclBtn: TImage;
+    EditBtn: TImage;
+    btncancelar: TImage;
     procedure ListarHorarios;
     procedure BtnAddClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure AtualizarStatus;
+    procedure Excluir;
     procedure BtnExcluirClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);
     procedure BtnConfClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure ExclBtnClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -113,6 +118,31 @@ end;
 procedure TForm21.Button1Click(Sender: TObject);
 begin
   AtualizarStatus;
+end;
+
+procedure TForm21.ExclBtnClick(Sender: TObject);
+begin
+Excluir;
+end;
+
+procedure TForm21.Excluir;
+begin
+  if Application.MessageBox('Tem certeza de que deseja excluir este Agendamento? Essa ação não poderá ser desfeita.', 'Exclusão de Agendamento', MB_YESNO + MB_ICONQUESTION) = IDYES then
+  begin
+  datamodule1.QueryRAS.close;
+  datamodule1.QueryRAS.open;
+  datamodule1.QueryRAS.delete;
+  datamodule1.QueryRAS.close;
+  datamodule1.QueryRAS.open;
+  datamodule1.Queryag.delete;
+  sleep(100);
+  datamodule1.queryag.close;
+  datamodule1.Queryag.open;
+  end
+  else
+  begin
+   exit;
+  end;
 end;
 
 procedure TForm21.FormCreate(Sender: TObject);
