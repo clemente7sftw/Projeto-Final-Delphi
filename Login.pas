@@ -50,7 +50,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDataModule, TelaInicialN3, AdicionarCliente, CClientes,
+uses UDataModule, TelaInicialN3, CClientes,
   CHorarios;
 
 

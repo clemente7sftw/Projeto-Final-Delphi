@@ -50,7 +50,7 @@ implementation
 
 {$R *.dfm}
 
-uses TelaPrincipalN1, CClientes, AdicionarCliente, UDataModule;
+uses TelaPrincipalN1, CClientes, UDataModule;
 
 procedure TForm7.BtnAddClick(Sender: TObject);
 begin

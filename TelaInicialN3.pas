@@ -11,17 +11,16 @@ type
   TForm20 = class(TForm)
     Label1: TLabel;
     Fundo: TPanel;
+    Image1: TImage;
+    Image4: TImage;
+    BS: TImage;
+    Barra: TPanel;
     LbClie: TLabel;
     LbProfissionais: TLabel;
     LbServicos: TLabel;
     LbCargos: TLabel;
-    Label2: TLabel;
-    Image4: TImage;
-    BS: TImage;
-    Image1: TImage;
-    Barra: TPanel;
-    Label3: TLabel;
-    Label4: TLabel;
+    LbFornecedores: TLabel;
+    Lbagendamentos: TLabel;
     procedure LbClieClick(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);
     procedure LbServicosClick(Sender: TObject);
@@ -30,6 +29,7 @@ type
     procedure Label3Click(Sender: TObject);
     procedure Label2Click(Sender: TObject);
     procedure Label4Click(Sender: TObject);
+    procedure LbagendamentosClick(Sender: TObject);
   private
     { Private declarations }
 
@@ -45,7 +45,7 @@ implementation
 
 {$R *.dfm}
 
-uses CClientes, CProfissionais, AdicionarServico, CServicos, AdicionarCliente,
+uses CClientes, CProfissionais, AdicionarServico, CServicos,
   CCargos, CFornecedores, Cadastro, CHorarios, Agendamentos, UDataModule,
   CAgendamentos;
 procedure TForm20.FormCreate(Sender: TObject);
@@ -69,6 +69,12 @@ procedure TForm20.Label4Click(Sender: TObject);
 begin
  form21.Show;
  form20.close;
+end;
+
+procedure TForm20.LbagendamentosClick(Sender: TObject);
+begin
+  Form21.Show;
+  Form2.Close;
 end;
 
 procedure TForm20.LbCargosClick(Sender: TObject);

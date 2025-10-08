@@ -23,7 +23,7 @@ object Form4: TForm4
     ParentBackground = False
     TabOrder = 0
     ExplicitLeft = 8
-    ExplicitTop = -8
+    ExplicitTop = 8
     object Image1: TImage
       Left = 0
       Top = 223
@@ -224,7 +224,7 @@ object Form4: TForm4
         89DA0000000049454E44AE426082}
     end
     object BS: TImage
-      Left = 156
+      Left = 151
       Top = 80
       Width = 273
       Height = 41
@@ -363,7 +363,7 @@ object Form4: TForm4
       ParentFont = False
     end
     object EditBtn: TImage
-      Left = 850
+      Left = 810
       Top = 361
       Width = 32
       Height = 34
@@ -387,7 +387,7 @@ object Form4: TForm4
       OnClick = EditBtnClick
     end
     object ExclBtn: TImage
-      Left = 904
+      Left = 864
       Top = 361
       Width = 33
       Height = 34
@@ -409,7 +409,7 @@ object Form4: TForm4
       OnClick = ExclBtnClick
     end
     object addclie: TImage
-      Left = 787
+      Left = 747
       Top = 359
       Width = 41
       Height = 36
@@ -435,10 +435,11 @@ object Form4: TForm4
       OnClick = addclieClick
     end
     object btncancelar: TImage
-      Left = 960
+      Left = 913
       Top = 362
       Width = 41
       Height = 33
+      Cursor = crHandPoint
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000260000
         002008060000007E640AB3000000097048597300000B1300000B1301009A9C18
@@ -454,10 +455,41 @@ object Form4: TForm4
         44AE426082}
       OnClick = btncancelarClick
     end
+    object Image3: TImage
+      Left = 1792
+      Top = 64
+      Width = 65
+      Height = 57
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000410000
+        003B0806000000244EE7E2000000097048597300000B1300000B1301009A9C18
+        000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000002
+        684944415478DAED9AED4DC3301086DF6ED011DC09A013904E004C4098009880
+        748296090813940D0813B44CD0B00123E08B1D15F54789EDBBC4A9FC4AA7AA52
+        63D94FCFF67D6482244C869E400C4A109020344A109020341A0AC2549BD27669
+        BFFF58DBD9CFB385400BCFB55D6BCB4EFCAED2F6A6AD3C3708B4F89505D155B5
+        B6651F30FA80F06A21F86AADED69CC10B638ECFB1055DA16638440EEFFC8389E
+        98474841B8D1B6111897BCA11A0B840F9CBE017C5541605B484050DAF602E3B6
+        9AC3C4135143A07360250881CE8575EC104A6D77821068FCFB042141180704DA
+        AF0F821028942E628790C15C9152628F1524205092B4875BB2D455B5B619F7A0
+        52C152A1ED59605CF6AD200981BC809227C538660D012F9084000B600B9E6D41
+        D5A6B905312A08244AA33708F3085AF82D9843E53E21C002A0C24AE6F16C0513
+        13D49213ECB3C698C3C40F5D8A2CB4F82504D2E6A121B45230F5860B1CB6495B
+        6DFED2F60EE17F3E0608D129414082D02841C03010A6381D40D5E70641C1DC04
+        573057A372787667817C42F8C690CA2273FCDF737415417981405B8E1B022D9E
+        B247C53DD13FAAC1DCA3E48240FF3EE50899E0E28F555A18750C10144C2549F5
+        08A015015884820885302400361021106200C00222040257DB9D4B153CFB94BE
+        1072981A416CF26AD1F9405088671B1C8BD2F1191C5FFEF28190234E2F68E55C
+        91F68110DB5970AC0A8E67832B0405D9770FB844F3FC968220F51A0EB7A8385B
+        4A412820D359E296D3B9E00AA1846CDB9D4B34CFCEEDFB04C103428EB8AFC756
+        A26702A98069A248B4DE434541129D074E51636802159B6A9F8752B5190942A3
+        04010942A30441EB173AE76C3C77BA892E0000000049454E44AE426082}
+      Stretch = True
+    end
     object DBGrid1: TDBGrid
-      Left = 33
+      Left = 40
       Top = 401
-      Width = 921
+      Width = 914
       Height = 512
       Color = clWhite
       DataSource = DataSource1
@@ -466,8 +498,8 @@ object Form4: TForm4
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
-      Font.Name = 'Segoe UI Semibold'
-      Font.Style = [fsBold]
+      Font.Name = 'Segoe UI'
+      Font.Style = []
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       ParentFont = False
       TabOrder = 0
@@ -515,7 +547,7 @@ object Form4: TForm4
     end
     object BtnConf: TPanel
       Left = 1105
-      Top = 816
+      Top = 848
       Width = 496
       Height = 41
       Cursor = crHandPoint
@@ -533,7 +565,7 @@ object Form4: TForm4
     end
     object EdPesquisa: TEdit
       Left = 40
-      Top = 326
+      Top = 350
       Width = 321
       Height = 45
       Font.Charset = ANSI_CHARSET
@@ -547,7 +579,7 @@ object Form4: TForm4
     end
     object Panel1: TPanel
       Left = 320
-      Top = 326
+      Top = 350
       Width = 41
       Height = 45
       Color = clBlack
@@ -591,8 +623,8 @@ object Form4: TForm4
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
-      Font.Name = 'Segoe UI Semibold'
-      Font.Style = [fsBold]
+      Font.Name = 'Segoe UI'
+      Font.Style = []
       ParentFont = False
       TabOrder = 4
     end
@@ -606,15 +638,15 @@ object Form4: TForm4
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
-      Font.Name = 'Segoe UI Semibold'
-      Font.Style = [fsBold]
+      Font.Name = 'Segoe UI'
+      Font.Style = []
       ParentFont = False
       TabOrder = 5
       OnKeyPress = DBEdit1KeyPress
     end
     object BtnCad: TPanel
       Left = 1105
-      Top = 816
+      Top = 848
       Width = 496
       Height = 41
       Cursor = crHandPoint
@@ -664,6 +696,7 @@ object Form4: TForm4
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = LbProfissionaisClick
     end
     object LbServicos: TLabel
       Left = 1113
@@ -720,7 +753,7 @@ object Form4: TForm4
   end
   object DataSource1: TDataSource
     DataSet = DataModule1.QueryClientes
-    Left = 400
-    Top = 328
+    Left = 432
+    Top = 264
   end
 end

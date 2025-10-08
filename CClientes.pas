@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls,AdicionarCliente, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
   Vcl.Imaging.pngimage, Vcl.Skia, Vcl.Imaging.jpeg, Data.DB, Vcl.Grids,
   Vcl.DBGrids, Vcl.Mask, Vcl.DBCtrls;
 
@@ -38,6 +38,7 @@ type
     Lbagendamentos: TLabel;
     BtnCad: TPanel;
     btncancelar: TImage;
+    Image3: TImage;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -53,14 +54,15 @@ type
     procedure Cadastrar;
     procedure Cancelar;
     procedure Voltar;
+    procedure Excluir;
+    procedure AdicionarCliente;
     procedure DBEdit1KeyPress(Sender: TObject; var Key: Char);
     procedure ExclBtnClick(Sender: TObject);
-    procedure Excluir;
     procedure EditBtnClick(Sender: TObject);
-    procedure AdicionarCliente;
     procedure addclieClick(Sender: TObject);
     procedure BtnCadClick(Sender: TObject);
     procedure btncancelarClick(Sender: TObject);
+    procedure LbProfissionaisClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -74,7 +76,7 @@ implementation
 
 {$R *.dfm}
 
-uses TelaPrincipalN1, CFornecedores, TelaInicialN3, UDataModule;
+uses TelaPrincipalN1, CFornecedores, TelaInicialN3, UDataModule, CProfissionais;
 
 procedure TForm4.FormCreate(Sender: TObject);
 begin
@@ -94,12 +96,12 @@ end;
 
 procedure TForm4.BtnConfClick(Sender: TObject);
 begin
-Salvar;
+  Salvar;
 end;
 
 procedure TForm4.BtnEditarClick(Sender: TObject);
 begin
-Editar;
+  Editar;
 end;
 
 procedure TForm4.Image1Click(Sender: TObject);
@@ -110,6 +112,12 @@ end;
 procedure TForm4.Image2Click(Sender: TObject);
 begin
   Procurar;
+end;
+
+procedure TForm4.LbProfissionaisClick(Sender: TObject);
+begin
+Form8.show;
+form4.close;
 end;
 
 procedure TForm4.addclieClick(Sender: TObject);
@@ -140,6 +148,8 @@ end;
 procedure TForm4.AdicionarCliente;
 begin
   DataModule1.QueryClientes.Append;
+  DataModule1.QueryClientes.FieldByName('nome_clie').Clear;
+  DataModule1.QueryClientes.FieldByName('email_clie').Clear;
   EditsAtivos;
   BtnCad.Visible := true;
   EditBtn.Visible := false;
@@ -164,8 +174,6 @@ begin
 if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
    begin
     datamodule1.QueryClientes.Post;
-    Form4.show;
-    Form5.Close;
     datamodule1.QueryClientes.close;
     datamodule1.QueryClientes.open;
     Lblrequired.Visible:= false;
@@ -222,7 +230,7 @@ end;
 
 procedure TForm4.Excluir;
 begin
-  if Application.MessageBox('Tem certeza de que deseja excluir este cliente? Essa ação não poderá ser desfeita.', 'Exclusão de cliente', MB_YESNO + MB_ICONQUESTION) = IDYES then
+  if Application.MessageBox('Tem certeza de que deseja excluir este Cliente? Essa ação não poderá ser desfeita.', 'Exclusão de Cliente', MB_YESNO + MB_ICONQUESTION) = IDYES then
   begin
   datamodule1.QueryClientes.delete;
   end
@@ -255,6 +263,7 @@ begin
     BtnConf.Visible := False;
     ExclBtn.Visible := True;
     EditBtn.Visible:= true;
+    addclie.Visible:= true;
     Lblrequired.visible:= false;
   end else begin
     Lblrequired.visible:= true;
