@@ -23,9 +23,8 @@ object Form21: TForm21
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitWidth = 693
-    ExplicitHeight = 589
+    ExplicitWidth = 1036
+    ExplicitHeight = 902
     object Label1: TLabel
       Left = 56
       Top = 264
@@ -92,8 +91,8 @@ object Form21: TForm21
         end>
     end
     object BtnAdd: TPanel
-      Left = 24
-      Top = 143
+      Left = 56
+      Top = 152
       Width = 177
       Height = 41
       Cursor = crHandPoint
@@ -136,8 +135,8 @@ object Form21: TForm21
       end
     end
     object BtnConf: TPanel
-      Left = 462
-      Top = 147
+      Left = 854
+      Top = 334
       Width = 89
       Height = 41
       Caption = 'BtnConf'
@@ -145,8 +144,8 @@ object Form21: TForm21
       OnClick = BtnConfClick
     end
     object BtnEditar: TPanel
-      Left = 351
-      Top = 147
+      Left = 303
+      Top = 48
       Width = 89
       Height = 41
       Caption = 'BtnEditar'
@@ -154,8 +153,8 @@ object Form21: TForm21
       OnClick = BtnEditarClick
     end
     object BtnExcluir: TPanel
-      Left = 574
-      Top = 147
+      Left = 398
+      Top = 48
       Width = 89
       Height = 41
       Caption = 'BtnExcluir'
@@ -179,6 +178,30 @@ object Form21: TForm21
       DataField = 'email_clie'
       DataSource = DataSource1
       TabOrder = 6
+    end
+    object calendario: TMonthCalendar
+      Left = 279
+      Top = 170
+      Width = 267
+      Height = 205
+      Date = 45937.000000000000000000
+      TabOrder = 7
+    end
+    object CLBServicos: TCheckListBox
+      Left = 582
+      Top = 170
+      Width = 219
+      Height = 205
+      ItemHeight = 17
+      TabOrder = 8
+    end
+    object ComboBoxHorarios: TComboBox
+      Left = 840
+      Top = 88
+      Width = 145
+      Height = 23
+      TabOrder = 9
+      Text = 'ComboBoxHorarios'
     end
   end
   object DataSource1: TDataSource
