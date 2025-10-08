@@ -21,6 +21,8 @@ object Form20: TForm20
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1906
+    ExplicitHeight = 666
     object Label1: TLabel
       Left = 16
       Top = 240
@@ -336,12 +338,6 @@ object Form20: TForm20
       Height = 15
       Caption = 'hora'
       OnClick = Label3Click
-    end
-    object PaintBox1: TPaintBox
-      Left = 864
-      Top = 552
-      Width = 209
-      Height = 153
     end
     object Barra: TPanel
       Left = 0

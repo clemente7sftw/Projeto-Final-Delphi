@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.Imaging.pngimage, Vcl.CheckLst;
+  Vcl.Imaging.pngimage, Vcl.CheckLst, system.JSON, uSuperChartLight;
 
 type
   TForm20 = class(TForm)
@@ -21,7 +21,6 @@ type
     Image1: TImage;
     Barra: TPanel;
     Label3: TLabel;
-    PaintBox1: TPaintBox;
     Label4: TLabel;
     procedure LbClieClick(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);
