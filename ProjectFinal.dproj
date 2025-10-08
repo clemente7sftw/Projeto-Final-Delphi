@@ -145,9 +145,6 @@
             <Form>Form4</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="AdicionarCliente.pas">
-            <Form>Form5</Form>
-        </DCCReference>
         <DCCReference Include="AdicionarFornecedor.pas">
             <Form>Form6</Form>
         </DCCReference>

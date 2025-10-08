@@ -44,7 +44,7 @@ var
   Form21: TForm21;
 
 var  dataselecionada: TDatetime;
-var  i, ServicoSelecionado:integer;
+var  i, ServicoSelecionado, id_agendamento, id_servico:integer;
 
 implementation
 
@@ -84,7 +84,6 @@ begin
   calendario.Visible := True;
   CLBServicos.Visible := True;
   dataselecionada := DataModule1.QueryAg.FieldByName('data_agendamento').AsDateTime;
-  ServicoSelecionado :=DataModule1.QueryRAS.FieldByName('id_servico').AsInteger;
   Calendario.Date := dataselecionada;
   ComboBoxHorarios.Visible:= true;
 end;
@@ -108,33 +107,33 @@ end;
 
 procedure TForm21.BtnExcluirClick(Sender: TObject);
 begin
-datamodule1.QueryAg.Delete;
+  datamodule1.QueryAg.Delete;
 end;
 
 procedure TForm21.Button1Click(Sender: TObject);
 begin
-AtualizarStatus;
+  AtualizarStatus;
 end;
 
 procedure TForm21.FormCreate(Sender: TObject);
 begin
-WindowState:=wsMaximized;
-calendario.Visible:= false;
-CLBServicos.Visible:= false;
+  WindowState:=wsMaximized;
+  calendario.Visible:= false;
+  CLBServicos.Visible:= false;
 end;
 
 procedure TForm21.FormShow(Sender: TObject);
 begin
-AtualizarStatus;
-datamodule1.QueryAg.close;
-datamodule1.QueryAg.open;
-datamodule1.QueryAgendamentos.close;
-datamodule1.QueryAgendamentos.open;
-datamodule1.QueryRAS.close;
-datamodule1.QueryRAS.open;
-btnconf.Visible:= false;
-ComboBoxHorarios.Visible:= false;
-ListarHorarios;
+  AtualizarStatus;
+  datamodule1.QueryAg.close;
+  datamodule1.QueryAg.open;
+  datamodule1.QueryAgendamentos.close;
+  datamodule1.QueryAgendamentos.open;
+  datamodule1.QueryRAS.close;
+  datamodule1.QueryRAS.open;
+  btnconf.Visible:= false;
+  ComboBoxHorarios.Visible:= false;
+  ListarHorarios;
 end;
 
 procedure TForm21.ListarHorarios;

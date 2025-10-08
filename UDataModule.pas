@@ -79,8 +79,6 @@ type
     QueryClientesdata_cad: TSQLTimeStampField;
     QueryUpAg: TFDQuery;
     QueryRAS: TFDQuery;
-    QueryRASid_agendamento: TIntegerField;
-    QueryRASid_servico: TIntegerField;
     QueryAgid_agendamento: TIntegerField;
     QueryAgnome_clie: TWideStringField;
     QueryAgemail_clie: TWideStringField;
@@ -97,6 +95,8 @@ type
     QueryRPCnome: TWideStringField;
     QueryRPCemail: TWideStringField;
     QueryRPCnome_cargo: TWideStringField;
+    QueryRASid_agendamento: TIntegerField;
+    QueryRASid_servico: TIntegerField;
     procedure QueryAgstatusGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
   private

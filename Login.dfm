@@ -161,8 +161,6 @@ object Form1: TForm1
     Color = 1186595
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 918
-    ExplicitHeight = 1053
     object ImagemDeFundo: TImage
       Left = 1
       Top = 1
@@ -39983,7 +39981,7 @@ object Form1: TForm1
       Height = 41
       Cursor = crHandPoint
       Caption = 'Entrar'
-      Color = 2700608
+      Color = clBlack
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -21
@@ -40077,7 +40075,7 @@ object Form1: TForm1
     Width = 177
     Height = 57
     Cursor = crHandPoint
-    Color = 2700608
+    Color = clBlack
     ParentBackground = False
     TabOrder = 1
     object Image3: TImage
@@ -40119,7 +40117,7 @@ object Form1: TForm1
     Width = 197
     Height = 57
     Cursor = crHandPoint
-    Color = 2700608
+    Color = clBlack
     ParentBackground = False
     TabOrder = 2
     object Image2: TImage
