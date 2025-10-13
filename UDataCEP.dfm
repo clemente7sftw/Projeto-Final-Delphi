@@ -1,33 +1,34 @@
 object DataModule2: TDataModule2
-  Height = 418
-  Width = 377
-  PixelsPerInch = 120
+  Height = 348
+  Width = 421
   object RESTClient1: TRESTClient
     Params = <>
     SynchronizedEvents = False
-    Left = 40
-    Top = 60
+    Left = 32
+    Top = 48
   end
   object RESTRequest1: TRESTRequest
     Client = RESTClient1
     Params = <>
     Response = RESTResponse1
     SynchronizedEvents = False
-    Left = 140
-    Top = 60
+    Left = 112
+    Top = 48
   end
   object RESTResponse1: TRESTResponse
-    Left = 250
-    Top = 60
+    Left = 200
+    Top = 48
   end
   object RESTResponseDataSetAdapter1: TRESTResponseDataSetAdapter
     Dataset = FDMemTable1
     FieldDefs = <>
     Response = RESTResponse1
-    Left = 110
-    Top = 170
+    Left = 88
+    Top = 136
   end
   object FDMemTable1: TFDMemTable
+    FieldDefs = <>
+    IndexDefs = <>
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
     ResourceOptions.AssignedValues = [rvSilentMode]
@@ -35,7 +36,8 @@ object DataModule2: TDataModule2
     UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
-    Left = 110
-    Top = 270
+    StoreDefs = True
+    Left = 88
+    Top = 216
   end
 end

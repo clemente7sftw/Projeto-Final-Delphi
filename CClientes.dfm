@@ -22,8 +22,6 @@ object Form4: TForm4
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 8
     object Image1: TImage
       Left = 0
       Top = 223
@@ -486,6 +484,21 @@ object Form4: TForm4
         04010942A30441EB173AE76C3C77BA892E0000000049454E44AE426082}
       Stretch = True
     end
+    object LbEmail: TLabel
+      Left = 1105
+      Top = 716
+      Width = 221
+      Height = 30
+      Caption = 'Digite um Email v'#225'lido!'
+      Color = clDarkred
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
     object DBGrid1: TDBGrid
       Left = 40
       Top = 401
@@ -741,7 +754,7 @@ object Form4: TForm4
       Left = 464
       Top = 8
       Width = 146
-      Height = 25
+      Height = 30
       Caption = 'Agendamentos'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite

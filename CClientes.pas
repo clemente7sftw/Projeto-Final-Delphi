@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
   Vcl.Imaging.pngimage, Vcl.Skia, Vcl.Imaging.jpeg, Data.DB, Vcl.Grids,
-  Vcl.DBGrids, Vcl.Mask, Vcl.DBCtrls;
+  Vcl.DBGrids, Vcl.Mask, Vcl.DBCtrls, System.RegularExpressions;
 
 type
   TForm4 = class(TForm)
@@ -39,6 +39,7 @@ type
     BtnCad: TPanel;
     btncancelar: TImage;
     Image3: TImage;
+    LbEmail: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -63,6 +64,7 @@ type
     procedure BtnCadClick(Sender: TObject);
     procedure btncancelarClick(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);
+    function ValidarEmail(const Email: string):Boolean;
   private
     { Private declarations }
   public
@@ -85,6 +87,7 @@ begin
     lblrequired.Visible:= false;
     BtnCad.Visible:= false;
     btncancelar.Visible := false;
+    lbEmail.Visible:= false;
 end;
 
 procedure TForm4.FormShow(Sender: TObject);
@@ -172,20 +175,28 @@ end;
 procedure TForm4.Cadastrar;
 begin
 if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
-   begin
-    datamodule1.QueryClientes.Post;
-    datamodule1.QueryClientes.close;
-    datamodule1.QueryClientes.open;
-    Lblrequired.Visible:= false;
-    BtnCad.Visible:= false;
-    editsinativos;
-    EditBtn.Visible := true;
-    ExclBtn.Visible := true;
+begin
+  if  ValidarEmail(DBEDIT2.Text)  then
+  begin
+  datamodule1.QueryClientes.Post;
+  datamodule1.QueryClientes.close;
+  datamodule1.QueryClientes.open;
+  Lblrequired.Visible:= false;
+  BtnCad.Visible:= false;
+  editsinativos;
+  EditBtn.Visible := true;
+  ExclBtn.Visible := true;
+  lbEmail.visible:= false;
+  Lblrequired.Visible:= false;
   end else begin
-    Lblrequired.Visible:= true;
-    BtnCad.Visible:= true;
+  Lblrequired.Visible:= false;
+   lbEmail.visible:= true;
+  end;
+  end else begin
+   Lblrequired.Visible:= true;
   end;
 end;
+
 
 procedure TForm4.Cancelar;
 begin
@@ -256,6 +267,8 @@ procedure TForm4.Salvar;
 begin
   if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
   begin
+  if ValidarEmail(DBEDIT2.Text) then
+  begin
     if not (DataModule1.QueryClientes.State in [dsEdit, dsInsert]) then
     DataModule1.QueryClientes.Edit;
     DataModule1.QueryClientes.Post;
@@ -265,10 +278,20 @@ begin
     EditBtn.Visible:= true;
     addclie.Visible:= true;
     Lblrequired.visible:= false;
+    lbEmail.visible:= false;
+  end else begin
+  lbEmail.Visible:=true;
+  end;
   end else begin
     Lblrequired.visible:= true;
   end;
 end;
+
+function TForm4.ValidarEmail(const Email: string): Boolean;
+begin
+ Result := TRegEx.IsMatch(Email,'^[\w\.\-]+@([\w\-]+\.)+[a-zA-Z]{2,4}$');
+end;
+
 
 procedure TForm4.Voltar;
 begin
