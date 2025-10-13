@@ -35,8 +35,6 @@ type
     Queryfornecedoresdata_cad: TSQLTimeStampField;
     QueryPC: TFDQuery;
     QueryRPC: TFDQuery;
-    QueryPCid_pro: TIntegerField;
-    QueryPCid_cargo: TIntegerField;
     QueryRCS: TFDQuery;
     QueryCargosid_cargo: TIntegerField;
     QueryCargosnome_cargo: TWideStringField;
@@ -97,6 +95,8 @@ type
     QueryRPCnome_cargo: TWideStringField;
     QueryRASid_agendamento: TIntegerField;
     QueryRASid_servico: TIntegerField;
+    QueryPCid_pro: TIntegerField;
+    QueryPCid_cargo: TIntegerField;
     procedure QueryAgstatusGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
   private

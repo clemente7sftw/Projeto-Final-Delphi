@@ -21,7 +21,6 @@ object Form20: TForm20
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1908
     object Label1: TLabel
       Left = 16
       Top = 248
@@ -378,6 +377,7 @@ object Form20: TForm20
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = LbCargosClick
       end
       object LbFornecedores: TLabel
         Left = 1608

@@ -5,27 +5,42 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, CProfissionais, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
-  Vcl.Imaging.pngimage, Data.DB, Vcl.Mask, Vcl.DBCtrls, Vcl.Skia, Vcl.CheckLst;
+  Vcl.Imaging.pngimage, Data.DB, Vcl.Mask, Vcl.DBCtrls, Vcl.Skia, Vcl.CheckLst, System.RegularExpressions;
+
 
 type
   TForm9 = class(TForm)
     Fundo: TPanel;
     DataSource1: TDataSource;
-    Lblrequired: TLabel;
     Image1: TImage;
-    PCad: TPanel;
     DataSource2: TDataSource;
     DataSource3: TDataSource;
-    Label1: TLabel;
     DBEdit1: TDBEdit;
-    Label2: TLabel;
     DBEdit2: TDBEdit;
-    CheckListBox1: TCheckListBox;
+    CLBCargos: TCheckListBox;
+    Image4: TImage;
+    BS: TImage;
+    Barra: TPanel;
+    LbClie: TLabel;
+    LbProfissionais: TLabel;
+    LbServicos: TLabel;
+    LbCargos: TLabel;
+    LbFornecedores: TLabel;
+    Lbagendamentos: TLabel;
+    Label3: TLabel;
+    Label1: TLabel;
+    Lblrequired: TLabel;
+    BtnConf: TPanel;
+    Label2: TLabel;
+    LbPro: TLabel;
+    LbEmail: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure PCadClick(Sender: TObject);
     procedure Cadastrar;
     procedure PreencherListbox;
+    procedure BtnConfClick(Sender: TObject);
+    function ValidarEmail(const Email: string):Boolean;
 
   private
     { Private declarations }
@@ -47,6 +62,7 @@ procedure TForm9.FormCreate(Sender: TObject);
 begin
   Form9.WindowState:=wsMaximized;
   Lblrequired.Visible:= false;
+  lbEmail.visible:= false;
 end;
 
 procedure TForm9.FormShow(Sender: TObject);
@@ -66,12 +82,12 @@ procedure TForm9.PreencherListbox;
 begin
 if not datamodule1.QueryCargos.IsEmpty then
 begin
-  CheckListBox1.Items.Clear;
+  CLBCargos.Items.Clear;
 
   datamodule1.QueryCargos.First;
   while not datamodule1.QueryCargos.Eof do
   begin
-    CheckListBox1.Items.AddObject(
+    CLBCargos.Items.AddObject(
       datamodule1.QueryCargos.FieldByName('nome_cargo').AsString,
       TObject(datamodule1.QueryCargos.FieldByName('id_cargo').AsInteger)
     );
@@ -81,36 +97,52 @@ end;
 end;
 
 
+function TForm9.ValidarEmail(const Email: string): Boolean;
+begin
+ Result := TRegEx.IsMatch(Email,'^[\w\.\-]+@([\w\-]+\.)+[a-zA-Z]{2,4}$');
+end;
+
+procedure TForm9.BtnConfClick(Sender: TObject);
+begin
+  Cadastrar;
+end;
+
 procedure TForm9.Cadastrar;
 var
   i: Integer;
 begin
-  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
+  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and   (CLBCargos.Items.Count > 0) and
+   (CLBCargos.ItemIndex <> -1) then
   begin
-    if datamodule1.QueryProfissionais.State in [dsInsert, dsEdit] then
-      datamodule1.QueryProfissionais.Post;
-
-    datamodule1.QueryProfissionais.Refresh;
-    id_pro := datamodule1.QueryProfissionais.FieldByName('id_profissional').AsInteger;
-
-    for i := 0 to CheckListBox1.Count - 1 do
+    if ValidarEmail(DBEDIT2.Text) then
     begin
-      if CheckListBox1.Checked[i] then
+      if datamodule1.QueryProfissionais.State in [dsInsert, dsEdit] then
+      datamodule1.QueryProfissionais.Post;
+      datamodule1.QueryProfissionais.Refresh;
+      id_pro := datamodule1.QueryProfissionais.FieldByName('id_pro').AsInteger;
+    for i := 0 to CLBCargos.Count - 1 do
+    begin
+      if CLBCargos.Checked[i] then
       begin
-        id_cargo := Integer(CheckListBox1.Items.Objects[i]);
+        id_cargo := Integer(CLBCargos.Items.Objects[i]);
         datamodule1.QueryPC.Append;
         datamodule1.QueryPC.FieldByName('id_cargo').AsInteger := id_cargo;
-        datamodule1.QueryPC.FieldByName('id_profissional').AsInteger := id_pro;
+        datamodule1.QueryPC.FieldByName('id_pro').AsInteger := id_pro;
         datamodule1.QueryPC.Post;
       end;
+      Form9.Close;
+      Form8.Show;
+      Lblrequired.Visible := False;
+      lbEmail.visible:= false;
+    end;
+    end else begin
+    Lblrequired.Visible := False;
+      lbEmail.visible:= true;
     end;
 
-    Form9.Close;
-    Form8.Show;
-    Lblrequired.Visible := False;
-  end
-  else
+  end else begin
     Lblrequired.Visible := True;
+  end;
 end;
 
 

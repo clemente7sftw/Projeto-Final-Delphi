@@ -22,8 +22,6 @@ object Form8: TForm8
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1063
-    ExplicitHeight = 656
     object Panel1: TPanel
       Left = 1
       Top = 1
@@ -33,8 +31,6 @@ object Form8: TForm8
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = 2
-      ExplicitHeight = 654
       object Label1: TLabel
         Left = 1102
         Top = 440
@@ -440,7 +436,7 @@ object Form8: TForm8
         OnClick = Image1Click
       end
       object Lblrequired: TLabel
-        Left = 1102
+        Left = 1103
         Top = 845
         Width = 264
         Height = 30
@@ -482,42 +478,6 @@ object Form8: TForm8
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object PbtnAdd: TPanel
-        Left = 1504
-        Top = 330
-        Width = 185
-        Height = 41
-        Caption = 'Adicionar'
-        TabOrder = 1
-        OnClick = PbtnAddClick
-      end
-      object BtnExcluir: TPanel
-        Left = 1273
-        Top = 330
-        Width = 89
-        Height = 41
-        Caption = 'BtnExcluir'
-        TabOrder = 2
-        OnClick = BtnExcluirClick
-      end
-      object BtnConf1: TPanel
-        Left = 1688
-        Top = 530
-        Width = 89
-        Height = 41
-        Caption = 'BtnConf1'
-        TabOrder = 3
-        OnClick = BtnConf1Click
-      end
-      object Panel2: TPanel
-        Left = 1178
-        Top = 330
-        Width = 89
-        Height = 41
-        Caption = 'BtnEditar'
-        TabOrder = 4
-        OnClick = Panel2Click
-      end
       object DBGrid1: TDBGrid
         Left = 40
         Top = 401
@@ -553,11 +513,6 @@ object Form8: TForm8
           item
             Expanded = False
             FieldName = 'email'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -21
-            Font.Name = 'Segoe UI'
-            Font.Style = []
             Title.Caption = 'Email'
             Title.Font.Charset = ANSI_CHARSET
             Title.Font.Color = clWindowText
@@ -570,11 +525,6 @@ object Form8: TForm8
           item
             Expanded = False
             FieldName = 'nome_cargo'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -21
-            Font.Name = 'Segoe UI'
-            Font.Style = []
             Title.Caption = 'Cargo'
             Title.Font.Charset = ANSI_CHARSET
             Title.Font.Color = clWindowText
@@ -598,7 +548,7 @@ object Form8: TForm8
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        TabOrder = 5
+        TabOrder = 1
       end
       object DBEdit2: TDBEdit
         Left = 1103
@@ -613,7 +563,7 @@ object Form8: TForm8
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        TabOrder = 6
+        TabOrder = 2
       end
       object DBEdit3: TDBEdit
         Left = 1103
@@ -628,16 +578,16 @@ object Form8: TForm8
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        TabOrder = 7
+        TabOrder = 3
       end
       object Barra: TPanel
-        Left = -10
+        Left = -18
         Top = 176
         Width = 1936
         Height = 41
         Color = 4405251
         ParentBackground = False
-        TabOrder = 8
+        TabOrder = 4
         object LbClie: TLabel
           Left = 192
           Top = 8
@@ -729,7 +679,7 @@ object Form8: TForm8
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 9
+        TabOrder = 5
         TextHint = 'Pesquise'
       end
       object Panel3: TPanel
@@ -739,7 +689,7 @@ object Form8: TForm8
         Height = 45
         Color = clBlack
         ParentBackground = False
-        TabOrder = 10
+        TabOrder = 6
         object Image2: TImage
           Left = 8
           Top = 9
@@ -767,26 +717,8 @@ object Form8: TForm8
             12FC0B1293E6224739C13B0000000049454E44AE426082}
         end
       end
-      object BtnCad: TPanel
-        Left = 1103
-        Top = 905
-        Width = 496
-        Height = 41
-        Cursor = crHandPoint
-        Caption = 'Cadastrar'
-        Color = 4405251
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
-        Font.Height = -24
-        Font.Name = 'Segoe UI Semibold'
-        Font.Style = [fsBold]
-        ParentBackground = False
-        ParentFont = False
-        TabOrder = 11
-        OnClick = BtnCadClick
-      end
       object BtnConf: TPanel
-        Left = 1103
+        Left = 1102
         Top = 905
         Width = 496
         Height = 41
@@ -800,7 +732,7 @@ object Form8: TForm8
         Font.Style = [fsBold]
         ParentBackground = False
         ParentFont = False
-        TabOrder = 12
+        TabOrder = 7
         OnClick = BtnConf1Click
       end
       object CLBCargos: TCheckListBox
@@ -809,7 +741,7 @@ object Form8: TForm8
         Width = 496
         Height = 127
         ItemHeight = 17
-        TabOrder = 13
+        TabOrder = 8
       end
     end
   end

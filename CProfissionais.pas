@@ -12,10 +12,6 @@ type
   TForm8 = class(TForm)
     Fundo: TPanel;
     Panel1: TPanel;
-    PbtnAdd: TPanel;
-    BtnExcluir: TPanel;
-    BtnConf1: TPanel;
-    Panel2: TPanel;
     DBGrid1: TDBGrid;
     Label1: TLabel;
     DBEdit1: TDBEdit;
@@ -41,7 +37,6 @@ type
     Image2: TImage;
     Image1: TImage;
     Lblrequired: TLabel;
-    BtnCad: TPanel;
     BtnConf: TPanel;
     Label2: TLabel;
     Label3: TLabel;
@@ -93,16 +88,8 @@ end;
 
 procedure TForm8.AdicionarProfissional;
 begin
-  DataModule1.QueryRPC.Append;
-  DataModule1.QueryRPC.FieldByName('nome').Clear;
-  DataModule1.QueryRPC.FieldByName('email').Clear;
-  CLBCargos.Visible:= True;
-  DBEdit3.Visible:= false;
-  EditsAtivos;
-  BtnCad.Visible := true;
-  EditBtn.Visible := false;
-  ExclBtn.Visible := false;
-  btncancelar.Visible := true;
+  form9.show;
+  form8.close;
 end;
 
 procedure TForm8.BtnCadClick(Sender: TObject);
@@ -146,7 +133,6 @@ begin
   datamodule1.QueryRPC.Cancel;
   btncancelar.Visible := false;
   editsinativos;
-  BtnCad.Visible:= false;
   EditBtn.Visible := true;
   ExclBtn.Visible := true;
   Lblrequired.visible:= false;
@@ -206,7 +192,6 @@ begin
   Lblrequired.visible:= false;
   EditsInativos;
   BtnConf.Visible:= false;
-  BtnCad.Visible:= false;
   btncancelar.Visible:= false;
   CLBCargos.Visible:= false;
 end;
@@ -217,8 +202,8 @@ begin
 
   datamodule1.QueryPC.close;
   datamodule1.QueryPC.open;
-//  datamodule1.QueryCargos.close;
-//  datamodule1.QueryCargos.open;
+  datamodule1.QueryCargos.close;
+  datamodule1.QueryCargos.open;
   datamodule1.Queryprofissionais.close;
   datamodule1.Queryprofissionais.open;
   DataModule1.QueryRPC.close;
@@ -249,7 +234,6 @@ end;
 procedure TForm8.Panel2Click(Sender: TObject);
 begin
   BtnConf.Visible:= true;
-  BtnExcluir.Visible:= false;
   EditsAtivos;
 end;
 
@@ -274,6 +258,7 @@ begin
     datamodule1.QueryClientes.Filtered := false;
   end;
 end;
+
 
 
 end.
