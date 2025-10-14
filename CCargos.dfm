@@ -1,5 +1,5 @@
 object Form14: TForm14
-  Left = 0
+  Left = 20
   Top = 0
   Caption = 'Cargos'
   ClientHeight = 1061
@@ -10,6 +10,7 @@ object Form14: TForm14
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poDesigned
   OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15
@@ -22,7 +23,6 @@ object Form14: TForm14
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 56
     object Image1: TImage
       Left = 0
       Top = 255
@@ -49,31 +49,6 @@ object Form14: TForm14
         222F3E3C2F7376673E}
       Stretch = True
       OnClick = Image1Click
-    end
-    object Lblrequired: TLabel
-      Left = 968
-      Top = 592
-      Width = 145
-      Height = 15
-      Caption = 'Preencha todos os campos!'
-      Color = clDarkred
-      ParentColor = False
-    end
-    object Label1: TLabel
-      Left = 968
-      Top = 380
-      Width = 66
-      Height = 15
-      Caption = 'nome_cargo'
-      FocusControl = DBEdit1
-    end
-    object Label2: TLabel
-      Left = 968
-      Top = 515
-      Width = 73
-      Height = 15
-      Caption = 'nome_servico'
-      FocusControl = DBEdit2
     end
     object Image4: TImage
       Left = 40
@@ -345,49 +320,143 @@ object Form14: TForm14
       Font.Style = [fsBold]
       ParentFont = False
     end
+    object addclie: TImage
+      Left = 754
+      Top = 359
+      Width = 41
+      Height = 36
+      Cursor = crHandPoint
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000270000
+        001F0806000000648AD4F5000000097048597300000B1300000B1301009A9C18
+        000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000001
+        934944415478DAED978151833014865F37608474027502710275033A41EB04E2
+        06760271027102B3816E201BD80DF4FD4738021678498072A7FFDD7FDC152E7C
+        495E7E5E57B460AD4E0DF0A7E022F6B971647EFB606BF6E1547000D9B2771654
+        5B19FB815DCC09A7D86FE63A2480DD52B99AB3C07D0AC16CC00B0ADC66095CC2
+        7EF2181BDB9B0A9EAB6A58FBC0BDB06F3CE00AF67AE01945E5AE4077ECC725C1
+        2554EF4AC6DEB8C261365B0F38CDBE9A1A2EA6F2A4BA6A635E680BB5754F7514
+        29AA0F5A41CD08CAA5A73535834AF56C56A52DA71271096129E09ECAA03E26D5
+        823EB360918BAFD63DEDFAF95206F2929AB9873CCBCD8A6987F1001A54735D8A
+        8C0FE41FB693C18D214CEEDD5C019687C2A99E7BC598E412B8AA1B89A9D92675
+        A96A9FF6A1B07D7080C0E9DC09C73AA68C025AA82E3845F2166948382CBFEAC9
+        176E4C305B0995511304E7DABB498515448F57F8C261763EBD9B547D5F8F4138
+        6C673C211C566F4DC2D06EC37D4F0856095B2BFA7F61C3213ABE6680438FA75D
+        E1A0947D4DC341EB2B741DDE35B728FDC3F9EA074B854FCEE07D17E300000000
+        49454E44AE426082}
+      OnClick = addclieClick
+    end
+    object BtnEditar: TImage
+      Left = 810
+      Top = 361
+      Width = 32
+      Height = 34
+      Cursor = crHandPoint
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
+        001C080600000000C2BD22000000097048597300000B1300000B1301009A9C18
+        000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000001
+        5F4944415478DADD958D8D82401085C70E2C81122CC1EBC0AB40AD40AD40AE02
+        B502ED403B103BB083C30AA4849B17E69215676116564C7CC9849F00EFDBF959
+        06F4660D3E1960C89170E41C459F0030DD738C9D7B5B8E551F00303FCBB1AA2B
+        C7B764E4250048F9AF1C7D82F9970B113B0329C7BAE1991DC73226C082E3C671
+        926B7C7C53F37C26598802B0715683D5FFC8F988CA5ED0CA71E0987705C087D1
+        E993CA7D1722A1E786CC29420FE0834759A526AC1023575420A24C81B62A4DAE
+        19B285326D49D9904200EAEAAA09E60FE9D66405985299DA50AD64E59D0030D7
+        690BF3B905BA09C01D33AB5067A4FE6A79D807E01BB326E564A8BB0500E6B340
+        7375CCDA002454FE5442846D18352F02DF5301669201AB1E7E2E3100B0CB596B
+        8F6D376D6BAE01A0F9EEC6774D63160A30910CD4097546B3655DCD35005FF7C3
+        145D7E21CF9E1E0BE0BFFEAE6126E7D14CEB00A0111977B15701F4AAB703FC01
+        4EE84C1DACD331E50000000049454E44AE426082}
+      OnClick = EditBtnClick
+    end
+    object BtnExcluir: TImage
+      Left = 864
+      Top = 361
+      Width = 33
+      Height = 34
+      Cursor = crHandPoint
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
+        001C080600000000C2BD22000000097048597300000B1300000B1301009A9C18
+        000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000001
+        124944415478DAD5966D0DC23010863B0748280E9883E10014B0290014301480
+        0386028202EA001CAC2800077017CA9FA5DFED567893374BBAA5F7F496BB6B46
+        122BFB37000A3E88A74C1C3C073FFB02C0E0A5E19B2DB80E0558826792F50978
+        64D8134F7F93AC33016704C02057C7CCD82AEFC2A93270526420449881A94D06
+        06D54F03D4E045A43847A2A80C13C0261280B234750025F9D47D0CADC1FB9400
+        15B8710528C0974800587ECC15206643F202A0E0361200EE757705C09EFF8804
+        9039BF107AA506C05F40038373F03825004EBFDC1700CBB00804604432056D01
+        1A123E0FCE4433DA8700C03D2A5F8015781708A0BD239A00B0176037A49EC199
+        383DF705F8CAE632DA15D7057605E84DC901DE82492E1DF98D6AC00000000049
+        454E44AE426082}
+      OnClick = ExclBtnClick
+    end
+    object Lblrequired: TLabel
+      Left = 1105
+      Top = 716
+      Width = 264
+      Height = 30
+      Caption = 'Preencha todos os campos!'
+      Color = clDarkred
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 1105
+      Top = 449
+      Width = 58
+      Height = 30
+      Caption = 'Cargo'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label1: TLabel
+      Left = 1105
+      Top = 540
+      Width = 93
+      Height = 30
+      Caption = 'Servi'#231'o(s)'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
     object BtnConf: TPanel
-      Left = 471
-      Top = 354
-      Width = 89
+      Left = 1105
+      Top = 826
+      Width = 496
       Height = 41
-      Caption = 'BtnConf'
+      Caption = 'Confirmar'
+      Color = 4405251
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
       TabOrder = 0
       OnClick = BtnConfClick
-    end
-    object BtnEditar: TPanel
-      Left = 576
-      Top = 354
-      Width = 65
-      Height = 41
-      Caption = 'BtnEditar'
-      TabOrder = 1
-      OnClick = BtnEditarClick
-    end
-    object BtnExcluir: TPanel
-      Left = 664
-      Top = 352
-      Width = 65
-      Height = 41
-      Caption = 'BtnExcluir'
-      TabOrder = 2
-      OnClick = BtnExcluirClick
-    end
-    object BtnAdd: TPanel
-      Left = 400
-      Top = 354
-      Width = 65
-      Height = 41
-      Caption = 'BtnAdd'
-      TabOrder = 3
-      OnClick = BtnAddClick
     end
     object DBGrid1: TDBGrid
       Left = 40
       Top = 401
-      Width = 577
+      Width = 913
       Height = 512
       DataSource = DataSource2
-      TabOrder = 4
+      TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -12
@@ -403,7 +472,7 @@ object Form14: TForm14
           Title.Font.Height = -21
           Title.Font.Name = 'Segoe UI Semibold'
           Title.Font.Style = [fsBold]
-          Width = 267
+          Width = 385
           Visible = True
         end
         item
@@ -415,27 +484,39 @@ object Form14: TForm14
           Title.Font.Height = -21
           Title.Font.Name = 'Segoe UI Semibold'
           Title.Font.Style = [fsBold]
-          Width = 239
+          Width = 496
           Visible = True
         end>
     end
     object DBEdit1: TDBEdit
-      Left = 968
-      Top = 408
-      Width = 200
-      Height = 23
+      Left = 1105
+      Top = 485
+      Width = 496
+      Height = 38
       DataField = 'nome_cargo'
       DataSource = DataSource2
-      TabOrder = 5
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
     end
     object DBEdit2: TDBEdit
-      Left = 968
-      Top = 536
-      Width = 200
-      Height = 23
+      Left = 1105
+      Top = 576
+      Width = 496
+      Height = 38
       DataField = 'nome'
       DataSource = DataSource2
-      TabOrder = 6
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
     end
     object Barra: TPanel
       Left = -18
@@ -444,7 +525,7 @@ object Form14: TForm14
       Height = 41
       Color = 4405251
       ParentBackground = False
-      TabOrder = 7
+      TabOrder = 4
       object LbClie: TLabel
         Left = 192
         Top = 8
@@ -535,7 +616,7 @@ object Form14: TForm14
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 5
       TextHint = 'Pesquise'
     end
     object Panel1: TPanel
@@ -545,7 +626,7 @@ object Form14: TForm14
       Height = 45
       Color = clBlack
       ParentBackground = False
-      TabOrder = 9
+      TabOrder = 6
       object Image2: TImage
         Left = 8
         Top = 9
@@ -573,15 +654,23 @@ object Form14: TForm14
           12FC0B1293E6224739C13B0000000049454E44AE426082}
       end
     end
+    object CLBServicos: TCheckListBox
+      Left = 1105
+      Top = 576
+      Width = 496
+      Height = 134
+      ItemHeight = 17
+      TabOrder = 7
+    end
   end
   object DataSource1: TDataSource
     DataSet = DataModule1.QueryCargos
-    Left = 712
-    Top = 304
+    Left = 288
+    Top = 224
   end
   object DataSource2: TDataSource
     DataSet = DataModule1.QueryRCS
-    Left = 792
-    Top = 296
+    Left = 336
+    Top = 224
   end
 end

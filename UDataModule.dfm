@@ -532,4 +532,9 @@ object DataModule1: TDataModule1
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
   end
+  object QueryPS: TFDQuery
+    Connection = FDConnection1
+    Left = 760
+    Top = 184
+  end
 end

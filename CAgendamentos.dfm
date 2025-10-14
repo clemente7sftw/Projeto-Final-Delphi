@@ -23,8 +23,6 @@ object Form21: TForm21
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1036
-    ExplicitHeight = 902
     object Label1: TLabel
       Left = 56
       Top = 264
@@ -157,7 +155,7 @@ object Form21: TForm21
     end
     object BtnAdd: TPanel
       Left = 56
-      Top = 152
+      Top = 162
       Width = 177
       Height = 41
       Cursor = crHandPoint

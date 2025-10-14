@@ -97,6 +97,7 @@ type
     QueryRASid_servico: TIntegerField;
     QueryPCid_pro: TIntegerField;
     QueryPCid_cargo: TIntegerField;
+    QueryPS: TFDQuery;
     procedure QueryAgstatusGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
   private

@@ -11,17 +11,29 @@ type
   TForm11 = class(TForm)
     Fundo: TPanel;
     Image1: TImage;
-    PCad: TPanel;
-    Lblrequired: TLabel;
     DataSource1: TDataSource;
-    Label1: TLabel;
     DBEdit1: TDBEdit;
     DataSource2: TDataSource;
     CheckListBox1: TCheckListBox;
+    Image4: TImage;
+    BS: TImage;
+    Barra: TPanel;
+    LbClie: TLabel;
+    LbProfissionais: TLabel;
+    LbServicos: TLabel;
+    LbCargos: TLabel;
+    LbFornecedores: TLabel;
+    Lbagendamentos: TLabel;
+    BtnConf: TPanel;
+    Lblrequired: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
     procedure FormShow(Sender: TObject);
     procedure PCadClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure PreencherListbox;
+    procedure Cadastrar;
+    procedure BtnConfClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -38,6 +50,43 @@ implementation
 
 uses UDataModule, CCargos;
 
+
+procedure TForm11.BtnConfClick(Sender: TObject);
+begin
+Cadastrar;
+end;
+
+procedure TForm11.Cadastrar;
+var id_ser, id_cargo, i: integer;
+begin
+  if DBEdit1.Text <> '' then
+  begin
+    if datamodule1.QueryCargos.state in [dsinsert, dsedit] then
+    datamodule1.querycargos.post;
+    datamodule1.querycargos.Refresh;
+    id_cargo := datamodule1.QueryCargos.FieldByName('id_cargo').AsInteger;
+    for i := 0 to checklistbox1.count -1 do
+    begin
+    if checklistbox1.Checked[i] then
+      begin
+        id_ser := Integer(CheckListBox1.Items.Objects[i]);
+        if datamodule1.QueryCargos.State in [dsInsert, dsEdit] then
+        id_ser := Integer(CheckListBox1.Items.Objects[i]);
+        datamodule1.QueryCS.Append;
+        datamodule1.QueryCS.FieldByName('id_servico').AsInteger := id_ser;
+        datamodule1.QueryCS.FieldByName('id_cargo').AsInteger := id_cargo;
+        datamodule1.QueryCS.Post;
+      end;
+    end;
+    DataModule1.QueryCargos.Close;
+    DataModule1.QueryCargos.Open;
+    Form14.Show;
+    Form11.Close;
+    Lblrequired.Visible := false;
+  end
+  else
+    Lblrequired.Visible := true;
+end;
 
 procedure TForm11.FormCreate(Sender: TObject);
 begin

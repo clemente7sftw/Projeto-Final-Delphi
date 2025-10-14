@@ -84,47 +84,47 @@ end;
 
 procedure TForm1.BtnEntClick(Sender: TObject);
 begin
-if TMetodos.ValidarEmail(EdEmail.Text) then
-  begin
- if EdSenha.Text <> '' then
-    begin
-       with DataModule1.QueryClientes do
-        begin
-        Close;
-        SQL.Text := 'SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha';
-        ParamByName('email').AsString := EdEmail.Text;
-        ParamByName('senha').AsString := EdSenha.Text;
-        Open;
-
-        if not IsEmpty then
-        begin
-          Form3.show;
-          LbErro.Visible:= false;
-        end;
-          end;
-     end else begin
-      LbErro.Visible:= true;
-     end;
- end else begin
-     LbErro.Visible:= true;
-  end;
-
-   with DataModule1.QueryEmpresa do
-    begin
-      Close;
-      SQL.Text := 'SELECT * FROM empresas WHERE email = :email AND senha = :senha';
-     ParamByName('email').AsString := EdEmail.Text;
-     ParamByName('senha').AsString := EdSenha.Text;
-      Open;
-
-     if not IsEmpty then
-      begin
-
-        Form20.show;
-     end else begin
-          LbErro.Visible:= true;
-         end;
-            end;
+//if TMetodos.ValidarEmail(EdEmail.Text) then
+//  begin
+// if EdSenha.Text <> '' then
+//    begin
+//       with DataModule1.QueryClientes do
+//        begin
+//        Close;
+//        SQL.Text := 'SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha';
+//        ParamByName('email').AsString := EdEmail.Text;
+//        ParamByName('senha').AsString := EdSenha.Text;
+//        Open;
+//
+//        if not IsEmpty then
+//        begin
+//          Form3.show;
+//          LbErro.Visible:= false;
+//        end;
+//          end;
+//     end else begin
+//      LbErro.Visible:= true;
+//     end;
+// end else begin
+//     LbErro.Visible:= true;
+//  end;
+//
+//   with DataModule1.QueryEmpresa do
+//    begin
+//      Close;
+//      SQL.Text := 'SELECT * FROM empresas WHERE email = :email AND senha = :senha';
+//     ParamByName('email').AsString := EdEmail.Text;
+//     ParamByName('senha').AsString := EdSenha.Text;
+//      Open;
+//
+//    if not IsEmpty then
+//    begin
+//    Form20.show;
+//    end else begin
+//    LbErro.Visible:= true;
+//    end;
+//    end;
+Form20.show;
 
 end;
 

@@ -82,12 +82,12 @@ uses TelaPrincipalN1, CFornecedores, TelaInicialN3, UDataModule, CProfissionais;
 
 procedure TForm4.FormCreate(Sender: TObject);
 begin
-    Form4.WindowState:=wsMaximized;
-    BtnConf.Visible := False;
-    lblrequired.Visible:= false;
-    BtnCad.Visible:= false;
-    btncancelar.Visible := false;
-    lbEmail.Visible:= false;
+  Form4.WindowState:=wsMaximized;
+  BtnConf.Visible := False;
+  lblrequired.Visible:= false;
+  BtnCad.Visible:= false;
+  btncancelar.Visible := false;
+  lbEmail.Visible:= false;
 end;
 
 procedure TForm4.FormShow(Sender: TObject);
@@ -119,8 +119,8 @@ end;
 
 procedure TForm4.LbProfissionaisClick(Sender: TObject);
 begin
-Form8.show;
-form4.close;
+  Form8.show;
+  form4.close;
 end;
 
 procedure TForm4.addclieClick(Sender: TObject);
@@ -140,7 +140,7 @@ end;
 
 procedure TForm4.BtnCadClick(Sender: TObject);
 begin
-Cadastrar;
+ Cadastrar;
 end;
 
 procedure TForm4.btncancelarClick(Sender: TObject);
