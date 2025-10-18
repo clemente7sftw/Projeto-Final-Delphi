@@ -154,7 +154,12 @@ end;
 procedure TForm14.FormShow(Sender: TObject);
 begin
   datamodule1.QueryCargos.close;
+    DataModule1.Querycargos.SQL.Text :=
+    'SELECT * FROM cargos ' +
+    'WHERE id_empresa = :id_empresa ' +
+    'ORDER BY nome_cargo';
   datamodule1.QueryCargos.open;
+  DataModule1.Querycargos.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
   datamodule1.QueryServicos.close;
   datamodule1.QueryServicos.open;
   datamodule1.QueryCS.close;

@@ -67,7 +67,7 @@ type
     procedure Pesquisar;
     { Private declarations }
   public
-
+    var  id_empresa:integer;
     { Public declarations }
   end;
 
@@ -199,15 +199,34 @@ end;
 
 procedure TForm8.FormShow(Sender: TObject);
 begin
-
   datamodule1.QueryPC.close;
   datamodule1.QueryPC.open;
   datamodule1.QueryCargos.close;
   datamodule1.QueryCargos.open;
   datamodule1.Queryprofissionais.close;
   datamodule1.Queryprofissionais.open;
+  DataModule1.QueryProfissionais.SQL.Text :=
+  'SELECT * FROM profissionais ' +
+  'WHERE id_empresa = :id_empresa ' +
+  'ORDER BY nome';
+  DataModule1.QueryProfissionais.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
   DataModule1.QueryRPC.close;
+  DataModule1.QueryRPC.SQL.Text :=
+  'SELECT ' +
+  '  p.nome, ' +
+  '  p.email, ' +
+  '  STRING_AGG(c.nome_cargo, '','')::varchar(500) AS nome_cargo ' +
+  'FROM profissionais p ' +
+  'LEFT JOIN profissionais_cargos pc ON p.id_pro = pc.id_pro ' +
+  'LEFT JOIN cargos c ON pc.id_cargo = c.id_cargo ' +
+  'WHERE p.id_empresa = :id_empresa ' +
+  'GROUP BY p.nome, p.email ' +
+  'ORDER BY p.nome;';
+  DataModule1.QueryRPC.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
   DataModule1.QueryRPC.Open;
+
+
+
 
 end;
 
@@ -251,11 +270,11 @@ procedure TForm8.Pesquisar;
 begin
   if (EdPesquisa.Text <> '' )then
   begin
-    datamodule1.QueryClientes.Filtered := true;
-    datamodule1.QueryClientes.filter :=  'UPPER(nome_clie) LIKE ' + QuotedStr('%' + UpperCase(EdPesquisa.Text) + '%');
+    datamodule1.QueryRPC.Filtered := true;
+    datamodule1.QueryRPC.filter :=  'UPPER(nome_clie) LIKE ' + QuotedStr('%' + UpperCase(EdPesquisa.Text) + '%');
  end else
   begin
-    datamodule1.QueryClientes.Filtered := false;
+    datamodule1.QueryRPC.Filtered := false;
   end;
 end;
 

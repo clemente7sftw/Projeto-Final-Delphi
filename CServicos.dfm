@@ -207,9 +207,6 @@ object Form15: TForm15
       Width = 787
       Height = 19
       Panels = <>
-      ExplicitLeft = 600
-      ExplicitTop = 512
-      ExplicitWidth = 0
     end
   end
   object DataSource1: TDataSource

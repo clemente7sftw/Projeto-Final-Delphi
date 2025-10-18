@@ -22,6 +22,8 @@ object Form8: TForm8
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1918
+    ExplicitHeight = 1053
     object Panel1: TPanel
       Left = 1
       Top = 1
@@ -31,6 +33,8 @@ object Form8: TForm8
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
+      ExplicitWidth = 1916
+      ExplicitHeight = 1051
       object Label1: TLabel
         Left = 1102
         Top = 440

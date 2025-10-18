@@ -74,12 +74,15 @@ begin
 end;
 
 procedure TForm10.Salvar;
+ var  id_empresa:integer;
 begin
   if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and (DBEdit3.Text <> '') then
      begin
 
       with DataModule1.QueryServicos do
       begin
+         id_empresa:= DataModule1.id_empresa;
+        DataModule1.Queryservicos.FieldByName('id_empresa').AsInteger := DataModule1.id_empresa;
         datamodule1.QueryServicos.Post;
           Form15.show;
           Form10.Close;

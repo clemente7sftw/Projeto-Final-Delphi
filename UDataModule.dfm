@@ -26,11 +26,6 @@ object DataModule1: TDataModule1
       'select * from clientes')
     Left = 40
     Top = 110
-    ParamData = <
-      item
-        Name = 'id_empresa'
-        DataType = ftInteger
-      end>
     object QueryClientesid_empresa: TIntegerField
       FieldName = 'id_empresa'
       Origin = 'id_empresa'
@@ -141,8 +136,7 @@ object DataModule1: TDataModule1
   object QueryProfissionais: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
-      '   select * from profissionais'
-      '   ')
+      'select * from profissionais')
     Left = 163
     Top = 110
     object QueryProfissionaisid_pro: TIntegerField
@@ -229,6 +223,10 @@ object DataModule1: TDataModule1
       FieldName = 'data_cad'
       Origin = 'data_cad'
       ProviderFlags = [pfInUpdate]
+    end
+    object QueryServicosid_empresa: TIntegerField
+      FieldName = 'id_empresa'
+      Origin = 'id_empresa'
     end
   end
   object QueryCS: TFDQuery

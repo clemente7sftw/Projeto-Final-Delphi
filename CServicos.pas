@@ -71,6 +71,11 @@ end;
 procedure TForm15.FormShow(Sender: TObject);
 begin
   datamodule1.QueryServicos.Close;
+  DataModule1.QueryServicos.SQL.Text :=
+  'SELECT * FROM servicos ' +
+  'WHERE id_empresa = :id_empresa ' +
+  'ORDER BY nome;';
+   DataModule1.QueryServicos.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
   datamodule1.QueryServicos.Open;
   EditsInativos;
 end;
