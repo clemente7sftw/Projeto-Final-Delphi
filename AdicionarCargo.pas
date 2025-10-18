@@ -57,14 +57,16 @@ Cadastrar;
 end;
 
 procedure TForm11.Cadastrar;
-var id_ser, id_cargo, i: integer;
+var id_ser, id_cargo, id_empresa, i: integer;
 begin
   if DBEdit1.Text <> '' then
   begin
     if datamodule1.QueryCargos.state in [dsinsert, dsedit] then
-    datamodule1.querycargos.post;
+     id_empresa:= DataModule1.id_empresa;
+    DataModule1.QueryCargos.FieldByName('id_empresa').AsInteger := DataModule1.id_empresa;
+     id_cargo := datamodule1.QueryCargos.FieldByName('id_cargo').AsInteger;
+     datamodule1.querycargos.post;
     datamodule1.querycargos.Refresh;
-    id_cargo := datamodule1.QueryCargos.FieldByName('id_cargo').AsInteger;
     for i := 0 to checklistbox1.count -1 do
     begin
     if checklistbox1.Checked[i] then
@@ -75,6 +77,7 @@ begin
         datamodule1.QueryCS.Append;
         datamodule1.QueryCS.FieldByName('id_servico').AsInteger := id_ser;
         datamodule1.QueryCS.FieldByName('id_cargo').AsInteger := id_cargo;
+         DataModule1.QueryCs.FieldByName('id_empresa').AsInteger := DataModule1.id_empresa;
         datamodule1.QueryCS.Post;
       end;
     end;

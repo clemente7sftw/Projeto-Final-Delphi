@@ -100,6 +100,8 @@ type
     QueryClientesestado_clie: TWideStringField;
     QueryClientesdata_cad: TSQLTimeStampField;
     QueryServicosid_empresa: TIntegerField;
+    QueryCSid_empresa: TIntegerField;
+    QueryCargosid_empresa: TIntegerField;
     procedure QueryAgstatusGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
   private

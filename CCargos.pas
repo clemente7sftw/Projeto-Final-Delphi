@@ -58,6 +58,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    var id_empresa:integer;
   end;
 
 var
@@ -158,14 +159,33 @@ begin
     'SELECT * FROM cargos ' +
     'WHERE id_empresa = :id_empresa ' +
     'ORDER BY nome_cargo';
+     DataModule1.Querycargos.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
   datamodule1.QueryCargos.open;
-  DataModule1.Querycargos.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+
   datamodule1.QueryServicos.close;
+    DataModule1.QueryServicos.SQL.Text :=
+  'SELECT * FROM servicos ' +
+  'WHERE id_empresa = :id_empresa ' +
+  'ORDER BY nome;';
+   DataModule1.QueryServicos.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
   datamodule1.QueryServicos.open;
   datamodule1.QueryCS.close;
+  DataModule1.QueryCS.SQL.Text :=
+  'SELECT * FROM cargos_servicos ' +
+  'WHERE id_empresa = :id_empresa ' +
+  'ORDER BY id_cargo;';
+   DataModule1.QueryCS.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
   datamodule1.QueryCS.open;
  datamodule1.QueryRCS.Close;
- datamodule1.QueryRCS.open;
+   DataModule1.QueryRCS.SQL.Text :=
+  'SELECT s.id_servico, ' +
+  '       s.nome, ' +
+  '       c.nome_cargo ' +
+  'FROM servicos s ' +
+  'INNER JOIN cargos_servicos cs ON s.id_servico = cs.id_servico ' +
+  'INNER JOIN cargos c ON cs.id_cargo = c.id_cargo ' +
+  'ORDER BY s.nome';
+DataModule1.QueryRCS.Open;
 
 end;
 

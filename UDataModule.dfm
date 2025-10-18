@@ -243,6 +243,10 @@ object DataModule1: TDataModule1
       FieldName = 'id_servico'
       Origin = 'id_servico'
     end
+    object QueryCSid_empresa: TIntegerField
+      FieldName = 'id_empresa'
+      Origin = 'id_empresa'
+    end
   end
   object QueryCargos: TFDQuery
     Connection = FDConnection1
@@ -265,6 +269,10 @@ object DataModule1: TDataModule1
       FieldName = 'data_cad'
       Origin = 'data_cad'
       ProviderFlags = [pfInUpdate]
+    end
+    object QueryCargosid_empresa: TIntegerField
+      FieldName = 'id_empresa'
+      Origin = 'id_empresa'
     end
   end
   object Queryfornecedores: TFDQuery
