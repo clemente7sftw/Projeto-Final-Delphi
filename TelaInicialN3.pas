@@ -31,6 +31,7 @@ type
     procedure Label2Click(Sender: TObject);
     procedure Label4Click(Sender: TObject);
     procedure LbagendamentosClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
 
@@ -52,6 +53,12 @@ uses CClientes, CProfissionais, AdicionarServico, CServicos,
 procedure TForm20.FormCreate(Sender: TObject);
 begin
 WindowState:=wsMaximized;
+
+end;
+
+procedure TForm20.FormShow(Sender: TObject);
+begin
+ShowMessage('ID da empresa logada: ' + IntToStr(DataModule1.id_empresa));
 
 end;
 

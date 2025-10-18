@@ -11,6 +11,7 @@ object Form20: TForm20
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   object Fundo: TPanel
     Left = 0

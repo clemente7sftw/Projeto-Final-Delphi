@@ -92,8 +92,13 @@ end;
 
 procedure TForm4.FormShow(Sender: TObject);
 begin
-  datamodule1.QueryClientes.Close;
-  datamodule1.QueryClientes.Open;
+  DataModule1.QueryClientes.Close;
+  DataModule1.QueryClientes.SQL.Text :=
+    'SELECT * FROM clientes ' +
+    'WHERE id_empresa = :id_empresa ' +
+    'ORDER BY nome_clie';
+  DataModule1.QueryClientes.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  DataModule1.QueryClientes.Open;
   EditsInativos;
 end;
 
@@ -173,11 +178,14 @@ begin
 end;
 
 procedure TForm4.Cadastrar;
+var  id_empresa:integer;
 begin
 if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
 begin
   if  ValidarEmail(DBEDIT2.Text)  then
   begin
+  id_empresa:= DataModule1.id_empresa;
+  DataModule1.QueryClientes.FieldByName('id_empresa').AsInteger := DataModule1.id_empresa;
   datamodule1.QueryClientes.Post;
   datamodule1.QueryClientes.close;
   datamodule1.QueryClientes.open;

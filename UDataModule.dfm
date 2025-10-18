@@ -9,6 +9,7 @@ object DataModule1: TDataModule1
       'Password=2007'
       'Server=localhost'
       'DriverID=PG')
+    Connected = True
     Left = 200
     Top = 20
   end
@@ -25,6 +26,15 @@ object DataModule1: TDataModule1
       'select * from clientes')
     Left = 40
     Top = 110
+    ParamData = <
+      item
+        Name = 'id_empresa'
+        DataType = ftInteger
+      end>
+    object QueryClientesid_empresa: TIntegerField
+      FieldName = 'id_empresa'
+      Origin = 'id_empresa'
+    end
     object QueryClientesid_clie: TIntegerField
       FieldName = 'id_clie'
       Origin = 'id_clie'

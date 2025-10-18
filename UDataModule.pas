@@ -62,19 +62,6 @@ type
     QueryFClientes: TFDQuery;
     QueryFClientesmes: TFMTBCDField;
     QueryFClientestotal: TLargeintField;
-    QueryClientesid_clie: TIntegerField;
-    QueryClientesnome_clie: TWideStringField;
-    QueryClientesemail_clie: TWideStringField;
-    QueryClientessenha_clie: TWideStringField;
-    QueryClientescpf_clie: TWideStringField;
-    QueryClientesgenero_clie: TWideStringField;
-    QueryClientesfone_clie: TWideStringField;
-    QueryClientescep_clie: TWideStringField;
-    QueryClientesrua_clie: TWideStringField;
-    QueryClientesbairro_clie: TWideStringField;
-    QueryClientescidade_clie: TWideStringField;
-    QueryClientesestado_clie: TWideStringField;
-    QueryClientesdata_cad: TSQLTimeStampField;
     QueryUpAg: TFDQuery;
     QueryRAS: TFDQuery;
     QueryAgid_agendamento: TIntegerField;
@@ -98,17 +85,32 @@ type
     QueryPCid_pro: TIntegerField;
     QueryPCid_cargo: TIntegerField;
     QueryPS: TFDQuery;
+    QueryClientesid_empresa: TIntegerField;
+    QueryClientesid_clie: TIntegerField;
+    QueryClientesnome_clie: TWideStringField;
+    QueryClientesemail_clie: TWideStringField;
+    QueryClientessenha_clie: TWideStringField;
+    QueryClientescpf_clie: TWideStringField;
+    QueryClientesgenero_clie: TWideStringField;
+    QueryClientesfone_clie: TWideStringField;
+    QueryClientescep_clie: TWideStringField;
+    QueryClientesrua_clie: TWideStringField;
+    QueryClientesbairro_clie: TWideStringField;
+    QueryClientescidade_clie: TWideStringField;
+    QueryClientesestado_clie: TWideStringField;
+    QueryClientesdata_cad: TSQLTimeStampField;
     procedure QueryAgstatusGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
   private
     { Private declarations }
   public
-    IdEmpresaAtual: Integer;
+    var id_empresa:integer;
     { Public declarations }
   end;
 
 var
   DataModule1: TDataModule1;
+
 
 implementation
 

@@ -53,7 +53,7 @@ procedure TForm10.FormCreate(Sender: TObject);
 begin
   WindowState:=wsMaximized;
   Lblrequired.Visible:= false;
-//
+
 end;
 
 
