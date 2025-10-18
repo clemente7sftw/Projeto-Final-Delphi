@@ -21,6 +21,7 @@ type
     LbCargos: TLabel;
     LbFornecedores: TLabel;
     Lbagendamentos: TLabel;
+    Panel1: TPanel;
     procedure LbClieClick(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);
     procedure LbServicosClick(Sender: TObject);

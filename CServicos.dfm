@@ -10,6 +10,7 @@ object Form15: TForm15
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15
@@ -45,6 +46,21 @@ object Form15: TForm15
       Height = 15
       Caption = 'nome'
       FocusControl = DBEdit1
+    end
+    object lbaviso: TLabel
+      Left = 392
+      Top = 400
+      Width = 371
+      Height = 15
+      Caption = 
+        'Este servi'#231'o n'#227'o pode ser exclu'#237'do: est'#225' vinculado a um agendame' +
+        'nto.'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
     end
     object PbtnAdd: TPanel
       Left = 24
@@ -184,6 +200,16 @@ object Form15: TForm15
       DataField = 'nome'
       DataSource = DataSource1
       TabOrder = 9
+    end
+    object StatusBar1: TStatusBar
+      Left = 1
+      Top = 536
+      Width = 787
+      Height = 19
+      Panels = <>
+      ExplicitLeft = 600
+      ExplicitTop = 512
+      ExplicitWidth = 0
     end
   end
   object DataSource1: TDataSource

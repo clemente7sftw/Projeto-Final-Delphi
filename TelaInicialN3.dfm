@@ -364,6 +364,7 @@ object Form20: TForm20
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = LbServicosClick
       end
       object LbCargos: TLabel
         Left = 1368
@@ -406,6 +407,14 @@ object Form20: TForm20
         ParentFont = False
         OnClick = LbagendamentosClick
       end
+    end
+    object Panel1: TPanel
+      Left = 697
+      Top = 336
+      Width = 185
+      Height = 153
+      Caption = 'Panel1'
+      TabOrder = 1
     end
   end
 end

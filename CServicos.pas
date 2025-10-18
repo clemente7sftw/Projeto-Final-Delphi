@@ -1,11 +1,11 @@
-unit CServicos;
+﻿unit CServicos;
 
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, AdicionarServico, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
-  Vcl.Skia, Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Mask, Vcl.DBCtrls;
+  Vcl.Skia, Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Mask, Vcl.DBCtrls, FireDAC.Comp.Client, FireDAC.Stan.Error,   Vcl.ComCtrls;
 
 type
   TForm15 = class(TForm)
@@ -25,6 +25,9 @@ type
     DBEdit3: TDBEdit;
     Label1: TLabel;
     DBEdit1: TDBEdit;
+    StatusBar1: TStatusBar;
+    lbaviso: TLabel;
+    procedure Excluir;
     procedure FormCreate(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -36,6 +39,7 @@ type
     procedure DBEdit1KeyPress(Sender: TObject; var Key: Char);
     procedure Editar;
     procedure Salvar;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -52,10 +56,16 @@ implementation
 uses TelaPrincipalN1, UDataModule;
 
 
+procedure TForm15.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+lbaviso.visible := false;
+end;
+
 procedure TForm15.FormCreate(Sender: TObject);
 begin
   Form15.WindowState:=wsMaximized;
   BtnConf.Visible := false;
+  lbaviso.visible := false;
 end;
 
 procedure TForm15.FormShow(Sender: TObject);
@@ -78,7 +88,7 @@ end;
 
 procedure TForm15.BtnExcluirClick(Sender: TObject);
 begin
-  datamodule1.QueryServicos.Delete;
+ Excluir;
 end;
 
 procedure TForm15.DBEdit1KeyPress(Sender: TObject; var Key: Char);
@@ -113,6 +123,32 @@ begin
   DBEdit3.Enabled := false;
 
 end;
+
+procedure TForm15.Excluir;
+begin
+  if Application.MessageBox(
+    'Atenção: ao excluir este serviço, ele será removido também dos cargos associados. Deseja continuar?',
+    'Exclusão de Serviços',
+    MB_YESNO + MB_ICONQUESTION
+  ) = IDYES then
+  begin
+    try
+      DataModule1.QueryServicos.Delete;
+
+    except
+      on E: EFDDBEngineException do
+      begin
+        if Pos('chave estrangeira', LowerCase(E.Message)) > 0 then
+        lbaviso.visible := true
+        else
+      end;
+    end;
+  end
+  else
+    Exit;
+end;
+
+
 
 procedure TForm15.PbtnAddClick(Sender: TObject);
 begin

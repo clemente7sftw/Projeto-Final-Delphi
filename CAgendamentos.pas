@@ -75,6 +75,7 @@ begin
   DataModule1.QueryAg.Open;
   DataModule1.QueryAgendamentos.Close;
   DataModule1.QueryAgendamentos.Open;
+
 end;
 
 procedure TForm21.BtnAddClick(Sender: TObject);
@@ -164,6 +165,7 @@ begin
   btnconf.Visible:= false;
   ComboBoxHorarios.Visible:= false;
   ListarHorarios;
+
 end;
 
 procedure TForm21.ListarHorarios;
