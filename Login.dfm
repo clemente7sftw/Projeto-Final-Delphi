@@ -161,8 +161,6 @@ object Form1: TForm1
     Color = 1186595
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 973
-    ExplicitHeight = 1053
     object ImagemDeFundo: TImage
       Left = 1
       Top = 1

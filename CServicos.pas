@@ -10,23 +10,35 @@ uses
 type
   TForm15 = class(TForm)
     Fundo: TPanel;
-    PbtnAdd: TPanel;
     DBGServicos: TDBGrid;
-    BtnEditar: TPanel;
-    BtnExcluir: TPanel;
-    BtnConf: TPanel;
     DataSource1: TDataSource;
-    EdPesquisa: TEdit;
-    Panel1: TPanel;
-    Image2: TImage;
-    Label2: TLabel;
     DBEdit2: TDBEdit;
-    Label3: TLabel;
     DBEdit3: TDBEdit;
-    Label1: TLabel;
     DBEdit1: TDBEdit;
     StatusBar1: TStatusBar;
     lbaviso: TLabel;
+    Image4: TImage;
+    BS: TImage;
+    Barra: TPanel;
+    LbClie: TLabel;
+    LbProfissionais: TLabel;
+    LbServicos: TLabel;
+    LbCargos: TLabel;
+    LbFornecedores: TLabel;
+    Lbagendamentos: TLabel;
+    EdPesquisa: TEdit;
+    Panel1: TPanel;
+    Image2: TImage;
+    addclie: TImage;
+    BtnEditar: TImage;
+    BtnExcluir: TImage;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    BtnConf: TPanel;
+    Label1: TLabel;
+    Lblrequired: TLabel;
+    BtnCad: TPanel;
     procedure Excluir;
     procedure FormCreate(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
@@ -39,7 +51,13 @@ type
     procedure DBEdit1KeyPress(Sender: TObject; var Key: Char);
     procedure Editar;
     procedure Salvar;
+    procedure Cadastrar;
+    procedure Adicionar;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure addclieClick(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+    procedure BtnCadClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,6 +77,7 @@ uses TelaPrincipalN1, UDataModule;
 procedure TForm15.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 lbaviso.visible := false;
+ Lblrequired.Visible:= false;
 end;
 
 procedure TForm15.FormCreate(Sender: TObject);
@@ -66,6 +85,7 @@ begin
   Form15.WindowState:=wsMaximized;
   BtnConf.Visible := false;
   lbaviso.visible := false;
+  Lblrequired.Visible:= false;
 end;
 
 procedure TForm15.FormShow(Sender: TObject);
@@ -80,6 +100,32 @@ begin
   EditsInativos;
 end;
 
+
+procedure TForm15.Image1Click(Sender: TObject);
+begin
+Editar;
+end;
+
+procedure TForm15.Image3Click(Sender: TObject);
+begin
+Excluir;
+end;
+
+procedure TForm15.addclieClick(Sender: TObject);
+begin
+Adicionar;
+end;
+
+procedure TForm15.Adicionar;
+begin
+editsativos;
+ datamodule1.QueryServicos.Append;
+end;
+
+procedure TForm15.BtnCadClick(Sender: TObject);
+begin
+  Cadastrar;
+end;
 
 procedure TForm15.BtnConfClick(Sender: TObject);
 begin
@@ -159,6 +205,27 @@ procedure TForm15.PbtnAddClick(Sender: TObject);
 begin
   Form10.show;
   Form15.Hide;
+end;
+
+procedure TForm15.Cadastrar;
+begin
+ var  id_empresa:integer;
+begin
+  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and (DBEdit3.Text <> '') then
+     begin
+
+      with DataModule1.QueryServicos do
+      begin
+          id_empresa:= DataModule1.id_empresa;
+          DataModule1.Queryservicos.FieldByName('id_empresa').AsInteger := DataModule1.id_empresa;
+          datamodule1.QueryServicos.Post;
+          Form15.show;
+          Form10.Close;
+      end;
+    end else begin
+      Lblrequired.Visible:= true;
+    end;
+end;
 end;
 
 procedure TForm15.Salvar;

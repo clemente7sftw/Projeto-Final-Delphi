@@ -19,6 +19,15 @@ type
     DBEdit3: TDBEdit;
     Label1: TLabel;
     DBEdit1: TDBEdit;
+    Image4: TImage;
+    BS: TImage;
+    Barra: TPanel;
+    LbClie: TLabel;
+    LbProfissionais: TLabel;
+    LbServicos: TLabel;
+    LbCargos: TLabel;
+    LbFornecedores: TLabel;
+    Lbagendamentos: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure PCadClick(Sender: TObject);
     procedure FormShow(Sender: TObject);

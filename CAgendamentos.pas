@@ -13,14 +13,9 @@ type
     Fundo: TPanel;
     DBGrid1: TDBGrid;
     DataSource1: TDataSource;
-    BtnAdd: TPanel;
-    Image3: TImage;
-    BtnConf: TPanel;
     BtnEditar: TPanel;
     BtnExcluir: TPanel;
-    Label1: TLabel;
     DBEdit1: TDBEdit;
-    Label2: TLabel;
     DBEdit2: TDBEdit;
     calendario: TMonthCalendar;
     CLBServicos: TCheckListBox;
@@ -28,17 +23,37 @@ type
     ExclBtn: TImage;
     EditBtn: TImage;
     btncancelar: TImage;
+    Barra: TPanel;
+    LbClie: TLabel;
+    LbProfissionais: TLabel;
+    LbServicos: TLabel;
+    LbCargos: TLabel;
+    LbFornecedores: TLabel;
+    Lbagendamentos: TLabel;
+    Image4: TImage;
+    BS: TImage;
+    EdPesquisa: TEdit;
+    Panel1: TPanel;
+    Image2: TImage;
+    Label3: TLabel;
+    Label4: TLabel;
+    addbtn: TImage;
+    BtnConf: TPanel;
     procedure ListarHorarios;
     procedure BtnAddClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure AtualizarStatus;
     procedure Excluir;
+    procedure Adicionar;
+    procedure Editar;
+    procedure Confirmar;
     procedure BtnExcluirClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);
     procedure BtnConfClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure ExclBtnClick(Sender: TObject);
+    procedure EditBtnClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -56,6 +71,12 @@ implementation
 {$R *.dfm}
 
 uses UDataModule, Agendamentos;
+
+procedure TForm21.Adicionar;
+begin
+form13.show;
+form21.close;
+end;
 
 procedure TForm21.AtualizarStatus;
 begin
@@ -96,6 +117,21 @@ end;
 
 procedure TForm21.BtnConfClick(Sender: TObject);
 begin
+Confirmar;
+end;
+
+procedure TForm21.BtnExcluirClick(Sender: TObject);
+begin
+  datamodule1.QueryAg.Delete;
+end;
+
+procedure TForm21.Button1Click(Sender: TObject);
+begin
+  AtualizarStatus;
+end;
+
+procedure TForm21.Confirmar;
+begin
   btnconf.Visible := False;
   if not DataModule1.QueryAg.IsEmpty then
   begin
@@ -111,14 +147,19 @@ begin
   end;
 end;
 
-procedure TForm21.BtnExcluirClick(Sender: TObject);
+procedure TForm21.Editar;
 begin
-  datamodule1.QueryAg.Delete;
+  btnconf.Visible := True;
+  calendario.Visible := True;
+  CLBServicos.Visible := True;
+  dataselecionada := DataModule1.QueryAg.FieldByName('data_agendamento').AsDateTime;
+  Calendario.Date := dataselecionada;
+  ComboBoxHorarios.Visible:= true;
 end;
 
-procedure TForm21.Button1Click(Sender: TObject);
+procedure TForm21.EditBtnClick(Sender: TObject);
 begin
-  AtualizarStatus;
+Editar;
 end;
 
 procedure TForm21.ExclBtnClick(Sender: TObject);

@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.ExtCtrls,
   Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.CheckLst, Vcl.Mask, Vcl.ComCtrls,
-  Vcl.WinXPickers;
+  Vcl.WinXPickers, Vcl.Imaging.pngimage;
 
 type
   TForm13 = class(TForm)
@@ -27,6 +27,18 @@ type
     CheckListBoxProfissionais: TCheckListBox;
     DBEdit1: TDBEdit;
     Lblrequired: TLabel;
+    Image4: TImage;
+    BS: TImage;
+    Barra: TPanel;
+    LbClie: TLabel;
+    LbProfissionais: TLabel;
+    LbServicos: TLabel;
+    LbCargos: TLabel;
+    LbFornecedores: TLabel;
+    Lbagendamentos: TLabel;
+    EdPesquisa: TEdit;
+    Panel3: TPanel;
+    Image2: TImage;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure PreencherListBoxServicos;
