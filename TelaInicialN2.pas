@@ -19,6 +19,9 @@ type
     LbCargos: TLabel;
     LbFornecedores: TLabel;
     Lbagendamentos: TLabel;
+    Image2: TImage;
+    procedure Image2Click(Sender: TObject);
+    procedure MudarSenha;
   private
     { Private declarations }
   public
@@ -31,5 +34,17 @@ var
 implementation
 
 {$R *.dfm}
+
+uses CAdministrador;
+
+procedure TForm5.Image2Click(Sender: TObject);
+begin
+MudarSenha;
+end;
+
+procedure TForm5.MudarSenha;
+begin
+Form22.show;
+end;
 
 end.

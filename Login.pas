@@ -52,7 +52,7 @@ implementation
 {$R *.dfm}
 
 uses UDataModule, TelaInicialN3, CClientes,
-  CHorarios;
+  CHorarios, TelaInicialN2;
 
 
 
@@ -126,6 +126,23 @@ if TMetodos.ValidarEmail(EdEmail.Text) then
     end else begin
     LbErro.Visible:= true;
     end;
+    end;
+
+    with datamodule1.QueryAdm do
+    begin
+      close;
+      SQL.Text := 'SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha';
+     ParamByName('email').AsString := EdEmail.Text;
+     ParamByName('senha').AsString := EdSenha.Text;
+     Open;
+         if not IsEmpty then
+    begin
+
+     Form5.show;
+    end else begin
+     LbErro.Visible:= true;
+    end;
+
     end;
 
 end;

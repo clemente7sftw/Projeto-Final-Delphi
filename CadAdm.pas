@@ -72,10 +72,11 @@ try
  with DataModule1.QueryAdm do
    begin
    id_empresa:= DataModule1.id_empresa;
-    SQL.Text := 'INSERT INTO administradores (nome_adm, email_adm, cpf_adm, genero_adm, fone_adm, cep_adm, rua_adm, bairro_adm, cidade_adm, estado_adm, id_empresa ) ' +
-                'VALUES (:nome, :email, :cpf, :genero, :fone, :cep, :rua, :bairro, :cidade, :estado, :id_empresa)';
+
+
+    SQL.Text := 'INSERT INTO administradores (nome_adm, email_adm,senha_adm, cpf_adm, genero_adm, fone_adm, cep_adm, rua_adm, bairro_adm, cidade_adm, estado_adm, id_empresa ) ' +
+                'VALUES (:nome, :email, :senha, :cpf, :genero, :fone, :cep, :rua, :bairro, :cidade, :estado, :id_empresa)';
     ParamByName('nome').AsString := EdNome.Text;
-//  ParamByName('senha').AsString := Form2.EdSenha.Text;
     ParamByName('email').AsString := EdEmail.Text;
     ParamByName('cpf').AsString := EdCPF.Text;
     ParamByName('genero').AsString := CBGenero.Text;
@@ -86,6 +87,7 @@ try
     ParamByName('cidade').AsString := EdCidade.Text;
     ParamByName('estado').AsString := EdEstado.Text;
     ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+    ParamByName('senha').AsString := '123';
     ExecSQL;
   end;
   Form23.close;
