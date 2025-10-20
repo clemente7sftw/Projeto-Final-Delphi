@@ -13,8 +13,6 @@ type
     Fundo: TPanel;
     DBGrid1: TDBGrid;
     DataSource1: TDataSource;
-    BtnEditar: TPanel;
-    BtnExcluir: TPanel;
     DBEdit1: TDBEdit;
     DBEdit2: TDBEdit;
     calendario: TMonthCalendar;

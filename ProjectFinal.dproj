@@ -218,6 +218,18 @@
             <Form>Form21</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="TelaInicialN2.pas">
+            <Form>Form5</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="CAdministrador.pas">
+            <Form>Form22</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="CadAdm.pas">
+            <Form>Form23</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

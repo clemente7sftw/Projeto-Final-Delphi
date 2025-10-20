@@ -23,7 +23,10 @@ uses
   CadEmp in 'CadEmp.pas' {Form19},
   TelaInicialN3 in 'TelaInicialN3.pas' {Form20},
   Agendamentos in 'Agendamentos.pas' {Form13},
-  CAgendamentos in 'CAgendamentos.pas' {Form21};
+  CAgendamentos in 'CAgendamentos.pas' {Form21},
+  TelaInicialN2 in 'TelaInicialN2.pas' {Form5},
+  CAdministrador in 'CAdministrador.pas' {Form22},
+  CadAdm in 'CadAdm.pas' {Form23};
 
 {$R *.res}
 
@@ -52,5 +55,8 @@ begin
   Application.CreateForm(TForm20, Form20);
   Application.CreateForm(TForm13, Form13);
   Application.CreateForm(TForm21, Form21);
+  Application.CreateForm(TForm5, Form5);
+  Application.CreateForm(TForm22, Form22);
+  Application.CreateForm(TForm23, Form23);
   Application.Run;
 end.

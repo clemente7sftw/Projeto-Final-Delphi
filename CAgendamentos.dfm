@@ -375,10 +375,10 @@ object Form21: TForm21
       ParentFont = False
     end
     object addbtn: TImage
-      Left = 872
+      Left = 880
       Top = 359
-      Width = 45
-      Height = 45
+      Width = 37
+      Height = 36
       Cursor = crHandPoint
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D494844520000002B0000
@@ -390,6 +390,7 @@ object Form21: TForm21
         050B362BB656475BDFF95C899B7BA94B2AF661EB50923B113BA462E300F2BE00
         1B8F4D48C5D6DB0E5BCB9749BDDB81637024C1B80DC082050B16AC47ACAB4F8E
         C61C7D1F9D1AB060C19E981F1D043C29BDA5B7110000000049454E44AE426082}
+      Stretch = True
       OnClick = ExclBtnClick
     end
     object DBGrid1: TDBGrid
@@ -476,24 +477,6 @@ object Form21: TForm21
           Visible = True
         end>
     end
-    object BtnEditar: TPanel
-      Left = 1170
-      Top = 402
-      Width = 89
-      Height = 41
-      Caption = 'BtnEditar'
-      TabOrder = 1
-      OnClick = BtnEditarClick
-    end
-    object BtnExcluir: TPanel
-      Left = 1401
-      Top = 402
-      Width = 89
-      Height = 41
-      Caption = 'BtnExcluir'
-      TabOrder = 2
-      OnClick = BtnExcluirClick
-    end
     object DBEdit1: TDBEdit
       Left = 1105
       Top = 485
@@ -507,7 +490,7 @@ object Form21: TForm21
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 1
     end
     object DBEdit2: TDBEdit
       Left = 1105
@@ -522,7 +505,7 @@ object Form21: TForm21
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 2
     end
     object calendario: TMonthCalendar
       Left = 1105
@@ -530,7 +513,7 @@ object Form21: TForm21
       Width = 225
       Height = 160
       Date = 45937.000000000000000000
-      TabOrder = 5
+      TabOrder = 3
     end
     object CLBServicos: TCheckListBox
       Left = 1395
@@ -538,14 +521,14 @@ object Form21: TForm21
       Width = 206
       Height = 158
       ItemHeight = 17
-      TabOrder = 6
+      TabOrder = 4
     end
     object ComboBoxHorarios: TComboBox
       Left = 1624
       Top = 657
       Width = 145
       Height = 23
-      TabOrder = 7
+      TabOrder = 5
       Text = 'ComboBoxHorarios'
     end
     object Barra: TPanel
@@ -555,7 +538,7 @@ object Form21: TForm21
       Height = 41
       Color = 4405251
       ParentBackground = False
-      TabOrder = 8
+      TabOrder = 6
       object LbClie: TLabel
         Left = 192
         Top = 8
@@ -646,7 +629,7 @@ object Form21: TForm21
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 7
       TextHint = 'Pesquise'
     end
     object Panel1: TPanel
@@ -656,7 +639,7 @@ object Form21: TForm21
       Height = 45
       Color = clBlack
       ParentBackground = False
-      TabOrder = 10
+      TabOrder = 8
       object Image2: TImage
         Left = 8
         Top = 9
@@ -699,7 +682,7 @@ object Form21: TForm21
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
-      TabOrder = 11
+      TabOrder = 9
       OnClick = BtnConfClick
     end
   end
