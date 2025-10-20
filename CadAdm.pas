@@ -100,9 +100,9 @@ end;
 
 procedure TForm23.FormShow(Sender: TObject);
 begin
-datamodule1.queryadm.close;
-datamodule1.queryadm.open;
- WindowState := wsMaximized;
+  datamodule1.queryadm.close;
+  datamodule1.queryadm.open;
+  WindowState := wsMaximized;
 end;
 
 procedure TForm23.PesquisarCep;

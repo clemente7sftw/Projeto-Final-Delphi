@@ -90,23 +90,23 @@ if TMetodos.ValidarEmail(EdEmail.Text) then
   begin
  if EdSenha.Text <> '' then
     begin
-       with DataModule1.QueryClientes do
-        begin
-        Close;
-        SQL.Text := 'SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha';
-        ParamByName('email').AsString := EdEmail.Text;
-        ParamByName('senha').AsString := EdSenha.Text;
-        Open;
+    with DataModule1.QueryClientes do
+    begin
+    Close;
+    SQL.Text := 'SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha';
+    ParamByName('email').AsString := EdEmail.Text;
+    ParamByName('senha').AsString := EdSenha.Text;
+    Open;
 
-        if not IsEmpty then
-        begin
-          Form3.show;
-          LbErro.Visible:= false;
-        end;
-          end;
-     end else begin
-      LbErro.Visible:= true;
-     end;
+    if not IsEmpty then
+    begin
+    Form3.show;
+    LbErro.Visible:= false;
+    end;
+    end;
+    end else begin
+    LbErro.Visible:= true;
+    end;
  end else begin
      LbErro.Visible:= true;
   end;
@@ -123,9 +123,9 @@ if TMetodos.ValidarEmail(EdEmail.Text) then
     begin
      DataModule1.id_empresa:= FieldByName('id_empresa').AsInteger;
     Form20.show;
-    end else begin
-    LbErro.Visible:= true;
-    end;
+      end else begin
+      LbErro.Visible:= true;
+      end;
     end;
 
     with datamodule1.QueryAdm do
@@ -135,16 +135,14 @@ if TMetodos.ValidarEmail(EdEmail.Text) then
      ParamByName('email').AsString := EdEmail.Text;
      ParamByName('senha').AsString := EdSenha.Text;
      Open;
-         if not IsEmpty then
-    begin
-
-     Form5.show;
-    end else begin
-     LbErro.Visible:= true;
+    if not IsEmpty then
+      begin
+       DataModule1.id_empresa:= FieldByName('id_empresa').AsInteger;
+       Form5.show;
+      end else begin
+       LbErro.Visible:= true;
+      end;
     end;
-
-    end;
-
 end;
 
 

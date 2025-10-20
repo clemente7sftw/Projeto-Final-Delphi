@@ -12,7 +12,6 @@ type
     LadoEsquerdo: TPanel;
     ImagemDeFundo: TImage;
     LogoM: TImage;
-    BS: TImage;
     LbNome: TLabel;
     LbSenha: TLabel;
     BtnCad: TPanel;
@@ -32,6 +31,7 @@ type
     LbErro: TLabel;
     LbTermos: TLabel;
     LbSenhaErro: TLabel;
+    BS: TImage;
     procedure LbTemContaClick(Sender: TObject);
     procedure EdEmailKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);

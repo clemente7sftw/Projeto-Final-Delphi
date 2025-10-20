@@ -52,6 +52,7 @@ procedure TForm22.FormShow(Sender: TObject);
 begin
 datamodule1.queryadm.close;
 datamodule1.queryadm.open;
+ WindowState := wsMaximized;
 
 end;
 

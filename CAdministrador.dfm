@@ -3,7 +3,7 @@ object Form22: TForm22
   Top = 0
   Caption = 'Form22'
   ClientHeight = 615
-  ClientWidth = 855
+  ClientWidth = 897
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,7 +15,7 @@ object Form22: TForm22
   object Fundo: TPanel
     Left = 0
     Top = 0
-    Width = 855
+    Width = 897
     Height = 615
     Align = alClient
     Color = clWhite
@@ -26,16 +26,16 @@ object Form22: TForm22
     ExplicitWidth = 185
     ExplicitHeight = 41
     object Label1: TLabel
-      Left = 128
-      Top = 264
+      Left = 104
+      Top = 416
       Width = 60
       Height = 15
       Caption = 'senha_adm'
       FocusControl = DBEdit1
     end
     object DBEdit1: TDBEdit
-      Left = 128
-      Top = 280
+      Left = 104
+      Top = 448
       Width = 200
       Height = 23
       DataField = 'senha_adm'
@@ -43,8 +43,8 @@ object Form22: TForm22
       TabOrder = 0
     end
     object ConfSenha: TPanel
-      Left = 128
-      Top = 336
+      Left = 104
+      Top = 504
       Width = 200
       Height = 49
       Caption = 'ConfSenha'
@@ -54,7 +54,7 @@ object Form22: TForm22
   end
   object DataSource1: TDataSource
     DataSet = DataModule1.QueryAdm
-    Left = 424
-    Top = 312
+    Left = 720
+    Top = 104
   end
 end

@@ -22,6 +22,7 @@ type
     Image2: TImage;
     procedure Image2Click(Sender: TObject);
     procedure MudarSenha;
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,7 +36,12 @@ implementation
 
 {$R *.dfm}
 
-uses CAdministrador;
+uses CAdministrador, UDataModule;
+
+procedure TForm5.FormShow(Sender: TObject);
+begin
+ShowMessage('ID da empresa logada: ' + IntToStr(DataModule1.id_empresa));
+end;
 
 procedure TForm5.Image2Click(Sender: TObject);
 begin
