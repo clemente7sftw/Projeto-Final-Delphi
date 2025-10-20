@@ -22,8 +22,6 @@ object Form10: TForm10
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 559
-    ExplicitHeight = 541
     object Lblrequired: TLabel
       Left = 40
       Top = 523

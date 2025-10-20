@@ -40,6 +40,7 @@ type
     EdBairro: TEdit;
     EdCidade: TEdit;
     EdEstado: TEdit;
+    procedure Cadastrar;
     procedure FormCreate(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure BtnCadClick(Sender: TObject);
@@ -61,6 +62,12 @@ uses UDataCEP, Cadastro, UDataModule, UMetodos;
 
 
 procedure TForm18.BtnCadClick(Sender: TObject);
+begin
+Cadastrar;
+end;
+
+
+procedure TForm18.Cadastrar;
 begin
 try
  with DataModule1.QueryClientes do
@@ -88,7 +95,6 @@ try
         ShowMessage('Erro ao cadastrar: ' + E.Message);
     end;
 end;
-
 
 procedure TForm18.FormCreate(Sender: TObject);
 begin

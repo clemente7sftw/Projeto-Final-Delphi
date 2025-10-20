@@ -22,6 +22,7 @@ type
     LbFornecedores: TLabel;
     Lbagendamentos: TLabel;
     Panel1: TPanel;
+    Image2: TImage;
     procedure LbClieClick(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);
     procedure LbServicosClick(Sender: TObject);
@@ -32,6 +33,8 @@ type
     procedure Label4Click(Sender: TObject);
     procedure LbagendamentosClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure AddAdm;
   private
     { Private declarations }
 
@@ -49,7 +52,13 @@ implementation
 
 uses CClientes, CProfissionais, AdicionarServico, CServicos,
   CCargos, CFornecedores, Cadastro, CHorarios, Agendamentos, UDataModule,
-  CAgendamentos;
+  CAgendamentos, CadAdm;
+procedure TForm20.AddAdm;
+begin
+Form23.show;
+form20.close;
+end;
+
 procedure TForm20.FormCreate(Sender: TObject);
 begin
 WindowState:=wsMaximized;
@@ -60,6 +69,11 @@ procedure TForm20.FormShow(Sender: TObject);
 begin
 ShowMessage('ID da empresa logada: ' + IntToStr(DataModule1.id_empresa));
 
+end;
+
+procedure TForm20.Image2Click(Sender: TObject);
+begin
+AddAdm;
 end;
 
 procedure TForm20.Label2Click(Sender: TObject);

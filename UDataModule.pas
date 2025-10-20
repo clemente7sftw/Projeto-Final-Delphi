@@ -102,6 +102,18 @@ type
     QueryServicosid_empresa: TIntegerField;
     QueryCSid_empresa: TIntegerField;
     QueryCargosid_empresa: TIntegerField;
+    QueryAdm: TFDQuery;
+    QueryAdmid_adm: TIntegerField;
+    QueryAdmid_empresa: TIntegerField;
+    QueryAdmemail_adm: TWideStringField;
+    QueryAdmsenha_adm: TWideStringField;
+    QueryAdmfone_adm: TWideStringField;
+    QueryAdmcpf_adm: TWideStringField;
+    QueryAdmcep_adm: TWideStringField;
+    QueryAdmrua_adm: TWideStringField;
+    QueryAdmbairro_adm: TWideStringField;
+    QueryAdmcidade_adm: TWideStringField;
+    QueryAdmestado_adm: TWideStringField;
     procedure QueryAgstatusGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
   private

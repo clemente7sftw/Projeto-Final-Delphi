@@ -87,7 +87,6 @@ procedure TForm10.Salvar;
 begin
   if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and (DBEdit3.Text <> '') then
      begin
-
       with DataModule1.QueryServicos do
       begin
           id_empresa:= DataModule1.id_empresa;

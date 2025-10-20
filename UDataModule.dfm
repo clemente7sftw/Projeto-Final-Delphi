@@ -8,6 +8,7 @@ object DataModule1: TDataModule1
       'Password=root'
       'Server=localhost'
       'DriverID=PG')
+    Connected = True
     Left = 160
     Top = 16
   end
@@ -550,5 +551,64 @@ object DataModule1: TDataModule1
     Connection = FDConnection1
     Left = 760
     Top = 184
+  end
+  object QueryAdm: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from administradores')
+    Left = 280
+    Top = 352
+    object QueryAdmid_adm: TIntegerField
+      FieldName = 'id_adm'
+      Origin = 'id_adm'
+    end
+    object QueryAdmid_empresa: TIntegerField
+      FieldName = 'id_empresa'
+      Origin = 'id_empresa'
+    end
+    object QueryAdmemail_adm: TWideStringField
+      FieldName = 'email_adm'
+      Origin = 'email_adm'
+      Size = 100
+    end
+    object QueryAdmsenha_adm: TWideStringField
+      FieldName = 'senha_adm'
+      Origin = 'senha_adm'
+      Size = 100
+    end
+    object QueryAdmfone_adm: TWideStringField
+      FieldName = 'fone_adm'
+      Origin = 'fone_adm'
+    end
+    object QueryAdmcpf_adm: TWideStringField
+      FieldName = 'cpf_adm'
+      Origin = 'cpf_adm'
+      Size = 14
+    end
+    object QueryAdmcep_adm: TWideStringField
+      FieldName = 'cep_adm'
+      Origin = 'cep_adm'
+      Size = 10
+    end
+    object QueryAdmrua_adm: TWideStringField
+      FieldName = 'rua_adm'
+      Origin = 'rua_adm'
+      Size = 100
+    end
+    object QueryAdmbairro_adm: TWideStringField
+      FieldName = 'bairro_adm'
+      Origin = 'bairro_adm'
+      Size = 50
+    end
+    object QueryAdmcidade_adm: TWideStringField
+      FieldName = 'cidade_adm'
+      Origin = 'cidade_adm'
+      Size = 50
+    end
+    object QueryAdmestado_adm: TWideStringField
+      FieldName = 'estado_adm'
+      Origin = 'estado_adm'
+      Size = 50
+    end
   end
 end
