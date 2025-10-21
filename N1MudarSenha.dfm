@@ -1,36 +1,38 @@
-object Form22: TForm22
+object Form24: TForm24
   Left = 0
   Top = 0
-  Caption = 'Form22'
-  ClientHeight = 615
-  ClientWidth = 897
+  Caption = 'Form24'
+  ClientHeight = 655
+  ClientWidth = 1045
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  OnShow = FormShow
   TextHeight = 15
   object Fundo: TPanel
     Left = 0
     Top = 0
-    Width = 897
-    Height = 615
+    Width = 1045
+    Height = 655
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    object Label1: TLabel
-      Left = 104
-      Top = 416
+    ExplicitWidth = 897
+    ExplicitHeight = 615
+    object Label2: TLabel
+      Left = 112
+      Top = 464
       Width = 54
       Height = 15
       Caption = 'senha_clie'
+      FocusControl = DBEdit1
     end
     object ConfSenha: TPanel
-      Left = 104
-      Top = 466
+      Left = 112
+      Top = 514
       Width = 200
       Height = 49
       Caption = 'ConfSenha'
@@ -38,18 +40,18 @@ object Form22: TForm22
       OnClick = ConfSenhaClick
     end
     object DBEdit1: TDBEdit
-      Left = 104
-      Top = 437
+      Left = 112
+      Top = 485
       Width = 200
       Height = 23
-      DataField = 'senha_adm'
+      DataField = 'senha_clie'
       DataSource = DataSource1
       TabOrder = 1
     end
   end
   object DataSource1: TDataSource
-    DataSet = DataModule1.QueryAdm
-    Left = 608
-    Top = 72
+    DataSet = DataModule1.QueryClientes
+    Left = 520
+    Top = 336
   end
 end

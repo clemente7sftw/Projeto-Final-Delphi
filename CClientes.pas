@@ -186,6 +186,7 @@ begin
   begin
   id_empresa:= DataModule1.id_empresa;
   DataModule1.QueryClientes.FieldByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  datamodule1.QueryClientes.FieldByName('senha_clie').AsString := '123';
   datamodule1.QueryClientes.Post;
   datamodule1.QueryClientes.close;
   datamodule1.QueryClientes.open;

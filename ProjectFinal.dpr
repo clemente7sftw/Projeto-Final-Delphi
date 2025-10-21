@@ -26,7 +26,8 @@ uses
   CAgendamentos in 'CAgendamentos.pas' {Form21},
   TelaInicialN2 in 'TelaInicialN2.pas' {Form5},
   CAdministrador in 'CAdministrador.pas' {Form22},
-  CadAdm in 'CadAdm.pas' {Form23};
+  CadAdm in 'CadAdm.pas' {Form23},
+  N1MudarSenha in 'N1MudarSenha.pas' {Form24};
 
 {$R *.res}
 
@@ -58,5 +59,6 @@ begin
   Application.CreateForm(TForm5, Form5);
   Application.CreateForm(TForm22, Form22);
   Application.CreateForm(TForm23, Form23);
+  Application.CreateForm(TForm24, Form24);
   Application.Run;
 end.

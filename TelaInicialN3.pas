@@ -24,8 +24,6 @@ type
     Lbagendamentos: TLabel;
     Panel1: TPanel;
     Image2: TImage;
-    FDMoniCustomClientLink1: TFDMoniCustomClientLink;
-    Memo1: TMemo;
     FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink;
     procedure LbClieClick(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);
@@ -39,8 +37,6 @@ type
     procedure FormShow(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure AddAdm;
-    procedure FDMoniCustomClientLink1Output(ASender: TFDMoniClientLinkBase;
-      const AClassName, AObjName, AMessage: string);
   private
     { Private declarations }
 
@@ -65,11 +61,7 @@ Form23.show;
 form20.close;
 end;
 
-procedure TForm20.FDMoniCustomClientLink1Output(ASender: TFDMoniClientLinkBase;
-  const AClassName, AObjName, AMessage: string);
-begin
-  memo1.Lines.Add(amessage);
-end;
+
 
 procedure TForm20.FormCreate(Sender: TObject);
 begin

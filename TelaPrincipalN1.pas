@@ -21,6 +21,7 @@ type
     Panel1: TPanel;
     Image1: TImage;
     DBGrid1: TDBGrid;
+    Image2: TImage;
     procedure FormCreate(Sender: TObject);
     procedure Label2Click(Sender: TObject);
     procedure Label5Click(Sender: TObject);
@@ -34,6 +35,7 @@ type
     procedure LbnPPClick(Sender: TObject);
     procedure Label3Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -50,6 +52,8 @@ implementation
 
 {$R *.dfm}
 
+uses N1MudarSenha;
+
 
 
 
@@ -64,6 +68,11 @@ procedure TForm3.FormShow(Sender: TObject);
 begin
 //  datamodule1.FDQueryReservas.close;
 //  datamodule1.FDQueryReservas.Open;
+end;
+
+procedure TForm3.Image2Click(Sender: TObject);
+begin
+Form24.show;
 end;
 
 procedure TForm3.Label2Click(Sender: TObject);

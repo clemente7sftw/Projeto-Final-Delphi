@@ -11,9 +11,9 @@ type
   TForm22 = class(TForm)
     Fundo: TPanel;
     Label1: TLabel;
-    DBEdit1: TDBEdit;
-    DataSource1: TDataSource;
     ConfSenha: TPanel;
+    DataSource1: TDataSource;
+    DBEdit1: TDBEdit;
     procedure FormShow(Sender: TObject);
     procedure ConfSenhaClick(Sender: TObject);
     procedure AlterarSenha;
@@ -35,10 +35,15 @@ uses UDataModule;
 procedure TForm22.AlterarSenha;
 begin
  try
+if dbedit1.text <> '' then
+begin
     if not (DataModule1.QueryAdm.State in [dsEdit, dsInsert]) then
     DataModule1.QueryAdm.Edit;
     DataModule1.QueryAdm.FieldByName('senha_adm').AsString := DBEdit1.Text;
     DataModule1.QueryAdm.Post;
+end else begin
+  DataModule1.QueryAdm.Cancel;
+end;
   except
   end;
 end;
