@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.Imaging.pngimage, Vcl.CheckLst, system.JSON, uSuperChartLight;
+  Vcl.Imaging.pngimage, Vcl.CheckLst, system.JSON, uSuperChartLight,
+  FireDAC.Moni.Base, FireDAC.Moni.Custom, FireDAC.Moni.FlatFile;
 
 type
   TForm20 = class(TForm)
@@ -23,6 +24,9 @@ type
     Lbagendamentos: TLabel;
     Panel1: TPanel;
     Image2: TImage;
+    FDMoniCustomClientLink1: TFDMoniCustomClientLink;
+    Memo1: TMemo;
+    FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink;
     procedure LbClieClick(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);
     procedure LbServicosClick(Sender: TObject);
@@ -35,6 +39,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure AddAdm;
+    procedure FDMoniCustomClientLink1Output(ASender: TFDMoniClientLinkBase;
+      const AClassName, AObjName, AMessage: string);
   private
     { Private declarations }
 
@@ -57,6 +63,12 @@ procedure TForm20.AddAdm;
 begin
 Form23.show;
 form20.close;
+end;
+
+procedure TForm20.FDMoniCustomClientLink1Output(ASender: TFDMoniClientLinkBase;
+  const AClassName, AObjName, AMessage: string);
+begin
+  memo1.Lines.Add(amessage);
 end;
 
 procedure TForm20.FormCreate(Sender: TObject);

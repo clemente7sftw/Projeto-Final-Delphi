@@ -435,5 +435,28 @@ object Form20: TForm20
       Caption = 'Panel1'
       TabOrder = 1
     end
+    object Memo1: TMemo
+      Left = 120
+      Top = 245
+      Width = 185
+      Height = 445
+      Lines.Strings = (
+        'Memo1')
+      TabOrder = 2
+    end
+  end
+  object FDMoniCustomClientLink1: TFDMoniCustomClientLink
+    OnOutput = FDMoniCustomClientLink1Output
+    Tracing = True
+    Left = 400
+    Top = 304
+  end
+  object FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink
+    FileName = 
+      'C:\Users\gabri\OneDrive\Documentos\Projeto-Final-Delphi\docs\tra' +
+      'cing.txt'
+    Tracing = True
+    Left = 560
+    Top = 296
   end
 end

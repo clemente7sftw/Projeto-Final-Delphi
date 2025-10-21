@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 0
   Caption = 'Login BeautyStage'
   ClientHeight = 1061
-  ClientWidth = 975
+  ClientWidth = 1012
   Color = 1186595
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -155,16 +155,17 @@ object Form1: TForm1
   object LadoEsquerdo: TPanel
     Left = 0
     Top = 0
-    Width = 975
+    Width = 1012
     Height = 1061
     Align = alClient
     Color = 1186595
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 975
     object ImagemDeFundo: TImage
       Left = 1
       Top = 1
-      Width = 973
+      Width = 1010
       Height = 1059
       Align = alClient
       Picture.Data = {

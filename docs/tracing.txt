@@ -1,0 +1,735 @@
+--- new start of FireDAC Trace ---
+3059264980788 14:57:17.720 -=#!!! FireDAC Tracer started !!!#=-
+3059322721316 14:57:23.488  . CreateConnection [ConnectionDef=""]
+3059322721521 14:57:23.488  . CreateTransaction [ConnectionDef=""]
+3059322721931 14:57:23.488 >> Open [ConnectionDef=""]
+3059322723761 14:57:23.488     >> Definition [Name=""]
+3059322723779 14:57:23.488          . Database=beauty_stage
+3059322723791 14:57:23.488          . User_Name=postgres
+3059322723802 14:57:23.488          . Password=*****
+3059322723814 14:57:23.488          . Server=localhost
+3059322723824 14:57:23.488          . MonitorBy=FlatFile
+3059322723835 14:57:23.488          . DriverID=PG
+3059322723861 14:57:23.488     << Definition [Name=""]
+3059322723977 14:57:23.488     >> FireDAC info
+3059322723989 14:57:23.488          . Tool=RAD Studio 12
+3059322723999 14:57:23.488          . FireDAC=29.0.51961.7529
+3059322724008 14:57:23.488          . Platform=Windows 32 bit
+3059322724022 14:57:23.488          . Defines=FireDAC_NOLOCALE_META;FireDAC_MONITOR
+3059322724032 14:57:23.488     << FireDAC info
+3059323125126 14:57:23.536      . PQconnectdb [ConnInfo=host=localhost dbname=beauty_stage user=postgres password=***, Result=$0458A9B0]
+3059323125235 14:57:23.536      . PQserverVersion [conn=$0458A9B0, Result=1700040000]
+3059323125399 14:57:23.536      . PQclientEncoding [conn=$0458A9B0, Result="UTF8"]
+3059323125696 14:57:23.536      . PQprepare [ppgconn=$0458A9B0, stmtname="1STM", sql="SELECT CURRENT_DATABASE(), CURRENT_SCHEMA()", nParams=0]
+3059323129733 14:57:23.536      . PQexecPrepared [ppgconn=$0458A9B0, stmtname="1STM", nParams=0, resultFormat=1]
+3059323131742 14:57:23.536      . PQcmdStatus [ppgresult=$0458BF38, stmttype="SELECT", rowsaffected=1, oid=0]
+3059323131797 14:57:23.536      . PQntuples [ppgresult=$0458BF38, rowsselected=1]
+3059323131887 14:57:23.536      . DescribeFields [ppgconn=$0458A9B0, stmtName="1STM", nFields=2]
+3059323131927 14:57:23.536      . FETCH [ppgresult=$0458BF38, stmtName="1STM"]
+3059323131955 14:57:23.536     >> Fetched
+3059323132028 14:57:23.536          . Field [N=0, Name="current_database", Type=name, Prec=0, Scale=0, Size=64, Data='beauty_stage']
+3059323132073 14:57:23.536          . Field [N=1, Name="current_schema", Type=name, Prec=0, Scale=0, Size=64, Data='public']
+3059323132085 14:57:23.536     << Fetched
+3059323132126 14:57:23.536      . PQclear [ppgresult=$0458BF38, stmtName="1STM"]
+3059323133053 14:57:23.536      . PQtransactionStatus [conn=$0458A9B0, Result=0]
+3059323133076 14:57:23.536      . DEALLOCATE [ppgconn=$0458A9B0, stmtname="1STM"]
+3059323133105 14:57:23.536      . PQexec [ppgconn=$0458A9B0, sql="DEALLOCATE "1STM""]
+3059323134566 14:57:23.536      . PQprepare [ppgconn=$0458A9B0, stmtname="2STM", sql="SELECT '2025-10-21 14:57:23'::TIMESTAMPTZ, (SELECT MIN(1) FROM PG_CATALOG.PG_PROC WHERE PRONAME = 'months_between'), (SELECT SETTING FROM PG_CATALOG.PG_SETTINGS WHERE NAME = 'standard_conforming_strings'), (SELECT SETTING FROM PG_CATALOG.PG_SETTINGS WHERE NAME = 'cursor_tuple_fraction')", nParams=0]
+3059323141317 14:57:23.540      . PQexecPrepared [ppgconn=$0458A9B0, stmtname="2STM", nParams=0, resultFormat=1]
+3059323224602 14:57:23.540      . PQcmdStatus [ppgresult=$0458BF38, stmttype="SELECT", rowsaffected=1, oid=0]
+3059323224676 14:57:23.540      . PQntuples [ppgresult=$0458BF38, rowsselected=1]
+3059323224734 14:57:23.540      . DescribeFields [ppgconn=$0458A9B0, stmtName="2STM", nFields=4]
+3059323224780 14:57:23.540      . FETCH [ppgresult=$0458BF38, stmtName="2STM"]
+3059323224793 14:57:23.540     >> Fetched
+3059323224870 14:57:23.540          . PQparameterStatus [conn=$0458A9B0, ParamName="integer_datetimes", Result="on"]
+3059323224978 14:57:23.540          . Field [N=0, Name="timestamptz", Type=timestamptz, Prec=0, Scale=6, Size=0, Data=21/10/2025 17:57:23 +00:00]
+3059323225016 14:57:23.540          . Field [N=1, Name="min", Type=int4, Prec=0, Scale=0, Size=0, Data=NULL]
+3059323225948 14:57:23.540          . Field [N=2, Name="setting", Type=text, Prec=0, Scale=0, Size=32767, Data='off']
+3059323225994 14:57:23.540          . Field [N=3, Name="setting", Type=text, Prec=0, Scale=0, Size=32767, Data='0.1']
+3059323226005 14:57:23.540     << Fetched
+3059323226060 14:57:23.540      . PQclear [ppgresult=$0458BF38, stmtName="2STM"]
+3059323226097 14:57:23.540      . PQtransactionStatus [conn=$0458A9B0, Result=0]
+3059323226119 14:57:23.540      . DEALLOCATE [ppgconn=$0458A9B0, stmtname="2STM"]
+3059323226145 14:57:23.540      . PQexec [ppgconn=$0458A9B0, sql="DEALLOCATE "2STM""]
+3059323227501 14:57:23.540     >> Driver log
+3059323227549 14:57:23.540          . Loading driver PG ...
+3059323227560 14:57:23.540     << Driver log
+3059323227692 14:57:23.540      . PQparameterStatus [conn=$0458A9B0, ParamName="server_version", Result="17.4"]
+3059323227736 14:57:23.540      . PQparameterStatus [conn=$0458A9B0, ParamName="server_encoding", Result="UTF8"]
+3059323227774 14:57:23.540      . PQparameterStatus [conn=$0458A9B0, ParamName="client_encoding", Result="UTF8"]
+3059323227816 14:57:23.540      . PQparameterStatus [conn=$0458A9B0, ParamName="is_superuser", Result="on"]
+3059323227867 14:57:23.540      . PQparameterStatus [conn=$0458A9B0, ParamName="session_authorization", Result="postgres"]
+3059323227906 14:57:23.540      . PQparameterStatus [conn=$0458A9B0, ParamName="DateStyle", Result="ISO, DMY"]
+3059323227943 14:57:23.540      . PQparameterStatus [conn=$0458A9B0, ParamName="integer_datetimes", Result="on"]
+3059323227981 14:57:23.540      . PQparameterStatus [conn=$0458A9B0, ParamName="TimeZone", Result="America/Sao_Paulo"]
+3059323228022 14:57:23.540      . PQparameterStatus [conn=$0458A9B0, ParamName="standard_conforming_strings", Result="off"]
+3059323228033 14:57:23.540     >> Client info
+3059323228043 14:57:23.540          . Client brand=PostgreSQL regular
+3059323228054 14:57:23.540          . Client version=1004000000
+3059323228064 14:57:23.540          . Client DLL name=C:\Users\gabri\OneDrive\Documentos\Projeto-Final-Delphi\Win32\Debug\lib\libpq.dll
+3059323228074 14:57:23.540     << Client info
+3059323228174 14:57:23.540      . PQparameterStatus [conn=$0458A9B0, ParamName="server_version", Result="17.4"]
+3059323229986 14:57:23.540      . PQparameterStatus [conn=$0458A9B0, ParamName="server_encoding", Result="UTF8"]
+3059323230021 14:57:23.540      . PQparameterStatus [conn=$0458A9B0, ParamName="client_encoding", Result="UTF8"]
+3059323230061 14:57:23.540      . PQparameterStatus [conn=$0458A9B0, ParamName="is_superuser", Result="on"]
+3059323230101 14:57:23.540      . PQparameterStatus [conn=$0458A9B0, ParamName="session_authorization", Result="postgres"]
+3059323230137 14:57:23.540      . PQparameterStatus [conn=$0458A9B0, ParamName="DateStyle", Result="ISO, DMY"]
+3059323230173 14:57:23.540      . PQparameterStatus [conn=$0458A9B0, ParamName="integer_datetimes", Result="on"]
+3059323230209 14:57:23.540      . PQparameterStatus [conn=$0458A9B0, ParamName="TimeZone", Result="America/Sao_Paulo"]
+3059323230246 14:57:23.540      . PQparameterStatus [conn=$0458A9B0, ParamName="standard_conforming_strings", Result="off"]
+3059323230258 14:57:23.540     >> Session info
+3059323230268 14:57:23.540          . Current catalog=
+3059323230278 14:57:23.540          . Current schema=public
+3059323230287 14:57:23.540          . Server version=17.4
+3059323230297 14:57:23.540          . Server encoding=UTF8
+3059323230307 14:57:23.540          . Client encoding=UTF8
+3059323230316 14:57:23.540          . Is superuser=on
+3059323230326 14:57:23.540          . Session authorization=postgres
+3059323232106 14:57:23.540          . Date style=ISO, DMY
+3059323232116 14:57:23.540          . Integer date/times=on
+3059323232125 14:57:23.540          . Time zone=America/Sao_Paulo
+3059323232135 14:57:23.540          . Standard conforming strings=off
+3059323232144 14:57:23.540     << Session info
+3059323232213 14:57:23.540 << Open [ConnectionDef=""]
+3059323232319 14:57:23.540  . CreateCommand [ConnectionDef=""]
+3059323232857 14:57:23.540 >> Prepare [Command="SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha"]
+3059323238072 14:57:23.540      . Preprocessed [CMD="SELECT * FROM clientes WHERE email_clie = $1 AND senha_clie= $2", FROM="clientes", VP=0, VPE=0, OBP=0, CK=1]
+3059323238404 14:57:23.540      . PQexec [ppgconn=$0458A9B0, sql="SET cursor_tuple_fraction TO 1.0"]
+3059323240219 14:57:23.540      . PQprepare [ppgconn=$0458A9B0, stmtname="4STM", sql="DECLARE "3STM" NO SCROLL CURSOR WITH HOLD FOR SELECT * FROM clientes WHERE email_clie = $1 AND senha_clie= $2", nParams=2]
+3059323247272 14:57:23.540      . PQprepare [ppgconn=$0458A9B0, stmtname="5STM", sql="FETCH FORWARD 50 FROM "3STM"", nParams=0]
+3059323248623 14:57:23.540 << Prepare [Command="SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha"]
+3059323248712 14:57:23.540 << TFDCustomCommand.Prepare [Command="SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha"]
+3059323248944 14:57:23.540 >> Define(TFDDatSManager) [ADatSManager="Manager", ATable="<nil>", Command="SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha"]
+3059323250497 14:57:23.540  . CreateMetaInfoCommand [ConnectionDef=""]
+3059323250612 14:57:23.540 >> Prepare [Command="Table PKey Fields (clientes.clientes)"]
+3059323251290 14:57:23.540      . PQprepare [ppgconn=$0458A9B0, stmtname="7STM", sql="DECLARE "6STM" NO SCROLL CURSOR WITH HOLD FOR SELECT NULL::INTEGER AS RECNO, CURRENT_DATABASE() AS CATALOG_NAME, N.NSPNAME AS SCHEMA_NAME, TC.RELNAME AS TABLE_NAME, IC.RELNAME AS INDEX_NAME, A.ATTNAME AS COLUMN_NAME, A.ATTNUM AS COLUMN_POSITION, 'A'::VARCHAR(1) AS SORT_ORDER, NULL::VARCHAR(67) AS FILTER FROM PG_CATALOG.PG_INDEX I INNER JOIN PG_CATALOG.PG_CLASS TC ON TC.OID = I.INDRELID INNER JOIN PG_CATALOG.PG_CLASS IC ON IC.OID = I.INDEXRELID INNER JOIN PG_CATALOG.PG_NAMESPACE N ON N.OID = TC.RELNAMESPACE INNER JOIN PG_CATALOG.PG_ATTRIBUTE A ON A.ATTRELID = I.INDRELID AND A.ATTNUM = ANY(I.INDKEY)  WHERE N.NSPNAME = 'public' AND TC.RELNAME = $1 AND I.INDISPRIMARY ORDER BY position('~' || trim(both from to_char(A.ATTNUM, '99999')) || '~' in  '~' || array_to_string(I.INDKEY, '~') || '~')", nParams=1]
+3059323260990 14:57:23.552      . PQprepare [ppgconn=$0458A9B0, stmtname="8STM", sql="FETCH FORWARD 50 FROM "6STM"", nParams=0]
+3059323262057 14:57:23.552 << Prepare [Command="Table PKey Fields (clientes.clientes)"]
+3059323262347 14:57:23.552 >> Open [Command="Table PKey Fields (clientes.clientes)"]
+3059323262516 14:57:23.552         >> Sent
+3059323262826 14:57:23.552              . Var [N=0, Name="BAS", Type=varchar, Size=70, Data(0)='clientes']
+3059323262876 14:57:23.552         << Sent
+3059323263011 14:57:23.552         >> Sent
+3059323263048 14:57:23.552              . Var [N=0, Name="BAS", Type=varchar, Size=70, Data(0)='clientes']
+3059323263285 14:57:23.552         << Sent
+3059323263321 14:57:23.552          . PQexecPrepared [ppgconn=$0458A9B0, stmtname="7STM", nParams=1, resultFormat=1]
+3059323335961 14:57:23.552          . PQcmdStatus [ppgresult=$0459A6A0, stmttype="DECLARE", rowsaffected=0, oid=0]
+3059323336049 14:57:23.552          . PQntuples [ppgresult=$0459A6A0, rowsselected=0]
+3059323336084 14:57:23.552         >> Sent
+3059323336150 14:57:23.552              . Var [N=0, Name="BAS", Type=varchar, Size=70, Data(0)='clientes']
+3059323336163 14:57:23.552         << Sent
+3059323336197 14:57:23.552          . PQexecPrepared [ppgconn=$0458A9B0, stmtname="8STM", nParams=0, resultFormat=1]
+3059323337710 14:57:23.552          . PQntuples [ppgresult=$0459A160, rowsselected=1]
+3059323337825 14:57:23.552          . DescribeFields [ppgconn=$0458A9B0, stmtName="7STM", nFields=9]
+3059323338110 14:57:23.552 << Open [Command="Table PKey Fields (clientes.clientes)"]
+3059323348348 14:57:23.552 >> Fetch [ATable="_FD_#beauty_stage#PRIMARYKEYFIELDS", Command="Table PKey Fields (clientes.clientes)"]
+3059323348463 14:57:23.552      . FETCH [ppgresult=$0459A160, stmtName="7STM"]
+3059323348480 14:57:23.552     >> Fetched
+3059323348532 14:57:23.552          . Field [N=0, Name="recno", Type=int4, Prec=0, Scale=0, Size=0, Data=NULL]
+3059323348582 14:57:23.552          . Field [N=1, Name="catalog_name", Type=name, Prec=0, Scale=0, Size=64, Data='beauty_stage']
+3059323348618 14:57:23.552          . Field [N=2, Name="schema_name", Type=name, Prec=0, Scale=0, Size=64, Data='public']
+3059323348651 14:57:23.552          . Field [N=3, Name="table_name", Type=name, Prec=0, Scale=0, Size=64, Data='clientes']
+3059323348682 14:57:23.552          . Field [N=4, Name="index_name", Type=name, Prec=0, Scale=0, Size=64, Data='clientes_pkey']
+3059323348714 14:57:23.552          . Field [N=5, Name="column_name", Type=name, Prec=0, Scale=0, Size=64, Data='id_clie']
+3059323348750 14:57:23.552          . Field [N=6, Name="column_position", Type=int2, Prec=0, Scale=0, Size=0, Data=2]
+3059323350557 14:57:23.552          . Field [N=7, Name="sort_order", Type=varchar, Prec=0, Scale=0, Size=1, Data='A']
+3059323350589 14:57:23.552          . Field [N=8, Name="filter", Type=varchar, Prec=0, Scale=0, Size=67, Data=NULL]
+3059323350600 14:57:23.552     << Fetched
+3059323350920 14:57:23.552      . FETCH [ppgresult=$0459A160, stmtName="7STM"]
+3059323351409 14:57:23.552     >> Sent
+3059323351446 14:57:23.552          . Var [N=0, Name="BAS", Type=varchar, Size=70, Data(0)='clientes']
+3059323351457 14:57:23.552     << Sent
+3059323351933 14:57:23.552      . PQexecPrepared [ppgconn=$0458A9B0, stmtname="8STM", nParams=0, resultFormat=1]
+3059323353191 14:57:23.552      . PQntuples [ppgresult=$045998D8, rowsselected=0]
+3059323353238 14:57:23.552      . EOF
+3059323353288 14:57:23.552      . PQclear [ppgresult=$045998D8, stmtName="7STM"]
+3059323353316 14:57:23.552      . PQtransactionStatus [conn=$0458A9B0, Result=0]
+3059323353348 14:57:23.552      . PQexec [ppgconn=$0458A9B0, sql="CLOSE "6STM""]
+3059323354893 14:57:23.552 << Fetch [ATable="_FD_#beauty_stage#PRIMARYKEYFIELDS", Command="Table PKey Fields (clientes.clientes)", RowsAffected=1]
+3059323354988 14:57:23.552  . Eof reached [ATable="_FD_#beauty_stage#PRIMARYKEYFIELDS", Command="Table PKey Fields (clientes.clientes)"]
+3059323355027 14:57:23.552 >> Close [Command="Table PKey Fields (clientes.clientes)"]
+3059323355085 14:57:23.552      . PQtransactionStatus [conn=$0458A9B0, Result=0]
+3059323355114 14:57:23.552 << Close [Command="Table PKey Fields (clientes.clientes)"]
+3059323355154 14:57:23.552 >> Unprepare [Command="Table PKey Fields (clientes.clientes)"]
+3059323355175 14:57:23.552      . PQtransactionStatus [conn=$0458A9B0, Result=0]
+3059323355202 14:57:23.552      . DEALLOCATE [ppgconn=$0458A9B0, stmtname="7STM"]
+3059323355230 14:57:23.552      . PQexec [ppgconn=$0458A9B0, sql="DEALLOCATE "7STM""]
+3059323356724 14:57:23.552      . PQtransactionStatus [conn=$0458A9B0, Result=0]
+3059323356805 14:57:23.552      . DEALLOCATE [ppgconn=$0458A9B0, stmtname="8STM"]
+3059323356839 14:57:23.552      . PQexec [ppgconn=$0458A9B0, sql="DEALLOCATE "8STM""]
+3059323358078 14:57:23.552 << Unprepare [Command="Table PKey Fields (clientes.clientes)"]
+3059323358147 14:57:23.552  . Destroy [Command="Table PKey Fields (clientes.clientes)"]
+3059323358339 14:57:23.552 >> Open [Command="SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha"]
+3059323358435 14:57:23.552         >> StartTransaction [ConnectionDef=""]
+3059323358718 14:57:23.552              . PQexec [ppgconn=$0458A9B0, sql="BEGIN"]
+3059323360141 14:57:23.552         << StartTransaction [ConnectionDef=""]
+3059323360263 14:57:23.552         >> Sent
+3059323360385 14:57:23.552              . Var [N=0, Name="EMAIL", Type=varchar, Size=4000, Data(0)='HairBeauty@gmail.com']
+3059323360543 14:57:23.552              . Var [N=1, Name="SENHA", Type=varchar, Size=4000, Data(0)='Beauty1234']
+3059323360673 14:57:23.552         << Sent
+3059323360688 14:57:23.552         >> Sent
+3059323360731 14:57:23.552              . Var [N=0, Name="EMAIL", Type=varchar, Size=4000, Data(0)='HairBeauty@gmail.com']
+3059323360993 14:57:23.552              . Var [N=1, Name="SENHA", Type=varchar, Size=4000, Data(0)='Beauty1234']
+3059323361004 14:57:23.552         << Sent
+3059323361042 14:57:23.552          . PQexecPrepared [ppgconn=$0458A9B0, stmtname="4STM", nParams=2, resultFormat=1]
+3059323371210 14:57:23.552          . PQcmdStatus [ppgresult=$0459A160, stmttype="DECLARE", rowsaffected=0, oid=0]
+3059323371265 14:57:23.552          . PQntuples [ppgresult=$0459A160, rowsselected=0]
+3059323371288 14:57:23.552         >> Sent
+3059323371789 14:57:23.552              . Var [N=0, Name="EMAIL", Type=varchar, Size=4000, Data(0)='HairBeauty@gmail.com']
+3059323371945 14:57:23.552              . Var [N=1, Name="SENHA", Type=varchar, Size=4000, Data(0)='Beauty1234']
+3059323372077 14:57:23.552         << Sent
+3059323372110 14:57:23.552          . PQexecPrepared [ppgconn=$0458A9B0, stmtname="5STM", nParams=0, resultFormat=1]
+3059323373762 14:57:23.552          . PQntuples [ppgresult=$0459A160, rowsselected=0]
+3059323373885 14:57:23.552          . DescribeFields [ppgconn=$0458A9B0, stmtName="4STM", nFields=14]
+3059323374120 14:57:23.552 << Open [Command="SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha"]
+3059323374397 14:57:23.552  . Col add [Index=1, SrcName="id_empresa", SrcType=Int32, SrcSize=0, SrcPrec=0, SrcScale=0, Type=Int32, Size=0, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323374499 14:57:23.552  . Col add [Index=2, SrcName="id_clie", SrcType=Int32, SrcSize=0, SrcPrec=0, SrcScale=0, Type=Int32, Size=0, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323374654 14:57:23.552  . Col add [Index=3, SrcName="nome_clie", SrcType=WideString, SrcSize=150, SrcPrec=0, SrcScale=0, Type=WideString, Size=150, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323374858 14:57:23.552  . Col add [Index=4, SrcName="email_clie", SrcType=WideString, SrcSize=100, SrcPrec=0, SrcScale=0, Type=WideString, Size=100, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323375005 14:57:23.552  . Col add [Index=5, SrcName="senha_clie", SrcType=WideString, SrcSize=100, SrcPrec=0, SrcScale=0, Type=WideString, Size=100, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323375204 14:57:23.552  . Col add [Index=6, SrcName="cpf_clie", SrcType=WideString, SrcSize=14, SrcPrec=0, SrcScale=0, Type=WideString, Size=14, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323375347 14:57:23.552  . Col add [Index=7, SrcName="genero_clie", SrcType=WideString, SrcSize=20, SrcPrec=0, SrcScale=0, Type=WideString, Size=20, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323375459 14:57:23.552  . Col add [Index=8, SrcName="fone_clie", SrcType=WideString, SrcSize=20, SrcPrec=0, SrcScale=0, Type=WideString, Size=20, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323375660 14:57:23.552  . Col add [Index=9, SrcName="cep_clie", SrcType=WideString, SrcSize=9, SrcPrec=0, SrcScale=0, Type=WideString, Size=9, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323375802 14:57:23.552  . Col add [Index=10, SrcName="rua_clie", SrcType=WideString, SrcSize=100, SrcPrec=0, SrcScale=0, Type=WideString, Size=100, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323376002 14:57:23.552  . Col add [Index=11, SrcName="bairro_clie", SrcType=WideString, SrcSize=50, SrcPrec=0, SrcScale=0, Type=WideString, Size=50, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323376145 14:57:23.552  . Col add [Index=12, SrcName="cidade_clie", SrcType=WideString, SrcSize=50, SrcPrec=0, SrcScale=0, Type=WideString, Size=50, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323376258 14:57:23.552  . Col add [Index=13, SrcName="estado_clie", SrcType=WideString, SrcSize=50, SrcPrec=0, SrcScale=0, Type=WideString, Size=50, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323376456 14:57:23.552  . Col add [Index=14, SrcName="data_cad", SrcType=DateTimeStamp, SrcSize=0, SrcPrec=0, SrcScale=0, Type=DateTimeStamp, Size=0, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323376858 14:57:23.552  . Primary key [Cols="id_clie"]
+3059323377004 14:57:23.552 << Define(TFDDatSManager) [ADatSManager="Manager", ATable="<nil>", Command="SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha"]
+3059323377930 14:57:23.552 >> TFDCustomCommand.Fetch [Command="SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha", AAll=False, ABlocked=True]
+3059323378011 14:57:23.552 >> Fetch [ATable="clientes", Command="SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha"]
+3059323378057 14:57:23.552      . FETCH [ppgresult=$0459A160, stmtName="4STM"]
+3059323378070 14:57:23.552      . EOF
+3059323378096 14:57:23.552      . PQclear [ppgresult=$0459A160, stmtName="4STM"]
+3059323378121 14:57:23.552      . PQtransactionStatus [conn=$0458A9B0, Result=2]
+3059323378147 14:57:23.552      . PQexec [ppgconn=$0458A9B0, sql="CLOSE "3STM""]
+3059323379137 14:57:23.552 << Fetch [ATable="clientes", Command="SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha", RowsAffected=0]
+3059323379223 14:57:23.552  . Eof reached [ATable="clientes", Command="SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha"]
+3059323379256 14:57:23.552 >> Close [Command="SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha"]
+3059323379339 14:57:23.552     >> Commit [ConnectionDef="", Retaining=False]
+3059323379403 14:57:23.552          . PQexec [ppgconn=$0458A9B0, sql="COMMIT"]
+3059323380277 14:57:23.552     << Commit [ConnectionDef="", Retaining=False]
+3059323380357 14:57:23.552 << Close [Command="SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha"]
+3059323380637 14:57:23.552  . TFDCustomCommand.FetchFinished [Command="SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha", AState=2, FRowsAffected=0]
+3059323380797 14:57:23.552 << TFDCustomCommand.Fetch [Command="SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha", AAll=False, ABlocked=True]
+3059323387103 14:57:23.552 >> TFDCustomCommand.Prepare [Command="SELECT * FROM empresas WHERE email = :email AND senha = :senha"]
+3059323387178 14:57:23.552  . CreateCommand [ConnectionDef=""]
+3059323387294 14:57:23.552 >> Prepare [Command="SELECT * FROM empresas WHERE email = :email AND senha = :senha"]
+3059323387484 14:57:23.552      . Preprocessed [CMD="SELECT * FROM empresas WHERE email = $1 AND senha = $2", FROM="empresas", VP=0, VPE=0, OBP=0, CK=1]
+3059323388205 14:57:23.552      . PQprepare [ppgconn=$0458A9B0, stmtname="10STM", sql="DECLARE "9STM" NO SCROLL CURSOR WITH HOLD FOR SELECT * FROM empresas WHERE email = $1 AND senha = $2", nParams=2]
+3059323390515 14:57:23.552      . PQprepare [ppgconn=$0458A9B0, stmtname="11STM", sql="FETCH FORWARD 50 FROM "9STM"", nParams=0]
+3059323391459 14:57:23.552 << Prepare [Command="SELECT * FROM empresas WHERE email = :email AND senha = :senha"]
+3059323391537 14:57:23.552 << TFDCustomCommand.Prepare [Command="SELECT * FROM empresas WHERE email = :email AND senha = :senha"]
+3059323391628 14:57:23.552 >> Define(TFDDatSManager) [ADatSManager="Manager", ATable="<nil>", Command="SELECT * FROM empresas WHERE email = :email AND senha = :senha"]
+3059323392164 14:57:23.552  . CreateMetaInfoCommand [ConnectionDef=""]
+3059323392325 14:57:23.552 >> Prepare [Command="Table PKey Fields (empresas.empresas)"]
+3059323392840 14:57:23.552      . PQprepare [ppgconn=$0458A9B0, stmtname="13STM", sql="DECLARE "12STM" NO SCROLL CURSOR WITH HOLD FOR SELECT NULL::INTEGER AS RECNO, CURRENT_DATABASE() AS CATALOG_NAME, N.NSPNAME AS SCHEMA_NAME, TC.RELNAME AS TABLE_NAME, IC.RELNAME AS INDEX_NAME, A.ATTNAME AS COLUMN_NAME, A.ATTNUM AS COLUMN_POSITION, 'A'::VARCHAR(1) AS SORT_ORDER, NULL::VARCHAR(67) AS FILTER FROM PG_CATALOG.PG_INDEX I INNER JOIN PG_CATALOG.PG_CLASS TC ON TC.OID = I.INDRELID INNER JOIN PG_CATALOG.PG_CLASS IC ON IC.OID = I.INDEXRELID INNER JOIN PG_CATALOG.PG_NAMESPACE N ON N.OID = TC.RELNAMESPACE INNER JOIN PG_CATALOG.PG_ATTRIBUTE A ON A.ATTRELID = I.INDRELID AND A.ATTNUM = ANY(I.INDKEY)  WHERE N.NSPNAME = 'public' AND TC.RELNAME = $1 AND I.INDISPRIMARY ORDER BY position('~' || trim(both from to_char(A.ATTNUM, '99999')) || '~' in  '~' || array_to_string(I.INDKEY, '~') || '~')", nParams=1]
+3059323396144 14:57:23.552      . PQprepare [ppgconn=$0458A9B0, stmtname="14STM", sql="FETCH FORWARD 50 FROM "12STM"", nParams=0]
+3059323397055 14:57:23.552 << Prepare [Command="Table PKey Fields (empresas.empresas)"]
+3059323397171 14:57:23.552 >> Open [Command="Table PKey Fields (empresas.empresas)"]
+3059323397245 14:57:23.552         >> Sent
+3059323397297 14:57:23.552              . Var [N=0, Name="BAS", Type=varchar, Size=70, Data(0)='empresas']
+3059323397311 14:57:23.552         << Sent
+3059323397326 14:57:23.552         >> Sent
+3059323397362 14:57:23.552              . Var [N=0, Name="BAS", Type=varchar, Size=70, Data(0)='empresas']
+3059323397372 14:57:23.552         << Sent
+3059323397407 14:57:23.552          . PQexecPrepared [ppgconn=$0458A9B0, stmtname="13STM", nParams=1, resultFormat=1]
+3059323407762 14:57:23.552          . PQcmdStatus [ppgresult=$0459A358, stmttype="DECLARE", rowsaffected=0, oid=0]
+3059323407817 14:57:23.552          . PQntuples [ppgresult=$0459A358, rowsselected=0]
+3059323407839 14:57:23.552         >> Sent
+3059323407886 14:57:23.552              . Var [N=0, Name="BAS", Type=varchar, Size=70, Data(0)='empresas']
+3059323407898 14:57:23.552         << Sent
+3059323407931 14:57:23.552          . PQexecPrepared [ppgconn=$0458A9B0, stmtname="14STM", nParams=0, resultFormat=1]
+3059323408841 14:57:23.552          . PQntuples [ppgresult=$0459A2B0, rowsselected=1]
+3059323408948 14:57:23.552          . DescribeFields [ppgconn=$0458A9B0, stmtName="13STM", nFields=9]
+3059323409079 14:57:23.552 << Open [Command="Table PKey Fields (empresas.empresas)"]
+3059323409167 14:57:23.552 >> Fetch [ATable="_FD_#beauty_stage#PRIMARYKEYFIELDS", Command="Table PKey Fields (empresas.empresas)"]
+3059323409212 14:57:23.552      . FETCH [ppgresult=$0459A2B0, stmtName="13STM"]
+3059323409225 14:57:23.552     >> Fetched
+3059323409273 14:57:23.552          . Field [N=0, Name="recno", Type=int4, Prec=0, Scale=0, Size=0, Data=NULL]
+3059323410210 14:57:23.552          . Field [N=1, Name="catalog_name", Type=name, Prec=0, Scale=0, Size=64, Data='beauty_stage']
+3059323410247 14:57:23.552          . Field [N=2, Name="schema_name", Type=name, Prec=0, Scale=0, Size=64, Data='public']
+3059323410280 14:57:23.552          . Field [N=3, Name="table_name", Type=name, Prec=0, Scale=0, Size=64, Data='empresas']
+3059323410310 14:57:23.552          . Field [N=4, Name="index_name", Type=name, Prec=0, Scale=0, Size=64, Data='empresas_pkey']
+3059323410342 14:57:23.552          . Field [N=5, Name="column_name", Type=name, Prec=0, Scale=0, Size=64, Data='id_empresa']
+3059323410377 14:57:23.552          . Field [N=6, Name="column_position", Type=int2, Prec=0, Scale=0, Size=0, Data=1]
+3059323410411 14:57:23.552          . Field [N=7, Name="sort_order", Type=varchar, Prec=0, Scale=0, Size=1, Data='A']
+3059323410446 14:57:23.552          . Field [N=8, Name="filter", Type=varchar, Prec=0, Scale=0, Size=67, Data=NULL]
+3059323410456 14:57:23.552     << Fetched
+3059323410527 14:57:23.552      . FETCH [ppgresult=$0459A2B0, stmtName="13STM"]
+3059323411448 14:57:23.552     >> Sent
+3059323411484 14:57:23.552          . Var [N=0, Name="BAS", Type=varchar, Size=70, Data(0)='empresas']
+3059323411725 14:57:23.552     << Sent
+3059323411756 14:57:23.552      . PQexecPrepared [ppgconn=$0458A9B0, stmtname="14STM", nParams=0, resultFormat=1]
+3059323412624 14:57:23.552      . PQntuples [ppgresult=$0459A208, rowsselected=0]
+3059323412672 14:57:23.552      . EOF
+3059323412719 14:57:23.552      . PQclear [ppgresult=$0459A208, stmtName="13STM"]
+3059323412744 14:57:23.552      . PQtransactionStatus [conn=$0458A9B0, Result=0]
+3059323412774 14:57:23.552      . PQexec [ppgconn=$0458A9B0, sql="CLOSE "12STM""]
+3059323413715 14:57:23.552 << Fetch [ATable="_FD_#beauty_stage#PRIMARYKEYFIELDS", Command="Table PKey Fields (empresas.empresas)", RowsAffected=1]
+3059323413802 14:57:23.552  . Eof reached [ATable="_FD_#beauty_stage#PRIMARYKEYFIELDS", Command="Table PKey Fields (empresas.empresas)"]
+3059323413839 14:57:23.552 >> Close [Command="Table PKey Fields (empresas.empresas)"]
+3059323413885 14:57:23.552      . PQtransactionStatus [conn=$0458A9B0, Result=0]
+3059323413912 14:57:23.552 << Close [Command="Table PKey Fields (empresas.empresas)"]
+3059323413951 14:57:23.552 >> Unprepare [Command="Table PKey Fields (empresas.empresas)"]
+3059323413972 14:57:23.552      . PQtransactionStatus [conn=$0458A9B0, Result=0]
+3059323413999 14:57:23.552      . DEALLOCATE [ppgconn=$0458A9B0, stmtname="13STM"]
+3059323414027 14:57:23.552      . PQexec [ppgconn=$0458A9B0, sql="DEALLOCATE "13STM""]
+3059323414986 14:57:23.552      . PQtransactionStatus [conn=$0458A9B0, Result=0]
+3059323415072 14:57:23.552      . DEALLOCATE [ppgconn=$0458A9B0, stmtname="14STM"]
+3059323415228 14:57:23.552      . PQexec [ppgconn=$0458A9B0, sql="DEALLOCATE "14STM""]
+3059323416122 14:57:23.567 << Unprepare [Command="Table PKey Fields (empresas.empresas)"]
+3059323416221 14:57:23.567  . Destroy [Command="Table PKey Fields (empresas.empresas)"]
+3059323417584 14:57:23.567 >> Open [Command="SELECT * FROM empresas WHERE email = :email AND senha = :senha"]
+3059323417941 14:57:23.567         >> StartTransaction [ConnectionDef=""]
+3059323418247 14:57:23.567              . PQexec [ppgconn=$0458A9B0, sql="BEGIN"]
+3059323419870 14:57:23.567         << StartTransaction [ConnectionDef=""]
+3059323420034 14:57:23.567         >> Sent
+3059323420130 14:57:23.567              . Var [N=0, Name="EMAIL", Type=varchar, Size=4000, Data(0)='HairBeauty@gmail.com']
+3059323420334 14:57:23.567              . Var [N=1, Name="SENHA", Type=varchar, Size=4000, Data(0)='Beauty1234']
+3059323420347 14:57:23.567         << Sent
+3059323420362 14:57:23.567         >> Sent
+3059323420394 14:57:23.567              . Var [N=0, Name="EMAIL", Type=varchar, Size=4000, Data(0)='HairBeauty@gmail.com']
+3059323420437 14:57:23.567              . Var [N=1, Name="SENHA", Type=varchar, Size=4000, Data(0)='Beauty1234']
+3059323421513 14:57:23.567         << Sent
+3059323421547 14:57:23.567          . PQexecPrepared [ppgconn=$0458A9B0, stmtname="10STM", nParams=2, resultFormat=1]
+3059323432949 14:57:23.567          . PQcmdStatus [ppgresult=$04599F68, stmttype="DECLARE", rowsaffected=0, oid=0]
+3059323433008 14:57:23.567          . PQntuples [ppgresult=$04599F68, rowsselected=0]
+3059323433031 14:57:23.567         >> Sent
+3059323433677 14:57:23.567              . Var [N=0, Name="EMAIL", Type=varchar, Size=4000, Data(0)='HairBeauty@gmail.com']
+3059323433846 14:57:23.567              . Var [N=1, Name="SENHA", Type=varchar, Size=4000, Data(0)='Beauty1234']
+3059323433858 14:57:23.567         << Sent
+3059323433901 14:57:23.567          . PQexecPrepared [ppgconn=$0458A9B0, stmtname="11STM", nParams=0, resultFormat=1]
+3059323435849 14:57:23.567          . PQntuples [ppgresult=$04599788, rowsselected=1]
+3059323435970 14:57:23.567          . DescribeFields [ppgconn=$0458A9B0, stmtName="10STM", nFields=11]
+3059323436271 14:57:23.567 << Open [Command="SELECT * FROM empresas WHERE email = :email AND senha = :senha"]
+3059323436586 14:57:23.567  . Col add [Index=1, SrcName="id_empresa", SrcType=Int32, SrcSize=0, SrcPrec=0, SrcScale=0, Type=Int32, Size=0, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323436698 14:57:23.567  . Col add [Index=2, SrcName="nome", SrcType=WideString, SrcSize=100, SrcPrec=0, SrcScale=0, Type=WideString, Size=100, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323436850 14:57:23.567  . Col add [Index=3, SrcName="email", SrcType=WideString, SrcSize=100, SrcPrec=0, SrcScale=0, Type=WideString, Size=100, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323437057 14:57:23.567  . Col add [Index=4, SrcName="senha", SrcType=WideString, SrcSize=100, SrcPrec=0, SrcScale=0, Type=WideString, Size=100, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323437268 14:57:23.567  . Col add [Index=5, SrcName="data_cad", SrcType=DateTimeStamp, SrcSize=0, SrcPrec=0, SrcScale=0, Type=DateTimeStamp, Size=0, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323437418 14:57:23.567  . Col add [Index=6, SrcName="rua", SrcType=WideString, SrcSize=100, SrcPrec=0, SrcScale=0, Type=WideString, Size=100, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323437535 14:57:23.567  . Col add [Index=7, SrcName="bairro", SrcType=WideString, SrcSize=50, SrcPrec=0, SrcScale=0, Type=WideString, Size=50, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323438534 14:57:23.567  . Col add [Index=8, SrcName="cidade", SrcType=WideString, SrcSize=50, SrcPrec=0, SrcScale=0, Type=WideString, Size=50, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323438743 14:57:23.567  . Col add [Index=9, SrcName="estado", SrcType=WideString, SrcSize=50, SrcPrec=0, SrcScale=0, Type=WideString, Size=50, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323438889 14:57:23.567  . Col add [Index=10, SrcName="cnpj", SrcType=WideString, SrcSize=18, SrcPrec=0, SrcScale=0, Type=WideString, Size=18, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323439105 14:57:23.567  . Col add [Index=11, SrcName="cep", SrcType=WideString, SrcSize=9, SrcPrec=0, SrcScale=0, Type=WideString, Size=9, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059323439450 14:57:23.567  . Primary key [Cols="id_empresa"]
+3059323439622 14:57:23.567 << Define(TFDDatSManager) [ADatSManager="Manager", ATable="<nil>", Command="SELECT * FROM empresas WHERE email = :email AND senha = :senha"]
+3059323440688 14:57:23.567 >> TFDCustomCommand.Fetch [Command="SELECT * FROM empresas WHERE email = :email AND senha = :senha", AAll=False, ABlocked=True]
+3059323440777 14:57:23.567 >> Fetch [ATable="empresas", Command="SELECT * FROM empresas WHERE email = :email AND senha = :senha"]
+3059323440944 14:57:23.567      . FETCH [ppgresult=$04599788, stmtName="10STM"]
+3059323441077 14:57:23.567     >> Fetched
+3059323441129 14:57:23.567          . Field [N=0, Name="id_empresa", Type=int4, Prec=0, Scale=0, Size=0, Data=1]
+3059323441406 14:57:23.567          . Field [N=1, Name="nome", Type=varchar, Prec=0, Scale=0, Size=100, Data='Hair Beauty Ltda ']
+3059323441565 14:57:23.567          . Field [N=2, Name="email", Type=varchar, Prec=0, Scale=0, Size=100, Data='HairBeauty@gmail.com']
+3059323441717 14:57:23.567          . Field [N=3, Name="senha", Type=varchar, Prec=0, Scale=0, Size=100, Data='Beauty1234']
+3059323441917 14:57:23.567          . Field [N=4, Name="data_cad", Type=timestamp, Prec=0, Scale=6, Size=0, Data=24/09/2025 14:24:16]
+3059323442073 14:57:23.567          . Field [N=5, Name="rua", Type=varchar, Prec=0, Scale=0, Size=100, Data='Avenida Presidente Getúlio Vargas']
+3059323442231 14:57:23.567          . Field [N=6, Name="bairro", Type=varchar, Prec=0, Scale=0, Size=50, Data='Rebouças']
+3059323442382 14:57:23.567          . Field [N=7, Name="cidade", Type=varchar, Prec=0, Scale=0, Size=50, Data='Curitiba']
+3059323442537 14:57:23.567          . Field [N=8, Name="estado", Type=varchar, Prec=0, Scale=0, Size=50, Data='Paraná']
+3059323442690 14:57:23.567          . Field [N=9, Name="cnpj", Type=varchar, Prec=0, Scale=0, Size=18, Data='08781292000159']
+3059323442842 14:57:23.567          . Field [N=10, Name="cep", Type=varchar, Prec=0, Scale=0, Size=9, Data='80230030']
+3059323442971 14:57:23.567     << Fetched
+3059323443056 14:57:23.567      . FETCH [ppgresult=$04599788, stmtName="10STM"]
+3059323443210 14:57:23.567     >> Sent
+3059323443255 14:57:23.567          . Var [N=0, Name="EMAIL", Type=varchar, Size=4000, Data(0)='HairBeauty@gmail.com']
+3059323443517 14:57:23.567          . Var [N=1, Name="SENHA", Type=varchar, Size=4000, Data(0)='Beauty1234']
+3059323443646 14:57:23.567     << Sent
+3059323443677 14:57:23.567      . PQexecPrepared [ppgconn=$0458A9B0, stmtname="11STM", nParams=0, resultFormat=1]
+3059323444840 14:57:23.567      . PQntuples [ppgresult=$0459A5F8, rowsselected=0]
+3059323444891 14:57:23.567      . EOF
+3059323444940 14:57:23.567      . PQclear [ppgresult=$0459A5F8, stmtName="10STM"]
+3059323445199 14:57:23.567      . PQtransactionStatus [conn=$0458A9B0, Result=2]
+3059323445237 14:57:23.567      . PQexec [ppgconn=$0458A9B0, sql="CLOSE "9STM""]
+3059323446379 14:57:23.567 << Fetch [ATable="empresas", Command="SELECT * FROM empresas WHERE email = :email AND senha = :senha", RowsAffected=1]
+3059323446472 14:57:23.567  . Eof reached [ATable="empresas", Command="SELECT * FROM empresas WHERE email = :email AND senha = :senha"]
+3059323446628 14:57:23.567 >> Close [Command="SELECT * FROM empresas WHERE email = :email AND senha = :senha"]
+3059323446832 14:57:23.567     >> Commit [ConnectionDef="", Retaining=False]
+3059323446971 14:57:23.567          . PQexec [ppgconn=$0458A9B0, sql="COMMIT"]
+3059323447932 14:57:23.567     << Commit [ConnectionDef="", Retaining=False]
+3059323448016 14:57:23.567 << Close [Command="SELECT * FROM empresas WHERE email = :email AND senha = :senha"]
+3059323448185 14:57:23.567  . TFDCustomCommand.FetchFinished [Command="SELECT * FROM empresas WHERE email = :email AND senha = :senha", AState=2, FRowsAffected=1]
+3059323448345 14:57:23.567 << TFDCustomCommand.Fetch [Command="SELECT * FROM empresas WHERE email = :email AND senha = :senha", AAll=False, ABlocked=True]
+3059332880217 14:57:24.514 >> TFDCustomCommand.Prepare [Command="SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha"]
+3059332880345 14:57:24.514  . CreateCommand [ConnectionDef=""]
+3059332880500 14:57:24.514 >> Prepare [Command="SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha"]
+3059332880775 14:57:24.514      . Preprocessed [CMD="SELECT * FROM administradores WHERE email_adm = $1 AND senha_adm = $2", FROM="administradores", VP=0, VPE=0, OBP=0, CK=1]
+3059332882010 14:57:24.514      . PQprepare [ppgconn=$0458A9B0, stmtname="16STM", sql="DECLARE "15STM" NO SCROLL CURSOR WITH HOLD FOR SELECT * FROM administradores WHERE email_adm = $1 AND senha_adm = $2", nParams=2]
+3059332885027 14:57:24.514      . PQprepare [ppgconn=$0458A9B0, stmtname="17STM", sql="FETCH FORWARD 50 FROM "15STM"", nParams=0]
+3059332886159 14:57:24.514 << Prepare [Command="SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha"]
+3059332886217 14:57:24.514 << TFDCustomCommand.Prepare [Command="SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha"]
+3059332886325 14:57:24.514 >> Define(TFDDatSManager) [ADatSManager="Manager", ATable="<nil>", Command="SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha"]
+3059332887010 14:57:24.514  . CreateMetaInfoCommand [ConnectionDef=""]
+3059332887118 14:57:24.514 >> Prepare [Command="Table PKey Fields (administradores.administradores)"]
+3059332887465 14:57:24.514      . PQprepare [ppgconn=$0458A9B0, stmtname="19STM", sql="DECLARE "18STM" NO SCROLL CURSOR WITH HOLD FOR SELECT NULL::INTEGER AS RECNO, CURRENT_DATABASE() AS CATALOG_NAME, N.NSPNAME AS SCHEMA_NAME, TC.RELNAME AS TABLE_NAME, IC.RELNAME AS INDEX_NAME, A.ATTNAME AS COLUMN_NAME, A.ATTNUM AS COLUMN_POSITION, 'A'::VARCHAR(1) AS SORT_ORDER, NULL::VARCHAR(67) AS FILTER FROM PG_CATALOG.PG_INDEX I INNER JOIN PG_CATALOG.PG_CLASS TC ON TC.OID = I.INDRELID INNER JOIN PG_CATALOG.PG_CLASS IC ON IC.OID = I.INDEXRELID INNER JOIN PG_CATALOG.PG_NAMESPACE N ON N.OID = TC.RELNAMESPACE INNER JOIN PG_CATALOG.PG_ATTRIBUTE A ON A.ATTRELID = I.INDRELID AND A.ATTNUM = ANY(I.INDKEY)  WHERE N.NSPNAME = 'public' AND TC.RELNAME = $1 AND I.INDISPRIMARY ORDER BY position('~' || trim(both from to_char(A.ATTNUM, '99999')) || '~' in  '~' || array_to_string(I.INDKEY, '~') || '~')", nParams=1]
+3059332890688 14:57:24.514      . PQprepare [ppgconn=$0458A9B0, stmtname="20STM", sql="FETCH FORWARD 50 FROM "18STM"", nParams=0]
+3059332891696 14:57:24.514 << Prepare [Command="Table PKey Fields (administradores.administradores)"]
+3059332891959 14:57:24.514 >> Open [Command="Table PKey Fields (administradores.administradores)"]
+3059332892051 14:57:24.514         >> Sent
+3059332892704 14:57:24.514              . Var [N=0, Name="BAS", Type=varchar, Size=70, Data(0)='administradores']
+3059332892716 14:57:24.514         << Sent
+3059332892732 14:57:24.514         >> Sent
+3059332892766 14:57:24.514              . Var [N=0, Name="BAS", Type=varchar, Size=70, Data(0)='administradores']
+3059332892777 14:57:24.514         << Sent
+3059332892808 14:57:24.514          . PQexecPrepared [ppgconn=$0458A9B0, stmtname="19STM", nParams=1, resultFormat=1]
+3059332907653 14:57:24.516          . PQcmdStatus [ppgresult=$0459D6C8, stmttype="DECLARE", rowsaffected=0, oid=0]
+3059332907690 14:57:24.516          . PQntuples [ppgresult=$0459D6C8, rowsselected=0]
+3059332907708 14:57:24.516         >> Sent
+3059332907743 14:57:24.516              . Var [N=0, Name="BAS", Type=varchar, Size=70, Data(0)='administradores']
+3059332907753 14:57:24.516         << Sent
+3059332907783 14:57:24.516          . PQexecPrepared [ppgconn=$0458A9B0, stmtname="20STM", nParams=0, resultFormat=1]
+3059332908814 14:57:24.516          . PQntuples [ppgresult=$0459D620, rowsselected=0]
+3059332908890 14:57:24.516          . DescribeFields [ppgconn=$0458A9B0, stmtName="19STM", nFields=9]
+3059332909030 14:57:24.516 << Open [Command="Table PKey Fields (administradores.administradores)"]
+3059332909282 14:57:24.516 >> Fetch [ATable="_FD_#beauty_stage#PRIMARYKEYFIELDS", Command="Table PKey Fields (administradores.administradores)"]
+3059332909777 14:57:24.516      . FETCH [ppgresult=$0459D620, stmtName="19STM"]
+3059332909790 14:57:24.516      . EOF
+3059332909814 14:57:24.516      . PQclear [ppgresult=$0459D620, stmtName="19STM"]
+3059332909840 14:57:24.516      . PQtransactionStatus [conn=$0458A9B0, Result=0]
+3059332909870 14:57:24.516      . PQexec [ppgconn=$0458A9B0, sql="CLOSE "18STM""]
+3059332910965 14:57:24.516 << Fetch [ATable="_FD_#beauty_stage#PRIMARYKEYFIELDS", Command="Table PKey Fields (administradores.administradores)", RowsAffected=0]
+3059332911196 14:57:24.516  . Eof reached [ATable="_FD_#beauty_stage#PRIMARYKEYFIELDS", Command="Table PKey Fields (administradores.administradores)"]
+3059332911230 14:57:24.516 >> Close [Command="Table PKey Fields (administradores.administradores)"]
+3059332911874 14:57:24.516      . PQtransactionStatus [conn=$0458A9B0, Result=0]
+3059332911899 14:57:24.516 << Close [Command="Table PKey Fields (administradores.administradores)"]
+3059332912157 14:57:24.516 >> Unprepare [Command="Table PKey Fields (administradores.administradores)"]
+3059332912181 14:57:24.516      . PQtransactionStatus [conn=$0458A9B0, Result=0]
+3059332912659 14:57:24.516      . DEALLOCATE [ppgconn=$0458A9B0, stmtname="19STM"]
+3059332912685 14:57:24.516      . PQexec [ppgconn=$0458A9B0, sql="DEALLOCATE "19STM""]
+3059332913889 14:57:24.516      . PQtransactionStatus [conn=$0458A9B0, Result=0]
+3059332913935 14:57:24.516      . DEALLOCATE [ppgconn=$0458A9B0, stmtname="20STM"]
+3059332913962 14:57:24.516      . PQexec [ppgconn=$0458A9B0, sql="DEALLOCATE "20STM""]
+3059332914977 14:57:24.516 << Unprepare [Command="Table PKey Fields (administradores.administradores)"]
+3059332915020 14:57:24.516  . Destroy [Command="Table PKey Fields (administradores.administradores)"]
+3059332915175 14:57:24.516 >> Open [Command="SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha"]
+3059332915247 14:57:24.516         >> StartTransaction [ConnectionDef=""]
+3059332915282 14:57:24.516              . PQexec [ppgconn=$0458A9B0, sql="BEGIN"]
+3059332916130 14:57:24.516         << StartTransaction [ConnectionDef=""]
+3059332916250 14:57:24.516         >> Sent
+3059332916296 14:57:24.516              . Var [N=0, Name="EMAIL", Type=varchar, Size=4000, Data(0)='HairBeauty@gmail.com']
+3059332916327 14:57:24.516              . Var [N=1, Name="SENHA", Type=varchar, Size=4000, Data(0)='Beauty1234']
+3059332916337 14:57:24.516         << Sent
+3059332916350 14:57:24.516         >> Sent
+3059332916381 14:57:24.516              . Var [N=0, Name="EMAIL", Type=varchar, Size=4000, Data(0)='HairBeauty@gmail.com']
+3059332916409 14:57:24.516              . Var [N=1, Name="SENHA", Type=varchar, Size=4000, Data(0)='Beauty1234']
+3059332916419 14:57:24.516         << Sent
+3059332916448 14:57:24.516          . PQexecPrepared [ppgconn=$0458A9B0, stmtname="16STM", nParams=2, resultFormat=1]
+3059332923060 14:57:24.518          . PQcmdStatus [ppgresult=$0459DCB0, stmttype="DECLARE", rowsaffected=0, oid=0]
+3059332923114 14:57:24.518          . PQntuples [ppgresult=$0459DCB0, rowsselected=0]
+3059332923137 14:57:24.518         >> Sent
+3059332923352 14:57:24.518              . Var [N=0, Name="EMAIL", Type=varchar, Size=4000, Data(0)='HairBeauty@gmail.com']
+3059332923388 14:57:24.518              . Var [N=1, Name="SENHA", Type=varchar, Size=4000, Data(0)='Beauty1234']
+3059332923399 14:57:24.518         << Sent
+3059332924489 14:57:24.518          . PQexecPrepared [ppgconn=$0458A9B0, stmtname="17STM", nParams=0, resultFormat=1]
+3059332926174 14:57:24.518          . PQntuples [ppgresult=$0459DCB0, rowsselected=0]
+3059332926260 14:57:24.518          . DescribeFields [ppgconn=$0458A9B0, stmtName="16STM", nFields=14]
+3059332926751 14:57:24.518 << Open [Command="SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha"]
+3059332927051 14:57:24.518  . Col add [Index=1, SrcName="id_adm", SrcType=Int32, SrcSize=0, SrcPrec=0, SrcScale=0, Type=Int32, Size=0, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059332927286 14:57:24.518  . Col add [Index=2, SrcName="id_empresa", SrcType=Int32, SrcSize=0, SrcPrec=0, SrcScale=0, Type=Int32, Size=0, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059332927379 14:57:24.518  . Col add [Index=3, SrcName="nome_adm", SrcType=WideString, SrcSize=100, SrcPrec=0, SrcScale=0, Type=WideString, Size=100, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059332927589 14:57:24.518  . Col add [Index=4, SrcName="email_adm", SrcType=WideString, SrcSize=100, SrcPrec=0, SrcScale=0, Type=WideString, Size=100, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059332927796 14:57:24.518  . Col add [Index=5, SrcName="senha_adm", SrcType=WideString, SrcSize=100, SrcPrec=0, SrcScale=0, Type=WideString, Size=100, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059332927988 14:57:24.518  . Col add [Index=6, SrcName="fone_adm", SrcType=WideString, SrcSize=20, SrcPrec=0, SrcScale=0, Type=WideString, Size=20, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059332928077 14:57:24.518  . Col add [Index=7, SrcName="cpf_adm", SrcType=WideString, SrcSize=14, SrcPrec=0, SrcScale=0, Type=WideString, Size=14, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059332928384 14:57:24.518  . Col add [Index=8, SrcName="genero_adm", SrcType=WideString, SrcSize=20, SrcPrec=0, SrcScale=0, Type=WideString, Size=20, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059332928604 14:57:24.518  . Col add [Index=9, SrcName="cep_adm", SrcType=WideString, SrcSize=10, SrcPrec=0, SrcScale=0, Type=WideString, Size=10, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059332928839 14:57:24.518  . Col add [Index=10, SrcName="rua_adm", SrcType=WideString, SrcSize=100, SrcPrec=0, SrcScale=0, Type=WideString, Size=100, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059332928914 14:57:24.519  . Col add [Index=11, SrcName="bairro_adm", SrcType=WideString, SrcSize=50, SrcPrec=0, SrcScale=0, Type=WideString, Size=50, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059332930318 14:57:24.519  . Col add [Index=12, SrcName="cidade_adm", SrcType=WideString, SrcSize=50, SrcPrec=0, SrcScale=0, Type=WideString, Size=50, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059332930991 14:57:24.519  . Col add [Index=13, SrcName="estado_adm", SrcType=WideString, SrcSize=50, SrcPrec=0, SrcScale=0, Type=WideString, Size=50, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059332931269 14:57:24.519  . Col add [Index=14, SrcName="data_cad", SrcType=DateTimeStamp, SrcSize=0, SrcPrec=0, SrcScale=0, Type=DateTimeStamp, Size=0, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059332931963 14:57:24.519  . Primary key [Cols=""]
+3059332932164 14:57:24.519 << Define(TFDDatSManager) [ADatSManager="Manager", ATable="<nil>", Command="SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha"]
+3059332933006 14:57:24.519 >> TFDCustomCommand.Fetch [Command="SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha", AAll=False, ABlocked=True]
+3059332933120 14:57:24.519 >> Fetch [ATable="administradores", Command="SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha"]
+3059332933184 14:57:24.519      . FETCH [ppgresult=$0459DCB0, stmtName="16STM"]
+3059332933201 14:57:24.519      . EOF
+3059332933239 14:57:24.519      . PQclear [ppgresult=$0459DCB0, stmtName="16STM"]
+3059332933275 14:57:24.519      . PQtransactionStatus [conn=$0458A9B0, Result=2]
+3059332933320 14:57:24.519      . PQexec [ppgconn=$0458A9B0, sql="CLOSE "15STM""]
+3059332934375 14:57:24.519 << Fetch [ATable="administradores", Command="SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha", RowsAffected=0]
+3059332934461 14:57:24.519  . Eof reached [ATable="administradores", Command="SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha"]
+3059332934494 14:57:24.519 >> Close [Command="SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha"]
+3059332934586 14:57:24.519     >> Commit [ConnectionDef="", Retaining=False]
+3059332934667 14:57:24.519          . PQexec [ppgconn=$0458A9B0, sql="COMMIT"]
+3059332936051 14:57:24.519     << Commit [ConnectionDef="", Retaining=False]
+3059332936134 14:57:24.519 << Close [Command="SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha"]
+3059332936320 14:57:24.519  . TFDCustomCommand.FetchFinished [Command="SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha", AState=2, FRowsAffected=0]
+3059332936362 14:57:24.519 << TFDCustomCommand.Fetch [Command="SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha", AAll=False, ABlocked=True]
+3059342394395 14:57:25.452 >> TFDCustomCommand.Unprepare [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059342394653 14:57:25.452 >> Unprepare [Command="SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha"]
+3059342394885 14:57:25.452      . PQtransactionStatus [conn=$0458A9B0, Result=0]
+3059342394915 14:57:25.452      . DEALLOCATE [ppgconn=$0458A9B0, stmtname="4STM"]
+3059342394949 14:57:25.452      . PQexec [ppgconn=$0458A9B0, sql="DEALLOCATE "4STM""]
+3059342397876 14:57:25.452      . PQtransactionStatus [conn=$0458A9B0, Result=0]
+3059342397929 14:57:25.452      . DEALLOCATE [ppgconn=$0458A9B0, stmtname="5STM"]
+3059342398120 14:57:25.452      . PQexec [ppgconn=$0458A9B0, sql="DEALLOCATE "5STM""]
+3059342398688 14:57:25.452 << Unprepare [Command="SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha"]
+3059342398947 14:57:25.452  . Destroy [Command="SELECT * FROM clientes WHERE email_clie = :email AND senha_clie= :senha"]
+3059342399192 14:57:25.452 << TFDCustomCommand.Unprepare [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059342399504 14:57:25.452 >> TFDCustomCommand.Prepare [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059342399703 14:57:25.452  . CreateCommand [ConnectionDef=""]
+3059342399990 14:57:25.452 >> Prepare [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059342400347 14:57:25.452      . Preprocessed [CMD="SELECT * FROM clientes WHERE id_empresa = $1 ORDER BY nome_clie", FROM="clientes", VP=0, VPE=0, OBP=46, CK=1]
+3059342400843 14:57:25.452      . PQprepare [ppgconn=$0458A9B0, stmtname="22STM", sql="DECLARE "21STM" NO SCROLL CURSOR WITH HOLD FOR SELECT * FROM clientes WHERE id_empresa = $1 ORDER BY nome_clie", nParams=1]
+3059342403120 14:57:25.452      . PQprepare [ppgconn=$0458A9B0, stmtname="23STM", sql="FETCH FORWARD 50 FROM "21STM"", nParams=0]
+3059342403744 14:57:25.452 << Prepare [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059342403799 14:57:25.452 << TFDCustomCommand.Prepare [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059342404031 14:57:25.452 >> Define(TFDDatSManager) [ADatSManager="Manager", ATable="<nil>", Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059342404667 14:57:25.452 >> Open [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059342404854 14:57:25.452         >> StartTransaction [ConnectionDef=""]
+3059342404903 14:57:25.452              . PQexec [ppgconn=$0458A9B0, sql="BEGIN"]
+3059342405691 14:57:25.452         << StartTransaction [ConnectionDef=""]
+3059342405755 14:57:25.452         >> Sent
+3059342405963 14:57:25.452              . Var [N=0, Name="ID_EMPRESA", Type=int4, Size=0, Data(0)=1]
+3059342405975 14:57:25.452         << Sent
+3059342405992 14:57:25.452         >> Sent
+3059342406027 14:57:25.452              . Var [N=0, Name="ID_EMPRESA", Type=int4, Size=0, Data(0)=1]
+3059342407060 14:57:25.452         << Sent
+3059342407089 14:57:25.452          . PQexecPrepared [ppgconn=$0458A9B0, stmtname="22STM", nParams=1, resultFormat=1]
+3059342408871 14:57:25.452          . PQcmdStatus [ppgresult=$0459DA10, stmttype="DECLARE", rowsaffected=0, oid=0]
+3059342408902 14:57:25.452          . PQntuples [ppgresult=$0459DA10, rowsselected=0]
+3059342408918 14:57:25.452         >> Sent
+3059342409113 14:57:25.452              . Var [N=0, Name="ID_EMPRESA", Type=int4, Size=0, Data(0)=1]
+3059342409124 14:57:25.452         << Sent
+3059342409150 14:57:25.452          . PQexecPrepared [ppgconn=$0458A9B0, stmtname="23STM", nParams=0, resultFormat=1]
+3059342410189 14:57:25.452          . PQntuples [ppgresult=$0459D6C8, rowsselected=2]
+3059342410263 14:57:25.452          . DescribeFields [ppgconn=$0458A9B0, stmtName="22STM", nFields=14]
+3059342410581 14:57:25.452 << Open [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059342411555 14:57:25.452  . Col add [Index=1, SrcName="id_empresa", SrcType=Int32, SrcSize=0, SrcPrec=0, SrcScale=0, Type=Int32, Size=0, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059342411873 14:57:25.452  . Col add [Index=2, SrcName="id_clie", SrcType=Int32, SrcSize=0, SrcPrec=0, SrcScale=0, Type=Int32, Size=0, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059342412319 14:57:25.452  . Col add [Index=3, SrcName="nome_clie", SrcType=WideString, SrcSize=150, SrcPrec=0, SrcScale=0, Type=WideString, Size=150, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059342412399 14:57:25.452  . Col add [Index=4, SrcName="email_clie", SrcType=WideString, SrcSize=100, SrcPrec=0, SrcScale=0, Type=WideString, Size=100, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059342412646 14:57:25.452  . Col add [Index=5, SrcName="senha_clie", SrcType=WideString, SrcSize=100, SrcPrec=0, SrcScale=0, Type=WideString, Size=100, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059342413174 14:57:25.452  . Col add [Index=6, SrcName="cpf_clie", SrcType=WideString, SrcSize=14, SrcPrec=0, SrcScale=0, Type=WideString, Size=14, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059342413371 14:57:25.452  . Col add [Index=7, SrcName="genero_clie", SrcType=WideString, SrcSize=20, SrcPrec=0, SrcScale=0, Type=WideString, Size=20, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059342413564 14:57:25.452  . Col add [Index=8, SrcName="fone_clie", SrcType=WideString, SrcSize=20, SrcPrec=0, SrcScale=0, Type=WideString, Size=20, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059342413646 14:57:25.452  . Col add [Index=9, SrcName="cep_clie", SrcType=WideString, SrcSize=9, SrcPrec=0, SrcScale=0, Type=WideString, Size=9, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059342413943 14:57:25.452  . Col add [Index=10, SrcName="rua_clie", SrcType=WideString, SrcSize=100, SrcPrec=0, SrcScale=0, Type=WideString, Size=100, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059342414154 14:57:25.452  . Col add [Index=11, SrcName="bairro_clie", SrcType=WideString, SrcSize=50, SrcPrec=0, SrcScale=0, Type=WideString, Size=50, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059342414399 14:57:25.452  . Col add [Index=12, SrcName="cidade_clie", SrcType=WideString, SrcSize=50, SrcPrec=0, SrcScale=0, Type=WideString, Size=50, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059342414474 14:57:25.452  . Col add [Index=13, SrcName="estado_clie", SrcType=WideString, SrcSize=50, SrcPrec=0, SrcScale=0, Type=WideString, Size=50, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059342415731 14:57:25.452  . Col add [Index=14, SrcName="data_cad", SrcType=DateTimeStamp, SrcSize=0, SrcPrec=0, SrcScale=0, Type=DateTimeStamp, Size=0, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059342416005 14:57:25.452  . Primary key [Cols="id_clie"]
+3059342416411 14:57:25.452 << Define(TFDDatSManager) [ADatSManager="Manager", ATable="<nil>", Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059342417296 14:57:25.452 >> TFDCustomCommand.Fetch [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie", AAll=False, ABlocked=True]
+3059342417541 14:57:25.452 >> Fetch [ATable="clientes", Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059342417586 14:57:25.452      . FETCH [ppgresult=$0459D6C8, stmtName="22STM"]
+3059342417599 14:57:25.452     >> Fetched
+3059342418092 14:57:25.452          . Field [N=0, Name="id_empresa", Type=int4, Prec=0, Scale=0, Size=0, Data=1]
+3059342418245 14:57:25.452          . Field [N=1, Name="id_clie", Type=int4, Prec=0, Scale=0, Size=0, Data=5]
+3059342418462 14:57:25.452          . Field [N=2, Name="nome_clie", Type=varchar, Prec=0, Scale=0, Size=150, Data='a']
+3059342418498 14:57:25.452          . Field [N=3, Name="email_clie", Type=varchar, Prec=0, Scale=0, Size=100, Data='HairBeauty@gmail.com']
+3059342418681 14:57:25.452          . Field [N=4, Name="senha_clie", Type=varchar, Prec=0, Scale=0, Size=100, Data=NULL]
+3059342419733 14:57:25.452          . Field [N=5, Name="cpf_clie", Type=varchar, Prec=0, Scale=0, Size=14, Data=NULL]
+3059342419928 14:57:25.452          . Field [N=6, Name="genero_clie", Type=varchar, Prec=0, Scale=0, Size=20, Data=NULL]
+3059342419959 14:57:25.452          . Field [N=7, Name="fone_clie", Type=varchar, Prec=0, Scale=0, Size=20, Data=NULL]
+3059342419989 14:57:25.452          . Field [N=8, Name="cep_clie", Type=varchar, Prec=0, Scale=0, Size=9, Data=NULL]
+3059342420018 14:57:25.452          . Field [N=9, Name="rua_clie", Type=varchar, Prec=0, Scale=0, Size=100, Data=NULL]
+3059342421071 14:57:25.452          . Field [N=10, Name="bairro_clie", Type=varchar, Prec=0, Scale=0, Size=50, Data=NULL]
+3059342421626 14:57:25.468          . Field [N=11, Name="cidade_clie", Type=varchar, Prec=0, Scale=0, Size=50, Data=NULL]
+3059342421734 14:57:25.468          . Field [N=12, Name="estado_clie", Type=varchar, Prec=0, Scale=0, Size=50, Data=NULL]
+3059342421812 14:57:25.468          . Field [N=13, Name="data_cad", Type=timestamp, Prec=0, Scale=6, Size=0, Data=18/10/2025 17:35:38]
+3059342422055 14:57:25.468     << Fetched
+3059342422156 14:57:25.468      . FETCH [ppgresult=$0459D6C8, stmtName="22STM"]
+3059342422167 14:57:25.468     >> Fetched
+3059342422364 14:57:25.468          . Field [N=0, Name="id_empresa", Type=int4, Prec=0, Scale=0, Size=0, Data=1]
+3059342422396 14:57:25.468          . Field [N=1, Name="id_clie", Type=int4, Prec=0, Scale=0, Size=0, Data=8]
+3059342422429 14:57:25.468          . Field [N=2, Name="nome_clie", Type=varchar, Prec=0, Scale=0, Size=150, Data='teste 1']
+3059342422612 14:57:25.468          . Field [N=3, Name="email_clie", Type=varchar, Prec=0, Scale=0, Size=100, Data='emmail@gmail.com']
+3059342422645 14:57:25.468          . Field [N=4, Name="senha_clie", Type=varchar, Prec=0, Scale=0, Size=100, Data=NULL]
+3059342423733 14:57:25.468          . Field [N=5, Name="cpf_clie", Type=varchar, Prec=0, Scale=0, Size=14, Data=NULL]
+3059342423910 14:57:25.468          . Field [N=6, Name="genero_clie", Type=varchar, Prec=0, Scale=0, Size=20, Data=NULL]
+3059342423941 14:57:25.468          . Field [N=7, Name="fone_clie", Type=varchar, Prec=0, Scale=0, Size=20, Data=NULL]
+3059342423972 14:57:25.468          . Field [N=8, Name="cep_clie", Type=varchar, Prec=0, Scale=0, Size=9, Data=NULL]
+3059342424461 14:57:25.468          . Field [N=9, Name="rua_clie", Type=varchar, Prec=0, Scale=0, Size=100, Data=NULL]
+3059342424492 14:57:25.468          . Field [N=10, Name="bairro_clie", Type=varchar, Prec=0, Scale=0, Size=50, Data=NULL]
+3059342424522 14:57:25.468          . Field [N=11, Name="cidade_clie", Type=varchar, Prec=0, Scale=0, Size=50, Data=NULL]
+3059342424696 14:57:25.468          . Field [N=12, Name="estado_clie", Type=varchar, Prec=0, Scale=0, Size=50, Data=NULL]
+3059342424746 14:57:25.468          . Field [N=13, Name="data_cad", Type=timestamp, Prec=0, Scale=6, Size=0, Data=21/10/2025 14:56:19]
+3059342424757 14:57:25.468     << Fetched
+3059342424965 14:57:25.468      . FETCH [ppgresult=$0459D6C8, stmtName="22STM"]
+3059342425001 14:57:25.468     >> Sent
+3059342426096 14:57:25.468          . Var [N=0, Name="ID_EMPRESA", Type=int4, Size=0, Data(0)=1]
+3059342426107 14:57:25.468     << Sent
+3059342426135 14:57:25.468      . PQexecPrepared [ppgconn=$0458A9B0, stmtname="23STM", nParams=0, resultFormat=1]
+3059342427108 14:57:25.468      . PQntuples [ppgresult=$0459DAB8, rowsselected=0]
+3059342427136 14:57:25.468      . EOF
+3059342427167 14:57:25.468      . PQclear [ppgresult=$0459DAB8, stmtName="22STM"]
+3059342427188 14:57:25.468      . PQtransactionStatus [conn=$0458A9B0, Result=2]
+3059342427374 14:57:25.468      . PQexec [ppgconn=$0458A9B0, sql="CLOSE "21STM""]
+3059342427925 14:57:25.468 << Fetch [ATable="clientes", Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie", RowsAffected=2]
+3059342427992 14:57:25.468  . Eof reached [ATable="clientes", Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059342428147 14:57:25.468 >> Close [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059342428238 14:57:25.468     >> Commit [ConnectionDef="", Retaining=False]
+3059342428548 14:57:25.468          . PQexec [ppgconn=$0458A9B0, sql="COMMIT"]
+3059342429154 14:57:25.468     << Commit [ConnectionDef="", Retaining=False]
+3059342429211 14:57:25.468 << Close [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059342429407 14:57:25.468  . TFDCustomCommand.FetchFinished [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie", AState=2, FRowsAffected=2]
+3059342429569 14:57:25.468 << TFDCustomCommand.Fetch [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie", AAll=False, ABlocked=True]
+3059498236160 14:57:41.044 >> Insert [ARow.Table.Name="clientes"]
+3059498236340 14:57:41.044  . CreateCommand [ConnectionDef=""]
+3059498237911 14:57:41.044  . Preprocessed [CMD="INSERT INTO clientes
+(id_empresa, nome_clie, email_clie)
+VALUES ($1, $2, $3)", FROM="", VP=60, VPE=78, OBP=0, CK=5]
+3059498266816 14:57:41.052 >> ProcessRequest [ARow.Table.Name="clientes"]
+3059498267169 14:57:41.052     >> Prepare [Command="INSERT INTO clientes
+(id_empresa, nome_clie, email_clie)
+VALUES (:new_id_empresa, :new_nome_clie, :new_email_clie)"]
+3059498267412 14:57:41.052          . Preprocessed [CMD="INSERT INTO clientes
+(id_empresa, nome_clie, email_clie)
+VALUES ($1, $2, $3)", FROM="", VP=60, VPE=78, OBP=0, CK=5]
+3059498271395 14:57:41.052     << Prepare [Command="INSERT INTO clientes
+(id_empresa, nome_clie, email_clie)
+VALUES (:new_id_empresa, :new_nome_clie, :new_email_clie)"]
+3059498271538 14:57:41.052     >> Execute [Command="INSERT INTO clientes
+(id_empresa, nome_clie, email_clie)
+VALUES (:new_id_empresa, :new_nome_clie, :new_email_clie)", ATimes=0, AOffset=0]
+3059498275082 14:57:41.052             >> Sent
+3059498275136 14:57:41.052                  . Var [N=0, Name="NEW_id_empresa", Type=int4, Size=0, Data(0)=1]
+3059498275185 14:57:41.052                  . Var [N=1, Name="NEW_nome_clie", Type=varchar, Size=150, Data(0)='teste monitoramento']
+3059498275219 14:57:41.052                  . Var [N=2, Name="NEW_email_clie", Type=varchar, Size=100, Data(0)='email@gmail.com']
+3059498275229 14:57:41.052             << Sent
+3059498275268 14:57:41.052              . PQsendQueryParams [ppgconn=$0458A9B0, sql="INSERT INTO clientes
+(id_empresa, nome_clie, email_clie)
+VALUES ($1, $2, $3)", nParams=3, resultFormat=1]
+3059498289314 14:57:41.054              . PQcmdStatus [ppgresult=$0459DCB0, stmttype="INSERT", rowsaffected=1, oid=0]
+3059498289374 14:57:41.054              . PQntuples [ppgresult=$0459DCB0, rowsselected=0]
+3059498289418 14:57:41.054              . DescribeFields [ppgconn=$0458A9B0, <direct>="", nFields=0]
+3059498289448 14:57:41.054              . PQclear [ppgresult=$0459DCB0, <direct>=""]
+3059498289499 14:57:41.054              . PQtransactionStatus [conn=$0458A9B0, Result=0]
+3059498289592 14:57:41.054     << Execute [Command="INSERT INTO clientes
+(id_empresa, nome_clie, email_clie)
+VALUES (:new_id_empresa, :new_nome_clie, :new_email_clie)", ATimes=1, AOffset=0, RowsAffected=1, RowsAffectedReal=True, ErrorAction=5]
+3059498289789 14:57:41.054     >> Open [Command="INSERT INTO clientes
+(id_empresa, nome_clie, email_clie)
+VALUES (:new_id_empresa, :new_nome_clie, :new_email_clie)"]
+3059498428756 14:57:41.068              . PQtransactionStatus [conn=$0458A9B0, Result=0]
+3059498431016 14:57:41.068     << Open [Command="INSERT INTO clientes
+(id_empresa, nome_clie, email_clie)
+VALUES (:new_id_empresa, :new_nome_clie, :new_email_clie)"]
+3059498431122 14:57:41.068 << ProcessRequest [ARow.Table.Name="clientes"]
+3059498431239 14:57:41.068 << Insert [ARow.Table.Name="clientes"]
+3059498435916 14:57:41.068 >> Unprepare [Command="INSERT INTO clientes
+(id_empresa, nome_clie, email_clie)
+VALUES (:new_id_empresa, :new_nome_clie, :new_email_clie)"]
+3059498436029 14:57:41.068 << Unprepare [Command="INSERT INTO clientes
+(id_empresa, nome_clie, email_clie)
+VALUES (:new_id_empresa, :new_nome_clie, :new_email_clie)"]
+3059498436068 14:57:41.068  . Destroy [Command="INSERT INTO clientes
+(id_empresa, nome_clie, email_clie)
+VALUES (:new_id_empresa, :new_nome_clie, :new_email_clie)"]
+3059498486764 14:57:41.068 >> Define(TFDDatSManager) [ADatSManager="Manager", ATable="<nil>", Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059498487524 14:57:41.068 >> Open [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059498489683 14:57:41.068         >> StartTransaction [ConnectionDef=""]
+3059498489738 14:57:41.068              . PQexec [ppgconn=$0458A9B0, sql="BEGIN"]
+3059498494665 14:57:41.068         << StartTransaction [ConnectionDef=""]
+3059498495983 14:57:41.068         >> Sent
+3059498496034 14:57:41.068              . Var [N=0, Name="ID_EMPRESA", Type=int4, Size=0, Data(0)=1]
+3059498499704 14:57:41.068         << Sent
+3059498499722 14:57:41.068         >> Sent
+3059498499919 14:57:41.068              . Var [N=0, Name="ID_EMPRESA", Type=int4, Size=0, Data(0)=1]
+3059498499931 14:57:41.068         << Sent
+3059498499965 14:57:41.068          . PQexecPrepared [ppgconn=$0458A9B0, stmtname="22STM", nParams=1, resultFormat=1]
+3059498501479 14:57:41.068          . PQcmdStatus [ppgresult=$0459D578, stmttype="DECLARE", rowsaffected=0, oid=0]
+3059498584979 14:57:41.084          . PQntuples [ppgresult=$0459D578, rowsselected=0]
+3059498585202 14:57:41.084         >> Sent
+3059498745114 14:57:41.100              . Var [N=0, Name="ID_EMPRESA", Type=int4, Size=0, Data(0)=1]
+3059498749114 14:57:41.100         << Sent
+3059498749166 14:57:41.100          . PQexecPrepared [ppgconn=$0458A9B0, stmtname="23STM", nParams=0, resultFormat=1]
+3059498751626 14:57:41.100          . PQntuples [ppgresult=$0459DB60, rowsselected=3]
+3059498753621 14:57:41.100          . DescribeFields [ppgconn=$0458A9B0, stmtName="22STM", nFields=14]
+3059498753847 14:57:41.100 << Open [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059498754165 14:57:41.100  . Col add [Index=1, SrcName="id_empresa", SrcType=Int32, SrcSize=0, SrcPrec=0, SrcScale=0, Type=Int32, Size=0, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059498757693 14:57:41.100  . Col add [Index=2, SrcName="id_clie", SrcType=Int32, SrcSize=0, SrcPrec=0, SrcScale=0, Type=Int32, Size=0, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059498757772 14:57:41.100  . Col add [Index=3, SrcName="nome_clie", SrcType=WideString, SrcSize=150, SrcPrec=0, SrcScale=0, Type=WideString, Size=150, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059498757847 14:57:41.100  . Col add [Index=4, SrcName="email_clie", SrcType=WideString, SrcSize=100, SrcPrec=0, SrcScale=0, Type=WideString, Size=100, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059498757922 14:57:41.100  . Col add [Index=5, SrcName="senha_clie", SrcType=WideString, SrcSize=100, SrcPrec=0, SrcScale=0, Type=WideString, Size=100, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059498758004 14:57:41.100  . Col add [Index=6, SrcName="cpf_clie", SrcType=WideString, SrcSize=14, SrcPrec=0, SrcScale=0, Type=WideString, Size=14, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059498905902 14:57:41.116  . Col add [Index=7, SrcName="genero_clie", SrcType=WideString, SrcSize=20, SrcPrec=0, SrcScale=0, Type=WideString, Size=20, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059498908842 14:57:41.116  . Col add [Index=8, SrcName="fone_clie", SrcType=WideString, SrcSize=20, SrcPrec=0, SrcScale=0, Type=WideString, Size=20, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059498910647 14:57:41.116  . Col add [Index=9, SrcName="cep_clie", SrcType=WideString, SrcSize=9, SrcPrec=0, SrcScale=0, Type=WideString, Size=9, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059498910724 14:57:41.116  . Col add [Index=10, SrcName="rua_clie", SrcType=WideString, SrcSize=100, SrcPrec=0, SrcScale=0, Type=WideString, Size=100, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059498910797 14:57:41.116  . Col add [Index=11, SrcName="bairro_clie", SrcType=WideString, SrcSize=50, SrcPrec=0, SrcScale=0, Type=WideString, Size=50, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059498910869 14:57:41.116  . Col add [Index=12, SrcName="cidade_clie", SrcType=WideString, SrcSize=50, SrcPrec=0, SrcScale=0, Type=WideString, Size=50, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059498910948 14:57:41.116  . Col add [Index=13, SrcName="estado_clie", SrcType=WideString, SrcSize=50, SrcPrec=0, SrcScale=0, Type=WideString, Size=50, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059499067070 14:57:41.132  . Col add [Index=14, SrcName="data_cad", SrcType=DateTimeStamp, SrcSize=0, SrcPrec=0, SrcScale=0, Type=DateTimeStamp, Size=0, Prec=0, Scale=0, OrigTabName="", OrigColName=""]
+3059499069751 14:57:41.132  . Primary key [Cols="id_clie"]
+3059499071382 14:57:41.132 << Define(TFDDatSManager) [ADatSManager="Manager", ATable="<nil>", Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059499073961 14:57:41.132 >> TFDCustomCommand.Fetch [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie", AAll=False, ABlocked=True]
+3059499075430 14:57:41.132 >> Fetch [ATable="clientes", Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059499075492 14:57:41.132      . FETCH [ppgresult=$0459DB60, stmtName="22STM"]
+3059499075506 14:57:41.132     >> Fetched
+3059499075574 14:57:41.132          . Field [N=0, Name="id_empresa", Type=int4, Prec=0, Scale=0, Size=0, Data=1]
+3059499075607 14:57:41.132          . Field [N=1, Name="id_clie", Type=int4, Prec=0, Scale=0, Size=0, Data=5]
+3059499075872 14:57:41.132          . Field [N=2, Name="nome_clie", Type=varchar, Prec=0, Scale=0, Size=150, Data='a']
+3059499227772 14:57:41.148          . Field [N=3, Name="email_clie", Type=varchar, Prec=0, Scale=0, Size=100, Data='HairBeauty@gmail.com']
+3059499229615 14:57:41.148          . Field [N=4, Name="senha_clie", Type=varchar, Prec=0, Scale=0, Size=100, Data=NULL]
+3059499229650 14:57:41.148          . Field [N=5, Name="cpf_clie", Type=varchar, Prec=0, Scale=0, Size=14, Data=NULL]
+3059499229684 14:57:41.148          . Field [N=6, Name="genero_clie", Type=varchar, Prec=0, Scale=0, Size=20, Data=NULL]
+3059499229714 14:57:41.148          . Field [N=7, Name="fone_clie", Type=varchar, Prec=0, Scale=0, Size=20, Data=NULL]
+3059499229744 14:57:41.148          . Field [N=8, Name="cep_clie", Type=varchar, Prec=0, Scale=0, Size=9, Data=NULL]
+3059499229774 14:57:41.148          . Field [N=9, Name="rua_clie", Type=varchar, Prec=0, Scale=0, Size=100, Data=NULL]
+3059499229808 14:57:41.148          . Field [N=10, Name="bairro_clie", Type=varchar, Prec=0, Scale=0, Size=50, Data=NULL]
+3059499229842 14:57:41.148          . Field [N=11, Name="cidade_clie", Type=varchar, Prec=0, Scale=0, Size=50, Data=NULL]
+3059499229872 14:57:41.148          . Field [N=12, Name="estado_clie", Type=varchar, Prec=0, Scale=0, Size=50, Data=NULL]
+3059499229944 14:57:41.148          . Field [N=13, Name="data_cad", Type=timestamp, Prec=0, Scale=6, Size=0, Data=18/10/2025 17:35:38]
+3059499386491 14:57:41.164     << Fetched
+3059499386808 14:57:41.164      . FETCH [ppgresult=$0459DB60, stmtName="22STM"]
+3059499390682 14:57:41.164     >> Fetched
+3059499390759 14:57:41.164          . Field [N=0, Name="id_empresa", Type=int4, Prec=0, Scale=0, Size=0, Data=1]
+3059499390799 14:57:41.164          . Field [N=1, Name="id_clie", Type=int4, Prec=0, Scale=0, Size=0, Data=8]
+3059499390839 14:57:41.164          . Field [N=2, Name="nome_clie", Type=varchar, Prec=0, Scale=0, Size=150, Data='teste 1']
+3059499390873 14:57:41.164          . Field [N=3, Name="email_clie", Type=varchar, Prec=0, Scale=0, Size=100, Data='emmail@gmail.com']
+3059499390904 14:57:41.164          . Field [N=4, Name="senha_clie", Type=varchar, Prec=0, Scale=0, Size=100, Data=NULL]
+3059499390936 14:57:41.164          . Field [N=5, Name="cpf_clie", Type=varchar, Prec=0, Scale=0, Size=14, Data=NULL]
+3059499390966 14:57:41.164          . Field [N=6, Name="genero_clie", Type=varchar, Prec=0, Scale=0, Size=20, Data=NULL]
+3059499390999 14:57:41.164          . Field [N=7, Name="fone_clie", Type=varchar, Prec=0, Scale=0, Size=20, Data=NULL]
+3059499391035 14:57:41.164          . Field [N=8, Name="cep_clie", Type=varchar, Prec=0, Scale=0, Size=9, Data=NULL]
+3059499546924 14:57:41.180          . Field [N=9, Name="rua_clie", Type=varchar, Prec=0, Scale=0, Size=100, Data=NULL]
+3059499548918 14:57:41.180          . Field [N=10, Name="bairro_clie", Type=varchar, Prec=0, Scale=0, Size=50, Data=NULL]
+3059499548953 14:57:41.180          . Field [N=11, Name="cidade_clie", Type=varchar, Prec=0, Scale=0, Size=50, Data=NULL]
+3059499548984 14:57:41.180          . Field [N=12, Name="estado_clie", Type=varchar, Prec=0, Scale=0, Size=50, Data=NULL]
+3059499549063 14:57:41.180          . Field [N=13, Name="data_cad", Type=timestamp, Prec=0, Scale=6, Size=0, Data=21/10/2025 14:56:19]
+3059499549078 14:57:41.180     << Fetched
+3059499549233 14:57:41.180      . FETCH [ppgresult=$0459DB60, stmtName="22STM"]
+3059499549248 14:57:41.180     >> Fetched
+3059499549284 14:57:41.180          . Field [N=0, Name="id_empresa", Type=int4, Prec=0, Scale=0, Size=0, Data=1]
+3059499549318 14:57:41.180          . Field [N=1, Name="id_clie", Type=int4, Prec=0, Scale=0, Size=0, Data=9]
+3059499704962 14:57:41.196          . Field [N=2, Name="nome_clie", Type=varchar, Prec=0, Scale=0, Size=150, Data='teste monitoramento']
+3059499708713 14:57:41.196          . Field [N=3, Name="email_clie", Type=varchar, Prec=0, Scale=0, Size=100, Data='email@gmail.com']
+3059499708749 14:57:41.196          . Field [N=4, Name="senha_clie", Type=varchar, Prec=0, Scale=0, Size=100, Data=NULL]
+3059499708781 14:57:41.196          . Field [N=5, Name="cpf_clie", Type=varchar, Prec=0, Scale=0, Size=14, Data=NULL]
+3059499708813 14:57:41.196          . Field [N=6, Name="genero_clie", Type=varchar, Prec=0, Scale=0, Size=20, Data=NULL]
+3059499708843 14:57:41.196          . Field [N=7, Name="fone_clie", Type=varchar, Prec=0, Scale=0, Size=20, Data=NULL]
+3059499708872 14:57:41.196          . Field [N=8, Name="cep_clie", Type=varchar, Prec=0, Scale=0, Size=9, Data=NULL]
+3059499708903 14:57:41.196          . Field [N=9, Name="rua_clie", Type=varchar, Prec=0, Scale=0, Size=100, Data=NULL]
+3059499708939 14:57:41.196          . Field [N=10, Name="bairro_clie", Type=varchar, Prec=0, Scale=0, Size=50, Data=NULL]
+3059499708969 14:57:41.196          . Field [N=11, Name="cidade_clie", Type=varchar, Prec=0, Scale=0, Size=50, Data=NULL]
+3059499708999 14:57:41.196          . Field [N=12, Name="estado_clie", Type=varchar, Prec=0, Scale=0, Size=50, Data=NULL]
+3059499709074 14:57:41.196          . Field [N=13, Name="data_cad", Type=timestamp, Prec=0, Scale=6, Size=0, Data=21/10/2025 14:57:41]
+3059499865937 14:57:41.212     << Fetched
+3059499869871 14:57:41.212      . FETCH [ppgresult=$0459DB60, stmtName="22STM"]
+3059499869941 14:57:41.212     >> Sent
+3059499869993 14:57:41.212          . Var [N=0, Name="ID_EMPRESA", Type=int4, Size=0, Data(0)=1]
+3059499873539 14:57:41.212     << Sent
+3059499873573 14:57:41.212      . PQexecPrepared [ppgconn=$0458A9B0, stmtname="23STM", nParams=0, resultFormat=1]
+3059499875358 14:57:41.212      . PQntuples [ppgresult=$0459D8C0, rowsselected=0]
+3059499877168 14:57:41.212      . EOF
+3059499877219 14:57:41.212      . PQclear [ppgresult=$0459D8C0, stmtName="22STM"]
+3059499877248 14:57:41.212      . PQtransactionStatus [conn=$0458A9B0, Result=2]
+3059499877284 14:57:41.212      . PQexec [ppgconn=$0458A9B0, sql="CLOSE "21STM""]
+3059499878680 14:57:41.212 << Fetch [ATable="clientes", Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie", RowsAffected=3]
+3059499882307 14:57:41.212  . Eof reached [ATable="clientes", Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059499882353 14:57:41.212 >> Close [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059499882488 14:57:41.212     >> Commit [ConnectionDef="", Retaining=False]
+3059499882593 14:57:41.212          . PQexec [ppgconn=$0458A9B0, sql="COMMIT"]
+3059500025438 14:57:41.228     << Commit [ConnectionDef="", Retaining=False]
+3059500183201 14:57:41.244 << Close [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie"]
+3059500187341 14:57:41.244  . TFDCustomCommand.FetchFinished [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie", AState=2, FRowsAffected=3]
+3059500187393 14:57:41.244 << TFDCustomCommand.Fetch [Command="SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie", AAll=False, ABlocked=True]
+3059515954594 14:57:42.820 -=#!!! FireDAC Tracer stopped !!!#=-
