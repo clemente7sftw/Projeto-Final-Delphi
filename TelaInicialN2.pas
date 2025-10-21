@@ -41,6 +41,7 @@ uses CAdministrador, UDataModule;
 procedure TForm5.FormShow(Sender: TObject);
 begin
 ShowMessage('ID da empresa logada: ' + IntToStr(DataModule1.id_empresa));
+ WindowState := wsMaximized;
 end;
 
 procedure TForm5.Image2Click(Sender: TObject);

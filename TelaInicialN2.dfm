@@ -21,10 +21,6 @@ object Form5: TForm5
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 176
-    ExplicitTop = 248
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object Image4: TImage
       Left = 40
       Top = 48
