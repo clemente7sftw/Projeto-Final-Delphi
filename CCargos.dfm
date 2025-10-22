@@ -435,7 +435,7 @@ object Form14: TForm14
     end
     object BtnConf: TPanel
       Left = 1105
-      Top = 826
+      Top = 834
       Width = 496
       Height = 41
       Caption = 'Confirmar'
@@ -456,6 +456,7 @@ object Form14: TForm14
       Width = 913
       Height = 512
       DataSource = DataSource2
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -675,7 +676,7 @@ object Form14: TForm14
   end
   object DataSource2: TDataSource
     DataSet = DataModule1.QueryRCS
-    Left = 336
+    Left = 368
     Top = 224
   end
 end

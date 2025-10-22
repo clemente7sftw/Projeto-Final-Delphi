@@ -59,6 +59,7 @@ type
     procedure LbServicosClick(Sender: TObject);
     procedure LbCargosClick(Sender: TObject);
     procedure LbFornecedoresClick(Sender: TObject);
+    procedure addbtnClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -77,6 +78,11 @@ implementation
 
 uses UDataModule, Agendamentos, TelaInicialN3, CClientes, CProfissionais,
   CServicos, CCargos, CFornecedores;
+
+procedure TForm21.addbtnClick(Sender: TObject);
+begin
+  Adicionar;
+end;
 
 procedure TForm21.Adicionar;
 begin
@@ -170,7 +176,7 @@ end;
 
 procedure TForm21.ExclBtnClick(Sender: TObject);
 begin
-Excluir;
+  Excluir;
 end;
 
 procedure TForm21.Excluir;

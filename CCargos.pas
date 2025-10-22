@@ -183,15 +183,7 @@ begin
    DataModule1.QueryCS.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
   datamodule1.QueryCS.open;
  datamodule1.QueryRCS.Close;
-   DataModule1.QueryRCS.SQL.Text :=
-  'SELECT s.id_servico, ' +
-  '       s.nome, ' +
-  '       c.nome_cargo ' +
-  'FROM servicos s ' +
-  'INNER JOIN cargos_servicos cs ON s.id_servico = cs.id_servico ' +
-  'INNER JOIN cargos c ON cs.id_cargo = c.id_cargo ' +
-  'ORDER BY s.nome';
-DataModule1.QueryRCS.Open;
+datamodule1.QueryRCS.open;
 
 end;
 

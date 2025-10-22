@@ -93,6 +93,7 @@ begin
   BtnConf.Visible := false;
   lbaviso.visible := false;
   Lblrequired.Visible:= false;
+  BtnCad.Visible:= false;
 end;
 
 procedure TForm15.FormShow(Sender: TObject);
@@ -151,8 +152,12 @@ end;
 
 procedure TForm15.Adicionar;
 begin
-editsativos;
- datamodule1.QueryServicos.Append;
+  DataModule1.QueryServicos.Append;
+  DataModule1.QueryServicos.FieldByName('nome').Clear;
+  DataModule1.QueryServicos.FieldByName('duracao').Clear;
+  DataModule1.QueryServicos.FieldByName('preco').Clear;
+  EditsAtivos;
+  BtnCad.Visible := true;
 end;
 
 procedure TForm15.BtnCadClick(Sender: TObject);
@@ -252,8 +257,9 @@ begin
           id_empresa:= DataModule1.id_empresa;
           DataModule1.Queryservicos.FieldByName('id_empresa').AsInteger := DataModule1.id_empresa;
           datamodule1.QueryServicos.Post;
-          Form15.show;
-          Form10.Close;
+          BtnCad.Visible:= false;
+          Lblrequired.Visible:= false;
+          EditsInativos;
       end;
     end else begin
       Lblrequired.Visible:= true;
@@ -272,6 +278,9 @@ begin
     BtnConf.Visible := False;
     BtnExcluir.Visible := True;
     BtnEditar.Visible:= true;
+    lblrequired.visible := false;
+  end else begin
+    lblrequired.visible := true;
   end;
 end;
 

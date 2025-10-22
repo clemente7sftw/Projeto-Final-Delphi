@@ -42,8 +42,6 @@ type
     QueryCSid_cargo: TIntegerField;
     QueryCSid_servico: TIntegerField;
     QueryAg: TFDQuery;
-    QueryRCSnome_cargo: TWideStringField;
-    QueryRCSnome: TWideStringField;
     QueryAgendamentos: TFDQuery;
     QueryServicosid_servico: TIntegerField;
     QueryServicosnome: TWideStringField;
@@ -114,6 +112,8 @@ type
     QueryAdmbairro_adm: TWideStringField;
     QueryAdmcidade_adm: TWideStringField;
     QueryAdmestado_adm: TWideStringField;
+    QueryRCSnome_cargo: TWideStringField;
+    QueryRCSnome: TWideStringField;
     procedure QueryAgstatusGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
   private

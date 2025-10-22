@@ -343,7 +343,7 @@ object Form15: TForm15
         8F6D376D6BAE01A0F9EEC6774D63160A30910CD4097546B3655DCD35005FF7C3
         145D7E21CF9E1E0BE0BFFEAE6126E7D14CEB00A0111977B15701F4AAB703FC01
         4EE84C1DACD331E50000000049454E44AE426082}
-      OnClick = VoltarClick
+      OnClick = BtnEditarClick
     end
     object BtnExcluir: TImage
       Left = 864
@@ -420,8 +420,8 @@ object Form15: TForm15
       ParentFont = False
     end
     object Lblrequired: TLabel
-      Left = 1095
-      Top = 787
+      Left = 1105
+      Top = 795
       Width = 145
       Height = 15
       Caption = 'Preencha todos os campos!'
@@ -717,7 +717,7 @@ object Form15: TForm15
     end
     object BtnCad: TPanel
       Left = 1104
-      Top = 873
+      Top = 825
       Width = 496
       Height = 41
       Cursor = crHandPoint

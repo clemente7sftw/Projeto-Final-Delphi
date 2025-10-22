@@ -389,7 +389,7 @@ object Form21: TForm21
         1B8F4D48C5D6DB0E5BCB9749BDDB81637024C1B80DC082050B16AC47ACAB4F8E
         C61C7D1F9D1AB060C19E981F1D043C29BDA5B7110000000049454E44AE426082}
       Stretch = True
-      OnClick = ExclBtnClick
+      OnClick = addbtnClick
     end
     object Image1: TImage
       Left = 0

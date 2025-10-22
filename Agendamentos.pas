@@ -48,6 +48,7 @@ type
     procedure Panel2Click(Sender: TObject);
     function buscarpreco(id_servico: Integer): Currency;
     procedure CheckListBoxServicosClickCheck(Sender: TObject);
+    procedure LbClieClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -61,12 +62,17 @@ implementation
 
 {$R *.dfm}
 
-uses UDataModule, CAgendamentos;
+uses UDataModule, CAgendamentos, CClientes;
 
 procedure TForm13.FormShow(Sender: TObject);
 begin
-  datamodule1.QueryClientes.close;
-  datamodule1.QueryClientes.open;
+  DataModule1.QueryClientes.Close;
+  DataModule1.QueryClientes.SQL.Text :=
+    'SELECT * FROM clientes ' +
+    'WHERE id_empresa = :id_empresa ' +
+    'ORDER BY nome_clie';
+  DataModule1.QueryClientes.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  DataModule1.QueryClientes.Open;
   datamodule1.QueryServicos.close;
   datamodule1.QueryServicos.open;
   datamodule1.QueryAgendamentos.close;
@@ -85,6 +91,11 @@ begin
 WindowState:=wsMaximized;
 Lblrequired.Visible:= false;
 MonthCalendar1.MinDate:= Date;
+end;
+
+procedure TForm13.LbClieClick(Sender: TObject);
+begin
+  Form4.show;
 end;
 
 procedure TForm13.ListarHorarios;

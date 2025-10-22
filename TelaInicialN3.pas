@@ -83,6 +83,13 @@ RelatPeriodo.EditMask := '99/99/9999';
 RelatPeriodo.Text := '';
 RelatPeriodo1.EditMask := '99/99/9999';
 RelatPeriodo1.Text := '';
+  DataModule1.QueryClientes.Close;
+  DataModule1.QueryClientes.SQL.Text :=
+    'SELECT * FROM clientes ' +
+    'WHERE id_empresa = :id_empresa ' +
+    'ORDER BY nome_clie';
+  DataModule1.QueryClientes.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  DataModule1.QueryClientes.Open;
 end;
 
 procedure TForm20.FormShow(Sender: TObject);

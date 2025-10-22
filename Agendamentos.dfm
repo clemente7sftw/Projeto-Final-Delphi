@@ -23,8 +23,6 @@ object Form13: TForm13
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 32
-    ExplicitTop = 8
     object Label1: TLabel
       Left = 976
       Top = 694
@@ -320,6 +318,7 @@ object Form13: TForm13
       Width = 649
       Height = 232
       DataSource = DataSource1
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -347,6 +346,7 @@ object Form13: TForm13
       Height = 23
       DataField = 'email_clie'
       DataSource = DataSource1
+      Enabled = False
       TabOrder = 1
     end
     object Panel2: TPanel
@@ -391,6 +391,7 @@ object Form13: TForm13
       Height = 23
       DataField = 'preco'
       DataSource = DataSource3
+      Enabled = False
       TabOrder = 6
     end
     object CheckListBoxProfissionais: TCheckListBox
@@ -408,6 +409,7 @@ object Form13: TForm13
       Height = 23
       DataField = 'nome_clie'
       DataSource = DataSource1
+      Enabled = False
       TabOrder = 8
     end
     object Barra: TPanel
@@ -430,6 +432,7 @@ object Form13: TForm13
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = LbClieClick
       end
       object LbProfissionais: TLabel
         Left = 772

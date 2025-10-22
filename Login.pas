@@ -99,69 +99,68 @@ end;
 
 
 procedure TForm1.Login;
-
+var
+  LoginCorreto: Boolean;
+  id_empresa:integer;
 begin
-//  LoginCorreto: Boolean;
-//  id_empresa:integer;
-//begin
-//  if not TMetodos.ValidarEmail(EdEmail.Text) or (EdSenha.Text = '') then
-//  begin
-//    LbErro.Visible := True;
-//    Exit;
-//  end;
-//
-//  LoginCorreto := False;
-//  LbErro.Visible := False;
-//  with DataModule1.QueryClientes do
-//  begin
-//    Close;
-//    SQL.Text := 'SELECT * FROM clientes WHERE email_clie = :email AND senha_clie = :senha';
-//    ParamByName('email').AsString := EdEmail.Text;
-//    ParamByName('senha').AsString := EdSenha.Text;
-//    Open;
-//
-//    if not IsEmpty then
-//    begin
-//      Form3.Show;
-//      LoginCorreto := True;
-//      Exit;
-//    end;
-//  end;
-//  with DataModule1.QueryEmpresa do
-//  begin
-//    Close;
-//    SQL.Text := 'SELECT * FROM empresas WHERE email = :email AND senha = :senha';
-//    ParamByName('email').AsString := EdEmail.Text;
-//    ParamByName('senha').AsString := EdSenha.Text;
-//    Open;
-//
-//    if not IsEmpty then
-//    begin
-//      DataModule1.id_empresa := FieldByName('id_empresa').AsInteger;
-//      Form20.Show;
-//      LoginCorreto := True;
-//      Exit;
-//    end;
-//  end;
-//  with DataModule1.QueryAdm do
-//  begin
-//    Close;
-//    SQL.Text := 'SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha';
-//    ParamByName('email').AsString := EdEmail.Text;
-//    ParamByName('senha').AsString := EdSenha.Text;
-//    Open;
-//
-//    if not IsEmpty then
-//    begin
-//      DataModule1.id_empresa := FieldByName('id_empresa').AsInteger;
-//      Form5.Show;
-//      LoginCorreto := True;
-//      Exit;
-//    end;
-//  end;
-//  if not LoginCorreto then
-//    LbErro.Visible := True;
-form20.show;
+  if not TMetodos.ValidarEmail(EdEmail.Text) or (EdSenha.Text = '') then
+  begin
+    LbErro.Visible := True;
+    Exit;
+  end;
+
+  LoginCorreto := False;
+  LbErro.Visible := False;
+  with DataModule1.QueryClientes do
+  begin
+    Close;
+    SQL.Text := 'SELECT * FROM clientes WHERE email_clie = :email AND senha_clie = :senha';
+    ParamByName('email').AsString := EdEmail.Text;
+    ParamByName('senha').AsString := EdSenha.Text;
+    Open;
+
+    if not IsEmpty then
+    begin
+      Form3.Show;
+      LoginCorreto := True;
+      Exit;
+    end;
+  end;
+  with DataModule1.QueryEmpresa do
+  begin
+    Close;
+    SQL.Text := 'SELECT * FROM empresas WHERE email = :email AND senha = :senha';
+    ParamByName('email').AsString := EdEmail.Text;
+    ParamByName('senha').AsString := EdSenha.Text;
+    Open;
+
+    if not IsEmpty then
+    begin
+      DataModule1.id_empresa := FieldByName('id_empresa').AsInteger;
+      Form20.Show;
+      LoginCorreto := True;
+      Exit;
+    end;
+  end;
+  with DataModule1.QueryAdm do
+  begin
+    Close;
+    SQL.Text := 'SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha';
+    ParamByName('email').AsString := EdEmail.Text;
+    ParamByName('senha').AsString := EdSenha.Text;
+    Open;
+
+    if not IsEmpty then
+    begin
+      DataModule1.id_empresa := FieldByName('id_empresa').AsInteger;
+      Form5.Show;
+      LoginCorreto := True;
+      Exit;
+    end;
+  end;
+  if not LoginCorreto then
+    LbErro.Visible := True;
+
 end;
 
 procedure TForm1.PbtnEntrarClick(Sender: TObject);

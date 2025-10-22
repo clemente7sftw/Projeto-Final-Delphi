@@ -357,20 +357,11 @@ object DataModule1: TDataModule1
   object QueryRCS: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
-      'SELECT '
-      '    c.nome_cargo,'
-      '    STRING_AGG(s.nome, '#39', '#39')::varchar(500) AS nome'
-      'FROM '
-      '    cargos c'
-      'LEFT JOIN '
-      '    cargos_servicos cp ON c.id_cargo = cp.id_cargo'
-      'LEFT JOIN '
-      '    servicos s ON cp.id_servico = s.id_servico'
-      'group by'
-      'c.nome_cargo'
-      'ORDER BY '
-      '    c.nome_cargo;'
-      '')
+      
+        'SELECT c.nome_cargo, STRING_AGG(s.nome, '#39', '#39')::varchar(500) AS n' +
+        'ome FROM cargos c LEFT JOIN cargos_servicos cp ON c.id_cargo = c' +
+        'p.id_cargo LEFT JOIN servicos s ON cp.id_servico = s.id_servico ' +
+        'group by c.nome_cargo ORDER BY c.nome_cargo;')
     Left = 200
     Top = 240
     object QueryRCSnome_cargo: TWideStringField

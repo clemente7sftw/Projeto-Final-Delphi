@@ -1,4 +1,4 @@
-unit AdicionarCargo;
+﻿unit AdicionarCargo;
 
 interface
 
@@ -64,9 +64,9 @@ begin
     if datamodule1.QueryCargos.state in [dsinsert, dsedit] then
      id_empresa:= DataModule1.id_empresa;
     DataModule1.QueryCargos.FieldByName('id_empresa').AsInteger := DataModule1.id_empresa;
-     id_cargo := datamodule1.QueryCargos.FieldByName('id_cargo').AsInteger;
-     datamodule1.querycargos.post;
+    datamodule1.querycargos.post;
     datamodule1.querycargos.Refresh;
+    id_cargo := datamodule1.QueryCargos.FieldByName('id_cargo').AsInteger;
     for i := 0 to checklistbox1.count -1 do
     begin
     if checklistbox1.Checked[i] then
@@ -106,43 +106,52 @@ begin
     datamodule1.QueryServicos.open;
     datamodule1.QueryCS.close;
     datamodule1.QueryCS.open;
-    datamodule1.QueryRCS.close;
-    datamodule1.QueryRCS.open;
+//    datamodule1.QueryRCS.close;
+//    datamodule1.QueryRCS.open;
     PreencherListbox;
 
 end;
 
 procedure TForm11.PCadClick(Sender: TObject);
-var id_ser, id_cargo, i: integer;
+var
+  id_ser, id_cargo, id_empresa, i: integer;
 begin
   if DBEdit1.Text <> '' then
   begin
-    if datamodule1.QueryCargos.state in [dsinsert, dsedit] then
-    datamodule1.querycargos.post;
-    datamodule1.querycargos.Refresh;
-    id_cargo := datamodule1.QueryCargos.FieldByName('id_cargo').AsInteger;
-    for i := 0 to checklistbox1.count -1 do
+    DataModule1.QueryCargos.FieldByName('id_empresa').AsInteger := DataModule1.id_empresa;
+
+    if DataModule1.QueryCargos.State in [dsInsert, dsEdit] then
+      DataModule1.QueryCargos.Post;
+
+    DataModule1.QueryCargos.Refresh;
+
+    id_cargo := DataModule1.QueryCargos.FieldByName('id_cargo').AsInteger;
+    id_empresa := DataModule1.id_empresa;
+    for i := 0 to CheckListBox1.Count - 1 do
     begin
-    if checklistbox1.Checked[i] then
+      if CheckListBox1.Checked[i] then
       begin
         id_ser := Integer(CheckListBox1.Items.Objects[i]);
-        if datamodule1.QueryCargos.State in [dsInsert, dsEdit] then
-        id_ser := Integer(CheckListBox1.Items.Objects[i]);
-        datamodule1.QueryCS.Append;
-        datamodule1.QueryCS.FieldByName('id_servico').AsInteger := id_ser;
-        datamodule1.QueryCS.FieldByName('id_cargo').AsInteger := id_cargo;
-        datamodule1.QueryCS.Post;
+
+        DataModule1.QueryCS.Append;
+        DataModule1.QueryCS.FieldByName('id_servico').AsInteger := id_ser;
+        DataModule1.QueryCS.FieldByName('id_cargo').AsInteger := id_cargo;
+        DataModule1.QueryCS.FieldByName('id_empresa').AsInteger := id_empresa;
+        DataModule1.QueryCS.Post;
       end;
     end;
     DataModule1.QueryCargos.Close;
     DataModule1.QueryCargos.Open;
     Form14.Show;
     Form11.Close;
-    Lblrequired.Visible := false;
+    LblRequired.Visible := False;
   end
   else
-    Lblrequired.Visible := true;
+    LblRequired.Visible := True;
 end;
+
+
+
 
 procedure TForm11.PreencherListbox;
 begin
