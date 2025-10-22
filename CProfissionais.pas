@@ -62,6 +62,10 @@ type
     procedure ExclBtnClick(Sender: TObject);
     procedure addclieClick(Sender: TObject);
     procedure BtnCadClick(Sender: TObject);
+    procedure LbagendamentosClick(Sender: TObject);
+    procedure LbServicosClick(Sender: TObject);
+    procedure LbCargosClick(Sender: TObject);
+    procedure LbFornecedoresClick(Sender: TObject);
 
   private
     procedure Pesquisar;
@@ -79,7 +83,7 @@ implementation
 {$R *.dfm}
 
 uses CClientes, TelaPrincipalN1, AdicionarProfissional, UDataModule,
-  TelaInicialN3;
+  TelaInicialN3, Agendamentos, CServicos, CCargos, CFornecedores, CAgendamentos;
 
 procedure TForm8.addclieClick(Sender: TObject);
 begin
@@ -244,10 +248,30 @@ end;
 
 
 
+procedure TForm8.LbagendamentosClick(Sender: TObject);
+begin
+Form21.show;
+end;
+
+procedure TForm8.LbCargosClick(Sender: TObject);
+begin
+  Form14.show;
+end;
+
 procedure TForm8.LbClieClick(Sender: TObject);
 begin
 Form4.show;
-Form8.close;
+end;
+
+procedure TForm8.LbFornecedoresClick(Sender: TObject);
+begin
+  Form7.show;
+end;
+
+
+procedure TForm8.LbServicosClick(Sender: TObject);
+begin
+  Form15.show;
 end;
 
 procedure TForm8.Panel2Click(Sender: TObject);

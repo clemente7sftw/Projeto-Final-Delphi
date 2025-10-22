@@ -65,6 +65,10 @@ type
     procedure btncancelarClick(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);
     function ValidarEmail(const Email: string):Boolean;
+    procedure LbagendamentosClick(Sender: TObject);
+    procedure LbServicosClick(Sender: TObject);
+    procedure LbCargosClick(Sender: TObject);
+    procedure LbFornecedoresClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -78,7 +82,8 @@ implementation
 
 {$R *.dfm}
 
-uses TelaPrincipalN1, CFornecedores, TelaInicialN3, UDataModule, CProfissionais;
+uses TelaPrincipalN1, CFornecedores, TelaInicialN3, UDataModule, CProfissionais,
+  Agendamentos, CAgendamentos, CServicos, CCargos;
 
 procedure TForm4.FormCreate(Sender: TObject);
 begin
@@ -122,10 +127,29 @@ begin
   Procurar;
 end;
 
+procedure TForm4.LbagendamentosClick(Sender: TObject);
+begin
+  Form21.Show;
+end;
+
+procedure TForm4.LbCargosClick(Sender: TObject);
+begin
+  Form14.show;
+end;
+
+procedure TForm4.LbFornecedoresClick(Sender: TObject);
+begin
+  Form7.show;
+end;
+
 procedure TForm4.LbProfissionaisClick(Sender: TObject);
 begin
   Form8.show;
-  form4.close;
+end;
+
+procedure TForm4.LbServicosClick(Sender: TObject);
+begin
+  Form15.show;
 end;
 
 procedure TForm4.addclieClick(Sender: TObject);

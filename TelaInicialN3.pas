@@ -42,6 +42,7 @@ type
     procedure Image2Click(Sender: TObject);
     procedure AddAdm;
     procedure BtnRelatClick(Sender: TObject);
+    procedure LbFornecedoresClick(Sender: TObject);
   private
     { Private declarations }
 
@@ -120,12 +121,19 @@ end;
 procedure TForm20.LbCargosClick(Sender: TObject);
 begin
   Form14.show;
+  Form20.close;
 end;
 
 procedure TForm20.LbClieClick(Sender: TObject);
 begin
   Form4.Show;
   Form20.Close;
+end;
+
+procedure TForm20.LbFornecedoresClick(Sender: TObject);
+begin
+Form7.show;
+Form20.close;
 end;
 
 procedure TForm20.LbProfissionaisClick(Sender: TObject);

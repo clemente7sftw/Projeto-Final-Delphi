@@ -39,6 +39,7 @@ type
     Label1: TLabel;
     Lblrequired: TLabel;
     BtnCad: TPanel;
+    Voltar: TImage;
     procedure Excluir;
     procedure FormCreate(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
@@ -56,8 +57,13 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure addclieClick(Sender: TObject);
     procedure Image3Click(Sender: TObject);
-    procedure Image1Click(Sender: TObject);
+    procedure VoltarClick(Sender: TObject);
     procedure BtnCadClick(Sender: TObject);
+    procedure LbClieClick(Sender: TObject);
+    procedure LbagendamentosClick(Sender: TObject);
+    procedure LbProfissionaisClick(Sender: TObject);
+    procedure LbCargosClick(Sender: TObject);
+    procedure LbFornecedoresClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -71,7 +77,8 @@ implementation
 
 {$R *.dfm}
 
-uses TelaPrincipalN1, UDataModule;
+uses TelaPrincipalN1, UDataModule, TelaInicialN3, CClientes, CAgendamentos,
+  CProfissionais, CCargos, CFornecedores;
 
 
 procedure TForm15.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -101,14 +108,40 @@ begin
 end;
 
 
-procedure TForm15.Image1Click(Sender: TObject);
+procedure TForm15.VoltarClick(Sender: TObject);
 begin
-Editar;
+Form20.show;
+Form15.close;
 end;
 
 procedure TForm15.Image3Click(Sender: TObject);
 begin
 Excluir;
+end;
+
+procedure TForm15.LbagendamentosClick(Sender: TObject);
+begin
+  Form21.show;
+end;
+
+procedure TForm15.LbCargosClick(Sender: TObject);
+begin
+  Form14.show;
+end;
+
+procedure TForm15.LbClieClick(Sender: TObject);
+begin
+  Form4.show;
+end;
+
+procedure TForm15.LbFornecedoresClick(Sender: TObject);
+begin
+  Form7.show;
+end;
+
+procedure TForm15.LbProfissionaisClick(Sender: TObject);
+begin
+  Form8.show;
 end;
 
 procedure TForm15.addclieClick(Sender: TObject);

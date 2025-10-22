@@ -54,6 +54,11 @@ type
     procedure addclieClick(Sender: TObject);
     procedure EditBtnClick(Sender: TObject);
     procedure ExclBtnClick(Sender: TObject);
+    procedure LbClieClick(Sender: TObject);
+    procedure LbagendamentosClick(Sender: TObject);
+    procedure LbProfissionaisClick(Sender: TObject);
+    procedure LbServicosClick(Sender: TObject);
+    procedure LbFornecedoresClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -68,7 +73,8 @@ implementation
 
 {$R *.dfm}
 
-uses TelaPrincipalN1, UDataModule, AdicionarCargo;
+uses TelaPrincipalN1, UDataModule, AdicionarCargo, TelaInicialN3, CClientes,
+  CAgendamentos, CProfissionais, CServicos, CFornecedores;
 
 procedure TForm14.addclieClick(Sender: TObject);
 begin
@@ -191,8 +197,33 @@ end;
 
 procedure TForm14.Image1Click(Sender: TObject);
 begin
-  Form3.Show;
-  Form14.Hide;
+  Form20.Show;
+  Form14.close;
+end;
+
+procedure TForm14.LbagendamentosClick(Sender: TObject);
+begin
+  Form21.show;
+end;
+
+procedure TForm14.LbClieClick(Sender: TObject);
+begin
+  Form4.Show;
+end;
+
+procedure TForm14.LbFornecedoresClick(Sender: TObject);
+begin
+  Form7.show;
+end;
+
+procedure TForm14.LbProfissionaisClick(Sender: TObject);
+begin
+  Form8.show;
+end;
+
+procedure TForm14.LbServicosClick(Sender: TObject);
+begin
+  Form15.show;
 end;
 
 procedure TForm14.Salvar;

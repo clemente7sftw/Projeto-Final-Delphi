@@ -23,9 +23,6 @@ object Form15: TForm15
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 8
-    ExplicitWidth = 1153
-    ExplicitHeight = 651
     object lbaviso: TLabel
       Left = 40
       Top = 869
@@ -346,7 +343,7 @@ object Form15: TForm15
         8F6D376D6BAE01A0F9EEC6774D63160A30910CD4097546B3655DCD35005FF7C3
         145D7E21CF9E1E0BE0BFFEAE6126E7D14CEB00A0111977B15701F4AAB703FC01
         4EE84C1DACD331E50000000049454E44AE426082}
-      OnClick = Image1Click
+      OnClick = VoltarClick
     end
     object BtnExcluir: TImage
       Left = 864
@@ -430,6 +427,33 @@ object Form15: TForm15
       Caption = 'Preencha todos os campos!'
       Color = clDarkred
       ParentColor = False
+    end
+    object Voltar: TImage
+      Left = 0
+      Top = 223
+      Width = 49
+      Height = 42
+      Picture.Data = {
+        0D54536B537667477261706869633C73766720786D6C6E733D22687474703A2F
+        2F7777772E77332E6F72672F323030302F737667222076696577426F783D2230
+        20302036343020363430223E3C212D2D21466F6E7420417765736F6D65204672
+        656520372E302E302062792040666F6E74617765736F6D65202D206874747073
+        3A2F2F666F6E74617765736F6D652E636F6D204C6963656E7365202D20687474
+        70733A2F2F666F6E74617765736F6D652E636F6D2F6C6963656E73652F667265
+        6520436F70797269676874203230323520466F6E7469636F6E732C20496E632E
+        2D2D3E3C7061746820643D224D37332E34203239372E344336302E3920333039
+        2E392036302E39203333302E322037332E34203334322E374C3233332E342035
+        30322E37433234352E39203531352E32203236362E32203531352E3220323738
+        2E37203530322E37433239312E32203439302E32203239312E32203436392E39
+        203237382E37203435372E344C3137332E33203335324C353434203335324335
+        36312E372033353220353736203333372E372035373620333230433537362033
+        30322E33203536312E372032383820353434203238384C3137332E3320323838
+        4C3237382E37203138322E36433239312E32203137302E31203239312E322031
+        34392E38203237382E37203133372E33433236362E32203132342E3820323435
+        2E39203132342E38203233332E34203133372E334C37332E34203239372E337A
+        222F3E3C2F7376673E}
+      Stretch = True
+      OnClick = VoltarClick
     end
     object DBGServicos: TDBGrid
       Left = 40
@@ -532,8 +556,6 @@ object Form15: TForm15
       Width = 1919
       Height = 19
       Panels = <>
-      ExplicitTop = 536
-      ExplicitWidth = 787
     end
     object Barra: TPanel
       Left = -18
@@ -555,6 +577,7 @@ object Form15: TForm15
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = LbClieClick
       end
       object LbProfissionais: TLabel
         Left = 772
@@ -568,6 +591,7 @@ object Form15: TForm15
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = LbProfissionaisClick
       end
       object LbServicos: TLabel
         Left = 1113
@@ -594,6 +618,7 @@ object Form15: TForm15
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = LbCargosClick
       end
       object LbFornecedores: TLabel
         Left = 1608
@@ -607,6 +632,7 @@ object Form15: TForm15
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = LbFornecedoresClick
       end
       object Lbagendamentos: TLabel
         Left = 464
@@ -620,6 +646,7 @@ object Form15: TForm15
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = LbagendamentosClick
       end
     end
     object EdPesquisa: TEdit

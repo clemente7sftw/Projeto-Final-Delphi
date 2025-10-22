@@ -723,6 +723,7 @@ object Form4: TForm4
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = LbServicosClick
     end
     object LbCargos: TLabel
       Left = 1368
@@ -736,6 +737,7 @@ object Form4: TForm4
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = LbCargosClick
     end
     object LbFornecedores: TLabel
       Left = 1608
@@ -749,6 +751,7 @@ object Form4: TForm4
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = LbFornecedoresClick
     end
     object Lbagendamentos: TLabel
       Left = 464
@@ -762,6 +765,7 @@ object Form4: TForm4
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = LbagendamentosClick
     end
   end
   object DataSource1: TDataSource

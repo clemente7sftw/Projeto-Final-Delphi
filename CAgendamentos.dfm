@@ -487,7 +487,6 @@ object Form21: TForm21
           Title.Font.Height = -21
           Title.Font.Name = 'Segoe UI Semibold'
           Title.Font.Style = [fsBold]
-          Width = 64
           Visible = True
         end
         item
@@ -577,6 +576,7 @@ object Form21: TForm21
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = LbClieClick
       end
       object LbProfissionais: TLabel
         Left = 772
@@ -590,6 +590,7 @@ object Form21: TForm21
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = LbProfissionaisClick
       end
       object LbServicos: TLabel
         Left = 1113
@@ -603,6 +604,7 @@ object Form21: TForm21
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = LbServicosClick
       end
       object LbCargos: TLabel
         Left = 1368
@@ -616,6 +618,7 @@ object Form21: TForm21
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = LbCargosClick
       end
       object LbFornecedores: TLabel
         Left = 1608
@@ -629,6 +632,7 @@ object Form21: TForm21
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = LbFornecedoresClick
       end
       object Lbagendamentos: TLabel
         Left = 464

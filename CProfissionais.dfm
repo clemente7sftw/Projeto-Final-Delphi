@@ -22,8 +22,6 @@ object Form8: TForm8
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1918
-    ExplicitHeight = 1053
     object Panel1: TPanel
       Left = 1
       Top = 1
@@ -33,8 +31,6 @@ object Form8: TForm8
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 1916
-      ExplicitHeight = 1051
       object Label1: TLabel
         Left = 1102
         Top = 440
@@ -631,6 +627,7 @@ object Form8: TForm8
           Font.Name = 'Segoe UI Semibold'
           Font.Style = [fsBold]
           ParentFont = False
+          OnClick = LbServicosClick
         end
         object LbCargos: TLabel
           Left = 1368
@@ -644,6 +641,7 @@ object Form8: TForm8
           Font.Name = 'Segoe UI Semibold'
           Font.Style = [fsBold]
           ParentFont = False
+          OnClick = LbCargosClick
         end
         object LbFornecedores: TLabel
           Left = 1608
@@ -657,6 +655,7 @@ object Form8: TForm8
           Font.Name = 'Segoe UI Semibold'
           Font.Style = [fsBold]
           ParentFont = False
+          OnClick = LbFornecedoresClick
         end
         object Lbagendamentos: TLabel
           Left = 464
@@ -670,6 +669,7 @@ object Form8: TForm8
           Font.Name = 'Segoe UI Semibold'
           Font.Style = [fsBold]
           ParentFont = False
+          OnClick = LbagendamentosClick
         end
       end
       object EdPesquisa: TEdit

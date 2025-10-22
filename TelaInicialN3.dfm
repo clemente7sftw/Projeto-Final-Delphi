@@ -411,6 +411,7 @@ object Form20: TForm20
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = LbFornecedoresClick
       end
       object Lbagendamentos: TLabel
         Left = 464

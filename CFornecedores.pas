@@ -26,6 +26,7 @@ type
     EdPesquisa: TEdit;
     Panel1: TPanel;
     Image2: TImage;
+    Image3: TImage;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
@@ -50,7 +51,7 @@ implementation
 
 {$R *.dfm}
 
-uses TelaPrincipalN1, CClientes, UDataModule;
+uses TelaPrincipalN1, CClientes, UDataModule, TelaInicialN3;
 
 procedure TForm7.BtnAddClick(Sender: TObject);
 begin
@@ -117,8 +118,8 @@ end;
 
 procedure TForm7.Image1Click(Sender: TObject);
 begin
-  Form3.Show;
-  Form7.Hide;
+  Form20.Show;
+  Form7.close;
 end;
 
 procedure TForm7.Label2Click(Sender: TObject);

@@ -54,6 +54,11 @@ type
     procedure ExclBtnClick(Sender: TObject);
     procedure EditBtnClick(Sender: TObject);
     procedure Image1Click(Sender: TObject);
+    procedure LbClieClick(Sender: TObject);
+    procedure LbProfissionaisClick(Sender: TObject);
+    procedure LbServicosClick(Sender: TObject);
+    procedure LbCargosClick(Sender: TObject);
+    procedure LbFornecedoresClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -70,7 +75,8 @@ implementation
 
 {$R *.dfm}
 
-uses UDataModule, Agendamentos, TelaInicialN3;
+uses UDataModule, Agendamentos, TelaInicialN3, CClientes, CProfissionais,
+  CServicos, CCargos, CFornecedores;
 
 procedure TForm21.Adicionar;
 begin
@@ -213,6 +219,31 @@ procedure TForm21.Image1Click(Sender: TObject);
 begin
 Form21.close;
 Form20.show;
+end;
+
+procedure TForm21.LbCargosClick(Sender: TObject);
+begin
+  Form14.show;
+end;
+
+procedure TForm21.LbClieClick(Sender: TObject);
+begin
+Form4.Show;
+end;
+
+procedure TForm21.LbFornecedoresClick(Sender: TObject);
+begin
+  Form7.show;
+end;
+
+procedure TForm21.LbProfissionaisClick(Sender: TObject);
+begin
+  Form8.show;
+end;
+
+procedure TForm21.LbServicosClick(Sender: TObject);
+begin
+  Form15.show;
 end;
 
 procedure TForm21.ListarHorarios;
