@@ -8,6 +8,7 @@ object DataModule1: TDataModule1
       'Password=root'
       'Server=localhost'
       'DriverID=PG')
+    Connected = True
     Left = 160
     Top = 16
   end

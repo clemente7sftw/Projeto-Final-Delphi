@@ -27,7 +27,8 @@ uses
   TelaInicialN2 in 'TelaInicialN2.pas' {Form5},
   CAdministrador in 'CAdministrador.pas' {Form22},
   CadAdm in 'CadAdm.pas' {Form23},
-  N1MudarSenha in 'N1MudarSenha.pas' {Form24};
+  N1MudarSenha in 'N1MudarSenha.pas' {Form24},
+  relatorios_clientes in 'relatorios_clientes.pas' {Form25};
 
 {$R *.res}
 
@@ -60,5 +61,6 @@ begin
   Application.CreateForm(TForm22, Form22);
   Application.CreateForm(TForm23, Form23);
   Application.CreateForm(TForm24, Form24);
+  Application.CreateForm(TForm25, Form25);
   Application.Run;
 end.

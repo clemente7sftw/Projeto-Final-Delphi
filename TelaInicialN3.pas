@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
   Vcl.Imaging.pngimage, Vcl.CheckLst, system.JSON, uSuperChartLight,
-  FireDAC.Moni.Base, FireDAC.Moni.Custom, FireDAC.Moni.FlatFile;
+  FireDAC.Moni.Base, FireDAC.Moni.Custom, FireDAC.Moni.FlatFile, RLReport,
+  Data.DB, Vcl.WinXPickers, Vcl.Mask;
 
 type
   TForm20 = class(TForm)
@@ -25,6 +26,9 @@ type
     Panel1: TPanel;
     Image2: TImage;
     FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink;
+    BtnRelat: TPanel;
+    RelatPeriodo: TMaskEdit;
+    RelatPeriodo1: TMaskEdit;
     procedure LbClieClick(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);
     procedure LbServicosClick(Sender: TObject);
@@ -37,6 +41,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure AddAdm;
+    procedure BtnRelatClick(Sender: TObject);
   private
     { Private declarations }
 
@@ -54,7 +59,7 @@ implementation
 
 uses CClientes, CProfissionais, AdicionarServico, CServicos,
   CCargos, CFornecedores, Cadastro, CHorarios, Agendamentos, UDataModule,
-  CAgendamentos, CadAdm;
+  CAgendamentos, CadAdm, relatorios_clientes;
 procedure TForm20.AddAdm;
 begin
 Form23.show;
@@ -63,16 +68,25 @@ end;
 
 
 
+procedure TForm20.BtnRelatClick(Sender: TObject);
+begin
+Form25 := TForm25.Create(Self);
+Form25.RLPeriodo.Caption := RelatPeriodo.text + ' Até ' + RelatPeriodo1.text;
+Form25.RelatorioClientes.Preview();
+end;
+
 procedure TForm20.FormCreate(Sender: TObject);
 begin
 WindowState:=wsMaximized;
-
+RelatPeriodo.EditMask := '99/99/9999';
+RelatPeriodo.Text := '';
+RelatPeriodo1.EditMask := '99/99/9999';
+RelatPeriodo1.Text := '';
 end;
 
 procedure TForm20.FormShow(Sender: TObject);
 begin
-ShowMessage('ID da empresa logada: ' + IntToStr(DataModule1.id_empresa));
-
+//ShowMessage('ID da empresa logada: ' + IntToStr(DataModule1.id_empresa));
 end;
 
 procedure TForm20.Image2Click(Sender: TObject);

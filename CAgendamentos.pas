@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
   Vcl.ExtCtrls, Vcl.Imaging.pngimage, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls,
-  Vcl.CheckLst, Vcl.ComCtrls;
+  Vcl.CheckLst, Vcl.ComCtrls, Vcl.Skia;
 
 type
   TForm21 = class(TForm)
@@ -37,6 +37,7 @@ type
     Label4: TLabel;
     addbtn: TImage;
     BtnConf: TPanel;
+    Image1: TImage;
     procedure ListarHorarios;
     procedure BtnAddClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -52,6 +53,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure ExclBtnClick(Sender: TObject);
     procedure EditBtnClick(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -68,7 +70,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDataModule, Agendamentos;
+uses UDataModule, Agendamentos, TelaInicialN3;
 
 procedure TForm21.Adicionar;
 begin
@@ -205,6 +207,12 @@ begin
   ComboBoxHorarios.Visible:= false;
   ListarHorarios;
 
+end;
+
+procedure TForm21.Image1Click(Sender: TObject);
+begin
+Form21.close;
+Form20.show;
 end;
 
 procedure TForm21.ListarHorarios;

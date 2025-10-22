@@ -435,12 +435,37 @@ object Form20: TForm20
       Caption = 'Panel1'
       TabOrder = 1
     end
+    object BtnRelat: TPanel
+      Left = 888
+      Top = 336
+      Width = 185
+      Height = 41
+      Caption = 'Ver Relat'#243'rio'
+      TabOrder = 2
+      OnClick = BtnRelatClick
+    end
+    object RelatPeriodo: TMaskEdit
+      Left = 224
+      Top = 304
+      Width = 137
+      Height = 33
+      TabOrder = 3
+      Text = 'RelatPeriodo'
+    end
+    object RelatPeriodo1: TMaskEdit
+      Left = 384
+      Top = 304
+      Width = 137
+      Height = 33
+      TabOrder = 4
+      Text = 'RelatPeriodo'
+    end
   end
   object FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink
     FileName = 
       'C:\Users\gabri\OneDrive\Documentos\Projeto-Final-Delphi\docs\tra' +
       'cing.txt'
-    Left = 384
-    Top = 224
+    Left = 40
+    Top = 384
   end
 end
