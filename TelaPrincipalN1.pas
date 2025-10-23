@@ -22,6 +22,7 @@ type
     Image1: TImage;
     DBGrid1: TDBGrid;
     Image2: TImage;
+    DataSource1: TDataSource;
     procedure FormCreate(Sender: TObject);
     procedure Label2Click(Sender: TObject);
     procedure Label5Click(Sender: TObject);
@@ -36,6 +37,7 @@ type
     procedure Label3Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Image2Click(Sender: TObject);
+    procedure Panel1Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -52,7 +54,7 @@ implementation
 
 {$R *.dfm}
 
-uses N1MudarSenha;
+uses N1MudarSenha, n1_agendamentos;
 
 
 
@@ -140,6 +142,11 @@ procedure TForm3.LbnServicosClick(Sender: TObject);
 begin
   Form3.Hide;
   Form15.Show;
+end;
+
+procedure TForm3.Panel1Click(Sender: TObject);
+begin
+  Form26.show;
 end;
 
 end.

@@ -716,8 +716,8 @@ object Form15: TForm15
       OnClick = BtnConfClick
     end
     object BtnCad: TPanel
-      Left = 1104
-      Top = 825
+      Left = 1350
+      Top = 542
       Width = 496
       Height = 41
       Cursor = crHandPoint
