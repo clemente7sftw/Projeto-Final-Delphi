@@ -4,12 +4,12 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, RLReport, Data.DB, Datasnap.DBClient;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, RLReport, Data.DB, Datasnap.DBClient,
+  Vcl.Imaging.pngimage;
 
 type
   TForm25 = class(TForm)
     RelatorioClientes: TRLReport;
-    DSClie: TDataSource;
     RLBHeader: TRLBand;
     RLBTitulo: TRLBand;
     RLBCabecalho: TRLBand;
@@ -17,16 +17,16 @@ type
     RLBFooter: TRLBand;
     RLSystemInfo1: TRLSystemInfo;
     RLSystemInfo2: TRLSystemInfo;
-    RLLabel1: TRLLabel;
     RLLabel2: TRLLabel;
     RLPeriodo: TRLLabel;
     RLLabel3: TRLLabel;
-    RLLabel4: TRLLabel;
     RLLabel6: TRLLabel;
     RLDBText1: TRLDBText;
-    RLDBText2: TRLDBText;
     RLDBText3: TRLDBText;
-    ClientDataSet1: TClientDataSet;
+    DataSource1: TDataSource;
+    RLImage1: TRLImage;
+    RLImage2: TRLImage;
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,5 +41,11 @@ implementation
 {$R *.dfm}
 
 uses UDataModule;
+
+procedure TForm25.FormCreate(Sender: TObject);
+begin
+Datamodule1.QueryTotalAg.close;
+Datamodule1.QueryTotalAg.open;
+end;
 
 end.

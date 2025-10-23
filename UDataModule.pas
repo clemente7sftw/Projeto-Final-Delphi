@@ -114,6 +114,9 @@ type
     QueryAdmestado_adm: TWideStringField;
     QueryRCSnome_cargo: TWideStringField;
     QueryRCSnome: TWideStringField;
+    QueryTotalAg: TFDQuery;
+    QueryTotalAgnome: TWideStringField;
+    QueryTotalAgtotal: TLargeintField;
     procedure QueryAgstatusGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
   private

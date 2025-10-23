@@ -22,6 +22,8 @@ object Form11: TForm11
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1918
+    ExplicitHeight = 1053
     object Image1: TImage
       Left = 25
       Top = 288

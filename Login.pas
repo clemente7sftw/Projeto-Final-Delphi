@@ -28,7 +28,6 @@ type
     imgsenha: TImage;
     EdEmail: TEdit;
     LbErro: TLabel;
-    procedure PbtnEntrarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Label2Click(Sender: TObject);
     procedure imgsenhaClick(Sender: TObject);
@@ -36,6 +35,7 @@ type
     procedure EdEmailChange(Sender: TObject);
     procedure testeClick(Sender: TObject);
     procedure Login;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
 
   private
     { Private declarations }
@@ -56,18 +56,16 @@ implementation
 uses UDataModule, TelaInicialN3, CClientes,
   CHorarios, TelaInicialN2;
 
-
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  WindowState:=wsMaximized;
+  EdSenha.PasswordChar := '*';
+  LbErro.Visible:= false;
+end;
 
 procedure TForm1.EdEmailChange(Sender: TObject);
 begin
   LbErro.Visible := False;
-end;
-
-procedure TForm1.FormCreate(Sender: TObject);
-begin
-    WindowState:=wsMaximized;
-    EdSenha.PasswordChar := '*';
-    LbErro.Visible:= false;
 end;
 
 
@@ -91,12 +89,10 @@ Login;
 end;
 
 
-
 procedure TForm1.Label2Click(Sender: TObject);
 begin
   Form2.Show;
 end;
-
 
 procedure TForm1.Login;
 var
@@ -163,14 +159,20 @@ begin
 
 end;
 
-procedure TForm1.PbtnEntrarClick(Sender: TObject);
-begin
-  Form3.Show;
-end;
-
 procedure TForm1.testeClick(Sender: TObject);
 begin
  ShellExecute(0, 'open', 'file:///C:/Users/gabri/OneDrive/Documentos/Termos-e-condicoes-BS/termos%20bs/termosecondicoes.html', nil, nil, SW_SHOWNORMAL);
 end;
+
+procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+if Application.MessageBox('Tem certeza de que deseja sair da aplicação?', 'Sair', MB_YESNO + MB_ICONQUESTION) = IDYES then
+begin
+  Action := caFree;
+end else begin
+  Action := caNone;
+end;
+end;
+
 
 end.

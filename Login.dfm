@@ -10,6 +10,7 @@ object Form1: TForm1
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnClose = FormClose
   OnCreate = FormCreate
   TextHeight = 15
   object LogoM: TImage
@@ -161,6 +162,8 @@ object Form1: TForm1
     Color = 1186595
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1010
+    ExplicitHeight = 1053
     object ImagemDeFundo: TImage
       Left = 1
       Top = 1

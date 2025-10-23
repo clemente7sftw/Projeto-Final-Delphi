@@ -22,6 +22,8 @@ object Form20: TForm20
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1918
+    ExplicitHeight = 666
     object Label1: TLabel
       Left = 16
       Top = 248
@@ -449,7 +451,7 @@ object Form20: TForm20
       Left = 224
       Top = 304
       Width = 137
-      Height = 33
+      Height = 23
       TabOrder = 3
       Text = 'RelatPeriodo'
     end
@@ -457,7 +459,7 @@ object Form20: TForm20
       Left = 384
       Top = 304
       Width = 137
-      Height = 33
+      Height = 23
       TabOrder = 4
       Text = 'RelatPeriodo'
     end
@@ -466,7 +468,7 @@ object Form20: TForm20
     FileName = 
       'C:\Users\gabri\OneDrive\Documentos\Projeto-Final-Delphi\docs\tra' +
       'cing.txt'
-    Left = 40
+    Left = 56
     Top = 384
   end
 end
