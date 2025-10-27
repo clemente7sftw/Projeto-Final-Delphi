@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
-  Vcl.StdCtrls;
+  Vcl.StdCtrls, Vcl.Mask;
 
 type
   TForm19 = class(TForm)
@@ -17,13 +17,10 @@ type
     EdCidade: TEdit;
     EdEstado: TEdit;
     EdEmail: TEdit;
-    EdCNPJ: TEdit;
-    EdFone: TEdit;
     EdNome: TEdit;
     EdRua: TEdit;
     Label3: TLabel;
     Label4: TLabel;
-    Label5: TLabel;
     LbUser: TLabel;
     Label1: TLabel;
     Label2: TLabel;
@@ -35,6 +32,7 @@ type
     BtnCad: TPanel;
     PnlLupa: TPanel;
     Image2: TImage;
+    MaskCnpj: TMaskEdit;
     procedure FormCreate(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure BtnCadClick(Sender: TObject);
@@ -63,7 +61,7 @@ try
     ParamByName('nome').AsString := EdNome.Text;
     ParamByName('senha').AsString := Form2.EdSenha.Text;
     ParamByName('email').AsString := EdEmail.Text;
-    ParamByName('cnpj').AsString := EdCNPJ.Text;
+    ParamByName('cnpj').AsString := MaskCnpj.Text;
     ParamByName('cep').AsString := EdCEP.Text;
     ParamByName('rua').AsString := EdRua.Text;
     ParamByName('bairro').AsString := EdBairro.Text;
@@ -83,6 +81,8 @@ end;
 procedure TForm19.FormCreate(Sender: TObject);
 begin
 WindowState:=wsMaximized;
+MaskCnpj.EditMask:= '99.999.999/9999-99';
+MaskCnpj.Text := '';
 end;
 
 procedure TForm19.Image2Click(Sender: TObject);
@@ -93,6 +93,8 @@ begin
   EdBairro.Text := DataModule2.FDMemTable1.FieldByName('bairro').AsString;
   EdCidade.Text := DataModule2.FDMemTable1.FieldByName('localidade').AsString;
   EdEstado.Text := DataModule2.FDMemTable1.FieldByName('estado').AsString;
+
+
 end;
 
 end.

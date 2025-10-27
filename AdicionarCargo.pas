@@ -105,7 +105,13 @@ begin
     datamodule1.QueryServicos.close;
     datamodule1.QueryServicos.open;
     datamodule1.QueryCS.close;
+    DataModule1.QueryCS.SQL.Text :=
+    'SELECT * FROM cargos_servicos ' +
+    'WHERE id_empresa = :id_empresa ' +
+    'ORDER BY id_cargo;';
+    DataModule1.QueryCS.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
     datamodule1.QueryCS.open;
+
 //    datamodule1.QueryRCS.close;
 //    datamodule1.QueryRCS.open;
     PreencherListbox;
@@ -119,20 +125,17 @@ begin
   if DBEdit1.Text <> '' then
   begin
     DataModule1.QueryCargos.FieldByName('id_empresa').AsInteger := DataModule1.id_empresa;
-
     if DataModule1.QueryCargos.State in [dsInsert, dsEdit] then
       DataModule1.QueryCargos.Post;
-
-    DataModule1.QueryCargos.Refresh;
-
-    id_cargo := DataModule1.QueryCargos.FieldByName('id_cargo').AsInteger;
+      id_cargo := DataModule1.QueryCargos.FieldByName('id_cargo').AsInteger;
+      DataModule1.QueryCargos.FieldByName('id_cargo').AsInteger := id_cargo;
+      DataModule1.QueryCargos.Refresh;
     id_empresa := DataModule1.id_empresa;
     for i := 0 to CheckListBox1.Count - 1 do
     begin
       if CheckListBox1.Checked[i] then
       begin
         id_ser := Integer(CheckListBox1.Items.Objects[i]);
-
         DataModule1.QueryCS.Append;
         DataModule1.QueryCS.FieldByName('id_servico').AsInteger := id_ser;
         DataModule1.QueryCS.FieldByName('id_cargo').AsInteger := id_cargo;

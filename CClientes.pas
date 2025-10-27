@@ -230,7 +230,6 @@ begin
   end;
 end;
 
-
 procedure TForm4.Cancelar;
 begin
   datamodule1.QueryClientes.Cancel;

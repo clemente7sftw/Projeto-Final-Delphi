@@ -1,4 +1,4 @@
-unit relatorios_profissionais;
+unit relatorio_clientes;
 
 interface
 
@@ -7,8 +7,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, RLReport, Vcl.Imaging.pngimage;
 
 type
-  TForm27 = class(TForm)
-    RelatorioProfissionais: TRLReport;
+  TForm28 = class(TForm)
+    RelatorioClientes: TRLReport;
     RLBHeader: TRLBand;
     RLSystemInfo1: TRLSystemInfo;
     RLSystemInfo2: TRLSystemInfo;
@@ -40,7 +40,7 @@ type
   end;
 
 var
-  Form27: TForm27;
+  Form28: TForm28;
 
 implementation
 

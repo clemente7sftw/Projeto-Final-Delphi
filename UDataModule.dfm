@@ -183,6 +183,10 @@ object DataModule1: TDataModule1
       Origin = 'estado'
       Size = 50
     end
+    object QueryProfissionaisid_empresa: TIntegerField
+      FieldName = 'id_empresa'
+      Origin = 'id_empresa'
+    end
   end
   object QueryEmpresa: TFDQuery
     Connection = FDConnection1

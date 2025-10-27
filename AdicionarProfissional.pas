@@ -109,7 +109,7 @@ end;
 
 procedure TForm9.Cadastrar;
 var
-  i: Integer;
+  i, id_empresa: Integer;
 begin
   if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and   (CLBCargos.Items.Count > 0) and
    (CLBCargos.ItemIndex <> -1) then
@@ -117,6 +117,8 @@ begin
     if ValidarEmail(DBEDIT2.Text) then
     begin
       if datamodule1.QueryProfissionais.State in [dsInsert, dsEdit] then
+      id_empresa:= DataModule1.id_empresa;
+      DataModule1.QueryProfissionais.FieldByName('id_empresa').AsInteger := DataModule1.id_empresa;
       datamodule1.QueryProfissionais.Post;
       datamodule1.QueryProfissionais.Refresh;
       id_pro := datamodule1.QueryProfissionais.FieldByName('id_pro').AsInteger;

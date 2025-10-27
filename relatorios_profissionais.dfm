@@ -11,9 +11,9 @@ object Form27: TForm27
   Font.Name = 'Segoe UI'
   Font.Style = []
   TextHeight = 15
-  object RelatorioServicos: TRLReport
+  object RelatorioProfissionais: TRLReport
     Left = 100
-    Top = 29
+    Top = 37
     Width = 794
     Height = 1123
     Borders.Sides = sdCustom
@@ -331,7 +331,7 @@ object Form27: TForm27
         Borders.DrawTop = False
         Borders.DrawRight = False
         Borders.DrawBottom = False
-        Caption = 'RELAT'#211'RIOS DE SERVI'#199'OS MAIS REALIZADOS'
+        Caption = 'RELAT'#211'RIO DE ATENDIMENTO POR PROFISSIONAL'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -27
@@ -389,10 +389,10 @@ object Form27: TForm27
       object RLLabel3: TRLLabel
         Left = 0
         Top = -1
-        Width = 96
+        Width = 149
         Height = 37
         Align = faLeftBottom
-        Caption = 'Servi'#231'o'
+        Caption = 'Profissional'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -27
@@ -401,12 +401,26 @@ object Form27: TForm27
         ParentFont = False
       end
       object RLLabel6: TRLLabel
-        Left = 649
+        Left = 565
         Top = -1
-        Width = 69
+        Width = 153
         Height = 37
         Align = faRightBottom
-        Caption = 'Total'
+        Caption = 'Total Renda'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -27
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object RLLabel1: TRLLabel
+        Left = 270
+        Top = 0
+        Width = 177
+        Height = 37
+        Align = faCenter
+        Caption = 'Total Servi'#231'os'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -27
@@ -479,10 +493,10 @@ object Form27: TForm27
       object RLDBText2: TRLDBText
         Left = 0
         Top = 22
-        Width = 292
+        Width = 392
         Height = 16
         Align = faLeftOnly
-        Text = 'Relat'#243'rio de Servi'#231'os Mais Realizados'
+        Text = 'RELAT'#211'RIO DE ATENDIMENTO POR PROFISSIONAL'
       end
       object RLDBText4: TRLDBText
         Left = 0

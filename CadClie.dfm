@@ -4787,6 +4787,7 @@ object Form18: TForm18
       00B093D500000000000000EC6435000000000000003B590D000000000000C02E
       2DF944AE387344D10000000049454E44AE426082}
     ExplicitLeft = -8
+    ExplicitTop = -32
   end
   object Image1: TImage
     Left = 120
@@ -5314,34 +5315,6 @@ object Form18: TForm18
     ParentFont = False
     TabOrder = 4
   end
-  object EdCPF: TEdit
-    Left = 148
-    Top = 568
-    Width = 453
-    Height = 38
-    Color = clWhite
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -21
-    Font.Name = 'Segoe UI'
-    Font.Style = [fsBold]
-    ParentFont = False
-    TabOrder = 5
-  end
-  object EdFone: TEdit
-    Left = 148
-    Top = 840
-    Width = 453
-    Height = 38
-    Color = clWhite
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -21
-    Font.Name = 'Segoe UI'
-    Font.Style = [fsBold]
-    ParentFont = False
-    TabOrder = 6
-  end
   object EdCEP: TEdit
     Left = 1284
     Top = 337
@@ -5354,7 +5327,7 @@ object Form18: TForm18
     Font.Name = 'Segoe UI'
     Font.Style = [fsBold]
     ParentFont = False
-    TabOrder = 7
+    TabOrder = 5
   end
   object EdRua: TEdit
     Left = 1284
@@ -5368,7 +5341,7 @@ object Form18: TForm18
     Font.Name = 'Segoe UI'
     Font.Style = [fsBold]
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 6
   end
   object EdBairro: TEdit
     Left = 1284
@@ -5382,7 +5355,7 @@ object Form18: TForm18
     Font.Name = 'Segoe UI'
     Font.Style = [fsBold]
     ParentFont = False
-    TabOrder = 9
+    TabOrder = 7
   end
   object EdCidade: TEdit
     Left = 1284
@@ -5396,7 +5369,7 @@ object Form18: TForm18
     Font.Name = 'Segoe UI'
     Font.Style = [fsBold]
     ParentFont = False
-    TabOrder = 10
+    TabOrder = 8
   end
   object EdEstado: TEdit
     Left = 1284
@@ -5410,6 +5383,34 @@ object Form18: TForm18
     Font.Name = 'Segoe UI'
     Font.Style = [fsBold]
     ParentFont = False
+    TabOrder = 9
+  end
+  object MaskCpf: TMaskEdit
+    Left = 148
+    Top = 580
+    Width = 453
+    Height = 38
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'Segoe UI Semibold'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 10
+    Text = 'MaskCpf'
+  end
+  object MaskFone: TMaskEdit
+    Left = 148
+    Top = 840
+    Width = 453
+    Height = 38
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'Segoe UI Semibold'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 11
+    Text = 'MaskFone'
   end
 end

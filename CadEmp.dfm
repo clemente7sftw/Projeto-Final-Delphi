@@ -5093,19 +5093,6 @@ object Form19: TForm19
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object Label5: TLabel
-    Left = 148
-    Top = 652
-    Width = 83
-    Height = 30
-    Caption = 'Telefone'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -21
-    Font.Name = 'Segoe UI'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
   object LbUser: TLabel
     Left = 148
     Top = 284
@@ -5282,34 +5269,6 @@ object Form19: TForm19
     ParentFont = False
     TabOrder = 5
   end
-  object EdCNPJ: TEdit
-    Left = 148
-    Top = 584
-    Width = 453
-    Height = 38
-    Color = clWhite
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -21
-    Font.Name = 'Segoe UI Semibold'
-    Font.Style = [fsBold]
-    ParentFont = False
-    TabOrder = 6
-  end
-  object EdFone: TEdit
-    Left = 148
-    Top = 704
-    Width = 453
-    Height = 38
-    Color = clWhite
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -21
-    Font.Name = 'Segoe UI Semibold'
-    Font.Style = [fsBold]
-    ParentFont = False
-    TabOrder = 7
-  end
   object EdNome: TEdit
     Left = 148
     Top = 336
@@ -5336,7 +5295,7 @@ object Form19: TForm19
     Font.Name = 'Segoe UI Semibold'
     Font.Style = [fsBold]
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 6
   end
   object BtnCad: TPanel
     Left = 720
@@ -5353,7 +5312,7 @@ object Form19: TForm19
     Font.Style = [fsBold]
     ParentBackground = False
     ParentFont = False
-    TabOrder = 9
+    TabOrder = 7
     OnClick = BtnCadClick
   end
   object PnlLupa: TPanel
@@ -5364,7 +5323,7 @@ object Form19: TForm19
     Cursor = crHandPoint
     Color = 8612866
     ParentBackground = False
-    TabOrder = 10
+    TabOrder = 8
     object Image2: TImage
       Left = 1
       Top = 1
@@ -5395,5 +5354,19 @@ object Form19: TForm19
       ExplicitWidth = 40
       ExplicitHeight = 39
     end
+  end
+  object MaskCnpj: TMaskEdit
+    Left = 148
+    Top = 584
+    Width = 453
+    Height = 38
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'Segoe UI Semibold'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 9
+    Text = 'MaskCnpj'
   end
 end

@@ -22,6 +22,8 @@ object Form20: TForm20
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = 8
+    ExplicitTop = 8
     object Label1: TLabel
       Left = 16
       Top = 248
@@ -338,9 +340,23 @@ object Form20: TForm20
     object Label2: TLabel
       Left = 336
       Top = 432
-      Width = 93
-      Height = 41
+      Width = 34
+      Height = 15
       Caption = 'Label2'
+    end
+    object Label3: TLabel
+      Left = 948
+      Top = 223
+      Width = 98
+      Height = 30
+      Caption = 'Relat'#243'rios'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
+      OnClick = LbProfissionaisClick
     end
     object Barra: TPanel
       Left = -8
@@ -435,21 +451,13 @@ object Form20: TForm20
         OnClick = LbagendamentosClick
       end
     end
-    object Panel1: TPanel
-      Left = 697
-      Top = 336
-      Width = 185
-      Height = 153
-      Caption = 'Panel1'
-      TabOrder = 1
-    end
     object BtnRelat: TPanel
-      Left = 888
-      Top = 336
+      Left = 73
+      Top = 235
       Width = 185
       Height = 41
       Caption = 'Ver Relat'#243'rio'
-      TabOrder = 2
+      TabOrder = 1
       OnClick = BtnRelatClick
     end
     object RelatPeriodo: TMaskEdit
@@ -457,7 +465,7 @@ object Form20: TForm20
       Top = 304
       Width = 137
       Height = 23
-      TabOrder = 3
+      TabOrder = 2
       Text = 'RelatPeriodo'
     end
     object RelatPeriodo1: TMaskEdit
@@ -465,15 +473,69 @@ object Form20: TForm20
       Top = 304
       Width = 137
       Height = 23
-      TabOrder = 4
+      TabOrder = 3
       Text = 'RelatPeriodo'
+    end
+    object Panel1: TPanel
+      Left = 720
+      Top = 269
+      Width = 113
+      Height = 28
+      Cursor = crHandPoint
+      Caption = 'Clientes'
+      Color = 4405251
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 4
+      OnClick = Panel1Click
+    end
+    object Panel2: TPanel
+      Left = 848
+      Top = 269
+      Width = 113
+      Height = 28
+      Cursor = crHandPoint
+      Caption = 'Servi'#231'os'
+      Color = 4405251
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 5
+      OnClick = Panel2Click
+    end
+    object Panel3: TPanel
+      Left = 976
+      Top = 269
+      Width = 113
+      Height = 28
+      Cursor = crHandPoint
+      Caption = 'Profissionais'
+      Color = 4405251
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 6
+      OnClick = Panel3Click
     end
   end
   object FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink
     FileName = 
       'C:\Users\gabri\OneDrive\Documentos\Projeto-Final-Delphi\docs\tra' +
       'cing.txt'
-    Left = 56
-    Top = 384
+    Left = 64
+    Top = 288
   end
 end

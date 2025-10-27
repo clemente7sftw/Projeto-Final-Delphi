@@ -30,7 +30,8 @@ uses
   N1MudarSenha in 'N1MudarSenha.pas' {Form24},
   relatorios_servicos in 'relatorios_servicos.pas' {Form25},
   n1_agendamentos in 'n1_agendamentos.pas' {Form26},
-  relatorios_profissionais in 'relatorios_profissionais.pas' {Form27};
+  relatorios_profissionais in 'relatorios_profissionais.pas' {Form27},
+  relatorio_clientes in 'relatorio_clientes.pas' {Form28};
 
 {$R *.res}
 
@@ -66,5 +67,6 @@ begin
   Application.CreateForm(TForm25, Form25);
   Application.CreateForm(TForm26, Form26);
   Application.CreateForm(TForm27, Form27);
+  Application.CreateForm(TForm28, Form28);
   Application.Run;
 end.

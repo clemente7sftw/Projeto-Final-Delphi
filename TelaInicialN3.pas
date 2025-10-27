@@ -23,13 +23,16 @@ type
     LbCargos: TLabel;
     LbFornecedores: TLabel;
     Lbagendamentos: TLabel;
-    Panel1: TPanel;
     Image2: TImage;
     FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink;
     BtnRelat: TPanel;
     RelatPeriodo: TMaskEdit;
     RelatPeriodo1: TMaskEdit;
     Label2: TLabel;
+    Panel1: TPanel;
+    Label3: TLabel;
+    Panel2: TPanel;
+    Panel3: TPanel;
     procedure LbClieClick(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);
     procedure LbServicosClick(Sender: TObject);
@@ -44,6 +47,9 @@ type
     procedure AddAdm;
     procedure BtnRelatClick(Sender: TObject);
     procedure LbFornecedoresClick(Sender: TObject);
+    procedure Panel1Click(Sender: TObject);
+    procedure Panel2Click(Sender: TObject);
+    procedure Panel3Click(Sender: TObject);
   private
     { Private declarations }
 
@@ -61,7 +67,8 @@ implementation
 
 uses CClientes, CProfissionais, AdicionarServico, CServicos,
   CCargos, CFornecedores, Cadastro, CHorarios, Agendamentos, UDataModule,
-  CAgendamentos, CadAdm, relatorios_servicos;
+  CAgendamentos, CadAdm, relatorios_servicos, relatorio_clientes,
+  relatorios_profissionais;
 procedure TForm20.AddAdm;
 begin
 Form23.show;
@@ -154,6 +161,30 @@ end;
 procedure TForm20.LbServicosClick(Sender: TObject);
 begin
   Form15.show;
+end;
+
+procedure TForm20.Panel1Click(Sender: TObject);
+begin
+Form28 := TForm28.Create(Self);
+Form28.RLPeriodo.Caption := RelatPeriodo.text + ' Até ' + RelatPeriodo1.text;
+Form28.RLDBPeriodo1.Caption := RelatPeriodo.text + ' Até ' + RelatPeriodo1.text;
+Form28.RelatorioClientes.Preview();
+end;
+
+procedure TForm20.Panel2Click(Sender: TObject);
+begin
+Form25 := TForm25.Create(Self);
+Form25.RLPeriodo.Caption := RelatPeriodo.text + ' Até ' + RelatPeriodo1.text;
+Form25.RLDBPeriodo1.Caption := RelatPeriodo.text + ' Até ' + RelatPeriodo1.text;
+Form25.RelatorioServicos.Preview();
+end;
+
+procedure TForm20.Panel3Click(Sender: TObject);
+begin
+Form27 := TForm27.Create(Self);
+Form27.RLPeriodo.Caption := RelatPeriodo.text + ' Até ' + RelatPeriodo1.text;
+Form27.RLDBPeriodo1.Caption := RelatPeriodo.text + ' Até ' + RelatPeriodo1.text;
+Form27.RelatorioProfissionais.Preview();
 end;
 
 end.

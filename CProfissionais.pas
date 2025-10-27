@@ -217,14 +217,15 @@ begin
   DataModule1.QueryRPC.close;
   DataModule1.QueryRPC.SQL.Text :=
   'SELECT ' +
+  '  p.id_pro, ' +
   '  p.nome, ' +
   '  p.email, ' +
-  '  STRING_AGG(c.nome_cargo, '','')::varchar(500) AS nome_cargo ' +
+  '  STRING_AGG(c.nome_cargo, '', '')::varchar(500) AS nome_cargo ' +
   'FROM profissionais p ' +
   'LEFT JOIN profissionais_cargos pc ON p.id_pro = pc.id_pro ' +
   'LEFT JOIN cargos c ON pc.id_cargo = c.id_cargo ' +
   'WHERE p.id_empresa = :id_empresa ' +
-  'GROUP BY p.nome, p.email ' +
+  'GROUP BY p.id_pro, p.nome, p.email ' +
   'ORDER BY p.nome;';
   DataModule1.QueryRPC.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
   DataModule1.QueryRPC.Open;

@@ -722,7 +722,7 @@ object Form8: TForm8
         end
       end
       object BtnConf: TPanel
-        Left = 1102
+        Left = 1103
         Top = 905
         Width = 496
         Height = 41

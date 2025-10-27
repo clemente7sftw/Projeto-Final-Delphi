@@ -1,20 +1,19 @@
-object Form25: TForm25
+object Form28: TForm28
   Left = 0
   Top = 0
-  Caption = 'Relat'#243'rios Clientes'
-  ClientHeight = 638
-  ClientWidth = 956
+  Caption = 'Form28'
+  ClientHeight = 627
+  ClientWidth = 978
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  OnCreate = FormCreate
   TextHeight = 15
-  object RelatorioServicos: TRLReport
-    Left = 46
-    Top = 24
+  object RelatorioClientes: TRLReport
+    Left = 84
+    Top = 8
     Width = 794
     Height = 1123
     Borders.Sides = sdCustom
@@ -22,7 +21,6 @@ object Form25: TForm25
     Borders.DrawTop = False
     Borders.DrawRight = False
     Borders.DrawBottom = False
-    DataSource = DataSource1
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -13
@@ -333,7 +331,7 @@ object Form25: TForm25
         Borders.DrawTop = False
         Borders.DrawRight = False
         Borders.DrawBottom = False
-        Caption = 'RELAT'#211'RIO DE SERVI'#199'OS MAIS REALIZADOS'
+        Caption = 'RELAT'#211'RIO DE CLIENTES MAIS ASS'#205'DUOS '
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -27
@@ -368,7 +366,6 @@ object Form25: TForm25
         Align = faTop
         Alignment = taCenter
         DataField = 'nome'
-        DataSource = DataSource2
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -21
@@ -392,10 +389,10 @@ object Form25: TForm25
       object RLLabel3: TRLLabel
         Left = 0
         Top = -1
-        Width = 96
+        Width = 92
         Height = 37
         Align = faLeftBottom
-        Caption = 'Servi'#231'o'
+        Caption = 'Cliente'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -27
@@ -404,12 +401,26 @@ object Form25: TForm25
         ParentFont = False
       end
       object RLLabel6: TRLLabel
-        Left = 649
+        Left = 565
         Top = -1
-        Width = 69
+        Width = 153
         Height = 37
         Align = faRightBottom
-        Caption = 'Total'
+        Caption = 'Total Renda'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -27
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object RLLabel1: TRLLabel
+        Left = 270
+        Top = 0
+        Width = 177
+        Height = 37
+        Align = faCenter
+        Caption = 'Total Servi'#231'os'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -27
@@ -435,7 +446,6 @@ object Form25: TForm25
         Borders.DrawRight = False
         Borders.DrawBottom = False
         DataField = 'nome'
-        DataSource = DataSource1
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -27
@@ -456,7 +466,6 @@ object Form25: TForm25
         Borders.DrawRight = False
         Borders.DrawBottom = True
         DataField = 'total'
-        DataSource = DataSource1
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -27
@@ -479,16 +488,15 @@ object Form25: TForm25
         Height = 16
         Align = faLeftTop
         DataField = 'nome'
-        DataSource = DataSource2
         Text = ''
       end
       object RLDBText2: TRLDBText
         Left = 0
         Top = 22
-        Width = 292
+        Width = 342
         Height = 16
         Align = faLeftOnly
-        Text = 'Relat'#243'rio de Servi'#231'os Mais Realizados'
+        Text = 'RELAT'#211'RIO DE CLIENTES MAIS ASS'#205'DUOS '
       end
       object RLDBText4: TRLDBText
         Left = 0
@@ -530,15 +538,5 @@ object Form25: TForm25
         Text = ''
       end
     end
-  end
-  object DataSource1: TDataSource
-    DataSet = DataModule1.QueryTotalAg
-    Left = 21
-    Top = 258
-  end
-  object DataSource2: TDataSource
-    DataSet = DataModule1.QueryEmpresa
-    Left = 880
-    Top = 288
   end
 end

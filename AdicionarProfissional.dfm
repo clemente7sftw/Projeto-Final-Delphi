@@ -22,8 +22,6 @@ object Form9: TForm9
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -24
-    ExplicitTop = -8
     object Image1: TImage
       Left = 0
       Top = 240

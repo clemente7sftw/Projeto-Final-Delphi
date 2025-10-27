@@ -33,13 +33,13 @@ type
     Image2: TImage;
     EdNome: TEdit;
     EdEmail: TEdit;
-    EdCPF: TEdit;
-    EdFone: TEdit;
     EdCEP: TEdit;
     EdRua: TEdit;
     EdBairro: TEdit;
     EdCidade: TEdit;
     EdEstado: TEdit;
+    MaskCpf: TMaskEdit;
+    MaskFone: TMaskEdit;
     procedure Cadastrar;
     procedure FormCreate(Sender: TObject);
     procedure Image2Click(Sender: TObject);
@@ -60,12 +60,31 @@ implementation
 uses UDataCEP, Cadastro, UDataModule, UMetodos;
 
 
+procedure TForm18.FormCreate(Sender: TObject);
+begin
+ WindowState := wsMaximized;
+ MaskCpf.EditMask:= '999.999.999-99';
+ MaskCpf.Text := '';
+ MaskFone.EditMask := '(99)9 99999-9999';
+ MaskFone.Text := '';
+end;
 
 procedure TForm18.BtnCadClick(Sender: TObject);
 begin
 Cadastrar;
 end;
 
+
+procedure TForm18.Image2Click(Sender: TObject);
+begin
+  DataModule2.RESTClient1.BaseURL := 'https://viacep.com.br/ws/'+ EdCEP.Text+'/json/';
+  DataModule2.RESTRequest1.Execute;
+  ///ShowMessage (DataModule2.RESTResponse1.Content);
+  EdRua.Text := DataModule2.FDMemTable1.FieldByName('logradouro').AsString;
+  EdBairro.Text := DataModule2.FDMemTable1.FieldByName('bairro').AsString;
+  EdCidade.Text := DataModule2.FDMemTable1.FieldByName('localidade').AsString;
+  EdEstado.Text := DataModule2.FDMemTable1.FieldByName('estado').AsString;
+end;
 
 procedure TForm18.Cadastrar;
 begin
@@ -77,9 +96,9 @@ try
     ParamByName('nome').AsString := EdNome.Text;
     ParamByName('senha').AsString := Form2.EdSenha.Text;
     ParamByName('email').AsString := EdEmail.Text;
-    ParamByName('cpf').AsString := EdCPF.Text;
+    ParamByName('cpf').AsString :=  MaskCpf.Text;
     ParamByName('genero').AsString := CBGenero.Text;
-    ParamByName('fone').AsString := EdFone.Text;
+    ParamByName('fone').AsString :=  MaskFone.Text;
     ParamByName('cep').AsString := EdCEP.Text;
     ParamByName('rua').AsString := EdRua.Text;
     ParamByName('bairro').AsString := EdBairro.Text;
@@ -96,23 +115,8 @@ try
     end;
 end;
 
-procedure TForm18.FormCreate(Sender: TObject);
-begin
- WindowState := wsMaximized;
-
-end;
 
 
-procedure TForm18.Image2Click(Sender: TObject);
-begin
-  DataModule2.RESTClient1.BaseURL := 'https://viacep.com.br/ws/'+ EdCEP.Text+'/json/';
-  DataModule2.RESTRequest1.Execute;
-  ///ShowMessage (DataModule2.RESTResponse1.Content);
-  EdRua.Text := DataModule2.FDMemTable1.FieldByName('logradouro').AsString;
-  EdBairro.Text := DataModule2.FDMemTable1.FieldByName('bairro').AsString;
-  EdCidade.Text := DataModule2.FDMemTable1.FieldByName('localidade').AsString;
-  EdEstado.Text := DataModule2.FDMemTable1.FieldByName('estado').AsString;
-end;
 
 
 end.

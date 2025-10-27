@@ -118,6 +118,7 @@ type
     QueryTotalAgnome: TWideStringField;
     QueryTotalAgtotal: TLargeintField;
     QueryAgendamentosid_empresa: TIntegerField;
+    QueryProfissionaisid_empresa: TIntegerField;
     procedure QueryAgstatusGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
   private
