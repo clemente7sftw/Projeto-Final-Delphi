@@ -40,6 +40,7 @@ type
     Lblrequired: TLabel;
     BtnCad: TPanel;
     Voltar: TImage;
+    Panel2: TPanel;
     procedure Excluir;
     procedure FormCreate(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);

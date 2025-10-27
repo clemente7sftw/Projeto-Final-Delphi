@@ -1,4 +1,4 @@
-unit relatorios_clientes;
+unit relatorios_servicos;
 
 interface
 
@@ -9,7 +9,7 @@ uses
 
 type
   TForm25 = class(TForm)
-    RelatorioClientes: TRLReport;
+    RelatorioServicos: TRLReport;
     RLBHeader: TRLBand;
     RLBTitulo: TRLBand;
     RLBCabecalho: TRLBand;

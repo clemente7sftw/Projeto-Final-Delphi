@@ -12,7 +12,7 @@ object Form25: TForm25
   Font.Style = []
   OnCreate = FormCreate
   TextHeight = 15
-  object RelatorioClientes: TRLReport
+  object RelatorioServicos: TRLReport
     Left = 46
     Top = 24
     Width = 992

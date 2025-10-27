@@ -28,7 +28,7 @@ uses
   CAdministrador in 'CAdministrador.pas' {Form22},
   CadAdm in 'CadAdm.pas' {Form23},
   N1MudarSenha in 'N1MudarSenha.pas' {Form24},
-  relatorios_clientes in 'relatorios_clientes.pas' {Form25},
+  relatorios_servicos in 'relatorios_servicos.pas' {Form25},
   n1_agendamentos in 'n1_agendamentos.pas' {Form26};
 
 {$R *.res}

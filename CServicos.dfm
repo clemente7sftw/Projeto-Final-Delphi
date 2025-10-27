@@ -23,6 +23,8 @@ object Form15: TForm15
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1919
+    ExplicitHeight = 1053
     object lbaviso: TLabel
       Left = 40
       Top = 869
@@ -556,6 +558,8 @@ object Form15: TForm15
       Width = 1919
       Height = 19
       Panels = <>
+      ExplicitTop = 1033
+      ExplicitWidth = 1917
     end
     object Barra: TPanel
       Left = -18
@@ -732,6 +736,14 @@ object Form15: TForm15
       ParentFont = False
       TabOrder = 9
       OnClick = BtnCadClick
+    end
+    object Panel2: TPanel
+      Left = 558
+      Top = 361
+      Width = 163
+      Height = 34
+      Caption = 'Panel2'
+      TabOrder = 10
     end
   end
   object DataSource1: TDataSource

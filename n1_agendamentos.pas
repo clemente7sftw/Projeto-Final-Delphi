@@ -40,8 +40,6 @@ type
 
 var
   Form26: TForm26;
-  var
-  id_empresa: Integer;
 
 implementation
 
@@ -64,17 +62,12 @@ procedure TForm26.FormShow(Sender: TObject);
 begin
 datamodule1.QueryEmpresa.close;
 datamodule1.QueryEmpresa.open;
-
-    DataModule1.QueryServicos.Close;
-    DataModule1.QueryServicos.SQL.Text :=
-      'SELECT * FROM servicos WHERE id_empresa = :id_empresa ORDER BY nome';
-    DataModule1.QueryServicos.ParamByName('id_empresa').AsInteger := id_empresa;
-    DataModule1.QueryServicos.Open;
 PreencherServicos;
 end;
 
 procedure TForm26.PreencherServicos;
-
+var
+  id_empresa: Integer;
 begin
   if not DataSource1.DataSet.IsEmpty then
   begin

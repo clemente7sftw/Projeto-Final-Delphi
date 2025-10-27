@@ -234,7 +234,7 @@
             <Form>Form24</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="relatorios_clientes.pas">
+        <DCCReference Include="relatorios_servicos.pas">
             <Form>Form25</Form>
             <FormType>dfm</FormType>
         </DCCReference>

@@ -54,7 +54,7 @@ implementation
 
 {$R *.dfm}
 
-uses N1MudarSenha, n1_agendamentos;
+uses N1MudarSenha, n1_agendamentos, relatorios_servicos;
 
 
 

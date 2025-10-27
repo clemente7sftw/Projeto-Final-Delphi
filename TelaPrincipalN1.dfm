@@ -22,8 +22,6 @@ object Form3: TForm3
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1922
-    ExplicitHeight = 1053
     object Image4: TImage
       Left = 32
       Top = 48
