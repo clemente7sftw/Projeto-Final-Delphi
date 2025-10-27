@@ -37,7 +37,7 @@ implementation
 
 {$R *.dfm}
 
-uses CFornecedores, UMetodos, UDataModule;
+uses  UMetodos, UDataModule, CFornecedores;
 
 procedure TForm6.FormCreate(Sender: TObject);
 begin

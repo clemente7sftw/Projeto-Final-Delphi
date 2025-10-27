@@ -117,12 +117,14 @@ type
     QueryTotalAg: TFDQuery;
     QueryTotalAgnome: TWideStringField;
     QueryTotalAgtotal: TLargeintField;
+    QueryAgendamentosid_empresa: TIntegerField;
     procedure QueryAgstatusGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
   private
     { Private declarations }
   public
-    var id_empresa:integer;
+    var id_empresa, id_agendamento:integer;
+
     { Public declarations }
   end;
 

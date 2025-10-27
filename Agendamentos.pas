@@ -162,23 +162,28 @@ end;
 
 procedure TForm13.Cadastrar;
 var
-  id_clie, id_servico, id_agendamento, i: Integer;
+  id_clie, id_servico, id_agendamento,id_empresa, i: Integer;
   dataselecionada: TDate;
 begin
   if DataModule1.QueryAgendamentos.State in [dsInsert, dsEdit] then
   begin
+    id_agendamento:= DataModule1.id_agendamento;
+    DataModule1.QueryAgendamentos.FieldByName('id_agendamento').AsInteger := DataModule1.id_agendamento;
     dataselecionada := MonthCalendar1.Date;
+    id_empresa:= DataModule1.id_empresa;
+    DataModule1.QueryAgendamentos.FieldByName('id_empresa').AsInteger := DataModule1.id_empresa;
+    id_agendamento := DataModule1.QueryAgendamentos.FieldByName('id_agendamento').AsInteger;
     id_clie := DataModule1.QueryClientes.FieldByName('id_clie').AsInteger;
     DataModule1.QueryAgendamentos.FieldByName('id_clie').AsInteger := id_clie;
     DataModule1.QueryAgendamentos.FieldByName('data_agendamento').AsDateTime := dataselecionada;
     DataModule1.QueryAgendamentos.FieldByName('hora_inicio').AsDateTime := StrToTime(ComboBoxHorarios.Text);
     DataModule1.QueryAgendamentos.Post;
     DataModule1.QueryAgendamentos.refresh;
-    id_agendamento := DataModule1.QueryAgendamentos.FieldByName('id_agendamento').AsInteger;
     for i := 0 to CheckListBoxServicos.Count - 1 do
     begin
       if CheckListBoxServicos.Checked[i] then
       begin
+
         id_servico := Integer(CheckListBoxServicos.Items.Objects[i]);
         DataModule1.QueryRAS.append;
         DataModule1.QueryRAS.FieldByName('id_agendamento').AsInteger := id_agendamento;

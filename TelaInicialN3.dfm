@@ -22,8 +22,6 @@ object Form20: TForm20
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1918
-    ExplicitHeight = 666
     object Label1: TLabel
       Left = 16
       Top = 248
@@ -336,6 +334,13 @@ object Form20: TForm20
         C61C7D1F9D1AB060C19E981F1D043C29BDA5B7110000000049454E44AE426082}
       Stretch = True
       OnClick = Image2Click
+    end
+    object Label2: TLabel
+      Left = 336
+      Top = 432
+      Width = 93
+      Height = 41
+      Caption = 'Label2'
     end
     object Barra: TPanel
       Left = -8

@@ -22,6 +22,8 @@ implementation
 
 { TMetodos }
 
+uses relatorios_servicos;
+
 
 
 procedure TMetodos.FecharForm;

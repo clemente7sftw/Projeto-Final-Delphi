@@ -51,7 +51,8 @@ implementation
 
 {$R *.dfm}
 
-uses TelaPrincipalN1, CClientes, UDataModule, TelaInicialN3;
+uses TelaPrincipalN1, CClientes, UDataModule, TelaInicialN3,
+  relatorios_servicos;
 
 procedure TForm7.BtnAddClick(Sender: TObject);
 begin

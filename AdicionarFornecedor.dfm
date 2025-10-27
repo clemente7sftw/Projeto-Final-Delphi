@@ -22,10 +22,6 @@ object Form6: TForm6
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 312
-    ExplicitTop = 176
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object Image1: TImage
       Left = 24
       Top = 400

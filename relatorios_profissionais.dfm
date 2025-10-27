@@ -1,20 +1,19 @@
-object Form25: TForm25
+object Form27: TForm27
   Left = 0
   Top = 0
-  Caption = 'Relat'#243'rios Clientes'
-  ClientHeight = 638
-  ClientWidth = 956
+  Caption = 'Form27'
+  ClientHeight = 661
+  ClientWidth = 985
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  OnCreate = FormCreate
   TextHeight = 15
   object RelatorioServicos: TRLReport
-    Left = 46
-    Top = 24
+    Left = 100
+    Top = 29
     Width = 794
     Height = 1123
     Borders.Sides = sdCustom
@@ -22,7 +21,6 @@ object Form25: TForm25
     Borders.DrawTop = False
     Borders.DrawRight = False
     Borders.DrawBottom = False
-    DataSource = DataSource1
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -13
@@ -368,7 +366,6 @@ object Form25: TForm25
         Align = faTop
         Alignment = taCenter
         DataField = 'nome'
-        DataSource = DataSource2
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -21
@@ -435,7 +432,6 @@ object Form25: TForm25
         Borders.DrawRight = False
         Borders.DrawBottom = False
         DataField = 'nome'
-        DataSource = DataSource1
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -27
@@ -456,7 +452,6 @@ object Form25: TForm25
         Borders.DrawRight = False
         Borders.DrawBottom = True
         DataField = 'total'
-        DataSource = DataSource1
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -27
@@ -479,7 +474,6 @@ object Form25: TForm25
         Height = 16
         Align = faLeftTop
         DataField = 'nome'
-        DataSource = DataSource2
         Text = ''
       end
       object RLDBText2: TRLDBText
@@ -530,15 +524,5 @@ object Form25: TForm25
         Text = ''
       end
     end
-  end
-  object DataSource1: TDataSource
-    DataSet = DataModule1.QueryTotalAg
-    Left = 21
-    Top = 258
-  end
-  object DataSource2: TDataSource
-    DataSet = DataModule1.QueryEmpresa
-    Left = 880
-    Top = 288
   end
 end

@@ -1,32 +1,30 @@
-unit relatorios_servicos;
+unit relatorios_profissionais;
 
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, RLReport, Data.DB, Datasnap.DBClient,
-  Vcl.Imaging.pngimage;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, RLReport, Vcl.Imaging.pngimage;
 
 type
-  TForm25 = class(TForm)
+  TForm27 = class(TForm)
     RelatorioServicos: TRLReport;
     RLBHeader: TRLBand;
-    RLBTitulo: TRLBand;
-    RLBCabecalho: TRLBand;
-    RLBConteudo: TRLBand;
-    RLBFooter: TRLBand;
     RLSystemInfo1: TRLSystemInfo;
     RLSystemInfo2: TRLSystemInfo;
-    RLLabel2: TRLLabel;
-    RLPeriodo: TRLLabel;
-    RLLabel3: TRLLabel;
-    RLLabel6: TRLLabel;
-    RLDBText1: TRLDBText;
-    RLDBText3: TRLDBText;
-    DataSource1: TDataSource;
     RLImage1: TRLImage;
     RLImage2: TRLImage;
-    DataSource2: TDataSource;
+    RLBTitulo: TRLBand;
+    RLLabel2: TRLLabel;
+    RLPeriodo: TRLLabel;
+    RLDBNome_empresa: TRLDBText;
+    RLBCabecalho: TRLBand;
+    RLLabel3: TRLLabel;
+    RLLabel6: TRLLabel;
+    RLBConteudo: TRLBand;
+    RLDBText1: TRLDBText;
+    RLDBText3: TRLDBText;
+    RLBFooter: TRLBand;
     RLDados_empresa: TRLDBText;
     RLDBText2: TRLDBText;
     RLDBText4: TRLDBText;
@@ -34,8 +32,6 @@ type
     RLDBText5: TRLDBText;
     RLSystemInfo3: TRLSystemInfo;
     RLSystemInfo4: TRLSystemInfo;
-    RLDBNome_empresa: TRLDBText;
-    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -43,21 +39,10 @@ type
   end;
 
 var
-  Form25: TForm25;
+  Form27: TForm27;
 
 implementation
 
 {$R *.dfm}
-
-uses UDataModule;
-
-procedure TForm25.FormCreate(Sender: TObject);
-begin
-Datamodule1.QueryTotalAg.close;
-Datamodule1.QueryTotalAg.open;
-datamodule1.QueryEmpresa.Close;
-datamodule1.QueryEmpresa.open;
-
-end;
 
 end.

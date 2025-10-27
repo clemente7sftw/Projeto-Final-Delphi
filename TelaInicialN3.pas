@@ -29,6 +29,7 @@ type
     BtnRelat: TPanel;
     RelatPeriodo: TMaskEdit;
     RelatPeriodo1: TMaskEdit;
+    Label2: TLabel;
     procedure LbClieClick(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);
     procedure LbServicosClick(Sender: TObject);
@@ -60,7 +61,7 @@ implementation
 
 uses CClientes, CProfissionais, AdicionarServico, CServicos,
   CCargos, CFornecedores, Cadastro, CHorarios, Agendamentos, UDataModule,
-  CAgendamentos, CadAdm, relatorios_clientes;
+  CAgendamentos, CadAdm, relatorios_servicos;
 procedure TForm20.AddAdm;
 begin
 Form23.show;
@@ -73,7 +74,8 @@ procedure TForm20.BtnRelatClick(Sender: TObject);
 begin
 Form25 := TForm25.Create(Self);
 Form25.RLPeriodo.Caption := RelatPeriodo.text + ' Até ' + RelatPeriodo1.text;
-Form25.RelatorioClientes.Preview();
+Form25.RLDBPeriodo1.Caption := RelatPeriodo.text + ' Até ' + RelatPeriodo1.text;
+Form25.RelatorioServicos.Preview();
 end;
 
 procedure TForm20.FormCreate(Sender: TObject);
@@ -83,13 +85,13 @@ RelatPeriodo.EditMask := '99/99/9999';
 RelatPeriodo.Text := '';
 RelatPeriodo1.EditMask := '99/99/9999';
 RelatPeriodo1.Text := '';
-  DataModule1.QueryClientes.Close;
-  DataModule1.QueryClientes.SQL.Text :=
-    'SELECT * FROM clientes ' +
-    'WHERE id_empresa = :id_empresa ' +
-    'ORDER BY nome_clie';
-  DataModule1.QueryClientes.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-  DataModule1.QueryClientes.Open;
+DataModule1.QueryClientes.Close;
+DataModule1.QueryClientes.Open;
+DataModule1.QueryClientes.SQL.Text :=
+'SELECT * FROM clientes ' +
+'WHERE id_empresa = :id_empresa ' +
+'ORDER BY nome_clie';
+DataModule1.QueryClientes.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
 end;
 
 procedure TForm20.FormShow(Sender: TObject);

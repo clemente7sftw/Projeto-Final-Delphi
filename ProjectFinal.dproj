@@ -242,6 +242,10 @@
             <Form>Form26</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="relatorios_profissionais.pas">
+            <Form>Form27</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
