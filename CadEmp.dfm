@@ -5199,6 +5199,19 @@ object Form19: TForm19
     Font.Style = [fsBold]
     ParentFont = False
   end
+  object Lblrequired: TLabel
+    Left = 600
+    Top = 859
+    Width = 626
+    Height = 30
+    Caption = 'Algum Erro ocorreu do nosso lado... Tente novamente mais tarde'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -21
+    Font.Name = 'Segoe UI Semibold'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
   object EdBairro: TEdit
     Left = 1284
     Top = 584
@@ -5368,5 +5381,12 @@ object Form19: TForm19
     ParentFont = False
     TabOrder = 9
     Text = 'MaskCnpj'
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 5000
+    OnTimer = Timer1Timer
+    Left = 1248
+    Top = 128
   end
 end

@@ -33,9 +33,14 @@ type
     PnlLupa: TPanel;
     Image2: TImage;
     MaskCnpj: TMaskEdit;
+    Timer1: TTimer;
+    Lblrequired: TLabel;
     procedure FormCreate(Sender: TObject);
+    procedure Cadastrar;
+    procedure Erro;
     procedure Image2Click(Sender: TObject);
     procedure BtnCadClick(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -53,8 +58,13 @@ uses UDataCEP, UDataModule, UMetodos, Cadastro, TelaInicialN3;
 
 procedure TForm19.BtnCadClick(Sender: TObject);
 begin
+Cadastrar;
+end;
+
+procedure TForm19.Cadastrar;
+begin
 try
- with DataModule1.QueryEmpresa do
+ with DataModule1.query_conexao do
    begin
     SQL.Text := 'INSERT INTO empresas (nome, email, senha, cnpj, cep, rua, bairro, cidade, estado ) ' +
                 'VALUES (:nome, :email, :senha, :cnpj, :cep, :rua, :bairro, :cidade, :estado)';
@@ -69,13 +79,18 @@ try
     ParamByName('estado').AsString := EdEstado.Text;
     ExecSQL;
   end;
-  Form19.Hide;
-  Form2.Hide;
+  Form19.close;
+  Form2.close;
   Form20.show;
-  TMetodos.TelaPrincipal;
   except
+  erro;
+  end;
+end;
 
-    end;
+procedure TForm19.Erro;
+begin
+  Lblrequired.Visible := True;
+  Timer1.Enabled := True;
 end;
 
 procedure TForm19.FormCreate(Sender: TObject);
@@ -83,6 +98,7 @@ begin
 WindowState:=wsMaximized;
 MaskCnpj.EditMask:= '99.999.999/9999-99';
 MaskCnpj.Text := '';
+lblrequired.visible := false;
 end;
 
 procedure TForm19.Image2Click(Sender: TObject);
@@ -95,6 +111,12 @@ begin
   EdEstado.Text := DataModule2.FDMemTable1.FieldByName('estado').AsString;
 
 
+end;
+
+procedure TForm19.Timer1Timer(Sender: TObject);
+begin
+lblrequired.visible := false;
+Timer1.Enabled := False;
 end;
 
 end.

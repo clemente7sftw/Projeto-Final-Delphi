@@ -12,7 +12,7 @@ uses
 
 type
   TDataModule1 = class(TDataModule)
-    FDConnection1: TFDConnection;
+    conexao_banco: TFDConnection;
     FDPhysPgDriverLink1: TFDPhysPgDriverLink;
     QueryClientes: TFDQuery;
     QueryReservas: TFDQuery;
@@ -113,6 +113,7 @@ type
     QueryTotalAgtotal: TLargeintField;
     QueryAgendamentosid_empresa: TIntegerField;
     QueryProfissionaisid_empresa: TIntegerField;
+    query_conexao: TFDQuery;
     procedure QueryAgstatusGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
   private

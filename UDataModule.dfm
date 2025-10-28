@@ -1,7 +1,7 @@
 object DataModule1: TDataModule1
-  Height = 444
-  Width = 993
-  object FDConnection1: TFDConnection
+  Height = 575
+  Width = 403
+  object conexao_banco: TFDConnection
     Params.Strings = (
       'Database=beauty_stage'
       'User_Name=postgres'
@@ -20,7 +20,7 @@ object DataModule1: TDataModule1
     Top = 16
   end
   object QueryClientes: TFDQuery
-    Connection = FDConnection1
+    Connection = conexao_banco
     SQL.Strings = (
       'select * from clientes')
     Left = 32
@@ -94,7 +94,7 @@ object DataModule1: TDataModule1
     end
   end
   object QueryReservas: TFDQuery
-    Connection = FDConnection1
+    Connection = conexao_banco
     SQL.Strings = (
       'select * from reservas'
       '')
@@ -133,7 +133,7 @@ object DataModule1: TDataModule1
     end
   end
   object QueryProfissionais: TFDQuery
-    Connection = FDConnection1
+    Connection = conexao_banco
     SQL.Strings = (
       'select * from profissionais')
     Left = 130
@@ -189,14 +189,14 @@ object DataModule1: TDataModule1
     end
   end
   object QueryEmpresa: TFDQuery
-    Connection = FDConnection1
+    Connection = conexao_banco
     SQL.Strings = (
       'select * from empresas')
     Left = 125
     Top = 162
   end
   object QueryServicos: TFDQuery
-    Connection = FDConnection1
+    Connection = conexao_banco
     SQL.Strings = (
       'select * from servicos '
       '')
@@ -204,7 +204,7 @@ object DataModule1: TDataModule1
     Top = 238
   end
   object QueryCS: TFDQuery
-    Connection = FDConnection1
+    Connection = conexao_banco
     SQL.Strings = (
       'SELECT * from cargos_servicos')
     Left = 131
@@ -223,12 +223,12 @@ object DataModule1: TDataModule1
     end
   end
   object QueryCargos: TFDQuery
-    Connection = FDConnection1
+    Connection = conexao_banco
     SQL.Strings = (
       'select * from cargos'
       '')
-    Left = 486
-    Top = 162
+    Left = 278
+    Top = 242
     object QueryCargosid_cargo: TIntegerField
       FieldName = 'id_cargo'
       Origin = 'id_cargo'
@@ -250,11 +250,11 @@ object DataModule1: TDataModule1
     end
   end
   object Queryfornecedores: TFDQuery
-    Connection = FDConnection1
+    Connection = conexao_banco
     SQL.Strings = (
       'select * from fornecedores')
-    Left = 390
-    Top = 122
+    Left = 254
+    Top = 170
     object Queryfornecedoresid: TIntegerField
       FieldName = 'id'
       Origin = 'id'
@@ -277,7 +277,7 @@ object DataModule1: TDataModule1
     end
   end
   object QueryPC: TFDQuery
-    Connection = FDConnection1
+    Connection = conexao_banco
     SQL.Strings = (
       'select * from profissionais_cargos')
     Left = 32
@@ -292,7 +292,7 @@ object DataModule1: TDataModule1
     end
   end
   object QueryRPC: TFDQuery
-    Connection = FDConnection1
+    Connection = conexao_banco
     SQL.Strings = (
       'SELECT '
       '    p.nome,'
@@ -330,7 +330,7 @@ object DataModule1: TDataModule1
     end
   end
   object QueryRCS: TFDQuery
-    Connection = FDConnection1
+    Connection = conexao_banco
     SQL.Strings = (
       
         'SELECT c.nome_cargo, STRING_AGG(s.nome, '#39', '#39')::varchar(500) AS n' +
@@ -353,7 +353,7 @@ object DataModule1: TDataModule1
     end
   end
   object QueryAg: TFDQuery
-    Connection = FDConnection1
+    Connection = conexao_banco
     SQL.Strings = (
       'SELECT '
       ''
@@ -384,8 +384,8 @@ object DataModule1: TDataModule1
       'ORDER BY'
       '    a.id_agendamento;'
       '')
-    Left = 888
-    Top = 360
+    Left = 192
+    Top = 392
     object QueryAgid_agendamento: TIntegerField
       FieldName = 'id_agendamento'
       Origin = 'id_agendamento'
@@ -426,11 +426,11 @@ object DataModule1: TDataModule1
     end
   end
   object QueryAgendamentos: TFDQuery
-    Connection = FDConnection1
+    Connection = conexao_banco
     SQL.Strings = (
       'select * from agendamentos')
-    Left = 598
-    Top = 302
+    Left = 310
+    Top = 334
     object QueryAgendamentosid_agendamento: TIntegerField
       FieldName = 'id_agendamento'
       Origin = 'id_agendamento'
@@ -465,7 +465,7 @@ object DataModule1: TDataModule1
     end
   end
   object QueryFClientes: TFDQuery
-    Connection = FDConnection1
+    Connection = conexao_banco
     SQL.Strings = (
       'SELECT '
       '  EXTRACT(MONTH FROM data_cad) AS mes,'
@@ -477,8 +477,8 @@ object DataModule1: TDataModule1
       'GROUP BY EXTRACT(MONTH FROM data_cad)'
       'ORDER BY mes;'
       '')
-    Left = 408
-    Top = 280
+    Left = 120
+    Top = 480
     object QueryFClientesmes: TFMTBCDField
       AutoGenerateValue = arDefault
       FieldName = 'mes'
@@ -495,18 +495,18 @@ object DataModule1: TDataModule1
     end
   end
   object QueryUpAg: TFDQuery
-    Connection = FDConnection1
+    Connection = conexao_banco
     SQL.Strings = (
       '')
-    Left = 904
-    Top = 280
+    Left = 120
+    Top = 392
   end
   object QueryRAS: TFDQuery
-    Connection = FDConnection1
+    Connection = conexao_banco
     SQL.Strings = (
       'select * from agendamento_servicos')
-    Left = 800
-    Top = 272
+    Left = 256
+    Top = 400
     object QueryRASid_agendamento: TIntegerField
       FieldName = 'id_agendamento'
       Origin = 'id_agendamento'
@@ -519,16 +519,16 @@ object DataModule1: TDataModule1
     end
   end
   object QueryPS: TFDQuery
-    Connection = FDConnection1
-    Left = 760
-    Top = 184
+    Connection = conexao_banco
+    Left = 216
+    Top = 320
   end
   object QueryAdm: TFDQuery
-    Connection = FDConnection1
+    Connection = conexao_banco
     SQL.Strings = (
       'select * from administradores')
-    Left = 280
-    Top = 352
+    Left = 24
+    Top = 472
     object QueryAdmid_adm: TIntegerField
       FieldName = 'id_adm'
       Origin = 'id_adm'
@@ -583,7 +583,7 @@ object DataModule1: TDataModule1
     end
   end
   object QueryTotalAg: TFDQuery
-    Connection = FDConnection1
+    Connection = conexao_banco
     SQL.Strings = (
       'SELECT'
       '    S.nome, '
@@ -597,8 +597,8 @@ object DataModule1: TDataModule1
       '    S.nome '
       'ORDER BY'
       '    Total  DESC; ')
-    Left = 339
-    Top = 211
+    Left = 27
+    Top = 395
     object QueryTotalAgnome: TWideStringField
       FieldName = 'nome'
       Origin = 'nome'
@@ -610,5 +610,10 @@ object DataModule1: TDataModule1
       Origin = 'total'
       ReadOnly = True
     end
+  end
+  object query_conexao: TFDQuery
+    Connection = conexao_banco
+    Left = 264
+    Top = 48
   end
 end

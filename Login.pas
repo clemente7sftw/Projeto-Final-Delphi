@@ -119,7 +119,7 @@ begin
 
   LoginCorreto := False;
   LbErro.Visible := False;
-  with DataModule1.QueryClientes do
+  with DataModule1.query_conexao do
   begin
     Close;
     SQL.Text := 'SELECT * FROM clientes WHERE email_clie = :email AND senha_clie = :senha';
@@ -134,7 +134,7 @@ begin
       Exit;
     end;
   end;
-  with DataModule1.QueryEmpresa do
+  with DataModule1.query_conexao do
   begin
     Close;
     SQL.Text := 'SELECT * FROM empresas WHERE email = :email AND senha = :senha';
@@ -150,7 +150,7 @@ begin
       Exit;
     end;
   end;
-  with DataModule1.QueryAdm do
+  with DataModule1.query_conexao do
   begin
     Close;
     SQL.Text := 'SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha';

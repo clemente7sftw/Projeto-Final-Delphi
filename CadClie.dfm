@@ -5208,6 +5208,19 @@ object Form18: TForm18
     Font.Style = [fsBold]
     ParentFont = False
   end
+  object Lblrequired: TLabel
+    Left = 632
+    Top = 859
+    Width = 626
+    Height = 30
+    Caption = 'Algum Erro ocorreu do nosso lado... Tente novamente mais tarde'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -21
+    Font.Name = 'Segoe UI Semibold'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
   object BtnCad: TPanel
     Left = 720
     Top = 905
@@ -5412,5 +5425,12 @@ object Form18: TForm18
     ParentFont = False
     TabOrder = 11
     Text = 'MaskFone'
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 5000
+    OnTimer = Timer1Timer
+    Left = 680
+    Top = 88
   end
 end

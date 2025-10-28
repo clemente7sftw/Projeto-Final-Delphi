@@ -40,10 +40,14 @@ type
     EdEstado: TEdit;
     MaskCpf: TMaskEdit;
     MaskFone: TMaskEdit;
+    Timer1: TTimer;
+    Lblrequired: TLabel;
     procedure Cadastrar;
+    procedure Erro;
     procedure FormCreate(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure BtnCadClick(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -57,7 +61,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDataCEP, Cadastro, UDataModule, UMetodos;
+uses UDataCEP, Cadastro, UDataModule, UMetodos, TelaPrincipalN1;
 
 
 procedure TForm18.FormCreate(Sender: TObject);
@@ -67,6 +71,7 @@ begin
  MaskCpf.Text := '';
  MaskFone.EditMask := '(99)9 99999-9999';
  MaskFone.Text := '';
+ Lblrequired.Visible := false;
 end;
 
 procedure TForm18.BtnCadClick(Sender: TObject);
@@ -77,19 +82,29 @@ end;
 
 procedure TForm18.Image2Click(Sender: TObject);
 begin
+try
   DataModule2.RESTClient1.BaseURL := 'https://viacep.com.br/ws/'+ EdCEP.Text+'/json/';
   DataModule2.RESTRequest1.Execute;
   ///ShowMessage (DataModule2.RESTResponse1.Content);
-  EdRua.Text := DataModule2.FDMemTable1.FieldByName('logradouro').AsString;
+  EdRua.Text := DataModule2.FDMemTable1.FieldByName('logrdouro').AsString;
   EdBairro.Text := DataModule2.FDMemTable1.FieldByName('bairro').AsString;
   EdCidade.Text := DataModule2.FDMemTable1.FieldByName('localidade').AsString;
   EdEstado.Text := DataModule2.FDMemTable1.FieldByName('estado').AsString;
+except
+erro;
+end;
+end;
+
+procedure TForm18.Timer1Timer(Sender: TObject);
+begin
+  Lblrequired.Visible := false;
+  Timer1.Enabled := false;
 end;
 
 procedure TForm18.Cadastrar;
 begin
 try
- with DataModule1.QueryClientes do
+ with DataModule1.query_conexao do
    begin
     SQL.Text := 'INSERT INTO clientes (nome_clie, email_clie, senha_clie, cpf_clie, genero_clie, fone_clie, cep_clie, rua_clie, bairro_clie, cidade_clie, estado_clie ) ' +
                 'VALUES (:nome, :email, :senha, :cpf, :genero, :fone, :cep, :rua, :bairro, :cidade, :estado)';
@@ -106,17 +121,18 @@ try
     ParamByName('estado').AsString := EdEstado.Text;
     ExecSQL;
   end;
-  Form18.Hide;
-  Form2.Hide;
-  TMetodos.TelaPrincipal;
+  Form18.close;
+  Form2.close;
+  form3.show;
   except
-      on E: Exception do
-        ShowMessage('Erro ao cadastrar: ' + E.Message);
-    end;
+ erro;
+end;
 end;
 
-
-
-
+procedure TForm18.Erro;
+begin
+  Lblrequired.Visible := True;
+  Timer1.Enabled := True;
+end;
 
 end.
