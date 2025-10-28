@@ -36,6 +36,7 @@ type
     procedure testeClick(Sender: TObject);
     procedure Login;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure EdEmailKeyPress(Sender: TObject; var Key: Char);
 
   private
     { Private declarations }
@@ -67,6 +68,17 @@ procedure TForm1.EdEmailChange(Sender: TObject);
 begin
   LbErro.Visible := False;
 end;
+
+
+procedure TForm1.EdEmailKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    Key := #0;
+    Perform(WM_NEXTDLGCTL, 0, 0);
+end;
+end;
+
 
 
 procedure TForm1.imgsenhaClick(Sender: TObject);

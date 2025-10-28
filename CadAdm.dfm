@@ -4374,20 +4374,6 @@ object Form23: TForm23
       6964790293EDF33A7210119EE06924EBA9452E593908B964E520FC3F38D0FFC6
       4BDD1DC70000000049454E44AE426082}
   end
-  object Label1: TLabel
-    Left = 880
-    Top = 196
-    Width = 181
-    Height = 30
-    Cursor = crHandPoint
-    Caption = 'Voc'#234' esta quase l'#225'!'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -21
-    Font.Name = 'Segoe UI Semibold'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
   object Label10: TLabel
     Left = 1284
     Top = 660

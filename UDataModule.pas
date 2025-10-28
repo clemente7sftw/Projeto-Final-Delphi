@@ -43,11 +43,6 @@ type
     QueryCSid_servico: TIntegerField;
     QueryAg: TFDQuery;
     QueryAgendamentos: TFDQuery;
-    QueryServicosid_servico: TIntegerField;
-    QueryServicosnome: TWideStringField;
-    QueryServicosduracao: TIntegerField;
-    QueryServicospreco: TBCDField;
-    QueryServicosdata_cad: TSQLTimeStampField;
     QueryProfissionaisid_pro: TIntegerField;
     QueryProfissionaisnome: TWideStringField;
     QueryProfissionaisemail: TWideStringField;
@@ -97,7 +92,6 @@ type
     QueryClientescidade_clie: TWideStringField;
     QueryClientesestado_clie: TWideStringField;
     QueryClientesdata_cad: TSQLTimeStampField;
-    QueryServicosid_empresa: TIntegerField;
     QueryCSid_empresa: TIntegerField;
     QueryCargosid_empresa: TIntegerField;
     QueryAdm: TFDQuery;

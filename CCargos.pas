@@ -38,6 +38,8 @@ type
     Label3: TLabel;
     Label1: TLabel;
     CLBServicos: TCheckListBox;
+    LbErroExcl: TLabel;
+    Timer1: TTimer;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure EditsAtivos;
@@ -46,6 +48,8 @@ type
     procedure Editar;
     procedure Adicionar;
     procedure Salvar;
+    procedure ErroExclusao;
+    procedure TrazerServicos;
     procedure FormShow(Sender: TObject);
     procedure BtnExcluirClick(Sender: TObject);
     procedure BtnConfClick(Sender: TObject);
@@ -59,6 +63,7 @@ type
     procedure LbProfissionaisClick(Sender: TObject);
     procedure LbServicosClick(Sender: TObject);
     procedure LbFornecedoresClick(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -109,6 +114,7 @@ end;
 
 procedure TForm14.Editar;
 begin
+  TrazerServicos;
   BtnConf.Visible:= true;
   BtnExcluir.Visible:= false;
   EditsAtivos;
@@ -133,21 +139,37 @@ begin
   DBEdit2.Enabled := false;
 end;
 
+procedure TForm14.ErroExclusao;
+begin
+  LbErroExcl.Visible := True;
+  Timer1.Enabled := True;
+end;
+
 procedure TForm14.ExclBtnClick(Sender: TObject);
 begin
-Excluir;
+  if not DataModule1.QueryRCS.IsEmpty then
+  begin
+    Excluir;
+  end else begin
+    ErroExclusao;
+  end;
+
 end;
 
 procedure TForm14.Excluir;
 begin
-if Application.MessageBox('Tem certeza de que deseja excluir este Cargo? Essa ação não poderá ser desfeita.', 'Exclusão de Cargo', MB_YESNO + MB_ICONQUESTION) = IDYES then
+  if Application.MessageBox('Tem certeza de que deseja excluir este Cargo? Essa ação não poderá ser desfeita.', 'Exclusão de Cargo', MB_YESNO + MB_ICONQUESTION) = IDYES then
 begin
  datamodule1.QueryCargos.delete;
- datamodule1.QueryRCS.delete;
+ datamodule1.QueryCargos.close;
+ datamodule1.QueryCargos.open;
+ datamodule1.QueryRCS.close;
+ datamodule1.QueryRCS.open;
 end else begin
 exit;
 end;
 end;
+
 
 procedure TForm14.FormCreate(Sender: TObject);
 begin
@@ -156,6 +178,7 @@ begin
   Lblrequired.visible:= false;
   EditsInativos;
   CLBServicos.Visible:= false;
+  LbErroExcl.Visible:= false;
 end;
 
 procedure TForm14.FormShow(Sender: TObject);
@@ -178,6 +201,9 @@ begin
 
   datamodule1.QueryRCS.Close;
   datamodule1.QueryRCS.open;
+
+  datamodule1.QueryCS.close;
+  datamodule1.QueryCS.open;
 
 end;
 
@@ -213,25 +239,79 @@ begin
 end;
 
 procedure TForm14.Salvar;
+var
+  id_ser, id_cargo, i: Integer;
 begin
-  if (DBEdit1.Text <> '' ) and (DBEdit2.Text <> '' )then
+  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
   begin
-    if not (DataModule1.QueryCargos.State in [dsEdit, dsInsert]) then
-    DataModule1.QueryCargos.Edit;
-    DataModule1.QueryCargos.Post;
-    DataModule1.QueryRCS.Edit;
-    DataModule1.QueryRCS.Post;
+    if DataModule1.QueryCargos.State in [dsEdit, dsInsert] then
+      DataModule1.QueryCargos.Post;
+
+    id_cargo := DataModule1.QueryCargos.FieldByName('id_cargo').AsInteger;
+    for i := 0 to CLBServicos.Items.Count - 1 do
+    begin
+      if CLBServicos.Checked[i] then
+      begin
+        id_ser := Integer(CLBServicos.Items.Objects[i]);
+        with DataModule1.QueryCS do
+        begin
+          Close;
+          SQL.Text := 'DELETE FROM cargos_servicos WHERE id_cargo = :id_cargo';
+          ParamByName('id_cargo').AsInteger := id_cargo;
+          ExecSQL;
+        end;
+
+        with DataModule1.QueryCS do
+        begin
+          Close;
+          SQL.Text := 'INSERT INTO cargos_servicos (id_cargo, id_servico, id_empresa) VALUES (:id_cargo, :id_servico, :id_empresa)';
+          ParamByName('id_cargo').AsInteger := id_cargo;
+          ParamByName('id_servico').AsInteger := id_ser;
+          parambyname('id_empresa').AsInteger := datamodule1.id_empresa;
+          ExecSQL;
+          datamodule1.QueryRCS.Close;
+          datamodule1.QueryRCS.open;
+        end;
+      end;
+    end;
     EditsInativos;
     BtnConf.Visible := False;
     BtnExcluir.Visible := True;
-    BtnEditar.Visible:= true;
-    Lblrequired.visible:= false;
-    CLBServicos.Visible:= false;
-    addclie.Visible:= true;
-  end else begin
-    Lblrequired.visible:= true;
-
+    BtnEditar.Visible := True;
+    Lblrequired.Visible := False;
+    CLBServicos.Visible := False;
+    addclie.Visible := True;
+  end
+  else
+  begin
+    Lblrequired.Visible := True;
   end;
+end;
+
+
+
+
+procedure TForm14.Timer1Timer(Sender: TObject);
+begin
+  LbErroExcl.Visible := False;
+  Timer1.Enabled := False;
+end;
+
+procedure TForm14.TrazerServicos;
+begin
+if not datamodule1.QueryServicos.IsEmpty then
+begin
+  CLBServicos.Items.Clear;
+  datamodule1.QueryServicos.First;
+  while not datamodule1.QueryServicos.Eof do
+  begin
+    CLBServicos.Items.AddObject(
+      datamodule1.QueryServicos.FieldByName('nome').AsString,
+      TObject(datamodule1.QueryServicos.FieldByName('id_servico').AsInteger)
+    );
+    datamodule1.QueryServicos.Next;
+  end;
+end;
 end;
 
 end.

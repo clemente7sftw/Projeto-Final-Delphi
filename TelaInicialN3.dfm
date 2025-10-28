@@ -22,8 +22,6 @@ object Form20: TForm20
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 8
     object Label1: TLabel
       Left = 16
       Top = 248
@@ -320,8 +318,8 @@ object Form20: TForm20
         C01B8BFF03D1727009CC0A36EE0000000049454E44AE426082}
     end
     object Image2: TImage
-      Left = 1792
-      Top = 248
+      Left = 1720
+      Top = 318
       Width = 49
       Height = 49
       Picture.Data = {
@@ -337,13 +335,6 @@ object Form20: TForm20
       Stretch = True
       OnClick = Image2Click
     end
-    object Label2: TLabel
-      Left = 336
-      Top = 432
-      Width = 34
-      Height = 15
-      Caption = 'Label2'
-    end
     object Label3: TLabel
       Left = 948
       Top = 223
@@ -357,6 +348,19 @@ object Form20: TForm20
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = LbProfissionaisClick
+    end
+    object Label2: TLabel
+      Left = 1600
+      Top = 282
+      Width = 295
+      Height = 30
+      Caption = 'Cadastrar Novo Administrador'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object Barra: TPanel
       Left = -8
@@ -451,29 +455,20 @@ object Form20: TForm20
         OnClick = LbagendamentosClick
       end
     end
-    object BtnRelat: TPanel
-      Left = 73
-      Top = 235
-      Width = 185
-      Height = 41
-      Caption = 'Ver Relat'#243'rio'
-      TabOrder = 1
-      OnClick = BtnRelatClick
-    end
     object RelatPeriodo: TMaskEdit
-      Left = 224
-      Top = 304
+      Left = 848
+      Top = 326
       Width = 137
       Height = 23
-      TabOrder = 2
+      TabOrder = 1
       Text = 'RelatPeriodo'
     end
     object RelatPeriodo1: TMaskEdit
-      Left = 384
-      Top = 304
+      Left = 1031
+      Top = 326
       Width = 137
       Height = 23
-      TabOrder = 3
+      TabOrder = 2
       Text = 'RelatPeriodo'
     end
     object Panel1: TPanel
@@ -491,7 +486,7 @@ object Form20: TForm20
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 3
       OnClick = Panel1Click
     end
     object Panel2: TPanel
@@ -509,7 +504,7 @@ object Form20: TForm20
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 4
       OnClick = Panel2Click
     end
     object Panel3: TPanel
@@ -527,7 +522,7 @@ object Form20: TForm20
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 5
       OnClick = Panel3Click
     end
   end

@@ -162,8 +162,6 @@ object Form1: TForm1
     Color = 1186595
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1010
-    ExplicitHeight = 1053
     object ImagemDeFundo: TImage
       Left = 1
       Top = 1
@@ -39636,10 +39634,8 @@ object Form1: TForm1
         5251D9B0E2B39194215CCA7A8C54288A7BD9E28031E6C104249332D2B99B6EF6
         18CF6324FF2B230B9F4CBF4955CC0000000049454E44AE426082}
       Stretch = True
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 1924
-      ExplicitHeight = 1061
+      ExplicitLeft = 2
+      ExplicitTop = 2
     end
     object BS: TImage
       Left = 248
@@ -40047,6 +40043,7 @@ object Form1: TForm1
       ParentFont = False
       TabOrder = 0
       OnChange = EdEmailChange
+      OnKeyPress = EdEmailKeyPress
     end
   end
   object PbtnFacebook: TPanel

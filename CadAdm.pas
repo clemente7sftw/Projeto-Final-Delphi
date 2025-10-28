@@ -23,7 +23,6 @@ type
     EdRua: TEdit;
     Fundo: TImage;
     Image1: TImage;
-    Label1: TLabel;
     Label10: TLabel;
     Label11: TLabel;
     Label2: TLabel;

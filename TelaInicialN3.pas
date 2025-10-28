@@ -25,14 +25,13 @@ type
     Lbagendamentos: TLabel;
     Image2: TImage;
     FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink;
-    BtnRelat: TPanel;
     RelatPeriodo: TMaskEdit;
     RelatPeriodo1: TMaskEdit;
-    Label2: TLabel;
     Panel1: TPanel;
     Label3: TLabel;
     Panel2: TPanel;
     Panel3: TPanel;
+    Label2: TLabel;
     procedure LbClieClick(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);
     procedure LbServicosClick(Sender: TObject);

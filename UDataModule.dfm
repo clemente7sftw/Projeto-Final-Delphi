@@ -202,35 +202,6 @@ object DataModule1: TDataModule1
       '')
     Left = 29
     Top = 238
-    object QueryServicosid_servico: TIntegerField
-      FieldName = 'id_servico'
-      Origin = 'id_servico'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object QueryServicosnome: TWideStringField
-      FieldName = 'nome'
-      Origin = 'nome'
-      Size = 50
-    end
-    object QueryServicosduracao: TIntegerField
-      FieldName = 'duracao'
-      Origin = 'duracao'
-    end
-    object QueryServicospreco: TBCDField
-      FieldName = 'preco'
-      Origin = 'preco'
-      Precision = 10
-      Size = 2
-    end
-    object QueryServicosdata_cad: TSQLTimeStampField
-      FieldName = 'data_cad'
-      Origin = 'data_cad'
-      ProviderFlags = [pfInUpdate]
-    end
-    object QueryServicosid_empresa: TIntegerField
-      FieldName = 'id_empresa'
-      Origin = 'id_empresa'
-    end
   end
   object QueryCS: TFDQuery
     Connection = FDConnection1

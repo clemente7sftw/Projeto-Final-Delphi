@@ -159,6 +159,8 @@ begin
   DataModule1.QueryServicos.FieldByName('preco').Clear;
   EditsAtivos;
   BtnCad.Visible := true;
+  BtnExcluir.Visible := false;
+  BtnEditar.Visible := false;
 end;
 
 procedure TForm15.BtnCadClick(Sender: TObject);
@@ -192,6 +194,7 @@ end;
 
 procedure TForm15.Editar;
 begin
+  addclie.Visible := false;
   BtnConf.Visible:= true;
   BtnExcluir.Visible:= false;
   EditsAtivos;

@@ -361,7 +361,7 @@ object Form11: TForm11
       ParentFont = False
       TabOrder = 0
     end
-    object CheckListBox1: TCheckListBox
+    object CLBServicos: TCheckListBox
       Left = 80
       Top = 392
       Width = 713
@@ -489,5 +489,12 @@ object Form11: TForm11
     DataSet = DataModule1.QueryCS
     Left = 464
     Top = 232
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 5000
+    OnTimer = Timer1Timer
+    Left = 600
+    Top = 96
   end
 end

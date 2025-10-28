@@ -433,6 +433,19 @@ object Form14: TForm14
       Font.Style = [fsBold]
       ParentFont = False
     end
+    object LbErroExcl: TLabel
+      Left = 1105
+      Top = 716
+      Width = 276
+      Height = 30
+      Caption = 'N'#227'o h'#225' registros para Excluir'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
     object BtnConf: TPanel
       Left = 1105
       Top = 834
@@ -678,5 +691,12 @@ object Form14: TForm14
     DataSet = DataModule1.QueryRCS
     Left = 368
     Top = 224
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 5000
+    OnTimer = Timer1Timer
+    Left = 688
+    Top = 104
   end
 end
