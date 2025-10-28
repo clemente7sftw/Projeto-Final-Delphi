@@ -40129,4 +40129,11 @@ object Form1: TForm1
         A6B254A195E50798E841C3BC899F280000000049454E44AE426082}
     end
   end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 5000
+    OnTimer = Timer1Timer
+    Left = 408
+    Top = 248
+  end
 end

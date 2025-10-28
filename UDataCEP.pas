@@ -10,7 +10,7 @@ uses
   Data.Bind.ObjectScope;
 
 type
-  TDataModule2 = class(TDataModule)
+  TDMCep = class(TDataModule)
     RESTClient1: TRESTClient;
     RESTRequest1: TRESTRequest;
     RESTResponse1: TRESTResponse;
@@ -23,7 +23,7 @@ type
   end;
 
 var
-  DataModule2: TDataModule2;
+  DMCep: TDMCep;
 
 implementation
 

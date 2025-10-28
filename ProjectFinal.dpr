@@ -19,7 +19,7 @@ uses
   CHorarios in 'CHorarios.pas' {Form17},
   UDataModule in 'UDataModule.pas' {DataModule1: TDataModule},
   CadClie in 'CadClie.pas' {Form18},
-  UDataCEP in 'UDataCEP.pas' {DataModule2: TDataModule},
+  UDataCEP in 'UDataCEP.pas' {DMCep: TDataModule},
   CadEmp in 'CadEmp.pas' {Form19},
   TelaInicialN3 in 'TelaInicialN3.pas' {Form20},
   Agendamentos in 'Agendamentos.pas' {Form13},
@@ -55,7 +55,7 @@ begin
   Application.CreateForm(TForm17, Form17);
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TForm18, Form18);
-  Application.CreateForm(TDataModule2, DataModule2);
+  Application.CreateForm(TDMCep, DMCep);
   Application.CreateForm(TForm19, Form19);
   Application.CreateForm(TForm20, Form20);
   Application.CreateForm(TForm13, Form13);

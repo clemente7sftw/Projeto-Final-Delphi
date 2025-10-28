@@ -83,13 +83,13 @@ end;
 procedure TForm18.Image2Click(Sender: TObject);
 begin
 try
-  DataModule2.RESTClient1.BaseURL := 'https://viacep.com.br/ws/'+ EdCEP.Text+'/json/';
-  DataModule2.RESTRequest1.Execute;
+  DMCep.RESTClient1.BaseURL := 'https://viacep.com.br/ws/'+ EdCEP.Text+'/json/';
+  DMCep.RESTRequest1.Execute;
   ///ShowMessage (DataModule2.RESTResponse1.Content);
-  EdRua.Text := DataModule2.FDMemTable1.FieldByName('logrdouro').AsString;
-  EdBairro.Text := DataModule2.FDMemTable1.FieldByName('bairro').AsString;
-  EdCidade.Text := DataModule2.FDMemTable1.FieldByName('localidade').AsString;
-  EdEstado.Text := DataModule2.FDMemTable1.FieldByName('estado').AsString;
+  EdRua.Text := DMCep.FDMemTable1.FieldByName('logradouro').AsString;
+  EdBairro.Text := DMCep.FDMemTable1.FieldByName('bairro').AsString;
+  EdCidade.Text := DMCep.FDMemTable1.FieldByName('localidade').AsString;
+  EdEstado.Text := DMCep.FDMemTable1.FieldByName('estado').AsString;
 except
 erro;
 end;

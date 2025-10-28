@@ -28,6 +28,7 @@ type
     imgsenha: TImage;
     EdEmail: TEdit;
     LbErro: TLabel;
+    Timer1: TTimer;
     procedure FormCreate(Sender: TObject);
     procedure Label2Click(Sender: TObject);
     procedure imgsenhaClick(Sender: TObject);
@@ -35,8 +36,10 @@ type
     procedure EdEmailChange(Sender: TObject);
     procedure testeClick(Sender: TObject);
     procedure Login;
+    procedure erro;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure EdEmailKeyPress(Sender: TObject; var Key: Char);
+    procedure Timer1Timer(Sender: TObject);
 
   private
     { Private declarations }
@@ -69,7 +72,6 @@ begin
   LbErro.Visible := False;
 end;
 
-
 procedure TForm1.EdEmailKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
@@ -79,7 +81,11 @@ begin
 end;
 end;
 
-
+procedure TForm1.erro;
+begin
+LbErro.visible:= true;
+Timer1.Enabled := true;
+end;
 
 procedure TForm1.imgsenhaClick(Sender: TObject);
 begin
@@ -100,7 +106,6 @@ begin
 Login;
 end;
 
-
 procedure TForm1.Label2Click(Sender: TObject);
 begin
   Form2.Show;
@@ -118,10 +123,11 @@ begin
   end;
 
   LoginCorreto := False;
-  LbErro.Visible := False;
+
   with DataModule1.query_conexao do
   begin
-    Close;
+try
+      Close;
     SQL.Text := 'SELECT * FROM clientes WHERE email_clie = :email AND senha_clie = :senha';
     ParamByName('email').AsString := EdEmail.Text;
     ParamByName('senha').AsString := EdSenha.Text;
@@ -133,9 +139,14 @@ begin
       LoginCorreto := True;
       Exit;
     end;
+except
+erro;
+
+end;
   end;
   with DataModule1.query_conexao do
   begin
+  try
     Close;
     SQL.Text := 'SELECT * FROM empresas WHERE email = :email AND senha = :senha';
     ParamByName('email').AsString := EdEmail.Text;
@@ -144,14 +155,19 @@ begin
 
     if not IsEmpty then
     begin
-      DataModule1.id_empresa := FieldByName('id_empresa').AsInteger;
-      Form20.Show;
-      LoginCorreto := True;
-      Exit;
+    DataModule1.id_empresa := FieldByName('id_empresa').AsInteger;
+    Form20.Show;
+    LoginCorreto := True;
+    Exit;
     end;
+  except
+  erro;
+
+  end;
   end;
   with DataModule1.query_conexao do
   begin
+    try
     Close;
     SQL.Text := 'SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha';
     ParamByName('email').AsString := EdEmail.Text;
@@ -160,20 +176,32 @@ begin
 
     if not IsEmpty then
     begin
-      DataModule1.id_empresa := FieldByName('id_empresa').AsInteger;
-      Form5.Show;
-      LoginCorreto := True;
-      Exit;
+    DataModule1.id_empresa := FieldByName('id_empresa').AsInteger;
+    Form5.Show;
+    LoginCorreto := True;
+    Exit;
+    end;
+    except
+    erro;
+
     end;
   end;
   if not LoginCorreto then
-    LbErro.Visible := True;
+    begin
+      erro;
+    end;
 
 end;
 
 procedure TForm1.testeClick(Sender: TObject);
 begin
  ShellExecute(0, 'open', 'file:///C:/Users/gabri/OneDrive/Documentos/Termos-e-condicoes-BS/termos%20bs/termosecondicoes.html', nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TForm1.Timer1Timer(Sender: TObject);
+begin
+LbErro.visible:= false;
+Timer1.Enabled := false;
 end;
 
 procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);

@@ -1,4 +1,4 @@
-object DataModule2: TDataModule2
+object DMCep: TDMCep
   Height = 348
   Width = 421
   object RESTClient1: TRESTClient
