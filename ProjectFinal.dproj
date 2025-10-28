@@ -197,7 +197,7 @@
             <Form>Form18</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="UDataCEP.pas">
+        <DCCReference Include="UDMCEP.pas">
             <Form>DMCep</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>

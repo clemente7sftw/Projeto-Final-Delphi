@@ -61,7 +61,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDataCEP, Cadastro, UDataModule, UMetodos, TelaPrincipalN1;
+uses uDmCep, Cadastro, UDataModule, UMetodos, TelaPrincipalN1;
 
 
 procedure TForm18.FormCreate(Sender: TObject);

@@ -126,23 +126,22 @@ begin
 
   with DataModule1.query_conexao do
   begin
-try
-      Close;
-    SQL.Text := 'SELECT * FROM clientes WHERE email_clie = :email AND senha_clie = :senha';
-    ParamByName('email').AsString := EdEmail.Text;
-    ParamByName('senha').AsString := EdSenha.Text;
-    Open;
+  try
+        Close;
+      SQL.Text := 'SELECT * FROM clientes WHERE email_clie = :email AND senha_clie = :senha';
+      ParamByName('email').AsString := EdEmail.Text;
+      ParamByName('senha').AsString := EdSenha.Text;
+      Open;
 
-    if not IsEmpty then
-    begin
-      Form3.Show;
-      LoginCorreto := True;
-      Exit;
-    end;
-except
-erro;
-
-end;
+      if not IsEmpty then
+      begin
+        Form3.Show;
+        LoginCorreto := True;
+        Exit;
+      end;
+  except
+  erro;
+  end;
   end;
   with DataModule1.query_conexao do
   begin

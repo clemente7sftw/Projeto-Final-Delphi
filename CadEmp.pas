@@ -54,7 +54,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDataCEP, UDataModule, UMetodos, Cadastro, TelaInicialN3;
+uses uDmCep, UDataModule, UMetodos, Cadastro, TelaInicialN3;
 
 procedure TForm19.BtnCadClick(Sender: TObject);
 begin

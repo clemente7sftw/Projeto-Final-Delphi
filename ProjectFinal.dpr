@@ -19,7 +19,7 @@ uses
   CHorarios in 'CHorarios.pas' {Form17},
   UDataModule in 'UDataModule.pas' {DataModule1: TDataModule},
   CadClie in 'CadClie.pas' {Form18},
-  UDataCEP in 'UDataCEP.pas' {DMCep: TDataModule},
+  UDMCEP in 'UDMCEP.pas' {DMCep: TDataModule},
   CadEmp in 'CadEmp.pas' {Form19},
   TelaInicialN3 in 'TelaInicialN3.pas' {Form20},
   Agendamentos in 'Agendamentos.pas' {Form13},

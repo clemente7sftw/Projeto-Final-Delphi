@@ -20,6 +20,7 @@ type
     LbFornecedores: TLabel;
     Lbagendamentos: TLabel;
     Image2: TImage;
+    Label2: TLabel;
     procedure Image2Click(Sender: TObject);
     procedure MudarSenha;
     procedure FormShow(Sender: TObject);

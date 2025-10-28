@@ -55,7 +55,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDataModule, UDataCEP, TelaInicialN3;
+uses UDataModule, uDmCep, TelaInicialN3;
 
 { TForm23 }
 

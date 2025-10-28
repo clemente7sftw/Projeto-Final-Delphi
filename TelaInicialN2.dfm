@@ -312,8 +312,8 @@ object Form5: TForm5
         426082}
     end
     object Image2: TImage
-      Left = 1792
-      Top = 248
+      Left = 1752
+      Top = 318
       Width = 41
       Height = 41
       Picture.Data = {
@@ -338,6 +338,19 @@ object Form5: TForm5
         69DC4EE36850FDD228AAA269837F1003A7D62D6332740000000049454E44AE42
         6082}
       OnClick = Image2Click
+    end
+    object Label2: TLabel
+      Left = 1648
+      Top = 282
+      Width = 212
+      Height = 30
+      Caption = 'Cadastrar Nova Senha'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object Barra: TPanel
       Left = -8

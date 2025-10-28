@@ -1,4 +1,4 @@
-unit AdicionarProfissional;
+﻿unit AdicionarProfissional;
 
 interface
 
@@ -109,40 +109,58 @@ end;
 
 procedure TForm9.Cadastrar;
 var
-  i, id_empresa: Integer;
+  i, id_empresa, id_pro, id_cargo: Integer;
 begin
-  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and   (CLBCargos.Items.Count > 0) and
-   (CLBCargos.ItemIndex <> -1) then
+  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and
+     (CLBCargos.Items.Count > 0) and (CLBCargos.ItemIndex <> -1) then
   begin
     if ValidarEmail(DBEDIT2.Text) then
     begin
-      if datamodule1.QueryProfissionais.State in [dsInsert, dsEdit] then
-      id_empresa:= DataModule1.id_empresa;
-      DataModule1.QueryProfissionais.FieldByName('id_empresa').AsInteger := DataModule1.id_empresa;
-      datamodule1.QueryProfissionais.Post;
-      datamodule1.QueryProfissionais.Refresh;
-      id_pro := datamodule1.QueryProfissionais.FieldByName('id_pro').AsInteger;
-    for i := 0 to CLBCargos.Count - 1 do
-    begin
-      if CLBCargos.Checked[i] then
+      with DataModule1.query_conexao do
       begin
-        id_cargo := Integer(CLBCargos.Items.Objects[i]);
-        datamodule1.QueryPC.Append;
-        datamodule1.QueryPC.FieldByName('id_cargo').AsInteger := id_cargo;
-        datamodule1.QueryPC.FieldByName('id_pro').AsInteger := id_pro;
-        datamodule1.QueryPC.Post;
+        Close;
+        SQL.Text :=
+          'INSERT INTO profissionais (nome, email, id_empresa) ' +
+          'VALUES (:nome, :email, :id_empresa)';
+        ParamByName('nome').AsString := DBEdit1.Text;
+        ParamByName('email').AsString := DBEdit2.Text;
+        ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+        ExecSQL;
+        id_pro := FieldByName('id_pro').AsInteger;
       end;
+
+      for i := 0 to CLBCargos.Count - 1 do
+      begin
+        if CLBCargos.Checked[i] then
+        begin
+          id_cargo := Integer(CLBCargos.Items.Objects[i]);
+          with DataModule1.QueryPC do
+          begin
+            Close;
+            SQL.Text :=
+              'INSERT INTO profissionais_cargos (id_pro, id_cargo) ' +
+              'VALUES (:id_pro, :id_cargo)';
+            ParamByName('id_pro').AsInteger := id_pro;
+            ParamByName('id_cargo').AsInteger := id_cargo;
+            ExecSQL;
+          end;
+        end;
+      end;
+
       Form9.Close;
       Form8.Show;
       Lblrequired.Visible := False;
-      lbEmail.visible:= false;
+      lbEmail.Visible := False;
+    end
+    else
+    begin
+      Lblrequired.Visible := False;
+      lbEmail.Visible := True;
     end;
-    end else begin
-    Lblrequired.Visible := False;
-      lbEmail.visible:= true;
-    end;
+  end
+  else
+  begin
 
-  end else begin
     Lblrequired.Visible := True;
   end;
 end;
