@@ -76,12 +76,13 @@ begin
       id_empresa:= DataModule1.id_empresa;
       DataModule1.QueryCargos.FieldByName('id_empresa').AsInteger := DataModule1.id_empresa;
       datamodule1.querycargos.post;
-      datamodule1.querycargos.Refresh;
-      id_cargo := datamodule1.QueryCargos.FieldByName('id_cargo').AsInteger;
+      datamodule1.querycargos.close;
+      datamodule1.querycargos.open;
       for i := 0 to CLBServicos.count -1 do
         begin
         if CLBServicos.Checked[i] then
           begin
+          id_cargo := datamodule1.QueryCargos.FieldByName('id_cargo').AsInteger;
           id_ser := Integer(CLBServicos.Items.Objects[i]);
           if datamodule1.QueryCargos.State in [dsInsert, dsEdit] then
           id_ser := Integer(CLBServicos.Items.Objects[i]);
@@ -90,10 +91,14 @@ begin
           datamodule1.QueryCS.FieldByName('id_cargo').AsInteger := id_cargo;
           DataModule1.QueryCs.FieldByName('id_empresa').AsInteger := DataModule1.id_empresa;
           datamodule1.QueryCS.Post;
+          DataModule1.QueryCs.Close;
+          DataModule1.QueryCs.Open;
           end;
         end;
       DataModule1.QueryCargos.Close;
       DataModule1.QueryCargos.Open;
+      datamodule1.QueryRCS.Close;
+      datamodule1.QueryRCS.open;
       Form14.Show;
       Form11.Close;
       end;

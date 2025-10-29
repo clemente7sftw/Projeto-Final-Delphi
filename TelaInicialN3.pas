@@ -11,7 +11,6 @@ uses
 
 type
   TForm20 = class(TForm)
-    Label1: TLabel;
     Fundo: TPanel;
     Image1: TImage;
     Image4: TImage;
@@ -32,6 +31,7 @@ type
     Panel2: TPanel;
     Panel3: TPanel;
     Label2: TLabel;
+    Panel4: TPanel;
     procedure LbClieClick(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);
     procedure LbServicosClick(Sender: TObject);

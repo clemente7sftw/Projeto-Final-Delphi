@@ -65,9 +65,16 @@ Cadastrar;
 end;
 
 procedure TForm23.Cadastrar;
-begin
+
 var id_empresa: integer;
+    nome_senha: string;
+begin
 try
+  nome_senha := Trim(edNome.Text);
+  if Pos(' ', nome_senha) > 0 then
+  begin
+   nome_senha := Copy(nome_senha, 1, Pos(' ', nome_senha) - 1);
+ end;
  with DataModule1.QueryAdm do
    begin
    id_empresa:= DataModule1.id_empresa;
@@ -86,7 +93,7 @@ try
     ParamByName('cidade').AsString := EdCidade.Text;
     ParamByName('estado').AsString := EdEstado.Text;
     ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-    ParamByName('senha').AsString := '123';
+    ParamByName('senha').AsString := nome_senha + '123';
     ExecSQL;
   end;
   Form23.close;

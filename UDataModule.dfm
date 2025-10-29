@@ -23,8 +23,8 @@ object DataModule1: TDataModule1
     Connection = conexao_banco
     SQL.Strings = (
       'select * from clientes')
-    Left = 32
-    Top = 88
+    Left = 272
+    Top = 16
     object QueryClientesid_empresa: TIntegerField
       FieldName = 'id_empresa'
       Origin = 'id_empresa'
@@ -613,7 +613,7 @@ object DataModule1: TDataModule1
   end
   object query_conexao: TFDQuery
     Connection = conexao_banco
-    Left = 264
-    Top = 48
+    Left = 304
+    Top = 128
   end
 end

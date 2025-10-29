@@ -22,13 +22,6 @@ object Form20: TForm20
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    object Label1: TLabel
-      Left = 16
-      Top = 248
-      Width = 45
-      Height = 15
-      Caption = 'empresa'
-    end
     object Image1: TImage
       Left = 1792
       Top = 64
@@ -322,6 +315,7 @@ object Form20: TForm20
       Top = 318
       Width = 49
       Height = 49
+      Cursor = crHandPoint
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D494844520000002B0000
         0028080600000067C9036E000000097048597300000B1300000B1301009A9C18
@@ -456,7 +450,7 @@ object Form20: TForm20
       end
     end
     object RelatPeriodo: TMaskEdit
-      Left = 848
+      Left = 824
       Top = 326
       Width = 137
       Height = 23
@@ -464,7 +458,7 @@ object Form20: TForm20
       Text = 'RelatPeriodo'
     end
     object RelatPeriodo1: TMaskEdit
-      Left = 1031
+      Left = 1023
       Top = 326
       Width = 137
       Height = 23
@@ -524,6 +518,23 @@ object Form20: TForm20
       ParentFont = False
       TabOrder = 5
       OnClick = Panel3Click
+    end
+    object Panel4: TPanel
+      Left = 1105
+      Top = 269
+      Width = 113
+      Height = 28
+      Cursor = crHandPoint
+      Caption = 'Outro relatorio'
+      Color = 4405251
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 6
     end
   end
   object FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink
