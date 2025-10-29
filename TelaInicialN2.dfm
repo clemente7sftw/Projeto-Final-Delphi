@@ -312,10 +312,11 @@ object Form5: TForm5
         426082}
     end
     object Image2: TImage
-      Left = 1752
+      Left = 1736
       Top = 318
       Width = 41
       Height = 41
+      Cursor = crHandPoint
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000270000
         002808060000007DF5E3E0000000097048597300000B1300000B1301009A9C18

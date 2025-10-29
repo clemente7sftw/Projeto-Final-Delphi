@@ -10,7 +10,6 @@ uses
 type
   TForm22 = class(TForm)
     Fundo: TPanel;
-    Label1: TLabel;
     ConfSenha: TPanel;
     DataSource1: TDataSource;
     DBEdit1: TDBEdit;
@@ -35,18 +34,19 @@ uses UDataModule;
 procedure TForm22.AlterarSenha;
 begin
  try
-if dbedit1.text <> '' then
-begin
-    if not (DataModule1.QueryAdm.State in [dsEdit, dsInsert]) then
-    DataModule1.QueryAdm.Edit;
-    DataModule1.QueryAdm.FieldByName('senha_adm').AsString := DBEdit1.Text;
-    DataModule1.QueryAdm.Post;
-end else begin
-  DataModule1.QueryAdm.Cancel;
+  if dbedit1.text <> '' then
+  begin
+      if not (DataModule1.QueryAdm.State in [dsEdit, dsInsert]) then
+      DataModule1.QueryAdm.Edit;
+      DataModule1.QueryAdm.FieldByName('senha_adm').AsString := DBEdit1.Text;
+      DataModule1.QueryAdm.Post;
+    end else begin
+      DataModule1.QueryAdm.Cancel;
+    end;
+    except
+    end;
 end;
-  except
-  end;
-end;
+
 
 procedure TForm22.ConfSenhaClick(Sender: TObject);
 begin
@@ -55,9 +55,12 @@ end;
 
 procedure TForm22.FormShow(Sender: TObject);
 begin
-datamodule1.queryadm.close;
-datamodule1.queryadm.open;
- WindowState := wsMaximized;
+
+DataModule1.QueryAdm.Close;
+DataModule1.QueryAdm.SQL.Text :=
+  'SELECT * FROM administradores WHERE id_adm = :id';
+DataModule1.QueryAdm.ParamByName('id').AsInteger := datamodule1.id_adm;
+DataModule1.QueryAdm.Open;
 
 end;
 

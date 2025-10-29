@@ -581,6 +581,20 @@ object DataModule1: TDataModule1
       Origin = 'estado_adm'
       Size = 50
     end
+    object QueryAdmnome_adm: TWideStringField
+      FieldName = 'nome_adm'
+      Origin = 'nome_adm'
+      Size = 100
+    end
+    object QueryAdmgenero_adm: TWideStringField
+      FieldName = 'genero_adm'
+      Origin = 'genero_adm'
+    end
+    object QueryAdmdata_cad: TSQLTimeStampField
+      FieldName = 'data_cad'
+      Origin = 'data_cad'
+      ProviderFlags = [pfInUpdate]
+    end
   end
   object QueryTotalAg: TFDQuery
     Connection = conexao_banco

@@ -114,12 +114,15 @@ type
     QueryClientescidade_clie: TWideStringField;
     QueryClientesestado_clie: TWideStringField;
     QueryClientesdata_cad: TSQLTimeStampField;
+    QueryAdmnome_adm: TWideStringField;
+    QueryAdmgenero_adm: TWideStringField;
+    QueryAdmdata_cad: TSQLTimeStampField;
     procedure QueryAgstatusGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
   private
     { Private declarations }
   public
-    var id_empresa, id_agendamento:integer;
+    var id_empresa, id_agendamento, id_adm:integer;
 
     { Public declarations }
   end;
