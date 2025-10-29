@@ -250,6 +250,11 @@
             <Form>Form28</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="n2_cclientes.pas">
+            <Form>Form29</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UMetodos.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

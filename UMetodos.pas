@@ -3,17 +3,16 @@ unit UMetodos;
 
 
 interface
-uses  Winapi.Windows,System.RegularExpressions,Vcl.Dialogs, CFornecedores, TelaPrincipalN1, Vcl.ExtCtrls, System.Classes, Cadastro, Vcl.Forms, Vcl.Controls;
+uses  Winapi.Windows,System.RegularExpressions,
+Vcl.Dialogs, CFornecedores, TelaPrincipalN1, Vcl.ExtCtrls, System.Classes, Cadastro, Vcl.Forms, Vcl.Controls;
 
 type
 TMetodos = class
   Menu : TPanel;
   private
   public
-  procedure FecharForm;
-  class procedure TelaPrincipal;
-  class procedure MensagemCadSucesso;
   class function ValidarEmail(const Email: string):Boolean;
+  class procedure Maximixar;
 
 
 end;
@@ -26,20 +25,11 @@ uses relatorios_servicos;
 
 
 
-procedure TMetodos.FecharForm;
-begin
- if Screen.ActiveForm <> nil then
-    Screen.ActiveForm.Close;
-end;
 
-class procedure TMetodos.MensagemCadSucesso;
+class procedure TMetodos.Maximixar;
 begin
-  ShowMessage('Dados Cadastrados com Sucesso');
-end;
-
-class procedure TMetodos.TelaPrincipal;
-begin
-Form3.show;
+  if Screen.ActiveForm <> nil then
+    Screen.ActiveForm.WindowState := wsMaximized;
 end;
 
 class function TMetodos.ValidarEmail(const Email: string): Boolean;

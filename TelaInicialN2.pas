@@ -11,7 +11,6 @@ type
   TForm5 = class(TForm)
     Fundo: TPanel;
     Image4: TImage;
-    BS: TImage;
     Barra: TPanel;
     LbClie: TLabel;
     LbProfissionais: TLabel;
@@ -21,9 +20,11 @@ type
     Lbagendamentos: TLabel;
     Image2: TImage;
     Label2: TLabel;
+    BS: TImage;
     procedure Image2Click(Sender: TObject);
     procedure MudarSenha;
     procedure FormShow(Sender: TObject);
+    procedure LbClieClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,7 +38,7 @@ implementation
 
 {$R *.dfm}
 
-uses CAdministrador, UDataModule;
+uses CAdministrador, UDataModule, n2_cclientes;
 
 procedure TForm5.FormShow(Sender: TObject);
 begin
@@ -47,6 +48,11 @@ end;
 procedure TForm5.Image2Click(Sender: TObject);
 begin
 MudarSenha;
+end;
+
+procedure TForm5.LbClieClick(Sender: TObject);
+begin
+Form29.Show;
 end;
 
 procedure TForm5.MudarSenha;

@@ -30,7 +30,6 @@ type
     Image2: TImage;
     Label2: TLabel;
     Edit1: TEdit;
-    procedure LbBSClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,9 +44,4 @@ implementation
 {$R *.dfm}
 
 uses UMetodos;
-procedure TForm12.LbBSClick(Sender: TObject);
-begin
-TMetodos.TelaPrincipal;
-end;
-
 end.

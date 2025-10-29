@@ -415,7 +415,6 @@ object Form12: TForm12
         Font.Name = '@Microsoft JhengHei'
         Font.Style = [fsBold]
         ParentFont = False
-        OnClick = LbBSClick
       end
       object Image3: TImage
         Left = 1824

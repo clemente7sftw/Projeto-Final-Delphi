@@ -20,7 +20,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure PbtnVoltarClick(Sender: TObject);
     procedure LbClientesClick(Sender: TObject);
-    procedure LbBSClick(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure PCadClick(Sender: TObject);
@@ -53,11 +52,6 @@ end;
 procedure TForm6.Image1Click(Sender: TObject);
 begin
 Form7.Show;
-end;
-
-procedure TForm6.LbBSClick(Sender: TObject);
-begin
-TMetodos.TelaPrincipal;
 end;
 
 procedure TForm6.LbClientesClick(Sender: TObject);
