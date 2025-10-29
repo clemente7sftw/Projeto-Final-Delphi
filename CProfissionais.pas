@@ -17,7 +17,7 @@ type
     DBEdit1: TDBEdit;
     DBEdit2: TDBEdit;
     DBEdit3: TDBEdit;
-    DataSourceRPC: TDataSource;
+    DSconexao: TDataSource;
     LbPro: TLabel;
     Barra: TPanel;
     LbClie: TLabel;
@@ -53,6 +53,7 @@ type
     procedure Excluir;
     procedure Editar;
     procedure Cancelar;
+    procedure Salvar;
     procedure AdicionarProfissional;
     procedure BtnConf1Click(Sender: TObject);
     procedure Panel3Click(Sender: TObject);
@@ -108,21 +109,7 @@ end;
 
 procedure TForm8.BtnConf1Click(Sender: TObject);
 begin
-  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
-  begin
-    if not (DataModule1.QueryServicos.State in [dsEdit, dsInsert]) then
-    DataModule1.QueryProfissionais.Edit;
-    DataModule1.QueryProfissionais.Post;
-    EditsInativos;
-    BtnConf.Visible := False;
-    ExclBtn.Visible := True;
-    EditBtn.Visible:= true;
-    addclie.Visible:= true;
-    Lblrequired.visible:= false;
-    CLBCargos.Visible:= false;
-  end else begin
-    Lblrequired.visible:= true;
-  end;
+  Salvar;
 end;
 
 procedure TForm8.BtnExcluirClick(Sender: TObject);
@@ -215,7 +202,7 @@ begin
   'ORDER BY nome';
   DataModule1.QueryProfissionais.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
   DataModule1.QueryRPC.close;
-  DataModule1.QueryRPC.SQL.Text :=
+  DataModule1.query_conexao.SQL.Text :=
   'SELECT ' +
   '  p.id_pro, ' +
   '  p.nome, ' +
@@ -227,9 +214,8 @@ begin
   'WHERE p.id_empresa = :id_empresa ' +
   'GROUP BY p.id_pro, p.nome, p.email ' +
   'ORDER BY p.nome;';
-  DataModule1.QueryRPC.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-  DataModule1.QueryRPC.Open;
-
+  DataModule1.query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  DataModule1.query_conexao.Open;
 
 
 
@@ -303,6 +289,37 @@ begin
   end;
 end;
 
+
+
+procedure TForm8.Salvar;
+begin
+//var id_pro:integer;
+//begin
+//  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
+//  begin
+//    with datamodule1.query_conexao do
+//    begin
+//    close;
+//    Sql.Text := 'UPDATE profissionais ' +
+//    'SET nome = :nome, email = :email ' +
+//    'WHERE id_pro = :id_pro ' ;
+//    ParamByName('nome').AsString := DBEdit1.Text;
+//    ParamByName('email').AsString := DBEdit2.Text;
+//    parambyname('id_pro').AsInteger := id_pro;
+//    ExecSQL;
+//
+//    EditsInativos;
+//    BtnConf.Visible := False;
+//    ExclBtn.Visible := True;
+//    EditBtn.Visible:= true;
+//    addclie.Visible:= true;
+//    Lblrequired.visible:= false;
+//    CLBCargos.Visible:= false;
+//    end;
+//  end else begin
+//    Lblrequired.visible:= true;
+//  end;
+end;
 
 
 end.

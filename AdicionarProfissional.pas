@@ -69,31 +69,38 @@ procedure TForm9.FormShow(Sender: TObject);
 begin
   datamodule1.QueryProfissionais.Close;
   datamodule1.QueryProfissionais.Open;
-    datamodule1.QueryProfissionais.Append;
-    datamodule1.QueryCargos.close;
-    datamodule1.QueryCargos.open;
-    datamodule1.QueryRPC.close;
-    datamodule1.QueryRPC.open;
-    PreencherListbox;
+  datamodule1.QueryProfissionais.Append;
+  datamodule1.QueryRPC.close;
+  datamodule1.QueryRPC.open;
+  PreencherListbox;
+
 end;
 
 
 procedure TForm9.PreencherListbox;
 begin
-if not datamodule1.QueryCargos.IsEmpty then
-begin
-  CLBCargos.Items.Clear;
-
-  datamodule1.QueryCargos.First;
-  while not datamodule1.QueryCargos.Eof do
+  with datamodule1.query_conexao do
   begin
-    CLBCargos.Items.AddObject(
-      datamodule1.QueryCargos.FieldByName('nome_cargo').AsString,
-      TObject(datamodule1.QueryCargos.FieldByName('id_cargo').AsInteger)
-    );
-    datamodule1.QueryCargos.Next;
+  close;
+  sql.Text := 'SELECT * FROM cargos ' +
+  'WHERE id_empresa = :id_empresa ' +
+  'ORDER BY nome_cargo';
+  DataModule1.query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  open;
+  CLBCargos.Items.Clear;
+  if not IsEmpty then
+    begin
+     First;
+     while not Eof do
+      begin
+      CLBCargos.Items.AddObject(
+      FieldByName('nome_cargo').AsString,
+      TObject(FieldByName('id_cargo').AsInteger)
+      );
+      Next;
+      end;
+    end;
   end;
-end;
 end;
 
 
@@ -121,12 +128,14 @@ begin
         Close;
         SQL.Text :=
           'INSERT INTO profissionais (nome, email, id_empresa) ' +
-          'VALUES (:nome, :email, :id_empresa)';
+          'VALUES (:nome, :email, :id_empresa)' +
+          'RETURNING id_pro';
         ParamByName('nome').AsString := DBEdit1.Text;
         ParamByName('email').AsString := DBEdit2.Text;
         ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-        ExecSQL;
-        id_pro := FieldByName('id_pro').AsInteger;
+        Open;
+         id_pro := FieldByName('id_pro').AsInteger;
+
       end;
 
       for i := 0 to CLBCargos.Count - 1 do
@@ -134,7 +143,7 @@ begin
         if CLBCargos.Checked[i] then
         begin
           id_cargo := Integer(CLBCargos.Items.Objects[i]);
-          with DataModule1.QueryPC do
+          with DataModule1.query_conexao do
           begin
             Close;
             SQL.Text :=
@@ -142,7 +151,7 @@ begin
               'VALUES (:id_pro, :id_cargo)';
             ParamByName('id_pro').AsInteger := id_pro;
             ParamByName('id_cargo').AsInteger := id_cargo;
-            ExecSQL;
+            Execsql;
           end;
         end;
       end;

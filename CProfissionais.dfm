@@ -31,6 +31,8 @@ object Form8: TForm8
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
+      ExplicitLeft = 2
+      ExplicitTop = 0
       object Label1: TLabel
         Left = 1102
         Top = 440
@@ -483,7 +485,7 @@ object Form8: TForm8
         Top = 401
         Width = 914
         Height = 545
-        DataSource = DataSourceRPC
+        DataSource = DSconexao
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -21
@@ -531,7 +533,7 @@ object Form8: TForm8
             Title.Font.Height = -21
             Title.Font.Name = 'Segoe UI Semibold'
             Title.Font.Style = [fsBold]
-            Width = 243
+            Width = 365
             Visible = True
           end>
       end
@@ -540,8 +542,7 @@ object Form8: TForm8
         Top = 476
         Width = 496
         Height = 38
-        DataField = 'nome'
-        DataSource = DataSourceRPC
+        DataSource = DSconexao
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -21
@@ -556,7 +557,7 @@ object Form8: TForm8
         Width = 496
         Height = 38
         DataField = 'email'
-        DataSource = DataSourceRPC
+        DataSource = DSconexao
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -21
@@ -570,8 +571,7 @@ object Form8: TForm8
         Top = 712
         Width = 496
         Height = 38
-        DataField = 'nome_cargo'
-        DataSource = DataSourceRPC
+        DataSource = DSconexao
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -21
@@ -749,8 +749,8 @@ object Form8: TForm8
       end
     end
   end
-  object DataSourceRPC: TDataSource
-    DataSet = DataModule1.QueryRPC
+  object DSconexao: TDataSource
+    DataSet = DataModule1.query_conexao
     Left = 785
     Top = 265
   end

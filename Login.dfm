@@ -40133,7 +40133,7 @@ object Form1: TForm1
     Enabled = False
     Interval = 5000
     OnTimer = Timer1Timer
-    Left = 408
-    Top = 248
+    Left = 40
+    Top = 32
   end
 end

@@ -555,6 +555,7 @@ object Form4: TForm4
           Title.Font.Height = -21
           Title.Font.Name = 'Segoe UI Semibold'
           Title.Font.Style = [fsBold]
+          Width = 217
           Visible = True
         end>
     end
