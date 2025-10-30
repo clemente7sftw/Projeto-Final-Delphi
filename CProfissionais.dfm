@@ -22,6 +22,8 @@ object Form8: TForm8
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1918
+    ExplicitHeight = 1053
     object Panel1: TPanel
       Left = 1
       Top = 1
@@ -31,7 +33,8 @@ object Form8: TForm8
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = 2
+      ExplicitWidth = 1916
+      ExplicitHeight = 1051
       object Label1: TLabel
         Left = 1102
         Top = 440
@@ -571,6 +574,7 @@ object Form8: TForm8
         Top = 712
         Width = 496
         Height = 38
+        DataField = 'nome_cargo'
         DataSource = DSconexao
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -722,8 +726,8 @@ object Form8: TForm8
         end
       end
       object BtnConf: TPanel
-        Left = 1103
-        Top = 905
+        Left = 1224
+        Top = 652
         Width = 496
         Height = 41
         Cursor = crHandPoint
