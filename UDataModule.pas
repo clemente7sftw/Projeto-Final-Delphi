@@ -70,9 +70,6 @@ type
     QueryAgendamentoshora_inicio: TTimeField;
     QueryAgendamentospreco: TBCDField;
     QueryAgendamentosstatus: TBooleanField;
-    QueryRPCnome: TWideStringField;
-    QueryRPCemail: TWideStringField;
-    QueryRPCnome_cargo: TWideStringField;
     QueryRASid_agendamento: TIntegerField;
     QueryRASid_servico: TIntegerField;
     QueryPCid_pro: TIntegerField;

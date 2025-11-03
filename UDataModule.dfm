@@ -310,23 +310,6 @@ object DataModule1: TDataModule1
       '    p.nome;')
     Left = 120
     Top = 312
-    object QueryRPCnome: TWideStringField
-      FieldName = 'nome'
-      Origin = 'nome'
-      Size = 100
-    end
-    object QueryRPCemail: TWideStringField
-      FieldName = 'email'
-      Origin = 'email'
-      Size = 100
-    end
-    object QueryRPCnome_cargo: TWideStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'nome_cargo'
-      Origin = 'nome_cargo'
-      ReadOnly = True
-      Size = 500
-    end
   end
   object QueryRCS: TFDQuery
     Connection = conexao_banco
