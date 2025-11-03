@@ -23,6 +23,8 @@ object Form14: TForm14
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1918
+    ExplicitHeight = 1053
     object Image1: TImage
       Left = 0
       Top = 255
@@ -447,8 +449,8 @@ object Form14: TForm14
       ParentFont = False
     end
     object BtnConf: TPanel
-      Left = 1105
-      Top = 834
+      Left = 1204
+      Top = 529
       Width = 496
       Height = 41
       Caption = 'Confirmar'
