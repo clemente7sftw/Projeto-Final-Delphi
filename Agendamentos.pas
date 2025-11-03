@@ -75,8 +75,17 @@ begin
   DataModule1.QueryClientes.Open;
   datamodule1.QueryServicos.close;
   datamodule1.QueryServicos.open;
-  datamodule1.QueryAgendamentos.close;
-  datamodule1.QueryAgendamentos.open;
+DataModule1.QueryAgendamentos.Close;
+DataModule1.QueryAgendamentos.SQL.Text :=
+  'SELECT a.id_agendamento, a.id_clie, c.nome_clie, ' +
+  'a.data_agendamento, a.hora_inicio, a.id_empresa ' +
+  'FROM agendamentos a ' +
+  'INNER JOIN clientes c ON a.id_clie = c.id_clie ' +
+  'WHERE a.id_empresa = :id_empresa ' +
+  'ORDER BY a.data_agendamento DESC';
+DataModule1.QueryAgendamentos.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+DataModule1.QueryAgendamentos.Open;
+
   datamodule1.QueryRAS.close;
   datamodule1.QueryRAS.open;
 //  datamodule1.QueryProfissionais.close;
@@ -162,40 +171,64 @@ end;
 
 procedure TForm13.Cadastrar;
 var
-  id_clie, id_servico, id_agendamento,id_empresa, i: Integer;
-  dataselecionada: TDate;
+  id_clie, id_servico, id_agendamento, id_empresa, i: Integer;
+  dataselecionada: TDateTime;
 begin
-  if DataModule1.QueryAgendamentos.State in [dsInsert, dsEdit] then
+  if (DBEdit2.Text <> '') and (ComboBoxHorarios.Text <> '') then
   begin
-    id_agendamento:= DataModule1.id_agendamento;
-    DataModule1.QueryAgendamentos.FieldByName('id_agendamento').AsInteger := DataModule1.id_agendamento;
-    dataselecionada := MonthCalendar1.Date;
-    id_empresa:= DataModule1.id_empresa;
-    DataModule1.QueryAgendamentos.FieldByName('id_empresa').AsInteger := DataModule1.id_empresa;
-    id_agendamento := DataModule1.QueryAgendamentos.FieldByName('id_agendamento').AsInteger;
+    id_empresa := DataModule1.id_empresa;
     id_clie := DataModule1.QueryClientes.FieldByName('id_clie').AsInteger;
-    DataModule1.QueryAgendamentos.FieldByName('id_clie').AsInteger := id_clie;
-    DataModule1.QueryAgendamentos.FieldByName('data_agendamento').AsDateTime := dataselecionada;
-    DataModule1.QueryAgendamentos.FieldByName('hora_inicio').AsDateTime := StrToTime(ComboBoxHorarios.Text);
-    DataModule1.QueryAgendamentos.Post;
-    DataModule1.QueryAgendamentos.refresh;
+    dataselecionada := MonthCalendar1.Date;
+
+    with DataModule1.QueryAgendamentos do
+    begin
+      Close;
+      SQL.Text :=
+        'INSERT INTO agendamentos (id_clie, id_empresa, data_agendamento, hora_inicio) ' +
+        'VALUES (:id_clie, :id_empresa, :data_agendamento, :hora_inicio) ' +
+        'RETURNING id_agendamento';
+      ParamByName('id_clie').AsInteger := id_clie;
+      ParamByName('id_empresa').AsInteger := id_empresa;
+      ParamByName('data_agendamento').AsDate := dataselecionada;
+      ParamByName('hora_inicio').AsDateTime := StrToTime(ComboBoxHorarios.Text);
+      Open;
+      id_agendamento := FieldByName('id_agendamento').AsInteger;
+      Close;
+    end;
     for i := 0 to CheckListBoxServicos.Count - 1 do
     begin
       if CheckListBoxServicos.Checked[i] then
       begin
-
         id_servico := Integer(CheckListBoxServicos.Items.Objects[i]);
-        DataModule1.QueryRAS.append;
-        DataModule1.QueryRAS.FieldByName('id_agendamento').AsInteger := id_agendamento;
-        DataModule1.QueryRAS.FieldByName('id_servico').AsInteger := id_servico;
-        DataModule1.QueryRAS.Post;
+        with DataModule1.QueryRAS do
+        begin
+          Close;
+          SQL.Text :=
+            'INSERT INTO rel_agendamentos_servicos (id_agendamento, id_servico, id_empresa) ' +
+            'VALUES (:id_agendamento, :id_servico, :id_empresa)';
+          ParamByName('id_agendamento').AsInteger := id_agendamento;
+          ParamByName('id_servico').AsInteger := id_servico;
+          ParamByName('id_empresa').AsInteger := id_empresa;
+          ExecSQL;
+        end;
       end;
     end;
+
+    DataModule1.QueryAgendamentos.Close;
+    DataModule1.QueryAgendamentos.Open;
+    DataModule1.QueryRAS.Close;
+    DataModule1.QueryRAS.Open;
+
     Lblrequired.Visible := False;
     Form21.Show;
     Form13.Close;
+  end
+  else
+  begin
+    Lblrequired.Visible := True;
   end;
 end;
+
 
 
 procedure TForm13.CheckListBoxServicosClickCheck(Sender: TObject);

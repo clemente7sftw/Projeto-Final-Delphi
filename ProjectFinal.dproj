@@ -255,6 +255,10 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UMetodos.pas"/>
+        <DCCReference Include="n4_tela_inicial.pas">
+            <Form>Form30</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

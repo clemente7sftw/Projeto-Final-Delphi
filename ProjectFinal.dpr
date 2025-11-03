@@ -33,7 +33,8 @@ uses
   relatorios_profissionais in 'relatorios_profissionais.pas' {Form27},
   relatorio_clientes in 'relatorio_clientes.pas' {Form28},
   n2_cclientes in 'n2_cclientes.pas' {Form29},
-  UMetodos in 'UMetodos.pas';
+  UMetodos in 'UMetodos.pas',
+  n4_tela_inicial in 'n4_tela_inicial.pas' {Form30};
 
 {$R *.res}
 
@@ -71,5 +72,6 @@ begin
   Application.CreateForm(TForm27, Form27);
   Application.CreateForm(TForm28, Form28);
   Application.CreateForm(TForm29, Form29);
+  Application.CreateForm(TForm30, Form30);
   Application.Run;
 end.
