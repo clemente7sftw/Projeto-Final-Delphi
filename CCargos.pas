@@ -307,20 +307,48 @@ begin
 end;
 
 procedure TForm14.TrazerServicos;
+var id_cargo, i: integer;
 begin
-if not datamodule1.QueryServicos.IsEmpty then
+ with datamodule1.query_conexao do
 begin
+close;
+sql.Text :=  'SELECT * FROM servicos ' +
+ 'WHERE id_empresa = :id_empresa ' +
+  'ORDER BY nome';
+  ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  Open;
   CLBServicos.Items.Clear;
-  datamodule1.QueryServicos.First;
-  while not datamodule1.QueryServicos.Eof do
+  while not Eof do
   begin
     CLBServicos.Items.AddObject(
       datamodule1.QueryServicos.FieldByName('nome').AsString,
       TObject(datamodule1.QueryServicos.FieldByName('id_servico').AsInteger)
     );
-    datamodule1.QueryServicos.Next;
+    Next;
   end;
 end;
+  id_cargo := DataModule1.QueryRCS.FieldByName('id_cargo').AsInteger;
+
+  with DataModule1.query_conexao do
+  begin
+    Close;
+    SQL.Text := 'SELECT id_servico FROM cargos_servicos WHERE id_cargo = :id_cargo';
+    ParamByName('id_cargo').AsInteger := id_cargo;
+    Open;
+    while not Eof do
+    begin
+      for i := 0 to CLBServicos.Count - 1 do
+      begin
+        if Integer(CLBServicos.Items.Objects[i]) = FieldByName('id_servico').AsInteger then
+        begin
+          CLBServicos.Checked[i] := True;
+          Break;
+        end;
+      end;
+      Next;
+    end;
+  end;
 end;
+
 
 end.

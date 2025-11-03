@@ -367,8 +367,7 @@ end;
 
 procedure TForm8.TrazerCargos;
 var
-  id_pro: Integer;
-  i: Integer;
+  id_pro, i: Integer;
 begin
   with DataModule1.query_conexao do
   begin
