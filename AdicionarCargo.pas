@@ -61,7 +61,7 @@ end;
 
 procedure TForm11.Cadastrar;
 var
-  id_ser, id_cargo, id_empresa, i: Integer;
+  id_ser, id_cargo, id_servico, id_empresa, i: Integer;
 begin
   if dbedit1.text = '' then
   begin
@@ -71,34 +71,46 @@ begin
     begin
      erroinclusao;
     end else begin
-    if datamodule1.QueryCargos.state in [dsinsert, dsedit] then
+
+
+      with DataModule1.query_conexao do
       begin
-      id_empresa:= DataModule1.id_empresa;
-      DataModule1.QueryCargos.FieldByName('id_empresa').AsInteger := DataModule1.id_empresa;
-      datamodule1.querycargos.post;
-      datamodule1.querycargos.close;
-      datamodule1.querycargos.open;
+        Close;
+        SQL.Text :=
+          'INSERT INTO cargos (nome_cargo, id_empresa) ' +
+          'VALUES (:nome_cargo, :id_empresa)' +
+          'RETURNING id_cargo';
+        ParamByName('nome_cargo').AsString := DBEdit1.Text;
+        ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+        Open;
+        id_cargo := FieldByName('id_cargo').AsInteger;
+
+      end;
+
       for i := 0 to CLBServicos.count -1 do
         begin
         if CLBServicos.Checked[i] then
           begin
-          id_cargo := datamodule1.QueryCargos.FieldByName('id_cargo').AsInteger;
           id_ser := Integer(CLBServicos.Items.Objects[i]);
-          if datamodule1.QueryCargos.State in [dsInsert, dsEdit] then
-          id_ser := Integer(CLBServicos.Items.Objects[i]);
-          datamodule1.QueryCS.Append;
-          datamodule1.QueryCS.FieldByName('id_servico').AsInteger := id_ser;
-          datamodule1.QueryCS.FieldByName('id_cargo').AsInteger := id_cargo;
-          DataModule1.QueryCs.FieldByName('id_empresa').AsInteger := DataModule1.id_empresa;
-          datamodule1.QueryCS.Post;
-          DataModule1.QueryCs.Close;
-          DataModule1.QueryCs.Open;
+          with DataModule1.query_conexao do
+          begin
+            close;
+          SQL.Text :=
+          'INSERT INTO cargos_servicos (id_cargo, id_servico,  id_empresa) ' +
+          'VALUES (:id_cargo, :id_servico,  :id_empresa)';
+          ParamByName('id_cargo').AsInteger := id_cargo;
+          ParamByName('id_servico').AsInteger := id_ser;
+          ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+          Execsql;
+          end;
           end;
         end;
       DataModule1.QueryCargos.Close;
       DataModule1.QueryCargos.Open;
       datamodule1.QueryRCS.Close;
       datamodule1.QueryRCS.open;
+      DataModule1.QueryCs.Close;
+      DataModule1.QueryCs.Open;
       Form14.Show;
       Form11.Close;
       end;
@@ -106,7 +118,6 @@ begin
 
   end;
 
-end;
 
 
 function TForm11.CLBvazia(aCheckListBox: TCheckListBox): Boolean;
@@ -135,6 +146,8 @@ begin
   Timer1.Enabled := True;
 end;
 
+
+
 procedure TForm11.FormCreate(Sender: TObject);
 begin
 Form11.WindowState:=wsMaximized;
@@ -149,11 +162,6 @@ begin
     datamodule1.QueryServicos.close;
     datamodule1.QueryServicos.open;
     datamodule1.QueryCS.close;
-    DataModule1.QueryCS.SQL.Text :=
-    'SELECT * FROM cargos_servicos ' +
-    'WHERE id_empresa = :id_empresa ' +
-    'ORDER BY id_cargo;';
-    DataModule1.QueryCS.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
     datamodule1.QueryCS.open;
     PreencherListbox;
 
@@ -161,21 +169,30 @@ end;
 
 procedure TForm11.PreencherListbox;
 begin
-if not datamodule1.QueryServicos.IsEmpty then
-begin
-  CLBServicos.Items.Clear;
-
-  datamodule1.QueryServicos.First;
-  while not datamodule1.QueryServicos.Eof do
+  with datamodule1.query_conexao do
   begin
-    CLBServicos.Items.AddObject(
-      datamodule1.QueryServicos.FieldByName('nome').AsString,
-      TObject(datamodule1.QueryServicos.FieldByName('id_servico').AsInteger)
-    );
-    datamodule1.QueryServicos.Next;
+  close;
+  sql.Text := 'SELECT * FROM servicos ' +
+  'WHERE id_empresa = :id_empresa ' +
+  'ORDER BY nome';
+  DataModule1.query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  open;
+  CLBServicos.Items.Clear;
+  if not IsEmpty then
+    begin
+     First;
+     while not Eof do
+      begin
+      CLBServicos.Items.AddObject(
+      FieldByName('nome').AsString,
+      TObject(FieldByName('id_servico').AsInteger)
+      );
+      Next;
+      end;
+    end;
   end;
 end;
-end;
+
 
 procedure TForm11.Timer1Timer(Sender: TObject);
 begin

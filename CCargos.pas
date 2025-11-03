@@ -195,15 +195,24 @@ begin
   DataModule1.QueryServicos.SQL.Text :=
   'SELECT * FROM servicos ' +
   'WHERE id_empresa = :id_empresa ' +
-  'ORDER BY nome;';
+  'ORDER BY nome';
   DataModule1.QueryServicos.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
   datamodule1.QueryServicos.open;
 
-  datamodule1.QueryRCS.Close;
-  datamodule1.QueryRCS.open;
+  DataModule1.QueryRCS.Close;
+  DataModule1.QueryRCS.SQL.Text :=
+  'SELECT c.id_cargo, ' +
+  '       c.nome_cargo, ' +
+  '       STRING_AGG(s.nome, '','')::varchar(500) AS nome ' +
+  'FROM cargos c ' +
+  'LEFT JOIN cargos_servicos cp ON c.id_cargo = cp.id_cargo ' +
+  'LEFT JOIN servicos s ON cp.id_servico = s.id_servico '  +
+  'WHERE c.id_empresa = :id_empresa ' +
+  'GROUP BY c.id_cargo, c.nome_cargo ' +
+  'ORDER BY c.nome_cargo;';
+  DataModule1.QueryRCS.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  DataModule1.QueryRCS.Open;
 
-  datamodule1.QueryCS.close;
-  datamodule1.QueryCS.open;
 
 end;
 

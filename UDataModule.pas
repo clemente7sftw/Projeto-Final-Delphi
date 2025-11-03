@@ -92,8 +92,6 @@ type
     QueryAdmbairro_adm: TWideStringField;
     QueryAdmcidade_adm: TWideStringField;
     QueryAdmestado_adm: TWideStringField;
-    QueryRCSnome_cargo: TWideStringField;
-    QueryRCSnome: TWideStringField;
     QueryTotalAg: TFDQuery;
     QueryTotalAgnome: TWideStringField;
     QueryTotalAgtotal: TLargeintField;

@@ -289,58 +289,54 @@ begin
   end;
 end;
 
-
-
 procedure TForm8.Salvar;
 var
   id_pro: integer;
 begin
   if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
   begin
-    // CAPTURA o id_pro ANTES de fechar a query
-    id_pro := DataModule1.QueryRPC.FieldByName('id_pro').AsInteger;
-
-    with DataModule1.QueryRPC do
-    begin
-      Close;  // Agora pode fechar porque já capturou o id_pro
-      SQL.Text := 'UPDATE profissionais ' +
-                  'SET nome = :nome, email = :email ' +
-                  'WHERE id_pro = :id_pro';
-      ParamByName('nome').AsString := DBEdit1.Text;
-      ParamByName('email').AsString := DBEdit2.Text;
-      ParamByName('id_pro').AsInteger := id_pro;
-      ExecSQL;
-
-      // Recarrega a query para atualizar o DBGrid
-      Close;
-      SQL.Text :=
-        'SELECT ' +
-        '  p.id_pro, ' +
-        '  p.nome, ' +
-        '  p.email, ' +
-        '  STRING_AGG(c.nome_cargo, '', '')::varchar(500) AS nome_cargo ' +
-        'FROM profissionais p ' +
-        'LEFT JOIN profissionais_cargos pc ON p.id_pro = pc.id_pro ' +
-        'LEFT JOIN cargos c ON pc.id_cargo = c.id_cargo ' +
-        'WHERE p.id_empresa = :id_empresa ' +
-        'GROUP BY p.id_pro, p.nome, p.email ' +
-        'ORDER BY p.nome;';
-      ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-      Open;
-    end;
-
-    EditsInativos;
-    BtnConf.Visible := False;
-    ExclBtn.Visible := True;
-    EditBtn.Visible := True;
-    addclie.Visible := True;
-    Lblrequired.Visible := False;
-    CLBCargos.Visible := False;
-  end
-  else
-  begin
-    Lblrequired.Visible := True;
-  end;
+//    id_pro := DataModule1.QueryRPC.FieldByName('id_pro').AsInteger;
+//
+//    with DataModule1.QueryRPC do
+//    begin
+//      Close;
+//      SQL.Text := 'UPDATE profissionais ' +
+//                  'SET nome = :nome, email = :email ' +
+//                  'WHERE id_pro = :id_pro';
+//      ParamByName('nome').AsString := DBEdit1.Text;
+//      ParamByName('email').AsString := DBEdit2.Text;
+//      ParamByName('id_pro').AsInteger := id_pro;
+//      ExecSQL;
+//
+//      Close;
+//      SQL.Text :=
+//        'SELECT ' +
+//        '  p.id_pro, ' +
+//        '  p.nome, ' +
+//        '  p.email, ' +
+//        '  STRING_AGG(c.nome_cargo, '', '')::varchar(500) AS nome_cargo ' +
+//        'FROM profissionais p ' +
+//        'LEFT JOIN profissionais_cargos pc ON p.id_pro = pc.id_pro ' +
+//        'LEFT JOIN cargos c ON pc.id_cargo = c.id_cargo ' +
+//        'WHERE p.id_empresa = :id_empresa ' +
+//        'GROUP BY p.id_pro, p.nome, p.email ' +
+//        'ORDER BY p.nome;';
+//      ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+//      Open;
+//    end;
+//
+//    EditsInativos;
+//    BtnConf.Visible := False;
+//    ExclBtn.Visible := True;
+//    EditBtn.Visible := True;
+//    addclie.Visible := True;
+//    Lblrequired.Visible := False;
+//    CLBCargos.Visible := False;
+//  end
+//  else
+//  begin
+//    Lblrequired.Visible := True;
+ end;
 end;
 
 
