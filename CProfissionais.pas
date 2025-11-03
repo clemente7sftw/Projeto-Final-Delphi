@@ -54,6 +54,7 @@ type
     procedure Editar;
     procedure Cancelar;
     procedure Salvar;
+    procedure TrazerCargos;
     procedure AdicionarProfissional;
     procedure BtnConf1Click(Sender: TObject);
     procedure Panel3Click(Sender: TObject);
@@ -132,6 +133,7 @@ end;
 
 procedure TForm8.Editar;
 begin
+  TrazerCargos;
   BtnConf.Visible:= true;
   ExclBtn.Visible:= false;
   EditsAtivos;
@@ -291,7 +293,7 @@ end;
 
 procedure TForm8.Salvar;
 var
-  id_pro: integer;
+  id_pro, id_cargo, i: Integer;
 begin
   if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
   begin
@@ -309,18 +311,49 @@ begin
       ParamByName('id_pro').AsInteger := id_pro;
       ExecSQL;
     end;
-    with DataModule1.QueryRPC do
+
+    with DataModule1.query_conexao do
     begin
       Close;
-      ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-      Open;
-    end;
+      SQL.Text := 'DELETE FROM profissionais_cargos WHERE id_pro = :id_pro';
+      ParamByName('id_pro').AsInteger := id_pro;
+      ExecSQL;
 
+      for i := 0 to CLBCargos.Count - 1 do
+      begin
+        if CLBCargos.Checked[i] then
+        begin
+          id_cargo := Integer(CLBCargos.Items.Objects[i]);
+          Close;
+          SQL.Text :=
+            'INSERT INTO profissionais_cargos (id_pro, id_cargo) ' +
+            'VALUES (:id_pro, :id_cargo)';
+          ParamByName('id_pro').AsInteger := id_pro;
+          ParamByName('id_cargo').AsInteger := id_cargo;
+          ExecSQL;
+        end;
+      end;
+    end;
+    DataModule1.QueryRPC.SQL.Text :=
+    'SELECT ' +
+    '  p.id_pro, ' +
+    '  p.nome, ' +
+    '  p.email, ' +
+    '  STRING_AGG(c.nome_cargo, '', '')::varchar(500) AS nome_cargo ' +
+    'FROM profissionais p ' +
+    'LEFT JOIN profissionais_cargos pc ON p.id_pro = pc.id_pro ' +
+    'LEFT JOIN cargos c ON pc.id_cargo = c.id_cargo ' +
+    'WHERE p.id_empresa = :id_empresa ' +
+    'GROUP BY p.id_pro, p.nome, p.email ' +
+    'ORDER BY p.nome;';
+    DataModule1.QueryRPC.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+    DataModule1.QueryRPC.Open;
     EditsInativos;
     BtnConf.Visible := False;
     ExclBtn.Visible := True;
     EditBtn.Visible := True;
     addclie.Visible := True;
+    DBEdit3.Visible:= true;
     Lblrequired.Visible := False;
     CLBCargos.Visible := False;
   end
@@ -329,6 +362,58 @@ begin
     Lblrequired.Visible := True;
   end;
 end;
+
+
+
+procedure TForm8.TrazerCargos;
+var
+  id_pro: Integer;
+  i: Integer;
+begin
+  with DataModule1.query_conexao do
+  begin
+    Close;
+    SQL.Text := 'SELECT * FROM cargos ' +
+                'WHERE id_empresa = :id_empresa ' +
+                'ORDER BY nome_cargo';
+    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+    Open;
+
+    CLBCargos.Items.Clear;
+
+    while not Eof do
+    begin
+      CLBCargos.Items.AddObject(
+        FieldByName('nome_cargo').AsString,
+        TObject(FieldByName('id_cargo').AsInteger)
+      );
+      Next;
+    end;
+  end;
+
+  id_pro := DataModule1.QueryRPC.FieldByName('id_pro').AsInteger;
+
+  with DataModule1.query_conexao do
+  begin
+    Close;
+    SQL.Text := 'SELECT id_cargo FROM profissionais_cargos WHERE id_pro = :id_pro';
+    ParamByName('id_pro').AsInteger := id_pro;
+    Open;
+    while not Eof do
+    begin
+      for i := 0 to CLBCargos.Count - 1 do
+      begin
+        if Integer(CLBCargos.Items.Objects[i]) = FieldByName('id_cargo').AsInteger then
+        begin
+          CLBCargos.Checked[i] := True;
+          Break;
+        end;
+      end;
+      Next;
+    end;
+  end;
+end;
+
 
 
 end.
