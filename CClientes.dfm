@@ -499,6 +499,21 @@ object Form4: TForm4
       ParentColor = False
       ParentFont = False
     end
+    object LbErro_Sistema: TLabel
+      Left = 1105
+      Top = 716
+      Width = 626
+      Height = 30
+      Caption = 'Algum Erro ocorreu do nosso lado... Tente novamente mais tarde'
+      Color = clDarkred
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
     object DBGrid1: TDBGrid
       Left = 40
       Top = 401
@@ -627,7 +642,7 @@ object Form4: TForm4
         OnClick = Image2Click
       end
     end
-    object DBEdit2: TDBEdit
+    object EdEmail: TDBEdit
       Left = 1105
       Top = 576
       Width = 496
@@ -642,7 +657,7 @@ object Form4: TForm4
       ParentFont = False
       TabOrder = 4
     end
-    object DBEdit1: TDBEdit
+    object EdNome: TDBEdit
       Left = 1105
       Top = 485
       Width = 496
@@ -656,7 +671,7 @@ object Form4: TForm4
       Font.Style = []
       ParentFont = False
       TabOrder = 5
-      OnKeyPress = DBEdit1KeyPress
+      OnKeyPress = EdNomeKeyPress
     end
     object BtnCad: TPanel
       Left = 1105
@@ -773,5 +788,26 @@ object Form4: TForm4
     DataSet = DataModule1.QueryClientes
     Left = 432
     Top = 264
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 5000
+    OnTimer = Timer1Timer
+    Left = 1680
+    Top = 688
+  end
+  object Timer2: TTimer
+    Enabled = False
+    Interval = 5000
+    OnTimer = Timer2Timer
+    Left = 1680
+    Top = 760
+  end
+  object Timer3: TTimer
+    Enabled = False
+    Interval = 5000
+    OnTimer = Timer3Timer
+    Left = 1680
+    Top = 824
   end
 end
