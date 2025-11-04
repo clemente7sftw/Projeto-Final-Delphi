@@ -455,6 +455,27 @@ object Form15: TForm15
       Stretch = True
       OnClick = VoltarClick
     end
+    object btncancelar: TImage
+      Left = 913
+      Top = 362
+      Width = 41
+      Height = 33
+      Cursor = crHandPoint
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000260000
+        002008060000007E640AB3000000097048597300000B1300000B1301009A9C18
+        000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000000
+        F04944415478DAEDD78D09C2301005E074034770041DC10D74039D4C37D00D1C
+        4147E8081DC10B44086293BBF70E6B4A03472934EFBE96FEA45DF8D3D14D0D58
+        60BF84ADA4D6524F877EEAAC1A2C86DCD3B697DAA52D324C5935D851EA9CEDA3
+        B81CF51E07A91B0A8B97FEF11168C57D43C5B95BA901859582353878AEF6A944
+        1A3027647A5D581A51282B4CDB904621B05AE3E0814261255C080E28063686CB
+        078C6261251C859A2D6C0CE5829BD5CD3F869AF4755142F586635C61968634AE
+        E98F38D3009E6B595A9BCFBA92412D14F752570255C29DA42E1E570C454159DA
+        9B7F934206E5F17456D33FBC0BAC09D80B539776210A1239D50000000049454E
+        44AE426082}
+      OnClick = btncancelarClick
+    end
     object DBGServicos: TDBGrid
       Left = 40
       Top = 401
@@ -716,8 +737,8 @@ object Form15: TForm15
       OnClick = BtnConfClick
     end
     object BtnCad: TPanel
-      Left = 1350
-      Top = 542
+      Left = 1104
+      Top = 825
       Width = 496
       Height = 41
       Cursor = crHandPoint
@@ -741,9 +762,47 @@ object Form15: TForm15
       Caption = 'Panel2'
       TabOrder = 10
     end
+    object Edit1: TEdit
+      Left = 1104
+      Top = 498
+      Width = 497
+      Height = 38
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 11
+    end
+    object Edit2: TEdit
+      Left = 1104
+      Top = 608
+      Width = 497
+      Height = 38
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 12
+    end
+    object Edit3: TEdit
+      Left = 1104
+      Top = 731
+      Width = 497
+      Height = 38
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 13
+    end
   end
   object DataSource1: TDataSource
-    DataSet = DataModule1.QueryServicos
     Left = 632
     Top = 224
   end

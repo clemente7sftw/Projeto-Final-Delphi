@@ -56,6 +56,7 @@ type
     procedure Salvar;
     procedure TrazerCargos;
     procedure AdicionarProfissional;
+    procedure atualizar_grid;
     procedure BtnConf1Click(Sender: TObject);
     procedure Panel3Click(Sender: TObject);
     procedure LbClieClick(Sender: TObject);
@@ -79,6 +80,7 @@ type
 
 var
   Form8: TForm8;
+  id_pro: integer;
 
 implementation
 
@@ -96,6 +98,24 @@ procedure TForm8.AdicionarProfissional;
 begin
   form9.show;
   form8.close;
+end;
+
+procedure TForm8.atualizar_grid;
+begin
+DataModule1.QueryRPC.SQL.Text :=
+  'SELECT ' +
+  '  p.id_pro, ' +
+  '  p.nome, ' +
+  '  p.email, ' +
+  '  STRING_AGG(c.nome_cargo, '', '')::varchar(500) AS nome_cargo ' +
+  'FROM profissionais p ' +
+  'LEFT JOIN profissionais_cargos pc ON p.id_pro = pc.id_pro ' +
+  'LEFT JOIN cargos c ON pc.id_cargo = c.id_cargo ' +
+  'WHERE p.id_empresa = :id_empresa ' +
+  'GROUP BY p.id_pro, p.nome, p.email ' +
+  'ORDER BY p.nome;';
+DataModule1.QueryRPC.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+DataModule1.QueryRPC.Open;
 end;
 
 procedure TForm8.BtnCadClick(Sender: TObject);
@@ -171,7 +191,15 @@ procedure TForm8.Excluir;
 begin
   if Application.MessageBox('Tem certeza de que deseja excluir este Profissional? Essa ação não poderá ser desfeita.', 'Exclusão de Profissional', MB_YESNO + MB_ICONQUESTION) = IDYES then
   begin
-  datamodule1.QueryRPC.delete;
+    with datamodule1.query_conexao do
+  begin
+    id_pro := DataModule1.Query_conexao.FieldByName('id_pro').AsInteger;
+    Close;
+    SQL.Text := 'DELETE FROM profissionais WHERE id_pro = :id_pro';
+    ParamByName('id_pro').AsInteger := id_pro;
+    ExecSQL;
+    atualizar_grid;
+  end;
   end
   else
   begin

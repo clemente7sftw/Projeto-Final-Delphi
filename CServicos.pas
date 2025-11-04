@@ -41,6 +41,10 @@ type
     BtnCad: TPanel;
     Voltar: TImage;
     Panel2: TPanel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    btncancelar: TImage;
     procedure Excluir;
     procedure FormCreate(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
@@ -54,7 +58,14 @@ type
     procedure Editar;
     procedure Salvar;
     procedure Cadastrar;
+    procedure Cancelar;
     procedure Adicionar;
+    procedure atualizar_grid;
+    procedure Procurar;
+    procedure edits_cadastro_visiveis;
+    procedure edits_cadastro_escondidos;
+    procedure dbedits_escondidos;
+    procedure dbedits_visiveis;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure addclieClick(Sender: TObject);
     procedure Image3Click(Sender: TObject);
@@ -65,6 +76,7 @@ type
     procedure LbProfissionaisClick(Sender: TObject);
     procedure LbCargosClick(Sender: TObject);
     procedure LbFornecedoresClick(Sender: TObject);
+    procedure btncancelarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -73,6 +85,7 @@ type
 
 var
   Form15: TForm15;
+  id_servico: integer;
 
 implementation
 
@@ -84,8 +97,8 @@ uses TelaPrincipalN1, UDataModule, TelaInicialN3, CClientes, CAgendamentos,
 
 procedure TForm15.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-lbaviso.visible := false;
- Lblrequired.Visible:= false;
+  lbaviso.visible := false;
+  Lblrequired.Visible:= false;
 end;
 
 procedure TForm15.FormCreate(Sender: TObject);
@@ -95,18 +108,24 @@ begin
   lbaviso.visible := false;
   Lblrequired.Visible:= false;
   BtnCad.Visible:= false;
+  edits_cadastro_escondidos;
+  btncancelar.Visible:= false;
 end;
 
 procedure TForm15.FormShow(Sender: TObject);
 begin
-  datamodule1.QueryServicos.Close;
-  DataModule1.QueryServicos.SQL.Text :=
+with datamodule1.query_conexao do
+begin
+ Close;
+  SQL.Text :=
   'SELECT * FROM servicos ' +
   'WHERE id_empresa = :id_empresa ' +
   'ORDER BY nome;';
-   DataModule1.QueryServicos.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-  datamodule1.QueryServicos.Open;
+  DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  Open;
   EditsInativos;
+  DataSource1.DataSet := DataModule1.query_conexao;
+end;
 end;
 
 
@@ -153,19 +172,39 @@ end;
 
 procedure TForm15.Adicionar;
 begin
-  DataModule1.QueryServicos.Append;
-  DataModule1.QueryServicos.FieldByName('nome').Clear;
-  DataModule1.QueryServicos.FieldByName('duracao').Clear;
-  DataModule1.QueryServicos.FieldByName('preco').Clear;
+  dbedits_escondidos;
+  edits_cadastro_visiveis;
   EditsAtivos;
   BtnCad.Visible := true;
   BtnExcluir.Visible := false;
   BtnEditar.Visible := false;
+  btncancelar.Visible := true;
+end;
+
+procedure TForm15.atualizar_grid;
+begin
+with datamodule1.query_conexao do
+begin
+ Close;
+  SQL.Text :=
+  'SELECT * FROM servicos ' +
+  'WHERE id_empresa = :id_empresa ' +
+  'ORDER BY nome;';
+  DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  Open;
+  EditsInativos;
+  DataSource1.DataSet := DataModule1.query_conexao;
+end;
 end;
 
 procedure TForm15.BtnCadClick(Sender: TObject);
 begin
   Cadastrar;
+end;
+
+procedure TForm15.btncancelarClick(Sender: TObject);
+begin
+Cancelar;
 end;
 
 procedure TForm15.BtnConfClick(Sender: TObject);
@@ -190,6 +229,131 @@ begin
     Key := #0;
     SelectNext(Sender as TWinControl, True, True);
   end;
+end;
+
+
+procedure TForm15.Excluir;
+begin
+  if Application.MessageBox(
+    'Atenção: ao excluir este serviço, ele será removido também dos cargos associados. Deseja continuar?',
+    'Exclusão de Serviços',
+    MB_YESNO + MB_ICONQUESTION
+  ) = IDYES then
+  begin
+  with datamodule1.query_conexao do
+  begin
+    id_servico := DataModule1.Query_conexao.FieldByName('id_servico').AsInteger;
+    Close;
+    SQL.Text := 'DELETE FROM servicos WHERE id_servico = :id_servico';
+    ParamByName('id_servico').AsInteger := id_servico;
+    ExecSQL;
+    atualizar_grid;
+  end;
+  end
+  else
+  begin
+
+  end;
+end;
+
+
+
+procedure TForm15.PbtnAddClick(Sender: TObject);
+begin
+  Form10.show;
+  Form15.Hide;
+end;
+
+procedure TForm15.Procurar;
+begin
+  with DataModule1.Query_conexao do
+  begin
+    Close;
+    SQL.Text := 'SELECT * FROM servicos ' +
+                'WHERE UPPER(nome) LIKE :nome ' +
+                'ORDER BY nome';
+    ParamByName('nome').AsString := '%' + UpperCase(EdPesquisa.Text) + '%';
+    Open;
+  end;
+end;
+
+
+procedure TForm15.Cadastrar;
+begin
+ var  id_empresa:integer;
+begin
+  if (Edit1.Text <> '') and (Edit2.Text <> '') and (Edit3.Text <> '') then
+   begin
+
+    with DataModule1.Query_conexao do
+    begin
+        Close;
+        SQL.Text :=
+          'INSERT INTO servicos (id_empresa, nome, duracao, preco) ' +
+          'VALUES (:id_empresa, :nome, :duracao, :preco)';
+        ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+        ParamByName('nome').AsString := Edit1.Text;
+        ParamByName('duracao').AsInteger := StrToInt(Edit2.Text);
+        ParamByName('preco').Asinteger := StrToInt(Edit3.Text);
+        ExecSQL;
+        BtnCad.Visible:= false;
+        Lblrequired.Visible:= false;
+        EditsInativos;
+        atualizar_grid;
+        edits_cadastro_escondidos;
+        dbedits_visiveis;
+    end;
+  end else begin
+    Lblrequired.Visible:= true;
+  end;
+end;
+end;
+
+procedure TForm15.Cancelar;
+begin
+  atualizar_grid;
+  edits_cadastro_escondidos;
+  BtnCad.Visible:= false;
+  btncancelar.Visible:= false;
+  BtnEditar.visible := true;
+  BtnExcluir.visible := true;
+end;
+
+procedure TForm15.Salvar;
+begin
+  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and (DBEdit3.Text <> '') then
+  begin
+    with datamodule1.query_conexao do
+    begin
+    Edit;
+    FieldByName('nome').AsString := dbEdit1.Text;
+    FieldByName('duracao').AsString := dbEdit2.Text;
+    FieldByName('preco').AsString := dbEdit3.Text;
+    Post;
+    end;
+    atualizar_grid;
+    EditsInativos;
+    BtnConf.Visible := False;
+    BtnExcluir.Visible := True;
+    BtnEditar.Visible:= true;
+    lblrequired.visible := false;
+    addclie.Visible:= true;
+  end else begin
+    lblrequired.visible := true;
+  end;
+end;
+procedure TForm15.dbedits_escondidos;
+begin
+  dbedit1.Visible:= true;
+  dbedit2.Visible:= true;
+  dbedit3.Visible:= true;
+end;
+
+procedure TForm15.dbedits_visiveis;
+begin
+  Dbedit1.Visible:= false;
+  Dbedit2.Visible:= false;
+  Dbedit3.Visible:= false;
 end;
 
 procedure TForm15.Editar;
@@ -217,75 +381,19 @@ begin
 
 end;
 
-procedure TForm15.Excluir;
+procedure TForm15.edits_cadastro_escondidos;
 begin
-  if Application.MessageBox(
-    'Atenção: ao excluir este serviço, ele será removido também dos cargos associados. Deseja continuar?',
-    'Exclusão de Serviços',
-    MB_YESNO + MB_ICONQUESTION
-  ) = IDYES then
-  begin
-    try
-      DataModule1.QueryServicos.Delete;
-
-    except
-      on E: EFDDBEngineException do
-      begin
-        if Pos('chave estrangeira', LowerCase(E.Message)) > 0 then
-        lbaviso.visible := true
-        else
-      end;
-    end;
-  end
-  else
-    Exit;
+  edit1.Visible:= false;
+  edit2.Visible:= false;
+  edit3.Visible:= false;
 end;
 
-
-
-procedure TForm15.PbtnAddClick(Sender: TObject);
+procedure TForm15.edits_cadastro_visiveis;
 begin
-  Form10.show;
-  Form15.Hide;
+  edit1.Visible:= true;
+  edit2.Visible:= true;
+  edit3.Visible:= true;
 end;
 
-procedure TForm15.Cadastrar;
-begin
- var  id_empresa:integer;
-begin
-  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and (DBEdit3.Text <> '') then
-     begin
-
-      with DataModule1.QueryServicos do
-      begin
-          id_empresa:= DataModule1.id_empresa;
-          DataModule1.Queryservicos.FieldByName('id_empresa').AsInteger := DataModule1.id_empresa;
-          datamodule1.QueryServicos.Post;
-          BtnCad.Visible:= false;
-          Lblrequired.Visible:= false;
-          EditsInativos;
-      end;
-    end else begin
-      Lblrequired.Visible:= true;
-    end;
-end;
-end;
-
-procedure TForm15.Salvar;
-begin
-  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and (DBEdit3.Text <> '') then
-  begin
-    if not (DataModule1.QueryServicos.State in [dsEdit, dsInsert]) then
-    DataModule1.QueryServicos.Edit;
-    DataModule1.QueryServicos.Post;
-    EditsInativos;
-    BtnConf.Visible := False;
-    BtnExcluir.Visible := True;
-    BtnEditar.Visible:= true;
-    lblrequired.visible := false;
-  end else begin
-    lblrequired.visible := true;
-  end;
-end;
 
 end.

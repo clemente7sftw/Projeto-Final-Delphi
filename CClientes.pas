@@ -200,6 +200,8 @@ begin
   ednome.Visible:= false;
   edemail.Visible:= false;
   edits_cadastro_visiveis;
+  edit1.Text := '';
+  edit2.Text := '';
   BtnCad.Visible := true;
   EditBtn.Visible := false;
   ExclBtn.Visible := false;
@@ -295,7 +297,7 @@ begin
   EditBtn.Visible := true;
   ExclBtn.Visible := true;
   Lblrequired.visible:= false;
-    ednome.Visible:= true;
+  ednome.Visible:= true;
   edemail.Visible:= true;
 end;
 
@@ -310,20 +312,20 @@ end;
 
 procedure TForm4.erro;
 begin
-Timer3.Enabled := true;
-LbErro_Sistema.visible := true;
+  Timer3.Enabled := true;
+  LbErro_Sistema.visible := true;
 end;
 
 procedure TForm4.erro_campos;
 begin
-Timer1.Enabled := true;
-Lblrequired.visible := true;
+  Timer1.Enabled := true;
+  Lblrequired.visible := true;
 end;
 
 procedure TForm4.erro_email;
 begin
-Timer2.Enabled := true;
-LbEmail.visible := true;
+  Timer2.Enabled := true;
+  LbEmail.visible := true;
 end;
 
 procedure TForm4.Editar;
