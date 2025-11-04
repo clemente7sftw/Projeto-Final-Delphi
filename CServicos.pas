@@ -170,33 +170,6 @@ begin
 Adicionar;
 end;
 
-procedure TForm15.Adicionar;
-begin
-  dbedits_escondidos;
-  edits_cadastro_visiveis;
-  EditsAtivos;
-  BtnCad.Visible := true;
-  BtnExcluir.Visible := false;
-  BtnEditar.Visible := false;
-  btncancelar.Visible := true;
-end;
-
-procedure TForm15.atualizar_grid;
-begin
-with datamodule1.query_conexao do
-begin
- Close;
-  SQL.Text :=
-  'SELECT * FROM servicos ' +
-  'WHERE id_empresa = :id_empresa ' +
-  'ORDER BY nome;';
-  DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-  Open;
-  EditsInativos;
-  DataSource1.DataSet := DataModule1.query_conexao;
-end;
-end;
-
 procedure TForm15.BtnCadClick(Sender: TObject);
 begin
   Cadastrar;
@@ -255,8 +228,6 @@ begin
 
   end;
 end;
-
-
 
 procedure TForm15.PbtnAddClick(Sender: TObject);
 begin
@@ -342,6 +313,35 @@ begin
     lblrequired.visible := true;
   end;
 end;
+
+
+procedure TForm15.Adicionar;
+begin
+  dbedits_escondidos;
+  edits_cadastro_visiveis;
+  EditsAtivos;
+  BtnCad.Visible := true;
+  BtnExcluir.Visible := false;
+  BtnEditar.Visible := false;
+  btncancelar.Visible := true;
+end;
+
+procedure TForm15.atualizar_grid;
+begin
+with datamodule1.query_conexao do
+begin
+ Close;
+  SQL.Text :=
+  'SELECT * FROM servicos ' +
+  'WHERE id_empresa = :id_empresa ' +
+  'ORDER BY nome;';
+  DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  Open;
+  EditsInativos;
+  DataSource1.DataSet := DataModule1.query_conexao;
+end;
+end;
+
 procedure TForm15.dbedits_escondidos;
 begin
   dbedit1.Visible:= true;
