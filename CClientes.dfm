@@ -576,7 +576,7 @@ object Form4: TForm4
     end
     object BtnConf: TPanel
       Left = 1105
-      Top = 848
+      Top = 872
       Width = 496
       Height = 41
       Cursor = crHandPoint
@@ -675,7 +675,7 @@ object Form4: TForm4
     end
     object BtnCad: TPanel
       Left = 1105
-      Top = 848
+      Top = 872
       Width = 496
       Height = 41
       Cursor = crHandPoint
@@ -690,6 +690,32 @@ object Form4: TForm4
       ParentFont = False
       TabOrder = 6
       OnClick = BtnCadClick
+    end
+    object Edit1: TEdit
+      Left = 1105
+      Top = 485
+      Width = 496
+      Height = 38
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 7
+    end
+    object Edit2: TEdit
+      Left = 1105
+      Top = 576
+      Width = 496
+      Height = 38
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 8
     end
   end
   object Barra: TPanel
@@ -785,9 +811,8 @@ object Form4: TForm4
     end
   end
   object DataSource1: TDataSource
-    DataSet = DataModule1.QueryClientes
-    Left = 432
-    Top = 264
+    Left = 64
+    Top = 296
   end
   object Timer1: TTimer
     Enabled = False
