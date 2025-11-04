@@ -58,7 +58,7 @@ implementation
 {$R *.dfm}
 
 uses UDataModule, TelaInicialN3, CClientes,
-  CHorarios, TelaInicialN2;
+  CHorarios, TelaInicialN2, n4_tela_inicial;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
@@ -177,6 +177,27 @@ begin
     begin
     DataModule1.id_adm := FieldByName('id_adm').AsInteger;
     Form5.Show;
+    LoginCorreto := True;
+    Exit;
+    end;
+    except
+    erro;
+
+    end;
+  end;
+   with DataModule1.query_conexao do
+  begin
+    try
+    Close;
+    SQL.Text := 'SELECT * FROM profissionais WHERE email = :email AND senha = :senha';
+    ParamByName('email').AsString := EdEmail.Text;
+    ParamByName('senha').AsString := EdSenha.Text;
+    Open;
+
+    if not IsEmpty then
+    begin
+    DataModule1.id_pro := FieldByName('id_pro').AsInteger;
+    Form30.Show;
     LoginCorreto := True;
     Exit;
     end;

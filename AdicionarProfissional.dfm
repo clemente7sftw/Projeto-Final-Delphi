@@ -393,7 +393,7 @@ object Form9: TForm9
     end
     object DBEdit1: TDBEdit
       Left = 1069
-      Top = 452
+      Top = 444
       Width = 496
       Height = 38
       DataField = 'nome'

@@ -117,7 +117,13 @@ end;
 procedure TForm9.Cadastrar;
 var
   i, id_empresa, id_pro, id_cargo: Integer;
+  nome_senha:string;
 begin
+  nome_senha := Trim(dbEdit1.Text);
+
+  if Pos(' ', nome_senha) > 0 then
+    nome_senha := Copy(nome_senha, 1, Pos(' ', nome_senha) - 1);
+
   if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and
      (CLBCargos.Items.Count > 0) and (CLBCargos.ItemIndex <> -1) then
   begin
@@ -132,6 +138,7 @@ begin
           'RETURNING id_pro';
         ParamByName('nome').AsString := DBEdit1.Text;
         ParamByName('email').AsString := DBEdit2.Text;
+        ParamByName('senha_clie').AsString := nome_senha + '123';
         ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
         Open;
          id_pro := FieldByName('id_pro').AsInteger;
