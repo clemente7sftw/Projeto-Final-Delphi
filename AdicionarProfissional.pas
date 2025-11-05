@@ -133,12 +133,12 @@ begin
       begin
         Close;
         SQL.Text :=
-          'INSERT INTO profissionais (nome, email, id_empresa) ' +
-          'VALUES (:nome, :email, :id_empresa)' +
+          'INSERT INTO profissionais (nome, email, senha, id_empresa) ' +
+          'VALUES (:nome, :email, :senha, :id_empresa)' +
           'RETURNING id_pro';
         ParamByName('nome').AsString := DBEdit1.Text;
         ParamByName('email').AsString := DBEdit2.Text;
-        ParamByName('senha_clie').AsString := nome_senha + '123';
+        ParamByName('senha').AsString := nome_senha + '123';
         ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
         Open;
          id_pro := FieldByName('id_pro').AsInteger;
