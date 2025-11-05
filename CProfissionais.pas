@@ -168,14 +168,23 @@ end;
 
 procedure TForm8.Editar;
 begin
-//  TrazerCargos;
+  DBEdit1.DataSource := nil;
+  DBEdit2.DataSource := nil;
+  DBEdit3.DataSource := nil;
   BtnConf.Visible:= true;
   ExclBtn.Visible:= false;
   EditsAtivos;
   EditBtn.Visible:= false;
   addclie.Visible:= false;
   CLBCargos.Visible:= true;
+  DBEdit1.Visible:= false;
+  DBEdit2.Visible:= false;
   DBEdit3.Visible:= false;
+  dbgrid1.Enabled := false;
+  Edit1.Text := DataModule1.Query_conexao.FieldByName('nome').AsString;
+  Edit2.Text := DataModule1.Query_conexao.FieldByName('email').AsString;
+  TrazerCargos;
+
 end;
 
 procedure TForm8.EditBtnClick(Sender: TObject);
@@ -332,7 +341,7 @@ procedure TForm8.Salvar;
 var
   id_pro, id_cargo, i: Integer;
 begin
-  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
+  if (Edit1.Text <> '') and (Edit2.Text <> '') then
   begin
     id_pro := DataModule1.Query_conexao.FieldByName('id_pro').AsInteger;
 
@@ -395,6 +404,7 @@ var
 begin
   with DataModule1.query_conexao do
   begin
+    id_pro := DataModule1.query_conexao.FieldByName('id_pro').AsInteger;
     Close;
     SQL.Text := 'SELECT * FROM cargos ' +
                 'WHERE id_empresa = :id_empresa ' +
@@ -413,8 +423,6 @@ begin
       Next;
     end;
   end;
-
-  id_pro := DataModule1.query_conexao.FieldByName('id_pro').AsInteger;
 
   with DataModule1.query_conexao do
   begin
@@ -436,7 +444,4 @@ begin
     end;
   end;
 end;
-
-
-
 end.

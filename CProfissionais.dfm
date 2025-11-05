@@ -551,7 +551,7 @@ object Form8: TForm8
         TabOrder = 1
       end
       object DBEdit2: TDBEdit
-        Left = 1102
+        Left = 1103
         Top = 587
         Width = 496
         Height = 38
@@ -746,17 +746,29 @@ object Form8: TForm8
         TabOrder = 8
       end
       object Edit1: TEdit
-        Left = 1135
-        Top = 388
-        Width = 121
-        Height = 23
+        Left = 1102
+        Top = 476
+        Width = 497
+        Height = 38
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -21
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
         TabOrder = 9
       end
       object Edit2: TEdit
-        Left = 1296
-        Top = 388
-        Width = 121
-        Height = 23
+        Left = 1102
+        Top = 587
+        Width = 497
+        Height = 38
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -21
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
         TabOrder = 10
       end
     end
