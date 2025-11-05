@@ -23,6 +23,8 @@ object Form15: TForm15
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1919
+    ExplicitHeight = 1053
     object lbaviso: TLabel
       Left = 40
       Top = 869
@@ -577,6 +579,8 @@ object Form15: TForm15
       Width = 1919
       Height = 19
       Panels = <>
+      ExplicitTop = 1033
+      ExplicitWidth = 1917
     end
     object Barra: TPanel
       Left = -18
@@ -737,8 +741,8 @@ object Form15: TForm15
       OnClick = BtnConfClick
     end
     object BtnCad: TPanel
-      Left = 1104
-      Top = 825
+      Left = 1105
+      Top = 826
       Width = 496
       Height = 41
       Cursor = crHandPoint

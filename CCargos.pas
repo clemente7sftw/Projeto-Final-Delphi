@@ -50,6 +50,7 @@ type
     procedure Salvar;
     procedure ErroExclusao;
     procedure TrazerServicos;
+    procedure atualizar_grid;
     procedure FormShow(Sender: TObject);
     procedure BtnExcluirClick(Sender: TObject);
     procedure BtnConfClick(Sender: TObject);
@@ -73,6 +74,7 @@ type
 
 var
   Form14: TForm14;
+  id_cargo: integer;
 
 implementation
 
@@ -90,6 +92,26 @@ procedure TForm14.Adicionar;
 begin
 Form11.show;
 Form14.Close;
+end;
+
+procedure TForm14.atualizar_grid;
+begin
+with datamodule1.query_conexao do
+begin
+  Close;
+  SQL.Text :=
+  'SELECT c.id_cargo, ' +
+  '       c.nome_cargo, ' +
+  '       STRING_AGG(s.nome, '','')::varchar(500) AS nome ' +
+  'FROM cargos c ' +
+  'LEFT JOIN cargos_servicos cp ON c.id_cargo = cp.id_cargo ' +
+  'LEFT JOIN servicos s ON cp.id_servico = s.id_servico '  +
+  'WHERE c.id_empresa = :id_empresa ' +
+  'GROUP BY c.id_cargo, c.nome_cargo ' +
+  'ORDER BY c.nome_cargo;';
+  DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  Open;
+end;
 end;
 
 procedure TForm14.BtnAddClick(Sender: TObject);
@@ -147,28 +169,28 @@ end;
 
 procedure TForm14.ExclBtnClick(Sender: TObject);
 begin
-  if not DataModule1.QueryRCS.IsEmpty then
-  begin
-    Excluir;
-  end else begin
-    ErroExclusao;
-  end;
-
+excluir;
 end;
 
 procedure TForm14.Excluir;
 begin
-  if Application.MessageBox('Tem certeza de que deseja excluir este Cargo? Essa ação não poderá ser desfeita.', 'Exclusão de Cargo', MB_YESNO + MB_ICONQUESTION) = IDYES then
 begin
- datamodule1.QueryCargos.delete;
- datamodule1.QueryCargos.close;
- datamodule1.QueryCargos.open;
- datamodule1.QueryRCS.close;
- datamodule1.QueryRCS.open;
+  if Application.MessageBox('Tem certeza de que deseja excluir este Cargo? Essa ação não poderá ser desfeita.', 'Exclusão de Cargo', MB_YESNO + MB_ICONQUESTION) = IDYES then
+ with datamodule1.query_conexao do
+  begin
+    id_cargo := DataModule1.Query_conexao.FieldByName('id_cargo').AsInteger;
+    Close;
+    SQL.Text := 'DELETE FROM cargos WHERE id_cargo = :id_cargo';
+    ParamByName('id_cargo').AsInteger := id_cargo;
+    ExecSQL;
+    atualizar_grid;
+
 end else begin
 exit;
 end;
 end;
+end;
+
 
 
 procedure TForm14.FormCreate(Sender: TObject);
@@ -183,24 +205,10 @@ end;
 
 procedure TForm14.FormShow(Sender: TObject);
 begin
-  datamodule1.QueryCargos.close;
-  DataModule1.Querycargos.SQL.Text :=
-  'SELECT * FROM cargos ' +
-  'WHERE id_empresa = :id_empresa ' +
-  'ORDER BY nome_cargo';
-  DataModule1.Querycargos.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-  datamodule1.QueryCargos.open;
-
-  datamodule1.QueryServicos.close;
-  DataModule1.QueryServicos.SQL.Text :=
-  'SELECT * FROM servicos ' +
-  'WHERE id_empresa = :id_empresa ' +
-  'ORDER BY nome';
-  DataModule1.QueryServicos.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-  datamodule1.QueryServicos.open;
-
-  DataModule1.QueryRCS.Close;
-  DataModule1.QueryRCS.SQL.Text :=
+with datamodule1.query_conexao do
+begin
+  Close;
+  SQL.Text :=
   'SELECT c.id_cargo, ' +
   '       c.nome_cargo, ' +
   '       STRING_AGG(s.nome, '','')::varchar(500) AS nome ' +
@@ -210,10 +218,10 @@ begin
   'WHERE c.id_empresa = :id_empresa ' +
   'GROUP BY c.id_cargo, c.nome_cargo ' +
   'ORDER BY c.nome_cargo;';
-  DataModule1.QueryRCS.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-  DataModule1.QueryRCS.Open;
-
-
+  DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  Open;
+  DataSource2.DataSet := DataModule1.query_conexao;
+end;
 end;
 
 procedure TForm14.Image1Click(Sender: TObject);
@@ -314,10 +322,6 @@ begin
   end;
 end;
 
-
-
-
-
 procedure TForm14.Timer1Timer(Sender: TObject);
 begin
   LbErroExcl.Visible := False;
@@ -336,7 +340,6 @@ begin
                 'ORDER BY nome';
     ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
     Open;
-
     CLBServicos.Items.Clear;
     while not Eof do
     begin
@@ -348,7 +351,7 @@ begin
     end;
   end;
 
-  id_cargo := DataModule1.QueryCargos.FieldByName('id_cargo').AsInteger;
+  id_cargo := DataModule1.Query_conexao.FieldByName('id_cargo').AsInteger;
   with DataModule1.query_conexao do
   begin
     Close;

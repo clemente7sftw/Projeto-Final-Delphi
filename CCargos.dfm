@@ -690,7 +690,6 @@ object Form14: TForm14
     Top = 224
   end
   object DataSource2: TDataSource
-    DataSet = DataModule1.QueryRCS
     Left = 368
     Top = 224
   end

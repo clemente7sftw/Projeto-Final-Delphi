@@ -63,60 +63,51 @@ procedure TForm11.Cadastrar;
 var
   id_ser, id_cargo, id_servico, id_empresa, i: Integer;
 begin
-  if dbedit1.text = '' then
+if dbedit1.text = '' then
+begin
+  erroinclusao;
+end else begin
+  if CLBvazia(CLBServicos) then
   begin
-    erroinclusao;
+   erroinclusao;
   end else begin
-    if CLBvazia(CLBServicos) then
+    with DataModule1.query_conexao do
     begin
-     erroinclusao;
-    end else begin
-
-
-      with DataModule1.query_conexao do
-      begin
-        Close;
-        SQL.Text :=
-          'INSERT INTO cargos (nome_cargo, id_empresa) ' +
-          'VALUES (:nome_cargo, :id_empresa)' +
-          'RETURNING id_cargo';
-        ParamByName('nome_cargo').AsString := DBEdit1.Text;
-        ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-        Open;
-        id_cargo := FieldByName('id_cargo').AsInteger;
-
-      end;
-
-      for i := 0 to CLBServicos.count -1 do
-        begin
-        if CLBServicos.Checked[i] then
-          begin
-          id_ser := Integer(CLBServicos.Items.Objects[i]);
-          with DataModule1.query_conexao do
-          begin
-            close;
-          SQL.Text :=
-          'INSERT INTO cargos_servicos (id_cargo, id_servico,  id_empresa) ' +
-          'VALUES (:id_cargo, :id_servico,  :id_empresa)';
-          ParamByName('id_cargo').AsInteger := id_cargo;
-          ParamByName('id_servico').AsInteger := id_ser;
-          ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-          Execsql;
-          end;
-          end;
-        end;
-      DataModule1.QueryCargos.Close;
-      DataModule1.QueryCargos.Open;
-      datamodule1.QueryRCS.Close;
-      datamodule1.QueryRCS.open;
-      DataModule1.QueryCs.Close;
-      DataModule1.QueryCs.Open;
-      Form14.Show;
-      Form11.Close;
-      end;
+      Close;
+      SQL.Text :=
+        'INSERT INTO cargos (nome_cargo, id_empresa) ' +
+        'VALUES (:nome_cargo, :id_empresa)' +
+        'RETURNING id_cargo';
+      ParamByName('nome_cargo').AsString := DBEdit1.Text;
+      ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+      Open;
+      id_cargo := FieldByName('id_cargo').AsInteger;
     end;
+    for i := 0 to CLBServicos.count -1 do
+      begin
+      if CLBServicos.Checked[i] then
+        begin
+        id_ser := Integer(CLBServicos.Items.Objects[i]);
+        with DataModule1.query_conexao do
+        begin
+          close;
+        SQL.Text :=
+        'INSERT INTO cargos_servicos (id_cargo, id_servico,  id_empresa) ' +
+        'VALUES (:id_cargo, :id_servico,  :id_empresa)';
+        ParamByName('id_cargo').AsInteger := id_cargo;
+        ParamByName('id_servico').AsInteger := id_ser;
+        ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+        Execsql;
+        end;
+        end;
+      end;
 
+    Form14.Show;
+    Form11.Close;
+    end;
   end;
+
+end;
 
 
 
@@ -156,13 +147,6 @@ end;
 
 procedure TForm11.FormShow(Sender: TObject);
 begin
-    DataModule1.QueryCargos.Close;
-    DataModule1.QueryCargos.Open;
-    datamodule1.QueryCargos.Append;
-    datamodule1.QueryServicos.close;
-    datamodule1.QueryServicos.open;
-    datamodule1.QueryCS.close;
-    datamodule1.QueryCS.open;
     PreencherListbox;
 
 end;

@@ -483,7 +483,7 @@ object Form11: TForm11
   object DataSource1: TDataSource
     DataSet = DataModule1.QueryCargos
     Left = 376
-    Top = 240
+    Top = 224
   end
   object DataSource2: TDataSource
     DataSet = DataModule1.QueryCS
