@@ -201,6 +201,7 @@ begin
   EditsInativos;
   CLBServicos.Visible:= false;
   LbErroExcl.Visible:= false;
+
 end;
 
 procedure TForm14.FormShow(Sender: TObject);
@@ -259,55 +260,15 @@ procedure TForm14.Salvar;
 var
   id_ser, id_cargo, i: Integer;
 begin
-  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
+  if dbEdit1.Text <> ''  then
   begin
-    if DataModule1.QueryCargos.State in [dsEdit, dsInsert] then
-      DataModule1.QueryCargos.Post;
-
-    id_cargo := DataModule1.QueryCargos.FieldByName('id_cargo').AsInteger;
-
-    with DataModule1.QueryCS do
-    begin
-      Close;
-      SQL.Text := 'DELETE FROM cargos_servicos WHERE id_cargo = :id_cargo';
-      ParamByName('id_cargo').AsInteger := id_cargo;
-      ExecSQL;
-    end;
-
-    for i := 0 to CLBServicos.Items.Count - 1 do
-    begin
-      if CLBServicos.Checked[i] then
-      begin
-        id_ser := Integer(CLBServicos.Items.Objects[i]);
-
-        with DataModule1.QueryCS do
-        begin
-          Close;
-          SQL.Text := 'INSERT INTO cargos_servicos (id_cargo, id_servico, id_empresa) ' +
-                      'VALUES (:id_cargo, :id_servico, :id_empresa)';
-          ParamByName('id_cargo').AsInteger := id_cargo;
-          ParamByName('id_servico').AsInteger := id_ser;
-          ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-          ExecSQL;
-        end;
-      end;
-    end;
-    with DataModule1.QueryRCS do
-    begin
-      Close;
-      SQL.Text :=
-        'SELECT c.id_cargo, ' +
-        '       c.nome_cargo, ' +
-        '       STRING_AGG(s.nome, '','')::varchar(500) AS nome ' +
-        'FROM cargos c ' +
-        'LEFT JOIN cargos_servicos cp ON c.id_cargo = cp.id_cargo ' +
-        'LEFT JOIN servicos s ON cp.id_servico = s.id_servico '  +
-        'WHERE c.id_empresa = :id_empresa ' +
-        'GROUP BY c.id_cargo, c.nome_cargo ' +
-        'ORDER BY c.nome_cargo;';
-      ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-      Open;
-    end;
+  with datamodule1.query_conexao do
+  begin
+    Edit;
+    FieldByName('nome_cargo').AsString := dbEdit1.Text;
+    Post;
+  end;
+    atualizar_grid;
     EditsInativos;
     BtnConf.Visible := False;
     BtnExcluir.Visible := True;
@@ -329,49 +290,50 @@ begin
 end;
 
 procedure TForm14.TrazerServicos;
-var
-  id_cargo, i: Integer;
 begin
-  with DataModule1.query_conexao do
-  begin
-    Close;
-    SQL.Text := 'SELECT * FROM servicos ' +
-                'WHERE id_empresa = :id_empresa ' +
-                'ORDER BY nome';
-    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-    Open;
-    CLBServicos.Items.Clear;
-    while not Eof do
-    begin
-      CLBServicos.Items.AddObject(
-        FieldByName('nome').AsString,
-        TObject(FieldByName('id_servico').AsInteger)
-      );
-      Next;
-    end;
-  end;
-
-  id_cargo := DataModule1.Query_conexao.FieldByName('id_cargo').AsInteger;
-  with DataModule1.query_conexao do
-  begin
-    Close;
-    SQL.Text := 'SELECT id_servico FROM cargos_servicos WHERE id_cargo = :id_cargo';
-    ParamByName('id_cargo').AsInteger := id_cargo;
-    Open;
-
-    while not Eof do
-    begin
-      for i := 0 to CLBServicos.Count - 1 do
-      begin
-        if Integer(CLBServicos.Items.Objects[i]) = FieldByName('id_servico').AsInteger then
-        begin
-          CLBServicos.Checked[i] := True;
-          Break;
-        end;
-      end;
-      Next;
-    end;
-  end;
+//var
+//  id_cargo, i: Integer;
+//begin
+//  with DataModule1.query_conexao do
+//  begin
+//    Close;
+//    SQL.Text := 'SELECT * FROM servicos ' +
+//                'WHERE id_empresa = :id_empresa ' +
+//                'ORDER BY nome';
+//    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+//    Open;
+//    CLBServicos.Items.Clear;
+//    while not Eof do
+//    begin
+//      CLBServicos.Items.AddObject(
+//        FieldByName('nome').AsString,
+//        TObject(FieldByName('id_servico').AsInteger)
+//      );
+//      Next;
+//    end;
+//  end;
+//
+//  id_cargo := DataModule1.Query_conexao.FieldByName('id_cargo').AsInteger;
+//  with DataModule1.query_conexao do
+//  begin
+//    Close;
+//    SQL.Text := 'SELECT id_servico FROM cargos_servicos WHERE id_cargo = :id_cargo';
+//    ParamByName('id_cargo').AsInteger := id_cargo;
+//    Open;
+//
+//    while not Eof do
+//    begin
+//      for i := 0 to CLBServicos.Count - 1 do
+//      begin
+//        if Integer(CLBServicos.Items.Objects[i]) = FieldByName('id_servico').AsInteger then
+//        begin
+//          CLBServicos.Checked[i] := True;
+//          Break;
+//        end;
+//      end;
+//      Next;
+//    end;
+//  end;
 end;
 
 
