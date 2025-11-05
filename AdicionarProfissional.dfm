@@ -22,8 +22,8 @@ object Form9: TForm9
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1918
-    ExplicitHeight = 1053
+    ExplicitLeft = 24
+    ExplicitTop = -64
     object Image1: TImage
       Left = 0
       Top = 240
@@ -313,7 +313,6 @@ object Form9: TForm9
       Width = 59
       Height = 30
       Caption = 'Nome'
-      FocusControl = DBEdit1
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
@@ -327,7 +326,6 @@ object Form9: TForm9
       Width = 51
       Height = 30
       Caption = 'Email'
-      FocusControl = DBEdit1
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
@@ -393,36 +391,6 @@ object Form9: TForm9
       ParentColor = False
       ParentFont = False
     end
-    object DBEdit1: TDBEdit
-      Left = 1069
-      Top = 444
-      Width = 496
-      Height = 38
-      DataField = 'nome'
-      DataSource = DataSource1
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -21
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 0
-    end
-    object DBEdit2: TDBEdit
-      Left = 1069
-      Top = 572
-      Width = 496
-      Height = 38
-      DataField = 'email'
-      DataSource = DataSource1
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -21
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 2
-    end
     object CLBCargos: TCheckListBox
       Left = 40
       Top = 400
@@ -435,7 +403,7 @@ object Form9: TForm9
       Font.Style = []
       ItemHeight = 37
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 0
     end
     object Barra: TPanel
       Left = -18
@@ -444,7 +412,7 @@ object Form9: TForm9
       Height = 41
       Color = 4405251
       ParentBackground = False
-      TabOrder = 3
+      TabOrder = 1
       object LbClie: TLabel
         Left = 192
         Top = 8
@@ -539,23 +507,36 @@ object Form9: TForm9
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 2
       OnClick = BtnConfClick
     end
-  end
-  object DataSource1: TDataSource
-    DataSet = DataModule1.QueryProfissionais
-    Left = 752
-    Top = 232
-  end
-  object DataSource2: TDataSource
-    DataSet = DataModule1.QueryCargos
-    Left = 824
-    Top = 232
-  end
-  object DataSource3: TDataSource
-    DataSet = DataModule1.QueryPC
-    Left = 912
-    Top = 232
+    object Edit1: TEdit
+      Left = 1069
+      Top = 436
+      Width = 496
+      Height = 38
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+      Text = 'Edit1'
+    end
+    object Edit2: TEdit
+      Left = 1069
+      Top = 564
+      Width = 496
+      Height = 38
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 4
+      Text = 'Edit1'
+    end
   end
 end

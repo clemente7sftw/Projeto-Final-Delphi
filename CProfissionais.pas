@@ -98,6 +98,9 @@ end;
 
 procedure TForm8.AdicionarProfissional;
 begin
+DBEdit1.DataSource := nil;
+DBEdit2.DataSource := nil;
+DBEdit3.DataSource := nil;
   form9.show;
   form8.close;
 end;
@@ -122,7 +125,13 @@ begin
 DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
 Open;
 end;
+DSconexao.DataSet := DataModule1.query_conexao;
+dbgrid1.DataSource := dsconexao;
+dbedit1.DataField := 'nome';
+dbedit2.DataField := 'email';
+dbedit3.DataField := 'nome_cargo';
 end;
+
 
 procedure TForm8.BtnCadClick(Sender: TObject);
 begin
@@ -221,6 +230,9 @@ begin
   BtnConf.Visible:= false;
   btncancelar.Visible:= false;
   CLBCargos.Visible:= false;
+  DBEdit1.DataField := 'nome';
+DBEdit2.DataField := 'email';
+DBEdit3.DataField := 'nome_cargo';
 end;
 
 
@@ -245,6 +257,10 @@ DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_
 Open;
 end;
 DSconexao.DataSet := DataModule1.query_conexao;
+dbgrid1.DataSource := dsconexao;
+dbedit1.DataField := 'nome';
+dbedit2.DataField := 'email';
+dbedit3.DataField := 'nome_cargo';
 end;
 
 procedure TForm8.Image1Click(Sender: TObject);
@@ -305,14 +321,14 @@ begin
 end;
 procedure TForm8.Pesquisar;
 begin
-  if (EdPesquisa.Text <> '' )then
-  begin
-    datamodule1.QueryRPC.Filtered := true;
-    datamodule1.QueryRPC.filter :=  'UPPER(nome_clie) LIKE ' + QuotedStr('%' + UpperCase(EdPesquisa.Text) + '%');
- end else
-  begin
-    datamodule1.QueryRPC.Filtered := false;
-  end;
+//  if (EdPesquisa.Text <> '' )then
+//  begin
+//    datamodule1.QueryRPC.Filtered := true;
+//    datamodule1.QueryRPC.filter :=  'UPPER(nome_clie) LIKE ' + QuotedStr('%' + UpperCase(EdPesquisa.Text) + '%');
+// end else
+//  begin
+//    datamodule1.QueryRPC.Filtered := false;
+//  end;
 end;
 
 procedure TForm8.Salvar;
@@ -401,7 +417,7 @@ begin
     end;
   end;
 
-  id_pro := DataModule1.QueryRPC.FieldByName('id_pro').AsInteger;
+  id_pro := DataModule1.query_conexao.FieldByName('id_pro').AsInteger;
 
   with DataModule1.query_conexao do
   begin

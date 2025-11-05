@@ -22,8 +22,6 @@ object Form8: TForm8
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1918
-    ExplicitHeight = 1053
     object Panel1: TPanel
       Left = 1
       Top = 1
@@ -33,8 +31,6 @@ object Form8: TForm8
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 1916
-      ExplicitHeight = 1051
       object Label1: TLabel
         Left = 1102
         Top = 440
@@ -540,7 +536,7 @@ object Form8: TForm8
           end>
       end
       object DBEdit1: TDBEdit
-        Left = 1103
+        Left = 1102
         Top = 476
         Width = 496
         Height = 38
@@ -559,7 +555,6 @@ object Form8: TForm8
         Top = 587
         Width = 496
         Height = 38
-        DataField = 'email'
         DataSource = DSconexao
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -574,7 +569,6 @@ object Form8: TForm8
         Top = 712
         Width = 496
         Height = 38
-        DataField = 'nome_cargo'
         DataSource = DSconexao
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -752,15 +746,15 @@ object Form8: TForm8
         TabOrder = 8
       end
       object Edit1: TEdit
-        Left = 1103
-        Top = 476
+        Left = 1135
+        Top = 388
         Width = 121
         Height = 23
         TabOrder = 9
       end
       object Edit2: TEdit
-        Left = 1103
-        Top = 587
+        Left = 1296
+        Top = 388
         Width = 121
         Height = 23
         TabOrder = 10

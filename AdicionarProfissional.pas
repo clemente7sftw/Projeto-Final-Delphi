@@ -11,12 +11,7 @@ uses
 type
   TForm9 = class(TForm)
     Fundo: TPanel;
-    DataSource1: TDataSource;
     Image1: TImage;
-    DataSource2: TDataSource;
-    DataSource3: TDataSource;
-    DBEdit1: TDBEdit;
-    DBEdit2: TDBEdit;
     CLBCargos: TCheckListBox;
     Image4: TImage;
     BS: TImage;
@@ -34,6 +29,8 @@ type
     Label2: TLabel;
     LbPro: TLabel;
     LbEmail: TLabel;
+    Edit1: TEdit;
+    Edit2: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure PCadClick(Sender: TObject);
@@ -67,8 +64,9 @@ end;
 
 procedure TForm9.FormShow(Sender: TObject);
 begin
-
-  PreencherListbox;
+edit1.Text :='';
+edit2.Text :='';
+PreencherListbox;
 
 end;
 
@@ -115,15 +113,15 @@ var
   i, id_empresa, id_pro, id_cargo: Integer;
   nome_senha:string;
 begin
-  nome_senha := Trim(dbEdit1.Text);
+  nome_senha := Trim(Edit1.Text);
 
   if Pos(' ', nome_senha) > 0 then
     nome_senha := Copy(nome_senha, 1, Pos(' ', nome_senha) - 1);
 
-  if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and
+  if (Edit1.Text <> '') and (Edit2.Text <> '') and
      (CLBCargos.Items.Count > 0) and (CLBCargos.ItemIndex <> -1) then
   begin
-    if ValidarEmail(DBEDIT2.Text) then
+    if ValidarEmail(EDIT2.Text) then
     begin
       with DataModule1.query_conexao do
       begin
@@ -132,8 +130,8 @@ begin
           'INSERT INTO profissionais (nome, email, senha, id_empresa) ' +
           'VALUES (:nome, :email, :senha, :id_empresa)' +
           'RETURNING id_pro';
-        ParamByName('nome').AsString := DBEdit1.Text;
-        ParamByName('email').AsString := DBEdit2.Text;
+        ParamByName('nome').AsString := Edit1.Text;
+        ParamByName('email').AsString := Edit2.Text;
         ParamByName('senha').AsString := nome_senha + '123';
         ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
         Open;
@@ -160,7 +158,7 @@ begin
       end;
 
       Form9.Close;
-      Form8.Show;
+      form8.show;
       Lblrequired.Visible := False;
       lbEmail.Visible := False;
     end

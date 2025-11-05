@@ -39,6 +39,8 @@ type
     CLBServicos: TCheckListBox;
     LbErroExcl: TLabel;
     Timer1: TTimer;
+    Edit1: TEdit;
+    btncancelar: TImage;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure EditsAtivos;
@@ -112,6 +114,10 @@ begin
   'ORDER BY c.nome_cargo;';
   DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
   Open;
+  DataSource2.DataSet := DataModule1.query_conexao;
+  dbedit1.DataField := 'nome_cargo';
+  dbedit2.DataField := 'nome';
+  Edit1.Visible:= false;
 end;
 end;
 
@@ -135,6 +141,7 @@ begin
   Excluir;
 end;
 
+
 procedure TForm14.Editar;
 begin
   TrazerServicos;
@@ -143,6 +150,10 @@ begin
   EditsAtivos;
   BtnEditar.Visible:= false;
   addclie.Visible:= false;
+  Edit1.Text := DataModule1.Query_conexao.FieldByName('nome_cargo').AsString;
+  dbgrid1.Enabled := false;
+  dbedit1.Visible:= false;
+  Edit1.Visible:= true;
 end;
 
 procedure TForm14.EditBtnClick(Sender: TObject);
@@ -225,6 +236,7 @@ begin
   DataSource2.DataSet := DataModule1.query_conexao;
   dbedit1.DataField := 'nome_cargo';
   dbedit2.DataField := 'nome';
+  Edit1.Visible:= false;
 end;
 end;
 
@@ -263,13 +275,15 @@ procedure TForm14.Salvar;
 var
   id_ser, id_cargo, i: Integer;
 begin
-  if dbEdit1.Text <> ''  then
+  if Edit1.Text <> ''  then
   begin
+    id_cargo := DataModule1.Query_conexao.FieldByName('id_cargo').AsInteger;
   with datamodule1.query_conexao do
   begin
     Edit;
-    FieldByName('nome_cargo').AsString := dbEdit1.Text;
+    FieldByName('nome_cargo').AsString := Edit1.Text;
     Post;
+
   end;
     atualizar_grid;
     EditsInativos;
@@ -280,17 +294,34 @@ begin
     CLBServicos.Visible := False;
     addclie.Visible := True;
   end;
-  with datamodule1.query_conexao do
+  with DataModule1.query_conexao do
   begin
-//    Close;
-//    SQL.Text :=
-//      'INSERT INTO cargos_servicos (id_cargo, id_servico) ' +
-//      'VALUES (:id_cargo, :id_servico)';
-//    ParamByName('id_cargo').AsInteger := id_cargo;
-//    ParamByName('id_servico').AsInteger := id_servico;
-//    ExecSQL;
+  Close;
+  SQL.Text := 'DELETE FROM cargos_servicos  WHERE id_cargo = :id_cargo';
+  ParamByName('id_cargo').AsInteger := id_cargo;
+  ExecSQL;
+
+  end;
+
+for i := 0 to CLBServicos.Count - 1 do
+begin
+  if CLBServicos.Checked[i] then
+  begin
+    id_ser := Integer(CLBServicos.Items.Objects[i]);
+
+    with DataModule1.query_conexao do
+    begin
+      Close;
+      SQL.Text := 'INSERT INTO cargos_servicos (id_cargo, id_servico, id_empresa) VALUES (:id_cargo, :id_servico, :id_empresa)';
+      ParamByName('id_cargo').AsInteger := id_cargo;
+      ParamByName('id_servico').AsInteger := id_ser;
+      DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+      ExecSQL;
+    end;
   end;
 end;
+end;
+
 
 procedure TForm14.Timer1Timer(Sender: TObject);
 begin
@@ -299,48 +330,55 @@ begin
 end;
 
 procedure TForm14.TrazerServicos;
+var
+  id_cargo, i: Integer;
 begin
-//var
-//  id_cargo, i: Integer;
-//begin
-//  with DataModule1.query_conexao do
-//  begin
-//    Close;
-//    SQL.Text := 'SELECT * FROM servicos ' +
-//                'WHERE id_empresa = :id_empresa ' +
-//                'ORDER BY nome';
-//    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-//    Open;
-//    CLBServicos.Items.Clear;
-//    while not Eof do
-//    begin
-//      CLBServicos.Items.AddObject(
-//        FieldByName('nome').AsString,
-//        TObject(FieldByName('id_servico').AsInteger)
-//      );
-//      Next;
-//    end;
-//  end;
-//  id_cargo := DataModule1.Query_conexao.FieldByName('id_cargo').AsInteger;
-//  with DataModule1.query_conexao do
-//  begin
-//    Close;
-//    SQL.Text := 'SELECT id_servico FROM cargos_servicos WHERE id_cargo = :id_cargo';
-//    ParamByName('id_cargo').AsInteger := id_cargo;
-//    Open;
-//
-//    while not Eof do
-//    begin
-//      for i := 0 to CLBServicos.Count - 1 do
-//      begin
-//        if Integer(CLBServicos.Items.Objects[i]) = FieldByName('id_servico').AsInteger then
-//        begin
-//          CLBServicos.Checked[i] := True;
-//          Break;
-//        end;
-//      end;
-//      Next;
-//    end;
-//  end;
+  with DataModule1.query_conexao do
+  begin
+  id_cargo := DataModule1.Query_conexao.FieldByName('id_cargo').AsInteger;
+  DBEdit1.DataSource := nil;
+  DBEdit2.DataSource := nil;
+
+    Close;
+    SQL.Text := 'SELECT * FROM servicos ' +
+                'WHERE id_empresa = :id_empresa ' +
+                'ORDER BY nome';
+    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+    Open;
+    CLBServicos.Items.Clear;
+    while not Eof do
+    begin
+      CLBServicos.Items.AddObject(
+        FieldByName('nome').AsString,
+        TObject(FieldByName('id_servico').AsInteger)
+      );
+      Next;
+    end;
+  end;
+
+  with DataModule1.query_conexao do
+  begin
+    Close;
+    SQL.Text := 'SELECT id_servico FROM cargos_servicos WHERE id_cargo = :id_cargo';
+    ParamByName('id_cargo').AsInteger := id_cargo;
+    Open;
+
+    while not Eof do
+    begin
+      for i := 0 to CLBServicos.Count - 1 do
+      begin
+        if Integer(CLBServicos.Items.Objects[i]) = FieldByName('id_servico').AsInteger then
+        begin
+          CLBServicos.Checked[i] := True;
+          Break;
+        end;
+      end;
+      Next;
+    end;
+  end;
+atualizar_grid;
+DataSource2.DataSet := DataModule1.query_conexao;
+DBEdit1.DataField := 'nome_cargo';
+DBEdit2.DataField := 'nome';
 end;
 end.
