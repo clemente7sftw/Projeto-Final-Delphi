@@ -11,9 +11,6 @@ type
   TForm11 = class(TForm)
     Fundo: TPanel;
     Image1: TImage;
-    DataSource1: TDataSource;
-    DBEdit1: TDBEdit;
-    DataSource2: TDataSource;
     CLBServicos: TCheckListBox;
     Image4: TImage;
     BS: TImage;
@@ -29,6 +26,7 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Timer1: TTimer;
+    Edit1: TEdit;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure PreencherListbox;
@@ -63,7 +61,7 @@ procedure TForm11.Cadastrar;
 var
   id_ser, id_cargo, id_servico, id_empresa, i: Integer;
 begin
-if dbedit1.text = '' then
+if edit1.text = '' then
 begin
   erroinclusao;
 end else begin
@@ -78,7 +76,7 @@ end else begin
         'INSERT INTO cargos (nome_cargo, id_empresa) ' +
         'VALUES (:nome_cargo, :id_empresa)' +
         'RETURNING id_cargo';
-      ParamByName('nome_cargo').AsString := DBEdit1.Text;
+      ParamByName('nome_cargo').AsString := Edit1.Text;
       ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
       Open;
       id_cargo := FieldByName('id_cargo').AsInteger;
@@ -148,7 +146,6 @@ end;
 procedure TForm11.FormShow(Sender: TObject);
 begin
     PreencherListbox;
-
 end;
 
 procedure TForm11.PreencherListbox;

@@ -346,21 +346,6 @@ object Form11: TForm11
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object DBEdit1: TDBEdit
-      Left = 1105
-      Top = 460
-      Width = 496
-      Height = 38
-      DataField = 'nome_cargo'
-      DataSource = DataSource1
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -21
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 0
-    end
     object CLBServicos: TCheckListBox
       Left = 80
       Top = 392
@@ -373,7 +358,7 @@ object Form11: TForm11
       Font.Style = []
       ItemHeight = 30
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 0
     end
     object Barra: TPanel
       Left = -18
@@ -382,7 +367,7 @@ object Form11: TForm11
       Height = 41
       Color = 4405251
       ParentBackground = False
-      TabOrder = 2
+      TabOrder = 1
       object LbClie: TLabel
         Left = 192
         Top = 8
@@ -476,19 +461,22 @@ object Form11: TForm11
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 2
       OnClick = BtnConfClick
     end
-  end
-  object DataSource1: TDataSource
-    DataSet = DataModule1.QueryCargos
-    Left = 376
-    Top = 224
-  end
-  object DataSource2: TDataSource
-    DataSet = DataModule1.QueryCS
-    Left = 464
-    Top = 232
+    object Edit1: TEdit
+      Left = 1105
+      Top = 460
+      Width = 496
+      Height = 38
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+    end
   end
   object Timer1: TTimer
     Enabled = False
