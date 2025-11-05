@@ -88,6 +88,7 @@ procedure TForm21.Adicionar;
 begin
 form13.show;
 form21.close;
+
 end;
 
 procedure TForm21.AtualizarStatus;

@@ -368,7 +368,6 @@ object Form25: TForm25
         Align = faTop
         Alignment = taCenter
         DataField = 'nome'
-        DataSource = DataSource2
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -21
@@ -426,7 +425,7 @@ object Form25: TForm25
       object RLDBText1: TRLDBText
         Left = 0
         Top = 0
-        Width = 75
+        Width = 134
         Height = 37
         Align = faLeftTop
         Borders.Sides = sdCustom
@@ -434,7 +433,6 @@ object Form25: TForm25
         Borders.DrawTop = False
         Borders.DrawRight = False
         Borders.DrawBottom = False
-        DataField = 'nome'
         DataSource = DataSource1
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -445,9 +443,9 @@ object Form25: TForm25
         Text = ''
       end
       object RLDBText3: TRLDBText
-        Left = 656
+        Left = 584
         Top = 0
-        Width = 62
+        Width = 134
         Height = 39
         Align = faRightTop
         Borders.Sides = sdCustom
@@ -455,7 +453,6 @@ object Form25: TForm25
         Borders.DrawTop = False
         Borders.DrawRight = False
         Borders.DrawBottom = True
-        DataField = 'total'
         DataSource = DataSource1
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -479,7 +476,6 @@ object Form25: TForm25
         Height = 16
         Align = faLeftTop
         DataField = 'nome'
-        DataSource = DataSource2
         Text = ''
       end
       object RLDBText2: TRLDBText
@@ -532,13 +528,7 @@ object Form25: TForm25
     end
   end
   object DataSource1: TDataSource
-    DataSet = DataModule1.QueryTotalAg
     Left = 21
     Top = 258
-  end
-  object DataSource2: TDataSource
-    DataSet = DataModule1.QueryEmpresa
-    Left = 880
-    Top = 288
   end
 end

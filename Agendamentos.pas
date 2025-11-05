@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.ExtCtrls,
   Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.CheckLst, Vcl.Mask, Vcl.ComCtrls,
-  Vcl.WinXPickers, Vcl.Imaging.pngimage;
+  Vcl.WinXPickers, Vcl.Imaging.pngimage, Datasnap.DBClient;
 
 type
   TForm13 = class(TForm)
@@ -16,14 +16,12 @@ type
     Label1: TLabel;
     Label2: TLabel;
     DBEdit2: TDBEdit;
-    DataSource2: TDataSource;
     Panel2: TPanel;
     CheckListBoxServicos: TCheckListBox;
     MonthCalendar1: TMonthCalendar;
     ComboBoxHorarios: TComboBox;
     Label3: TLabel;
     DBEdit3: TDBEdit;
-    DataSource3: TDataSource;
     CheckListBoxProfissionais: TCheckListBox;
     DBEdit1: TDBEdit;
     Lblrequired: TLabel;
@@ -66,33 +64,19 @@ uses UDataModule, CAgendamentos, CClientes;
 
 procedure TForm13.FormShow(Sender: TObject);
 begin
-  DataModule1.QueryClientes.Close;
-  DataModule1.QueryClientes.SQL.Text :=
-    'SELECT * FROM clientes ' +
-    'WHERE id_empresa = :id_empresa ' +
-    'ORDER BY nome_clie';
-  DataModule1.QueryClientes.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-  DataModule1.QueryClientes.Open;
-  datamodule1.QueryServicos.close;
-  datamodule1.QueryServicos.open;
-DataModule1.QueryAgendamentos.Close;
-DataModule1.QueryAgendamentos.SQL.Text :=
-  'SELECT a.id_agendamento, a.id_clie, c.nome_clie, ' +
-  'a.data_agendamento, a.hora_inicio, a.id_empresa ' +
-  'FROM agendamentos a ' +
-  'INNER JOIN clientes c ON a.id_clie = c.id_clie ' +
-  'WHERE a.id_empresa = :id_empresa ' +
-  'ORDER BY a.data_agendamento DESC';
-DataModule1.QueryAgendamentos.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-DataModule1.QueryAgendamentos.Open;
+  with datamodule1.query_conexao do
+  begin
+    Close;
+    SQL.Text := 'SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie';
+    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+    Open;
+    datasource1.DataSet := datamodule1.query_conexao;
+    dbedit1.DataField := 'nome_clie';
+    dbedit2.DataField := 'email_clie';
 
-  datamodule1.QueryRAS.close;
-  datamodule1.QueryRAS.open;
-//  datamodule1.QueryProfissionais.close;
-//  datamodule1.QueryProfissionais.open;
-  PreencherListBoxServicos;
-  DataModule1.QueryAgendamentos.Append;
-  ListarHorarios;
+    PreencherListBoxServicos;
+
+  end;
 end;
 
 procedure TForm13.FormCreate(Sender: TObject);
@@ -121,7 +105,7 @@ end;
 
 procedure TForm13.Panel2Click(Sender: TObject);
 begin
-Cadastrar;
+  Cadastrar;
 end;
 
 procedure TForm13.PreencherListBoxProfissionais;
@@ -143,20 +127,30 @@ end;
 
 procedure TForm13.PreencherListBoxServicos;
 begin
-if not datamodule1.QueryServicos.IsEmpty then
-begin
-  CheckListBoxServicos.Items.Clear;
-  datamodule1.QueryServicos.First;
-  while not datamodule1.QueryServicos.Eof do
+  with DataModule1.Query_Conexao do
   begin
-    CheckListBoxServicos.Items.AddObject(
-      datamodule1.QueryServicos.FieldByName('nome').AsString,
-      TObject(datamodule1.QueryServicos.FieldByName('id_servico').AsInteger)
-    );
-    datamodule1.QueryServicos.Next;
+    Close;
+    SQL.Text := 'SELECT id_servico, nome FROM servicos ' +
+                'WHERE id_empresa = :id_empresa ' +
+                'ORDER BY nome';
+    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+    Open;
+
+    CheckListBoxServicos.Items.Clear;
+
+    First;
+    while not Eof do
+    begin
+      CheckListBoxServicos.Items.AddObject(
+        FieldByName('nome').AsString,
+        TObject(FieldByName('id_servico').AsInteger)
+      );
+      Next;
+    end;
   end;
 end;
-end;
+
+
 
 function TForm13.buscarpreco(id_servico: Integer): Currency;
 begin

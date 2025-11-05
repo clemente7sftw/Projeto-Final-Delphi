@@ -467,7 +467,7 @@ object Form14: TForm14
         44AE426082}
     end
     object BtnConf: TPanel
-      Left = 1212
+      Left = 1224
       Top = 529
       Width = 496
       Height = 41

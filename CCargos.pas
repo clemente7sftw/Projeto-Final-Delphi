@@ -283,16 +283,7 @@ begin
     Edit;
     FieldByName('nome_cargo').AsString := Edit1.Text;
     Post;
-
   end;
-    atualizar_grid;
-    EditsInativos;
-    BtnConf.Visible := False;
-    BtnExcluir.Visible := True;
-    BtnEditar.Visible := True;
-    Lblrequired.Visible := False;
-    CLBServicos.Visible := False;
-    addclie.Visible := True;
   end;
   with DataModule1.query_conexao do
   begin
@@ -300,7 +291,6 @@ begin
   SQL.Text := 'DELETE FROM cargos_servicos  WHERE id_cargo = :id_cargo';
   ParamByName('id_cargo').AsInteger := id_cargo;
   ExecSQL;
-
   end;
 
 for i := 0 to CLBServicos.Count - 1 do
@@ -320,6 +310,22 @@ begin
     end;
   end;
 end;
+  atualizar_grid;
+  DBGrid1.Enabled := True;
+  BtnConf.Visible := False;
+  BtnExcluir.Visible := True;
+  BtnEditar.Visible := True;
+  Lblrequired.Visible := False;
+  CLBServicos.Visible := False;
+  addclie.Visible := True;
+  Edit1.Visible := False;
+  DBEdit1.Visible := True;
+  DBEdit1.DataSource := DataSource2;
+  DBEdit2.DataSource := DataSource2;
+  DBEdit1.DataField := 'nome_cargo';
+  DBEdit2.DataField := 'nome';
+  editsinativos;
+
 end;
 
 

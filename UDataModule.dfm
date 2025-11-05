@@ -135,8 +135,8 @@ object DataModule1: TDataModule1
     Connection = conexao_banco
     SQL.Strings = (
       'select * from profissionais')
-    Left = 130
-    Top = 88
+    Left = 210
+    Top = 104
     object QueryProfissionaisid_pro: TIntegerField
       FieldName = 'id_pro'
       Origin = 'id_pro'
@@ -597,7 +597,7 @@ object DataModule1: TDataModule1
   end
   object query_conexao: TFDQuery
     Connection = conexao_banco
-    Left = 304
-    Top = 128
+    Left = 32
+    Top = 88
   end
 end

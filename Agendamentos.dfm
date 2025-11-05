@@ -23,8 +23,6 @@ object Form13: TForm13
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1918
-    ExplicitHeight = 1053
     object Label1: TLabel
       Left = 976
       Top = 694
@@ -346,7 +344,6 @@ object Form13: TForm13
       Top = 765
       Width = 200
       Height = 23
-      DataField = 'email_clie'
       DataSource = DataSource1
       Enabled = False
       TabOrder = 1
@@ -392,7 +389,6 @@ object Form13: TForm13
       Width = 169
       Height = 23
       DataField = 'preco'
-      DataSource = DataSource3
       Enabled = False
       TabOrder = 6
     end
@@ -409,7 +405,6 @@ object Form13: TForm13
       Top = 715
       Width = 200
       Height = 23
-      DataField = 'nome_clie'
       DataSource = DataSource1
       Enabled = False
       TabOrder = 8
@@ -553,18 +548,7 @@ object Form13: TForm13
     end
   end
   object DataSource1: TDataSource
-    DataSet = DataModule1.QueryClientes
     Left = 168
-    Top = 144
-  end
-  object DataSource2: TDataSource
-    DataSet = DataModule1.QueryServicos
-    Left = 232
-    Top = 144
-  end
-  object DataSource3: TDataSource
-    DataSet = DataModule1.QueryAgendamentos
-    Left = 320
-    Top = 144
+    Top = 288
   end
 end

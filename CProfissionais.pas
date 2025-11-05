@@ -230,9 +230,6 @@ begin
   BtnConf.Visible:= false;
   btncancelar.Visible:= false;
   CLBCargos.Visible:= false;
-  DBEdit1.DataField := 'nome';
-DBEdit2.DataField := 'email';
-DBEdit3.DataField := 'nome_cargo';
 end;
 
 
