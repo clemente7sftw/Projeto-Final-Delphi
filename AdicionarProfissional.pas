@@ -67,11 +67,7 @@ end;
 
 procedure TForm9.FormShow(Sender: TObject);
 begin
-  datamodule1.QueryProfissionais.Close;
-  datamodule1.QueryProfissionais.Open;
-  datamodule1.QueryProfissionais.Append;
-  datamodule1.QueryRPC.close;
-  datamodule1.QueryRPC.open;
+
   PreencherListbox;
 
 end;

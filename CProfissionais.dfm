@@ -22,6 +22,8 @@ object Form8: TForm8
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1918
+    ExplicitHeight = 1053
     object Panel1: TPanel
       Left = 1
       Top = 1
@@ -31,6 +33,8 @@ object Form8: TForm8
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
+      ExplicitWidth = 1916
+      ExplicitHeight = 1051
       object Label1: TLabel
         Left = 1102
         Top = 440
@@ -747,10 +751,23 @@ object Form8: TForm8
         ItemHeight = 17
         TabOrder = 8
       end
+      object Edit1: TEdit
+        Left = 1103
+        Top = 476
+        Width = 121
+        Height = 23
+        TabOrder = 9
+      end
+      object Edit2: TEdit
+        Left = 1103
+        Top = 587
+        Width = 121
+        Height = 23
+        TabOrder = 10
+      end
     end
   end
   object DSconexao: TDataSource
-    DataSet = DataModule1.QueryRPC
     Left = 401
     Top = 289
   end

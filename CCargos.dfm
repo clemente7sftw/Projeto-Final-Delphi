@@ -509,7 +509,6 @@ object Form14: TForm14
       Top = 485
       Width = 496
       Height = 38
-      DataField = 'nome_cargo'
       DataSource = DataSource2
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText

@@ -41,6 +41,8 @@ type
     Label2: TLabel;
     Label3: TLabel;
     CLBCargos: TCheckListBox;
+    Edit1: TEdit;
+    Edit2: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure Image6Click(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
@@ -102,7 +104,10 @@ end;
 
 procedure TForm8.atualizar_grid;
 begin
-DataModule1.QueryRPC.SQL.Text :=
+with datamodule1.query_conexao do
+begin
+  close;
+  SQL.Text :=
   'SELECT ' +
   '  p.id_pro, ' +
   '  p.nome, ' +
@@ -114,8 +119,9 @@ DataModule1.QueryRPC.SQL.Text :=
   'WHERE p.id_empresa = :id_empresa ' +
   'GROUP BY p.id_pro, p.nome, p.email ' +
   'ORDER BY p.nome;';
-DataModule1.QueryRPC.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-DataModule1.QueryRPC.Open;
+DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+Open;
+end;
 end;
 
 procedure TForm8.BtnCadClick(Sender: TObject);
@@ -153,7 +159,7 @@ end;
 
 procedure TForm8.Editar;
 begin
-  TrazerCargos;
+//  TrazerCargos;
   BtnConf.Visible:= true;
   ExclBtn.Visible:= false;
   EditsAtivos;
@@ -220,19 +226,10 @@ end;
 
 procedure TForm8.FormShow(Sender: TObject);
 begin
-  datamodule1.QueryPC.close;
-  datamodule1.QueryPC.open;
-  datamodule1.QueryCargos.close;
-  datamodule1.QueryCargos.open;
-  datamodule1.Queryprofissionais.close;
-  datamodule1.Queryprofissionais.open;
-  DataModule1.QueryProfissionais.SQL.Text :=
-  'SELECT * FROM profissionais ' +
-  'WHERE id_empresa = :id_empresa ' +
-  'ORDER BY nome';
-  DataModule1.QueryProfissionais.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-  DataModule1.QueryRPC.close;
-DataModule1.QueryRPC.SQL.Text :=
+with datamodule1.query_conexao do
+begin
+  close;
+  SQL.Text :=
   'SELECT ' +
   '  p.id_pro, ' +
   '  p.nome, ' +
@@ -244,11 +241,10 @@ DataModule1.QueryRPC.SQL.Text :=
   'WHERE p.id_empresa = :id_empresa ' +
   'GROUP BY p.id_pro, p.nome, p.email ' +
   'ORDER BY p.nome;';
-DataModule1.QueryRPC.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-DataModule1.QueryRPC.Open;
-
-
-
+DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+Open;
+end;
+DSconexao.DataSet := DataModule1.query_conexao;
 end;
 
 procedure TForm8.Image1Click(Sender: TObject);
@@ -325,17 +321,17 @@ var
 begin
   if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') then
   begin
-    id_pro := DataModule1.QueryRPC.FieldByName('id_pro').AsInteger;
+    id_pro := DataModule1.Query_conexao.FieldByName('id_pro').AsInteger;
 
-    with DataModule1.QueryProfissionais do
+    with DataModule1.Query_conexao do
     begin
       Close;
       SQL.Text :=
         'UPDATE profissionais ' +
         'SET nome = :nome, email = :email ' +
         'WHERE id_pro = :id_pro';
-      ParamByName('nome').AsString := DBEdit1.Text;
-      ParamByName('email').AsString := DBEdit2.Text;
+      ParamByName('nome').AsString := Edit1.Text;
+      ParamByName('email').AsString := edit2.Text;
       ParamByName('id_pro').AsInteger := id_pro;
       ExecSQL;
     end;
@@ -362,20 +358,7 @@ begin
         end;
       end;
     end;
-    DataModule1.QueryRPC.SQL.Text :=
-    'SELECT ' +
-    '  p.id_pro, ' +
-    '  p.nome, ' +
-    '  p.email, ' +
-    '  STRING_AGG(c.nome_cargo, '', '')::varchar(500) AS nome_cargo ' +
-    'FROM profissionais p ' +
-    'LEFT JOIN profissionais_cargos pc ON p.id_pro = pc.id_pro ' +
-    'LEFT JOIN cargos c ON pc.id_cargo = c.id_cargo ' +
-    'WHERE p.id_empresa = :id_empresa ' +
-    'GROUP BY p.id_pro, p.nome, p.email ' +
-    'ORDER BY p.nome;';
-    DataModule1.QueryRPC.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-    DataModule1.QueryRPC.Open;
+    atualizar_grid;
     EditsInativos;
     BtnConf.Visible := False;
     ExclBtn.Visible := True;
