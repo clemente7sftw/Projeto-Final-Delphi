@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Skia,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, Data.DB, Vcl.Mask, Vcl.DBCtrls, Vcl.Grids,
-  Vcl.DBGrids, Vcl.CheckLst;
+  Vcl.DBGrids, Vcl.CheckLst, Vcl.WinXPickers;
 
 type
   TForm8 = class(TForm)
@@ -43,6 +43,11 @@ type
     CLBCargos: TCheckListBox;
     Edit1: TEdit;
     Edit2: TEdit;
+    TimePicker1: TTimePicker;
+    TimePicker2: TTimePicker;
+    Label4: TLabel;
+    Label5: TLabel;
+    CLBdias_semana: TCheckListBox;
     procedure FormCreate(Sender: TObject);
     procedure Image6Click(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
@@ -109,21 +114,34 @@ procedure TForm8.atualizar_grid;
 begin
 with datamodule1.query_conexao do
 begin
-  close;
-  SQL.Text :=
+Close;
+SQL.Text :=
   'SELECT ' +
   '  p.id_pro, ' +
   '  p.nome, ' +
   '  p.email, ' +
-  '  STRING_AGG(c.nome_cargo, '', '')::varchar(500) AS nome_cargo ' +
+  '  STRING_AGG(DISTINCT c.nome_cargo, '', '')::varchar(500) AS nome_cargo, ' +
+  '  STRING_AGG(DISTINCT ' +
+  '    CASE h.dia_semana ' +
+  '      WHEN 0 THEN ''Domingo'' ' +
+  '      WHEN 1 THEN ''Segunda'' ' +
+  '      WHEN 2 THEN ''Terça'' ' +
+  '      WHEN 3 THEN ''Quarta'' ' +
+  '      WHEN 4 THEN ''Quinta'' ' +
+  '      WHEN 5 THEN ''Sexta'' ' +
+  '      WHEN 6 THEN ''Sábado'' ' +
+  '    END, '','')::varchar(200) AS dias_semana ' +
   'FROM profissionais p ' +
   'LEFT JOIN profissionais_cargos pc ON p.id_pro = pc.id_pro ' +
   'LEFT JOIN cargos c ON pc.id_cargo = c.id_cargo ' +
+  'LEFT JOIN horarios_profissionais h ON p.id_pro = h.id_pro ' +
   'WHERE p.id_empresa = :id_empresa ' +
   'GROUP BY p.id_pro, p.nome, p.email ' +
   'ORDER BY p.nome;';
-DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+
+ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
 Open;
+
 end;
 DSconexao.DataSet := DataModule1.query_conexao;
 dbgrid1.DataSource := dsconexao;
@@ -243,31 +261,7 @@ end;
 
 procedure TForm8.FormShow(Sender: TObject);
 begin
-with datamodule1.query_conexao do
-begin
-  close;
-  SQL.Text :=
-  'SELECT ' +
-  '  p.id_pro, ' +
-  '  p.nome, ' +
-  '  p.email, ' +
-  '  STRING_AGG(c.nome_cargo, '', '')::varchar(500) AS nome_cargo ' +
-  'FROM profissionais p ' +
-  'LEFT JOIN profissionais_cargos pc ON p.id_pro = pc.id_pro ' +
-  'LEFT JOIN cargos c ON pc.id_cargo = c.id_cargo ' +
-  'WHERE p.id_empresa = :id_empresa ' +
-  'GROUP BY p.id_pro, p.nome, p.email ' +
-  'ORDER BY p.nome;';
-DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-Open;
-end;
-DSconexao.DataSet := DataModule1.query_conexao;
-dbgrid1.DataSource := dsconexao;
-dbedit1.DataField := 'nome';
-dbedit2.DataField := 'email';
-dbedit3.DataField := 'nome_cargo';
-  Edit1.Visible:= false;
-  edit2.Visible:= false;
+atualizar_grid;
 end;
 
 procedure TForm8.Image1Click(Sender: TObject);
@@ -381,6 +375,7 @@ begin
         end;
       end;
     end;
+end;
     atualizar_grid;
     EditsInativos;
     BtnConf.Visible := False;
@@ -401,12 +396,8 @@ begin
     DBEdit1.DataField := 'nome';
     DBEdit2.DataField := 'email';
     DBEdit3.DataField := 'nome_cargo';
-  end
-  else
-  begin
-    Lblrequired.Visible := True;
   end;
-end;
+
 
 
 

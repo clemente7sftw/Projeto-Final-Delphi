@@ -23,32 +23,34 @@ object Form13: TForm13
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1918
+    ExplicitHeight = 1053
     object Label1: TLabel
-      Left = 976
-      Top = 694
+      Left = 336
+      Top = 502
       Width = 54
       Height = 15
       Caption = 'nome_clie'
     end
     object Label2: TLabel
-      Left = 976
-      Top = 744
+      Left = 336
+      Top = 552
       Width = 52
       Height = 15
       Caption = 'email_clie'
       FocusControl = DBEdit2
     end
     object Label3: TLabel
-      Left = 974
-      Top = 797
+      Left = 343
+      Top = 602
       Width = 30
       Height = 15
       Caption = 'preco'
       FocusControl = DBEdit3
     end
     object Lblrequired: TLabel
-      Left = 984
-      Top = 868
+      Left = 343
+      Top = 673
       Width = 145
       Height = 15
       Caption = 'Preencha todos os campos!'
@@ -313,10 +315,10 @@ object Form13: TForm13
         C01B8BFF03D1727009CC0A36EE0000000049454E44AE426082}
     end
     object DBGrid1: TDBGrid
-      Left = 40
-      Top = 401
-      Width = 649
-      Height = 232
+      Left = 39
+      Top = 353
+      Width = 410
+      Height = 120
       DataSource = DataSource1
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 0
@@ -340,8 +342,8 @@ object Form13: TForm13
         end>
     end
     object DBEdit2: TDBEdit
-      Left = 974
-      Top = 765
+      Left = 343
+      Top = 573
       Width = 200
       Height = 23
       DataSource = DataSource1
@@ -349,17 +351,17 @@ object Form13: TForm13
       TabOrder = 1
     end
     object Panel2: TPanel
-      Left = 1416
-      Top = 681
-      Width = 385
-      Height = 41
+      Left = 1012
+      Top = 469
+      Width = 118
+      Height = 48
       Caption = 'Marcar Hor'#225'rio'
       TabOrder = 2
       OnClick = Panel2Click
     end
     object CheckListBoxServicos: TCheckListBox
-      Left = 966
-      Top = 401
+      Left = 582
+      Top = 422
       Width = 403
       Height = 145
       ItemHeight = 17
@@ -367,25 +369,25 @@ object Form13: TForm13
       OnClickCheck = CheckListBoxServicosClickCheck
     end
     object MonthCalendar1: TMonthCalendar
-      Left = 40
-      Top = 648
+      Left = 0
+      Top = 479
       Width = 337
       Height = 211
       Date = 45936.000000000000000000
       TabOrder = 4
     end
     object ComboBoxHorarios: TComboBox
-      Left = 40
-      Top = 865
-      Width = 649
+      Left = 39
+      Top = 715
+      Width = 266
       Height = 23
       TabOrder = 5
       Text = 'Selecione o Hor'#225'rio'
       TextHint = 'Selecione o Hor'#225'rio'
     end
     object DBEdit3: TDBEdit
-      Left = 976
-      Top = 818
+      Left = 345
+      Top = 626
       Width = 169
       Height = 23
       DataField = 'preco'
@@ -393,16 +395,16 @@ object Form13: TForm13
       TabOrder = 6
     end
     object CheckListBoxProfissionais: TCheckListBox
-      Left = 966
-      Top = 567
+      Left = 582
+      Top = 601
       Width = 403
       Height = 121
       ItemHeight = 17
       TabOrder = 7
     end
     object DBEdit1: TDBEdit
-      Left = 974
-      Top = 715
+      Left = 343
+      Top = 523
       Width = 200
       Height = 23
       DataSource = DataSource1
@@ -498,8 +500,8 @@ object Form13: TForm13
       end
     end
     object EdPesquisa: TEdit
-      Left = 40
-      Top = 350
+      Left = 39
+      Top = 254
       Width = 321
       Height = 45
       Font.Charset = ANSI_CHARSET
@@ -512,8 +514,8 @@ object Form13: TForm13
       TextHint = 'Pesquise'
     end
     object Panel3: TPanel
-      Left = 320
-      Top = 350
+      Left = 319
+      Top = 246
       Width = 41
       Height = 45
       Color = clBlack
@@ -548,7 +550,7 @@ object Form13: TForm13
     end
   end
   object DataSource1: TDataSource
-    Left = 168
-    Top = 288
+    Left = 584
+    Top = 88
   end
 end

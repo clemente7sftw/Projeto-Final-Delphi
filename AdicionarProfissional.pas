@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, CProfissionais, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
-  Vcl.Imaging.pngimage, Data.DB, Vcl.Mask, Vcl.DBCtrls, Vcl.Skia, Vcl.CheckLst, System.RegularExpressions;
+  Vcl.Imaging.pngimage, Data.DB, Vcl.Mask, Vcl.DBCtrls, Vcl.Skia, Vcl.CheckLst, System.RegularExpressions,
+  Vcl.WinXPickers;
 
 
 type
@@ -31,6 +32,11 @@ type
     LbEmail: TLabel;
     Edit1: TEdit;
     Edit2: TEdit;
+    TimePicker2: TTimePicker;
+    TimePicker1: TTimePicker;
+    Label4: TLabel;
+    Label5: TLabel;
+    CLBdias_semana: TCheckListBox;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure PCadClick(Sender: TObject);
@@ -38,7 +44,7 @@ type
     procedure PreencherListbox;
     procedure BtnConfClick(Sender: TObject);
     function ValidarEmail(const Email: string):Boolean;
-
+    procedure Trazer_Dias;
   private
     { Private declarations }
   public
@@ -67,6 +73,7 @@ begin
 edit1.Text :='';
 edit2.Text :='';
 PreencherListbox;
+Trazer_Dias;
 
 end;
 
@@ -96,6 +103,21 @@ begin
     end;
   end;
 end;
+
+
+procedure TForm9.Trazer_Dias;
+begin
+
+ CLBdias_semana.Items.Clear;
+  CLBdias_semana.Items.Add('Domingo');
+  CLBdias_semana.Items.Add('Segunda-feira');
+  CLBdias_semana.Items.Add('Terça-feira');
+  CLBdias_semana.Items.Add('Quarta-feira');
+  CLBdias_semana.Items.Add('Quinta-feira');
+  CLBdias_semana.Items.Add('Sexta-feira');
+  CLBdias_semana.Items.Add('Sábado');
+end;
+
 
 
 function TForm9.ValidarEmail(const Email: string): Boolean;
@@ -156,6 +178,24 @@ begin
           end;
         end;
       end;
+      with DataModule1.query_conexao do
+  begin
+  for i := 0 to CLBdias_semana.Items.Count - 1 do begin
+    Close;
+    SQL.Text :=
+      'INSERT INTO horarios_profissionais ' +
+      '(id_empresa, id_pro, dia_semana, hora_inicio, hora_fim) ' +
+      'VALUES (:id_empresa, :id_pro, :dia_semana, :hora_inicio, :hora_fim)';
+    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+    ParamByName('id_pro').AsInteger := id_pro;
+    ParamByName('dia_semana').AsInteger := i;
+    ParamByName('hora_inicio').AsTime := TimePicker1.Time;
+    ParamByName('hora_fim').AsTime := TimePicker2.Time;
+
+    ExecSQL;
+  end;
+
+  end;
 
       Form9.Close;
       form8.show;

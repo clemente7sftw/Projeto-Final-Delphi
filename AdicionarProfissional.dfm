@@ -22,8 +22,8 @@ object Form9: TForm9
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 24
-    ExplicitTop = -64
+    ExplicitWidth = 1918
+    ExplicitHeight = 1053
     object Image1: TImage
       Left = 0
       Top = 240
@@ -391,6 +391,20 @@ object Form9: TForm9
       ParentColor = False
       ParentFont = False
     end
+    object Label4: TLabel
+      Left = 829
+      Top = 313
+      Width = 78
+      Height = 15
+      Caption = 'Inicio do turno'
+    end
+    object Label5: TLabel
+      Left = 989
+      Top = 313
+      Width = 67
+      Height = 15
+      Caption = 'fim do turno'
+    end
     object CLBCargos: TCheckListBox
       Left = 40
       Top = 400
@@ -537,6 +551,38 @@ object Form9: TForm9
       ParentFont = False
       TabOrder = 4
       Text = 'Edit1'
+    end
+    object TimePicker2: TTimePicker
+      Left = 989
+      Top = 334
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      TabOrder = 5
+      Time = 45968.900492002310000000
+      TimeFormat = 'hh:nn'
+    end
+    object TimePicker1: TTimePicker
+      Left = 821
+      Top = 334
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      TabOrder = 6
+      Time = 45968.900492002310000000
+      TimeFormat = 'hh:nn'
+    end
+    object CLBdias_semana: TCheckListBox
+      Left = 858
+      Top = 402
+      Width = 113
+      Height = 156
+      ItemHeight = 17
+      TabOrder = 7
     end
   end
 end
