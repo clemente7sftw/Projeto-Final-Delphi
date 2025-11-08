@@ -168,19 +168,18 @@ end;
 
 procedure TForm8.Editar;
 begin
-  DBEdit1.DataSource := nil;
-  DBEdit2.DataSource := nil;
-  DBEdit3.DataSource := nil;
+  DBEdit1.Visible:= false;
+  DBEdit2.Visible:= false;
+  DBEdit3.Visible:= false;
   BtnConf.Visible:= true;
   ExclBtn.Visible:= false;
   EditsAtivos;
   EditBtn.Visible:= false;
   addclie.Visible:= false;
   CLBCargos.Visible:= true;
-  DBEdit1.Visible:= false;
-  DBEdit2.Visible:= false;
-  DBEdit3.Visible:= false;
   dbgrid1.Enabled := false;
+  edit1.Visible:= true;
+  edit2.Visible:= true;
   Edit1.Text := DataModule1.Query_conexao.FieldByName('nome').AsString;
   Edit2.Text := DataModule1.Query_conexao.FieldByName('email').AsString;
   TrazerCargos;
@@ -267,6 +266,8 @@ dbgrid1.DataSource := dsconexao;
 dbedit1.DataField := 'nome';
 dbedit2.DataField := 'email';
 dbedit3.DataField := 'nome_cargo';
+  Edit1.Visible:= false;
+  edit2.Visible:= false;
 end;
 
 procedure TForm8.Image1Click(Sender: TObject);
@@ -347,15 +348,12 @@ begin
 
     with DataModule1.Query_conexao do
     begin
-      Close;
-      SQL.Text :=
-        'UPDATE profissionais ' +
-        'SET nome = :nome, email = :email ' +
-        'WHERE id_pro = :id_pro';
-      ParamByName('nome').AsString := Edit1.Text;
-      ParamByName('email').AsString := edit2.Text;
-      ParamByName('id_pro').AsInteger := id_pro;
-      ExecSQL;
+    begin
+    Edit;
+    FieldByName('nome').AsString := Edit1.Text;
+    FieldByName('email').AsString := Edit2.Text;
+    Post;
+    end;
     end;
 
     with DataModule1.query_conexao do
@@ -364,12 +362,15 @@ begin
       SQL.Text := 'DELETE FROM profissionais_cargos WHERE id_pro = :id_pro';
       ParamByName('id_pro').AsInteger := id_pro;
       ExecSQL;
+      end;
 
       for i := 0 to CLBCargos.Count - 1 do
       begin
         if CLBCargos.Checked[i] then
         begin
           id_cargo := Integer(CLBCargos.Items.Objects[i]);
+          with datamodule1.query_conexao do
+          begin
           Close;
           SQL.Text :=
             'INSERT INTO profissionais_cargos (id_pro, id_cargo) ' +
@@ -386,9 +387,20 @@ begin
     ExclBtn.Visible := True;
     EditBtn.Visible := True;
     addclie.Visible := True;
-    DBEdit3.Visible:= true;
     Lblrequired.Visible := False;
     CLBCargos.Visible := False;
+    dbgrid1.Enabled:= true;
+    dbedit1.Visible:=true;
+    dbedit2.Visible:=true;
+    dbedit3.Visible:=true;
+        edit1.Visible:= false;
+    edit2.Visible:= false;
+    DBEdit1.DataSource := DSconexao;
+    DBEdit2.DataSource := DSconexao;
+    DBEdit3.DataSource := DSconexao;
+    DBEdit1.DataField := 'nome';
+    DBEdit2.DataField := 'email';
+    DBEdit3.DataField := 'nome_cargo';
   end
   else
   begin
@@ -405,6 +417,9 @@ begin
   with DataModule1.query_conexao do
   begin
     id_pro := DataModule1.query_conexao.FieldByName('id_pro').AsInteger;
+    DBEdit1.DataSource := nil;
+    DBEdit2.DataSource := nil;
+    DBEdit3.DataSource := nil;
     Close;
     SQL.Text := 'SELECT * FROM cargos ' +
                 'WHERE id_empresa = :id_empresa ' +
@@ -443,5 +458,10 @@ begin
       Next;
     end;
   end;
+  atualizar_grid;
+Dsconexao.DataSet := DataModule1.query_conexao;
+DBEdit1.DataField := 'nome';
+DBEdit2.DataField := 'email';
+dbedit3.DataField := 'nome_cargo';
 end;
 end.
