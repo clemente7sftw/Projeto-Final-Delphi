@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.ExtCtrls,
   Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.CheckLst, Vcl.Mask, Vcl.ComCtrls,
-  Vcl.WinXPickers, Vcl.Imaging.pngimage, Datasnap.DBClient;
+  Vcl.WinXPickers, Vcl.Imaging.pngimage, Datasnap.DBClient,  DateUtils;
 
 type
   TForm13 = class(TForm)
@@ -17,7 +17,7 @@ type
     Label2: TLabel;
     DBEdit2: TDBEdit;
     Panel2: TPanel;
-    CheckListBoxServicos: TCheckListBox;
+    CLBServicos: TCheckListBox;
     MonthCalendar1: TMonthCalendar;
     ComboBoxHorarios: TComboBox;
     Label3: TLabel;
@@ -39,14 +39,14 @@ type
     Image2: TImage;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure PreencherListBoxServicos;
-    procedure PreencherListBoxProfissionais;
-    procedure ListarHorarios;
+    procedure Trazerservicos(DiaSemana:Integer; Data:Tdate);
     procedure Cadastrar;
     procedure Panel2Click(Sender: TObject);
     function buscarpreco(id_servico: Integer): Currency;
-    procedure CheckListBoxServicosClickCheck(Sender: TObject);
+    procedure CLBServicosClickCheck(Sender: TObject);
     procedure LbClieClick(Sender: TObject);
+    procedure MonthCalendar1Click(Sender: TObject);
+    procedure atualizar_grid;
   private
     { Private declarations }
   public
@@ -74,7 +74,6 @@ begin
     dbedit1.DataField := 'nome_clie';
     dbedit2.DataField := 'email_clie';
 
-    PreencherListBoxServicos;
 
   end;
 end;
@@ -91,66 +90,79 @@ begin
   Form4.show;
 end;
 
-procedure TForm13.ListarHorarios;
-begin
+
+procedure TForm13.MonthCalendar1Click(Sender: TObject);
 var
-  i: Integer;
+  Data: TDate;
+  DiaSemana: Integer;
 begin
-  ComboBoxHorarios.Items.Clear;
-  for i := 8 to 17 do
-    ComboBoxHorarios.Items.Add(Format('%.2d:00', [i]));
-  ComboBoxHorarios.ItemIndex := 0;
+  Data := MonthCalendar1.Date;
+  DiaSemana := DayOfTheWeek(Data);
+
+  if DiaSemana = 7 then
+    DiaSemana := 0;
+
+  ShowMessage('Dia selecionado: ' + IntToStr(DiaSemana));
+  Trazerservicos(DiaSemana,Data);
 end;
-end;
+
 
 procedure TForm13.Panel2Click(Sender: TObject);
 begin
   Cadastrar;
 end;
 
-procedure TForm13.PreencherListBoxProfissionais;
-begin
-if not datamodule1.QueryProfissionais.IsEmpty then
-begin
-  CheckListBoxProfissionais.Items.Clear;
-  datamodule1.QueryProfissionais.First;
-  while not datamodule1.QueryProfissionais.Eof do
-  begin
-    CheckListBoxProfissionais.Items.AddObject(
-      datamodule1.QueryProfissionais.FieldByName('nome').AsString,
-      TObject(datamodule1.QueryProfissionais.FieldByName('id_pro').AsInteger)
-    );
-    datamodule1.QueryProfissionais.Next;
-  end;
-end;
-end;
 
-procedure TForm13.PreencherListBoxServicos;
+procedure TForm13.Trazerservicos(DiaSemana: Integer; Data: TDate);
 begin
-  with DataModule1.Query_Conexao do
+  DBEdit1.DataSource := nil;
+  DBEdit2.DataSource := nil;
+
+  with DataModule1.Query_conexao do
   begin
     Close;
-    SQL.Text := 'SELECT id_servico, nome FROM servicos ' +
-                'WHERE id_empresa = :id_empresa ' +
-                'ORDER BY nome';
+    SQL.Text :=
+      'SELECT DISTINCT s.id_servico, s.nome AS nome_servico ' +
+      'FROM servicos s ' +
+      'JOIN cargos_servicos cs ON s.id_servico = cs.id_servico ' +
+      'JOIN profissionais_cargos pc ON cs.id_cargo = pc.id_cargo ' +
+      'JOIN horarios_profissionais hp ON pc.id_pro = hp.id_pro ' +
+      'WHERE hp.dia_semana = :dia_semana ' +
+      '  AND hp.id_empresa = :id_empresa ' +
+      'ORDER BY s.nome';
+    ParamByName('dia_semana').AsInteger := DiaSemana;
     ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
     Open;
 
-    CheckListBoxServicos.Items.Clear;
-
-    First;
+    CLBServicos.Items.Clear;
     while not Eof do
     begin
-      CheckListBoxServicos.Items.AddObject(
-        FieldByName('nome').AsString,
+      CLBServicos.Items.AddObject(
+        FieldByName('nome_servico').AsString,
         TObject(FieldByName('id_servico').AsInteger)
       );
       Next;
     end;
   end;
+
+atualizar_grid;
 end;
 
 
+procedure TForm13.atualizar_grid;
+begin
+  with DataModule1.Query_conexao do
+  begin
+    Close;
+    SQL.Text := 'SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie';
+    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+    Open;
+  end;
+  DBEdit1.DataSource := DataSource1;
+  DBEdit2.DataSource := DataSource1;
+  DBEdit1.DataField := 'nome_clie';
+  DBEdit2.DataField := 'email_clie';
+end;
 
 function TForm13.buscarpreco(id_servico: Integer): Currency;
 begin
@@ -189,11 +201,11 @@ begin
       id_agendamento := FieldByName('id_agendamento').AsInteger;
       Close;
     end;
-    for i := 0 to CheckListBoxServicos.Count - 1 do
+    for i := 0 to CLBServicos.Count - 1 do
     begin
-      if CheckListBoxServicos.Checked[i] then
+      if CLBServicos.Checked[i] then
       begin
-        id_servico := Integer(CheckListBoxServicos.Items.Objects[i]);
+        id_servico := Integer(CLBServicos.Items.Objects[i]);
         with DataModule1.QueryRAS do
         begin
           Close;
@@ -225,7 +237,7 @@ end;
 
 
 
-procedure TForm13.CheckListBoxServicosClickCheck(Sender: TObject);
+procedure TForm13.CLBServicosClickCheck(Sender: TObject);
 begin
 var
   i: Integer;
@@ -234,11 +246,11 @@ var
 
 begin
   total := 0;
-  for i := 0 to CheckListBoxservicos.Count - 1 do
+  for i := 0 to CLBServicos.Count - 1 do
   begin
-    if CheckListBoxservicos.Checked[i] then
+    if CLBServicos.Checked[i] then
     begin
-      id_servico := Integer(CheckListBoxservicos.Items.Objects[i]);
+      id_servico := Integer(CLBServicos.Items.Objects[i]);
       total := total + buscarpreco(id_servico);
     end;
   end;

@@ -440,8 +440,8 @@ object Form8: TForm8
         OnClick = Image1Click
       end
       object Lblrequired: TLabel
-        Left = 1103
-        Top = 845
+        Left = 1654
+        Top = 565
         Width = 264
         Height = 30
         Caption = 'Preencha todos os campos!'
@@ -481,20 +481,6 @@ object Form8: TForm8
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
-      end
-      object Label4: TLabel
-        Left = 1101
-        Top = 320
-        Width = 78
-        Height = 15
-        Caption = 'Inicio do turno'
-      end
-      object Label5: TLabel
-        Left = 1413
-        Top = 320
-        Width = 67
-        Height = 15
-        Caption = 'fim do turno'
       end
       object DBGrid1: TDBGrid
         Left = 40
@@ -793,38 +779,6 @@ object Form8: TForm8
         Font.Style = []
         ParentFont = False
         TabOrder = 10
-      end
-      object TimePicker1: TTimePicker
-        Left = 1101
-        Top = 350
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -20
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        TabOrder = 11
-        Time = 45968.900492002310000000
-        TimeFormat = 'hh:nn'
-      end
-      object TimePicker2: TTimePicker
-        Left = 1285
-        Top = 341
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -20
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        TabOrder = 12
-        Time = 45968.900492002310000000
-        TimeFormat = 'hh:nn'
-      end
-      object CLBdias_semana: TCheckListBox
-        Left = 960
-        Top = 373
-        Width = 113
-        Height = 156
-        ItemHeight = 17
-        TabOrder = 13
       end
     end
   end

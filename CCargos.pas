@@ -324,6 +324,7 @@ end;
   DBEdit2.DataSource := DataSource2;
   DBEdit1.DataField := 'nome_cargo';
   DBEdit2.DataField := 'nome';
+
   editsinativos;
 
 end;

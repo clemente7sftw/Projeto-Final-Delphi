@@ -43,11 +43,6 @@ type
     CLBCargos: TCheckListBox;
     Edit1: TEdit;
     Edit2: TEdit;
-    TimePicker1: TTimePicker;
-    TimePicker2: TTimePicker;
-    Label4: TLabel;
-    Label5: TLabel;
-    CLBdias_semana: TCheckListBox;
     procedure FormCreate(Sender: TObject);
     procedure Image6Click(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);

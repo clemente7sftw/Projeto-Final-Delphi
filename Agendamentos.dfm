@@ -351,22 +351,22 @@ object Form13: TForm13
       TabOrder = 1
     end
     object Panel2: TPanel
-      Left = 1012
-      Top = 469
+      Left = 345
+      Top = 694
       Width = 118
       Height = 48
       Caption = 'Marcar Hor'#225'rio'
       TabOrder = 2
       OnClick = Panel2Click
     end
-    object CheckListBoxServicos: TCheckListBox
+    object CLBServicos: TCheckListBox
       Left = 582
       Top = 422
       Width = 403
       Height = 145
       ItemHeight = 17
       TabOrder = 3
-      OnClickCheck = CheckListBoxServicosClickCheck
+      OnClickCheck = CLBServicosClickCheck
     end
     object MonthCalendar1: TMonthCalendar
       Left = 0
@@ -375,10 +375,11 @@ object Form13: TForm13
       Height = 211
       Date = 45936.000000000000000000
       TabOrder = 4
+      OnClick = MonthCalendar1Click
     end
     object ComboBoxHorarios: TComboBox
-      Left = 39
-      Top = 715
+      Left = 582
+      Top = 747
       Width = 266
       Height = 23
       TabOrder = 5

@@ -66,6 +66,8 @@ begin
   Form9.WindowState:=wsMaximized;
   Lblrequired.Visible:= false;
   lbEmail.visible:= false;
+  Trazer_Dias;
+
 end;
 
 procedure TForm9.FormShow(Sender: TObject);
@@ -73,7 +75,6 @@ begin
 edit1.Text :='';
 edit2.Text :='';
 PreencherListbox;
-Trazer_Dias;
 
 end;
 
@@ -132,7 +133,7 @@ end;
 
 procedure TForm9.Cadastrar;
 var
-  i, id_empresa, id_pro, id_cargo: Integer;
+  i, j, id_empresa, id_pro, id_cargo: Integer;
   nome_senha:string;
 begin
   nome_senha := Trim(Edit1.Text);
@@ -179,22 +180,25 @@ begin
         end;
       end;
       with DataModule1.query_conexao do
+begin
+  for i := 0 to CLBdias_semana.Items.Count - 1 do
   begin
-  for i := 0 to CLBdias_semana.Items.Count - 1 do begin
-    Close;
-    SQL.Text :=
-      'INSERT INTO horarios_profissionais ' +
-      '(id_empresa, id_pro, dia_semana, hora_inicio, hora_fim) ' +
-      'VALUES (:id_empresa, :id_pro, :dia_semana, :hora_inicio, :hora_fim)';
-    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-    ParamByName('id_pro').AsInteger := id_pro;
-    ParamByName('dia_semana').AsInteger := i;
-    ParamByName('hora_inicio').AsTime := TimePicker1.Time;
-    ParamByName('hora_fim').AsTime := TimePicker2.Time;
-
-    ExecSQL;
+    if CLBdias_semana.Checked[i] then
+    begin
+      Close;
+      SQL.Text :=
+        'INSERT INTO horarios_profissionais ' +
+        '(id_empresa, id_pro, dia_semana, hora_inicio, hora_fim) ' +
+        'VALUES (:id_empresa, :id_pro, :dia_semana, :hora_inicio, :hora_fim)';
+      ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+      ParamByName('id_pro').AsInteger := id_pro;
+      ParamByName('dia_semana').AsInteger := i;
+      ParamByName('hora_inicio').AsTime := TimePicker1.Time;
+      ParamByName('hora_fim').AsTime := TimePicker2.Time;
+      ExecSQL;
+    end;
   end;
-
+end;
   end;
 
       Form9.Close;
@@ -207,13 +211,7 @@ begin
       Lblrequired.Visible := False;
       lbEmail.Visible := True;
     end;
-  end
-  else
-  begin
-
-    Lblrequired.Visible := True;
   end;
-end;
 
 
 procedure TForm9.PCadClick(Sender: TObject);
