@@ -164,6 +164,7 @@ end;
 
 procedure TForm20.Panel1Click(Sender: TObject);
 begin
+
 Form28 := TForm28.Create(Self);
 Form28.RLPeriodo.Caption := RelatPeriodo.text + ' Até ' + RelatPeriodo1.text;
 Form28.RLDBPeriodo1.Caption := RelatPeriodo.text + ' Até ' + RelatPeriodo1.text;

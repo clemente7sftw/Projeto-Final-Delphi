@@ -22,6 +22,7 @@ object Form3: TForm3
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = -4
     object Image4: TImage
       Left = 32
       Top = 48
@@ -414,45 +415,16 @@ object Form3: TForm3
     end
   end
   object Barra: TPanel
-    Left = -16
-    Top = 200
-    Width = 1940
-    Height = 57
+    Left = -8
+    Top = 176
+    Width = 1928
+    Height = 41
     Color = 2700608
     ParentBackground = False
     TabOrder = 1
-    object LbEst: TLabel
-      Left = 576
-      Top = 8
-      Width = 198
-      Height = 64
-      Cursor = crHandPoint
-      Caption = 'Estabelecimentos'#10
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -24
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object LbAgn: TLabel
-      Left = 1176
-      Top = 8
-      Width = 242
-      Height = 32
-      Cursor = crHandPoint
-      Caption = 'Meus Agendamentos'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -24
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
   end
   object DataSource1: TDataSource
-    DataSet = DataModule1.QueryAg
-    Left = 584
-    Top = 320
+    Left = 520
+    Top = 312
   end
 end

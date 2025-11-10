@@ -10,7 +10,6 @@ object Form15: TForm15
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15
@@ -738,8 +737,8 @@ object Form15: TForm15
       OnClick = BtnConfClick
     end
     object BtnCad: TPanel
-      Left = 1105
-      Top = 826
+      Left = 1104
+      Top = 858
       Width = 496
       Height = 41
       Cursor = crHandPoint
@@ -763,32 +762,6 @@ object Form15: TForm15
       Caption = 'Panel2'
       TabOrder = 10
     end
-    object Edit1: TEdit
-      Left = 1104
-      Top = 498
-      Width = 497
-      Height = 38
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -21
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 11
-    end
-    object Edit2: TEdit
-      Left = 1104
-      Top = 608
-      Width = 497
-      Height = 38
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -21
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 12
-    end
     object Edit3: TEdit
       Left = 1104
       Top = 731
@@ -800,11 +773,11 @@ object Form15: TForm15
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 13
+      TabOrder = 11
     end
   end
   object DataSource1: TDataSource
-    Left = 632
-    Top = 224
+    Left = 360
+    Top = 320
   end
 end

@@ -70,13 +70,13 @@ uses UDataModule, CAgendamentos, CClientes;
 
 procedure TForm13.FormShow(Sender: TObject);
 begin
-  with datamodule1.query_conexao do
+  with datamodule1.queryclientes do
   begin
     Close;
     SQL.Text := 'SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie';
     ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
     Open;
-    datasource1.DataSet := datamodule1.query_conexao;
+    datasource1.DataSet := datamodule1.queryclientes;
     dbedit1.DataField := 'nome_clie';
     dbedit2.DataField := 'email_clie';
   end;
@@ -112,8 +112,6 @@ begin
 
   if DiaSemana = 7 then
     DiaSemana := 0;
-
-  ShowMessage('Dia selecionado: ' + IntToStr(DiaSemana));
   datamodule1.query_aux.close;
   Trazerservicos(DiaSemana,Data);
 end;
@@ -226,7 +224,6 @@ SQL.Text :=
       Next;
     end;
   end;
-atualizar_grid;
 end;
 
 
@@ -284,7 +281,7 @@ var
     dbedit2.DataField := 'email_clie';
     open;
     end;
-    id_clie := DataModule1.Query_conexao.FieldByName('id_clie').AsInteger;
+    id_clie := DataModule1.Queryclientes.FieldByName('id_clie').AsInteger;
     with DataModule1.Query_conexao do
     begin
       Close;
@@ -371,7 +368,7 @@ begin
     end;
   end;
   TrazerProfissionaisPorServico(id_servico);
-  atualizar_grid;
+
   datamodule1.query_aux.close;
   DBEdit3.DataSource := DataSource2;
   DBEdit3.DataField := 'preco';

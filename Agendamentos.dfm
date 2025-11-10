@@ -313,7 +313,7 @@ object Form13: TForm13
         C01B8BFF03D1727009CC0A36EE0000000049454E44AE426082}
     end
     object DBGrid1: TDBGrid
-      Left = 39
+      Left = 40
       Top = 353
       Width = 410
       Height = 120
@@ -349,10 +349,10 @@ object Form13: TForm13
       TabOrder = 1
     end
     object Panel2: TPanel
-      Left = 345
+      Left = 343
       Top = 694
-      Width = 118
-      Height = 48
+      Width = 200
+      Height = 29
       Caption = 'Marcar Hor'#225'rio'
       TabOrder = 2
       OnClick = Panel2Click
@@ -378,7 +378,7 @@ object Form13: TForm13
     object DBEdit3: TDBEdit
       Left = 345
       Top = 626
-      Width = 169
+      Width = 198
       Height = 23
       DataField = 'preco'
       Enabled = False
@@ -491,8 +491,8 @@ object Form13: TForm13
       end
     end
     object EdPesquisa: TEdit
-      Left = 39
-      Top = 254
+      Left = 40
+      Top = 269
       Width = 321
       Height = 45
       Font.Charset = ANSI_CHARSET
@@ -505,8 +505,8 @@ object Form13: TForm13
       TextHint = 'Pesquise'
     end
     object Panel3: TPanel
-      Left = 319
-      Top = 246
+      Left = 320
+      Top = 269
       Width = 41
       Height = 45
       Color = clBlack

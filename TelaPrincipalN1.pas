@@ -10,18 +10,16 @@ uses
 type
   TForm3 = class(TForm)
     Fundo: TPanel;
-    Barra: TPanel;
     Image4: TImage;
     Image5: TImage;
     BS: TImage;
-    LbEst: TLabel;
-    LbAgn: TLabel;
     Label1: TLabel;
     Panel1: TPanel;
     Image1: TImage;
     DBGrid1: TDBGrid;
     Image2: TImage;
     DataSource1: TDataSource;
+    Barra: TPanel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Image2Click(Sender: TObject);
@@ -52,8 +50,45 @@ end;
 
 procedure TForm3.FormShow(Sender: TObject);
 begin
-//  datamodule1.FDQueryReservas.close;
-//  datamodule1.FDQueryReservas.Open;
+with DataModule1.Query_conexao do
+begin
+  Close;
+  SQL.Clear;
+  SQL.Text :=
+    'SELECT ' +
+    '    a.id_agendamento, ' +
+    '    c.nome_clie, ' +
+    '    c.email_clie, ' +
+    '    STRING_AGG(s.nome, '', '')::varchar(500) AS nome_servicos, ' +
+    '    a.data_agendamento, ' +
+    '    a.hora_inicio, ' +
+    '    a.status ' +
+    'FROM ' +
+    '    agendamentos a ' +
+    'INNER JOIN ' +
+    '    clientes c ON a.id_clie = c.id_clie ' +
+    'INNER JOIN ' +
+    '    agendamento_servicos ags ON a.id_agendamento = ags.id_agendamento ' +
+    'INNER JOIN ' +
+    '    servicos s ON ags.id_servico = s.id_servico ' +
+    'WHERE ' +
+    '    a.id_clie = :id_clie ' +
+    'GROUP BY ' +
+    '    a.id_agendamento, ' +
+    '    c.nome_clie, ' +
+    '    c.email_clie, ' +
+    '    a.data_agendamento, ' +
+    '    a.hora_inicio, ' +
+    '    a.status ' +
+    'ORDER BY ' +
+    '    a.id_agendamento;';
+
+  ParamByName('id_clie').AsInteger := datamodule1.id_clie;
+  Open;
+  datasource1.DataSet := datamodule1.query_conexao;
+  dbgrid1.DataSource := datasource1;
+end;
+
 end;
 
 procedure TForm3.Image2Click(Sender: TObject);

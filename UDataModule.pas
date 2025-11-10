@@ -118,7 +118,7 @@ type
   private
     { Private declarations }
   public
-    var id_empresa, id_agendamento, id_adm, id_pro :integer;
+    var id_empresa, id_clie, id_agendamento, id_adm, id_pro :integer;
 
     { Public declarations }
   end;

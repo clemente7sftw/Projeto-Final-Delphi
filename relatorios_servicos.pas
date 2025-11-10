@@ -43,7 +43,7 @@ type
 
 var
   Form25: TForm25;
-  id_empresa:integer;
+  id_empresa : integer;
 
 implementation
 
@@ -53,28 +53,21 @@ uses UDataModule;
 
 procedure TForm25.FormCreate(Sender: TObject);
 begin
-with datamodule1.query_conexao do begin
-Close;
-SQL.Text :=
-  'SELECT ' +
-  '  s.nome AS nome_servico, ' +
-  '  COUNT(ags.id_servico) AS quantidade_realizada ' +
-  'FROM agendamento_servicos ags ' +
-  'INNER JOIN agendamentos a ON ags.id_agendamento = a.id_agendamento ' +
-  'INNER JOIN servicos s ON ags.id_servico = s.id_servico ' +
-  'WHERE a.id_empresa = :id_empresa ' +
-  'GROUP BY s.nome ' +
-  'ORDER BY quantidade_realizada DESC;';
-datamodule1.Query_Conexao.ParamByName('id_empresa').AsInteger := id_empresa;
-Open;
-datasource1.DataSet := datamodule1.query_conexao;
-  DataSource1.DataSet := DataModule1.Query_Conexao;
-RLDBText1.DataSource := DataSource1;
-RLDBText1.DataField  := 'nome_servico';
+  with DataModule1.Query_conexao do
+  begin
+    Close;
+    SQL.Text :=
+      'SELECT nome from  servicos';
+    Open;
+  end;
 
-RLDBText2.DataSource := DataSource1;
-RLDBText2.DataField  := 'quantidade_realizada';
+  DataSource1.DataSet := DataModule1.Query_conexao;
+
+  RLDBText1.DataSource := DataSource1;
+  RLDBText1.DataField  := 'nome';
+
 end;
-end;
+
+
 
 end.

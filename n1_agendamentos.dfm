@@ -10,6 +10,7 @@ object Form26: TForm26
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15
   object Fundo: TPanel
@@ -21,8 +22,8 @@ object Form26: TForm26
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1922
-    ExplicitHeight = 1053
+    ExplicitLeft = -8
+    ExplicitTop = -16
     object Image4: TImage
       Left = 32
       Top = 48
@@ -397,10 +398,10 @@ object Form26: TForm26
       end
     end
     object DBGrid1: TDBGrid
-      Left = 144
-      Top = 408
-      Width = 369
-      Height = 162
+      Left = 40
+      Top = 416
+      Width = 281
+      Height = 177
       DataSource = DataSource1
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 1
@@ -427,32 +428,104 @@ object Form26: TForm26
       ItemHeight = 17
       TabOrder = 3
     end
-    object ComboBoxHorarios: TComboBox
-      Left = 144
-      Top = 641
-      Width = 329
-      Height = 23
-      TabOrder = 4
-      Text = 'Selecione o Hor'#225'rio'
-      TextHint = 'Selecione o Hor'#225'rio'
-    end
     object Panel2: TPanel
-      Left = 1375
-      Top = 529
-      Width = 385
+      Left = 535
+      Top = 337
+      Width = 122
       Height = 41
       Caption = 'Marcar Hor'#225'rio'
+      TabOrder = 4
+    end
+    object EdPesquisa: TEdit
+      Left = 40
+      Top = 350
+      Width = 321
+      Height = 45
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -27
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
       TabOrder = 5
+      TextHint = 'Pesquise'
+    end
+    object Panel1: TPanel
+      Left = 320
+      Top = 350
+      Width = 41
+      Height = 45
+      Color = clBlack
+      ParentBackground = False
+      TabOrder = 6
+      object Image1: TImage
+        Left = 8
+        Top = 9
+        Width = 32
+        Height = 36
+        Picture.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D494844520000001F0000
+          0021080600000021DE70E4000000097048597300000B1300000B1301009A9C18
+          000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000001
+          E24944415478DAED57815583400C0D1BE806ED04B61BD009D409A413B49DA074
+          833A813881DD4036284E204E201BE0CF23D8E3B83B38FAD03E9F792F8F72BDE4
+          27B95C1202FA450AFEC15D5496E5151E33F02D987F4FC019F80D9C0641908F02
+          0EE02D1E6B01B55102DEF91A610507287BF7221EF7A102BC840187B3C005F895
+          AAF0AA940993FC171AC42318F07C0EF8BB069C5215D6D4606404DE6A2AE6D89B
+          5107B5C0E58C63658941639712C8CC2452755E70122E8680AB5E2750B2EC1342
+          C88562404D0B3D524E7028E0103E294B539F0C863C83877DBDD7C11938F2F5DA
+          E27D01F96B1F70D5F27B9F6B23F27CE69FCAD2043A3EFA82ABE7DD796616037A
+          EBB828F0239D2A1A57AB640078A9BC3AEFBB0ECE600FF2FA08C1B52770486724
+          5C44A7ABC6B59AAF5AE101AEDE16EFABC6D9CA675657AA3D146C0678CDD4796C
+          A60A1753B356C750B2EB00E63CE10E3891A51C32D32E834DE0ECF5919A8D853D
+          68F56BD9BBA276BFEF1531DF969A52BBA5DA868C0D0CD87B83771860A34258DD
+          EFECEDCE314AC2CA215D917B8CE288D47DE0A8EDB596699F01F28EAA027423CB
+          395503E441CD05436FE7682C4CC56694D1D970ED8C068C36B71B66835C0CF88E
+          D2A81F0D06031A556FF42F16AD6865009FFF18B81201FEDAD9A9E77EF9DF6A7F
+          12FC0B1293E6224739C13B0000000049454E44AE426082}
+      end
+    end
+    object DBGrid2: TDBGrid
+      Left = 438
+      Top = 416
+      Width = 251
+      Height = 177
+      TabOrder = 7
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -12
+      TitleFont.Name = 'Segoe UI'
+      TitleFont.Style = []
+      OnCellClick = DBGrid2CellClick
+    end
+    object DBEdit1: TDBEdit
+      Left = 728
+      Top = 416
+      Width = 121
+      Height = 23
+      TabOrder = 8
+    end
+    object DBEdit2: TDBEdit
+      Left = 728
+      Top = 445
+      Width = 121
+      Height = 23
+      TabOrder = 9
+    end
+    object DBEdit3: TDBEdit
+      Left = 728
+      Top = 474
+      Width = 121
+      Height = 23
+      TabOrder = 10
     end
   end
   object DataSource1: TDataSource
-    DataSet = DataModule1.QueryEmpresa
     Left = 472
     Top = 72
   end
   object DataSource2: TDataSource
-    DataSet = DataModule1.QueryServicos
-    Left = 1520
-    Top = 600
+    Left = 648
+    Top = 120
   end
 end

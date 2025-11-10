@@ -109,7 +109,7 @@ end;
 procedure TForm9.Trazer_Dias;
 begin
 
- CLBdias_semana.Items.Clear;
+  CLBdias_semana.Items.Clear;
   CLBdias_semana.Items.Add('Domingo');
   CLBdias_semana.Items.Add('Segunda-feira');
   CLBdias_semana.Items.Add('Terça-feira');

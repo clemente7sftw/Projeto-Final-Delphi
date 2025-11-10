@@ -1,6 +1,6 @@
 object DataModule1: TDataModule1
-  Height = 575
-  Width = 403
+  Height = 547
+  Width = 552
   object conexao_banco: TFDConnection
     Params.Strings = (
       'Database=beauty_stage'
@@ -447,8 +447,8 @@ object DataModule1: TDataModule1
       'GROUP BY EXTRACT(MONTH FROM data_cad)'
       'ORDER BY mes;'
       '')
-    Left = 120
-    Top = 480
+    Left = 112
+    Top = 472
     object QueryFClientesmes: TFMTBCDField
       AutoGenerateValue = arDefault
       FieldName = 'mes'
