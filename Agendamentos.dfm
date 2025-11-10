@@ -23,8 +23,6 @@ object Form13: TForm13
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1918
-    ExplicitHeight = 1053
     object Label1: TLabel
       Left = 336
       Top = 502
@@ -377,15 +375,6 @@ object Form13: TForm13
       TabOrder = 4
       OnClick = MonthCalendar1Click
     end
-    object ComboBoxHorarios: TComboBox
-      Left = 582
-      Top = 747
-      Width = 266
-      Height = 23
-      TabOrder = 5
-      Text = 'Selecione o Hor'#225'rio'
-      TextHint = 'Selecione o Hor'#225'rio'
-    end
     object DBEdit3: TDBEdit
       Left = 345
       Top = 626
@@ -393,15 +382,16 @@ object Form13: TForm13
       Height = 23
       DataField = 'preco'
       Enabled = False
-      TabOrder = 6
+      TabOrder = 5
     end
     object CheckListBoxProfissionais: TCheckListBox
       Left = 582
-      Top = 601
+      Top = 602
       Width = 403
       Height = 121
       ItemHeight = 17
-      TabOrder = 7
+      TabOrder = 6
+      OnClick = CheckListBoxProfissionaisClick
     end
     object DBEdit1: TDBEdit
       Left = 343
@@ -410,7 +400,7 @@ object Form13: TForm13
       Height = 23
       DataSource = DataSource1
       Enabled = False
-      TabOrder = 8
+      TabOrder = 7
     end
     object Barra: TPanel
       Left = -8
@@ -419,7 +409,7 @@ object Form13: TForm13
       Height = 41
       Color = 4405251
       ParentBackground = False
-      TabOrder = 9
+      TabOrder = 8
       object LbClie: TLabel
         Left = 192
         Top = 8
@@ -511,7 +501,7 @@ object Form13: TForm13
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 10
+      TabOrder = 9
       TextHint = 'Pesquise'
     end
     object Panel3: TPanel
@@ -521,7 +511,7 @@ object Form13: TForm13
       Height = 45
       Color = clBlack
       ParentBackground = False
-      TabOrder = 11
+      TabOrder = 10
       object Image2: TImage
         Left = 8
         Top = 9
@@ -549,9 +539,22 @@ object Form13: TForm13
           12FC0B1293E6224739C13B0000000049454E44AE426082}
       end
     end
+    object CLBHorarios: TCheckListBox
+      Left = 582
+      Top = 752
+      Width = 139
+      Height = 169
+      ItemHeight = 17
+      TabOrder = 11
+      OnClick = CLBHorariosClick
+    end
   end
   object DataSource1: TDataSource
     Left = 584
     Top = 88
+  end
+  object DataSource2: TDataSource
+    Left = 664
+    Top = 96
   end
 end

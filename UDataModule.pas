@@ -112,6 +112,7 @@ type
     QueryAdmnome_adm: TWideStringField;
     QueryAdmgenero_adm: TWideStringField;
     QueryAdmdata_cad: TSQLTimeStampField;
+    query_aux: TFDQuery;
     procedure QueryAgstatusGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
   private
