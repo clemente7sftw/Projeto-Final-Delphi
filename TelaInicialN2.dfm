@@ -21,6 +21,7 @@ object Form5: TForm5
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitTop = 8
     object Image4: TImage
       Left = 40
       Top = 48
@@ -353,6 +354,19 @@ object Form5: TForm5
         EFA02BE42F9847714961C06B8BFF03BF399A099C7508780000000049454E44AE
         426082}
     end
+    object Label3: TLabel
+      Left = 948
+      Top = 223
+      Width = 98
+      Height = 30
+      Caption = 'Relat'#243'rios'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
     object Barra: TPanel
       Left = -8
       Top = 176
@@ -362,10 +376,10 @@ object Form5: TForm5
       ParentBackground = False
       TabOrder = 0
       object LbClie: TLabel
-        Left = 192
+        Left = 964
         Top = 8
         Width = 74
-        Height = 30
+        Height = 33
         Cursor = crHandPoint
         Caption = 'Clientes'
         Font.Charset = ANSI_CHARSET
@@ -377,7 +391,7 @@ object Form5: TForm5
         OnClick = LbClieClick
       end
       object LbProfissionais: TLabel
-        Left = 772
+        Left = 580
         Top = 8
         Width = 118
         Height = 30
@@ -390,50 +404,8 @@ object Form5: TForm5
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object LbServicos: TLabel
-        Left = 1113
-        Top = 8
-        Width = 79
-        Height = 30
-        Cursor = crHandPoint
-        Caption = 'Servi'#231'os'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
-        Font.Height = -21
-        Font.Name = 'Segoe UI Semibold'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object LbCargos: TLabel
-        Left = 1368
-        Top = 8
-        Width = 67
-        Height = 30
-        Cursor = crHandPoint
-        Caption = 'Cargos'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
-        Font.Height = -21
-        Font.Name = 'Segoe UI Semibold'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object LbFornecedores: TLabel
-        Left = 1608
-        Top = 8
-        Width = 130
-        Height = 30
-        Cursor = crHandPoint
-        Caption = 'Fornecedores'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
-        Font.Height = -21
-        Font.Name = 'Segoe UI Semibold'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
       object Lbagendamentos: TLabel
-        Left = 464
+        Left = 1256
         Top = 8
         Width = 146
         Height = 30
@@ -446,6 +418,77 @@ object Form5: TForm5
         Font.Style = [fsBold]
         ParentFont = False
       end
+    end
+    object Panel1: TPanel
+      Left = 720
+      Top = 269
+      Width = 113
+      Height = 28
+      Cursor = crHandPoint
+      Caption = 'Clientes'
+      Color = 8543977
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 1
+      OnClick = Panel1Click
+    end
+    object Panel2: TPanel
+      Left = 847
+      Top = 269
+      Width = 113
+      Height = 28
+      Cursor = crHandPoint
+      Caption = 'Servi'#231'os'
+      Color = 8543977
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 2
+      OnClick = Panel2Click
+    end
+    object Panel3: TPanel
+      Left = 976
+      Top = 269
+      Width = 113
+      Height = 28
+      Cursor = crHandPoint
+      Caption = 'Profissionais'
+      Color = 8543977
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 3
+      OnClick = Panel3Click
+    end
+    object Panel4: TPanel
+      Left = 1105
+      Top = 269
+      Width = 113
+      Height = 28
+      Cursor = crHandPoint
+      Caption = 'Outro relatorio'
+      Color = 8543977
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 4
     end
   end
 end

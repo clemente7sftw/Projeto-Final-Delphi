@@ -675,7 +675,7 @@ object Form4: TForm4
     end
     object BtnCad: TPanel
       Left = 1105
-      Top = 888
+      Top = 872
       Width = 496
       Height = 41
       Cursor = crHandPoint

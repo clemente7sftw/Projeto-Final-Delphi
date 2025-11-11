@@ -38,6 +38,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    id_empresa:integer;
   end;
 
 var

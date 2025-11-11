@@ -14,17 +14,22 @@ type
     Barra: TPanel;
     LbClie: TLabel;
     LbProfissionais: TLabel;
-    LbServicos: TLabel;
-    LbCargos: TLabel;
-    LbFornecedores: TLabel;
     Lbagendamentos: TLabel;
     Image2: TImage;
     Label2: TLabel;
     BS: TImage;
+    Label3: TLabel;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
     procedure Image2Click(Sender: TObject);
     procedure MudarSenha;
     procedure FormShow(Sender: TObject);
     procedure LbClieClick(Sender: TObject);
+    procedure Panel1Click(Sender: TObject);
+    procedure Panel2Click(Sender: TObject);
+    procedure Panel3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,7 +43,8 @@ implementation
 
 {$R *.dfm}
 
-uses CAdministrador, UDataModule, n2_cclientes;
+uses CAdministrador, UDataModule, n2_cclientes, relatorio_clientes,
+  relatorios_servicos, relatorios_profissionais;
 
 procedure TForm5.FormShow(Sender: TObject);
 begin
@@ -58,6 +64,27 @@ end;
 procedure TForm5.MudarSenha;
 begin
 Form22.show;
+end;
+
+procedure TForm5.Panel1Click(Sender: TObject);
+begin
+  Form28 := TForm28.Create(Self);
+  Form28.Id_empresa := DataModule1.id_empresa;
+  Form28.RelatorioClientes.Preview();
+end;
+
+procedure TForm5.Panel2Click(Sender: TObject);
+begin
+Form25 := TForm25.Create(Self);
+form25.Id_empresa := DataModule1.id_empresa;
+Form25.RelatorioServicos.Preview();
+end;
+
+procedure TForm5.Panel3Click(Sender: TObject);
+begin
+Form27 := TForm27.Create(Self);
+form27.Id_empresa := DataModule1.id_empresa;
+Form27.RelatorioProfissionais.Preview();
 end;
 
 end.

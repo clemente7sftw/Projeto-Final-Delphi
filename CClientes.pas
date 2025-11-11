@@ -89,7 +89,7 @@ type
 
 var
   Form4: TForm4;
-var id_clie:integer;
+ id_clie:integer;
 
 implementation
 
