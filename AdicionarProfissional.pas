@@ -45,6 +45,7 @@ type
     procedure BtnConfClick(Sender: TObject);
     function ValidarEmail(const Email: string):Boolean;
     procedure Trazer_Dias;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -60,6 +61,12 @@ implementation
 uses UMetodos, UDataModule;
 var
   id_cargo, id_pro: Integer;
+
+procedure TForm9.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+action:= cafree;
+form9:= nil;
+end;
 
 procedure TForm9.FormCreate(Sender: TObject);
 begin
