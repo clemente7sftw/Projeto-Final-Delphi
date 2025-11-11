@@ -691,32 +691,6 @@ object Form4: TForm4
       TabOrder = 6
       OnClick = BtnCadClick
     end
-    object Edit1: TEdit
-      Left = 1105
-      Top = 485
-      Width = 496
-      Height = 38
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -21
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 7
-    end
-    object Edit2: TEdit
-      Left = 1105
-      Top = 576
-      Width = 496
-      Height = 38
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -21
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 8
-    end
   end
   object Barra: TPanel
     Left = -8

@@ -10,6 +10,7 @@ object Form8: TForm8
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15
@@ -22,8 +23,6 @@ object Form8: TForm8
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1918
-    ExplicitHeight = 1053
     object Panel1: TPanel
       Left = 1
       Top = 1
@@ -33,8 +32,6 @@ object Form8: TForm8
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 1916
-      ExplicitHeight = 1051
       object Label1: TLabel
         Left = 1102
         Top = 440
@@ -482,6 +479,62 @@ object Form8: TForm8
         Font.Style = [fsBold]
         ParentFont = False
       end
+      object Label4: TLabel
+        Left = 1350
+        Top = 663
+        Width = 40
+        Height = 30
+        Caption = 'Dias'
+        FocusControl = DBEdit1
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -21
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label5: TLabel
+        Left = 1502
+        Top = 663
+        Width = 73
+        Height = 30
+        Caption = 'Hor'#225'rio'
+        FocusControl = DBEdit1
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -21
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label6: TLabel
+        Left = 1502
+        Top = 687
+        Width = 51
+        Height = 30
+        Caption = 'In'#237'cio'
+        FocusControl = DBEdit1
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -21
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label7: TLabel
+        Left = 1502
+        Top = 771
+        Width = 35
+        Height = 30
+        Caption = 'Fim'
+        FocusControl = DBEdit1
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -21
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
       object DBGrid1: TDBGrid
         Left = 40
         Top = 401
@@ -733,8 +786,8 @@ object Form8: TForm8
         end
       end
       object BtnConf: TPanel
-        Left = 1224
-        Top = 652
+        Left = 1103
+        Top = 892
         Width = 496
         Height = 41
         Cursor = crHandPoint
@@ -753,10 +806,42 @@ object Form8: TForm8
       object CLBCargos: TCheckListBox
         Left = 1103
         Top = 712
-        Width = 496
+        Width = 218
         Height = 127
         ItemHeight = 17
         TabOrder = 8
+      end
+      object CLBDias: TCheckListBox
+        Left = 1350
+        Top = 712
+        Width = 121
+        Height = 127
+        ItemHeight = 17
+        TabOrder = 9
+      end
+      object TimePicker1: TTimePicker
+        Left = 1502
+        Top = 712
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        TabOrder = 10
+        Time = 45972.597829027780000000
+        TimeFormat = 'hh:nn'
+      end
+      object TimePicker2: TTimePicker
+        Left = 1502
+        Top = 807
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        TabOrder = 11
+        Time = 45972.597829027780000000
+        TimeFormat = 'hh:nn'
       end
     end
   end

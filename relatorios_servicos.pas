@@ -53,20 +53,27 @@ uses UDataModule;
 
 procedure TForm25.FormCreate(Sender: TObject);
 begin
-  with DataModule1.Query_conexao do
-  begin
-    Close;
-    SQL.Text :=
-      'SELECT nome from  servicos';
-    Open;
-  end;
-
-  DataSource1.DataSet := DataModule1.Query_conexao;
-
-  RLDBText1.DataSource := DataSource1;
-  RLDBText1.DataField  := 'nome';
-
+with DataModule1.Query_conexao do
+begin
+  Close;
+  SQL.Text :=
+    'SELECT s.nome, COUNT(ags.id_servico) AS total_feitos ' +
+    'FROM agendamento_servicos ags ' +
+    'INNER JOIN servicos s ON s.id_servico = ags.id_servico ' +
+    'INNER JOIN agendamentos a ON a.id_agendamento = ags.id_agendamento ' +
+    'GROUP BY s.nome ' +
+    'ORDER BY total_feitos DESC';
+  Open;
 end;
+
+DataSource1.DataSet := DataModule1.Query_conexao;
+RLDBText1.DataSource := DataSource1;
+RLDBText1.DataField  := 'nome';
+RLDBText3.DataSource := DataSource1;
+RLDBText3.DataField  := 'total_feitos';
+end;
+
+
 
 
 

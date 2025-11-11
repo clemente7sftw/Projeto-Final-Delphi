@@ -90,8 +90,7 @@ end;
 
 procedure TForm14.Adicionar;
 begin
-DBEdit1.DataSource := nil;
-DBEdit2.DataSource := nil;
+
 Form11.show;
 Form14.Close;
 end;
@@ -145,16 +144,15 @@ end;
 
 procedure TForm14.Editar;
 begin
-dbedit2.Visible:= false;
+  dbedit2.Visible:= false;
   TrazerServicos;
   BtnConf.Visible:= true;
   BtnExcluir.Visible:= false;
   EditsAtivos;
   BtnEditar.Visible:= false;
   addclie.Visible:= false;
-  dbgrid1.Enabled := false;
-
-
+    dbedit1.DataSource := datasource1;
+  dbedit1.DataField := 'nome_cargo';
 end;
 
 procedure TForm14.EditBtnClick(Sender: TObject);

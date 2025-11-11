@@ -446,13 +446,13 @@ object Form25: TForm25
         Left = 584
         Top = 0
         Width = 134
-        Height = 39
+        Height = 37
         Align = faRightTop
         Borders.Sides = sdCustom
         Borders.DrawLeft = False
         Borders.DrawTop = False
         Borders.DrawRight = False
-        Borders.DrawBottom = True
+        Borders.DrawBottom = False
         DataSource = DataSource1
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -528,6 +528,7 @@ object Form25: TForm25
     end
   end
   object DataSource1: TDataSource
+    DataSet = DataModule1.query_conexao
     Left = 21
     Top = 258
   end

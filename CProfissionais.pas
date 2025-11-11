@@ -41,6 +41,13 @@ type
     Label2: TLabel;
     Label3: TLabel;
     CLBCargos: TCheckListBox;
+    Label4: TLabel;
+    Label5: TLabel;
+    CLBDias: TCheckListBox;
+    TimePicker1: TTimePicker;
+    TimePicker2: TTimePicker;
+    Label6: TLabel;
+    Label7: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure Image6Click(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
@@ -54,8 +61,11 @@ type
     procedure Cancelar;
     procedure Salvar;
     procedure TrazerCargos;
+    procedure TrazerDias;
     procedure AdicionarProfissional;
     procedure atualizar_grid;
+    procedure icones_escondidos;
+    procedure icones_visiveis;
     procedure BtnConf1Click(Sender: TObject);
     procedure Panel3Click(Sender: TObject);
     procedure LbClieClick(Sender: TObject);
@@ -68,6 +78,7 @@ type
     procedure LbServicosClick(Sender: TObject);
     procedure LbCargosClick(Sender: TObject);
     procedure LbFornecedoresClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
 
   private
     procedure Pesquisar;
@@ -79,7 +90,7 @@ type
 
 var
   Form8: TForm8;
-  id_pro: integer;
+  id_pro, id_dia: integer;
 
 implementation
 
@@ -161,12 +172,12 @@ end;
 
 procedure TForm8.Cancelar;
 begin
-  datamodule1.QueryRPC.Cancel;
   btncancelar.Visible := false;
   editsinativos;
   EditBtn.Visible := true;
   ExclBtn.Visible := true;
   Lblrequired.visible:= false;
+  icones_escondidos;
 
 end;
 
@@ -180,8 +191,9 @@ begin
   EditBtn.Visible:= false;
   addclie.Visible:= false;
   CLBCargos.Visible:= true;
-  dbgrid1.Enabled := false;
   TrazerCargos;
+  icones_visiveis;
+  TrazerDias;
 
 end;
 
@@ -229,6 +241,13 @@ begin
   end;
 end;
 
+procedure TForm8.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+DBEdit1.DataSource := nil;
+DBEdit2.DataSource := nil;
+DBEdit3.DataSource := nil;
+end;
+
 procedure TForm8.FormCreate(Sender: TObject);
 begin
   Form8.WindowState:=wsMaximized;
@@ -243,6 +262,28 @@ end;
 procedure TForm8.FormShow(Sender: TObject);
 begin
 atualizar_grid;
+end;
+
+procedure TForm8.icones_escondidos;
+begin
+Label7.Visible := false;
+TimePicker1.Visible := false;
+TimePicker2.Visible := false;
+Label6.Visible := false;
+Label5.Visible := false;
+CLBDias.Visible := false;
+Label4.Visible := false;
+end;
+
+procedure TForm8.icones_visiveis;
+begin
+Label7.Visible := true;
+TimePicker1.Visible := true;
+TimePicker2.Visible := true;
+Label6.Visible := true;
+Label5.Visible := true;
+CLBDias.Visible := true;
+Label4.Visible := true;
 end;
 
 procedure TForm8.Image1Click(Sender: TObject);
@@ -356,8 +397,35 @@ begin
         end;
       end;
     end;
+
+    with DataModule1.queryprofissionais do
+    begin
+      Close;
+      SQL.Text := 'DELETE FROM horarios_profissionais WHERE id_pro = :id_pro';
+      ParamByName('id_pro').AsInteger := id_pro;
+      ExecSQL;
+      end;
+          for i := 0 to CLBDias.Count - 1 do
+      begin
+        if CLBDias.Checked[i] then
+        begin
+          id_dia := Integer(CLBDias.Items.Objects[i]);
+          with datamodule1.queryprofissionais do
+          begin
+          Close;
+          SQL.Text :=
+            'INSERT INTO horarios_profissionais (id_empresa, id_pro, dia_semana, hora_inicio, hora_fim) ' +
+            'VALUES (:id_empresa, :id_pro, :dia_semana, :hora_inicio, :hora_fim)';
+          ParamByName('id_pro').AsInteger := id_pro;
+          ParamByName('dia_semana').AsInteger := id_dia;
+          ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+          ParamByName('hora_inicio').AsTime := TimePicker1.Time;
+          ParamByName('hora_fim').AsTime := TimePicker2.Time;
+          ExecSQL;
+        end;
+      end;
+    end;
 end;
-    atualizar_grid;
     EditsInativos;
     BtnConf.Visible := False;
     ExclBtn.Visible := True;
@@ -366,14 +434,10 @@ end;
     Lblrequired.Visible := False;
     CLBCargos.Visible := False;
     dbgrid1.Enabled:= true;
-    dbedit1.Visible:=true;
-    dbedit2.Visible:=true;
-    dbedit3.Visible:=true;
-atualizar_grid;
+    atualizar_grid;
+    dbedit3.Visible := true;
+    icones_escondidos;
   end;
-
-
-
 
 procedure TForm8.TrazerCargos;
 var
@@ -424,4 +488,42 @@ begin
   end;
   atualizar_grid;
 end;
+procedure TForm8.TrazerDias;
+var
+  id_pro, i: Integer;
+begin
+  CLBDias.Items.Clear;
+  CLBDias.Items.AddObject('Domingo', TObject(0));
+  CLBDias.Items.AddObject('Segunda-feira', TObject(1));
+  CLBDias.Items.AddObject('Terça-feira', TObject(2));
+  CLBDias.Items.AddObject('Quarta-feira', TObject(3));
+  CLBDias.Items.AddObject('Quinta-feira', TObject(4));
+  CLBDias.Items.AddObject('Sexta-feira', TObject(5));
+  CLBDias.Items.AddObject('Sábado', TObject(6));
+
+  id_pro := DataModule1.queryprofissionais.FieldByName('id_pro').AsInteger;
+
+  with DataModule1.query_conexao do
+  begin
+    Close;
+    SQL.Text := 'SELECT dia_semana FROM horarios_profissionais WHERE id_pro = :id_pro';
+    ParamByName('id_pro').AsInteger := id_pro;
+    Open;
+
+    while not Eof do
+    begin
+      for i := 0 to CLBDias.Count - 1 do
+      begin
+        if Integer(CLBDias.Items.Objects[i]) = FieldByName('dia_semana').AsInteger then
+        begin
+          CLBDias.Checked[i] := True;
+          Break;
+        end;
+      end;
+      Next;
+    end;
+  end;
+end;
+
+
 end.

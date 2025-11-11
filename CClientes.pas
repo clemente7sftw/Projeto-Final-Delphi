@@ -44,8 +44,6 @@ type
     Timer2: TTimer;
     Timer3: TTimer;
     LbErro_Sistema: TLabel;
-    Edit1: TEdit;
-    Edit2: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -68,8 +66,6 @@ type
     procedure erro;
     procedure atualizar_grid;
     procedure icones_escondidos;
-    procedure edits_cadastro_visiveis;
-    procedure edits_cadastro_escondidos;
     procedure EdNomeKeyPress(Sender: TObject; var Key: Char);
     procedure ExclBtnClick(Sender: TObject);
     procedure EditBtnClick(Sender: TObject);
@@ -110,18 +106,21 @@ end;
 
 procedure TForm4.FormShow(Sender: TObject);
 begin
-with datamodule1.query_conexao do
+with datamodule1.queryclientes do
 begin
   Close;
   SQL.Text :=
     'SELECT * FROM clientes ' +
     'WHERE id_empresa = :id_empresa ' +
     'ORDER BY nome_clie';
-  DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  DataModule1.queryclientes.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
   Open;
   EditsInativos;
-  edits_cadastro_escondidos;
-  DataSource1.DataSet := DataModule1.query_conexao;
+  DataSource1.DataSet := DataModule1.queryclientes;
+  ednome.DataSource := datasource1;
+  edemail.DataSource := datasource1;
+  ednome.DataField := 'nome_clie';
+  edemail.DataField := 'email_clie';
 end;
 end;
 
@@ -197,15 +196,17 @@ end;
 
 procedure TForm4.AdicionarCliente;
 begin
-  ednome.Visible:= false;
-  edemail.Visible:= false;
-  edits_cadastro_visiveis;
-  edit1.Text := '';
-  edit2.Text := '';
+  editsativos;
   BtnCad.Visible := true;
   EditBtn.Visible := false;
   ExclBtn.Visible := false;
   btncancelar.Visible := true;
+  with DataModule1.queryclientes do
+begin
+   Append;
+   ednome.Field.Clear;
+   edemail.Field.Clear;
+end;
 end;
 
 procedure TForm4.BtnExcluirClick(Sender: TObject);
@@ -218,17 +219,17 @@ var
   id_empresa: Integer;
   nome_senha: string;
 begin
-  nome_senha := Trim(Edit1.Text);
+  nome_senha := Trim(ednome.Text);
 
   if Pos(' ', nome_senha) > 0 then
     nome_senha := Copy(nome_senha, 1, Pos(' ', nome_senha) - 1);
 
-  if (Trim(edit1.Text) = '') or (Trim(edit2.Text) = '') then
+  if (Trim(ednome.Text) = '') or (Trim(edemail.Text) = '') then
   begin
     erro_campos;
     Exit;
   end;
-  if not ValidarEmail(edit2.Text) then
+  if not ValidarEmail(edemail.Text) then
   begin
     erro_email;
     Exit;
@@ -242,8 +243,8 @@ begin
         'INSERT INTO clientes (id_empresa, nome_clie, email_clie, senha_clie) ' +
         'VALUES (:id_empresa, :nome_clie, :email_clie, :senha_clie)';
       ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-      ParamByName('nome_clie').AsString := Edit1.Text;
-      ParamByName('email_clie').AsString := Edit2.Text;
+      ParamByName('nome_clie').AsString := ednome.Text;
+      ParamByName('email_clie').AsString := edemail.Text;
       ParamByName('senha_clie').AsString := nome_senha + '123';
       ExecSQL;
     end;
@@ -255,7 +256,6 @@ begin
     ExclBtn.Visible := True;
     ednome.Visible:= true;
     edemail.Visible:= true;
-    edits_cadastro_escondidos;
   except
   erro;
   end;
@@ -273,24 +273,27 @@ end;
 
 procedure TForm4.atualizar_grid;
 begin
-  with datamodule1.query_conexao do
-  begin
-    Close;
-    SQL.Text :=
-      'SELECT * FROM clientes ' +
-      'WHERE id_empresa = :id_empresa ' +
-      'ORDER BY nome_clie';
-    DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-    Open;
-    EditsInativos;
-    DataSource1.DataSet := DataModule1.query_conexao;
-  end;
+with datamodule1.queryclientes do
+begin
+  Close;
+  SQL.Text :=
+    'SELECT * FROM clientes ' +
+    'WHERE id_empresa = :id_empresa ' +
+    'ORDER BY nome_clie';
+  DataModule1.queryclientes.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  Open;
+  EditsInativos;
+  DataSource1.DataSet := DataModule1.queryclientes;
+  ednome.DataSource := datasource1;
+  edemail.DataSource := datasource1;
+  ednome.DataField := 'nome_clie';
+  edemail.DataField := 'email_clie';
+end;
 end;
 
 procedure TForm4.Cancelar;
 begin
   atualizar_grid;
-  edits_cadastro_escondidos;
   btncancelar.Visible := false;
   editsinativos;
   BtnCad.Visible:= false;
@@ -349,25 +352,14 @@ begin
   EdEmail.Enabled := false;
 end;
 
-procedure TForm4.edits_cadastro_escondidos;
-begin
-  edit1.Visible := false;
-  edit2.Visible := false;
-end;
-
-procedure TForm4.edits_cadastro_visiveis;
-begin
-  edit1.Visible := true;
-  edit2.Visible := true;
-end;
 
 procedure TForm4.Excluir;
 begin
   if Application.MessageBox('Tem certeza de que deseja excluir este Cliente? Essa ação não poderá ser desfeita.', 'Exclusão de Cliente', MB_YESNO + MB_ICONQUESTION) = IDYES then
   begin
-  with datamodule1.query_conexao do
+  with datamodule1.queryclientes do
   begin
-    id_clie := DataModule1.Query_conexao.FieldByName('id_clie').AsInteger;
+    id_clie := DataModule1.queryclientes.FieldByName('id_clie').AsInteger;
     Close;
     SQL.Text := 'DELETE FROM clientes WHERE id_clie = :id_clie';
     ParamByName('id_clie').AsInteger := id_clie;
@@ -403,7 +395,7 @@ begin
     if ValidarEmail(EdEmail.Text) then
     begin
       try
-          with datamodule1.query_conexao do
+          with datamodule1.queryclientes do
           begin
             Edit;
             FieldByName('nome_clie').AsString := EdNome.Text;

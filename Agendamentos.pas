@@ -80,20 +80,20 @@ begin
     dbedit1.DataField := 'nome_clie';
     dbedit2.DataField := 'email_clie';
   end;
-  with datamodule1.query_aux do
-  begin
-  close;
-  sql.text := 'select * from servicos';
-  datasource2.DataSet := datamodule1.query_aux;
-  open;
-  end;
+//  with datamodule1.queryservicos do
+//  begin
+//  close;
+//  sql.text := 'select * from servicos';
+//  datasource2.DataSet := datamodule1.queryservicos;
+//  open;
+//  end;
 end;
 
 procedure TForm13.FormCreate(Sender: TObject);
 begin
-WindowState:=wsMaximized;
-Lblrequired.Visible:= false;
-MonthCalendar1.MinDate:= Date;
+  WindowState:=wsMaximized;
+  Lblrequired.Visible:= false;
+  MonthCalendar1.MinDate:= Date;
 end;
 
 procedure TForm13.LbClieClick(Sender: TObject);
@@ -127,7 +127,7 @@ procedure TForm13.TrazerHorariosDisponiveis(id_pro: Integer; Data: TDateTime);
 var
   horaInicio, horaFim, horaAtual: TTime;
 begin
-  with DataModule1.Query_conexao do
+  with DataModule1.Queryprofissionais do
   begin
     Close;
     SQL.Text :=
@@ -137,7 +137,6 @@ begin
       'ORDER BY hora_inicio';
     ParamByName('id_pro').AsInteger := id_pro;
     Open;
-
     CLBHorarios.Items.Clear;
 
     while not Eof do
@@ -161,6 +160,10 @@ end;
 
 
 procedure TForm13.TrazerProfissionaisPorServico(id_servico: Integer);
+var
+  i, id_pro: Integer;
+  nome: string;
+  existe: Boolean;
 begin
   with DataModule1.Query_aux do
   begin
@@ -175,29 +178,36 @@ begin
       'ORDER BY p.nome';
     ParamByName('id_servico').AsInteger := id_servico;
     ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-    DBEdit3.DataSource := nil;
     Open;
 
-    CheckListBoxProfissionais.Clear;
     while not Eof do
     begin
-      CheckListBoxProfissionais.Items.AddObject(
-        FieldByName('nome').AsString,
-        TObject(FieldByName('id_pro').AsInteger)
-      );
+      id_pro := FieldByName('id_pro').AsInteger;
+      nome   := FieldByName('nome').AsString;
+
+      existe := False;
+      for i := 0 to CheckListBoxProfissionais.Count - 1 do
+        if Integer(CheckListBoxProfissionais.Items.Objects[i]) = id_pro then
+        begin
+          existe := True;
+          Break;
+        end;
+
+      if not existe then
+        CheckListBoxProfissionais.Items.AddObject(nome, TObject(id_pro));
+
       Next;
     end;
   end;
 end;
 
+
 procedure TForm13.Trazerservicos(DiaSemana: Integer; Data: TDate);
 begin
-  with DataModule1.Query_conexao do
+  with DataModule1.Queryservicos do
   begin
-  DBEdit1.DataSource := nil;
-  DBEdit2.DataSource := nil;
   CheckListBoxProfissionais.Clear;
-    Close;
+  Close;
 SQL.Text :=
   'SELECT DISTINCT s.id_servico, s.nome AS nome_servico ' +
   'FROM servicos s ' +
@@ -229,18 +239,16 @@ end;
 
 procedure TForm13.atualizar_grid;
 begin
-  with DataModule1.Query_conexao do
+  with datamodule1.queryclientes do
   begin
     Close;
     SQL.Text := 'SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie';
     ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
     Open;
+    datasource1.DataSet := datamodule1.queryclientes;
+    dbedit1.DataField := 'nome_clie';
+    dbedit2.DataField := 'email_clie';
   end;
-  DBEdit1.DataSource := DataSource1;
-  DBEdit2.DataSource := DataSource1;
-  DBEdit1.DataField := 'nome_clie';
-  DBEdit2.DataField := 'email_clie';
-
 end;
 
 function TForm13.buscarpreco(id_servico: Integer): Currency;
@@ -267,59 +275,50 @@ procedure TForm13.Cadastrar;
 var
   id_clie, id_servico, id_agendamento, id_empresa, i: Integer;
   dataselecionada: TDateTime;
+begin
+  id_empresa := DataModule1.id_empresa;
+  dataselecionada := MonthCalendar1.Date;
+  id_clie := DataModule1.Queryclientes.FieldByName('id_clie').AsInteger;
+
+  with DataModule1.Query_conexao do
   begin
-    id_empresa := DataModule1.id_empresa;
-    dataselecionada := MonthCalendar1.Date;
-    with datamodule1.query_conexao do
-    begin
     Close;
-    SQL.Text := 'SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie';
-    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+    SQL.Text :=
+      'INSERT INTO agendamentos (id_clie, id_empresa, data_agendamento, hora_inicio, preco) ' +
+      'VALUES (:id_clie, :id_empresa, :data_agendamento, :hora_inicio, :preco) ' +
+      'RETURNING id_agendamento';
+    ParamByName('id_clie').AsInteger := id_clie;
+    ParamByName('id_empresa').AsInteger := id_empresa;
+    ParamByName('data_agendamento').AsDate := dataselecionada;
+    ParamByName('hora_inicio').AsDateTime := StrToTime(CLBHorarios.Items[CLBHorarios.ItemIndex]);
+    ParamByName('preco').AsCurrency := StrToCurr(DBEdit3.Text);
     Open;
-    datasource1.DataSet := datamodule1.query_conexao;
-    dbedit1.DataField := 'nome_clie';
-    dbedit2.DataField := 'email_clie';
-    open;
-    end;
-    id_clie := DataModule1.Queryclientes.FieldByName('id_clie').AsInteger;
-    with DataModule1.Query_conexao do
+    id_agendamento := FieldByName('id_agendamento').AsInteger;
+    Close;
+  end;
+  for i := 0 to CLBServicos.Count - 1 do
+  begin
+    if CLBServicos.Checked[i] then
     begin
-      Close;
-      SQL.Text :=
-        'INSERT INTO agendamentos ( id_clie, id_empresa, data_agendamento, hora_inicio, preco) ' +
-        'VALUES (:id_clie, :id_empresa, :data_agendamento, :hora_inicio, :preco) ' +
-        'RETURNING id_agendamento';
-      ParamByName('id_clie').AsInteger := id_clie;
-      ParamByName('id_empresa').AsInteger := id_empresa;
-      ParamByName('data_agendamento').AsDate := dataselecionada;
-      ParamByName('hora_inicio').AsDateTime := StrToTime(CLBHorarios.Items[CLBHorarios.ItemIndex]);
-      ParamByName('preco').AsCurrency := StrToCurr(DBEdit3.Text);
-      Open;
-      id_agendamento := FieldByName('id_agendamento').AsInteger;
-      Close;
-    end;
-    for i := 0 to CLBServicos.Count - 1 do
-    begin
-      if CLBServicos.Checked[i] then
+      id_servico := Integer(CLBServicos.Items.Objects[i]);
+      with DataModule1.Query_aux do
       begin
-        id_servico := Integer(CLBServicos.Items.Objects[i]);
-        with DataModule1.Query_conexao do
-        begin
-          Close;
-          SQL.Text :=
-            'INSERT INTO agendamento_servicos (id_agendamento, id_servico, id_empresa) ' +
-            'VALUES (:id_agendamento, :id_servico, :id_empresa)';
-          ParamByName('id_agendamento').AsInteger := id_agendamento;
-          ParamByName('id_servico').AsInteger := id_servico;
-          ParamByName('id_empresa').AsInteger := id_empresa;
-          ExecSQL;
-        end;
+        Close;
+        SQL.Text :=
+          'INSERT INTO agendamento_servicos (id_agendamento, id_servico, id_empresa) ' +
+          'VALUES (:id_agendamento, :id_servico, :id_empresa)';
+        ParamByName('id_agendamento').AsInteger := id_agendamento;
+        ParamByName('id_servico').AsInteger := id_servico;
+        ParamByName('id_empresa').AsInteger := id_empresa;
+        ExecSQL;
       end;
     end;
-
-    Form21.Show;
-    Form13.Close;
   end;
+  atualizar_grid;
+  Form21.Show;
+  Form13.Close;
+end;
+
 
 
 
@@ -328,8 +327,7 @@ procedure TForm13.CheckListBoxProfissionaisClick(Sender: TObject);
 var
   i, id_pro: Integer;
 begin
-  DBEdit1.DataSource := nil;
-  DBEdit2.DataSource := nil;
+
   for i := 0 to CheckListBoxProfissionais.Count - 1 do
   begin
     if CheckListBoxProfissionais.Checked[i] then
@@ -354,20 +352,23 @@ end;
 
 procedure TForm13.CLBServicosClickCheck(Sender: TObject);
 var
-  i: Integer;
-  id_servico, id_pro: Integer;
-  total: currency;
+  i, id_servico: Integer;
+  total: Currency;
 begin
   total := 0;
+
+  CheckListBoxProfissionais.Clear;
+
   for i := 0 to CLBServicos.Count - 1 do
   begin
     if CLBServicos.Checked[i] then
     begin
       id_servico := Integer(CLBServicos.Items.Objects[i]);
       total := total + buscarpreco(id_servico);
+
+      TrazerProfissionaisPorServico(id_servico);
     end;
   end;
-  TrazerProfissionaisPorServico(id_servico);
 
   datamodule1.query_aux.close;
   DBEdit3.DataSource := DataSource2;
