@@ -31,6 +31,7 @@ type
     RLSystemInfo3: TRLSystemInfo;
     RLSystemInfo4: TRLSystemInfo;
     RLDBNome_empresa: TRLDBText;
+    DataSource2: TDataSource;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -50,16 +51,25 @@ uses UDataModule;
 
 procedure TForm25.FormCreate(Sender: TObject);
 begin
-with DataModule1.Query_conexao do
+  with DataModule1.Query_conexao do
+  begin
+    Close;
+    SQL.Text :=
+      'SELECT s.nome, COUNT(ags.id_servico) AS total_feitos ' +
+      'FROM agendamento_servicos ags ' +
+      'INNER JOIN servicos s ON s.id_servico = ags.id_servico ' +
+      'INNER JOIN agendamentos a ON a.id_agendamento = ags.id_agendamento ' +
+      'WHERE a.id_empresa = :id_empresa ' +
+      'GROUP BY s.nome ' +
+      'ORDER BY total_feitos DESC';
+    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+    Open;
+  end;
+with DataModule1.QueryEmpresa do
 begin
   Close;
-  SQL.Text :=
-    'SELECT s.nome, COUNT(ags.id_servico) AS total_feitos ' +
-    'FROM agendamento_servicos ags ' +
-    'INNER JOIN servicos s ON s.id_servico = ags.id_servico ' +
-    'INNER JOIN agendamentos a ON a.id_agendamento = ags.id_agendamento ' +
-    'GROUP BY s.nome ' +
-    'ORDER BY total_feitos DESC';
+  SQL.Text := 'SELECT nome FROM empresas WHERE id_empresa = :id_empresa';
+  ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
   Open;
 end;
 
@@ -68,6 +78,9 @@ RLDBText1.DataSource := DataSource1;
 RLDBText1.DataField  := 'nome';
 RLDBText3.DataSource := DataSource1;
 RLDBText3.DataField  := 'total_feitos';
+DataSource2.DataSet := DataModule1.queryempresa;
+RLDBNome_empresa.DataSource := datasource2;
+RLDBNome_empresa.DataField := 'nome';
 end;
 
 

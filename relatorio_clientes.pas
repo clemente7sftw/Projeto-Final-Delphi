@@ -27,14 +27,13 @@ type
     RLBFooter: TRLBand;
     RLDados_empresa: TRLDBText;
     RLDBText2: TRLDBText;
-    RLDBText4: TRLDBText;
-    RLDBPeriodo1: TRLLabel;
     RLDBText5: TRLDBText;
     RLSystemInfo3: TRLSystemInfo;
     RLSystemInfo4: TRLSystemInfo;
     RLLabel1: TRLLabel;
     RLDBText6: TRLDBText;
     DataSource1: TDataSource;
+    DataSource2: TDataSource;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -68,10 +67,21 @@ begin
       'LEFT JOIN agendamento_servicos ags ON ags.id_agendamento = a.id_agendamento ' +
       'LEFT JOIN servicos s ON s.id_servico = ags.id_servico ' +
       'WHERE a.status = true ' +
+      '  AND a.id_empresa = :id_empresa ' +
       'GROUP BY c.nome_clie ' +
       'ORDER BY total_rendido DESC';
+    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
     Open;
   end;
+
+
+with DataModule1.QueryEmpresa do
+begin
+  Close;
+  SQL.Text := 'SELECT nome FROM empresas WHERE id_empresa = :id_empresa';
+  ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  Open;
+end;
 
   DataSource1.DataSet := DataModule1.query_conexao;
   RLDBText1.DataSource := DataSource1;
@@ -80,6 +90,10 @@ begin
   RLDBText6.DataField  := 'total_agendamentos';
   RLDBText3.DataSource := DataSource1;
   RLDBText3.DataField  := 'total_rendido';
+  DataSource2.DataSet := DataModule1.queryempresa;
+  RLDBNome_empresa.DataSource := datasource2;
+  RLDBNome_empresa.DataField := 'nome';
+
 end;
 
 end.

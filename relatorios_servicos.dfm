@@ -348,7 +348,6 @@ object Form25: TForm25
         Height = 24
         Align = faTop
         Alignment = taCenter
-        DataField = 'nome'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -21
@@ -498,5 +497,9 @@ object Form25: TForm25
     DataSet = DataModule1.query_conexao
     Left = 21
     Top = 258
+  end
+  object DataSource2: TDataSource
+    Left = 24
+    Top = 200
   end
 end

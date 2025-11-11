@@ -449,22 +449,6 @@ object Form20: TForm20
         OnClick = LbagendamentosClick
       end
     end
-    object RelatPeriodo: TMaskEdit
-      Left = 824
-      Top = 326
-      Width = 137
-      Height = 23
-      TabOrder = 1
-      Text = 'RelatPeriodo'
-    end
-    object RelatPeriodo1: TMaskEdit
-      Left = 1023
-      Top = 326
-      Width = 137
-      Height = 23
-      TabOrder = 2
-      Text = 'RelatPeriodo'
-    end
     object Panel1: TPanel
       Left = 720
       Top = 269
@@ -480,7 +464,7 @@ object Form20: TForm20
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 1
       OnClick = Panel1Click
     end
     object Panel2: TPanel
@@ -498,7 +482,7 @@ object Form20: TForm20
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 2
       OnClick = Panel2Click
     end
     object Panel3: TPanel
@@ -516,7 +500,7 @@ object Form20: TForm20
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 3
       OnClick = Panel3Click
     end
     object Panel4: TPanel
@@ -534,7 +518,7 @@ object Form20: TForm20
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 4
     end
   end
   object FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink

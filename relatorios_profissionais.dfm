@@ -10,6 +10,7 @@ object Form27: TForm27
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnCreate = FormCreate
   TextHeight = 15
   object RelatorioProfissionais: TRLReport
     Left = 100
@@ -21,6 +22,7 @@ object Form27: TForm27
     Borders.DrawTop = False
     Borders.DrawRight = False
     Borders.DrawBottom = False
+    DataSource = DataSource1
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -13
@@ -339,25 +341,6 @@ object Form27: TForm27
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object RLPeriodo: TRLLabel
-        Left = 0
-        Top = 61
-        Width = 718
-        Height = 30
-        Align = faTop
-        Alignment = taCenter
-        Borders.Sides = sdCustom
-        Borders.DrawLeft = False
-        Borders.DrawTop = False
-        Borders.DrawRight = False
-        Borders.DrawBottom = False
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -21
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-      end
       object RLDBNome_empresa: TRLDBText
         Left = 0
         Top = 37
@@ -365,7 +348,6 @@ object Form27: TForm27
         Height = 24
         Align = faTop
         Alignment = taCenter
-        DataField = 'nome'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -21
@@ -437,7 +419,7 @@ object Form27: TForm27
       object RLDBText1: TRLDBText
         Left = 0
         Top = 0
-        Width = 75
+        Width = 134
         Height = 37
         Align = faLeftTop
         Borders.Sides = sdCustom
@@ -445,7 +427,6 @@ object Form27: TForm27
         Borders.DrawTop = False
         Borders.DrawRight = False
         Borders.DrawBottom = False
-        DataField = 'nome'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -27
@@ -455,17 +436,35 @@ object Form27: TForm27
         Text = ''
       end
       object RLDBText3: TRLDBText
-        Left = 656
+        Left = 584
         Top = 0
-        Width = 62
-        Height = 39
+        Width = 134
+        Height = 37
         Align = faRightTop
         Borders.Sides = sdCustom
         Borders.DrawLeft = False
         Borders.DrawTop = False
         Borders.DrawRight = False
-        Borders.DrawBottom = True
-        DataField = 'total'
+        Borders.DrawBottom = False
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -27
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        Text = ''
+      end
+      object RLDBText6: TRLDBText
+        Left = 292
+        Top = 11
+        Width = 134
+        Height = 37
+        Align = faCenter
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = False
+        Borders.DrawRight = False
+        Borders.DrawBottom = False
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -27
@@ -479,7 +478,7 @@ object Form27: TForm27
       Left = 38
       Top = 465
       Width = 718
-      Height = 80
+      Height = 56
       BandType = btFooter
       object RLDados_empresa: TRLDBText
         Left = 0
@@ -498,23 +497,9 @@ object Form27: TForm27
         Align = faLeftOnly
         Text = 'RELAT'#211'RIO DE ATENDIMENTO POR PROFISSIONAL'
       end
-      object RLDBText4: TRLDBText
-        Left = 0
-        Top = 42
-        Width = 57
-        Height = 21
-        Align = faLeftOnly
-        Text = 'Per'#237'odo: '
-      end
-      object RLDBPeriodo1: TRLLabel
-        Left = 63
-        Top = 44
-        Width = 89
-        Height = 21
-      end
       object RLDBText5: TRLDBText
         Left = 0
-        Top = 61
+        Top = 37
         Width = 75
         Height = 19
         Align = faLeftBottom
@@ -522,7 +507,7 @@ object Form27: TForm27
       end
       object RLSystemInfo3: TRLSystemInfo
         Left = 81
-        Top = 64
+        Top = 40
         Width = 39
         Height = 16
         Align = faBottomOnly
@@ -530,7 +515,7 @@ object Form27: TForm27
       end
       object RLSystemInfo4: TRLSystemInfo
         Left = 162
-        Top = 64
+        Top = 40
         Width = 39
         Height = 16
         Align = faBottomOnly
@@ -538,5 +523,13 @@ object Form27: TForm27
         Text = ''
       end
     end
+  end
+  object DataSource1: TDataSource
+    Left = 32
+    Top = 320
+  end
+  object DataSource2: TDataSource
+    Left = 24
+    Top = 256
   end
 end

@@ -24,8 +24,6 @@ type
     Lbagendamentos: TLabel;
     Image2: TImage;
     FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink;
-    RelatPeriodo: TMaskEdit;
-    RelatPeriodo1: TMaskEdit;
     Panel1: TPanel;
     Label3: TLabel;
     Panel2: TPanel;
@@ -76,10 +74,6 @@ end;
 procedure TForm20.FormCreate(Sender: TObject);
 begin
 WindowState:=wsMaximized;
-RelatPeriodo.EditMask := '99/99/9999';
-RelatPeriodo.Text := '';
-RelatPeriodo1.EditMask := '99/99/9999';
-RelatPeriodo1.Text := '';
 DataModule1.QueryClientes.Close;
 DataModule1.QueryClientes.Open;
 DataModule1.QueryClientes.SQL.Text :=
@@ -166,8 +160,6 @@ end;
 procedure TForm20.Panel3Click(Sender: TObject);
 begin
 Form27 := TForm27.Create(Self);
-Form27.RLPeriodo.Caption := RelatPeriodo.text + ' Até ' + RelatPeriodo1.text;
-Form27.RLDBPeriodo1.Caption := RelatPeriodo.text + ' Até ' + RelatPeriodo1.text;
 Form27.RelatorioProfissionais.Preview();
 end;
 

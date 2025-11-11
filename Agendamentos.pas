@@ -273,8 +273,8 @@ end;
 
 procedure TForm13.Cadastrar;
 var
-  id_clie, id_servico, id_agendamento, id_empresa, i: Integer;
-  dataselecionada: TDateTime;
+  id_clie, id_pro, id_servico, id_agendamento, id_empresa, duracao_total, i: Integer;
+  dataselecionada, hora_inicio, hora_fim: TDateTime;
 begin
   id_empresa := DataModule1.id_empresa;
   dataselecionada := MonthCalendar1.Date;
@@ -314,6 +314,49 @@ begin
       end;
     end;
   end;
+  duracao_total := 0;
+  for i := 0 to CLBServicos.Count - 1 do
+  begin
+    if CLBServicos.Checked[i] then
+    begin
+      id_servico := Integer(CLBServicos.Items.Objects[i]);
+      with DataModule1.Query_aux do
+      begin
+        Close;
+        SQL.Text := 'SELECT duracao FROM servicos WHERE id_servico = :id_servico';
+        ParamByName('id_servico').AsInteger := id_servico;
+        Open;
+        if not IsEmpty then
+          duracao_total := duracao_total + FieldByName('duracao').AsInteger;
+      end;
+    end;
+  end;
+  hora_inicio := StrToTime(CLBHorarios.Items[CLBHorarios.ItemIndex]);
+  hora_fim := IncMinute(hora_inicio, duracao_total);
+  for i := 0 to CheckListBoxProfissionais.Count - 1 do
+  begin
+  if CheckListBoxProfissionais.Checked[i] then
+  begin
+    id_pro := Integer(CheckListBoxProfissionais.Items.Objects[i]);
+    Break;
+  end;
+  end;
+  with DataModule1.Query_aux do
+  begin
+    Close;
+    SQL.Text :=
+      'INSERT INTO profissionais_agendamentos ' +
+      '(id_agendamento, id_pro, data_agendamento, hora_inicio, hora_fim, id_empresa) ' +
+      'VALUES (:id_agendamento, :id_pro, :data_agendamento, :hora_inicio, :hora_fim, :id_empresa)';
+    ParamByName('id_agendamento').AsInteger := id_agendamento;
+    ParamByName('id_pro').AsInteger := id_pro;
+    ParamByName('data_agendamento').AsDate := dataselecionada;
+    ParamByName('hora_inicio').AsDateTime := hora_inicio;
+    ParamByName('hora_fim').AsDateTime := hora_fim;
+    ParamByName('id_empresa').AsInteger := id_empresa;
+    ExecSQL;
+  end;
+
   atualizar_grid;
   Form21.Show;
   Form13.Close;

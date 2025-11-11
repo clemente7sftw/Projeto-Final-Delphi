@@ -367,7 +367,6 @@ object Form28: TForm28
         Height = 24
         Align = faTop
         Alignment = taCenter
-        DataField = 'nome'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -21
@@ -498,7 +497,7 @@ object Form28: TForm28
       Left = 38
       Top = 465
       Width = 718
-      Height = 80
+      Height = 56
       BandType = btFooter
       object RLDados_empresa: TRLDBText
         Left = 0
@@ -511,29 +510,15 @@ object Form28: TForm28
       end
       object RLDBText2: TRLDBText
         Left = 0
-        Top = 22
+        Top = 18
         Width = 342
         Height = 16
         Align = faLeftOnly
         Text = 'RELAT'#211'RIO DE CLIENTES MAIS ASS'#205'DUOS '
       end
-      object RLDBText4: TRLDBText
-        Left = 0
-        Top = 42
-        Width = 57
-        Height = 21
-        Align = faLeftOnly
-        Text = 'Per'#237'odo: '
-      end
-      object RLDBPeriodo1: TRLLabel
-        Left = 63
-        Top = 44
-        Width = 89
-        Height = 21
-      end
       object RLDBText5: TRLDBText
         Left = 0
-        Top = 61
+        Top = 37
         Width = 75
         Height = 19
         Align = faLeftBottom
@@ -541,7 +526,7 @@ object Form28: TForm28
       end
       object RLSystemInfo3: TRLSystemInfo
         Left = 81
-        Top = 64
+        Top = 40
         Width = 39
         Height = 16
         Align = faBottomOnly
@@ -549,7 +534,7 @@ object Form28: TForm28
       end
       object RLSystemInfo4: TRLSystemInfo
         Left = 162
-        Top = 64
+        Top = 40
         Width = 39
         Height = 16
         Align = faBottomOnly
@@ -562,5 +547,9 @@ object Form28: TForm28
     DataSet = DataModule1.query_conexao
     Left = 40
     Top = 272
+  end
+  object DataSource2: TDataSource
+    Left = 40
+    Top = 200
   end
 end
