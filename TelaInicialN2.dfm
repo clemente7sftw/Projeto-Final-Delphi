@@ -21,7 +21,6 @@ object Form5: TForm5
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 8
     object Image4: TImage
       Left = 40
       Top = 48
@@ -379,7 +378,7 @@ object Form5: TForm5
         Left = 964
         Top = 8
         Width = 74
-        Height = 33
+        Height = 30
         Cursor = crHandPoint
         Caption = 'Clientes'
         Font.Charset = ANSI_CHARSET
@@ -403,6 +402,7 @@ object Form5: TForm5
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
+        OnClick = LbProfissionaisClick
       end
       object Lbagendamentos: TLabel
         Left = 1256
