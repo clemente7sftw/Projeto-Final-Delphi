@@ -13,7 +13,7 @@ type
     Fundo: TPanel;
     Image1: TImage;
     BtnConf: TPanel;
-    DataSource2: TDataSource;
+    DataSource1: TDataSource;
     DBGrid1: TDBGrid;
     DBEdit1: TDBEdit;
     DBEdit2: TDBEdit;
@@ -39,7 +39,6 @@ type
     CLBServicos: TCheckListBox;
     LbErroExcl: TLabel;
     Timer1: TTimer;
-    Edit1: TEdit;
     btncancelar: TImage;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
@@ -99,7 +98,7 @@ end;
 
 procedure TForm14.atualizar_grid;
 begin
-with datamodule1.query_conexao do
+with datamodule1.querycargos do
 begin
   Close;
   SQL.Text :=
@@ -112,13 +111,15 @@ begin
   'WHERE c.id_empresa = :id_empresa ' +
   'GROUP BY c.id_cargo, c.nome_cargo ' +
   'ORDER BY c.nome_cargo;';
-  DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  DataModule1.querycargos.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
   Open;
-  DataSource2.DataSet := DataModule1.query_conexao;
+  DataSource1.DataSet := DataModule1.querycargos;
+  dbedit1.DataSource := datasource1;
+  dbedit2.DataSource := datasource1;
   dbedit1.DataField := 'nome_cargo';
   dbedit2.DataField := 'nome';
-  Edit1.Visible:= false;
-end;
+
+end;;
 end;
 
 procedure TForm14.BtnAddClick(Sender: TObject);
@@ -144,16 +145,16 @@ end;
 
 procedure TForm14.Editar;
 begin
+dbedit2.Visible:= false;
   TrazerServicos;
   BtnConf.Visible:= true;
   BtnExcluir.Visible:= false;
   EditsAtivos;
   BtnEditar.Visible:= false;
   addclie.Visible:= false;
-  Edit1.Text := DataModule1.Query_conexao.FieldByName('nome_cargo').AsString;
   dbgrid1.Enabled := false;
-  dbedit1.Visible:= false;
-  Edit1.Visible:= true;
+
+
 end;
 
 procedure TForm14.EditBtnClick(Sender: TObject);
@@ -188,9 +189,9 @@ procedure TForm14.Excluir;
 begin
 begin
   if Application.MessageBox('Tem certeza de que deseja excluir este Cargo? Essa ação não poderá ser desfeita.', 'Exclusão de Cargo', MB_YESNO + MB_ICONQUESTION) = IDYES then
- with datamodule1.query_conexao do
+ with datamodule1.querycargos do
   begin
-    id_cargo := DataModule1.Query_conexao.FieldByName('id_cargo').AsInteger;
+    id_cargo := DataModule1.querycargos.FieldByName('id_cargo').AsInteger;
     Close;
     SQL.Text := 'DELETE FROM cargos WHERE id_cargo = :id_cargo';
     ParamByName('id_cargo').AsInteger := id_cargo;
@@ -218,7 +219,7 @@ end;
 
 procedure TForm14.FormShow(Sender: TObject);
 begin
-with datamodule1.query_conexao do
+with datamodule1.querycargos do
 begin
   Close;
   SQL.Text :=
@@ -231,12 +232,14 @@ begin
   'WHERE c.id_empresa = :id_empresa ' +
   'GROUP BY c.id_cargo, c.nome_cargo ' +
   'ORDER BY c.nome_cargo;';
-  DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  DataModule1.querycargos.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
   Open;
-  DataSource2.DataSet := DataModule1.query_conexao;
+  DataSource1.DataSet := DataModule1.querycargos;
+  dbedit1.DataSource := datasource1;
+  dbedit2.DataSource := datasource1;
   dbedit1.DataField := 'nome_cargo';
   dbedit2.DataField := 'nome';
-  Edit1.Visible:= false;
+
 end;
 end;
 
@@ -275,13 +278,13 @@ procedure TForm14.Salvar;
 var
   id_ser, id_cargo, i: Integer;
 begin
-  if Edit1.Text <> ''  then
+  if dbEdit1.Text <> ''  then
   begin
-    id_cargo := DataModule1.Query_conexao.FieldByName('id_cargo').AsInteger;
-  with datamodule1.query_conexao do
+    id_cargo := DataModule1.querycargos.FieldByName('id_cargo').AsInteger;
+  with datamodule1.querycargos do
   begin
     Edit;
-    FieldByName('nome_cargo').AsString := Edit1.Text;
+    FieldByName('nome_cargo').AsString := dbEdit1.Text;
     Post;
   end;
   end;
@@ -318,13 +321,7 @@ end;
   Lblrequired.Visible := False;
   CLBServicos.Visible := False;
   addclie.Visible := True;
-  Edit1.Visible := False;
-  DBEdit1.Visible := True;
-  DBEdit1.DataSource := DataSource2;
-  DBEdit2.DataSource := DataSource2;
-  DBEdit1.DataField := 'nome_cargo';
-  DBEdit2.DataField := 'nome';
-
+  DBEdit2.Visible := True;
   editsinativos;
 
 end;
@@ -340,11 +337,9 @@ procedure TForm14.TrazerServicos;
 var
   id_cargo, i: Integer;
 begin
-  with DataModule1.query_conexao do
+  with DataModule1.query_aux do
   begin
-  id_cargo := DataModule1.Query_conexao.FieldByName('id_cargo').AsInteger;
-  DBEdit1.DataSource := nil;
-  DBEdit2.DataSource := nil;
+  id_cargo := DataModule1.querycargos.FieldByName('id_cargo').AsInteger;
 
     Close;
     SQL.Text := 'SELECT * FROM servicos ' +
@@ -363,7 +358,7 @@ begin
     end;
   end;
 
-  with DataModule1.query_conexao do
+  with DataModule1.query_aux do
   begin
     Close;
     SQL.Text := 'SELECT id_servico FROM cargos_servicos WHERE id_cargo = :id_cargo';
@@ -384,8 +379,5 @@ begin
     end;
   end;
 atualizar_grid;
-DataSource2.DataSet := DataModule1.query_conexao;
-DBEdit1.DataField := 'nome_cargo';
-DBEdit2.DataField := 'nome';
 end;
 end.

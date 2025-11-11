@@ -22,6 +22,8 @@ object Form15: TForm15
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1919
+    ExplicitHeight = 1053
     object lbaviso: TLabel
       Left = 40
       Top = 869
@@ -577,6 +579,8 @@ object Form15: TForm15
       Width = 1919
       Height = 19
       Panels = <>
+      ExplicitTop = 1033
+      ExplicitWidth = 1917
     end
     object Barra: TPanel
       Left = -18
@@ -720,8 +724,8 @@ object Form15: TForm15
       end
     end
     object BtnConf: TPanel
-      Left = 1105
-      Top = 826
+      Left = 1248
+      Top = 671
       Width = 496
       Height = 41
       Caption = 'Confirmar'
@@ -737,8 +741,8 @@ object Form15: TForm15
       OnClick = BtnConfClick
     end
     object BtnCad: TPanel
-      Left = 1104
-      Top = 858
+      Left = 1248
+      Top = 684
       Width = 496
       Height = 41
       Cursor = crHandPoint
@@ -754,30 +758,9 @@ object Form15: TForm15
       TabOrder = 9
       OnClick = BtnCadClick
     end
-    object Panel2: TPanel
-      Left = 558
-      Top = 361
-      Width = 163
-      Height = 34
-      Caption = 'Panel2'
-      TabOrder = 10
-    end
-    object Edit3: TEdit
-      Left = 1104
-      Top = 731
-      Width = 497
-      Height = 38
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -21
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 11
-    end
   end
   object DataSource1: TDataSource
-    Left = 360
-    Top = 320
+    Left = 376
+    Top = 248
   end
 end

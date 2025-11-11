@@ -490,7 +490,7 @@ object Form14: TForm14
       Top = 401
       Width = 913
       Height = 512
-      DataSource = DataSource2
+      DataSource = DataSource1
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
@@ -529,7 +529,7 @@ object Form14: TForm14
       Top = 485
       Width = 496
       Height = 38
-      DataSource = DataSource2
+      DataSource = DataSource1
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
@@ -543,7 +543,7 @@ object Form14: TForm14
       Top = 576
       Width = 496
       Height = 38
-      DataSource = DataSource2
+      DataSource = DataSource1
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
@@ -701,21 +701,8 @@ object Form14: TForm14
       ItemHeight = 17
       TabOrder = 7
     end
-    object Edit1: TEdit
-      Left = 1105
-      Top = 485
-      Width = 496
-      Height = 38
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -21
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 8
-    end
   end
-  object DataSource2: TDataSource
+  object DataSource1: TDataSource
     Left = 368
     Top = 224
   end

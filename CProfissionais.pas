@@ -41,14 +41,11 @@ type
     Label2: TLabel;
     Label3: TLabel;
     CLBCargos: TCheckListBox;
-    Edit1: TEdit;
-    Edit2: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure Image6Click(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure BtnExcluirClick(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
     procedure EditsAtivos;
     procedure EditsInativos;
@@ -107,7 +104,7 @@ end;
 
 procedure TForm8.atualizar_grid;
 begin
-with datamodule1.query_conexao do
+with datamodule1.queryprofissionais do
 begin
 Close;
 SQL.Text :=
@@ -136,13 +133,13 @@ SQL.Text :=
 
 ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
 Open;
-
-end;
-DSconexao.DataSet := DataModule1.query_conexao;
+DSconexao.DataSet := DataModule1.queryprofissionais;
 dbgrid1.DataSource := dsconexao;
 dbedit1.DataField := 'nome';
 dbedit2.DataField := 'email';
 dbedit3.DataField := 'nome_cargo';
+
+end;
 end;
 
 
@@ -161,12 +158,6 @@ begin
   Salvar;
 end;
 
-procedure TForm8.BtnExcluirClick(Sender: TObject);
-begin
-datamodule1.QueryProfissionais.delete;
-end;
-
-
 
 procedure TForm8.Cancelar;
 begin
@@ -181,8 +172,7 @@ end;
 
 procedure TForm8.Editar;
 begin
-  DBEdit1.Visible:= false;
-  DBEdit2.Visible:= false;
+
   DBEdit3.Visible:= false;
   BtnConf.Visible:= true;
   ExclBtn.Visible:= false;
@@ -191,10 +181,6 @@ begin
   addclie.Visible:= false;
   CLBCargos.Visible:= true;
   dbgrid1.Enabled := false;
-  edit1.Visible:= true;
-  edit2.Visible:= true;
-  Edit1.Text := DataModule1.Query_conexao.FieldByName('nome').AsString;
-  Edit2.Text := DataModule1.Query_conexao.FieldByName('email').AsString;
   TrazerCargos;
 
 end;
@@ -227,9 +213,9 @@ procedure TForm8.Excluir;
 begin
   if Application.MessageBox('Tem certeza de que deseja excluir este Profissional? Essa ação não poderá ser desfeita.', 'Exclusão de Profissional', MB_YESNO + MB_ICONQUESTION) = IDYES then
   begin
-    with datamodule1.query_conexao do
+    with datamodule1.queryprofissionais do
   begin
-    id_pro := DataModule1.Query_conexao.FieldByName('id_pro').AsInteger;
+    id_pro := DataModule1.queryprofissionais.FieldByName('id_pro').AsInteger;
     Close;
     SQL.Text := 'DELETE FROM profissionais WHERE id_pro = :id_pro';
     ParamByName('id_pro').AsInteger := id_pro;
@@ -331,21 +317,21 @@ procedure TForm8.Salvar;
 var
   id_pro, id_cargo, i: Integer;
 begin
-  if (Edit1.Text <> '') and (Edit2.Text <> '') then
+  if (dbEdit1.Text <> '') and (dbEdit2.Text <> '') then
   begin
-    id_pro := DataModule1.Query_conexao.FieldByName('id_pro').AsInteger;
+    id_pro := DataModule1.queryprofissionais.FieldByName('id_pro').AsInteger;
 
-    with DataModule1.Query_conexao do
+    with DataModule1.queryprofissionais do
     begin
     begin
     Edit;
-    FieldByName('nome').AsString := Edit1.Text;
-    FieldByName('email').AsString := Edit2.Text;
+    FieldByName('nome').AsString := dbEdit1.Text;
+    FieldByName('email').AsString := dbEdit2.Text;
     Post;
     end;
     end;
 
-    with DataModule1.query_conexao do
+    with DataModule1.queryprofissionais do
     begin
       Close;
       SQL.Text := 'DELETE FROM profissionais_cargos WHERE id_pro = :id_pro';
@@ -358,7 +344,7 @@ begin
         if CLBCargos.Checked[i] then
         begin
           id_cargo := Integer(CLBCargos.Items.Objects[i]);
-          with datamodule1.query_conexao do
+          with datamodule1.queryprofissionais do
           begin
           Close;
           SQL.Text :=
@@ -383,14 +369,7 @@ end;
     dbedit1.Visible:=true;
     dbedit2.Visible:=true;
     dbedit3.Visible:=true;
-        edit1.Visible:= false;
-    edit2.Visible:= false;
-    DBEdit1.DataSource := DSconexao;
-    DBEdit2.DataSource := DSconexao;
-    DBEdit3.DataSource := DSconexao;
-    DBEdit1.DataField := 'nome';
-    DBEdit2.DataField := 'email';
-    DBEdit3.DataField := 'nome_cargo';
+atualizar_grid;
   end;
 
 
@@ -400,12 +379,11 @@ procedure TForm8.TrazerCargos;
 var
   id_pro, i: Integer;
 begin
+
   with DataModule1.query_conexao do
   begin
-    id_pro := DataModule1.query_conexao.FieldByName('id_pro').AsInteger;
-    DBEdit1.DataSource := nil;
-    DBEdit2.DataSource := nil;
-    DBEdit3.DataSource := nil;
+    id_pro := DataModule1.queryprofissionais.FieldByName('id_pro').AsInteger;
+
     Close;
     SQL.Text := 'SELECT * FROM cargos ' +
                 'WHERE id_empresa = :id_empresa ' +
@@ -445,9 +423,5 @@ begin
     end;
   end;
   atualizar_grid;
-Dsconexao.DataSet := DataModule1.query_conexao;
-DBEdit1.DataField := 'nome';
-DBEdit2.DataField := 'email';
-dbedit3.DataField := 'nome_cargo';
 end;
 end.

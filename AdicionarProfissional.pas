@@ -67,6 +67,8 @@ begin
   Lblrequired.Visible:= false;
   lbEmail.visible:= false;
   Trazer_Dias;
+  TimePicker1.Time := EncodeTime(12, 0, 0, 0);
+  TimePicker2.Time := EncodeTime(12, 0, 0, 0);
 
 end;
 
@@ -146,7 +148,7 @@ begin
   begin
     if ValidarEmail(EDIT2.Text) then
     begin
-      with DataModule1.query_conexao do
+      with DataModule1.queryprofissionais do
       begin
         Close;
         SQL.Text :=
@@ -167,7 +169,7 @@ begin
         if CLBCargos.Checked[i] then
         begin
           id_cargo := Integer(CLBCargos.Items.Objects[i]);
-          with DataModule1.query_conexao do
+          with DataModule1.queryprofissionais do
           begin
             Close;
             SQL.Text :=
@@ -179,7 +181,7 @@ begin
           end;
         end;
       end;
-      with DataModule1.query_conexao do
+      with DataModule1.queryprofissionais do
 begin
   for i := 0 to CLBdias_semana.Items.Count - 1 do
   begin

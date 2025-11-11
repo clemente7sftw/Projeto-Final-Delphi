@@ -35,6 +35,7 @@ type
     procedure ErroInclusao;
     procedure BtnConfClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
 
   private
     { Private declarations }
@@ -69,7 +70,7 @@ end else begin
   begin
    erroinclusao;
   end else begin
-    with DataModule1.query_conexao do
+    with DataModule1.querycargos do
     begin
       Close;
       SQL.Text :=
@@ -86,7 +87,7 @@ end else begin
       if CLBServicos.Checked[i] then
         begin
         id_ser := Integer(CLBServicos.Items.Objects[i]);
-        with DataModule1.query_conexao do
+        with DataModule1.querycargos do
         begin
           close;
         SQL.Text :=
@@ -137,6 +138,11 @@ end;
 
 
 
+procedure TForm11.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+edit1.text := '';
+end;
+
 procedure TForm11.FormCreate(Sender: TObject);
 begin
 Form11.WindowState:=wsMaximized;
@@ -150,13 +156,13 @@ end;
 
 procedure TForm11.PreencherListbox;
 begin
-  with datamodule1.query_conexao do
+  with datamodule1.querycargos do
   begin
   close;
   sql.Text := 'SELECT * FROM servicos ' +
   'WHERE id_empresa = :id_empresa ' +
   'ORDER BY nome';
-  DataModule1.query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  DataModule1.querycargos.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
   open;
   CLBServicos.Items.Clear;
   if not IsEmpty then

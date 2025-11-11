@@ -542,6 +542,10 @@ object Form8: TForm8
             Expanded = False
             FieldName = 'dias_semana'
             Visible = True
+          end
+          item
+            Expanded = False
+            Visible = True
           end>
       end
       object DBEdit1: TDBEdit
@@ -753,32 +757,6 @@ object Form8: TForm8
         Height = 127
         ItemHeight = 17
         TabOrder = 8
-      end
-      object Edit1: TEdit
-        Left = 1101
-        Top = 476
-        Width = 497
-        Height = 38
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -21
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 9
-      end
-      object Edit2: TEdit
-        Left = 1102
-        Top = 587
-        Width = 497
-        Height = 38
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -21
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 10
       end
     end
   end

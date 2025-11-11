@@ -36,22 +36,10 @@ type
     QueryPC: TFDQuery;
     QueryRPC: TFDQuery;
     QueryRCS: TFDQuery;
-    QueryCargosid_cargo: TIntegerField;
-    QueryCargosnome_cargo: TWideStringField;
-    QueryCargosdata_cad: TSQLTimeStampField;
     QueryCSid_cargo: TIntegerField;
     QueryCSid_servico: TIntegerField;
     QueryAg: TFDQuery;
     QueryAgendamentos: TFDQuery;
-    QueryProfissionaisid_pro: TIntegerField;
-    QueryProfissionaisnome: TWideStringField;
-    QueryProfissionaisemail: TWideStringField;
-    QueryProfissionaiscpf: TWideStringField;
-    QueryProfissionaiscep: TWideStringField;
-    QueryProfissionaisrua: TWideStringField;
-    QueryProfissionaisbairro: TWideStringField;
-    QueryProfissionaiscidade: TWideStringField;
-    QueryProfissionaisestado: TWideStringField;
     QueryFClientes: TFDQuery;
     QueryFClientesmes: TFMTBCDField;
     QueryFClientestotal: TLargeintField;
@@ -76,7 +64,6 @@ type
     QueryPCid_cargo: TIntegerField;
     QueryPS: TFDQuery;
     QueryCSid_empresa: TIntegerField;
-    QueryCargosid_empresa: TIntegerField;
     QueryAdm: TFDQuery;
     QueryAdmid_adm: TIntegerField;
     QueryAdmid_empresa: TIntegerField;
@@ -93,7 +80,6 @@ type
     QueryTotalAgnome: TWideStringField;
     QueryTotalAgtotal: TLargeintField;
     QueryAgendamentosid_empresa: TIntegerField;
-    QueryProfissionaisid_empresa: TIntegerField;
     query_conexao: TFDQuery;
     QueryClientesid_empresa: TIntegerField;
     QueryClientesid_clie: TIntegerField;

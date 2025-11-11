@@ -40,9 +40,7 @@ type
     Lblrequired: TLabel;
     BtnCad: TPanel;
     Voltar: TImage;
-    Panel2: TPanel;
     btncancelar: TImage;
-    Edit3: TEdit;
     procedure Excluir;
     procedure FormCreate(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
@@ -234,7 +232,7 @@ end;
 
 procedure TForm15.Procurar;
 begin
-  with DataModule1.Query_conexao do
+  with DataModule1.Queryservicos do
   begin
     Close;
     SQL.Text := 'SELECT * FROM servicos ' +
@@ -253,7 +251,7 @@ begin
   if (dbEdit1.Text <> '') and (dbEdit2.Text <> '') and (dbEdit3.Text <> '') then
    begin
 
-    with DataModule1.Query_aux do
+    with DataModule1.Query_conexao do
     begin
         Close;
         SQL.Text :=
@@ -262,13 +260,16 @@ begin
         ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
         ParamByName('nome').AsString := dbEdit1.Text;
         ParamByName('duracao').AsInteger := StrToInt(dbEdit2.Text);
-        ParamByName('preco').Asinteger := StrToInt(Edit3.Text);
+        ParamByName('preco').Asinteger := StrToInt(dbEdit3.Text);
         ExecSQL;
         BtnCad.Visible:= false;
-        Lblrequired.Visible:= false;
+        btncancelar.Visible := true;
+        BtnExcluir.Visible := true;
+        BtnEditar.Visible := true;
+
         EditsInativos;
         atualizar_grid;
-        dbedits_visiveis;
+
     end;
   end else begin
     Lblrequired.Visible:= true;
@@ -283,7 +284,7 @@ begin
   btncancelar.Visible:= false;
   BtnEditar.visible := true;
   BtnExcluir.visible := true;
-    dbedit1.DataSource := datasource1;
+  dbedit1.DataSource := datasource1;
   dbedit2.DataSource := datasource1;
   dbedit3.DataSource := datasource1;
 end;
@@ -292,7 +293,7 @@ procedure TForm15.Salvar;
 begin
   if (DBEdit1.Text <> '') and (DBEdit2.Text <> '') and (DBEdit3.Text <> '') then
   begin
-    with datamodule1.query_conexao do
+    with datamodule1.queryservicos do
     begin
     Edit;
     FieldByName('nome').AsString := dbEdit1.Text;
@@ -323,9 +324,12 @@ begin
   BtnExcluir.Visible := false;
   BtnEditar.Visible := false;
   btncancelar.Visible := true;
-  dbedit1.DataSource := nil;
-  dbedit2.DataSource := nil;
-  dbedit3.DataSource := nil;
+with DataModule1.queryservicos do
+begin
+   Append;
+   dbedit1.Field.Clear;
+end;
+
 end;
 
 procedure TForm15.atualizar_grid;
@@ -380,7 +384,6 @@ begin
   DBEdit1.Enabled := false;
   DBEdit2.Enabled := false;
   DBEdit3.Enabled := false;
-
 end;
 
 
