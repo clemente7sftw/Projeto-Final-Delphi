@@ -1,6 +1,6 @@
 object DataModule1: TDataModule1
   Height = 547
-  Width = 552
+  Width = 553
   object conexao_banco: TFDConnection
     Params.Strings = (
       'Database=beauty_stage'

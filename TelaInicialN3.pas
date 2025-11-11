@@ -44,7 +44,6 @@ type
     procedure FormShow(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure AddAdm;
-    procedure BtnRelatClick(Sender: TObject);
     procedure LbFornecedoresClick(Sender: TObject);
     procedure Panel1Click(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
@@ -72,16 +71,6 @@ procedure TForm20.AddAdm;
 begin
 Form23.show;
 form20.close;
-end;
-
-
-
-procedure TForm20.BtnRelatClick(Sender: TObject);
-begin
-Form25 := TForm25.Create(Self);
-Form25.RLPeriodo.Caption := RelatPeriodo.text + ' Até ' + RelatPeriodo1.text;
-Form25.RLDBPeriodo1.Caption := RelatPeriodo.text + ' Até ' + RelatPeriodo1.text;
-Form25.RelatorioServicos.Preview();
 end;
 
 procedure TForm20.FormCreate(Sender: TObject);
@@ -164,18 +153,13 @@ end;
 
 procedure TForm20.Panel1Click(Sender: TObject);
 begin
-
 Form28 := TForm28.Create(Self);
-Form28.RLPeriodo.Caption := RelatPeriodo.text + ' Até ' + RelatPeriodo1.text;
-Form28.RLDBPeriodo1.Caption := RelatPeriodo.text + ' Até ' + RelatPeriodo1.text;
 Form28.RelatorioClientes.Preview();
 end;
 
 procedure TForm20.Panel2Click(Sender: TObject);
 begin
 Form25 := TForm25.Create(Self);
-Form25.RLPeriodo.Caption := RelatPeriodo.text + ' Até ' + RelatPeriodo1.text;
-Form25.RLDBPeriodo1.Caption := RelatPeriodo.text + ' Até ' + RelatPeriodo1.text;
 Form25.RelatorioServicos.Preview();
 end;
 

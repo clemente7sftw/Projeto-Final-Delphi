@@ -18,7 +18,6 @@ type
     RLSystemInfo1: TRLSystemInfo;
     RLSystemInfo2: TRLSystemInfo;
     RLLabel2: TRLLabel;
-    RLPeriodo: TRLLabel;
     RLLabel3: TRLLabel;
     RLLabel6: TRLLabel;
     RLDBText1: TRLDBText;
@@ -28,8 +27,6 @@ type
     RLImage2: TRLImage;
     RLDados_empresa: TRLDBText;
     RLDBText2: TRLDBText;
-    RLDBText4: TRLDBText;
-    RLDBPeriodo1: TRLLabel;
     RLDBText5: TRLDBText;
     RLSystemInfo3: TRLSystemInfo;
     RLSystemInfo4: TRLSystemInfo;

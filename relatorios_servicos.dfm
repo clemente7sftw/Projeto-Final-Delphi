@@ -341,25 +341,6 @@ object Form25: TForm25
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object RLPeriodo: TRLLabel
-        Left = 0
-        Top = 61
-        Width = 718
-        Height = 30
-        Align = faTop
-        Alignment = taCenter
-        Borders.Sides = sdCustom
-        Borders.DrawLeft = False
-        Borders.DrawTop = False
-        Borders.DrawRight = False
-        Borders.DrawBottom = False
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -21
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-      end
       object RLDBNome_empresa: TRLDBText
         Left = 0
         Top = 37
@@ -467,7 +448,7 @@ object Form25: TForm25
       Left = 38
       Top = 465
       Width = 718
-      Height = 80
+      Height = 56
       BandType = btFooter
       object RLDados_empresa: TRLDBText
         Left = 0
@@ -480,29 +461,15 @@ object Form25: TForm25
       end
       object RLDBText2: TRLDBText
         Left = 0
-        Top = 22
+        Top = 18
         Width = 292
         Height = 16
         Align = faLeftOnly
         Text = 'Relat'#243'rio de Servi'#231'os Mais Realizados'
       end
-      object RLDBText4: TRLDBText
-        Left = 0
-        Top = 42
-        Width = 57
-        Height = 21
-        Align = faLeftOnly
-        Text = 'Per'#237'odo: '
-      end
-      object RLDBPeriodo1: TRLLabel
-        Left = 63
-        Top = 44
-        Width = 89
-        Height = 21
-      end
       object RLDBText5: TRLDBText
         Left = 0
-        Top = 61
+        Top = 37
         Width = 75
         Height = 19
         Align = faLeftBottom
@@ -510,7 +477,7 @@ object Form25: TForm25
       end
       object RLSystemInfo3: TRLSystemInfo
         Left = 81
-        Top = 64
+        Top = 40
         Width = 39
         Height = 16
         Align = faBottomOnly
@@ -518,7 +485,7 @@ object Form25: TForm25
       end
       object RLSystemInfo4: TRLSystemInfo
         Left = 162
-        Top = 64
+        Top = 40
         Width = 39
         Height = 16
         Align = faBottomOnly

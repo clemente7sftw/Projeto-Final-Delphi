@@ -10,6 +10,7 @@ object Form28: TForm28
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnCreate = FormCreate
   TextHeight = 15
   object RelatorioClientes: TRLReport
     Left = 84
@@ -21,6 +22,7 @@ object Form28: TForm28
     Borders.DrawTop = False
     Borders.DrawRight = False
     Borders.DrawBottom = False
+    DataSource = DataSource1
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -13
@@ -437,7 +439,7 @@ object Form28: TForm28
       object RLDBText1: TRLDBText
         Left = 0
         Top = 0
-        Width = 75
+        Width = 134
         Height = 37
         Align = faLeftTop
         Borders.Sides = sdCustom
@@ -445,7 +447,6 @@ object Form28: TForm28
         Borders.DrawTop = False
         Borders.DrawRight = False
         Borders.DrawBottom = False
-        DataField = 'nome'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -27
@@ -455,17 +456,35 @@ object Form28: TForm28
         Text = ''
       end
       object RLDBText3: TRLDBText
-        Left = 656
+        Left = 584
         Top = 0
-        Width = 62
-        Height = 39
+        Width = 134
+        Height = 37
         Align = faRightTop
         Borders.Sides = sdCustom
         Borders.DrawLeft = False
         Borders.DrawTop = False
         Borders.DrawRight = False
-        Borders.DrawBottom = True
-        DataField = 'total'
+        Borders.DrawBottom = False
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -27
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        Text = ''
+      end
+      object RLDBText6: TRLDBText
+        Left = 292
+        Top = 0
+        Width = 134
+        Height = 37
+        Align = faCenterTop
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = False
+        Borders.DrawRight = False
+        Borders.DrawBottom = False
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -27
@@ -538,5 +557,10 @@ object Form28: TForm28
         Text = ''
       end
     end
+  end
+  object DataSource1: TDataSource
+    DataSet = DataModule1.query_conexao
+    Left = 40
+    Top = 272
   end
 end
