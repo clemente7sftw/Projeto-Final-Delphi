@@ -263,6 +263,10 @@
             <Form>Form31</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="n2_cagendamentos.pas">
+            <Form>Form32</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
