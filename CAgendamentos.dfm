@@ -23,6 +23,8 @@ object Form21: TForm21
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1918
+    ExplicitHeight = 1053
     object ExclBtn: TImage
       Left = 923
       Top = 361
@@ -418,6 +420,19 @@ object Form21: TForm21
       Stretch = True
       OnClick = Image1Click
     end
+    object LbPro: TLabel
+      Left = 892
+      Top = 248
+      Width = 250
+      Height = 47
+      Caption = 'Agendamentos'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -35
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
     object DBGrid1: TDBGrid
       Left = 40
       Top = 401
@@ -487,6 +502,7 @@ object Form21: TForm21
           Title.Font.Height = -21
           Title.Font.Name = 'Segoe UI Semibold'
           Title.Font.Style = [fsBold]
+          Width = 64
           Visible = True
         end
         item

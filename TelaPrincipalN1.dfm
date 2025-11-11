@@ -22,7 +22,8 @@ object Form3: TForm3
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -4
+    ExplicitWidth = 1922
+    ExplicitHeight = 1053
     object Image4: TImage
       Left = 32
       Top = 48
@@ -413,15 +414,15 @@ object Form3: TForm3
           Visible = True
         end>
     end
-  end
-  object Barra: TPanel
-    Left = -8
-    Top = 176
-    Width = 1928
-    Height = 41
-    Color = 2700608
-    ParentBackground = False
-    TabOrder = 1
+    object Barra: TPanel
+      Left = -8
+      Top = 176
+      Width = 1928
+      Height = 41
+      Color = 2700608
+      ParentBackground = False
+      TabOrder = 2
+    end
   end
   object DataSource1: TDataSource
     Left = 520

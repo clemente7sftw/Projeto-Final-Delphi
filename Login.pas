@@ -198,6 +198,7 @@ begin
     if not IsEmpty then
     begin
     DataModule1.id_pro := FieldByName('id_pro').AsInteger;
+    DataModule1.id_empresa := FieldByName('id_empresa').AsInteger;
     Form30.Show;
     LoginCorreto := True;
     Exit;
