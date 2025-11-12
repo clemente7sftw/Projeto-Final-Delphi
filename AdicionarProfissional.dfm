@@ -23,8 +23,6 @@ object Form9: TForm9
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1918
-    ExplicitHeight = 1053
     object Image1: TImage
       Left = 0
       Top = 240
@@ -406,11 +404,103 @@ object Form9: TForm9
       Height = 15
       Caption = 'fim do turno'
     end
+    object Label6: TLabel
+      Left = 1224
+      Top = 256
+      Width = 34
+      Height = 15
+      Caption = 'Label6'
+      OnClick = Label6Click
+    end
+    object Label7: TLabel
+      Left = 40
+      Top = 676
+      Width = 81
+      Height = 15
+      Caption = 'dias da semana'
+    end
+    object Label8: TLabel
+      Left = 216
+      Top = 676
+      Width = 50
+      Height = 15
+      Caption = 'Trabalha?'
+    end
+    object Label9: TLabel
+      Left = 416
+      Top = 676
+      Width = 29
+      Height = 15
+      Caption = 'In'#237'cio'
+    end
+    object Label10: TLabel
+      Left = 584
+      Top = 676
+      Width = 20
+      Height = 15
+      Caption = 'Fim'
+    end
+    object Label11: TLabel
+      Left = 40
+      Top = 715
+      Width = 50
+      Height = 15
+      Caption = 'Domingo'
+    end
+    object Label12: TLabel
+      Left = 40
+      Top = 773
+      Width = 28
+      Height = 15
+      Caption = 'Ter'#231'a'
+    end
+    object Label13: TLabel
+      Left = 40
+      Top = 802
+      Width = 36
+      Height = 15
+      Caption = 'Quarta'
+    end
+    object Label14: TLabel
+      Left = 40
+      Top = 831
+      Width = 36
+      Height = 15
+      Caption = 'Quinta'
+    end
+    object Label15: TLabel
+      Left = 40
+      Top = 860
+      Width = 27
+      Height = 15
+      Caption = 'Sexta'
+    end
+    object Label16: TLabel
+      Left = 40
+      Top = 881
+      Width = 39
+      Height = 15
+      Caption = 'S'#225'bado'
+    end
+    object Label17: TLabel
+      Left = 40
+      Top = 744
+      Width = 46
+      Height = 15
+      Caption = 'Segunda'
+    end
+    object Label18: TLabel
+      Left = 736
+      Top = 778
+      Width = 40
+      Height = 15
+      Caption = 'Label18'
+    end
     object CLBCargos: TCheckListBox
       Left = 40
       Top = 400
-      Width = 728
-      Height = 385
+      Width = 681
+      Height = 241
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -27
@@ -578,12 +668,184 @@ object Form9: TForm9
       TimeFormat = 'hh:nn'
     end
     object CLBdias_semana: TCheckListBox
-      Left = 858
-      Top = 402
-      Width = 113
-      Height = 156
+      Left = 821
+      Top = 386
+      Width = 188
+      Height = 135
       ItemHeight = 17
       TabOrder = 7
     end
+    object MaskEdit1: TMaskEdit
+      Left = 416
+      Top = 712
+      Width = 73
+      Height = 23
+      TabOrder = 8
+      Text = ''
+    end
+    object MaskEdit2: TMaskEdit
+      Left = 416
+      Top = 741
+      Width = 73
+      Height = 23
+      TabOrder = 9
+      Text = ''
+    end
+    object MaskEdit3: TMaskEdit
+      Left = 416
+      Top = 770
+      Width = 73
+      Height = 23
+      TabOrder = 10
+      Text = ''
+    end
+    object MaskEdit4: TMaskEdit
+      Left = 416
+      Top = 799
+      Width = 73
+      Height = 23
+      TabOrder = 11
+      Text = ''
+    end
+    object MaskEdit5: TMaskEdit
+      Left = 416
+      Top = 828
+      Width = 73
+      Height = 23
+      TabOrder = 12
+      Text = ''
+    end
+    object MaskEdit6: TMaskEdit
+      Left = 416
+      Top = 857
+      Width = 73
+      Height = 23
+      TabOrder = 13
+      Text = ''
+    end
+    object MaskEdit7: TMaskEdit
+      Left = 416
+      Top = 886
+      Width = 73
+      Height = 23
+      TabOrder = 14
+      Text = ''
+    end
+    object CheckBox1: TCheckBox
+      Left = 231
+      Top = 715
+      Width = 17
+      Height = 17
+      Caption = 'Domingo'
+      TabOrder = 15
+    end
+    object CheckBox2: TCheckBox
+      Left = 231
+      Top = 744
+      Width = 17
+      Height = 17
+      Caption = 'CheckBox1'
+      TabOrder = 16
+    end
+    object CheckBox3: TCheckBox
+      Left = 231
+      Top = 773
+      Width = 17
+      Height = 17
+      Caption = 'CheckBox1'
+      TabOrder = 17
+    end
+    object CheckBox4: TCheckBox
+      Left = 231
+      Top = 796
+      Width = 17
+      Height = 29
+      Caption = 'CheckBox1'
+      TabOrder = 18
+    end
+  end
+  object MaskEdit8: TMaskEdit
+    Left = 560
+    Top = 712
+    Width = 73
+    Height = 23
+    TabOrder = 1
+    Text = ''
+  end
+  object MaskEdit9: TMaskEdit
+    Left = 560
+    Top = 741
+    Width = 73
+    Height = 23
+    TabOrder = 2
+    Text = ''
+  end
+  object MaskEdit10: TMaskEdit
+    Left = 560
+    Top = 770
+    Width = 73
+    Height = 23
+    TabOrder = 3
+    Text = ''
+  end
+  object MaskEdit11: TMaskEdit
+    Left = 560
+    Top = 799
+    Width = 73
+    Height = 23
+    TabOrder = 4
+    Text = ''
+  end
+  object MaskEdit12: TMaskEdit
+    Left = 560
+    Top = 828
+    Width = 73
+    Height = 23
+    TabOrder = 5
+    Text = ''
+  end
+  object MaskEdit13: TMaskEdit
+    Left = 560
+    Top = 857
+    Width = 73
+    Height = 23
+    TabOrder = 6
+    Text = ''
+  end
+  object MaskEdit14: TMaskEdit
+    Left = 560
+    Top = 886
+    Width = 73
+    Height = 23
+    TabOrder = 7
+    Text = ''
+  end
+  object CheckBox5: TCheckBox
+    Left = 231
+    Top = 831
+    Width = 17
+    Height = 17
+    Caption = 'CheckBox1'
+    TabOrder = 8
+  end
+  object CheckBox6: TCheckBox
+    Left = 231
+    Top = 860
+    Width = 17
+    Height = 17
+    Caption = 'CheckBox1'
+    TabOrder = 9
+  end
+  object CheckBox7: TCheckBox
+    Left = 231
+    Top = 883
+    Width = 17
+    Height = 17
+    Caption = 'CheckBox1'
+    TabOrder = 10
+  end
+  object Timer1: TTimer
+    Left = 744
+    Top = 720
   end
 end

@@ -11,7 +11,6 @@ uses
 type
   TForm4 = class(TForm)
     Fundo: TPanel;
-    Image1: TImage;
     DBGrid1: TDBGrid;
     Label1: TLabel;
     Label2: TLabel;

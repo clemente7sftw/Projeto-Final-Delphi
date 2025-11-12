@@ -45,7 +45,7 @@ implementation
 {$R *.dfm}
 
 uses CAdministrador, UDataModule, n2_cclientes, relatorio_clientes,
-  relatorios_servicos, relatorios_profissionais, n2_cprofissionais;
+  relatorios_servicos, relatorios_profissionais, n2_profissionais;
 
 procedure TForm5.FormShow(Sender: TObject);
 begin
@@ -64,7 +64,7 @@ end;
 
 procedure TForm5.LbProfissionaisClick(Sender: TObject);
 begin
-Form29.Show;
+Form31.Show;
 form5.close;
 end;
 

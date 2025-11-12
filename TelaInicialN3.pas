@@ -34,7 +34,6 @@ type
     procedure LbProfissionaisClick(Sender: TObject);
     procedure LbServicosClick(Sender: TObject);
     procedure LbCargosClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
     procedure Label3Click(Sender: TObject);
     procedure Label2Click(Sender: TObject);
     procedure Label4Click(Sender: TObject);
@@ -46,7 +45,6 @@ type
     procedure Panel1Click(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
     procedure Panel3Click(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
 
@@ -72,14 +70,9 @@ Form23.show;
 form20.close;
 end;
 
-procedure TForm20.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TForm20.FormShow(Sender: TObject);
 begin
-action:= cafree;
-form20 := nil;
-end;
-
-procedure TForm20.FormCreate(Sender: TObject);
-begin
+//ShowMessage('ID da empresa logada: ' + IntToStr(DataModule1.id_empresa));
 WindowState:=wsMaximized;
 DataModule1.QueryClientes.Close;
 DataModule1.QueryClientes.Open;
@@ -88,11 +81,6 @@ DataModule1.QueryClientes.SQL.Text :=
 'WHERE id_empresa = :id_empresa ' +
 'ORDER BY nome_clie';
 DataModule1.QueryClientes.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-end;
-
-procedure TForm20.FormShow(Sender: TObject);
-begin
-//ShowMessage('ID da empresa logada: ' + IntToStr(DataModule1.id_empresa));
 end;
 
 procedure TForm20.Image2Click(Sender: TObject);

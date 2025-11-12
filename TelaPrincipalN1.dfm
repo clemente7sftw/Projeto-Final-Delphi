@@ -22,8 +22,6 @@ object Form3: TForm3
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1922
-    ExplicitHeight = 1053
     object Image4: TImage
       Left = 32
       Top = 48
@@ -389,8 +387,8 @@ object Form3: TForm3
       end
     end
     object DBGrid1: TDBGrid
-      Left = 32
-      Top = 480
+      Left = 584
+      Top = 448
       Width = 921
       Height = 120
       DataSource = DataSource1
@@ -403,14 +401,32 @@ object Form3: TForm3
       Columns = <
         item
           Expanded = False
+          FieldName = 'empresa'
           Visible = True
         end
         item
           Expanded = False
+          FieldName = 'profissional'
           Visible = True
         end
         item
           Expanded = False
+          FieldName = 'servico'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'preco'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'data_agendamento'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'hora_inicio'
           Visible = True
         end>
     end

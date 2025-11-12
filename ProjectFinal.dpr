@@ -35,8 +35,9 @@ uses
   n2_cclientes in 'n2_cclientes.pas' {Form29},
   UMetodos in 'UMetodos.pas',
   n4_tela_inicial in 'n4_tela_inicial.pas' {Form30},
-  n2_cprofissionais in 'n2_cprofissionais.pas' {Form31},
-  n2_cagendamentos in 'n2_cagendamentos.pas' {Form32};
+  n2_cagendamentos in 'n2_cagendamentos.pas' {Form32},
+  n2_profissionais in 'n2_profissionais.pas' {Form31},
+  n3_horarios_profissionais in 'n3_horarios_profissionais.pas' {Form33};
 
 {$R *.res}
 
@@ -75,7 +76,8 @@ begin
   Application.CreateForm(TForm28, Form28);
   Application.CreateForm(TForm29, Form29);
   Application.CreateForm(TForm30, Form30);
-  Application.CreateForm(TForm31, Form31);
   Application.CreateForm(TForm32, Form32);
+  Application.CreateForm(TForm31, Form31);
+  Application.CreateForm(TForm33, Form33);
   Application.Run;
 end.

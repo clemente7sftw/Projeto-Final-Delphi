@@ -1,4 +1,4 @@
-unit n2_cprofissionais;
+unit n2_profissionais;
 
 interface
 
@@ -33,29 +33,17 @@ type
     EdPesquisa: TEdit;
     Panel3: TPanel;
     Image2: TImage;
-<<<<<<< HEAD
     BtnConf: TPanel;
-=======
->>>>>>> bbd71fb778a951ea49fe7c54d1664dfbd10466a0
     CLBCargos: TCheckListBox;
     CLBDias: TCheckListBox;
     TimePicker1: TTimePicker;
     TimePicker2: TTimePicker;
-<<<<<<< HEAD
-=======
     Image4: TImage;
     BS: TImage;
->>>>>>> bbd71fb778a951ea49fe7c54d1664dfbd10466a0
     Barra: TPanel;
     LbClie: TLabel;
     LbProfissionais: TLabel;
     Lbagendamentos: TLabel;
-<<<<<<< HEAD
-    Image4: TImage;
-    BS: TImage;
-=======
-    BtnCad: TPanel;
->>>>>>> bbd71fb778a951ea49fe7c54d1664dfbd10466a0
   private
     { Private declarations }
   public

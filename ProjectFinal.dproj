@@ -259,12 +259,15 @@
             <Form>Form30</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="n2_cprofissionais.pas">
+        <DCCReference Include="n2_cagendamentos.pas">
+            <Form>Form32</Form>
+        </DCCReference>
+        <DCCReference Include="n2_profissionais.pas">
             <Form>Form31</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="n2_cagendamentos.pas">
-            <Form>Form32</Form>
+        <DCCReference Include="n3_horarios_profissionais.pas">
+            <Form>Form33</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

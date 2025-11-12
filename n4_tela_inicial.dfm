@@ -11,6 +11,7 @@ object Form30: TForm30
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   object Fundo: TPanel
     Left = 0
@@ -21,8 +22,6 @@ object Form30: TForm30
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1922
-    ExplicitHeight = 1053
     object Image4: TImage
       Left = 32
       Top = 48
@@ -331,10 +330,18 @@ object Form30: TForm30
         6082}
     end
     object DBGrid1: TDBGrid
-      Left = 40
-      Top = 464
+      Left = 456
+      Top = 440
       Width = 921
-      Height = 120
+      Height = 441
+      DataSource = DataSource1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      ParentFont = False
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -344,14 +351,62 @@ object Form30: TForm30
       Columns = <
         item
           Expanded = False
+          FieldName = 'cliente'
+          Title.Caption = 'Cliente'
+          Title.Font.Charset = ANSI_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -19
+          Title.Font.Name = 'Segoe UI Semibold'
+          Title.Font.Style = [fsBold]
+          Width = 267
           Visible = True
         end
         item
           Expanded = False
+          FieldName = 'servicos'
+          Title.Caption = 'Servi'#231'o'
+          Title.Font.Charset = ANSI_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -19
+          Title.Font.Name = 'Segoe UI Semibold'
+          Title.Font.Style = [fsBold]
+          Width = 158
           Visible = True
         end
         item
           Expanded = False
+          FieldName = 'data_agendamento'
+          Title.Caption = 'Data'
+          Title.Font.Charset = ANSI_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -19
+          Title.Font.Name = 'Segoe UI Semibold'
+          Title.Font.Style = [fsBold]
+          Width = 181
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'hora_inicio'
+          Title.Caption = 'Hor'#225'rio'
+          Title.Font.Charset = ANSI_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -19
+          Title.Font.Name = 'Segoe UI Semibold'
+          Title.Font.Style = [fsBold]
+          Width = 190
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'status'
+          Title.Caption = 'Status'
+          Title.Font.Charset = ANSI_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -19
+          Title.Font.Name = 'Segoe UI Semibold'
+          Title.Font.Style = [fsBold]
+          Width = 77
           Visible = True
         end>
     end
@@ -363,6 +418,24 @@ object Form30: TForm30
       Color = clGray
       ParentBackground = False
       TabOrder = 1
+      object LbProfissionais: TLabel
+        Left = 868
+        Top = 8
+        Width = 146
+        Height = 30
+        Cursor = crHandPoint
+        Caption = 'Agendamentos'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -21
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
     end
+  end
+  object DataSource1: TDataSource
+    Left = 544
+    Top = 240
   end
 end

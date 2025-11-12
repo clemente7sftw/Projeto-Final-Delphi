@@ -278,7 +278,6 @@ begin
   DataModule1.queryclientes.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
   Open;
   EditsInativos;
-  icones_escondidos;
   DataSource1.DataSet := DataModule1.queryclientes;
   dbedit1.DataSource := datasource1;
   dbedit2.DataSource := datasource1;

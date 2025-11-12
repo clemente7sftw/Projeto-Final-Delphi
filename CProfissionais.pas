@@ -48,6 +48,11 @@ type
     TimePicker2: TTimePicker;
     Label6: TLabel;
     Label7: TLabel;
+    DBEdit4: TDBEdit;
+    Label8: TLabel;
+    DBEdit5: TDBEdit;
+    DBEdit6: TDBEdit;
+    DBEdit7: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure Image6Click(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
@@ -126,14 +131,26 @@ SQL.Text :=
   '  STRING_AGG(DISTINCT c.nome_cargo, '', '')::varchar(500) AS nome_cargo, ' +
   '  STRING_AGG(DISTINCT ' +
   '    CASE h.dia_semana ' +
-  '      WHEN 0 THEN ''Domingo'' ' +
   '      WHEN 1 THEN ''Segunda'' ' +
   '      WHEN 2 THEN ''Terça'' ' +
   '      WHEN 3 THEN ''Quarta'' ' +
   '      WHEN 4 THEN ''Quinta'' ' +
   '      WHEN 5 THEN ''Sexta'' ' +
+  '    END, '', '')::varchar(200) AS dias_uteis, ' +
+  '  STRING_AGG(DISTINCT ' +
+  '    CASE WHEN h.dia_semana BETWEEN 1 AND 5 THEN ' +
+  '      TO_CHAR(h.hora_inicio, ''HH24:MI'') || '' às '' || TO_CHAR(h.hora_fim, ''HH24:MI'') ' +
+  '    END, '', '')::varchar(200) AS horarios_uteis, ' +
+  '  STRING_AGG(DISTINCT ' +
+  '    CASE h.dia_semana ' +
+  '      WHEN 0 THEN ''Domingo'' ' +
   '      WHEN 6 THEN ''Sábado'' ' +
-  '    END, '','')::varchar(200) AS dias_semana ' +
+  '    END, '', '')::varchar(200) AS dias_fimsemana, ' +
+  '  STRING_AGG(DISTINCT ' +
+  '    CASE WHEN h.dia_semana IN (0,6) THEN ' +
+  '      TO_CHAR(h.hora_inicio, ''HH24:MI'') || '' às '' || TO_CHAR(h.hora_fim, ''HH24:MI'') ' +
+  '    END, '', '')::varchar(200) AS horarios_fimsemana ' +
+
   'FROM profissionais p ' +
   'LEFT JOIN profissionais_cargos pc ON p.id_pro = pc.id_pro ' +
   'LEFT JOIN cargos c ON pc.id_cargo = c.id_cargo ' +
@@ -146,9 +163,13 @@ ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
 Open;
 DSconexao.DataSet := DataModule1.queryprofissionais;
 dbgrid1.DataSource := dsconexao;
-dbedit1.DataField := 'nome';
-dbedit2.DataField := 'email';
-dbedit3.DataField := 'nome_cargo';
+DBEdit1.DataField := 'nome';
+DBEdit2.DataField := 'email';
+DBEdit3.DataField := 'nome_cargo';
+DBEdit4.DataField := 'dias_uteis';
+DBEdit5.DataField := 'horarios_uteis';
+DBEdit6.DataField := 'dias_fimsemana';
+DBEdit7.DataField := 'horarios_fimsemana';
 TimePicker1.Time := EncodeTime(12, 0, 0, 0);
 TimePicker2.Time := EncodeTime(12, 0, 0, 0);
 
@@ -209,6 +230,10 @@ begin
     DBEdit1.Enabled := true;
     DBEdit2.Enabled := true;
     DBEdit3.Enabled := true;
+    DBEdit4.Enabled := true;
+    DBEdit5.Enabled := true;
+    DBEdit6.Enabled := true;
+    DBEdit7.Enabled := true;
 end;
 
 procedure TForm8.EditsInativos;
@@ -216,6 +241,10 @@ begin
   DBEdit1.Enabled := false;
   DBEdit2.Enabled := false;
   DBEdit3.Enabled := false;
+  DBEdit4.Enabled := false;
+  DBEdit5.Enabled := false;
+  DBEdit6.Enabled := false;
+  DBEdit7.Enabled := false;
 end;
 
 procedure TForm8.ExclBtnClick(Sender: TObject);
@@ -258,6 +287,7 @@ begin
   BtnConf.Visible:= false;
   btncancelar.Visible:= false;
   CLBCargos.Visible:= false;
+  icones_escondidos;
 end;
 
 

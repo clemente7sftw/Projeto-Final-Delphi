@@ -193,11 +193,12 @@ begin
         Close;
       SQL.Text := 'SELECT * FROM clientes WHERE email_clie = :email AND senha_clie = :senha';
       ParamByName('email').AsString := EdEmail.Text;
-      ParamByName('senha').AsString := EdSenha.Text;
+      ParamByName('senha').AsString := Edsenha.Text;
       Open;
 
       if not IsEmpty then
       begin
+        DataModule1.id_clie := FieldByName('id_clie').AsInteger;
         Form3.Show;
         LoginCorreto := True;
         Exit;

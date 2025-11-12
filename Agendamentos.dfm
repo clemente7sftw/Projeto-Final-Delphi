@@ -360,7 +360,7 @@ object Form13: TForm13
     object CLBServicos: TCheckListBox
       Left = 582
       Top = 422
-      Width = 403
+      Width = 195
       Height = 145
       ItemHeight = 17
       TabOrder = 3
@@ -387,7 +387,7 @@ object Form13: TForm13
     object CheckListBoxProfissionais: TCheckListBox
       Left = 582
       Top = 602
-      Width = 403
+      Width = 195
       Height = 121
       ItemHeight = 17
       TabOrder = 6
@@ -542,8 +542,8 @@ object Form13: TForm13
     object CLBHorarios: TCheckListBox
       Left = 582
       Top = 752
-      Width = 139
-      Height = 169
+      Width = 195
+      Height = 153
       ItemHeight = 17
       TabOrder = 11
       OnClick = CLBHorariosClick

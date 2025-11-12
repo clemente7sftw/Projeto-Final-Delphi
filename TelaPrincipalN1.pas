@@ -53,42 +53,29 @@ begin
 with DataModule1.Query_conexao do
 begin
   Close;
-  SQL.Clear;
   SQL.Text :=
-    'SELECT ' +
-    '    a.id_agendamento, ' +
-    '    c.nome_clie, ' +
-    '    c.email_clie, ' +
-    '    STRING_AGG(s.nome, '', '')::varchar(500) AS nome_servicos, ' +
-    '    a.data_agendamento, ' +
-    '    a.hora_inicio, ' +
-    '    a.status ' +
-    'FROM ' +
-    '    agendamentos a ' +
-    'INNER JOIN ' +
-    '    clientes c ON a.id_clie = c.id_clie ' +
-    'INNER JOIN ' +
-    '    agendamento_servicos ags ON a.id_agendamento = ags.id_agendamento ' +
-    'INNER JOIN ' +
-    '    servicos s ON ags.id_servico = s.id_servico ' +
-    'WHERE ' +
-    '    a.id_clie = :id_clie ' +
-    'GROUP BY ' +
-    '    a.id_agendamento, ' +
-    '    c.nome_clie, ' +
-    '    c.email_clie, ' +
-    '    a.data_agendamento, ' +
-    '    a.hora_inicio, ' +
-    '    a.status ' +
-    'ORDER BY ' +
-    '    a.id_agendamento;';
-
-  ParamByName('id_clie').AsInteger := datamodule1.id_clie;
+    'SELECT a.id_agendamento, ' +
+    '       e.nome AS empresa, ' +
+    '       c.nome_clie AS cliente, ' +
+    '       p.nome AS profissional, ' +
+    '       s.nome AS servico, ' +
+    '       s.preco AS preco, ' +
+    '       a.data_agendamento, ' +
+    '       a.hora_inicio ' +
+    'FROM agendamentos a ' +
+    'JOIN empresas e ON a.id_empresa = e.id_empresa ' +
+    'JOIN clientes c ON a.id_clie = c.id_clie ' +
+    'JOIN profissionais_agendamentos pa ON pa.id_agendamento = a.id_agendamento ' +
+    'JOIN profissionais p ON pa.id_pro = p.id_pro ' +
+    'JOIN agendamento_servicos ase ON ase.id_agendamento = a.id_agendamento ' +
+    'JOIN servicos s ON ase.id_servico = s.id_servico ' +
+    'WHERE a.id_clie = :id_clie ' +
+    'ORDER BY a.data_agendamento, a.hora_inicio';
+  ParamByName('id_clie').AsInteger := DataModule1.id_clie;
   Open;
+end;
   datasource1.DataSet := datamodule1.query_conexao;
   dbgrid1.DataSource := datasource1;
-end;
-
 end;
 
 procedure TForm3.Image2Click(Sender: TObject);

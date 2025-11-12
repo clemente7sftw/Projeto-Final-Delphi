@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, CProfissionais, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
   Vcl.Imaging.pngimage, Data.DB, Vcl.Mask, Vcl.DBCtrls, Vcl.Skia, Vcl.CheckLst, System.RegularExpressions,
-  Vcl.WinXPickers;
+  Vcl.WinXPickers, Vcl.Grids, Vcl.DBGrids;
 
 
 type
@@ -37,6 +37,41 @@ type
     Label4: TLabel;
     Label5: TLabel;
     CLBdias_semana: TCheckListBox;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    MaskEdit1: TMaskEdit;
+    MaskEdit2: TMaskEdit;
+    MaskEdit3: TMaskEdit;
+    MaskEdit4: TMaskEdit;
+    MaskEdit5: TMaskEdit;
+    MaskEdit6: TMaskEdit;
+    MaskEdit7: TMaskEdit;
+    MaskEdit8: TMaskEdit;
+    MaskEdit9: TMaskEdit;
+    MaskEdit10: TMaskEdit;
+    MaskEdit11: TMaskEdit;
+    MaskEdit12: TMaskEdit;
+    MaskEdit13: TMaskEdit;
+    MaskEdit14: TMaskEdit;
+    CheckBox1: TCheckBox;
+    CheckBox2: TCheckBox;
+    CheckBox3: TCheckBox;
+    CheckBox4: TCheckBox;
+    CheckBox5: TCheckBox;
+    CheckBox6: TCheckBox;
+    CheckBox7: TCheckBox;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Timer1: TTimer;
+    Label18: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure PCadClick(Sender: TObject);
@@ -46,6 +81,9 @@ type
     function ValidarEmail(const Email: string):Boolean;
     procedure Trazer_Dias;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Label6Click(Sender: TObject);
+    procedure criar_horarios;
+    procedure validar_horario(Sender: TObject);
   private
     { Private declarations }
   public
@@ -58,7 +96,7 @@ var
 implementation
 
 {$R *.dfm}
-uses UMetodos, UDataModule;
+uses UMetodos, UDataModule, n3_horarios_profissionais;
 var
   id_cargo, id_pro: Integer;
 
@@ -84,9 +122,15 @@ begin
 edit1.Text :='';
 edit2.Text :='';
 PreencherListbox;
+criar_horarios;
 
 end;
 
+
+procedure TForm9.Label6Click(Sender: TObject);
+begin
+Form33.Show;
+end;
 
 procedure TForm9.PreencherListbox;
 begin
@@ -117,7 +161,6 @@ end;
 
 procedure TForm9.Trazer_Dias;
 begin
-
   CLBdias_semana.Items.Clear;
   CLBdias_semana.Items.Add('Domingo');
   CLBdias_semana.Items.Add('Segunda-feira');
@@ -128,11 +171,32 @@ begin
   CLBdias_semana.Items.Add('Sábado');
 end;
 
-
-
 function TForm9.ValidarEmail(const Email: string): Boolean;
 begin
  Result := TRegEx.IsMatch(Email,'^[\w\.\-]+@([\w\-]+\.)+[a-zA-Z]{2,4}$');
+end;
+
+
+
+
+procedure TForm9.validar_horario(Sender: TObject);
+var
+  HoraStr: string;
+  Hora, Minuto: Integer;
+begin
+  HoraStr := Trim((Sender as TMaskEdit).Text);
+  if (HoraStr = '') or (Pos('_', HoraStr) > 0) then
+    Exit;
+
+  Hora := StrToIntDef(Copy(HoraStr, 1, 2), -1);
+  Minuto := StrToIntDef(Copy(HoraStr, 4, 2), -1);
+
+  if (Hora < 0) or (Hora > 23) or (Minuto < 0) or (Minuto > 59) then
+  begin
+    ShowMessage('Horário inválido! Use um valor entre 00:00 e 23:59.');
+    (Sender as TMaskEdit).SetFocus;
+    (Sender as TMaskEdit).Text := '';
+  end;
 end;
 
 procedure TForm9.BtnConfClick(Sender: TObject);
@@ -188,7 +252,9 @@ begin
           end;
         end;
       end;
-      with DataModule1.queryprofissionais do
+
+  end;
+with DataModule1.queryprofissionais do
 begin
   for i := 0 to CLBdias_semana.Items.Count - 1 do
   begin
@@ -208,10 +274,7 @@ begin
     end;
   end;
 end;
-  end;
 
-      Form9.Close;
-      form8.show;
       Lblrequired.Visible := False;
       lbEmail.Visible := False;
     end
@@ -222,6 +285,39 @@ end;
     end;
   end;
 
+
+procedure TForm9.criar_horarios;
+begin
+maskedit1.EditMask := '!90:00;1;_';
+maskedit2.EditMask := '!90:00;1;_';
+maskedit3.EditMask := '!90:00;1;_';
+maskedit4.EditMask := '!90:00;1;_';
+maskedit5.EditMask := '!90:00;1;_';
+maskedit6.EditMask := '!90:00;1;_';
+maskedit7.EditMask := '!90:00;1;_';
+maskedit8.EditMask := '!90:00;1;_';
+maskedit9.EditMask := '!90:00;1;_';
+maskedit10.EditMask := '!90:00;1;_';
+maskedit11.EditMask := '!90:00;1;_';
+maskedit12.EditMask := '!90:00;1;_';
+maskedit13.EditMask := '!90:00;1;_';
+maskedit14.EditMask := '!90:00;1;_';
+
+maskedit1.OnExit := validar_horario;
+maskedit2.OnExit := validar_horario;
+maskedit3.OnExit := validar_horario;
+maskedit4.OnExit := validar_horario;
+maskedit5.OnExit := validar_horario;
+maskedit6.OnExit := validar_horario;
+maskedit7.OnExit := validar_horario;
+maskedit8.OnExit := validar_horario;
+maskedit9.OnExit := validar_horario;
+maskedit10.OnExit := validar_horario;
+maskedit11.OnExit := validar_horario;
+maskedit12.OnExit := validar_horario;
+maskedit13.OnExit := validar_horario;
+maskedit14.OnExit := validar_horario;
+end;
 
 procedure TForm9.PCadClick(Sender: TObject);
 begin

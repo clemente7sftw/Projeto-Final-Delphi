@@ -23,6 +23,7 @@ object Form11: TForm11
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitTop = 8
     object Image1: TImage
       Left = 25
       Top = 288
@@ -354,10 +355,10 @@ object Form11: TForm11
       Height = 379
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -21
+      Font.Height = -19
       Font.Name = 'Segoe UI'
       Font.Style = []
-      ItemHeight = 30
+      ItemHeight = 25
       ParentFont = False
       TabOrder = 0
     end
@@ -483,7 +484,7 @@ object Form11: TForm11
     Enabled = False
     Interval = 5000
     OnTimer = Timer1Timer
-    Left = 600
-    Top = 96
+    Left = 704
+    Top = 272
   end
 end
