@@ -149,6 +149,8 @@ dbgrid1.DataSource := dsconexao;
 dbedit1.DataField := 'nome';
 dbedit2.DataField := 'email';
 dbedit3.DataField := 'nome_cargo';
+TimePicker1.Time := EncodeTime(12, 0, 0, 0);
+TimePicker2.Time := EncodeTime(12, 0, 0, 0);
 
 end;
 end;
