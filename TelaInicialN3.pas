@@ -46,6 +46,7 @@ type
     procedure Panel1Click(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
     procedure Panel3Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
 
@@ -69,6 +70,12 @@ procedure TForm20.AddAdm;
 begin
 Form23.show;
 form20.close;
+end;
+
+procedure TForm20.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+action:= cafree;
+form20 := nil;
 end;
 
 procedure TForm20.FormCreate(Sender: TObject);

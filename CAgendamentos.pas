@@ -38,6 +38,7 @@ type
     addbtn: TImage;
     BtnConf: TPanel;
     Image1: TImage;
+    LbPro: TLabel;
     procedure ListarHorarios;
     procedure BtnAddClick(Sender: TObject);
     procedure FormShow(Sender: TObject);

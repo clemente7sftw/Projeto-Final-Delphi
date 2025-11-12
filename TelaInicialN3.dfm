@@ -10,6 +10,7 @@ object Form20: TForm20
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15
@@ -22,6 +23,8 @@ object Form20: TForm20
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1918
+    ExplicitHeight = 666
     object Image1: TImage
       Left = 1792
       Top = 64

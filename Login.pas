@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, UMetodos,TelaPrincipalN1, Cadastro, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
-  Vcl.StdCtrls, CServicos, Data.DB, Vcl.Mask, Vcl.DBCtrls, ShellAPI;
+  Vcl.StdCtrls, CServicos, Data.DB, Vcl.Mask, Vcl.DBCtrls, ShellAPI,
+  Vcl.OleCtrls, SHDocVw, System.Net.HttpClient, System.JSON, System.Win.Registry;
 
 type
   TForm1 = class(TForm)
@@ -29,7 +30,9 @@ type
     EdEmail: TEdit;
     LbErro: TLabel;
     Timer1: TTimer;
+    WebBrowser1: TWebBrowser;
     procedure FormCreate(Sender: TObject);
+    procedure BuscarUsuarioGoogle(const Token: string);
     procedure Label2Click(Sender: TObject);
     procedure imgsenhaClick(Sender: TObject);
     procedure BtnEntClick(Sender: TObject);
@@ -40,6 +43,9 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure EdEmailKeyPress(Sender: TObject; var Key: Char);
     procedure Timer1Timer(Sender: TObject);
+    procedure PbtnGoogleClick(Sender: TObject);
+    procedure WebBrowser1NavigateComplete2(ASender: TObject;
+      const pDisp: IDispatch; const URL: OleVariant);
 
   private
     { Private declarations }
@@ -60,11 +66,68 @@ implementation
 uses UDataModule, TelaInicialN3, CClientes,
   CHorarios, TelaInicialN2, n4_tela_inicial;
 
+
 procedure TForm1.FormCreate(Sender: TObject);
+var
+  Reg: TRegistry;
 begin
-  WindowState:=wsMaximized;
+  WindowState := wsMaximized;
   EdSenha.PasswordChar := '*';
-  LbErro.Visible:= false;
+  LbErro.Visible := false;
+  WebBrowser1.Visible := false;
+  Reg := TRegistry.Create;
+  try
+    Reg.RootKey := HKEY_CURRENT_USER;
+    if Reg.OpenKey('Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION', True) then
+    begin
+      Reg.WriteInteger(ExtractFileName(ParamStr(0)), 11001);
+      Reg.CloseKey;
+    end;
+  finally
+    Reg.Free;
+  end;
+end;
+
+
+procedure TForm1.BuscarUsuarioGoogle(const Token: string);
+var
+  HTTP: THTTPClient;
+  Resp: IHTTPResponse;
+  JSON: TJSONObject;
+  Nome, Email: string;
+begin
+  HTTP := THTTPClient.Create;
+  try
+    Resp := HTTP.Get('https://www.googleapis.com/oauth2/v2/userinfo?access_token=' + Token);
+    JSON := TJSONObject.ParseJSONValue(Resp.ContentAsString) as TJSONObject;
+
+    if Assigned(JSON) then
+    begin
+      Nome := JSON.GetValue('name').Value;
+      Email := JSON.GetValue('email').Value;
+      ShowMessage('Nome: ' + Nome + sLineBreak + 'Email: ' + Email);
+    with DataModule1.query_conexao do
+    begin
+    try
+          Close;
+        SQL.Text := 'SELECT * FROM clientes WHERE email_clie = :email AND senha_clie = :senha';
+        ParamByName('email').AsString := EdEmail.Text;
+        ParamByName('senha').AsString := EdSenha.Text;
+        Open;
+
+        if not IsEmpty then
+        begin
+          Form3.Show;
+          Exit;
+        end;
+    except
+    erro;
+    end;
+    end;
+    end;
+  finally
+    HTTP.Free;
+  end;
 end;
 
 procedure TForm1.EdEmailChange(Sender: TObject);
@@ -198,6 +261,7 @@ begin
     if not IsEmpty then
     begin
     DataModule1.id_pro := FieldByName('id_pro').AsInteger;
+    DataModule1.id_empresa := FieldByName('id_empresa').AsInteger;
     Form30.Show;
     LoginCorreto := True;
     Exit;
@@ -214,6 +278,26 @@ begin
 
 end;
 
+procedure TForm1.PbtnGoogleClick(Sender: TObject);
+const
+ CLIENT_ID = '220332714487-5n39c0j10dlqeefesljv23iaumnrmghk.apps.googleusercontent.com';
+  REDIRECT_URI = 'http://localhost';
+  SCOPE = 'openid email profile';
+ var
+  AuthURL: string;
+begin
+  AuthURL :=
+    'https://accounts.google.com/o/oauth2/v2/auth?' +
+    'client_id=' + CLIENT_ID +
+    '&redirect_uri=' + REDIRECT_URI +
+    '&response_type=token' +
+    '&scope=' + SCOPE +
+    '&prompt=select_account';
+
+  WebBrowser1.Visible := True;
+  WebBrowser1.Navigate(AuthURL);
+end;
+
 procedure TForm1.testeClick(Sender: TObject);
 begin
  ShellExecute(0, 'open', 'file:///C:/Users/gabri/OneDrive/Documentos/Termos-e-condicoes-BS/termos%20bs/termosecondicoes.html', nil, nil, SW_SHOWNORMAL);
@@ -224,6 +308,34 @@ begin
 LbErro.visible:= false;
 Timer1.Enabled := false;
 end;
+
+procedure TForm1.WebBrowser1NavigateComplete2(ASender: TObject;
+  const pDisp: IDispatch; const URL: OleVariant);
+
+var
+  sURL, Token: string;
+  p, f: Integer;
+begin
+  sURL := VarToStr(URL);
+
+  p := Pos('#access_token=', sURL);
+  if p > 0 then
+  begin
+    f := Pos('&', sURL, p + 1);
+    if f = 0 then
+      f := Length(sURL) + 1;
+
+    Token := Copy(sURL, p + 14, f - (p + 14));
+
+    ShowMessage('Token capturado: ' + Token);
+
+    WebBrowser1.Visible := False;
+
+    BuscarUsuarioGoogle(Token);
+  end;
+end;
+
+
 
 procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
 begin

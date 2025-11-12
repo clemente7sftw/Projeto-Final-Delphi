@@ -20,6 +20,11 @@ object Form31: TForm31
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+<<<<<<< HEAD
+=======
+    ExplicitWidth = 1918
+    ExplicitHeight = 1053
+>>>>>>> bbd71fb778a951ea49fe7c54d1664dfbd10466a0
     object Panel1: TPanel
       Left = 1
       Top = 1
@@ -172,8 +177,13 @@ object Form31: TForm31
         Stretch = True
       end
       object Lblrequired: TLabel
+<<<<<<< HEAD
         Left = 1654
         Top = 565
+=======
+        Left = 1102
+        Top = 869
+>>>>>>> bbd71fb778a951ea49fe7c54d1664dfbd10466a0
         Width = 264
         Height = 30
         Caption = 'Preencha todos os campos!'
@@ -714,6 +724,7 @@ object Form31: TForm31
             12FC0B1293E6224739C13B0000000049454E44AE426082}
         end
       end
+<<<<<<< HEAD
       object BtnConf: TPanel
         Left = 1103
         Top = 892
@@ -731,13 +742,19 @@ object Form31: TForm31
         ParentFont = False
         TabOrder = 6
       end
+=======
+>>>>>>> bbd71fb778a951ea49fe7c54d1664dfbd10466a0
       object CLBCargos: TCheckListBox
         Left = 1103
         Top = 712
         Width = 218
         Height = 127
         ItemHeight = 17
+<<<<<<< HEAD
         TabOrder = 7
+=======
+        TabOrder = 6
+>>>>>>> bbd71fb778a951ea49fe7c54d1664dfbd10466a0
       end
       object CLBDias: TCheckListBox
         Left = 1350
@@ -745,7 +762,11 @@ object Form31: TForm31
         Width = 121
         Height = 127
         ItemHeight = 17
+<<<<<<< HEAD
         TabOrder = 8
+=======
+        TabOrder = 7
+>>>>>>> bbd71fb778a951ea49fe7c54d1664dfbd10466a0
       end
       object TimePicker1: TTimePicker
         Left = 1502
@@ -755,7 +776,11 @@ object Form31: TForm31
         Font.Height = -16
         Font.Name = 'Segoe UI'
         Font.Style = []
+<<<<<<< HEAD
         TabOrder = 9
+=======
+        TabOrder = 8
+>>>>>>> bbd71fb778a951ea49fe7c54d1664dfbd10466a0
         Time = 45972.597829027780000000
         TimeFormat = 'hh:nn'
       end
@@ -767,7 +792,11 @@ object Form31: TForm31
         Font.Height = -16
         Font.Name = 'Segoe UI'
         Font.Style = []
+<<<<<<< HEAD
         TabOrder = 10
+=======
+        TabOrder = 9
+>>>>>>> bbd71fb778a951ea49fe7c54d1664dfbd10466a0
         Time = 45972.597829027780000000
         TimeFormat = 'hh:nn'
       end
@@ -778,7 +807,11 @@ object Form31: TForm31
         Height = 41
         Color = 8543977
         ParentBackground = False
+<<<<<<< HEAD
         TabOrder = 11
+=======
+        TabOrder = 10
+>>>>>>> bbd71fb778a951ea49fe7c54d1664dfbd10466a0
         object LbClie: TLabel
           Left = 964
           Top = 8
@@ -822,6 +855,26 @@ object Form31: TForm31
           ParentFont = False
         end
       end
+<<<<<<< HEAD
+=======
+      object BtnCad: TPanel
+        Left = 1103
+        Top = 905
+        Width = 496
+        Height = 41
+        Cursor = crHandPoint
+        Caption = 'Cadastrar'
+        Color = 8543977
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -24
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 11
+      end
+>>>>>>> bbd71fb778a951ea49fe7c54d1664dfbd10466a0
     end
   end
 end
