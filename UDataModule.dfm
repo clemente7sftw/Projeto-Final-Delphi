@@ -146,7 +146,7 @@ object DataModule1: TDataModule1
     SQL.Strings = (
       'select * from profissionais_cargos')
     Left = 60
-    Top = 550
+    Top = 534
     object QueryPCid_pro: TIntegerField
       FieldName = 'id_pro'
       Origin = 'id_pro'
@@ -220,8 +220,8 @@ object DataModule1: TDataModule1
       'ORDER BY'
       '    a.id_agendamento;'
       '')
-    Left = 220
-    Top = 620
+    Left = 348
+    Top = 516
     object QueryAgid_agendamento: TIntegerField
       FieldName = 'id_agendamento'
       Origin = 'id_agendamento'

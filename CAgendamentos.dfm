@@ -549,28 +549,21 @@ object Form21: TForm21
       TabOrder = 2
     end
     object calendario: TMonthCalendar
-      Left = 1105
-      Top = 657
-      Width = 225
-      Height = 160
+      Left = 607
+      Top = 223
+      Width = 267
+      Height = 205
       Date = 45937.000000000000000000
       TabOrder = 3
+      OnClick = calendarioClick
     end
     object CLBServicos: TCheckListBox
-      Left = 1395
-      Top = 659
+      Left = 1075
+      Top = 237
       Width = 206
       Height = 158
       ItemHeight = 17
       TabOrder = 4
-    end
-    object ComboBoxHorarios: TComboBox
-      Left = 1624
-      Top = 657
-      Width = 145
-      Height = 23
-      TabOrder = 5
-      Text = 'ComboBoxHorarios'
     end
     object Barra: TPanel
       Left = -8
@@ -579,7 +572,7 @@ object Form21: TForm21
       Height = 41
       Color = 4405251
       ParentBackground = False
-      TabOrder = 6
+      TabOrder = 5
       object LbClie: TLabel
         Left = 192
         Top = 8
@@ -675,7 +668,7 @@ object Form21: TForm21
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 6
       TextHint = 'Pesquise'
     end
     object Panel1: TPanel
@@ -685,7 +678,7 @@ object Form21: TForm21
       Height = 45
       Color = clBlack
       ParentBackground = False
-      TabOrder = 8
+      TabOrder = 7
       object Image2: TImage
         Left = 8
         Top = 9
@@ -715,7 +708,7 @@ object Form21: TForm21
     end
     object BtnConf: TPanel
       Left = 1105
-      Top = 848
+      Top = 664
       Width = 496
       Height = 41
       Cursor = crHandPoint
@@ -728,8 +721,16 @@ object Form21: TForm21
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 8
       OnClick = BtnConfClick
+    end
+    object CLBHorarios: TCheckListBox
+      Left = 1333
+      Top = 242
+      Width = 195
+      Height = 153
+      ItemHeight = 17
+      TabOrder = 9
     end
   end
   object DataSource1: TDataSource
