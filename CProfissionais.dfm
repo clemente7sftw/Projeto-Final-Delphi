@@ -607,7 +607,7 @@ object Form8: TForm8
           end
           item
             Expanded = False
-            FieldName = 'dias_semana'
+            FieldName = 'dias_trabalho'
             Visible = True
           end
           item

@@ -1,4 +1,4 @@
-unit Agendamentos;
+﻿unit Agendamentos;
 
 interface
 
@@ -141,56 +141,62 @@ procedure TForm13.TrazerHorariosDisponiveis(id_pro: Integer; DataSelecionada: TD
 var
   horaAtual, horaFim: TTime;
   intervalo: TTime;
+  diaSemana: Integer;
 begin
   CLBHorarios.Clear;
+  diaSemana := DayOfTheWeek(DataSelecionada) - 1;
+  if diaSemana < 0 then
+    diaSemana := 6;
 
   with DataModule1.Query_conexao do
   begin
-//SQL.Clear;
-//SQL.Add('SELECT hora_inicio, hora_fim');
-//SQL.Add('FROM horarios_profissionais');
-//SQL.Add('WHERE id_pro = :id_pro');
-//SQL.Add('  AND dia_semana = :dia_semana');
-//SQL.Add('  AND id_empresa = :id_empresa');
-//SQL.Add('  AND disponivel = TRUE');
-//ParamByName('id_pro').AsInteger := id_pro;
-//ParamByName('dia_semana').AsInteger := DayOfTheWeek(MonthCalendar1.Date);
-//ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-//Open;
-//
-//if not IsEmpty then
-//begin
-//  horaAtual := FieldByName('hora_inicio').AsDateTime;
-//  horaFim := FieldByName('hora_fim').AsDateTime;
-//  intervalo := EncodeTime(0, 30, 0, 0);
-//
-//  while horaAtual < horaFim do
-//  begin
-//    with DataModule1.Query_aux do
-//    begin
-//      Close;
-//      SQL.Text :=
-//        'SELECT 1 FROM profissionais_agendamentos ' +
-//        'WHERE id_pro = :id_pro ' +
-//        'AND data_agendamento = :data ' +
-//        'AND hora_inicio = :hora_inicio ' +
-//        'AND id_empresa = :id_empresa';
-//      ParamByName('id_pro').AsInteger := id_pro;
-//      ParamByName('data').AsDate := MonthCalendar1.Date;
-//      ParamByName('hora_inicio').AsDateTime := horaAtual;
-//      ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-//      Open;
-//    end;
-//
-//    if DataModule1.Query_aux.IsEmpty then
-//      CLBHorarios.Items.Add(FormatDateTime('hh:nn', horaAtual));
-//
-//    horaAtual := horaAtual + intervalo;
-//  end;
-//end;
+    Close;
+SQL.Text :=
+  'SELECT 1 FROM profissionais_agendamentos ' +
+  'WHERE id_pro = :id_pro ' +
+  'AND data_agendamento = :data ' +
+  'AND CAST(:horaAtual AS time) BETWEEN hora_inicio AND hora_fim ' +
+  'AND id_empresa = :id_empresa';
+    ParamByName('id_pro').AsInteger := id_pro;
+    ParamByName('dia_semana').AsInteger := diaSemana;
+    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+    Open;
 
+    if not IsEmpty then
+    begin
+      horaAtual := FieldByName('hora_inicio').AsDateTime;
+      horaFim := FieldByName('hora_fim').AsDateTime;
+
+      intervalo := EncodeTime(1, 0, 0, 0);
+
+      while horaAtual < horaFim do
+      begin
+        with DataModule1.Query_aux do
+        begin
+          Close;
+          SQL.Text :=
+            'SELECT 1 FROM profissionais_agendamentos ' +
+            'WHERE id_pro = :id_pro ' +
+            'AND data_agendamento = :data ' +
+            'AND :horaAtual BETWEEN hora_inicio AND hora_fim ' +
+            'AND id_empresa = :id_empresa';
+          ParamByName('id_pro').AsInteger := id_pro;
+          ParamByName('data').AsDate := DataSelecionada;
+          ParamByName('horaAtual').AsDateTime := horaAtual;
+          ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+          Open;
+        end;
+        if DataModule1.Query_aux.IsEmpty then
+          CLBHorarios.Items.Add(FormatDateTime('hh:nn', horaAtual));
+
+        horaAtual := horaAtual + intervalo;
+      end;
+    end
+    else
+      ShowMessage('Nenhum horário cadastrado para este profissional neste dia.');
   end;
 end;
+
 
 
 
@@ -353,24 +359,24 @@ begin
     end;
   end;
   duracao_total := 0;
-  for i := 0 to CLBServicos.Count - 1 do
+for i := 0 to CLBServicos.Count - 1 do
+begin
+  if CLBServicos.Checked[i] then
   begin
-    if CLBServicos.Checked[i] then
+    id_servico := Integer(CLBServicos.Items.Objects[i]);
+    with DataModule1.Query_aux do
     begin
-      id_servico := Integer(CLBServicos.Items.Objects[i]);
-      with DataModule1.Query_aux do
-      begin
-        Close;
-        SQL.Text := 'SELECT duracao FROM servicos WHERE id_servico = :id_servico';
-        ParamByName('id_servico').AsInteger := id_servico;
-        Open;
-        if not IsEmpty then
-          duracao_total := duracao_total + FieldByName('duracao').AsInteger;
-      end;
+      Close;
+      SQL.Text := 'SELECT duracao FROM servicos WHERE id_servico = :id_servico';
+      ParamByName('id_servico').AsInteger := id_servico;
+      Open;
+      if not IsEmpty then
+        duracao_total := duracao_total + FieldByName('duracao').AsInteger;
     end;
   end;
-  hora_inicio := StrToTime(CLBHorarios.Items[CLBHorarios.ItemIndex]);
-  hora_fim := IncMinute(hora_inicio, duracao_total);
+end;
+hora_fim := StrToTime(CLBHorarios.Items[CLBHorarios.ItemIndex]);
+hora_inicio := IncMinute(hora_fim, -duracao_total);
   for i := 0 to CheckListBoxProfissionais.Count - 1 do
   begin
   if CheckListBoxProfissionais.Checked[i] then
@@ -382,10 +388,11 @@ begin
   with DataModule1.Query_aux do
   begin
     Close;
-    SQL.Text :=
-      'INSERT INTO profissionais_agendamentos ' +
-      '(id_agendamento, id_pro, data_agendamento, hora_inicio, hora_fim, id_empresa) ' +
-      'VALUES (:id_agendamento, :id_pro, :data_agendamento, :hora_inicio, :hora_fim, :id_empresa)';
+SQL.Text :=
+  'INSERT INTO agendamentos (id_clie, id_empresa, data_agendamento, hora_inicio, hora_fim, preco) ' +
+  'VALUES (:id_clie, :id_empresa, :data_agendamento, :hora_inicio, :hora_fim, :preco) ' +
+  'RETURNING id_agendamento';
+
     ParamByName('id_agendamento').AsInteger := id_agendamento;
     ParamByName('id_pro').AsInteger := id_pro;
     ParamByName('data_agendamento').AsDate := dataselecionada;

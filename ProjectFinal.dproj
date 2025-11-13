@@ -266,10 +266,6 @@
             <Form>Form31</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="n3_horarios_profissionais.pas">
-            <Form>Form33</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

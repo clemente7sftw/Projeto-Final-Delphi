@@ -81,7 +81,6 @@ type
     function ValidarEmail(const Email: string):Boolean;
     procedure Trazer_Dias;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure Label6Click(Sender: TObject);
     procedure criar_horarios;
     procedure validar_horario(Sender: TObject);
   private
@@ -126,11 +125,6 @@ criar_horarios;
 
 end;
 
-
-procedure TForm9.Label6Click(Sender: TObject);
-begin
-Form33.Show;
-end;
 
 procedure TForm9.PreencherListbox;
 begin
@@ -274,7 +268,7 @@ begin
     end;
   end;
 end;
-
+      form8.show;
       Lblrequired.Visible := False;
       lbEmail.Visible := False;
     end

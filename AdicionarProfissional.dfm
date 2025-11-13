@@ -23,6 +23,8 @@ object Form9: TForm9
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1918
+    ExplicitHeight = 1053
     object Image1: TImage
       Left = 0
       Top = 240
@@ -405,12 +407,11 @@ object Form9: TForm9
       Caption = 'fim do turno'
     end
     object Label6: TLabel
-      Left = 1224
+      Left = 1192
       Top = 256
-      Width = 34
-      Height = 15
+      Width = 66
+      Height = 47
       Caption = 'Label6'
-      OnClick = Label6Click
     end
     object Label7: TLabel
       Left = 40

@@ -1,37 +1,38 @@
 object DataModule1: TDataModule1
-  Height = 547
-  Width = 553
+  Height = 684
+  Width = 691
+  PixelsPerInch = 120
   object conexao_banco: TFDConnection
     Params.Strings = (
       'Database=beauty_stage'
       'User_Name=postgres'
-      'Password=root'
+      'Password=2007'
       'Server=localhost'
       'DriverID=PG')
-    Left = 160
-    Top = 16
+    Left = 200
+    Top = 20
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
     VendorLib = 
-      'C:\Users\gabri\OneDrive\Documentos\Projeto-Final-Delphi\Win32\De' +
-      'bug\lib\libpq.dll'
-    Left = 56
-    Top = 16
+      'C:\Users\gabi\OneDrive\Documents\Projeto-Final-Delphi\Win32\Debu' +
+      'g\lib\libpq.dll'
+    Left = 70
+    Top = 20
   end
   object QueryClientes: TFDQuery
     Connection = conexao_banco
     SQL.Strings = (
       'select * from clientes')
-    Left = 272
-    Top = 16
+    Left = 340
+    Top = 20
   end
   object QueryReservas: TFDQuery
     Connection = conexao_banco
     SQL.Strings = (
       'select * from reservas'
       '')
-    Left = 32
-    Top = 168
+    Left = 40
+    Top = 210
     object QueryReservasid_reserva: TIntegerField
       FieldName = 'id_reserva'
       Origin = 'id_reserva'
@@ -68,30 +69,30 @@ object DataModule1: TDataModule1
     Connection = conexao_banco
     SQL.Strings = (
       'select * from profissionais')
-    Left = 210
-    Top = 104
+    Left = 263
+    Top = 130
   end
   object QueryEmpresa: TFDQuery
     Connection = conexao_banco
     SQL.Strings = (
       'select * from empresas')
-    Left = 125
-    Top = 162
+    Left = 156
+    Top = 203
   end
   object QueryServicos: TFDQuery
     Connection = conexao_banco
     SQL.Strings = (
       'select * from servicos '
       '')
-    Left = 357
-    Top = 54
+    Left = 446
+    Top = 68
   end
   object QueryCS: TFDQuery
     Connection = conexao_banco
     SQL.Strings = (
       'SELECT * from cargos_servicos')
-    Left = 107
-    Top = 389
+    Left = 134
+    Top = 486
     object QueryCSid_cargo: TIntegerField
       FieldName = 'id_cargo'
       Origin = 'id_cargo'
@@ -110,15 +111,15 @@ object DataModule1: TDataModule1
     SQL.Strings = (
       'select * from cargos'
       '')
-    Left = 30
-    Top = 226
+    Left = 38
+    Top = 283
   end
   object Queryfornecedores: TFDQuery
     Connection = conexao_banco
     SQL.Strings = (
       'select * from fornecedores')
-    Left = 254
-    Top = 170
+    Left = 318
+    Top = 213
     object Queryfornecedoresid: TIntegerField
       FieldName = 'id'
       Origin = 'id'
@@ -144,8 +145,8 @@ object DataModule1: TDataModule1
     Connection = conexao_banco
     SQL.Strings = (
       'select * from profissionais_cargos')
-    Left = 48
-    Top = 440
+    Left = 60
+    Top = 550
     object QueryPCid_pro: TIntegerField
       FieldName = 'id_pro'
       Origin = 'id_pro'
@@ -173,8 +174,8 @@ object DataModule1: TDataModule1
       'p.email'
       'ORDER BY '
       '    p.nome;')
-    Left = 104
-    Top = 432
+    Left = 130
+    Top = 540
   end
   object QueryRCS: TFDQuery
     Connection = conexao_banco
@@ -184,8 +185,8 @@ object DataModule1: TDataModule1
         'ome FROM cargos c LEFT JOIN cargos_servicos cp ON c.id_cargo = c' +
         'p.id_cargo LEFT JOIN servicos s ON cp.id_servico = s.id_servico ' +
         'group by c.nome_cargo ORDER BY c.nome_cargo;')
-    Left = 160
-    Top = 400
+    Left = 200
+    Top = 500
   end
   object QueryAg: TFDQuery
     Connection = conexao_banco
@@ -219,8 +220,8 @@ object DataModule1: TDataModule1
       'ORDER BY'
       '    a.id_agendamento;'
       '')
-    Left = 176
-    Top = 496
+    Left = 220
+    Top = 620
     object QueryAgid_agendamento: TIntegerField
       FieldName = 'id_agendamento'
       Origin = 'id_agendamento'
@@ -264,8 +265,8 @@ object DataModule1: TDataModule1
     Connection = conexao_banco
     SQL.Strings = (
       'select * from agendamentos')
-    Left = 366
-    Top = 294
+    Left = 458
+    Top = 368
     object QueryAgendamentosid_agendamento: TIntegerField
       FieldName = 'id_agendamento'
       Origin = 'id_agendamento'
@@ -312,8 +313,8 @@ object DataModule1: TDataModule1
       'GROUP BY EXTRACT(MONTH FROM data_cad)'
       'ORDER BY mes;'
       '')
-    Left = 202
-    Top = 430
+    Left = 253
+    Top = 538
     object QueryFClientesmes: TFMTBCDField
       AutoGenerateValue = arDefault
       FieldName = 'mes'
@@ -333,15 +334,15 @@ object DataModule1: TDataModule1
     Connection = conexao_banco
     SQL.Strings = (
       '')
-    Left = 40
-    Top = 480
+    Left = 50
+    Top = 600
   end
   object QueryRAS: TFDQuery
     Connection = conexao_banco
     SQL.Strings = (
       'select * from agendamento_servicos')
-    Left = 216
-    Top = 480
+    Left = 270
+    Top = 600
     object QueryRASid_agendamento: TIntegerField
       FieldName = 'id_agendamento'
       Origin = 'id_agendamento'
@@ -355,15 +356,15 @@ object DataModule1: TDataModule1
   end
   object QueryPS: TFDQuery
     Connection = conexao_banco
-    Left = 152
-    Top = 456
+    Left = 190
+    Top = 570
   end
   object QueryAdm: TFDQuery
     Connection = conexao_banco
     SQL.Strings = (
       'select * from administradores')
-    Left = 389
-    Top = 152
+    Left = 486
+    Top = 190
     object QueryAdmid_adm: TIntegerField
       FieldName = 'id_adm'
       Origin = 'id_adm'
@@ -446,8 +447,8 @@ object DataModule1: TDataModule1
       '    S.nome '
       'ORDER BY'
       '    Total  DESC; ')
-    Left = 107
-    Top = 491
+    Left = 134
+    Top = 614
     object QueryTotalAgnome: TWideStringField
       FieldName = 'nome'
       Origin = 'nome'
@@ -462,17 +463,17 @@ object DataModule1: TDataModule1
   end
   object query_conexao: TFDQuery
     Connection = conexao_banco
-    Left = 32
-    Top = 88
+    Left = 40
+    Top = 110
   end
   object query_aux: TFDQuery
     Connection = conexao_banco
-    Left = 112
-    Top = 88
+    Left = 140
+    Top = 110
   end
   object QueryHorarios: TFDQuery
     Connection = conexao_banco
-    Left = 120
-    Top = 240
+    Left = 150
+    Top = 300
   end
 end
