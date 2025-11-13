@@ -127,6 +127,16 @@ begin
 
   DataModule1.Query_aux.Close;
   Trazerservicos(DiaSemana, DataSelecionada);
+    with datamodule1.queryclientes do
+  begin
+    Close;
+    SQL.Text := 'SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie';
+    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+    Open;
+    datasource1.DataSet := datamodule1.queryclientes;
+    dbedit1.DataField := 'nome_clie';
+    dbedit2.DataField := 'email_clie';
+  end;
 end;
 
 
@@ -151,12 +161,12 @@ begin
   with DataModule1.Query_conexao do
   begin
     Close;
-SQL.Text :=
-  'SELECT 1 FROM profissionais_agendamentos ' +
-  'WHERE id_pro = :id_pro ' +
-  'AND data_agendamento = :data ' +
-  'AND CAST(:horaAtual AS time) BETWEEN hora_inicio AND hora_fim ' +
-  'AND id_empresa = :id_empresa';
+    SQL.Text :=
+      'SELECT hora_inicio, hora_fim ' +
+      'FROM horarios_profissionais ' +
+      'WHERE id_pro = :id_pro ' +
+      'AND dia_semana = :dia_semana ' +
+      'AND id_empresa = :id_empresa';
     ParamByName('id_pro').AsInteger := id_pro;
     ParamByName('dia_semana').AsInteger := diaSemana;
     ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
@@ -166,29 +176,11 @@ SQL.Text :=
     begin
       horaAtual := FieldByName('hora_inicio').AsDateTime;
       horaFim := FieldByName('hora_fim').AsDateTime;
-
       intervalo := EncodeTime(1, 0, 0, 0);
 
       while horaAtual < horaFim do
       begin
-        with DataModule1.Query_aux do
-        begin
-          Close;
-          SQL.Text :=
-            'SELECT 1 FROM profissionais_agendamentos ' +
-            'WHERE id_pro = :id_pro ' +
-            'AND data_agendamento = :data ' +
-            'AND :horaAtual BETWEEN hora_inicio AND hora_fim ' +
-            'AND id_empresa = :id_empresa';
-          ParamByName('id_pro').AsInteger := id_pro;
-          ParamByName('data').AsDate := DataSelecionada;
-          ParamByName('horaAtual').AsDateTime := horaAtual;
-          ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-          Open;
-        end;
-        if DataModule1.Query_aux.IsEmpty then
-          CLBHorarios.Items.Add(FormatDateTime('hh:nn', horaAtual));
-
+        CLBHorarios.Items.Add(FormatDateTime('hh:nn', horaAtual));
         horaAtual := horaAtual + intervalo;
       end;
     end
@@ -196,10 +188,6 @@ SQL.Text :=
       ShowMessage('Nenhum horário cadastrado para este profissional neste dia.');
   end;
 end;
-
-
-
-
 
 
 procedure TForm13.TrazerProfissionaisPorServico(id_servico: Integer);
@@ -317,12 +305,14 @@ end;
 
 procedure TForm13.Cadastrar;
 var
-  id_clie, id_pro, id_servico, id_agendamento, id_empresa, duracao_total, i: Integer;
-  dataselecionada, hora_inicio, hora_fim: TDateTime;
+  id_clie, id_pro, id_servico, id_agendamento, id_empresa, i: Integer;
+  dataselecionada, hora_inicio: TDateTime;
 begin
   id_empresa := DataModule1.id_empresa;
   dataselecionada := MonthCalendar1.Date;
   id_clie := DataModule1.Queryclientes.FieldByName('id_clie').AsInteger;
+
+  hora_inicio := StrToTime(CLBHorarios.Items[CLBHorarios.ItemIndex]);
 
   with DataModule1.Query_conexao do
   begin
@@ -334,12 +324,13 @@ begin
     ParamByName('id_clie').AsInteger := id_clie;
     ParamByName('id_empresa').AsInteger := id_empresa;
     ParamByName('data_agendamento').AsDate := dataselecionada;
-    ParamByName('hora_inicio').AsDateTime := StrToTime(CLBHorarios.Items[CLBHorarios.ItemIndex]);
+    ParamByName('hora_inicio').AsDateTime := hora_inicio;
     ParamByName('preco').AsCurrency := StrToCurr(DBEdit3.Text);
     Open;
     id_agendamento := FieldByName('id_agendamento').AsInteger;
     Close;
   end;
+
   for i := 0 to CLBServicos.Count - 1 do
   begin
     if CLBServicos.Checked[i] then
@@ -358,56 +349,32 @@ begin
       end;
     end;
   end;
-  duracao_total := 0;
-for i := 0 to CLBServicos.Count - 1 do
-begin
-  if CLBServicos.Checked[i] then
-  begin
-    id_servico := Integer(CLBServicos.Items.Objects[i]);
-    with DataModule1.Query_aux do
-    begin
-      Close;
-      SQL.Text := 'SELECT duracao FROM servicos WHERE id_servico = :id_servico';
-      ParamByName('id_servico').AsInteger := id_servico;
-      Open;
-      if not IsEmpty then
-        duracao_total := duracao_total + FieldByName('duracao').AsInteger;
-    end;
-  end;
-end;
-hora_fim := StrToTime(CLBHorarios.Items[CLBHorarios.ItemIndex]);
-hora_inicio := IncMinute(hora_fim, -duracao_total);
+
   for i := 0 to CheckListBoxProfissionais.Count - 1 do
   begin
-  if CheckListBoxProfissionais.Checked[i] then
-  begin
-    id_pro := Integer(CheckListBoxProfissionais.Items.Objects[i]);
-    Break;
+    if CheckListBoxProfissionais.Checked[i] then
+    begin
+      id_pro := Integer(CheckListBoxProfissionais.Items.Objects[i]);
+      with DataModule1.Query_aux do
+      begin
+        Close;
+        SQL.Text :=
+          'INSERT INTO profissionais_agendamentos (id_agendamento, id_pro, id_empresa, data_agendamento, hora_inicio) ' +
+          'VALUES (:id_agendamento, :id_pro, :id_empresa, :data_agendamento, :hora_inicio)';
+        ParamByName('id_agendamento').AsInteger := id_agendamento;
+        ParamByName('id_pro').AsInteger := id_pro;
+        ParamByName('id_empresa').AsInteger := id_empresa;
+        ParamByName('data_agendamento').AsDate := dataselecionada;
+        ParamByName('hora_inicio').AsDateTime := hora_inicio;
+        ExecSQL;
+      end;
+      Break;
+    end;
   end;
-  end;
-  with DataModule1.Query_aux do
-  begin
-    Close;
-SQL.Text :=
-  'INSERT INTO agendamentos (id_clie, id_empresa, data_agendamento, hora_inicio, hora_fim, preco) ' +
-  'VALUES (:id_clie, :id_empresa, :data_agendamento, :hora_inicio, :hora_fim, :preco) ' +
-  'RETURNING id_agendamento';
-
-    ParamByName('id_agendamento').AsInteger := id_agendamento;
-    ParamByName('id_pro').AsInteger := id_pro;
-    ParamByName('data_agendamento').AsDate := dataselecionada;
-    ParamByName('hora_inicio').AsDateTime := hora_inicio;
-    ParamByName('hora_fim').AsDateTime := hora_fim;
-    ParamByName('id_empresa').AsInteger := id_empresa;
-    ExecSQL;
-  end;
-
-
   atualizar_grid;
   Form21.Show;
   Form13.Close;
 end;
-
 
 
 

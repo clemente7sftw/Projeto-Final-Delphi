@@ -23,6 +23,8 @@ object Form8: TForm8
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1918
+    ExplicitHeight = 1053
     object Panel1: TPanel
       Left = 1
       Top = 1
@@ -32,6 +34,8 @@ object Form8: TForm8
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
+      ExplicitWidth = 1916
+      ExplicitHeight = 1051
       object Label1: TLabel
         Left = 1102
         Top = 440
@@ -480,8 +484,8 @@ object Form8: TForm8
         ParentFont = False
       end
       object Label4: TLabel
-        Left = 1680
-        Top = 396
+        Left = 1152
+        Top = 235
         Width = 40
         Height = 30
         Caption = 'Dias'
@@ -508,8 +512,8 @@ object Form8: TForm8
         ParentFont = False
       end
       object Label6: TLabel
-        Left = 1766
-        Top = 839
+        Left = 446
+        Top = 227
         Width = 51
         Height = 30
         Caption = 'In'#237'cio'
@@ -522,8 +526,8 @@ object Form8: TForm8
         ParentFont = False
       end
       object Label7: TLabel
-        Left = 1725
-        Top = 810
+        Left = 446
+        Top = 307
         Width = 35
         Height = 30
         Caption = 'Fim'
@@ -536,8 +540,8 @@ object Form8: TForm8
         ParentFont = False
       end
       object Label8: TLabel
-        Left = 1102
-        Top = 771
+        Left = 1038
+        Top = 301
         Width = 73
         Height = 30
         Caption = 'Hor'#225'rio'
@@ -607,11 +611,7 @@ object Form8: TForm8
           end
           item
             Expanded = False
-            FieldName = 'dias_trabalho'
-            Visible = True
-          end
-          item
-            Expanded = False
+            FieldName = 'dias_semana'
             Visible = True
           end>
       end
@@ -801,7 +801,7 @@ object Form8: TForm8
       end
       object BtnConf: TPanel
         Left = 1103
-        Top = 905
+        Top = 783
         Width = 496
         Height = 41
         Cursor = crHandPoint
@@ -818,24 +818,24 @@ object Form8: TForm8
         OnClick = BtnConf1Click
       end
       object CLBCargos: TCheckListBox
-        Left = 1679
-        Top = 617
+        Left = 784
+        Top = 220
         Width = 218
         Height = 127
         ItemHeight = 17
         TabOrder = 8
       end
       object CLBDias: TCheckListBox
-        Left = 1679
-        Top = 432
+        Left = 610
+        Top = 223
         Width = 121
         Height = 127
         ItemHeight = 17
         TabOrder = 9
       end
       object TimePicker1: TTimePicker
-        Left = 1725
-        Top = 792
+        Left = 442
+        Top = 263
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
@@ -846,8 +846,8 @@ object Form8: TForm8
         TimeFormat = 'hh:nn'
       end
       object TimePicker2: TTimePicker
-        Left = 1734
-        Top = 892
+        Left = 446
+        Top = 343
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
@@ -858,10 +858,11 @@ object Form8: TForm8
         TimeFormat = 'hh:nn'
       end
       object DBEdit4: TDBEdit
-        Left = 1104
-        Top = 802
+        Left = 1038
+        Top = 337
         Width = 495
         Height = 38
+        DataField = 'dias_semana'
         DataSource = DSconexao
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -871,10 +872,10 @@ object Form8: TForm8
         ParentFont = False
         TabOrder = 12
       end
-      object DBEdit5: TDBEdit
-        Left = 1679
-        Top = 807
-        Width = 214
+      object DBEdit6: TDBEdit
+        Left = 1038
+        Top = 381
+        Width = 251
         Height = 38
         DataSource = DSconexao
         Font.Charset = DEFAULT_CHARSET
@@ -884,34 +885,6 @@ object Form8: TForm8
         Font.Style = []
         ParentFont = False
         TabOrder = 13
-      end
-      object DBEdit6: TDBEdit
-        Left = 1103
-        Top = 861
-        Width = 496
-        Height = 38
-        DataSource = DSconexao
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -21
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 14
-      end
-      object DBEdit7: TDBEdit
-        Left = 1679
-        Top = 861
-        Width = 214
-        Height = 38
-        DataSource = DSconexao
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -21
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 15
       end
     end
   end

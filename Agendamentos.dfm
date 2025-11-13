@@ -542,8 +542,8 @@ object Form13: TForm13
       end
     end
     object CLBHorarios: TCheckListBox
-      Left = 582
-      Top = 752
+      Left = 806
+      Top = 422
       Width = 195
       Height = 153
       ItemHeight = 17

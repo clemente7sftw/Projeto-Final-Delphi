@@ -50,9 +50,7 @@ type
     Label7: TLabel;
     DBEdit4: TDBEdit;
     Label8: TLabel;
-    DBEdit5: TDBEdit;
     DBEdit6: TDBEdit;
-    DBEdit7: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure Image6Click(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
@@ -128,8 +126,7 @@ SQL.Text :=
   '  p.id_pro, ' +
   '  p.nome, ' +
   '  p.email, ' +
-  '  STRING_AGG(DISTINCT c.nome_cargo, '', '') AS cargos, ' +
-
+  '  STRING_AGG(DISTINCT c.nome_cargo, '', '')::varchar(500) AS nome_cargo, ' +
   '  STRING_AGG(DISTINCT ' +
   '    CASE h.dia_semana ' +
   '      WHEN 0 THEN ''Domingo'' ' +
@@ -139,10 +136,7 @@ SQL.Text :=
   '      WHEN 4 THEN ''Quinta'' ' +
   '      WHEN 5 THEN ''Sexta'' ' +
   '      WHEN 6 THEN ''Sábado'' ' +
-  '    END, '', '') AS dias_trabalho, ' +
-  '  STRING_AGG(DISTINCT ' +
-  '    TO_CHAR(h.hora_inicio, ''HH24:MI'') || '' às '' || TO_CHAR(h.hora_fim, ''HH24:MI''), '','') AS horarios ' +
-
+  '    END, '','')::varchar(200) AS dias_semana ' +
   'FROM profissionais p ' +
   'LEFT JOIN profissionais_cargos pc ON p.id_pro = pc.id_pro ' +
   'LEFT JOIN cargos c ON pc.id_cargo = c.id_cargo ' +
@@ -190,24 +184,29 @@ begin
   ExclBtn.Visible := true;
   Lblrequired.visible:= false;
   icones_escondidos;
+  addclie.Visible := true;
+  clbcargos.Visible := false;
+  dbedit3.Visible := true;
 
 end;
 
 procedure TForm8.Editar;
 begin
-
-  DBEdit3.Visible:= false;
-  BtnConf.Visible:= true;
-  ExclBtn.Visible:= false;
+  TimePicker1.Time := EncodeTime(12, 0, 0, 0);
+  TimePicker2.Time := EncodeTime(12, 0, 0, 0);
+  DBEdit3.Visible := False;
+  BtnConf.Visible := True;
+  ExclBtn.Visible := False;
   EditsAtivos;
-  EditBtn.Visible:= false;
-  addclie.Visible:= false;
-  CLBCargos.Visible:= true;
+  EditBtn.Visible := False;
+  addclie.Visible := False;
+  CLBCargos.Visible := True;
   TrazerCargos;
   icones_visiveis;
   TrazerDias;
-
+  btncancelar.Visible := True;
 end;
+
 
 procedure TForm8.EditBtnClick(Sender: TObject);
 begin
@@ -220,9 +219,7 @@ begin
     DBEdit2.Enabled := true;
     DBEdit3.Enabled := true;
     DBEdit4.Enabled := true;
-    DBEdit5.Enabled := true;
     DBEdit6.Enabled := true;
-    DBEdit7.Enabled := true;
 end;
 
 procedure TForm8.EditsInativos;
@@ -231,9 +228,7 @@ begin
   DBEdit2.Enabled := false;
   DBEdit3.Enabled := false;
   DBEdit4.Enabled := false;
-  DBEdit5.Enabled := false;
   DBEdit6.Enabled := false;
-  DBEdit7.Enabled := false;
 end;
 
 procedure TForm8.ExclBtnClick(Sender: TObject);
