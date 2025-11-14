@@ -112,6 +112,8 @@ begin
 DBEdit1.DataSource := nil;
 DBEdit2.DataSource := nil;
 DBEdit3.DataSource := nil;
+DBEdit4.DataSource := nil;
+DBEdit6.DataSource := nil;
   form9.show;
   form8.close;
 end;
@@ -150,9 +152,16 @@ ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
 Open;
 DSconexao.DataSet := DataModule1.queryprofissionais;
 dbgrid1.DataSource := dsconexao;
+dbedit1.DataSource:= dsconexao;
+dbedit2.DataSource:= dsconexao;
+dbedit3.DataSource:= dsconexao;
+dbedit4.DataSource:= dsconexao;
+dbedit6.DataSource:= dsconexao;
 DBEdit1.DataField := 'nome';
 DBEdit2.DataField := 'email';
 DBEdit3.DataField := 'nome_cargo';
+dbedit4.DataField := 'dias_semana';
+//dbedit6.datafield:= '';
 TimePicker1.Time := EncodeTime(12, 0, 0, 0);
 TimePicker2.Time := EncodeTime(12, 0, 0, 0);
 
@@ -261,6 +270,8 @@ begin
 DBEdit1.DataSource := nil;
 DBEdit2.DataSource := nil;
 DBEdit3.DataSource := nil;
+DBEdit4.DataSource := nil;
+DBEdit6.DataSource := nil;
 end;
 
 procedure TForm8.FormCreate(Sender: TObject);
@@ -453,6 +464,7 @@ end;
     atualizar_grid;
     dbedit3.Visible := true;
     icones_escondidos;
+    btncancelar.Visible := false;
   end;
 
 procedure TForm8.TrazerCargos;

@@ -10,6 +10,7 @@ object Form15: TForm15
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15
@@ -563,7 +564,6 @@ object Form15: TForm15
       Top = 498
       Width = 497
       Height = 38
-      DataField = 'nome'
       DataSource = DataSource1
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -741,8 +741,8 @@ object Form15: TForm15
       OnClick = BtnConfClick
     end
     object BtnCad: TPanel
-      Left = 1248
-      Top = 684
+      Left = 1280
+      Top = 670
       Width = 496
       Height = 41
       Cursor = crHandPoint

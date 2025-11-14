@@ -23,7 +23,8 @@ object Form11: TForm11
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 8
+    ExplicitWidth = 1918
+    ExplicitHeight = 1053
     object Image1: TImage
       Left = 25
       Top = 288
@@ -468,12 +469,12 @@ object Form11: TForm11
     end
     object Edit1: TEdit
       Left = 1105
-      Top = 460
+      Top = 440
       Width = 496
-      Height = 38
-      Font.Charset = DEFAULT_CHARSET
+      Height = 45
+      Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -21
+      Font.Height = -27
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False

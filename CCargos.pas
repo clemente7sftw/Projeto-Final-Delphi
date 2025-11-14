@@ -65,6 +65,7 @@ type
     procedure LbServicosClick(Sender: TObject);
     procedure LbFornecedoresClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -90,7 +91,8 @@ end;
 
 procedure TForm14.Adicionar;
 begin
-
+DBEdit1.DataSource := nil;
+DBEdit2.DataSource := nil;
 Form11.show;
 Form14.Close;
 end;
@@ -115,8 +117,6 @@ begin
   DataSource1.DataSet := DataModule1.querycargos;
   dbedit1.DataSource := datasource1;
   dbedit2.DataSource := datasource1;
-  dbedit1.DataField := 'nome_cargo';
-  dbedit2.DataField := 'nome';
 
 end;;
 end;
@@ -204,6 +204,12 @@ end;
 
 
 
+procedure TForm14.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+DBEdit1.DataSource := nil;
+DBEdit2.DataSource := nil;
+end;
+
 procedure TForm14.FormCreate(Sender: TObject);
 begin
   Form14.WindowState:=wsMaximized;
@@ -235,8 +241,9 @@ begin
   DataSource1.DataSet := DataModule1.querycargos;
   dbedit1.DataSource := datasource1;
   dbedit2.DataSource := datasource1;
-  dbedit1.DataField := 'nome_cargo';
-  dbedit2.DataField := 'nome';
+  dbedit1.DataField:= 'nome_cargo';
+  dbedit2.DataField:= 'nome';
+
 
 end;
 end;

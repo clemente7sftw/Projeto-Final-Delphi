@@ -27,9 +27,9 @@ object Form21: TForm21
     ExplicitHeight = 1053
     object ExclBtn: TImage
       Left = 923
-      Top = 361
+      Top = 362
       Width = 33
-      Height = 34
+      Height = 33
       Cursor = crHandPoint
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
@@ -90,6 +90,7 @@ object Form21: TForm21
         E98F38D3009E6B595A9BCFBA92412D14F752570255C29DA42E1E570C454159DA
         9B7F934206E5F17456D33FBC0BAC09D80B539776210A1239D50000000049454E
         44AE426082}
+      OnClick = btncancelarClick
     end
     object Image4: TImage
       Left = 40
@@ -375,10 +376,10 @@ object Form21: TForm21
       ParentFont = False
     end
     object addbtn: TImage
-      Left = 880
-      Top = 359
-      Width = 37
-      Height = 36
+      Left = 872
+      Top = 362
+      Width = 45
+      Height = 33
       Cursor = crHandPoint
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D494844520000002B0000
@@ -433,12 +434,31 @@ object Form21: TForm21
       Font.Style = [fsBold]
       ParentFont = False
     end
+    object Label1: TLabel
+      Left = 40
+      Top = 288
+      Width = 622
+      Height = 37
+      Caption = 'N'#227'o '#233' poss'#237'vel alterar um Agendamento Concluido'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -27
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
     object DBGrid1: TDBGrid
       Left = 40
       Top = 401
       Width = 1009
       Height = 393
       DataSource = DataSource1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -23
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -455,7 +475,7 @@ object Form21: TForm21
           Title.Font.Height = -21
           Title.Font.Name = 'Segoe UI Semibold'
           Title.Font.Style = [fsBold]
-          Width = 192
+          Width = 311
           Visible = True
         end
         item
@@ -467,7 +487,7 @@ object Form21: TForm21
           Title.Font.Height = -21
           Title.Font.Name = 'Segoe UI Semibold'
           Title.Font.Style = [fsBold]
-          Width = 200
+          Width = 278
           Visible = True
         end
         item
@@ -479,7 +499,7 @@ object Form21: TForm21
           Title.Font.Height = -21
           Title.Font.Name = 'Segoe UI Semibold'
           Title.Font.Style = [fsBold]
-          Width = 200
+          Width = 247
           Visible = True
         end
         item
@@ -549,21 +569,12 @@ object Form21: TForm21
       TabOrder = 2
     end
     object calendario: TMonthCalendar
-      Left = 607
-      Top = 223
+      Left = 619
+      Top = 190
       Width = 267
       Height = 205
       Date = 45937.000000000000000000
       TabOrder = 3
-      OnClick = calendarioClick
-    end
-    object CLBServicos: TCheckListBox
-      Left = 1075
-      Top = 237
-      Width = 206
-      Height = 158
-      ItemHeight = 17
-      TabOrder = 4
     end
     object Barra: TPanel
       Left = -8
@@ -572,7 +583,7 @@ object Form21: TForm21
       Height = 41
       Color = 4405251
       ParentBackground = False
-      TabOrder = 5
+      TabOrder = 4
       object LbClie: TLabel
         Left = 192
         Top = 8
@@ -668,7 +679,7 @@ object Form21: TForm21
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 5
       TextHint = 'Pesquise'
     end
     object Panel1: TPanel
@@ -678,7 +689,7 @@ object Form21: TForm21
       Height = 45
       Color = clBlack
       ParentBackground = False
-      TabOrder = 7
+      TabOrder = 6
       object Image2: TImage
         Left = 8
         Top = 9
@@ -708,7 +719,7 @@ object Form21: TForm21
     end
     object BtnConf: TPanel
       Left = 1105
-      Top = 664
+      Top = 744
       Width = 496
       Height = 41
       Cursor = crHandPoint
@@ -721,15 +732,31 @@ object Form21: TForm21
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 7
       OnClick = BtnConfClick
     end
     object CLBHorarios: TCheckListBox
-      Left = 1333
-      Top = 242
+      Left = 904
+      Top = 223
       Width = 195
       Height = 153
       ItemHeight = 17
+      TabOrder = 8
+    end
+    object DBEdit3: TDBEdit
+      Left = 1105
+      Top = 664
+      Width = 496
+      Height = 38
+      DataField = 'nome_servicos'
+      DataSource = DataSource1
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 9
     end
   end
@@ -737,5 +764,12 @@ object Form21: TForm21
     DataSet = DataModule1.QueryAg
     Left = 264
     Top = 256
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 5000
+    OnTimer = Timer1Timer
+    Left = 448
+    Top = 72
   end
 end

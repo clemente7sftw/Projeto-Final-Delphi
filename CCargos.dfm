@@ -11,6 +11,7 @@ object Form14: TForm14
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poDesigned
+  OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15
@@ -23,6 +24,8 @@ object Form14: TForm14
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1918
+    ExplicitHeight = 1053
     object Image1: TImage
       Left = 0
       Top = 255
@@ -527,6 +530,7 @@ object Form14: TForm14
       Top = 485
       Width = 496
       Height = 38
+      DataField = 'nome_cargo'
       DataSource = DataSource1
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -541,6 +545,7 @@ object Form14: TForm14
       Top = 576
       Width = 496
       Height = 38
+      DataField = 'nome'
       DataSource = DataSource1
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText

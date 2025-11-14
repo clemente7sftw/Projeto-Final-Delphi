@@ -70,6 +70,7 @@ type
     procedure LbCargosClick(Sender: TObject);
     procedure LbFornecedoresClick(Sender: TObject);
     procedure btncancelarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -89,6 +90,18 @@ uses TelaPrincipalN1, UDataModule, TelaInicialN3, CClientes, CAgendamentos,
 
 
 
+procedure TForm15.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+
+  DBEdit1.DataSource := nil;
+  DBEdit2.DataSource := nil;
+  DBEdit3.DataSource := nil;
+  DBGServicos.DataSource := nil;
+  DataSource1.DataSet := nil;
+  if DataModule1.QueryServicos.Active then
+    DataModule1.QueryServicos.Close;
+end;
+
 procedure TForm15.FormCreate(Sender: TObject);
 begin
   Form15.WindowState:=wsMaximized;
@@ -101,19 +114,32 @@ end;
 
 procedure TForm15.FormShow(Sender: TObject);
 begin
-with datamodule1.queryservicos do
-begin
- Close;
-  SQL.Text :=
-  'SELECT * FROM servicos ' +
-  'WHERE id_empresa = :id_empresa ' +
-  'ORDER BY nome;';
-  DataModule1.queryservicos.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-  Open;
+  DBGServicos.DataSource := DataSource1;
+
+  with DataModule1.QueryServicos do
+  begin
+    Close;
+    SQL.Text :=
+      'SELECT * FROM servicos ' +
+      'WHERE id_empresa = :id_empresa ' +
+      'ORDER BY nome';
+
+    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+
+    Open;
+  end;
+
+  DataSource1.DataSet := DataModule1.QueryServicos;
+  DBEdit1.DataSource := DataSource1;
+  DBEdit2.DataSource := DataSource1;
+  DBEdit3.DataSource := DataSource1;
+
+  DBEdit1.DataField := 'nome';
+  DBEdit2.DataField := 'duracao';
+  DBEdit3.DataField := 'preco';
   EditsInativos;
-  DataSource1.DataSet := DataModule1.queryservicos;
 end;
-end;
+
 
 
 procedure TForm15.VoltarClick(Sender: TObject);
@@ -266,7 +292,7 @@ begin
         btncancelar.Visible := true;
         BtnExcluir.Visible := true;
         BtnEditar.Visible := true;
-
+        addclie.Visible:= true;
         EditsInativos;
         atualizar_grid;
 
@@ -281,9 +307,12 @@ procedure TForm15.Cancelar;
 begin
   atualizar_grid;
   BtnCad.Visible:= false;
+  addclie.Visible:= true;
+  btncancelar.Visible:= true;
   btncancelar.Visible:= false;
   BtnEditar.visible := true;
   BtnExcluir.visible := true;
+  btnconf.Visible:= false;
   dbedit1.DataSource := datasource1;
   dbedit2.DataSource := datasource1;
   dbedit3.DataSource := datasource1;
@@ -324,6 +353,7 @@ begin
   BtnExcluir.Visible := false;
   BtnEditar.Visible := false;
   btncancelar.Visible := true;
+  addclie.Visible:= false;
 with DataModule1.queryservicos do
 begin
    Append;
@@ -369,6 +399,7 @@ begin
   BtnExcluir.Visible:= false;
   EditsAtivos;
   BtnEditar.Visible:= false;
+  btncancelar.Visible:= true;
 end;
 
 procedure TForm15.EditsAtivos;
