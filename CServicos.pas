@@ -58,8 +58,6 @@ type
     procedure Adicionar;
     procedure atualizar_grid;
     procedure Procurar;
-    procedure dbedits_escondidos;
-    procedure dbedits_visiveis;
     procedure addclieClick(Sender: TObject);
     procedure Image3Click(Sender: TObject);
     procedure VoltarClick(Sender: TObject);
@@ -294,9 +292,10 @@ begin
         BtnEditar.Visible := true;
         addclie.Visible:= true;
         EditsInativos;
-        atualizar_grid;
+
 
     end;
+    atualizar_grid;
   end else begin
     Lblrequired.Visible:= true;
   end;
@@ -376,20 +375,6 @@ begin
   EditsInativos;
   DataSource1.DataSet := DataModule1.queryservicos;
 end;
-end;
-
-procedure TForm15.dbedits_escondidos;
-begin
-  dbedit1.Visible:= true;
-  dbedit2.Visible:= true;
-  dbedit3.Visible:= true;
-end;
-
-procedure TForm15.dbedits_visiveis;
-begin
-  Dbedit1.Visible:= false;
-  Dbedit2.Visible:= false;
-  Dbedit3.Visible:= false;
 end;
 
 procedure TForm15.Editar;

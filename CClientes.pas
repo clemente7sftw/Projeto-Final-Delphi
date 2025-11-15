@@ -200,6 +200,7 @@ begin
   EditBtn.Visible := false;
   ExclBtn.Visible := false;
   btncancelar.Visible := true;
+  addclie.Visible := false;
   with DataModule1.queryclientes do
 begin
    Append;
@@ -301,6 +302,7 @@ begin
   Lblrequired.visible:= false;
   ednome.Visible:= true;
   edemail.Visible:= true;
+  addclie.Visible := true;
 end;
 
 procedure TForm4.EdNomeKeyPress(Sender: TObject; var Key: Char);

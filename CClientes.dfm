@@ -22,6 +22,8 @@ object Form4: TForm4
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1918
+    ExplicitHeight = 1053
     object Label1: TLabel
       Left = 1105
       Top = 449
@@ -549,7 +551,7 @@ object Form4: TForm4
     end
     object BtnConf: TPanel
       Left = 1105
-      Top = 872
+      Top = 669
       Width = 496
       Height = 41
       Cursor = crHandPoint
@@ -648,7 +650,7 @@ object Form4: TForm4
     end
     object BtnCad: TPanel
       Left = 1105
-      Top = 872
+      Top = 669
       Width = 496
       Height = 41
       Cursor = crHandPoint
