@@ -256,6 +256,8 @@ begin
     ExclBtn.Visible := True;
     ednome.Visible:= true;
     edemail.Visible:= true;
+    btncancelar.Visible:= true;
+    addclie.Visible := true;
   except
   erro;
   end;

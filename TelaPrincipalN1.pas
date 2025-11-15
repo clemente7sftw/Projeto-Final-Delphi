@@ -20,10 +20,13 @@ type
     Image2: TImage;
     DataSource1: TDataSource;
     Barra: TPanel;
+    ExclBtn: TImage;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure Panel1Click(Sender: TObject);
+    procedure Excluir;
+    procedure ExclBtnClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -42,6 +45,71 @@ implementation
 
 uses N1MudarSenha, n1_agendamentos, relatorios_servicos;
 
+procedure TForm3.ExclBtnClick(Sender: TObject);
+begin
+Excluir;
+end;
+
+procedure TForm3.Excluir;
+begin
+var
+  id_agendamento: Integer;
+begin
+  if DataModule1.Query_conexao.IsEmpty then
+  begin
+//    ShowMessage('Nenhum agendamento selecionado.');
+    Exit;
+  end;
+  if Application.MessageBox(
+       'Tem certeza de que deseja excluir este Agendamento? Essa ação não poderá ser desfeita.',
+       'Exclusão de Agendamento',
+       MB_YESNO + MB_ICONQUESTION
+     ) = IDYES then
+  begin
+    id_agendamento := DataModule1.Query_conexao.FieldByName('id_agendamento').AsInteger;
+    with DataModule1.Query_Aux do
+    begin
+      Close;
+      SQL.Text := 'DELETE FROM agendamentos WHERE id_agendamento = :id_agendamento';
+      ParamByName('id_agendamento').AsInteger := id_agendamento;
+      ExecSQL;
+    end;
+  end;
+   with datamodule1.Query_conexao do
+begin
+  close;
+  SQL.Text :=
+  'SELECT ' +
+  '    a.id_agendamento, ' +
+  '    c.nome_clie, ' +
+  '    c.email_clie, ' +
+  '    STRING_AGG(s.nome, '', '')::varchar(500) AS nome_servicos, ' +
+  '    a.data_agendamento, ' +
+  '    a.hora_inicio, ' +
+  '    a.status ' +
+  'FROM ' +
+  '    agendamentos a ' +
+  'INNER JOIN ' +
+  '    clientes c ON a.id_clie = c.id_clie ' +
+  'INNER JOIN ' +
+  '    agendamento_servicos ags ON a.id_agendamento = ags.id_agendamento ' +
+  'INNER JOIN ' +
+  '    servicos s ON ags.id_servico = s.id_servico ' +
+  'GROUP BY ' +
+  '    a.id_agendamento, ' +
+  '    c.nome_clie, ' +
+  '    c.email_clie, ' +
+  '    a.data_agendamento, ' +
+  '    a.hora_inicio, ' +
+  '    a.status ' +
+  'ORDER BY ' +
+  '    a.id_agendamento;';
+open;
+end;
+end;
+
+end;
+
 procedure TForm3.FormCreate(Sender: TObject);
 begin
     Form3.WindowState:=wsMaximized;
@@ -53,24 +121,21 @@ begin
 with DataModule1.Query_conexao do
 begin
   Close;
-  SQL.Text :=
-    'SELECT a.id_agendamento, ' +
-    '       e.nome AS empresa, ' +
-    '       c.nome_clie AS cliente, ' +
-    '       p.nome AS profissional, ' +
-    '       s.nome AS servico, ' +
-    '       s.preco AS preco, ' +
-    '       a.data_agendamento, ' +
-    '       a.hora_inicio ' +
-    'FROM agendamentos a ' +
-    'JOIN empresas e ON a.id_empresa = e.id_empresa ' +
-    'JOIN clientes c ON a.id_clie = c.id_clie ' +
-    'JOIN profissionais_agendamentos pa ON pa.id_agendamento = a.id_agendamento ' +
-    'JOIN profissionais p ON pa.id_pro = p.id_pro ' +
-    'JOIN agendamento_servicos ase ON ase.id_agendamento = a.id_agendamento ' +
-    'JOIN servicos s ON ase.id_servico = s.id_servico ' +
-    'WHERE a.id_clie = :id_clie ' +
-    'ORDER BY a.data_agendamento, a.hora_inicio';
+SQL.Text :=
+  'SELECT a.id_agendamento, c.nome_clie AS cliente, ' +
+  'CAST(STRING_AGG(s.nome, '', '') AS VARCHAR(500)) AS servicos, ' +
+  'a.data_agendamento, a.hora_inicio, ' +
+  'CASE WHEN a.status = TRUE THEN ''Concluído'' ELSE ''Pendente'' END AS status ' +
+  'FROM agendamentos a ' +
+  'INNER JOIN clientes c ON a.id_clie = c.id_clie ' +
+  'INNER JOIN agendamento_servicos ags ON a.id_agendamento = ags.id_agendamento ' +
+  'INNER JOIN servicos s ON ags.id_servico = s.id_servico ' +
+  'INNER JOIN profissionais_agendamentos pa ON pa.id_agendamento = a.id_agendamento ' +
+  'INNER JOIN profissionais p ON pa.id_pro = p.id_pro ' +
+  'WHERE p.id_pro = :id_pro ' +
+  'GROUP BY a.id_agendamento, c.nome_clie, a.data_agendamento, a.hora_inicio, a.status ' +
+  'ORDER BY a.data_agendamento DESC, a.hora_inicio;';
+
   ParamByName('id_clie').AsInteger := DataModule1.id_clie;
   Open;
 end;
