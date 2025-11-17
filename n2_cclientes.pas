@@ -69,6 +69,9 @@ type
     procedure EditBtnClick(Sender: TObject);
     procedure ExclBtnClick(Sender: TObject);
     procedure btncancelarClick(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure Timer2Timer(Sender: TObject);
+    procedure Timer3Timer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -347,6 +350,24 @@ begin
   end
   else
     erro_campos;
+end;
+
+procedure TForm29.Timer1Timer(Sender: TObject);
+begin
+Lblrequired.visible:= false;
+Timer1.Enabled := false;
+end;
+
+procedure TForm29.Timer2Timer(Sender: TObject);
+begin
+LbEmail.visible:= false;
+Timer2.Enabled := false;
+end;
+
+procedure TForm29.Timer3Timer(Sender: TObject);
+begin
+LbErro_Sistema.Visible := false;
+timer3.Enabled := false;
 end;
 
 function TForm29.ValidarEmail(const Email: string): Boolean;

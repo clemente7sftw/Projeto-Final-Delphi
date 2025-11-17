@@ -841,18 +841,21 @@ object Form29: TForm29
   object Timer1: TTimer
     Enabled = False
     Interval = 5000
-    Left = 1680
-    Top = 688
+    OnTimer = Timer1Timer
+    Left = 1752
+    Top = 664
   end
   object Timer2: TTimer
     Enabled = False
     Interval = 5000
+    OnTimer = Timer2Timer
     Left = 1680
     Top = 760
   end
   object Timer3: TTimer
     Enabled = False
     Interval = 5000
+    OnTimer = Timer3Timer
     Left = 1680
     Top = 824
   end

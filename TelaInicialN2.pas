@@ -31,6 +31,7 @@ type
     procedure Panel2Click(Sender: TObject);
     procedure Panel3Click(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);
+    procedure LbagendamentosClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,7 +46,8 @@ implementation
 {$R *.dfm}
 
 uses CAdministrador, UDataModule, n2_cclientes, relatorio_clientes,
-  relatorios_servicos, relatorios_profissionais, n2_profissionais;
+  relatorios_servicos, relatorios_profissionais, n2_profissionais,
+  n2_cagendamentos;
 
 procedure TForm5.FormShow(Sender: TObject);
 begin
@@ -55,6 +57,12 @@ end;
 procedure TForm5.Image2Click(Sender: TObject);
 begin
 MudarSenha;
+end;
+
+procedure TForm5.LbagendamentosClick(Sender: TObject);
+begin
+Form32.show;
+form5.close;
 end;
 
 procedure TForm5.LbClieClick(Sender: TObject);

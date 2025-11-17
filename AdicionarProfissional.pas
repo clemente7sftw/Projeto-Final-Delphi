@@ -49,7 +49,6 @@ type
     procedure Trazer_Dias;
     procedure erro;
     procedure erro_email;
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Timer1Timer(Sender: TObject);
     procedure Timer2Timer(Sender: TObject);
   private
@@ -68,11 +67,7 @@ uses UMetodos, UDataModule, n3_horarios_profissionais;
 var
   id_cargo, id_pro: Integer;
 
-procedure TForm9.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-action:= cafree;
-form9:= nil;
-end;
+
 
 procedure TForm9.FormCreate(Sender: TObject);
 begin

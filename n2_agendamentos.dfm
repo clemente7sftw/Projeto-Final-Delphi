@@ -1,26 +1,99 @@
-object Form5: TForm5
+object Form34: TForm34
   Left = 0
   Top = 0
-  Caption = 'Tela Inicial'
+  Caption = 'Form34'
   ClientHeight = 1061
-  ClientWidth = 1920
+  ClientWidth = 1924
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15
   object Fundo: TPanel
     Left = 0
     Top = 0
-    Width = 1920
+    Width = 1924
     Height = 1061
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1920
+    object Label1: TLabel
+      Left = 846
+      Top = 335
+      Width = 59
+      Height = 25
+      Caption = 'Cliente'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 846
+      Top = 405
+      Width = 46
+      Height = 25
+      Caption = 'Email'
+      FocusControl = DBEdit2
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 848
+      Top = 475
+      Width = 48
+      Height = 25
+      Caption = 'Pre'#231'o'
+      FocusControl = DBEdit3
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Lblrequired: TLabel
+      Left = 1158
+      Top = 847
+      Width = 233
+      Height = 25
+      Caption = 'Preencha todos os campos!'
+      Color = clDarkred
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -19
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 1158
+      Top = 847
+      Width = 233
+      Height = 25
+      Caption = 'Preencha todos os campos!'
+      Color = clDarkred
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -19
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
     object Image4: TImage
       Left = 40
       Top = 48
@@ -183,48 +256,6 @@ object Form5: TForm5
         6964790293EDF33A7210119EE06924EBA9452E593908B964E520FC3F38D0FFC6
         4BDD1DC70000000049454E44AE426082}
     end
-    object Image2: TImage
-      Left = 1736
-      Top = 318
-      Width = 41
-      Height = 41
-      Cursor = crHandPoint
-      Picture.Data = {
-        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000270000
-        002808060000007DF5E3E0000000097048597300000B1300000B1301009A9C18
-        000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000001
-        ED4944415478DAEDD8E17582301007F07382EA067483BA816E6037C009AA13A8
-        13B49DA03841DB09D409B41BD009CA06ED5D93681E1E21810B7EE1FFDE3D4B85
-        BC1F1013C2002E5961A5580984658FB5D19FA219E8CF23D643CBB696582FD2B8
-        05D6B3507B29D656122771D5A20009F7DBF0D813A8FE3964BE9B82401F6C83CB
-        B05EB1760CB0D0C0D32D7173505D220A50024799686039AD8052384A8AF5C6EC
-        976B607E4B9C38501AE70256ED1F05B7D75783CB1AD4746887FADFA82B1CC535
-        6571C004EBBB2B5C687A5C8FEB7135389A939FB066A0869B0F508F5C45D7B891
-        06D8D81D5C2F0D72AC7197389A1DB2D2153B42F59A65D3158E1BAC698A4B1DC7
-        74725B6965B666FE9F007F4BCF898DE360B44D57B1A8019E62E23898B995F4F0
-        39AD01CE63E15CB0F3957100696DB28881E3602BE0FB1D8D698FFA6F033C9893
-        90C6FD9FB127CC2483CB43280173F385246E0BD743431D8C039E2385B36F4F28
-        8C62F73F515C8E352E35DC1A26852B4F4B2130EEC4C470D4F8BDB54D4F16EF01
-        C73A978B84FB01FE658C4F3E35C8C4F78D552DCCE0686C9934C4D913FA509FA8
-        08CCE026C0BFE7F089FDAACBA71D6F98C151D670BDC6F489FDF058D74610CCC6
-        511250A3FB9DE7B1845A5ADBF4439839F61D87C0CAB8B6A9FA31EC410D374130
-        69DC4EE36850FDD228AAA269837F1003A7D62D6332740000000049454E44AE42
-        6082}
-      OnClick = Image2Click
-    end
-    object Label2: TLabel
-      Left = 1648
-      Top = 282
-      Width = 212
-      Height = 30
-      Caption = 'Cadastrar Nova Senha'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -21
-      Font.Name = 'Segoe UI Semibold'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
     object BS: TImage
       Left = 151
       Top = 80
@@ -353,18 +384,215 @@ object Form5: TForm5
         EFA02BE42F9847714961C06B8BFF03BF399A099C7508780000000049454E44AE
         426082}
     end
-    object Label3: TLabel
-      Left = 948
-      Top = 223
-      Width = 98
-      Height = 30
-      Caption = 'Relat'#243'rios'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -21
+    object DBGrid1: TDBGrid
+      Left = 40
+      Top = 361
+      Width = 657
+      Height = 200
+      DataSource = DataSource1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
       Font.Name = 'Segoe UI'
+      Font.Style = []
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      ParentFont = False
+      TabOrder = 0
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -12
+      TitleFont.Name = 'Segoe UI'
+      TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'nome_clie'
+          Title.Caption = 'Cliente'
+          Title.Font.Charset = ANSI_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -21
+          Title.Font.Name = 'Segoe UI Semibold'
+          Title.Font.Style = [fsBold]
+          Width = 179
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'email_clie'
+          Title.Caption = 'Email'
+          Title.Font.Charset = ANSI_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -19
+          Title.Font.Name = 'Segoe UI Semibold'
+          Title.Font.Style = [fsBold]
+          Width = 104
+          Visible = True
+        end>
+    end
+    object DBEdit2: TDBEdit
+      Left = 848
+      Top = 436
+      Width = 281
+      Height = 33
+      DataSource = DataSource1
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+    end
+    object Panel2: TPanel
+      Left = 1158
+      Top = 878
+      Width = 315
+      Height = 35
+      Caption = 'Marcar Hor'#225'rio'
+      Color = 8543977
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -19
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 2
+      OnClick = Panel2Click
+    end
+    object CLBServicos: TCheckListBox
+      Left = 848
+      Top = 567
+      Width = 281
+      Height = 170
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ItemHeight = 25
+      ParentFont = False
+      TabOrder = 3
+      OnClickCheck = CLBServicosClickCheck
+    end
+    object MonthCalendar1: TMonthCalendar
+      Left = 16
+      Top = 567
+      Width = 498
+      Height = 308
+      Date = 45936.000000000000000000
+      TabOrder = 4
+      OnClick = MonthCalendar1Click
+    end
+    object DBEdit3: TDBEdit
+      Left = 846
+      Top = 506
+      Width = 281
+      Height = 33
+      DataField = 'preco'
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 5
+    end
+    object CheckListBoxProfissionais: TCheckListBox
+      Left = 846
+      Top = 762
+      Width = 283
+      Height = 151
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ItemHeight = 25
+      ParentFont = False
+      TabOrder = 6
+      OnClick = CheckListBoxProfissionaisClick
+    end
+    object DBEdit1: TDBEdit
+      Left = 848
+      Top = 366
+      Width = 281
+      Height = 33
+      DataSource = DataSource1
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 7
+    end
+    object EdPesquisa: TEdit
+      Left = 40
+      Top = 269
+      Width = 321
+      Height = 45
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -27
+      Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
+      TabOrder = 8
+      TextHint = 'Pesquise'
+    end
+    object Panel3: TPanel
+      Left = 320
+      Top = 269
+      Width = 41
+      Height = 45
+      Color = clBlack
+      ParentBackground = False
+      TabOrder = 9
+      object Image2: TImage
+        Left = 8
+        Top = 9
+        Width = 32
+        Height = 36
+        Picture.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D494844520000001F0000
+          0021080600000021DE70E4000000097048597300000B1300000B1301009A9C18
+          000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000001
+          E24944415478DAED57815583400C0D1BE806ED04B61BD009D409A413B49DA074
+          833A813881DD4036284E204E201BE0CF23D8E3B83B38FAD03E9F792F8F72BDE4
+          27B95C1202FA450AFEC15D5496E5151E33F02D987F4FC019F80D9C0641908F02
+          0EE02D1E6B01B55102DEF91A610507287BF7221EF7A102BC840187B3C005F895
+          AAF0AA940993FC171AC42318F07C0EF8BB069C5215D6D4606404DE6A2AE6D89B
+          5107B5C0E58C63658941639712C8CC2452755E70122E8680AB5E2750B2EC1342
+          C88562404D0B3D524E7028E0103E294B539F0C863C83877DBDD7C11938F2F5DA
+          E27D01F96B1F70D5F27B9F6B23F27CE69FCAD2043A3EFA82ABE7DD796616037A
+          EBB828F0239D2A1A57AB640078A9BC3AEFBB0ECE600FF2FA08C1B52770486724
+          5C44A7ABC6B59AAF5AE101AEDE16EFABC6D9CA675657AA3D146C0678CDD4796C
+          A60A1753B356C750B2EB00E63CE10E3891A51C32D32E834DE0ECF5919A8D853D
+          68F56BD9BBA276BFEF1531DF969A52BBA5DA868C0D0CD87B83771860A34258DD
+          EFECEDCE314AC2CA215D917B8CE288D47DE0A8EDB596699F01F28EAA027423CB
+          395503E441CD05436FE7682C4CC56694D1D970ED8C068C36B71B66835C0CF88E
+          D2A81F0D06031A556FF42F16AD6865009FFF18B81201FEDAD9A9E77EF9DF6A7F
+          12FC0B1293E6224739C13B0000000049454E44AE426082}
+      end
+    end
+    object CLBHorarios: TCheckListBox
+      Left = 1158
+      Top = 567
+      Width = 211
+      Height = 170
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ItemHeight = 25
+      ParentFont = False
+      TabOrder = 10
+      OnClick = CLBHorariosClick
     end
     object Barra: TPanel
       Left = -8
@@ -373,7 +601,7 @@ object Form5: TForm5
       Height = 41
       Color = 8543977
       ParentBackground = False
-      TabOrder = 0
+      TabOrder = 11
       object LbClie: TLabel
         Left = 964
         Top = 8
@@ -387,7 +615,6 @@ object Form5: TForm5
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
-        OnClick = LbClieClick
       end
       object LbProfissionais: TLabel
         Left = 580
@@ -402,7 +629,6 @@ object Form5: TForm5
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
-        OnClick = LbProfissionaisClick
       end
       object Lbagendamentos: TLabel
         Left = 1256
@@ -417,79 +643,22 @@ object Form5: TForm5
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
-        OnClick = LbagendamentosClick
       end
     end
-    object Panel1: TPanel
-      Left = 720
-      Top = 269
-      Width = 113
-      Height = 28
-      Cursor = crHandPoint
-      Caption = 'Clientes'
-      Color = 8543977
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWhite
-      Font.Height = -12
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentBackground = False
-      ParentFont = False
-      TabOrder = 1
-      OnClick = Panel1Click
-    end
-    object Panel2: TPanel
-      Left = 847
-      Top = 269
-      Width = 113
-      Height = 28
-      Cursor = crHandPoint
-      Caption = 'Servi'#231'os'
-      Color = 8543977
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWhite
-      Font.Height = -12
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentBackground = False
-      ParentFont = False
-      TabOrder = 2
-      OnClick = Panel2Click
-    end
-    object Panel3: TPanel
-      Left = 976
-      Top = 269
-      Width = 113
-      Height = 28
-      Cursor = crHandPoint
-      Caption = 'Profissionais'
-      Color = 8543977
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWhite
-      Font.Height = -12
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentBackground = False
-      ParentFont = False
-      TabOrder = 3
-      OnClick = Panel3Click
-    end
-    object Panel4: TPanel
-      Left = 1105
-      Top = 269
-      Width = 113
-      Height = 28
-      Cursor = crHandPoint
-      Caption = 'Outro relatorio'
-      Color = 8543977
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWhite
-      Font.Height = -12
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentBackground = False
-      ParentFont = False
-      TabOrder = 4
-    end
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 5000
+    OnTimer = Timer1Timer
+    Left = 1632
+    Top = 640
+  end
+  object DataSource1: TDataSource
+    Left = 600
+    Top = 96
+  end
+  object DataSource2: TDataSource
+    Left = 704
+    Top = 88
   end
 end

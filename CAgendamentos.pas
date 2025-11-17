@@ -38,9 +38,10 @@ type
     Image1: TImage;
     LbPro: TLabel;
     CLBHorarios: TCheckListBox;
-    Label1: TLabel;
     Timer1: TTimer;
     DBEdit3: TDBEdit;
+    Label2: TLabel;
+    Label8: TLabel;
     procedure BtnAddClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -51,7 +52,8 @@ type
     procedure Confirmar;
     procedure editsativos;
     procedure editsinativos;
-    procedure erro;
+    procedure erro_horario;
+    procedure cancelar;
     procedure BtnExcluirClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);
     procedure BtnConfClick(Sender: TObject);
@@ -69,6 +71,7 @@ type
     procedure btncancelarClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
   private
+
     { Private declarations }
   public
     { Public declarations }
@@ -85,7 +88,7 @@ implementation
 {$R *.dfm}
 
 uses UDataModule, Agendamentos, TelaInicialN3, CClientes, CProfissionais,
-  CServicos, CCargos, CFornecedores;
+  CServicos, CCargos, CFornecedores, n2_agendamentos;
 
 procedure TForm21.addbtnClick(Sender: TObject);
 begin
@@ -161,10 +164,7 @@ end;
 
 procedure TForm21.btncancelarClick(Sender: TObject);
 begin
-calendario.Visible:= false;
-btnconf.Visible := false;
-editsinativos;
-CLBHorarios.Visible := false;
+cancelar;
 end;
 
 procedure TForm21.BtnEditarClick(Sender: TObject);
@@ -190,9 +190,16 @@ begin
   AtualizarStatus;
 end;
 
-
-
-
+procedure TForm21.cancelar;
+begin
+editsinativos;
+BtnConf.Visible:= false;
+CLBHorarios.Visible:= false;
+calendario.Visible:= false;
+addbtn.Visible := true;
+exclbtn.Visible:= true;
+editbtn.Visible:= true;
+end;
 
 procedure TForm21.Confirmar;
 var
@@ -206,7 +213,7 @@ begin
 
   if CLBHorarios.ItemIndex = -1 then
   begin
-    ShowMessage('Selecione um horário antes de confirmar.');
+    erro_horario;
     Exit;
   end;
 
@@ -219,10 +226,13 @@ begin
     FieldByName('hora_inicio').AsDateTime := hora_inicio;
     Post;
   end;
-  btnconf.Visible := False;
-  calendario.Visible := False;
-  CLBHorarios.Visible := false;
-  AtualizarStatus;
+    btnconf.Visible := False;
+    calendario.Visible := False;
+    CLBHorarios.Visible := false;
+    addbtn.Visible := true;
+    exclbtn.Visible:= true;
+    editbtn.Visible:= true;
+    AtualizarStatus;
 end;
 
 procedure TForm21.Editar;
@@ -232,6 +242,9 @@ begin
   btnconf.Visible := True;
   calendario.Visible := True;
   CLBHorarios.Visible:= true;
+  addbtn.Visible := false;
+  exclbtn.Visible:= false;
+  editbtn.Visible:= false;
 
   dataselecionada := DataModule1.QueryAg.FieldByName('data_agendamento').AsDateTime;
   Calendario.Date := dataselecionada;
@@ -275,9 +288,10 @@ dbedit1.Enabled := false;
 dbedit2.Enabled := false;
 end;
 
-procedure TForm21.erro;
+
+procedure TForm21.erro_horario;
 begin
-Label1.visible:= true;
+Label8.visible:= true;
 Timer1.Enabled := true;
 end;
 
@@ -386,7 +400,7 @@ open;
 end;
   btnconf.Visible:= false;
   CLBHorarios.Visible := false;
-  label1.Visible:= false;
+  label8.Visible:= false;
   editsinativos;
 
 end;
@@ -424,7 +438,7 @@ end;
 
 procedure TForm21.Timer1Timer(Sender: TObject);
 begin
-label1.Visible:= false;
+label8.Visible:= false;
 Timer1.Enabled := false;
 end;
 
@@ -477,7 +491,7 @@ begin
       calendario.Visible := false;
       editsinativos;
       btnconf.Visible := false;
-      erro;
+
     end;
   end;
 end;

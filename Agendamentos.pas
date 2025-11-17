@@ -38,12 +38,16 @@ type
     Image2: TImage;
     DataSource2: TDataSource;
     CLBHorarios: TCheckListBox;
+    Label4: TLabel;
+    Timer1: TTimer;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Trazerservicos(DiaSemana:Integer; DataSelecionada:Tdate);
     procedure TrazerProfissionaisPorServico(id_servico: Integer);
     procedure TrazerHorariosDisponiveis(id_pro: Integer; DataSelecionada: TDatetime);
     procedure Cadastrar;
+    procedure erro;
+    procedure erro_servicos;
     procedure Panel2Click(Sender: TObject);
     function buscarpreco(id_servico: Integer): Currency;
     procedure CLBServicosClickCheck(Sender: TObject);
@@ -52,6 +56,7 @@ type
     procedure atualizar_grid;
     procedure CheckListBoxProfissionaisClick(Sender: TObject);
     procedure CLBHorariosClick(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -81,6 +86,7 @@ begin
     datasource1.DataSet := datamodule1.queryclientes;
     dbedit1.DataField := 'nome_clie';
     dbedit2.DataField := 'email_clie';
+
   end;
   EdPesquisa.Clear;
   DBEdit1.Clear;
@@ -89,6 +95,7 @@ begin
   CLBServicos.Clear;
   CheckListBoxProfissionais.Clear;
   CLBHorarios.Clear;
+  Label4.Visible := False;
   for i := 0 to CLBServicos.Count - 1 do
     CLBServicos.Checked[i] := False;
 
@@ -98,6 +105,7 @@ begin
   for i := 0 to CLBHorarios.Count - 1 do
     CLBHorarios.Checked[i] := False;
   Lblrequired.Visible := False;
+
 end;
 
 
@@ -144,6 +152,13 @@ end;
 procedure TForm13.Panel2Click(Sender: TObject);
 begin
   Cadastrar;
+end;
+
+
+procedure TForm13.Timer1Timer(Sender: TObject);
+begin
+Label4.visible:= false;
+Timer1.Enabled := false;
 end;
 
 
@@ -312,6 +327,19 @@ begin
   dataselecionada := MonthCalendar1.Date;
   id_clie := DataModule1.Queryclientes.FieldByName('id_clie').AsInteger;
 
+  if CLBHorarios.ItemIndex = -1 then
+  begin
+    erro;
+    Exit;
+  end;
+
+  if CLBServicos.SelCount = 0 then
+  begin
+    erro;
+    Exit;
+  end;
+
+
   hora_inicio := StrToTime(CLBHorarios.Items[CLBHorarios.ItemIndex]);
 
   with DataModule1.Query_conexao do
@@ -371,6 +399,7 @@ begin
       Break;
     end;
   end;
+
   atualizar_grid;
   Form21.Show;
   Form13.Close;
@@ -433,5 +462,17 @@ begin
 
 end;
 
+
+procedure TForm13.erro;
+begin
+  Timer1.Enabled := true;
+  Label4.visible := true;
+end;
+
+procedure TForm13.erro_servicos;
+begin
+  Timer1.Enabled := true;
+  Label4.visible := true;
+end;
 
 end.

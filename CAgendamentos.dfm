@@ -3,7 +3,7 @@ object Form21: TForm21
   Top = 0
   Caption = 'Form21'
   ClientHeight = 1061
-  ClientWidth = 1920
+  ClientWidth = 1919
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,14 +17,13 @@ object Form21: TForm21
   object Fundo: TPanel
     Left = 0
     Top = 0
-    Width = 1920
+    Width = 1919
     Height = 1061
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1918
-    ExplicitHeight = 1053
+    ExplicitWidth = 1920
     object ExclBtn: TImage
       Left = 923
       Top = 362
@@ -434,15 +433,28 @@ object Form21: TForm21
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object Label1: TLabel
+    object Label2: TLabel
+      Left = 1105
+      Top = 620
+      Width = 70
+      Height = 30
+      Caption = 'Servi'#231'o'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label8: TLabel
       Left = 40
-      Top = 288
-      Width = 622
-      Height = 37
-      Caption = 'N'#227'o '#233' poss'#237'vel alterar um Agendamento Concluido'
+      Top = 844
+      Width = 391
+      Height = 30
+      Caption = 'Selecione um hor'#225'rio antes de confirmar.'
       Font.Charset = ANSI_CHARSET
       Font.Color = clMaroon
-      Font.Height = -27
+      Font.Height = -21
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
@@ -555,7 +567,7 @@ object Form21: TForm21
     end
     object DBEdit2: TDBEdit
       Left = 1105
-      Top = 592
+      Top = 576
       Width = 496
       Height = 38
       DataField = 'email_clie'
@@ -569,11 +581,17 @@ object Form21: TForm21
       TabOrder = 2
     end
     object calendario: TMonthCalendar
-      Left = 619
-      Top = 190
+      Left = 1087
+      Top = 700
       Width = 267
       Height = 205
       Date = 45937.000000000000000000
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 3
     end
     object Barra: TPanel
@@ -719,7 +737,7 @@ object Form21: TForm21
     end
     object BtnConf: TPanel
       Left = 1105
-      Top = 744
+      Top = 944
       Width = 496
       Height = 41
       Cursor = crHandPoint
@@ -736,16 +754,22 @@ object Form21: TForm21
       OnClick = BtnConfClick
     end
     object CLBHorarios: TCheckListBox
-      Left = 904
-      Top = 223
-      Width = 195
-      Height = 153
-      ItemHeight = 17
+      Left = 1360
+      Top = 724
+      Width = 241
+      Height = 165
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ItemHeight = 25
+      ParentFont = False
       TabOrder = 8
     end
     object DBEdit3: TDBEdit
       Left = 1105
-      Top = 664
+      Top = 656
       Width = 496
       Height = 38
       DataField = 'nome_servicos'
