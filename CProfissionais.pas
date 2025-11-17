@@ -208,6 +208,8 @@ begin
   DBEdit4.Visible := true;
   DBEdit5.Visible := true;
   DBEdit6.Visible := true;
+  btnconf.Visible:= false;
+
 
 end;
 

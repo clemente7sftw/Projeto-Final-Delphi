@@ -23,8 +23,6 @@ object Form15: TForm15
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1919
-    ExplicitHeight = 1053
     object lbaviso: TLabel
       Left = 40
       Top = 869
@@ -423,12 +421,18 @@ object Form15: TForm15
     end
     object Lblrequired: TLabel
       Left = 1105
-      Top = 795
-      Width = 145
-      Height = 15
+      Top = 777
+      Width = 233
+      Height = 25
       Caption = 'Preencha todos os campos!'
       Color = clDarkred
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -19
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
     object Voltar: TImage
       Left = 0
@@ -484,7 +488,13 @@ object Form15: TForm15
       Width = 913
       Height = 448
       DataSource = DataSource1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      ParentFont = False
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -573,15 +583,6 @@ object Form15: TForm15
       ParentFont = False
       TabOrder = 3
     end
-    object StatusBar1: TStatusBar
-      Left = 1
-      Top = 1041
-      Width = 1919
-      Height = 19
-      Panels = <>
-      ExplicitTop = 1033
-      ExplicitWidth = 1917
-    end
     object Barra: TPanel
       Left = -18
       Top = 176
@@ -589,7 +590,7 @@ object Form15: TForm15
       Height = 41
       Color = 4405251
       ParentBackground = False
-      TabOrder = 5
+      TabOrder = 4
       object LbClie: TLabel
         Left = 192
         Top = 8
@@ -685,7 +686,7 @@ object Form15: TForm15
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 5
       TextHint = 'Pesquise'
     end
     object Panel1: TPanel
@@ -695,7 +696,7 @@ object Form15: TForm15
       Height = 45
       Color = clBlack
       ParentBackground = False
-      TabOrder = 7
+      TabOrder = 6
       object Image2: TImage
         Left = 8
         Top = 9
@@ -724,8 +725,8 @@ object Form15: TForm15
       end
     end
     object BtnConf: TPanel
-      Left = 1248
-      Top = 671
+      Left = 1105
+      Top = 809
       Width = 496
       Height = 41
       Caption = 'Confirmar'
@@ -737,12 +738,12 @@ object Form15: TForm15
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 7
       OnClick = BtnConfClick
     end
     object BtnCad: TPanel
-      Left = 1280
-      Top = 670
+      Left = 1104
+      Top = 808
       Width = 496
       Height = 41
       Cursor = crHandPoint
@@ -755,12 +756,19 @@ object Form15: TForm15
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 8
       OnClick = BtnCadClick
     end
   end
   object DataSource1: TDataSource
     Left = 376
     Top = 248
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 5000
+    OnTimer = Timer1Timer
+    Left = 1664
+    Top = 608
   end
 end

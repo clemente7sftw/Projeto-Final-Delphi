@@ -22,8 +22,6 @@ object Form30: TForm30
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1922
-    ExplicitHeight = 1053
     object Image4: TImage
       Left = 32
       Top = 48
@@ -353,7 +351,7 @@ object Form30: TForm30
       Columns = <
         item
           Expanded = False
-          FieldName = 'cliente'
+          FieldName = 'nome_clie'
           Title.Caption = 'Cliente'
           Title.Font.Charset = ANSI_CHARSET
           Title.Font.Color = clWindowText
@@ -365,7 +363,7 @@ object Form30: TForm30
         end
         item
           Expanded = False
-          FieldName = 'servicos'
+          FieldName = 'nome_servicos'
           Title.Caption = 'Servi'#231'o'
           Title.Font.Charset = ANSI_CHARSET
           Title.Font.Color = clWindowText
@@ -437,6 +435,7 @@ object Form30: TForm30
     end
   end
   object DataSource1: TDataSource
+    DataSet = DataModule1.Queryag_pro
     Left = 544
     Top = 240
   end

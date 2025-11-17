@@ -40,15 +40,18 @@ type
     LbErroExcl: TLabel;
     Timer1: TTimer;
     btncancelar: TImage;
+    Timer2: TTimer;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure EditsAtivos;
     procedure EditsInativos;
     procedure Excluir;
+    procedure Cancelar;
     procedure Editar;
     procedure Adicionar;
     procedure Salvar;
     procedure ErroExclusao;
+    procedure erro;
     procedure TrazerServicos;
     procedure atualizar_grid;
     procedure FormShow(Sender: TObject);
@@ -66,6 +69,8 @@ type
     procedure LbFornecedoresClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Timer2Timer(Sender: TObject);
+    procedure btncancelarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -126,6 +131,11 @@ begin
   Adicionar;
 end;
 
+procedure TForm14.btncancelarClick(Sender: TObject);
+begin
+cancelar;
+end;
+
 procedure TForm14.BtnConfClick(Sender: TObject);
 begin
   Salvar;
@@ -142,6 +152,18 @@ begin
 end;
 
 
+procedure TForm14.Cancelar;
+begin
+addclie.Visible := true;
+btneditar.Visible := true;
+btnexcluir.Visible := true;
+editsinativos;
+btnconf.Visible := false;
+clbservicos.Visible := false;
+dbedit2.Visible := true;
+btncancelar.Visible := false;
+end;
+
 procedure TForm14.Editar;
 begin
   dbedit2.Visible:= false;
@@ -151,8 +173,9 @@ begin
   EditsAtivos;
   BtnEditar.Visible:= false;
   addclie.Visible:= false;
-    dbedit1.DataSource := datasource1;
+  dbedit1.DataSource := datasource1;
   dbedit1.DataField := 'nome_cargo';
+  btncancelar.Visible := true;
 end;
 
 procedure TForm14.EditBtnClick(Sender: TObject);
@@ -170,6 +193,12 @@ procedure TForm14.EditsInativos;
 begin
   DBEdit1.Enabled := false;
   DBEdit2.Enabled := false;
+end;
+
+procedure TForm14.erro;
+begin
+  Lblrequired.Visible := True;
+  Timer2.Enabled := True;
 end;
 
 procedure TForm14.ErroExclusao;
@@ -243,6 +272,7 @@ begin
   dbedit2.DataSource := datasource1;
   dbedit1.DataField:= 'nome_cargo';
   dbedit2.DataField:= 'nome';
+  btncancelar.Visible := false;
 
 
 end;
@@ -283,41 +313,51 @@ procedure TForm14.Salvar;
 var
   id_ser, id_cargo, i: Integer;
 begin
-  if dbEdit1.Text <> ''  then
+
+  if Trim(DBEdit1.Text) = '' then
   begin
-    id_cargo := DataModule1.querycargos.FieldByName('id_cargo').AsInteger;
-  with datamodule1.querycargos do
+    erro;
+    Exit;
+  end;
+
+  id_cargo := DataModule1.querycargos.FieldByName('id_cargo').AsInteger;
+
+  with DataModule1.querycargos do
   begin
     Edit;
-    FieldByName('nome_cargo').AsString := dbEdit1.Text;
+    FieldByName('nome_cargo').AsString := DBEdit1.Text;
     Post;
   end;
-  end;
+
   with DataModule1.query_conexao do
   begin
-  Close;
-  SQL.Text := 'DELETE FROM cargos_servicos  WHERE id_cargo = :id_cargo';
-  ParamByName('id_cargo').AsInteger := id_cargo;
-  ExecSQL;
+    Close;
+    SQL.Text := 'DELETE FROM cargos_servicos  WHERE id_cargo = :id_cargo';
+    ParamByName('id_cargo').AsInteger := id_cargo;
+    ExecSQL;
   end;
 
-for i := 0 to CLBServicos.Count - 1 do
-begin
-  if CLBServicos.Checked[i] then
+  for i := 0 to CLBServicos.Count - 1 do
   begin
-    id_ser := Integer(CLBServicos.Items.Objects[i]);
-
-    with DataModule1.query_conexao do
+    if CLBServicos.Checked[i] then
     begin
-      Close;
-      SQL.Text := 'INSERT INTO cargos_servicos (id_cargo, id_servico, id_empresa) VALUES (:id_cargo, :id_servico, :id_empresa)';
-      ParamByName('id_cargo').AsInteger := id_cargo;
-      ParamByName('id_servico').AsInteger := id_ser;
-      DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-      ExecSQL;
+      id_ser := Integer(CLBServicos.Items.Objects[i]);
+
+      with DataModule1.query_conexao do
+      begin
+        Close;
+        SQL.Text :=
+          'INSERT INTO cargos_servicos (id_cargo, id_servico, id_empresa) ' +
+          'VALUES (:id_cargo, :id_servico, :id_empresa)';
+        ParamByName('id_cargo').AsInteger := id_cargo;
+        ParamByName('id_servico').AsInteger := id_ser;
+        DataModule1.Query_conexao.ParamByName('id_empresa').AsInteger :=
+          DataModule1.id_empresa;
+        ExecSQL;
+      end;
     end;
   end;
-end;
+
   atualizar_grid;
   DBGrid1.Enabled := True;
   BtnConf.Visible := False;
@@ -328,14 +368,18 @@ end;
   addclie.Visible := True;
   DBEdit2.Visible := True;
   editsinativos;
-
 end;
-
 
 procedure TForm14.Timer1Timer(Sender: TObject);
 begin
   LbErroExcl.Visible := False;
   Timer1.Enabled := False;
+end;
+
+procedure TForm14.Timer2Timer(Sender: TObject);
+begin
+  Lblrequired.Visible := False;
+  Timer2.Enabled := False;
 end;
 
 procedure TForm14.TrazerServicos;

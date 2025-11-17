@@ -15,7 +15,6 @@ type
     DBEdit2: TDBEdit;
     DBEdit3: TDBEdit;
     DBEdit1: TDBEdit;
-    StatusBar1: TStatusBar;
     lbaviso: TLabel;
     Image4: TImage;
     BS: TImage;
@@ -41,6 +40,7 @@ type
     BtnCad: TPanel;
     Voltar: TImage;
     btncancelar: TImage;
+    Timer1: TTimer;
     procedure Excluir;
     procedure FormCreate(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
@@ -69,6 +69,8 @@ type
     procedure LbFornecedoresClick(Sender: TObject);
     procedure btncancelarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure erro;
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -297,7 +299,7 @@ begin
     end;
     atualizar_grid;
   end else begin
-    Lblrequired.Visible:= true;
+    erro;
   end;
 end;
 end;
@@ -344,6 +346,12 @@ begin
   end;
 end;
 
+
+procedure TForm15.Timer1Timer(Sender: TObject);
+begin
+Lblrequired.visible:= false;
+Timer1.Enabled := false;
+end;
 
 procedure TForm15.Adicionar;
 begin
@@ -402,6 +410,10 @@ begin
   DBEdit3.Enabled := false;
 end;
 
-
+procedure TForm15.erro;
+begin
+Lblrequired.visible:= true;
+Timer1.Enabled := true;
+end;
 
 end.

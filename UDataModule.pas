@@ -86,7 +86,17 @@ type
     QueryAdmdata_cad: TSQLTimeStampField;
     query_aux: TFDQuery;
     QueryHorarios: TFDQuery;
+    Queryag_pro: TFDQuery;
+    Queryag_proid_agendamento: TIntegerField;
+    Queryag_pronome_clie: TWideStringField;
+    Queryag_proemail_clie: TWideStringField;
+    Queryag_pronome_servicos: TWideStringField;
+    Queryag_prodata_agendamento: TDateField;
+    Queryag_prohora_inicio: TTimeField;
+    Queryag_prostatus: TBooleanField;
     procedure QueryAgstatusGetText(Sender: TField; var Text: string;
+      DisplayText: Boolean);
+    procedure Queryag_prostatusGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
   private
     { Private declarations }
@@ -112,6 +122,17 @@ implementation
 
 procedure TDataModule1.QueryAgstatusGetText(Sender: TField; var Text: string;
   DisplayText: Boolean);
+begin
+begin
+  if Sender.AsBoolean then
+    Text := 'Concluído'
+  else
+    Text := 'Pendente';
+end;
+end;
+
+procedure TDataModule1.Queryag_prostatusGetText(Sender: TField;
+  var Text: string; DisplayText: Boolean);
 begin
 begin
   if Sender.AsBoolean then

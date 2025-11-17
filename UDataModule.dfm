@@ -8,6 +8,7 @@ object DataModule1: TDataModule1
       'Password=root'
       'Server=localhost'
       'DriverID=PG')
+    Connected = True
     Left = 160
     Top = 16
   end
@@ -219,8 +220,8 @@ object DataModule1: TDataModule1
       'ORDER BY'
       '    a.id_agendamento;'
       '')
-    Left = 278
-    Top = 413
+    Left = 310
+    Top = 381
     object QueryAgid_agendamento: TIntegerField
       FieldName = 'id_agendamento'
       Origin = 'id_agendamento'
@@ -474,5 +475,78 @@ object DataModule1: TDataModule1
     Connection = conexao_banco
     Left = 120
     Top = 240
+  end
+  object Queryag_pro: TFDQuery
+    Connection = conexao_banco
+    SQL.Strings = (
+      '                  SELECT '
+      ''
+      '    a.id_agendamento,'
+      '    c.nome_clie,'
+      '    c.email_clie,'
+      '    STRING_AGG(s.nome, '#39', '#39')::varchar(500) AS nome_servicos,'
+      '    a.data_agendamento,'
+      '    a.hora_inicio,'
+      '    a.status'
+      'FROM '
+      '    agendamentos a'
+      'INNER JOIN '
+      '    clientes c ON a.id_clie = c.id_clie'
+      'INNER JOIN'
+      
+        '    agendamento_servicos ags ON a.id_agendamento = ags.id_agenda' +
+        'mento'
+      'INNER JOIN'
+      '    servicos s ON ags.id_servico = s.id_servico'
+      'GROUP BY'
+      '    a.id_agendamento,'
+      '    c.nome_clie,'
+      '    c.email_clie,'
+      '    a.data_agendamento,'
+      '    a.hora_inicio,'
+      '    a.status'
+      'ORDER BY'
+      '    a.id_agendamento;'
+      '')
+    Left = 248
+    Top = 272
+    object Queryag_proid_agendamento: TIntegerField
+      FieldName = 'id_agendamento'
+      Origin = 'id_agendamento'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Queryag_pronome_clie: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome_clie'
+      Origin = 'nome_clie'
+      Size = 150
+    end
+    object Queryag_proemail_clie: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'email_clie'
+      Origin = 'email_clie'
+      Size = 100
+    end
+    object Queryag_pronome_servicos: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome_servicos'
+      Origin = 'nome_servicos'
+      ReadOnly = True
+      Size = 500
+    end
+    object Queryag_prodata_agendamento: TDateField
+      FieldName = 'data_agendamento'
+      Origin = 'data_agendamento'
+    end
+    object Queryag_prohora_inicio: TTimeField
+      FieldName = 'hora_inicio'
+      Origin = 'hora_inicio'
+      ProviderFlags = [pfInUpdate]
+    end
+    object Queryag_prostatus: TBooleanField
+      FieldName = 'status'
+      Origin = 'status'
+      OnGetText = Queryag_prostatusGetText
+    end
   end
 end

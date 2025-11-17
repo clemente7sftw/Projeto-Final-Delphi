@@ -24,8 +24,6 @@ object Form14: TForm14
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1918
-    ExplicitHeight = 1053
     object Image1: TImage
       Left = 0
       Top = 255
@@ -468,10 +466,11 @@ object Form14: TForm14
         E98F38D3009E6B595A9BCFBA92412D14F752570255C29DA42E1E570C454159DA
         9B7F934206E5F17456D33FBC0BAC09D80B539776210A1239D50000000049454E
         44AE426082}
+      OnClick = btncancelarClick
     end
     object BtnConf: TPanel
-      Left = 1224
-      Top = 529
+      Left = 1105
+      Top = 864
       Width = 496
       Height = 41
       Caption = 'Confirmar'
@@ -492,7 +491,13 @@ object Form14: TForm14
       Width = 913
       Height = 512
       DataSource = DataSource1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      ParentFont = False
       TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -701,7 +706,13 @@ object Form14: TForm14
       Top = 576
       Width = 496
       Height = 134
-      ItemHeight = 17
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ItemHeight = 25
+      ParentFont = False
       TabOrder = 7
     end
   end
@@ -715,5 +726,12 @@ object Form14: TForm14
     OnTimer = Timer1Timer
     Left = 688
     Top = 104
+  end
+  object Timer2: TTimer
+    Enabled = False
+    Interval = 5000
+    OnTimer = Timer2Timer
+    Left = 1712
+    Top = 696
   end
 end

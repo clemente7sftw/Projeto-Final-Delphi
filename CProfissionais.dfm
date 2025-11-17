@@ -32,7 +32,6 @@ object Form8: TForm8
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = 0
       object Label1: TLabel
         Left = 1102
         Top = 440
@@ -498,7 +497,7 @@ object Form8: TForm8
         Left = 1103
         Top = 856
         Width = 100
-        Height = 19
+        Height = 21
         Caption = 'Hor'#225'rio Inicio'
         FocusControl = DBEdit1
         Font.Charset = ANSI_CHARSET
@@ -509,8 +508,8 @@ object Form8: TForm8
         ParentFont = False
       end
       object Label6: TLabel
-        Left = 1614
-        Top = 782
+        Left = 1638
+        Top = 470
         Width = 51
         Height = 30
         Caption = 'In'#237'cio'
@@ -523,8 +522,8 @@ object Form8: TForm8
         ParentFont = False
       end
       object Label7: TLabel
-        Left = 1614
-        Top = 881
+        Left = 1638
+        Top = 561
         Width = 35
         Height = 30
         Caption = 'Fim'
@@ -839,7 +838,13 @@ object Form8: TForm8
         Top = 792
         Width = 496
         Height = 127
-        ItemHeight = 17
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ItemHeight = 25
+        ParentFont = False
         TabOrder = 8
       end
       object CLBDias: TCheckListBox
@@ -847,12 +852,18 @@ object Form8: TForm8
         Top = 678
         Width = 498
         Height = 75
-        ItemHeight = 17
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ItemHeight = 25
+        ParentFont = False
         TabOrder = 9
       end
       object TimePicker1: TTimePicker
-        Left = 1614
-        Top = 818
+        Left = 1638
+        Top = 514
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
@@ -863,8 +874,8 @@ object Form8: TForm8
         TimeFormat = 'hh:nn'
       end
       object TimePicker2: TTimePicker
-        Left = 1614
-        Top = 917
+        Left = 1638
+        Top = 605
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
