@@ -10,6 +10,9 @@ object Form31: TForm31
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   object Fundo: TPanel
     Left = 0
@@ -82,6 +85,7 @@ object Form31: TForm31
           6C673C211C566F4DC2D06EC37D4F0856095B2BFA7F61C3213ABE6680438FA75D
           E1A0947D4DC341EB2B741DDE35B728FDC3F9EA074B854FCEE07D17E300000000
           49454E44AE426082}
+        OnClick = addclieClick
       end
       object EditBtn: TImage
         Left = 810
@@ -105,6 +109,7 @@ object Form31: TForm31
           8F6D376D6BAE01A0F9EEC6774D63160A30910CD4097546B3655DCD35005FF7C3
           145D7E21CF9E1E0BE0BFFEAE6126E7D14CEB00A0111977B15701F4AAB703FC01
           4EE84C1DACD331E50000000049454E44AE426082}
+        OnClick = EditBtnClick
       end
       object ExclBtn: TImage
         Left = 864
@@ -126,6 +131,7 @@ object Form31: TForm31
           1A123E0FCE4433DA8700C03D2A5F8015781708A0BD239A00B0176037A49EC199
           383DF705F8CAE632DA15D7057605E84DC901DE82492E1DF98D6AC00000000049
           454E44AE426082}
+        OnClick = ExclBtnClick
       end
       object btncancelar: TImage
         Left = 913
@@ -146,6 +152,7 @@ object Form31: TForm31
           E98F38D3009E6B595A9BCFBA92412D14F752570255C29DA42E1E570C454159DA
           9B7F934206E5F17456D33FBC0BAC09D80B539776210A1239D50000000049454E
           44AE426082}
+        OnClick = btncancelarClick
       end
       object Image1: TImage
         Left = 0
@@ -174,8 +181,8 @@ object Form31: TForm31
         Stretch = True
       end
       object Lblrequired: TLabel
-        Left = 1654
-        Top = 565
+        Left = 1103
+        Top = 917
         Width = 264
         Height = 30
         Caption = 'Preencha todos os campos!'
@@ -204,7 +211,7 @@ object Form31: TForm31
       end
       object Label3: TLabel
         Left = 1103
-        Top = 663
+        Top = 754
         Width = 58
         Height = 30
         Caption = 'Cargo'
@@ -217,8 +224,8 @@ object Form31: TForm31
         ParentFont = False
       end
       object Label4: TLabel
-        Left = 1350
-        Top = 663
+        Left = 1103
+        Top = 642
         Width = 40
         Height = 30
         Caption = 'Dias'
@@ -231,22 +238,22 @@ object Form31: TForm31
         ParentFont = False
       end
       object Label5: TLabel
-        Left = 1502
-        Top = 663
-        Width = 73
-        Height = 30
-        Caption = 'Hor'#225'rio'
+        Left = 1103
+        Top = 856
+        Width = 100
+        Height = 21
+        Caption = 'Hor'#225'rio Inicio'
         FocusControl = DBEdit1
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
-        Font.Height = -21
+        Font.Height = -16
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
       end
       object Label6: TLabel
-        Left = 1502
-        Top = 687
+        Left = 1614
+        Top = 782
         Width = 51
         Height = 30
         Caption = 'In'#237'cio'
@@ -259,8 +266,8 @@ object Form31: TForm31
         ParentFont = False
       end
       object Label7: TLabel
-        Left = 1502
-        Top = 771
+        Left = 1614
+        Top = 881
         Width = 35
         Height = 30
         Caption = 'Fim'
@@ -268,6 +275,34 @@ object Form31: TForm31
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -21
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label8: TLabel
+        Left = 1103
+        Top = 834
+        Width = 73
+        Height = 30
+        Caption = 'Hor'#225'rio'
+        FocusControl = DBEdit1
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -21
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label9: TLabel
+        Left = 1434
+        Top = 854
+        Width = 86
+        Height = 21
+        Caption = 'Hor'#225'rio Fim'
+        FocusControl = DBEdit1
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
@@ -620,10 +655,12 @@ object Form31: TForm31
           item
             Expanded = False
             FieldName = 'dias_semana'
-            Visible = True
-          end
-          item
-            Expanded = False
+            Title.Caption = 'Dias '
+            Title.Font.Charset = ANSI_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -21
+            Title.Font.Name = 'Segoe UI Semibold'
+            Title.Font.Style = [fsBold]
             Visible = True
           end>
       end
@@ -642,7 +679,7 @@ object Form31: TForm31
         TabOrder = 1
       end
       object DBEdit2: TDBEdit
-        Left = 1103
+        Left = 1102
         Top = 587
         Width = 496
         Height = 38
@@ -655,8 +692,8 @@ object Form31: TForm31
         TabOrder = 2
       end
       object DBEdit3: TDBEdit
-        Left = 1103
-        Top = 712
+        Left = 1102
+        Top = 790
         Width = 496
         Height = 38
         Font.Charset = DEFAULT_CHARSET
@@ -717,13 +754,13 @@ object Form31: TForm31
         end
       end
       object BtnConf: TPanel
-        Left = 1103
-        Top = 892
-        Width = 496
+        Left = 1100
+        Top = 953
+        Width = 498
         Height = 41
         Cursor = crHandPoint
         Caption = 'Confirmar'
-        Color = 4405251
+        Color = 8543977
         Font.Charset = ANSI_CHARSET
         Font.Color = clWhite
         Font.Height = -24
@@ -732,26 +769,27 @@ object Form31: TForm31
         ParentBackground = False
         ParentFont = False
         TabOrder = 6
+        OnClick = BtnConfClick
       end
       object CLBCargos: TCheckListBox
-        Left = 1103
-        Top = 712
-        Width = 218
+        Left = 1102
+        Top = 792
+        Width = 496
         Height = 127
         ItemHeight = 17
         TabOrder = 7
       end
       object CLBDias: TCheckListBox
-        Left = 1350
-        Top = 712
-        Width = 121
-        Height = 127
+        Left = 1103
+        Top = 678
+        Width = 498
+        Height = 75
         ItemHeight = 17
         TabOrder = 8
       end
       object TimePicker1: TTimePicker
-        Left = 1502
-        Top = 712
+        Left = 1614
+        Top = 818
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
@@ -762,8 +800,8 @@ object Form31: TForm31
         TimeFormat = 'hh:nn'
       end
       object TimePicker2: TTimePicker
-        Left = 1502
-        Top = 807
+        Left = 1614
+        Top = 917
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
@@ -773,14 +811,54 @@ object Form31: TForm31
         Time = 45972.597829027780000000
         TimeFormat = 'hh:nn'
       end
+      object DBEdit4: TDBEdit
+        Left = 1103
+        Top = 678
+        Width = 498
+        Height = 38
+        DataField = 'dias_semana'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -21
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 11
+      end
+      object DBEdit6: TDBEdit
+        Left = 1103
+        Top = 881
+        Width = 164
+        Height = 38
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -21
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 12
+      end
+      object DBEdit5: TDBEdit
+        Left = 1434
+        Top = 881
+        Width = 164
+        Height = 38
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -21
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 13
+      end
       object Barra: TPanel
-        Left = -10
+        Left = -8
         Top = 176
         Width = 1928
         Height = 41
         Color = 8543977
         ParentBackground = False
-        TabOrder = 11
+        TabOrder = 14
         object LbClie: TLabel
           Left = 964
           Top = 8
@@ -825,5 +903,9 @@ object Form31: TForm31
         end
       end
     end
+  end
+  object Dsconexao: TDataSource
+    Left = 601
+    Top = 265
   end
 end

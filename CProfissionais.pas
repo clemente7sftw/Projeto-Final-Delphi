@@ -51,6 +51,8 @@ type
     DBEdit4: TDBEdit;
     Label8: TLabel;
     DBEdit6: TDBEdit;
+    DBEdit5: TDBEdit;
+    Label9: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure Image6Click(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);
@@ -70,7 +72,6 @@ type
     procedure icones_escondidos;
     procedure icones_visiveis;
     procedure BtnConf1Click(Sender: TObject);
-    procedure Panel3Click(Sender: TObject);
     procedure LbClieClick(Sender: TObject);
     procedure EditBtnClick(Sender: TObject);
     procedure btncancelarClick(Sender: TObject);
@@ -84,7 +85,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
 
   private
-    procedure Pesquisar;
+
     { Private declarations }
   public
     var  id_empresa:integer;
@@ -114,8 +115,8 @@ DBEdit2.DataSource := nil;
 DBEdit3.DataSource := nil;
 DBEdit4.DataSource := nil;
 DBEdit6.DataSource := nil;
-  form9.show;
-  form8.close;
+form9.show;
+form8.close;
 end;
 
 procedure TForm8.atualizar_grid;
@@ -129,6 +130,7 @@ SQL.Text :=
   '  p.nome, ' +
   '  p.email, ' +
   '  STRING_AGG(DISTINCT c.nome_cargo, '', '')::varchar(500) AS nome_cargo, ' +
+
   '  STRING_AGG(DISTINCT ' +
   '    CASE h.dia_semana ' +
   '      WHEN 0 THEN ''Domingo'' ' +
@@ -138,7 +140,11 @@ SQL.Text :=
   '      WHEN 4 THEN ''Quinta'' ' +
   '      WHEN 5 THEN ''Sexta'' ' +
   '      WHEN 6 THEN ''Sábado'' ' +
-  '    END, '','')::varchar(200) AS dias_semana ' +
+  '    END, '','')::varchar(200) AS dias_semana, ' +
+
+  '  MIN(h.hora_inicio) AS hora_inicio, ' +
+  '  MAX(h.hora_fim)    AS hora_fim ' +
+
   'FROM profissionais p ' +
   'LEFT JOIN profissionais_cargos pc ON p.id_pro = pc.id_pro ' +
   'LEFT JOIN cargos c ON pc.id_cargo = c.id_cargo ' +
@@ -155,15 +161,18 @@ dbgrid1.DataSource := dsconexao;
 dbedit1.DataSource:= dsconexao;
 dbedit2.DataSource:= dsconexao;
 dbedit3.DataSource:= dsconexao;
+dbedit5.DataSource:= dsconexao;
 dbedit4.DataSource:= dsconexao;
 dbedit6.DataSource:= dsconexao;
 DBEdit1.DataField := 'nome';
 DBEdit2.DataField := 'email';
 DBEdit3.DataField := 'nome_cargo';
 dbedit4.DataField := 'dias_semana';
-//dbedit6.datafield:= '';
+dbedit6.datafield:= 'hora_inicio';
+dbedit5.DataField := 'hora_fim';
 TimePicker1.Time := EncodeTime(12, 0, 0, 0);
 TimePicker2.Time := EncodeTime(12, 0, 0, 0);
+
 
 end;
 end;
@@ -196,6 +205,9 @@ begin
   addclie.Visible := true;
   clbcargos.Visible := false;
   dbedit3.Visible := true;
+  DBEdit4.Visible := true;
+  DBEdit5.Visible := true;
+  DBEdit6.Visible := true;
 
 end;
 
@@ -214,6 +226,9 @@ begin
   icones_visiveis;
   TrazerDias;
   btncancelar.Visible := True;
+  DBEdit4.Visible := false;
+  DBEdit5.Visible := false;
+  DBEdit6.Visible := false;
 end;
 
 
@@ -228,6 +243,7 @@ begin
     DBEdit2.Enabled := true;
     DBEdit3.Enabled := true;
     DBEdit4.Enabled := true;
+    DBEdit5.Enabled := true;
     DBEdit6.Enabled := true;
 end;
 
@@ -237,6 +253,7 @@ begin
   DBEdit2.Enabled := false;
   DBEdit3.Enabled := false;
   DBEdit4.Enabled := false;
+  DBEdit5.Enabled := false;
   DBEdit6.Enabled := false;
 end;
 
@@ -271,6 +288,7 @@ DBEdit1.DataSource := nil;
 DBEdit2.DataSource := nil;
 DBEdit3.DataSource := nil;
 DBEdit4.DataSource := nil;
+DBEdit5.DataSource := nil;
 DBEdit6.DataSource := nil;
 end;
 
@@ -297,9 +315,8 @@ Label7.Visible := false;
 TimePicker1.Visible := false;
 TimePicker2.Visible := false;
 Label6.Visible := false;
-Label5.Visible := false;
 CLBDias.Visible := false;
-Label4.Visible := false;
+
 end;
 
 procedure TForm8.icones_visiveis;
@@ -308,9 +325,8 @@ Label7.Visible := true;
 TimePicker1.Visible := true;
 TimePicker2.Visible := true;
 Label6.Visible := true;
-Label5.Visible := true;
 CLBDias.Visible := true;
-Label4.Visible := true;
+
 end;
 
 procedure TForm8.Image1Click(Sender: TObject);
@@ -359,26 +375,11 @@ begin
   EditsAtivos;
 end;
 
-procedure TForm8.Panel3Click(Sender: TObject);
-begin
-  Pesquisar;
-end;
 
 procedure TForm8.PbtnAddClick(Sender: TObject);
 begin
   Form9.Show;
   Form8.Close;
-end;
-procedure TForm8.Pesquisar;
-begin
-//  if (EdPesquisa.Text <> '' )then
-//  begin
-//    datamodule1.QueryRPC.Filtered := true;
-//    datamodule1.QueryRPC.filter :=  'UPPER(nome_clie) LIKE ' + QuotedStr('%' + UpperCase(EdPesquisa.Text) + '%');
-// end else
-//  begin
-//    datamodule1.QueryRPC.Filtered := false;
-//  end;
 end;
 
 procedure TForm8.Salvar;
@@ -465,6 +466,9 @@ end;
     dbedit3.Visible := true;
     icones_escondidos;
     btncancelar.Visible := false;
+    DBEdit4.Visible := true;
+      DBEdit5.Visible := true;
+  DBEdit6.Visible := true;
   end;
 
 procedure TForm8.TrazerCargos;

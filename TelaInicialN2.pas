@@ -60,6 +60,7 @@ end;
 procedure TForm5.LbClieClick(Sender: TObject);
 begin
 Form29.Show;
+form5.close;
 end;
 
 procedure TForm5.LbProfissionaisClick(Sender: TObject);

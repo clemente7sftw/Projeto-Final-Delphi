@@ -30,6 +30,7 @@ type
     Panel3: TPanel;
     Label2: TLabel;
     Panel4: TPanel;
+    Image3: TImage;
     procedure LbClieClick(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);
     procedure LbServicosClick(Sender: TObject);
@@ -45,6 +46,8 @@ type
     procedure Panel1Click(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
     procedure Panel3Click(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
+    procedure sair;
   private
     { Private declarations }
 
@@ -63,7 +66,7 @@ implementation
 uses CClientes, CProfissionais, AdicionarServico, CServicos,
   CCargos, CFornecedores, Cadastro, CHorarios, Agendamentos, UDataModule,
   CAgendamentos, CadAdm, relatorios_servicos, relatorio_clientes,
-  relatorios_profissionais;
+  relatorios_profissionais, Login;
 procedure TForm20.AddAdm;
 begin
 Form23.show;
@@ -86,6 +89,11 @@ end;
 procedure TForm20.Image2Click(Sender: TObject);
 begin
 AddAdm;
+end;
+
+procedure TForm20.Image3Click(Sender: TObject);
+begin
+sair;
 end;
 
 procedure TForm20.Label2Click(Sender: TObject);
@@ -156,6 +164,12 @@ procedure TForm20.Panel3Click(Sender: TObject);
 begin
 Form27 := TForm27.Create(Self);
 Form27.RelatorioProfissionais.Preview();
+end;
+
+procedure TForm20.sair;
+begin
+form20.close;
+form1.show;
 end;
 
 end.

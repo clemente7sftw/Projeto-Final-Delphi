@@ -23,8 +23,6 @@ object Form9: TForm9
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1918
-    ExplicitHeight = 1053
     object Image1: TImage
       Left = 0
       Top = 240
@@ -336,7 +334,7 @@ object Form9: TForm9
     end
     object Lblrequired: TLabel
       Left = 1069
-      Top = 664
+      Top = 628
       Width = 264
       Height = 30
       Caption = 'Preencha todos os campos!'
@@ -379,7 +377,7 @@ object Form9: TForm9
     end
     object LbEmail: TLabel
       Left = 1069
-      Top = 664
+      Top = 628
       Width = 221
       Height = 30
       Caption = 'Digite um Email v'#225'lido!'
@@ -393,25 +391,30 @@ object Form9: TForm9
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 821
-      Top = 313
-      Width = 78
-      Height = 15
+      Left = 40
+      Top = 676
+      Width = 126
+      Height = 25
       Caption = 'Inicio do turno'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object Label5: TLabel
-      Left = 989
-      Top = 313
-      Width = 67
-      Height = 15
+      Left = 40
+      Top = 780
+      Width = 108
+      Height = 25
       Caption = 'fim do turno'
-    end
-    object Label6: TLabel
-      Left = 1192
-      Top = 256
-      Width = 34
-      Height = 15
-      Caption = 'Label6'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object CLBCargos: TCheckListBox
       Left = 40
@@ -420,10 +423,10 @@ object Form9: TForm9
       Height = 241
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -27
+      Font.Height = -19
       Font.Name = 'Segoe UI'
       Font.Style = []
-      ItemHeight = 37
+      ItemHeight = 25
       ParentFont = False
       TabOrder = 0
     end
@@ -516,7 +519,7 @@ object Form9: TForm9
     end
     object BtnConf: TPanel
       Left = 1069
-      Top = 744
+      Top = 676
       Width = 496
       Height = 41
       Cursor = crHandPoint
@@ -561,8 +564,8 @@ object Form9: TForm9
       Text = 'Edit1'
     end
     object TimePicker2: TTimePicker
-      Left = 989
-      Top = 334
+      Left = 40
+      Top = 817
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -20
@@ -573,8 +576,8 @@ object Form9: TForm9
       TimeFormat = 'hh:nn'
     end
     object TimePicker1: TTimePicker
-      Left = 821
-      Top = 334
+      Left = 40
+      Top = 712
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -20
@@ -585,16 +588,32 @@ object Form9: TForm9
       TimeFormat = 'hh:nn'
     end
     object CLBdias_semana: TCheckListBox
-      Left = 821
-      Top = 386
-      Width = 188
-      Height = 135
-      ItemHeight = 17
+      Left = 754
+      Top = 400
+      Width = 239
+      Height = 241
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ItemHeight = 25
+      ParentFont = False
       TabOrder = 7
     end
   end
   object Timer1: TTimer
-    Left = 744
+    Enabled = False
+    Interval = 5000
+    OnTimer = Timer1Timer
+    Left = 1704
+    Top = 648
+  end
+  object Timer2: TTimer
+    Enabled = False
+    Interval = 5000
+    OnTimer = Timer2Timer
+    Left = 1704
     Top = 720
   end
 end
