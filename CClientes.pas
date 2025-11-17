@@ -299,6 +299,7 @@ begin
   btncancelar.Visible := false;
   editsinativos;
   BtnCad.Visible:= false;
+  BtnConf.Visible:= false;
   EditBtn.Visible := true;
   ExclBtn.Visible := true;
   Lblrequired.visible:= false;
@@ -341,6 +342,8 @@ begin
   EditsAtivos;
   EditBtn.Visible:= false;
   addclie.Visible:= false;
+  btncancelar.Visible := true;
+  BtnCad.Visible:= false;
 end;
 
 procedure TForm4.EditsAtivos;

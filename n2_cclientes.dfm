@@ -13,6 +13,93 @@ object Form29: TForm29
   OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15
+  object Barra: TPanel
+    Left = -8
+    Top = 176
+    Width = 1928
+    Height = 41
+    Color = 4405251
+    ParentBackground = False
+    TabOrder = 0
+    object LbClie: TLabel
+      Left = 192
+      Top = 8
+      Width = 74
+      Height = 30
+      Caption = 'Clientes'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LbProfissionais: TLabel
+      Left = 772
+      Top = 8
+      Width = 118
+      Height = 30
+      Caption = 'Profissionais'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LbServicos: TLabel
+      Left = 1113
+      Top = 8
+      Width = 79
+      Height = 30
+      Caption = 'Servi'#231'os'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LbCargos: TLabel
+      Left = 1368
+      Top = 8
+      Width = 67
+      Height = 30
+      Caption = 'Cargos'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LbFornecedores: TLabel
+      Left = 1608
+      Top = 8
+      Width = 130
+      Height = 30
+      Caption = 'Fornecedores'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Lbagendamentos: TLabel
+      Left = 464
+      Top = 8
+      Width = 146
+      Height = 30
+      Caption = 'Agendamentos'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+  end
   object Fundo: TPanel
     Left = 0
     Top = 0
@@ -21,33 +108,7 @@ object Form29: TForm29
     Align = alClient
     Color = clWhite
     ParentBackground = False
-    TabOrder = 0
-    object Image1: TImage
-      Left = 0
-      Top = 223
-      Width = 49
-      Height = 42
-      Picture.Data = {
-        0D54536B537667477261706869633C73766720786D6C6E733D22687474703A2F
-        2F7777772E77332E6F72672F323030302F737667222076696577426F783D2230
-        20302036343020363430223E3C212D2D21466F6E7420417765736F6D65204672
-        656520372E302E302062792040666F6E74617765736F6D65202D206874747073
-        3A2F2F666F6E74617765736F6D652E636F6D204C6963656E7365202D20687474
-        70733A2F2F666F6E74617765736F6D652E636F6D2F6C6963656E73652F667265
-        6520436F70797269676874203230323520466F6E7469636F6E732C20496E632E
-        2D2D3E3C7061746820643D224D37332E34203239372E344336302E3920333039
-        2E392036302E39203333302E322037332E34203334322E374C3233332E342035
-        30322E37433234352E39203531352E32203236362E32203531352E3220323738
-        2E37203530322E37433239312E32203439302E32203239312E32203436392E39
-        203237382E37203435372E344C3137332E33203335324C353434203335324335
-        36312E372033353220353736203333372E372035373620333230433537362033
-        30322E33203536312E372032383820353434203238384C3137332E3320323838
-        4C3237382E37203138322E36433239312E32203137302E31203239312E322031
-        34392E38203237382E37203133372E33433236362E32203132342E3820323435
-        2E39203132342E38203233332E34203133372E334C37332E34203239372E337A
-        222F3E3C2F7376673E}
-      Stretch = True
-    end
+    TabOrder = 1
     object Label1: TLabel
       Left = 1105
       Top = 449
@@ -232,6 +293,21 @@ object Form29: TForm29
       Width = 221
       Height = 30
       Caption = 'Digite um Email v'#225'lido!'
+      Color = clDarkred
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object LbErro_Sistema: TLabel
+      Left = 1105
+      Top = 716
+      Width = 626
+      Height = 30
+      Caption = 'Algum Erro ocorreu do nosso lado... Tente novamente mais tarde'
       Color = clDarkred
       Font.Charset = ANSI_CHARSET
       Font.Color = clMaroon
@@ -531,21 +607,6 @@ object Form29: TForm29
         EFA02BE42F9847714961C06B8BFF03BF399A099C7508780000000049454E44AE
         426082}
     end
-    object LbErro_Sistema: TLabel
-      Left = 1105
-      Top = 716
-      Width = 626
-      Height = 30
-      Caption = 'Algum Erro ocorreu do nosso lado... Tente novamente mais tarde'
-      Color = clDarkred
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clMaroon
-      Font.Height = -21
-      Font.Name = 'Segoe UI Semibold'
-      Font.Style = [fsBold]
-      ParentColor = False
-      ParentFont = False
-    end
     object DBGrid1: TDBGrid
       Left = 40
       Top = 401
@@ -608,7 +669,7 @@ object Form29: TForm29
     end
     object BtnConf: TPanel
       Left = 1105
-      Top = 848
+      Top = 669
       Width = 496
       Height = 41
       Cursor = crHandPoint
@@ -673,12 +734,13 @@ object Form29: TForm29
           12FC0B1293E6224739C13B0000000049454E44AE426082}
       end
     end
-    object DBEdit2: TDBEdit
+    object EdEmail: TDBEdit
       Left = 1105
       Top = 576
       Width = 496
       Height = 38
       DataField = 'email_clie'
+      DataSource = DataSource1
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
@@ -687,12 +749,13 @@ object Form29: TForm29
       ParentFont = False
       TabOrder = 4
     end
-    object DBEdit1: TDBEdit
+    object EdNome: TDBEdit
       Left = 1105
       Top = 485
       Width = 496
       Height = 38
       DataField = 'nome_clie'
+      DataSource = DataSource1
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
@@ -703,7 +766,7 @@ object Form29: TForm29
     end
     object BtnCad: TPanel
       Left = 1105
-      Top = 848
+      Top = 669
       Width = 496
       Height = 41
       Cursor = crHandPoint
@@ -719,15 +782,15 @@ object Form29: TForm29
       TabOrder = 6
       OnClick = BtnCadClick
     end
-    object Barra: TPanel
+    object Panel2: TPanel
       Left = -8
-      Top = 176
+      Top = 184
       Width = 1928
       Height = 41
       Color = 8543977
       ParentBackground = False
       TabOrder = 7
-      object LbClie: TLabel
+      object Label3: TLabel
         Left = 964
         Top = 8
         Width = 74
@@ -741,7 +804,7 @@ object Form29: TForm29
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object LbProfissionais: TLabel
+      object Label5: TLabel
         Left = 580
         Top = 8
         Width = 118
@@ -755,7 +818,7 @@ object Form29: TForm29
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object Lbagendamentos: TLabel
+      object Label6: TLabel
         Left = 1256
         Top = 8
         Width = 146
@@ -776,15 +839,21 @@ object Form29: TForm29
     Top = 288
   end
   object Timer1: TTimer
-    Left = 1784
-    Top = 568
+    Enabled = False
+    Interval = 5000
+    Left = 1680
+    Top = 688
   end
   object Timer2: TTimer
-    Left = 1784
-    Top = 616
+    Enabled = False
+    Interval = 5000
+    Left = 1680
+    Top = 760
   end
   object Timer3: TTimer
-    Left = 1784
-    Top = 680
+    Enabled = False
+    Interval = 5000
+    Left = 1680
+    Top = 824
   end
 end

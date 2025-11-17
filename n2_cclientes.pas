@@ -10,8 +10,15 @@ uses
 
 type
   TForm29 = class(TForm)
+    DataSource1: TDataSource;
+    Barra: TPanel;
+    LbClie: TLabel;
+    LbProfissionais: TLabel;
+    LbServicos: TLabel;
+    LbCargos: TLabel;
+    LbFornecedores: TLabel;
+    Lbagendamentos: TLabel;
     Fundo: TPanel;
-    Image1: TImage;
     Label1: TLabel;
     Label2: TLabel;
     Lblrequired: TLabel;
@@ -22,25 +29,24 @@ type
     btncancelar: TImage;
     Image3: TImage;
     LbEmail: TLabel;
+    LbErro_Sistema: TLabel;
     DBGrid1: TDBGrid;
     BtnConf: TPanel;
     EdPesquisa: TEdit;
     Panel1: TPanel;
     Image2: TImage;
-    DBEdit2: TDBEdit;
-    DBEdit1: TDBEdit;
+    EdEmail: TDBEdit;
+    EdNome: TDBEdit;
     BtnCad: TPanel;
-    Image4: TImage;
-    BS: TImage;
-    DataSource1: TDataSource;
-    Barra: TPanel;
-    LbClie: TLabel;
-    LbProfissionais: TLabel;
-    Lbagendamentos: TLabel;
-    LbErro_Sistema: TLabel;
     Timer1: TTimer;
     Timer2: TTimer;
     Timer3: TTimer;
+    Image4: TImage;
+    BS: TImage;
+    Panel2: TPanel;
+    Label3: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
     procedure EditsInativos;
     procedure EditsAtivos;
     procedure Cadastrar;
@@ -80,8 +86,8 @@ uses UMetodos, UDataModule;
 
 procedure TForm29.EditsInativos;
 begin
-  dbedit1.Enabled := false;
-  dbedit2.Enabled := false;
+  EdNome.Enabled := false;
+  EdEmail.Enabled := false;
 end;
 
 procedure TForm29.erro;
@@ -139,11 +145,12 @@ begin
   EditBtn.Visible := false;
   ExclBtn.Visible := false;
   btncancelar.Visible := true;
+  addclie.Visible := false;
   with DataModule1.queryclientes do
 begin
    Append;
-   dbedit1.Field.Clear;
-   dbedit2.Field.Clear;
+   ednome.Field.Clear;
+   edemail.Field.Clear;
 end;
 end;
 
@@ -160,12 +167,13 @@ begin
   Open;
   EditsInativos;
   DataSource1.DataSet := DataModule1.queryclientes;
-  dbedit1.DataSource := datasource1;
-  dbedit2.DataSource := datasource1;
-  dbedit1.DataField := 'nome_clie';
-  dbedit2.DataField := 'email_clie';
+  ednome.DataSource := datasource1;
+  edemail.DataSource := datasource1;
+  ednome.DataField := 'nome_clie';
+  edemail.DataField := 'email_clie';
 end;
 end;
+
 
 procedure TForm29.BtnCadClick(Sender: TObject);
 begin
@@ -187,17 +195,17 @@ var
   id_empresa: Integer;
   nome_senha: string;
 begin
-  nome_senha := Trim(dbedit1.Text);
+  nome_senha := Trim(ednome.Text);
 
   if Pos(' ', nome_senha) > 0 then
     nome_senha := Copy(nome_senha, 1, Pos(' ', nome_senha) - 1);
 
-  if (Trim(dbedit1.Text) = '') or (Trim(dbedit2.Text) = '') then
+  if (Trim(ednome.Text) = '') or (Trim(edemail.Text) = '') then
   begin
     erro_campos;
     Exit;
   end;
-  if not ValidarEmail(dbedit2.Text) then
+  if not ValidarEmail(edemail.Text) then
   begin
     erro_email;
     Exit;
@@ -211,8 +219,8 @@ begin
         'INSERT INTO clientes (id_empresa, nome_clie, email_clie, senha_clie) ' +
         'VALUES (:id_empresa, :nome_clie, :email_clie, :senha_clie)';
       ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-      ParamByName('nome_clie').AsString := dbedit1.Text;
-      ParamByName('email_clie').AsString := dbedit2.Text;
+      ParamByName('nome_clie').AsString := ednome.Text;
+      ParamByName('email_clie').AsString := edemail.Text;
       ParamByName('senha_clie').AsString := nome_senha + '123';
       ExecSQL;
     end;
@@ -222,10 +230,15 @@ begin
     btncancelar.Visible := false;
     EditBtn.Visible := True;
     ExclBtn.Visible := True;
+    ednome.Visible:= true;
+    edemail.Visible:= true;
+    btncancelar.Visible:= true;
+    addclie.Visible := true;
   except
   erro;
   end;
 end;
+
 
 
 procedure TForm29.Cancelar;
@@ -234,12 +247,15 @@ begin
   btncancelar.Visible := false;
   editsinativos;
   BtnCad.Visible:= false;
+  BtnConf.Visible:= false;
   EditBtn.Visible := true;
   ExclBtn.Visible := true;
   Lblrequired.visible:= false;
-  dbedit1.Visible:= true;
-  dbedit2.Visible:= true;
+  ednome.Visible:= true;
+  edemail.Visible:= true;
+  addclie.Visible := true;
 end;
+
 
 procedure TForm29.Editar;
 begin
@@ -248,6 +264,8 @@ begin
   EditsAtivos;
   EditBtn.Visible:= false;
   addclie.Visible:= false;
+  btncancelar.Visible := true;
+  BtnCad.Visible:= false;
 end;
 
 procedure TForm29.EditBtnClick(Sender: TObject);
@@ -257,13 +275,14 @@ end;
 
 procedure TForm29.EditsAtivos;
 begin
-  dbedit1.Enabled := true;
-  dbedit2.Enabled := true;
+  EdNome.Enabled := true;
+  EdEmail.Enabled := true;
 end;
 
 procedure TForm29.FormCreate(Sender: TObject);
 begin
 WindowState := wsMaximized;
+icones_escondidos;
 end;
 
 procedure TForm29.FormShow(Sender: TObject);
@@ -279,10 +298,10 @@ begin
   Open;
   EditsInativos;
   DataSource1.DataSet := DataModule1.queryclientes;
-  dbedit1.DataSource := datasource1;
-  dbedit2.DataSource := datasource1;
-  dbedit1.DataField := 'nome_clie';
-  dbedit2.DataField := 'email_clie';
+  ednome.DataSource := datasource1;
+  edemail.DataSource := datasource1;
+  ednome.DataField := 'nome_clie';
+  edemail.DataField := 'email_clie';
 end;
 end;
 
@@ -300,16 +319,16 @@ procedure TForm29.Salvar;
 var
   id_clie: Integer;
 begin
-  if (Dbedit1.Text <> '') and (Dbedit2.Text <> '') then
+  if (EdNome.Text <> '') and (EdEmail.Text <> '') then
   begin
-    if ValidarEmail(Dbedit2.Text) then
+    if ValidarEmail(EdEmail.Text) then
     begin
       try
           with datamodule1.queryclientes do
           begin
             Edit;
-            FieldByName('nome_clie').AsString := Dbedit1.Text;
-            FieldByName('email_clie').AsString := Dbedit2.Text;
+            FieldByName('nome_clie').AsString := EdNome.Text;
+            FieldByName('email_clie').AsString := EdEmail.Text;
             Post;
           end;
         atualizar_grid;
