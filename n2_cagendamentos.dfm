@@ -22,7 +22,6 @@ object Form32: TForm32
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1920
     object ExclBtn: TImage
       Left = 923
       Top = 362

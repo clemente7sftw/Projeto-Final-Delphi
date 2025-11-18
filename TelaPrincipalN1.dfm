@@ -22,8 +22,6 @@ object Form3: TForm3
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1922
-    ExplicitHeight = 1053
     object Image4: TImage
       Left = 32
       Top = 48
@@ -429,78 +427,6 @@ object Form3: TForm3
       TitleFont.Height = -12
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
-      Columns = <
-        item
-          Expanded = False
-          FieldName = 'empresa'
-          Title.Caption = 'Empresa'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -23
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = []
-          Width = 182
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'profissional'
-          Title.Caption = 'Profissional'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -23
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = []
-          Width = 137
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'servico'
-          Title.Caption = 'Servi'#231'o'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -23
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = []
-          Width = 143
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'preco'
-          Title.Caption = 'Pre'#231'o'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -23
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = []
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'data_agendamento'
-          Title.Caption = 'Data'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -23
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = []
-          Width = 113
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'hora_inicio'
-          Title.Caption = 'Hor'#225'rio'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -23
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = []
-          Width = 135
-          Visible = True
-        end>
     end
     object Barra: TPanel
       Left = -8

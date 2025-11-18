@@ -121,23 +121,27 @@ begin
 with DataModule1.Query_conexao do
 begin
   Close;
-SQL.Text :=
-  'SELECT a.id_agendamento, c.nome_clie AS cliente, ' +
-  'CAST(STRING_AGG(s.nome, '', '') AS VARCHAR(500)) AS servicos, ' +
-  'a.data_agendamento, a.hora_inicio, ' +
-  'CASE WHEN a.status = TRUE THEN ''Concluído'' ELSE ''Pendente'' END AS status ' +
-  'FROM agendamentos a ' +
-  'INNER JOIN clientes c ON a.id_clie = c.id_clie ' +
-  'INNER JOIN agendamento_servicos ags ON a.id_agendamento = ags.id_agendamento ' +
-  'INNER JOIN servicos s ON ags.id_servico = s.id_servico ' +
-  'INNER JOIN profissionais_agendamentos pa ON pa.id_agendamento = a.id_agendamento ' +
-  'INNER JOIN profissionais p ON pa.id_pro = p.id_pro ' +
-  'WHERE p.id_pro = :id_pro ' +
-  'GROUP BY a.id_agendamento, c.nome_clie, a.data_agendamento, a.hora_inicio, a.status ' +
-  'ORDER BY a.data_agendamento DESC, a.hora_inicio;';
-
+  SQL.Text :=
+    'SELECT ' +
+    '    e.nome AS empresa, ' +
+    '    p.nome AS profissional, ' +
+    '    STRING_AGG(s.nome, '', '') AS servicos, ' +
+    '    SUM(s.preco) AS preco, ' +
+    '    a.data_agendamento, ' +
+    '    a.hora_inicio ' +
+    'FROM agendamentos a ' +
+    'INNER JOIN clientes c ON a.id_clie = c.id_clie ' +
+    'INNER JOIN agendamento_servicos ags ON a.id_agendamento = ags.id_agendamento ' +
+    'INNER JOIN servicos s ON ags.id_servico = s.id_servico ' +
+    'INNER JOIN profissionais_agendamentos pa ON pa.id_agendamento = a.id_agendamento ' +
+    'INNER JOIN profissionais p ON pa.id_pro = p.id_pro ' +
+    'INNER JOIN empresas e ON e.id_empresa = a.id_empresa ' +
+    'WHERE a.id_clie = :id_clie ' +
+    'GROUP BY e.nome, p.nome, a.data_agendamento, a.hora_inicio ' +
+    'ORDER BY a.data_agendamento DESC, a.hora_inicio;';
   ParamByName('id_clie').AsInteger := DataModule1.id_clie;
   Open;
+
 end;
   datasource1.DataSet := datamodule1.query_conexao;
   dbgrid1.DataSource := datasource1;

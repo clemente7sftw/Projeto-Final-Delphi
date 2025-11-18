@@ -109,6 +109,8 @@ object Form29: TForm29
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
+    ExplicitWidth = 1918
+    ExplicitHeight = 1053
     object Label1: TLabel
       Left = 1105
       Top = 449

@@ -178,6 +178,7 @@ procedure TForm1.Login;
 var
   LoginCorreto: Boolean;
   id_empresa:integer;
+  senhaHash: string;
 begin
   if not TMetodos.ValidarEmail(EdEmail.Text) or (EdSenha.Text = '') then
   begin
@@ -186,14 +187,15 @@ begin
   end;
 
   LoginCorreto := False;
-
+    senhaHash := TMetodos.MD5(Trim(EdSenha.Text) + '123');
   with DataModule1.query_conexao do
   begin
   try
         Close;
       SQL.Text := 'SELECT * FROM clientes WHERE email_clie = :email AND senha_clie = :senha';
       ParamByName('email').AsString := EdEmail.Text;
-      ParamByName('senha').AsString := Edsenha.Text;
+           ParamByName('senha').AsString :=
+  TMetodos.MD5(Trim(EdSenha.Text));
       Open;
 
       if not IsEmpty then

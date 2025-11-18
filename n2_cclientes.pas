@@ -224,7 +224,7 @@ begin
       ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
       ParamByName('nome_clie').AsString := ednome.Text;
       ParamByName('email_clie').AsString := edemail.Text;
-      ParamByName('senha_clie').AsString := nome_senha + '123';
+      ParamByName('senha_clie').AsString := TMetodos.MD5(Trim(nome_senha) + '123');
       ExecSQL;
     end;
     atualizar_grid;

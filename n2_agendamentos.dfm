@@ -22,7 +22,6 @@ object Form34: TForm34
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1920
     object Label1: TLabel
       Left = 846
       Top = 335
@@ -446,7 +445,7 @@ object Form34: TForm34
     end
     object Panel2: TPanel
       Left = 1158
-      Top = 878
+      Top = 526
       Width = 315
       Height = 35
       Caption = 'Marcar Hor'#225'rio'
@@ -501,8 +500,8 @@ object Form34: TForm34
       TabOrder = 5
     end
     object CheckListBoxProfissionais: TCheckListBox
-      Left = 846
-      Top = 762
+      Left = 1406
+      Top = 567
       Width = 283
       Height = 151
       Font.Charset = DEFAULT_CHARSET
