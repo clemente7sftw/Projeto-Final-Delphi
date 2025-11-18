@@ -1,7 +1,7 @@
 object Form30: TForm30
   Left = 0
   Top = 0
-  Caption = 'Form30'
+  Caption = 'In'#237'cio'
   ClientHeight = 1061
   ClientWidth = 1924
   Color = clBtnFace
@@ -328,6 +328,7 @@ object Form30: TForm30
         511250A3FB9DE7B1845A5ADBF4439839F61D87C0CAB8B6A9FA31EC410D374130
         69DC4EE36850FDD228AAA269837F1003A7D62D6332740000000049454E44AE42
         6082}
+      OnClick = Image2Click
     end
     object DBGrid1: TDBGrid
       Left = 456

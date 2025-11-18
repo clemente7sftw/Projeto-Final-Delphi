@@ -22,6 +22,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure atualizarstatus;
+    procedure atualizar_grid;
+    procedure Image2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,7 +37,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDataModule;
+uses UDataModule, n4_mudar_senha;
 
 procedure TForm30.atualizarstatus;
 begin
@@ -94,6 +96,35 @@ end;
 end;
 
 
+procedure TForm30.atualizar_grid;
+begin
+  atualizarstatus;
+
+  with DataModule1.Query_conexao do
+  begin
+    Close;
+    SQL.Text :=
+      'SELECT a.id_agendamento, c.nome_clie AS cliente, ' +
+      'CAST(STRING_AGG(s.nome, '', '') AS VARCHAR(500)) AS servicos, ' +
+      'a.data_agendamento, a.hora_inicio, a.status ' +
+      'FROM agendamentos a ' +
+      'INNER JOIN clientes c ON a.id_clie = c.id_clie ' +
+      'INNER JOIN agendamento_servicos ags ON a.id_agendamento = ags.id_agendamento ' +
+      'INNER JOIN servicos s ON ags.id_servico = s.id_servico ' +
+      'INNER JOIN profissionais_agendamentos pa ON pa.id_agendamento = a.id_agendamento ' +
+      'INNER JOIN profissionais p ON pa.id_pro = p.id_pro ' +
+      'WHERE p.id_pro = :id_pro ' +
+      'GROUP BY a.id_agendamento, c.nome_clie, a.data_agendamento, a.hora_inicio, a.status ' +
+      'ORDER BY a.data_agendamento DESC, a.hora_inicio;';
+
+    ParamByName('id_pro').AsInteger := DataModule1.id_pro;
+    Open;
+
+
+    DBGrid1.DataSource := DataSource1;
+  end;
+end;
+
 procedure TForm30.FormCreate(Sender: TObject);
 begin
   WindowState:=wsMaximized;
@@ -128,5 +159,10 @@ begin
   end;
 end;
 
+
+procedure TForm30.Image2Click(Sender: TObject);
+begin
+form6.show;
+end;
 
 end.

@@ -21,7 +21,7 @@ uses
   TelaInicialN2 in 'TelaInicialN2.pas' {Form5},
   CAdministrador in 'CAdministrador.pas' {Form22},
   CadAdm in 'CadAdm.pas' {Form23},
-  N1MudarSenha in 'N1MudarSenha.pas' {Form24},
+  n1_mudar_senha in 'n1_mudar_senha.pas' {Form24},
   relatorios_servicos in 'relatorios_servicos.pas' {Form25},
   n1_agendamentos in 'n1_agendamentos.pas' {Form26},
   relatorios_profissionais in 'relatorios_profissionais.pas' {Form27},
@@ -32,7 +32,8 @@ uses
   n2_cagendamentos in 'n2_cagendamentos.pas' {Form32},
   n2_profissionais in 'n2_profissionais.pas' {Form31},
   n2_addprofissionais in 'n2_addprofissionais.pas' {Form33},
-  n2_agendamentos in 'n2_agendamentos.pas' {Form34};
+  n2_agendamentos in 'n2_agendamentos.pas' {Form34},
+  n4_mudar_senha in 'n4_mudar_senha.pas' {Form6};
 
 {$R *.res}
 
@@ -69,5 +70,6 @@ begin
   Application.CreateForm(TForm31, Form31);
   Application.CreateForm(TForm33, Form33);
   Application.CreateForm(TForm34, Form34);
+  Application.CreateForm(TForm6, Form6);
   Application.Run;
 end.

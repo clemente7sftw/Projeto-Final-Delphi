@@ -55,7 +55,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDataModule, uDmCep, TelaInicialN3;
+uses UDataModule, uDmCep, TelaInicialN3, UMetodos;
 
 { TForm23 }
 
@@ -93,7 +93,7 @@ try
     ParamByName('cidade').AsString := EdCidade.Text;
     ParamByName('estado').AsString := EdEstado.Text;
     ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-    ParamByName('senha').AsString := nome_senha + '123';
+    ParamByName('senha_adm').AsString := TMetodos.MD5(Trim(nome_senha) + '123');
     ExecSQL;
   end;
   Form23.close;

@@ -1,9 +1,9 @@
-object Form22: TForm22
+object Form6: TForm6
   Left = 0
   Top = 0
-  Caption = 'Cadastre sua nova senha'
-  ClientHeight = 474
-  ClientWidth = 418
+  Caption = 'Mudar Senha'
+  ClientHeight = 538
+  ClientWidth = 430
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,19 +15,21 @@ object Form22: TForm22
   object Fundo: TPanel
     Left = 0
     Top = 0
-    Width = 418
-    Height = 474
+    Width = 430
+    Height = 538
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 422
+    ExplicitHeight = 520
     object ConfSenha: TPanel
       Left = 112
       Top = 314
       Width = 200
       Height = 31
       Caption = 'Confirmar Senha'
-      Color = 8543977
+      Color = clGray
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -16

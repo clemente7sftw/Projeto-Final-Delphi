@@ -210,7 +210,7 @@
             <Form>Form23</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="N1MudarSenha.pas">
+        <DCCReference Include="n1_mudar_senha.pas">
             <Form>Form24</Form>
             <FormType>dfm</FormType>
         </DCCReference>
@@ -252,6 +252,10 @@
         </DCCReference>
         <DCCReference Include="n2_agendamentos.pas">
             <Form>Form34</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="n4_mudar_senha.pas">
+            <Form>Form6</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

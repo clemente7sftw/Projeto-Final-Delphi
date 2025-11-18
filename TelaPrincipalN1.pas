@@ -48,7 +48,7 @@ implementation
 
 {$R *.dfm}
 
-uses N1MudarSenha, n1_agendamentos, relatorios_servicos;
+uses  n1_agendamentos, relatorios_servicos, n1_mudar_senha;
 
 procedure TForm3.atualizar_grid;
 begin

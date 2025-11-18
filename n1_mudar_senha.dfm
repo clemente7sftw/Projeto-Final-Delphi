@@ -21,8 +21,6 @@ object Form24: TForm24
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 418
-    ExplicitHeight = 474
     object ConfSenha: TPanel
       Left = 112
       Top = 314
@@ -53,10 +51,5 @@ object Form24: TForm24
       ParentFont = False
       TabOrder = 1
     end
-  end
-  object DataSource1: TDataSource
-    DataSet = DataModule1.QueryClientes
-    Left = 112
-    Top = 88
   end
 end

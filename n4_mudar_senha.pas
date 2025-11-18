@@ -1,20 +1,18 @@
-unit N1MudarSenha;
+unit n4_mudar_senha;
 
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.ExtCtrls,
-  Vcl.DBCtrls, Data.DB;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
 
 type
-  TForm24 = class(TForm)
-    DataSource1: TDataSource;
+  TForm6 = class(TForm)
     Fundo: TPanel;
     ConfSenha: TPanel;
     EdNovaSenha: TEdit;
-    procedure AlterarSenha;
     procedure ConfSenhaClick(Sender: TObject);
+    procedure AlterarSenha;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
@@ -23,17 +21,15 @@ type
   end;
 
 var
-  Form24: TForm24;
+  Form6: TForm6;
 
 implementation
 
 {$R *.dfm}
 
-uses UDataModule, UMetodos, TelaPrincipalN1;
+uses UMetodos, UDataModule, n4_tela_inicial;
 
-{ TForm24 }
-
-procedure TForm24.AlterarSenha;
+procedure TForm6.AlterarSenha;
 var
   NovaSenha, Hash: string;
 begin
@@ -51,30 +47,26 @@ begin
   begin
     Close;
     SQL.Text :=
-      'UPDATE clientes SET senha_clie = :senha WHERE id_clie = :id';
+      'UPDATE profissionais SET senha = :senha WHERE id_pro = :id';
 
     ParamByName('senha').AsString := Hash;
-    ParamByName('id').AsInteger := DataModule1.id_clie;
+    ParamByName('id').AsInteger := DataModule1.id_pro;
 
     ExecSQL;
   end;
 
-  form24.Close;
+  form6.Close;
 end;
 
-
-
-procedure TForm24.ConfSenhaClick(Sender: TObject);
+procedure TForm6.ConfSenhaClick(Sender: TObject);
 begin
-  AlterarSenha;
+AlterarSenha;
 end;
 
-procedure TForm24.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TForm6.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 EdNovaSenha.Text := '';
-form3.atualizar_grid;
+form30.atualizar_grid;
 end;
-
-end.
 
 end.

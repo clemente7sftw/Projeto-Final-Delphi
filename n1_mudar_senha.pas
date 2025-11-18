@@ -1,19 +1,19 @@
-unit CAdministrador;
+unit n1_mudar_senha;
 
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Data.DB, Vcl.StdCtrls,
-  Vcl.Mask, Vcl.DBCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.ExtCtrls,
+  Vcl.DBCtrls, Data.DB;
 
 type
-  TForm22 = class(TForm)
+  TForm24 = class(TForm)
     Fundo: TPanel;
     ConfSenha: TPanel;
     EdNovaSenha: TEdit;
-    procedure ConfSenhaClick(Sender: TObject);
     procedure AlterarSenha;
+    procedure ConfSenhaClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
@@ -22,15 +22,17 @@ type
   end;
 
 var
-  Form22: TForm22;
+  Form24: TForm24;
 
 implementation
 
 {$R *.dfm}
 
-uses UDataModule, UMetodos;
+uses UDataModule, UMetodos, TelaPrincipalN1;
 
-procedure TForm22.AlterarSenha;
+{ TForm24 }
+
+procedure TForm24.AlterarSenha;
 var
   NovaSenha, Hash: string;
 begin
@@ -48,26 +50,30 @@ begin
   begin
     Close;
     SQL.Text :=
-      'UPDATE administradores SET senha_adm = :senha WHERE id_adm = :id';
+      'UPDATE clientes SET senha_clie = :senha WHERE id_clie = :id';
 
     ParamByName('senha').AsString := Hash;
-    ParamByName('id').AsInteger := DataModule1.id_adm;
+    ParamByName('id').AsInteger := DataModule1.id_clie;
 
     ExecSQL;
   end;
 
-  form22.Close;
+  form24.Close;
 end;
 
 
-procedure TForm22.ConfSenhaClick(Sender: TObject);
+
+procedure TForm24.ConfSenhaClick(Sender: TObject);
 begin
-AlterarSenha;
+  AlterarSenha;
 end;
 
-procedure TForm22.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TForm24.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 EdNovaSenha.Text := '';
+form3.atualizar_grid;
 end;
+
+end.
 
 end.

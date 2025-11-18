@@ -23,6 +23,7 @@ type
     Panel2: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
+    Image3: TImage;
     procedure Image2Click(Sender: TObject);
     procedure MudarSenha;
     procedure FormShow(Sender: TObject);
@@ -32,6 +33,7 @@ type
     procedure Panel3Click(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);
     procedure LbagendamentosClick(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -57,6 +59,11 @@ end;
 procedure TForm5.Image2Click(Sender: TObject);
 begin
 MudarSenha;
+end;
+
+procedure TForm5.Image3Click(Sender: TObject);
+begin
+form5.close;
 end;
 
 procedure TForm5.LbagendamentosClick(Sender: TObject);
