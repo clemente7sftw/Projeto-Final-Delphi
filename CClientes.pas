@@ -95,7 +95,7 @@ implementation
 {$R *.dfm}
 
 uses TelaPrincipalN1, CFornecedores, TelaInicialN3, UDataModule, CProfissionais,
-  Agendamentos, CAgendamentos, CServicos, CCargos;
+  Agendamentos, CAgendamentos, CServicos, CCargos, UMetodos;
 
 procedure TForm4.FormCreate(Sender: TObject);
 begin
@@ -245,7 +245,7 @@ begin
       ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
       ParamByName('nome_clie').AsString := ednome.Text;
       ParamByName('email_clie').AsString := edemail.Text;
-      ParamByName('senha_clie').AsString := nome_senha + '123';
+      ParamByName('senha_clie').AsString := TMetodos.MD5(Trim(nome_senha) + '123');
       ExecSQL;
     end;
     atualizar_grid;
@@ -256,7 +256,7 @@ begin
     ExclBtn.Visible := True;
     ednome.Visible:= true;
     edemail.Visible:= true;
-    btncancelar.Visible:= true;
+    btncancelar.Visible:= false;
     addclie.Visible := true;
   except
   erro;

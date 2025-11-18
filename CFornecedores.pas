@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, AdicionarFornecedor, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Skia,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Skia,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Mask,
   Vcl.DBCtrls;
 
@@ -29,12 +29,10 @@ type
     Image3: TImage;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
-    procedure PbtnAddClick(Sender: TObject);
     procedure Label2Click(Sender: TObject);
     procedure EditsAtivos;
     procedure EditsInativos;
     procedure FormShow(Sender: TObject);
-    procedure BtnAddClick(Sender: TObject);
     procedure BtnConfClick(Sender: TObject);
     procedure BtnExcluirClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);
@@ -54,11 +52,7 @@ implementation
 uses TelaPrincipalN1, CClientes, UDataModule, TelaInicialN3,
   relatorios_servicos;
 
-procedure TForm7.BtnAddClick(Sender: TObject);
-begin
-Form6.Show;
-Form7.Close;
-end;
+
 
 procedure TForm7.BtnConfClick(Sender: TObject);
 begin
@@ -129,10 +123,6 @@ begin
   Form4.Show;
 end;
 
-procedure TForm7.PbtnAddClick(Sender: TObject);
-begin
-  Form6.Show;
-  Form7.Hide;
-end;
+
 
 end.

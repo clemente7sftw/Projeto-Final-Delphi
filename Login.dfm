@@ -39636,7 +39636,6 @@ object Form1: TForm1
       Stretch = True
       ExplicitLeft = 2
       ExplicitTop = 2
-      ExplicitWidth = 1010
     end
     object BS: TImage
       Left = 248

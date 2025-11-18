@@ -193,7 +193,7 @@ begin
       'RETURNING id_pro';
     ParamByName('nome').AsString := Edit1.Text;
     ParamByName('email').AsString := Edit2.Text;
-    ParamByName('senha').AsString := nome_senha + '123';
+    ParamByName('senha').AsString := TMetodos.MD5(Trim(nome_senha) + '123');
     ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
     Open;
     id_pro := FieldByName('id_pro').AsInteger;
@@ -236,6 +236,7 @@ begin
     end;
   end;
   form8.Show;
+  form9.Close;
 end;
 
 

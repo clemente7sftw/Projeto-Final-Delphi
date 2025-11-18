@@ -135,7 +135,6 @@ object Form7: TForm7
       Height = 41
       Caption = 'BtnAdd'
       TabOrder = 3
-      OnClick = BtnAddClick
     end
     object DBGrid1: TDBGrid
       Left = 225

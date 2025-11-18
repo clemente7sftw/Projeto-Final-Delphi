@@ -69,7 +69,7 @@ try
     SQL.Text := 'INSERT INTO empresas (nome, email, senha, cnpj, cep, rua, bairro, cidade, estado ) ' +
                 'VALUES (:nome, :email, :senha, :cnpj, :cep, :rua, :bairro, :cidade, :estado)';
     ParamByName('nome').AsString := EdNome.Text;
-    ParamByName('senha').AsString := Form2.EdSenha.Text;
+    ParamByName('senha').AsString := TMetodos.MD5(Form2.EdSenha.Text);
     ParamByName('email').AsString := EdEmail.Text;
     ParamByName('cnpj').AsString := MaskCnpj.Text;
     ParamByName('cep').AsString := EdCEP.Text;

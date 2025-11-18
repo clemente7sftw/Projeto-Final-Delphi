@@ -214,7 +214,7 @@ begin
     Close;
     SQL.Text := 'SELECT * FROM empresas WHERE email = :email AND senha = :senha';
     ParamByName('email').AsString := EdEmail.Text;
-    ParamByName('senha').AsString := EdSenha.Text;
+    ParamByName('senha').AsString := TMetodos.MD5(Trim(EdSenha.Text));
     Open;
 
     if not IsEmpty then
@@ -235,7 +235,7 @@ begin
     Close;
     SQL.Text := 'SELECT * FROM administradores WHERE email_adm = :email AND senha_adm = :senha';
     ParamByName('email').AsString := EdEmail.Text;
-    ParamByName('senha').AsString := EdSenha.Text;
+    ParamByName('senha').AsString := TMetodos.MD5(Trim(EdSenha.Text));
     Open;
 
     if not IsEmpty then
@@ -257,7 +257,7 @@ begin
     Close;
     SQL.Text := 'SELECT * FROM profissionais WHERE email = :email AND senha = :senha';
     ParamByName('email').AsString := EdEmail.Text;
-    ParamByName('senha').AsString := EdSenha.Text;
+    ParamByName('senha').AsString := TMetodos.MD5(Trim(EdSenha.Text));
     Open;
 
     if not IsEmpty then

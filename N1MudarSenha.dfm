@@ -2,56 +2,61 @@ object Form24: TForm24
   Left = 0
   Top = 0
   Caption = 'Form24'
-  ClientHeight = 655
-  ClientWidth = 1045
+  ClientHeight = 520
+  ClientWidth = 422
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnClose = FormClose
   TextHeight = 15
   object Fundo: TPanel
     Left = 0
     Top = 0
-    Width = 1045
-    Height = 655
+    Width = 422
+    Height = 520
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 897
-    ExplicitHeight = 615
-    object Label2: TLabel
-      Left = 112
-      Top = 464
-      Width = 54
-      Height = 15
-      Caption = 'senha_clie'
-      FocusControl = DBEdit1
-    end
+    ExplicitWidth = 418
+    ExplicitHeight = 474
     object ConfSenha: TPanel
       Left = 112
-      Top = 514
+      Top = 314
       Width = 200
-      Height = 49
-      Caption = 'ConfSenha'
+      Height = 31
+      Caption = 'Confirmar Senha'
+      Color = 2700608
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
       TabOrder = 0
       OnClick = ConfSenhaClick
     end
-    object DBEdit1: TDBEdit
+    object EdNovaSenha: TEdit
       Left = 112
-      Top = 485
+      Top = 264
       Width = 200
-      Height = 23
-      DataField = 'senha_clie'
-      DataSource = DataSource1
+      Height = 33
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 1
     end
   end
   object DataSource1: TDataSource
     DataSet = DataModule1.QueryClientes
-    Left = 520
-    Top = 336
+    Left = 112
+    Top = 88
   end
 end

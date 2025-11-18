@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.Imaging.pngimage, Vcl.CheckLst, system.JSON, uSuperChartLight,
+  Vcl.Imaging.pngimage, Vcl.CheckLst, system.JSON,
   FireDAC.Moni.Base, FireDAC.Moni.Custom, FireDAC.Moni.FlatFile, RLReport,
   Data.DB, Vcl.WinXPickers, Vcl.Mask;
 

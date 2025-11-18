@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
   Vcl.StdCtrls, Vcl.Imaging.pngimage, Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls,
-  Vcl.CheckLst, System.DateUtils, Vcl.ComCtrls;
+  Vcl.CheckLst, System.DateUtils, Vcl.ComCtrls, Vcl.Skia;
 
 type
   TForm26 = class(TForm)
@@ -26,9 +26,6 @@ type
     DBEdit1: TDBEdit;
     DBEdit2: TDBEdit;
     DBEdit3: TDBEdit;
-    Barra: TPanel;
-    Lbagendamentos: TLabel;
-    Label2: TLabel;
     CLBHorarios: TCheckListBox;
     MonthCalendar1: TMonthCalendar;
     DataSource3: TDataSource;
@@ -38,6 +35,9 @@ type
     Label5: TLabel;
     Timer1: TTimer;
     lblrequired: TLabel;
+    Image2: TImage;
+    Barra: TPanel;
+    Lbagendamentos: TLabel;
     procedure FormShow(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure DBGrid1DragOver(Sender, Source: TObject; X, Y: Integer;
@@ -55,6 +55,7 @@ type
     procedure Panel2Click(Sender: TObject);
     procedure erro;
     procedure Timer1Timer(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -279,6 +280,7 @@ begin
   Trazerservicos(DiaSemana, DataSelecionada);
 end;
 
+
 procedure TForm26.DBGrid2CellClick(Column: TColumn);
 var
   id_servico: Integer;
@@ -323,6 +325,11 @@ begin
 
 end;
 
+
+procedure TForm26.Image2Click(Sender: TObject);
+begin
+form26.close;
+end;
 
 procedure TForm26.MonthCalendar1Click(Sender: TObject);
 var

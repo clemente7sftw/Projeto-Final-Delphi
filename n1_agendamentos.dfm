@@ -22,8 +22,6 @@ object Form26: TForm26
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -8
-    ExplicitTop = -8
     object Image4: TImage
       Left = 32
       Top = 48
@@ -378,6 +376,33 @@ object Form26: TForm26
       ParentColor = False
       ParentFont = False
     end
+    object Image2: TImage
+      Left = 40
+      Top = 263
+      Width = 57
+      Height = 66
+      Picture.Data = {
+        0D54536B537667477261706869633C73766720786D6C6E733D22687474703A2F
+        2F7777772E77332E6F72672F323030302F737667222076696577426F783D2230
+        20302036343020363430223E3C212D2D21466F6E7420417765736F6D65204672
+        656520372E302E302062792040666F6E74617765736F6D65202D206874747073
+        3A2F2F666F6E74617765736F6D652E636F6D204C6963656E7365202D20687474
+        70733A2F2F666F6E74617765736F6D652E636F6D2F6C6963656E73652F667265
+        6520436F70797269676874203230323520466F6E7469636F6E732C20496E632E
+        2D2D3E3C7061746820643D224D37332E34203239372E344336302E3920333039
+        2E392036302E39203333302E322037332E34203334322E374C3233332E342035
+        30322E37433234352E39203531352E32203236362E32203531352E3220323738
+        2E37203530322E37433239312E32203439302E32203239312E32203436392E39
+        203237382E37203435372E344C3137332E33203335324C353434203335324335
+        36312E372033353220353736203333372E372035373620333230433537362033
+        30322E33203536312E372032383820353434203238384C3137332E3320323838
+        4C3237382E37203138322E36433239312E32203137302E31203239312E322031
+        34392E38203237382E37203133372E33433236362E32203132342E3820323435
+        2E39203132342E38203233332E34203133372E334C37332E34203239372E337A
+        222F3E3C2F7376673E}
+      Stretch = True
+      OnClick = Image2Click
+    end
     object DBGrid1: TDBGrid
       Left = 40
       Top = 416
@@ -523,41 +548,6 @@ object Form26: TForm26
       ParentFont = False
       TabOrder = 7
     end
-    object Barra: TPanel
-      Left = -8
-      Top = 176
-      Width = 1928
-      Height = 41
-      Color = 2700608
-      ParentBackground = False
-      TabOrder = 8
-      object Lbagendamentos: TLabel
-        Left = 576
-        Top = 8
-        Width = 146
-        Height = 30
-        Caption = 'Agendamentos'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
-        Font.Height = -21
-        Font.Name = 'Segoe UI Semibold'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label2: TLabel
-        Left = 1256
-        Top = 8
-        Width = 166
-        Height = 30
-        Caption = 'Estabelecimentos'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
-        Font.Height = -21
-        Font.Name = 'Segoe UI Semibold'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-    end
     object CLBHorarios: TCheckListBox
       Left = 966
       Top = 704
@@ -570,7 +560,7 @@ object Form26: TForm26
       Font.Style = []
       ItemHeight = 21
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 8
     end
     object MonthCalendar1: TMonthCalendar
       Left = 64
@@ -578,7 +568,7 @@ object Form26: TForm26
       Width = 721
       Height = 160
       Date = 45979.000000000000000000
-      TabOrder = 10
+      TabOrder = 9
       OnClick = MonthCalendar1Click
     end
     object CLBServicos: TCheckListBox
@@ -593,8 +583,31 @@ object Form26: TForm26
       Font.Style = []
       ItemHeight = 21
       ParentFont = False
-      TabOrder = 11
+      TabOrder = 10
       OnClickCheck = CLBServicosClickCheck
+    end
+    object Barra: TPanel
+      Left = -8
+      Top = 176
+      Width = 1928
+      Height = 41
+      Color = 2700608
+      ParentBackground = False
+      TabOrder = 11
+      object Lbagendamentos: TLabel
+        Left = 912
+        Top = 8
+        Width = 146
+        Height = 30
+        Cursor = crHandPoint
+        Caption = 'Agendamentos'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -21
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
     end
   end
   object DataSource1: TDataSource

@@ -22,7 +22,7 @@ type
     Barra: TPanel;
     ExclBtn: TImage;
     Lbagendamentos: TLabel;
-    Label2: TLabel;
+    Image3: TImage;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Image2Click(Sender: TObject);
@@ -31,6 +31,7 @@ type
     procedure ExclBtnClick(Sender: TObject);
     procedure LbagendamentosClick(Sender: TObject);
     procedure atualizar_grid;
+    procedure Image3Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -157,10 +158,14 @@ Form24.show;
 end;
 
 
+procedure TForm3.Image3Click(Sender: TObject);
+begin
+form3.Close;
+end;
+
 procedure TForm3.LbagendamentosClick(Sender: TObject);
 begin
   form26.Show;
-  form3.Close;
 end;
 
 procedure TForm3.Panel1Click(Sender: TObject);

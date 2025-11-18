@@ -9,13 +9,13 @@ uses
 
 type
   TForm24 = class(TForm)
+    DataSource1: TDataSource;
     Fundo: TPanel;
     ConfSenha: TPanel;
-    Label2: TLabel;
-    DBEdit1: TDBEdit;
-    DataSource1: TDataSource;
+    EdNovaSenha: TEdit;
     procedure AlterarSenha;
     procedure ConfSenhaClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -29,29 +29,52 @@ implementation
 
 {$R *.dfm}
 
-uses UDataModule;
+uses UDataModule, UMetodos, TelaPrincipalN1;
 
 { TForm24 }
 
 procedure TForm24.AlterarSenha;
+var
+  NovaSenha, Hash: string;
 begin
- try
-if dbedit1.text <> '' then
-begin
-    if not (DataModule1.QueryClientes.State in [dsEdit, dsInsert]) then
-    DataModule1.QueryClientes.Edit;
-    DataModule1.QueryClientes.FieldByName('senha_clie').AsString := DBEdit1.Text;
-    DataModule1.QueryClientes.Post;
-end else begin
-  DataModule1.QueryClientes.Cancel;
-end;
-  except
+  NovaSenha := EdNovaSenha.Text;
+
+  if NovaSenha = '' then
+  begin
+    ShowMessage('Digite a nova senha.');
+    Exit;
   end;
+
+  Hash := TMetodos.MD5(NovaSenha);
+
+  with DataModule1.Query_conexao do
+  begin
+    Close;
+    SQL.Text :=
+      'UPDATE clientes SET senha_clie = :senha WHERE id_clie = :id';
+
+    ParamByName('senha').AsString := Hash;
+    ParamByName('id').AsInteger := DataModule1.id_clie;
+
+    ExecSQL;
+  end;
+
+  form24.Close;
 end;
+
+
 
 procedure TForm24.ConfSenhaClick(Sender: TObject);
 begin
-AlterarSenha;
+  AlterarSenha;
 end;
+
+procedure TForm24.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+EdNovaSenha.Text := '';
+form3.atualizar_grid;
+end;
+
+end.
 
 end.
