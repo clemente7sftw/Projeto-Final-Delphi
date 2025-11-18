@@ -427,6 +427,67 @@ object Form3: TForm3
       TitleFont.Height = -12
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'empresa'
+          Title.Caption = 'Empresa'
+          Title.Font.Charset = ANSI_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -23
+          Title.Font.Name = 'Segoe UI Semibold'
+          Title.Font.Style = [fsBold]
+          Width = 161
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'profissional'
+          Title.Caption = 'Profissional'
+          Title.Font.Charset = ANSI_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -23
+          Title.Font.Name = 'Segoe UI Semibold'
+          Title.Font.Style = [fsBold]
+          Width = 170
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'preco'
+          Title.Caption = 'Pre'#231'o'
+          Title.Font.Charset = ANSI_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -23
+          Title.Font.Name = 'Segoe UI Semibold'
+          Title.Font.Style = [fsBold]
+          Width = 114
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'data_agendamento'
+          Title.Caption = 'Data de Agendamento'
+          Title.Font.Charset = ANSI_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -23
+          Title.Font.Name = 'Segoe UI Semibold'
+          Title.Font.Style = [fsBold]
+          Width = 189
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'hora_inicio'
+          Title.Caption = 'Hor'#225'rio'
+          Title.Font.Charset = ANSI_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -23
+          Title.Font.Name = 'Segoe UI Semibold'
+          Title.Font.Style = [fsBold]
+          Width = 176
+          Visible = True
+        end>
     end
     object Barra: TPanel
       Left = -8

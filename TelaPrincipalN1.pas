@@ -125,7 +125,7 @@ begin
     'SELECT ' +
     '    e.nome AS empresa, ' +
     '    p.nome AS profissional, ' +
-    '    STRING_AGG(s.nome, '', '') AS servicos, ' +
+    '    STRING_AGG(s.nome, '', '')::varchar(500) servicos, ' +
     '    SUM(s.preco) AS preco, ' +
     '    a.data_agendamento, ' +
     '    a.hora_inicio ' +
