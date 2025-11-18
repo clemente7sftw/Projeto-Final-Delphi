@@ -148,13 +148,6 @@
             <Form>Form4</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="AdicionarFornecedor.pas">
-            <Form>Form6</Form>
-        </DCCReference>
-        <DCCReference Include="CFornecedores.pas">
-            <Form>Form7</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="CProfissionais.pas">
             <Form>Form8</Form>
             <FormType>dfm</FormType>
@@ -163,16 +156,8 @@
             <Form>Form9</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="AdicionarServico.pas">
-            <Form>Form10</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="AdicionarCargo.pas">
             <Form>Form11</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="AdicionarPP.pas">
-            <Form>Form12</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="CCargos.pas">
@@ -181,14 +166,6 @@
         </DCCReference>
         <DCCReference Include="CServicos.pas">
             <Form>Form15</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="CPacotesPromocionais.pas">
-            <Form>Form16</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="CHorarios.pas">
-            <Form>Form17</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UDataModule.pas">
@@ -304,6 +281,12 @@
             </Delphi.Personality>
             <Deployment Version="4">
                 <DeployFile LocalName="Win32\Debug\ProjectFinal.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>ProjectFinal.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win32\Release\ProjectFinal.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>ProjectFinal.exe</RemoteName>
                         <Overwrite>true</Overwrite>
