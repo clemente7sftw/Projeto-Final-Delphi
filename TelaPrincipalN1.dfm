@@ -351,8 +351,8 @@ object Form3: TForm3
       OnClick = Image2Click
     end
     object ExclBtn: TImage
-      Left = 923
-      Top = 362
+      Left = 584
+      Top = 409
       Width = 33
       Height = 33
       Cursor = crHandPoint
@@ -374,7 +374,7 @@ object Form3: TForm3
     end
     object Panel1: TPanel
       Left = 32
-      Top = 392
+      Top = 368
       Width = 185
       Height = 41
       Cursor = crHandPoint
@@ -412,7 +412,7 @@ object Form3: TForm3
       Left = 584
       Top = 448
       Width = 921
-      Height = 120
+      Height = 393
       DataSource = DataSource1
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -437,7 +437,7 @@ object Form3: TForm3
           Title.Font.Height = -23
           Title.Font.Name = 'Segoe UI Semibold'
           Title.Font.Style = [fsBold]
-          Width = 161
+          Width = 262
           Visible = True
         end
         item
@@ -449,7 +449,7 @@ object Form3: TForm3
           Title.Font.Height = -23
           Title.Font.Name = 'Segoe UI Semibold'
           Title.Font.Style = [fsBold]
-          Width = 170
+          Width = 242
           Visible = True
         end
         item
@@ -461,7 +461,7 @@ object Form3: TForm3
           Title.Font.Height = -23
           Title.Font.Name = 'Segoe UI Semibold'
           Title.Font.Style = [fsBold]
-          Width = 114
+          Width = 130
           Visible = True
         end
         item
@@ -497,6 +497,35 @@ object Form3: TForm3
       Color = 2700608
       ParentBackground = False
       TabOrder = 2
+      object Lbagendamentos: TLabel
+        Left = 576
+        Top = 8
+        Width = 146
+        Height = 30
+        Cursor = crHandPoint
+        Caption = 'Agendamentos'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -21
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+        OnClick = LbagendamentosClick
+      end
+      object Label2: TLabel
+        Left = 1256
+        Top = 8
+        Width = 166
+        Height = 30
+        Cursor = crHandPoint
+        Caption = 'Estabelecimentos'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -21
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
     end
   end
   object DataSource1: TDataSource

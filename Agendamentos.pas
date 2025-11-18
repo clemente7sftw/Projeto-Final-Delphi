@@ -147,8 +147,6 @@ begin
   end;
 end;
 
-
-
 procedure TForm13.Panel2Click(Sender: TObject);
 begin
   Cadastrar;

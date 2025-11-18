@@ -191,11 +191,10 @@ begin
   with DataModule1.query_conexao do
   begin
   try
-        Close;
+      Close;
       SQL.Text := 'SELECT * FROM clientes WHERE email_clie = :email AND senha_clie = :senha';
       ParamByName('email').AsString := EdEmail.Text;
-           ParamByName('senha').AsString :=
-  TMetodos.MD5(Trim(EdSenha.Text));
+      ParamByName('senha').AsString := TMetodos.MD5(Trim(EdSenha.Text));
       Open;
 
       if not IsEmpty then

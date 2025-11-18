@@ -162,8 +162,6 @@ object Form1: TForm1
     Color = 1186595
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 935
-    ExplicitHeight = 1053
     object ImagemDeFundo: TImage
       Left = 1
       Top = 1
@@ -40051,12 +40049,12 @@ object Form1: TForm1
     object WebBrowser1: TWebBrowser
       Left = 527
       Top = 40
-      Width = 81
-      Height = 145
+      Width = 65
+      Height = 116
       TabOrder = 4
       OnNavigateComplete2 = WebBrowser1NavigateComplete2
       ControlData = {
-        4C000000B3060000FD0B00000000000000000000000000000000000000000000
+        4C000000B8060000FD0B00000000000000000000000000000000000000000000
         000000004C000000000000000000000001000000E0D057007335CF11AE690800
         2B2E126208000000000000004C0000000114020000000000C000000000000046
         8000000000000000000000000000000000000000000000000000000000000000

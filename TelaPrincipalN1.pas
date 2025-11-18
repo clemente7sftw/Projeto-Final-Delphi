@@ -21,12 +21,16 @@ type
     DataSource1: TDataSource;
     Barra: TPanel;
     ExclBtn: TImage;
+    Lbagendamentos: TLabel;
+    Label2: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure Panel1Click(Sender: TObject);
     procedure Excluir;
     procedure ExclBtnClick(Sender: TObject);
+    procedure LbagendamentosClick(Sender: TObject);
+    procedure atualizar_grid;
 
   private
     { Private declarations }
@@ -44,6 +48,39 @@ implementation
 {$R *.dfm}
 
 uses N1MudarSenha, n1_agendamentos, relatorios_servicos;
+
+procedure TForm3.atualizar_grid;
+begin
+with DataModule1.Query_conexao do
+begin
+  Close;
+SQL.Text :=
+  'SELECT ' +
+  '    a.id_agendamento, ' +
+  '    e.nome AS empresa, ' +
+  '    p.nome AS profissional, ' +
+  '    STRING_AGG(s.nome, '', '')::varchar(500) servicos, ' +
+  '    SUM(s.preco) AS preco, ' +
+  '    a.data_agendamento, ' +
+  '    a.hora_inicio ' +
+  'FROM agendamentos a ' +
+  'INNER JOIN clientes c ON a.id_clie = c.id_clie ' +
+  'INNER JOIN agendamento_servicos ags ON a.id_agendamento = ags.id_agendamento ' +
+  'INNER JOIN servicos s ON ags.id_servico = s.id_servico ' +
+  'INNER JOIN profissionais_agendamentos pa ON pa.id_agendamento = a.id_agendamento ' +
+  'INNER JOIN profissionais p ON pa.id_pro = p.id_pro ' +
+  'INNER JOIN empresas e ON e.id_empresa = a.id_empresa ' +
+  'WHERE a.id_clie = :id_clie ' +
+  'GROUP BY a.id_agendamento, e.nome, p.nome, a.data_agendamento, a.hora_inicio ' +
+  'ORDER BY a.data_agendamento DESC, a.hora_inicio;';
+
+ ParamByName('id_clie').AsInteger := DataModule1.id_clie;
+ Open;
+
+end;
+  datasource1.DataSet := datamodule1.query_conexao;
+  dbgrid1.DataSource := datasource1;
+end;
 
 procedure TForm3.ExclBtnClick(Sender: TObject);
 begin
@@ -78,32 +115,25 @@ begin
    with datamodule1.Query_conexao do
 begin
   close;
-  SQL.Text :=
+SQL.Text :=
   'SELECT ' +
   '    a.id_agendamento, ' +
-  '    c.nome_clie, ' +
-  '    c.email_clie, ' +
-  '    STRING_AGG(s.nome, '', '')::varchar(500) AS nome_servicos, ' +
+  '    e.nome AS empresa, ' +
+  '    p.nome AS profissional, ' +
+  '    STRING_AGG(s.nome, '', '')::varchar(500) servicos, ' +
+  '    SUM(s.preco) AS preco, ' +
   '    a.data_agendamento, ' +
-  '    a.hora_inicio, ' +
-  '    a.status ' +
-  'FROM ' +
-  '    agendamentos a ' +
-  'INNER JOIN ' +
-  '    clientes c ON a.id_clie = c.id_clie ' +
-  'INNER JOIN ' +
-  '    agendamento_servicos ags ON a.id_agendamento = ags.id_agendamento ' +
-  'INNER JOIN ' +
-  '    servicos s ON ags.id_servico = s.id_servico ' +
-  'GROUP BY ' +
-  '    a.id_agendamento, ' +
-  '    c.nome_clie, ' +
-  '    c.email_clie, ' +
-  '    a.data_agendamento, ' +
-  '    a.hora_inicio, ' +
-  '    a.status ' +
-  'ORDER BY ' +
-  '    a.id_agendamento;';
+  '    a.hora_inicio ' +
+  'FROM agendamentos a ' +
+  'INNER JOIN clientes c ON a.id_clie = c.id_clie ' +
+  'INNER JOIN agendamento_servicos ags ON a.id_agendamento = ags.id_agendamento ' +
+  'INNER JOIN servicos s ON ags.id_servico = s.id_servico ' +
+  'INNER JOIN profissionais_agendamentos pa ON pa.id_agendamento = a.id_agendamento ' +
+  'INNER JOIN profissionais p ON pa.id_pro = p.id_pro ' +
+  'INNER JOIN empresas e ON e.id_empresa = a.id_empresa ' +
+  'WHERE a.id_clie = :id_clie ' +
+  'GROUP BY a.id_agendamento, e.nome, p.nome, a.data_agendamento, a.hora_inicio ' +
+  'ORDER BY a.data_agendamento DESC, a.hora_inicio;';
 open;
 end;
 end;
@@ -118,33 +148,7 @@ end;
 
 procedure TForm3.FormShow(Sender: TObject);
 begin
-with DataModule1.Query_conexao do
-begin
-  Close;
-  SQL.Text :=
-    'SELECT ' +
-    '    e.nome AS empresa, ' +
-    '    p.nome AS profissional, ' +
-    '    STRING_AGG(s.nome, '', '')::varchar(500) servicos, ' +
-    '    SUM(s.preco) AS preco, ' +
-    '    a.data_agendamento, ' +
-    '    a.hora_inicio ' +
-    'FROM agendamentos a ' +
-    'INNER JOIN clientes c ON a.id_clie = c.id_clie ' +
-    'INNER JOIN agendamento_servicos ags ON a.id_agendamento = ags.id_agendamento ' +
-    'INNER JOIN servicos s ON ags.id_servico = s.id_servico ' +
-    'INNER JOIN profissionais_agendamentos pa ON pa.id_agendamento = a.id_agendamento ' +
-    'INNER JOIN profissionais p ON pa.id_pro = p.id_pro ' +
-    'INNER JOIN empresas e ON e.id_empresa = a.id_empresa ' +
-    'WHERE a.id_clie = :id_clie ' +
-    'GROUP BY e.nome, p.nome, a.data_agendamento, a.hora_inicio ' +
-    'ORDER BY a.data_agendamento DESC, a.hora_inicio;';
-  ParamByName('id_clie').AsInteger := DataModule1.id_clie;
-  Open;
-
-end;
-  datasource1.DataSet := datamodule1.query_conexao;
-  dbgrid1.DataSource := datasource1;
+atualizar_grid;
 end;
 
 procedure TForm3.Image2Click(Sender: TObject);
@@ -153,9 +157,16 @@ Form24.show;
 end;
 
 
+procedure TForm3.LbagendamentosClick(Sender: TObject);
+begin
+  form26.Show;
+  form3.Close;
+end;
+
 procedure TForm3.Panel1Click(Sender: TObject);
 begin
   Form26.show;
+  form3.close;
 end;
 
 end.

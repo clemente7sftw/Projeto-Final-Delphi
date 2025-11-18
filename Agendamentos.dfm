@@ -23,8 +23,6 @@ object Form13: TForm13
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -8
-    ExplicitTop = -8
     object Label1: TLabel
       Left = 846
       Top = 335

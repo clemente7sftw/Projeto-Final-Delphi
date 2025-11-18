@@ -64,8 +64,8 @@ object Form34: TForm34
       ParentFont = False
     end
     object Lblrequired: TLabel
-      Left = 1158
-      Top = 847
+      Left = 848
+      Top = 799
       Width = 233
       Height = 25
       Caption = 'Preencha todos os campos!'
@@ -79,8 +79,8 @@ object Form34: TForm34
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 1158
-      Top = 847
+      Left = 848
+      Top = 799
       Width = 233
       Height = 25
       Caption = 'Preencha todos os campos!'
@@ -503,7 +503,7 @@ object Form34: TForm34
       Left = 1406
       Top = 567
       Width = 283
-      Height = 151
+      Height = 170
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -19
