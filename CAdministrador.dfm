@@ -1,8 +1,8 @@
 object Form22: TForm22
   Left = 0
   Top = 0
-  Caption = 'Cadastre sua nova senha'
-  ClientHeight = 474
+  Caption = 'Mudar Senha'
+  ClientHeight = 560
   ClientWidth = 418
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,11 +16,12 @@ object Form22: TForm22
     Left = 0
     Top = 0
     Width = 418
-    Height = 474
+    Height = 560
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitHeight = 474
     object ConfSenha: TPanel
       Left = 112
       Top = 314

@@ -66,7 +66,7 @@ implementation
 uses CClientes, CProfissionais, AdicionarServico, CServicos,
   CCargos, CFornecedores, Cadastro, CHorarios, Agendamentos, UDataModule,
   CAgendamentos, CadAdm, relatorios_servicos, relatorio_clientes,
-  relatorios_profissionais, Login;
+  relatorios_profissionais, Login, n3_admin;
 procedure TForm20.AddAdm;
 begin
 Form23.show;

@@ -23,7 +23,6 @@ object Form21: TForm21
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1920
     object ExclBtn: TImage
       Left = 923
       Top = 362
@@ -534,7 +533,6 @@ object Form21: TForm21
           Title.Font.Height = -21
           Title.Font.Name = 'Segoe UI Semibold'
           Title.Font.Style = [fsBold]
-          Width = 64
           Visible = True
         end
         item

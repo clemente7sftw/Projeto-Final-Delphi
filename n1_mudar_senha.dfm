@@ -1,9 +1,9 @@
 object Form24: TForm24
   Left = 0
   Top = 0
-  Caption = 'Form24'
-  ClientHeight = 520
-  ClientWidth = 422
+  Caption = 'Mudar Senha'
+  ClientHeight = 541
+  ClientWidth = 429
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,12 +15,14 @@ object Form24: TForm24
   object Fundo: TPanel
     Left = 0
     Top = 0
-    Width = 422
-    Height = 520
+    Width = 429
+    Height = 541
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 422
+    ExplicitHeight = 520
     object ConfSenha: TPanel
       Left = 112
       Top = 314

@@ -305,10 +305,8 @@ var
   id_agendamento: Integer;
 begin
   if DataModule1.QueryAg.IsEmpty then
-  begin
-//    ShowMessage('Nenhum agendamento selecionado.');
     Exit;
-  end;
+
   if Application.MessageBox(
        'Tem certeza de que deseja excluir este Agendamento? Essa ação não poderá ser desfeita.',
        'Exclusão de Agendamento',
@@ -316,45 +314,49 @@ begin
      ) = IDYES then
   begin
     id_agendamento := DataModule1.QueryAg.FieldByName('id_agendamento').AsInteger;
+
     with DataModule1.Query_Aux do
     begin
       Close;
-      SQL.Text := 'DELETE FROM agendamentos WHERE id_agendamento = :id_agendamento';
-      ParamByName('id_agendamento').AsInteger := id_agendamento;
+      SQL.Text := 'DELETE FROM agendamento_servicos WHERE id_agendamento = :id';
+      ParamByName('id').AsInteger := id_agendamento;
+      ExecSQL;
+      Close;
+      SQL.Text := 'DELETE FROM profissionais_agendamentos WHERE id_agendamento = :id';
+      ParamByName('id').AsInteger := id_agendamento;
+      ExecSQL;
+
+      Close;
+      SQL.Text := 'DELETE FROM agendamentos WHERE id_agendamento = :id';
+      ParamByName('id').AsInteger := id_agendamento;
       ExecSQL;
     end;
+
   end;
-   with datamodule1.QueryAg do
-begin
-  close;
-  SQL.Text :=
-  'SELECT ' +
-  '    a.id_agendamento, ' +
-  '    c.nome_clie, ' +
-  '    c.email_clie, ' +
-  '    STRING_AGG(s.nome, '', '')::varchar(500) AS nome_servicos, ' +
-  '    a.data_agendamento, ' +
-  '    a.hora_inicio, ' +
-  '    a.status ' +
-  'FROM ' +
-  '    agendamentos a ' +
-  'INNER JOIN ' +
-  '    clientes c ON a.id_clie = c.id_clie ' +
-  'INNER JOIN ' +
-  '    agendamento_servicos ags ON a.id_agendamento = ags.id_agendamento ' +
-  'INNER JOIN ' +
-  '    servicos s ON ags.id_servico = s.id_servico ' +
-  'GROUP BY ' +
-  '    a.id_agendamento, ' +
-  '    c.nome_clie, ' +
-  '    c.email_clie, ' +
-  '    a.data_agendamento, ' +
-  '    a.hora_inicio, ' +
-  '    a.status ' +
-  'ORDER BY ' +
-  '    a.id_agendamento;';
-open;
-end;
+
+  with DataModule1.QueryAg do
+  begin
+    Close;
+    SQL.Text :=
+      'SELECT ' +
+      '    a.id_agendamento, ' +
+      '    c.nome_clie, ' +
+      '    c.email_clie, ' +
+      '    STRING_AGG(s.nome, '', '')::varchar(500) AS nome_servicos, ' +
+      '    a.data_agendamento, ' +
+      '    a.hora_inicio, ' +
+      '    a.status ' +
+      'FROM agendamentos a ' +
+      'INNER JOIN clientes c ON a.id_clie = c.id_clie ' +
+      'INNER JOIN agendamento_servicos ags ON a.id_agendamento = ags.id_agendamento ' +
+      'INNER JOIN servicos s ON ags.id_servico = s.id_servico ' +
+      'WHERE a.id_empresa = :id_empresa ' +
+      'GROUP BY a.id_agendamento, c.nome_clie, c.email_clie, ' +
+      '         a.data_agendamento, a.hora_inicio, a.status ' +
+      'ORDER BY a.id_agendamento;';
+    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+    Open;
+  end;
 end;
 
 
