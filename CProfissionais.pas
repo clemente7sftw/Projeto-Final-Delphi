@@ -524,7 +524,6 @@ begin
       Next;
     end;
   end;
-  atualizar_grid;
 end;
 procedure TForm8.TrazerDias;
 var
