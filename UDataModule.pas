@@ -94,6 +94,7 @@ type
     Queryag_prodata_agendamento: TDateField;
     Queryag_prohora_inicio: TTimeField;
     Queryag_prostatus: TBooleanField;
+    QueryServicosAux: TFDQuery;
     procedure QueryAgstatusGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
     procedure Queryag_prostatusGetText(Sender: TField; var Text: string;

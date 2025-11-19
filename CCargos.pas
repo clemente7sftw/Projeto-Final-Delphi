@@ -110,7 +110,7 @@ begin
   SQL.Text :=
   'SELECT c.id_cargo, ' +
   '       c.nome_cargo, ' +
-  '       STRING_AGG(s.nome, '','')::varchar(500) AS nome ' +
+  '       STRING_AGG(s.nome, '', '')::varchar(500) AS nome ' +
   'FROM cargos c ' +
   'LEFT JOIN cargos_servicos cp ON c.id_cargo = cp.id_cargo ' +
   'LEFT JOIN servicos s ON cp.id_servico = s.id_servico '  +
@@ -166,11 +166,11 @@ end;
 
 procedure TForm14.Editar;
 begin
+EditsAtivos;
   dbedit2.Visible:= false;
   TrazerServicos;
   BtnConf.Visible:= true;
   BtnExcluir.Visible:= false;
-  EditsAtivos;
   BtnEditar.Visible:= false;
   addclie.Visible:= false;
   dbedit1.DataSource := datasource1;
@@ -427,6 +427,6 @@ begin
       Next;
     end;
   end;
-atualizar_grid;
+
 end;
 end.

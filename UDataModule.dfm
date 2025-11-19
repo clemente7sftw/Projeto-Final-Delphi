@@ -548,4 +548,12 @@ object DataModule1: TDataModule1
       OnGetText = Queryag_prostatusGetText
     end
   end
+  object QueryServicosAux: TFDQuery
+    Connection = conexao_banco
+    SQL.Strings = (
+      'select * from servicos '
+      '')
+    Left = 437
+    Top = 54
+  end
 end

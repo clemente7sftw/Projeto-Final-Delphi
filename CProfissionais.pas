@@ -219,12 +219,8 @@ begin
 end;
 procedure TForm8.Editar;
 begin
-  if not DataModule1.Query_conexao.FieldByName('hora_inicio').IsNull then
-    TimePicker1.Time := DataModule1.Query_conexao.FieldByName('hora_inicio').AsDateTime;
-
-  if not DataModule1.Query_conexao.FieldByName('hora_fim').IsNull then
-    TimePicker2.Time := DataModule1.Query_conexao.FieldByName('hora_fim').AsDateTime;
-
+  TimePicker1.Time := EncodeTime(12, 0, 0, 0);
+  TimePicker2.Time := EncodeTime(12, 0, 0, 0);
   DBEdit3.Visible := False;
   BtnConf.Visible := True;
   ExclBtn.Visible := False;
@@ -240,7 +236,6 @@ begin
   DBEdit5.Visible := false;
   DBEdit6.Visible := false;
 end;
-
 
 
 procedure TForm8.EditBtnClick(Sender: TObject);

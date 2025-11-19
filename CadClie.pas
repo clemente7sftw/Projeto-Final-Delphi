@@ -102,15 +102,20 @@ begin
 end;
 
 procedure TForm18.Cadastrar;
+var  nome_senha: string;
 begin
 try
+   nome_senha := Trim(edNome.Text);
+    if Pos(' ', nome_senha) > 0 then
+      nome_senha := Copy(nome_senha, 1, Pos(' ', nome_senha) - 1);
+
  with DataModule1.query_conexao do
    begin
     SQL.Text := 'INSERT INTO clientes (nome_clie, email_clie, senha_clie, cpf_clie, genero_clie, fone_clie, cep_clie, rua_clie, bairro_clie, cidade_clie, estado_clie ) ' +
                 'VALUES (:nome, :email, :senha, :cpf, :genero, :fone, :cep, :rua, :bairro, :cidade, :estado)';
     ParamByName('nome').AsString := EdNome.Text;
     ParamByName('senha').AsString := Form2.EdSenha.Text;
-    ParamByName('email').AsString := EdEmail.Text;
+    ParamByName('senha').AsString := TMetodos.MD5(Trim(nome_senha) + '123');
     ParamByName('cpf').AsString :=  MaskCpf.Text;
     ParamByName('genero').AsString := CBGenero.Text;
     ParamByName('fone').AsString :=  MaskFone.Text;
