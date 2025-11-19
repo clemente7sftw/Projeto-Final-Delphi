@@ -70,6 +70,7 @@ type
     procedure TrazerHorariosDisponiveis(id_pro: Integer; DataSelecionada: TDateTime);
     procedure btncancelarClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure CLBHorariosClickCheck(Sender: TObject);
   private
 
     { Private declarations }
@@ -80,8 +81,8 @@ type
 var
   Form21: TForm21;
 
-var  dataselecionada: TDatetime;
-var  i, ServicoSelecionado, id_agendamento, id_servico:integer;
+var dataselecionada: TDatetime;
+var i, ServicoSelecionado, id_agendamento, id_servico:integer;
 
 implementation
 
@@ -121,7 +122,6 @@ begin
     '      )';
   ExecSQL;
 end;
-
   with datamodule1.QueryAg do
 begin
   close;
@@ -154,6 +154,51 @@ begin
 open;
 end;
 
+end;
+procedure TForm21.FormCreate(Sender: TObject);
+begin
+  WindowState:=wsMaximized;
+  calendario.Visible:= false;
+end;
+
+procedure TForm21.FormShow(Sender: TObject);
+begin
+  AtualizarStatus;
+with datamodule1.QueryAg do
+begin
+  close;
+  SQL.Text :=
+  'SELECT ' +
+  '    a.id_agendamento, ' +
+  '    c.nome_clie, ' +
+  '    c.email_clie, ' +
+  '    STRING_AGG(s.nome, '', '')::varchar(500) AS nome_servicos, ' +
+  '    a.data_agendamento, ' +
+  '    a.hora_inicio, ' +
+  '    a.status ' +
+  'FROM ' +
+  '    agendamentos a ' +
+  'INNER JOIN ' +
+  '    clientes c ON a.id_clie = c.id_clie ' +
+  'INNER JOIN ' +
+  '    agendamento_servicos ags ON a.id_agendamento = ags.id_agendamento ' +
+  'INNER JOIN ' +
+  '    servicos s ON ags.id_servico = s.id_servico ' +
+  'GROUP BY ' +
+  '    a.id_agendamento, ' +
+  '    c.nome_clie, ' +
+  '    c.email_clie, ' +
+  '    a.data_agendamento, ' +
+  '    a.hora_inicio, ' +
+  '    a.status ' +
+  'ORDER BY ' +
+  '    a.id_agendamento;';
+open;
+end;
+  btnconf.Visible:= false;
+  CLBHorarios.Visible := false;
+  label8.Visible:= false;
+  editsinativos;
 end;
 
 procedure TForm21.BtnAddClick(Sender: TObject);
@@ -200,6 +245,16 @@ addbtn.Visible := true;
 exclbtn.Visible:= true;
 editbtn.Visible:= true;
 end;
+
+procedure TForm21.CLBHorariosClickCheck(Sender: TObject);
+var
+  i: Integer;
+begin
+  for i := 0 to CLBHorarios.Items.Count - 1 do
+    if i <> CLBHorarios.ItemIndex then
+      CLBHorarios.Checked[i] := False;
+end;
+
 
 procedure TForm21.Confirmar;
 var
@@ -359,54 +414,6 @@ begin
   end;
 end;
 
-
-procedure TForm21.FormCreate(Sender: TObject);
-begin
-  WindowState:=wsMaximized;
-  calendario.Visible:= false;
-end;
-
-procedure TForm21.FormShow(Sender: TObject);
-begin
-  AtualizarStatus;
-with datamodule1.QueryAg do
-begin
-  close;
-  SQL.Text :=
-  'SELECT ' +
-  '    a.id_agendamento, ' +
-  '    c.nome_clie, ' +
-  '    c.email_clie, ' +
-  '    STRING_AGG(s.nome, '', '')::varchar(500) AS nome_servicos, ' +
-  '    a.data_agendamento, ' +
-  '    a.hora_inicio, ' +
-  '    a.status ' +
-  'FROM ' +
-  '    agendamentos a ' +
-  'INNER JOIN ' +
-  '    clientes c ON a.id_clie = c.id_clie ' +
-  'INNER JOIN ' +
-  '    agendamento_servicos ags ON a.id_agendamento = ags.id_agendamento ' +
-  'INNER JOIN ' +
-  '    servicos s ON ags.id_servico = s.id_servico ' +
-  'GROUP BY ' +
-  '    a.id_agendamento, ' +
-  '    c.nome_clie, ' +
-  '    c.email_clie, ' +
-  '    a.data_agendamento, ' +
-  '    a.hora_inicio, ' +
-  '    a.status ' +
-  'ORDER BY ' +
-  '    a.id_agendamento;';
-open;
-end;
-  btnconf.Visible:= false;
-  CLBHorarios.Visible := false;
-  label8.Visible:= false;
-  editsinativos;
-
-end;
-
 procedure TForm21.Image1Click(Sender: TObject);
 begin
 Form21.close;
@@ -420,7 +427,7 @@ end;
 
 procedure TForm21.LbClieClick(Sender: TObject);
 begin
-Form4.Show;
+  Form4.Show;
 end;
 
 procedure TForm21.LbFornecedoresClick(Sender: TObject);
@@ -449,9 +456,10 @@ var
   horaAtual, horaFim: TTime;
   intervalo: TTime;
   diaSemana: Integer;
+  horarioAtualAgendado: string;
+  idx: Integer;
 begin
   CLBHorarios.Clear;
-  CLBHorarios.Visible := False;
 
   diaSemana := DayOfTheWeek(DataSelecionada) - 1;
   if diaSemana < 0 then
@@ -483,19 +491,26 @@ begin
         horaAtual := horaAtual + intervalo;
       end;
 
-      CLBHorarios.Visible := (CLBHorarios.Items.Count > 0);
+      horarioAtualAgendado :=
+        FormatDateTime('hh:nn',
+          DataModule1.QueryAg.FieldByName('hora_inicio').AsDateTime);
+
+      idx := CLBHorarios.Items.IndexOf(horarioAtualAgendado);
+      if idx <> -1 then
+        CLBHorarios.Checked[idx] := True;
+
+      CLBHorarios.Visible := True;
     end
     else
     begin
       CLBHorarios.Clear;
       CLBHorarios.Visible := False;
-
-      calendario.Visible := false;
+      calendario.Visible := False;
+      btnconf.Visible := False;
       editsinativos;
-      btnconf.Visible := false;
-
     end;
   end;
 end;
+
 
 end.

@@ -764,6 +764,7 @@ object Form21: TForm21
       ItemHeight = 25
       ParentFont = False
       TabOrder = 8
+      OnClickCheck = CLBHorariosClickCheck
     end
     object DBEdit3: TDBEdit
       Left = 1105

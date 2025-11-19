@@ -56,9 +56,6 @@ type
 var
   Form1: TForm1;
 
-
-
-
 implementation
 
 {$R *.dfm}

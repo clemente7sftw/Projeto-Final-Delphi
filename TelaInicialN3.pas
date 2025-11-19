@@ -42,7 +42,6 @@ type
     procedure FormShow(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure AddAdm;
-    procedure LbFornecedoresClick(Sender: TObject);
     procedure Panel1Click(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
     procedure Panel3Click(Sender: TObject);
@@ -116,31 +115,23 @@ end;
 procedure TForm20.LbagendamentosClick(Sender: TObject);
 begin
   Form21.Show;
-  Form2.Close;
 end;
 
 procedure TForm20.LbCargosClick(Sender: TObject);
 begin
   Form14.show;
-  Form20.close;
 end;
 
 procedure TForm20.LbClieClick(Sender: TObject);
 begin
   Form4.Show;
-  Form20.Close;
 end;
 
-procedure TForm20.LbFornecedoresClick(Sender: TObject);
-begin
-Form7.show;
-Form20.close;
-end;
+
 
 procedure TForm20.LbProfissionaisClick(Sender: TObject);
 begin
   Form8.Show;
-  Form20.Close;
 end;
 
 procedure TForm20.LbServicosClick(Sender: TObject);

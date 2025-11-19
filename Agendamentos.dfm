@@ -352,8 +352,8 @@ object Form13: TForm13
       ParentFont = False
     end
     object DBGrid1: TDBGrid
-      Left = 40
-      Top = 361
+      Left = 24
+      Top = 684
       Width = 657
       Height = 200
       DataSource = DataSource1
@@ -380,7 +380,7 @@ object Form13: TForm13
           Title.Font.Height = -21
           Title.Font.Name = 'Segoe UI Semibold'
           Title.Font.Style = [fsBold]
-          Width = 179
+          Width = 221
           Visible = True
         end
         item
@@ -392,7 +392,7 @@ object Form13: TForm13
           Title.Font.Height = -19
           Title.Font.Name = 'Segoe UI Semibold'
           Title.Font.Style = [fsBold]
-          Width = 104
+          Width = 178
           Visible = True
         end>
     end
@@ -444,8 +444,8 @@ object Form13: TForm13
       OnClickCheck = CLBServicosClickCheck
     end
     object MonthCalendar1: TMonthCalendar
-      Left = 16
-      Top = 567
+      Left = 0
+      Top = 343
       Width = 498
       Height = 308
       Date = 45936.000000000000000000

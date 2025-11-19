@@ -339,43 +339,73 @@ var
   horaAtual, horaFim: TTime;
   intervalo: TTime;
   diaSemana: Integer;
+  HorarioOcupado: string;
+  ListaOcupados: TStringList;
 begin
   CLBHorarios.Clear;
-  diaSemana := DayOfTheWeek(DataSelecionada) - 1;
-  if diaSemana < 0 then
-    diaSemana := 6;
+  diaSemana := DayOfTheWeek(DataSelecionada);
 
-  with DataModule1.Query_conexao do
-  begin
-    Close;
-    SQL.Text :=
-      'SELECT hora_inicio, hora_fim ' +
-      'FROM horarios_profissionais ' +
-      'WHERE id_pro = :id_pro ' +
-      'AND dia_semana = :dia_semana ' +
-      'AND id_empresa = :id_empresa';
-    ParamByName('id_pro').AsInteger := id_pro;
-    ParamByName('dia_semana').AsInteger := diaSemana;
-    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-    Open;
-
-    if not IsEmpty then
+  ListaOcupados := TStringList.Create;
+  try
+    with DataModule1.Query_aux do
     begin
-      horaAtual := FieldByName('hora_inicio').AsDateTime;
-      horaFim := FieldByName('hora_fim').AsDateTime;
-      intervalo := EncodeTime(1, 0, 0, 0);
-
-      while horaAtual < horaFim do
+      Close;
+      SQL.Text :=
+        'SELECT to_char(hora_inicio, ''HH24:MI'') AS hora ' +
+        'FROM profissionais_agendamentos ' +
+        'WHERE id_pro = :id_pro ' +
+        '  AND id_empresa = :id_empresa ' +
+        '  AND data_agendamento = :data';
+      ParamByName('id_pro').AsInteger := id_pro;
+      ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+      ParamByName('data').AsDate := DateOf(DataSelecionada);
+      Open;
+      while not EOF do
       begin
-        CLBHorarios.Items.Add(FormatDateTime('hh:nn', horaAtual));
-        horaAtual := horaAtual + intervalo;
+        ListaOcupados.Add(FieldByName('hora').AsString);
+        Next;
       end;
-    end
-    else
-      ShowMessage('Nenhum horário cadastrado para este profissional neste dia.');
+      Close;
+    end;
+
+    with DataModule1.Query_conexao do
+    begin
+      Close;
+      SQL.Text :=
+        'SELECT hora_inicio, hora_fim ' +
+        'FROM horarios_profissionais ' +
+        'WHERE id_pro = :id_pro ' +
+        '  AND dia_semana = :dia_semana ' +
+        '  AND id_empresa = :id_empresa';
+      ParamByName('id_pro').AsInteger := id_pro;
+      ParamByName('dia_semana').AsInteger := diaSemana;
+      ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+      Open;
+
+      if not IsEmpty then
+      begin
+        horaAtual := FieldByName('hora_inicio').AsDateTime;
+        horaFim := FieldByName('hora_fim').AsDateTime;
+        intervalo := EncodeTime(1, 0, 0, 0);
+
+        while horaAtual < horaFim do
+        begin
+          HorarioOcupado := FormatDateTime('HH:nn', horaAtual);
+
+          if ListaOcupados.IndexOf(HorarioOcupado) = -1 then
+            CLBHorarios.Items.Add(HorarioOcupado);
+
+          horaAtual := horaAtual + intervalo;
+        end;
+      end
+      else
+        ShowMessage('Nenhum horário cadastrado para este profissional neste dia.');
+      Close;
+    end;
+  finally
+    ListaOcupados.Free;
   end;
 end;
-
 procedure TForm34.TrazerProfissionaisPorServico(id_servico: Integer);
 var
   i, id_pro: Integer;

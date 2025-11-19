@@ -23,7 +23,6 @@ object Form31: TForm31
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1920
     object Panel1: TPanel
       Left = 1
       Top = 1
@@ -33,7 +32,6 @@ object Form31: TForm31
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 1918
       object Label1: TLabel
         Left = 1102
         Top = 440

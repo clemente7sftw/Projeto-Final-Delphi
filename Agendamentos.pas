@@ -108,7 +108,6 @@ begin
 
 end;
 
-
 procedure TForm13.FormCreate(Sender: TObject);
 begin
   WindowState:=wsMaximized;
@@ -120,7 +119,6 @@ procedure TForm13.LbClieClick(Sender: TObject);
 begin
   Form4.show;
 end;
-
 
 procedure TForm13.MonthCalendar1Click(Sender: TObject);
 var
@@ -146,13 +144,10 @@ begin
   end;
 end;
 
-
-
 procedure TForm13.Panel2Click(Sender: TObject);
 begin
   Cadastrar;
 end;
-
 
 procedure TForm13.Timer1Timer(Sender: TObject);
 begin
@@ -275,7 +270,6 @@ begin
   end;
 end;
 
-
 procedure TForm13.Trazerservicos(DiaSemana: Integer; DataSelecionada: TDate);
 begin
   with DataModule1.Queryservicos do
@@ -310,8 +304,6 @@ begin
     end;
   end;
 end;
-
-
 
 procedure TForm13.atualizar_grid;
 begin
@@ -367,7 +359,6 @@ begin
     erro;
     Exit;
   end;
-
 
   hora_inicio := StrToTime(CLBHorarios.Items[CLBHorarios.ItemIndex]);
 
@@ -434,9 +425,6 @@ begin
   Form13.Close;
 end;
 
-
-
-
 procedure TForm13.CheckListBoxProfissionaisClick(Sender: TObject);
 var
   i, id_pro: Integer;
@@ -472,7 +460,7 @@ begin
   total := 0;
 
   CheckListBoxProfissionais.Clear;
-
+  CLBHorarios.Clear;
   for i := 0 to CLBServicos.Count - 1 do
   begin
     if CLBServicos.Checked[i] then
@@ -490,7 +478,6 @@ begin
   DBEdit3.Text := FormatFloat('0.00', total);
 
 end;
-
 
 procedure TForm13.erro;
 begin

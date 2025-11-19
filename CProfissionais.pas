@@ -83,6 +83,7 @@ type
     procedure LbCargosClick(Sender: TObject);
     procedure LbFornecedoresClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure DBGrid1CellClick(Column: TColumn);
 
   private
 
@@ -209,14 +210,21 @@ begin
   DBEdit5.Visible := true;
   DBEdit6.Visible := true;
   btnconf.Visible:= false;
-
-
 end;
 
+
+procedure TForm8.DBGrid1CellClick(Column: TColumn);
+begin
+  id_pro := DataModule1.queryprofissionais.FieldByName('id_pro').AsInteger;
+end;
 procedure TForm8.Editar;
 begin
-  TimePicker1.Time := EncodeTime(12, 0, 0, 0);
-  TimePicker2.Time := EncodeTime(12, 0, 0, 0);
+  if not DataModule1.Query_conexao.FieldByName('hora_inicio').IsNull then
+    TimePicker1.Time := DataModule1.Query_conexao.FieldByName('hora_inicio').AsDateTime;
+
+  if not DataModule1.Query_conexao.FieldByName('hora_fim').IsNull then
+    TimePicker2.Time := DataModule1.Query_conexao.FieldByName('hora_fim').AsDateTime;
+
   DBEdit3.Visible := False;
   BtnConf.Visible := True;
   ExclBtn.Visible := False;
@@ -232,6 +240,7 @@ begin
   DBEdit5.Visible := false;
   DBEdit6.Visible := false;
 end;
+
 
 
 procedure TForm8.EditBtnClick(Sender: TObject);

@@ -2,7 +2,7 @@ object Form20: TForm20
   Left = 0
   Top = 0
   Caption = 'Tela Inicial'
-  ClientHeight = 674
+  ClientHeight = 1061
   ClientWidth = 1920
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,11 +16,12 @@ object Form20: TForm20
     Left = 0
     Top = 0
     Width = 1920
-    Height = 674
+    Height = 1061
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitHeight = 674
     object Image1: TImage
       Left = 1792
       Top = 64
@@ -356,10 +357,11 @@ object Form20: TForm20
       ParentFont = False
     end
     object Image3: TImage
-      Left = 24
-      Top = 600
+      Left = 40
+      Top = 896
       Width = 33
       Height = 41
+      Cursor = crHandPoint
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000F10000
         010F0806000000932422D4000000097048597300000B1300000B1301009A9C18
@@ -539,7 +541,6 @@ object Form20: TForm20
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold]
         ParentFont = False
-        OnClick = LbFornecedoresClick
       end
       object Lbagendamentos: TLabel
         Left = 464

@@ -444,8 +444,8 @@ object Form34: TForm34
       TabOrder = 1
     end
     object Panel2: TPanel
-      Left = 1158
-      Top = 526
+      Left = 1126
+      Top = 782
       Width = 315
       Height = 35
       Caption = 'Marcar Hor'#225'rio'
@@ -500,8 +500,8 @@ object Form34: TForm34
       TabOrder = 5
     end
     object CheckListBoxProfissionais: TCheckListBox
-      Left = 1406
-      Top = 567
+      Left = 1158
+      Top = 366
       Width = 283
       Height = 170
       Font.Charset = DEFAULT_CHARSET
@@ -581,7 +581,7 @@ object Form34: TForm34
     object CLBHorarios: TCheckListBox
       Left = 1158
       Top = 567
-      Width = 211
+      Width = 283
       Height = 170
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -649,8 +649,8 @@ object Form34: TForm34
     Enabled = False
     Interval = 5000
     OnTimer = Timer1Timer
-    Left = 1632
-    Top = 640
+    Left = 1664
+    Top = 792
   end
   object DataSource1: TDataSource
     Left = 600

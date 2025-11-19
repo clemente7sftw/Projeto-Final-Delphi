@@ -703,6 +703,7 @@ object Form32: TForm32
       ItemHeight = 25
       ParentFont = False
       TabOrder = 7
+      OnClickCheck = CLBHorariosClickCheck
     end
     object DBEdit3: TDBEdit
       Left = 1105

@@ -582,6 +582,7 @@ object Form8: TForm8
         TitleFont.Height = -12
         TitleFont.Name = 'Segoe UI'
         TitleFont.Style = []
+        OnCellClick = DBGrid1CellClick
         Columns = <
           item
             Expanded = False

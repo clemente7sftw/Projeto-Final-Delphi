@@ -57,6 +57,7 @@ type
     procedure BtnConfClick(Sender: TObject);
     procedure btncancelarClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure CLBHorariosClickCheck(Sender: TObject);
   private
     { Private declarations }
   public
@@ -157,6 +158,15 @@ calendario.Visible:= false;
 addbtn.Visible := true;
 exclbtn.Visible:= true;
 editbtn.Visible:= true;
+end;
+
+procedure TForm32.CLBHorariosClickCheck(Sender: TObject);
+var
+  i: Integer;
+begin
+  for i := 0 to CLBHorarios.Items.Count - 1 do
+    if i <> CLBHorarios.ItemIndex then
+      CLBHorarios.Checked[i] := False;
 end;
 
 procedure TForm32.Confirmar;
@@ -261,10 +271,8 @@ var
   id_agendamento: Integer;
 begin
   if DataModule1.QueryAg.IsEmpty then
-  begin
-//    ShowMessage('Nenhum agendamento selecionado.');
     Exit;
-  end;
+
   if Application.MessageBox(
        'Tem certeza de que deseja excluir este Agendamento? Essa ação não poderá ser desfeita.',
        'Exclusão de Agendamento',
@@ -272,47 +280,50 @@ begin
      ) = IDYES then
   begin
     id_agendamento := DataModule1.QueryAg.FieldByName('id_agendamento').AsInteger;
+
     with DataModule1.Query_Aux do
     begin
       Close;
-      SQL.Text := 'DELETE FROM agendamentos WHERE id_agendamento = :id_agendamento';
-      ParamByName('id_agendamento').AsInteger := id_agendamento;
+      SQL.Text := 'DELETE FROM agendamento_servicos WHERE id_agendamento = :id';
+      ParamByName('id').AsInteger := id_agendamento;
+      ExecSQL;
+      Close;
+      SQL.Text := 'DELETE FROM profissionais_agendamentos WHERE id_agendamento = :id';
+      ParamByName('id').AsInteger := id_agendamento;
+      ExecSQL;
+
+      Close;
+      SQL.Text := 'DELETE FROM agendamentos WHERE id_agendamento = :id';
+      ParamByName('id').AsInteger := id_agendamento;
       ExecSQL;
     end;
-  end;
-   with datamodule1.QueryAg do
-begin
-  close;
-  SQL.Text :=
-  'SELECT ' +
-  '    a.id_agendamento, ' +
-  '    c.nome_clie, ' +
-  '    c.email_clie, ' +
-  '    STRING_AGG(s.nome, '', '')::varchar(500) AS nome_servicos, ' +
-  '    a.data_agendamento, ' +
-  '    a.hora_inicio, ' +
-  '    a.status ' +
-  'FROM ' +
-  '    agendamentos a ' +
-  'INNER JOIN ' +
-  '    clientes c ON a.id_clie = c.id_clie ' +
-  'INNER JOIN ' +
-  '    agendamento_servicos ags ON a.id_agendamento = ags.id_agendamento ' +
-  'INNER JOIN ' +
-  '    servicos s ON ags.id_servico = s.id_servico ' +
-  'GROUP BY ' +
-  '    a.id_agendamento, ' +
-  '    c.nome_clie, ' +
-  '    c.email_clie, ' +
-  '    a.data_agendamento, ' +
-  '    a.hora_inicio, ' +
-  '    a.status ' +
-  'ORDER BY ' +
-  '    a.id_agendamento;';
-open;
-end;
-end;
 
+  end;
+
+  with DataModule1.QueryAg do
+  begin
+    Close;
+    SQL.Text :=
+      'SELECT ' +
+      '    a.id_agendamento, ' +
+      '    c.nome_clie, ' +
+      '    c.email_clie, ' +
+      '    STRING_AGG(s.nome, '', '')::varchar(500) AS nome_servicos, ' +
+      '    a.data_agendamento, ' +
+      '    a.hora_inicio, ' +
+      '    a.status ' +
+      'FROM agendamentos a ' +
+      'INNER JOIN clientes c ON a.id_clie = c.id_clie ' +
+      'INNER JOIN agendamento_servicos ags ON a.id_agendamento = ags.id_agendamento ' +
+      'INNER JOIN servicos s ON ags.id_servico = s.id_servico ' +
+      'WHERE a.id_empresa = :id_empresa ' +
+      'GROUP BY a.id_agendamento, c.nome_clie, c.email_clie, ' +
+      '         a.data_agendamento, a.hora_inicio, a.status ' +
+      'ORDER BY a.id_agendamento;';
+    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+    Open;
+  end;
+end;
 procedure TForm32.FormCreate(Sender: TObject);
 begin
   WindowState:=wsMaximized;
@@ -372,9 +383,10 @@ var
   horaAtual, horaFim: TTime;
   intervalo: TTime;
   diaSemana: Integer;
+  horarioAtualAgendado: string;
+  idx: Integer;
 begin
   CLBHorarios.Clear;
-  CLBHorarios.Visible := False;
 
   diaSemana := DayOfTheWeek(DataSelecionada) - 1;
   if diaSemana < 0 then
@@ -406,17 +418,23 @@ begin
         horaAtual := horaAtual + intervalo;
       end;
 
-      CLBHorarios.Visible := (CLBHorarios.Items.Count > 0);
+      horarioAtualAgendado :=
+        FormatDateTime('hh:nn',
+          DataModule1.QueryAg.FieldByName('hora_inicio').AsDateTime);
+
+      idx := CLBHorarios.Items.IndexOf(horarioAtualAgendado);
+      if idx <> -1 then
+        CLBHorarios.Checked[idx] := True;
+
+      CLBHorarios.Visible := True;
     end
     else
     begin
       CLBHorarios.Clear;
       CLBHorarios.Visible := False;
-
-      calendario.Visible := false;
+      calendario.Visible := False;
+      btnconf.Visible := False;
       editsinativos;
-      btnconf.Visible := false;
-
     end;
   end;
 end;

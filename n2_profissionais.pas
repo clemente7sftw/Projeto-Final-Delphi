@@ -189,23 +189,28 @@ end;
 
 procedure TForm31.Editar;
 begin
-  TimePicker1.Time := EncodeTime(12, 0, 0, 0);
-  TimePicker2.Time := EncodeTime(12, 0, 0, 0);
   DBEdit3.Visible := False;
   BtnConf.Visible := True;
   ExclBtn.Visible := False;
   EditsAtivos;
   EditBtn.Visible := False;
   addclie.Visible := False;
+
   CLBCargos.Visible := True;
   TrazerCargos;
+
   icones_visiveis;
   TrazerDias;
+
+  TimePicker1.Time := DataModule1.queryprofissionais.FieldByName('hora_inicio').AsDateTime;
+  TimePicker2.Time := DataModule1.queryprofissionais.FieldByName('hora_fim').AsDateTime;
+
   btncancelar.Visible := True;
   DBEdit4.Visible := false;
   DBEdit5.Visible := false;
   DBEdit6.Visible := false;
 end;
+
 
 procedure TForm31.EditBtnClick(Sender: TObject);
 begin
