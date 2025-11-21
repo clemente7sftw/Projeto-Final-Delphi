@@ -2750,3 +2750,4 @@
 2680006112590 17:20:53.050 << Close [Command="SELECT nome FROM empresas WHERE id_empresa = :id_empresa"]
 2680006112752 17:20:53.050  . TFDCustomCommand.FetchFinished [Command="SELECT nome FROM empresas WHERE id_empresa = :id_empresa", AState=2, FRowsAffected=1]
 2680006112913 17:20:53.050 << TFDCustomCommand.Fetch [Command="SELECT nome FROM empresas WHERE id_empresa = :id_empresa", AAll=False, ABlocked=True]
+2680893713157 17:22:21.812 -=#!!! FireDAC Tracer stopped !!!#=-
