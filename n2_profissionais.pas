@@ -86,6 +86,33 @@ implementation
 
 uses n2_addprofissionais, UDataModule;
 
+procedure TForm31.FormCreate(Sender: TObject);
+begin
+  WindowState:=wsMaximized;
+  Lblrequired.visible:= false;
+  EditsInativos;
+  BtnConf.Visible:= false;
+  btncancelar.Visible:= false;
+  CLBCargos.Visible:= false;
+  icones_escondidos;
+end;
+
+procedure TForm31.FormShow(Sender: TObject);
+begin
+  WindowState := wsMaximized;
+  atualizar_grid;
+end;
+
+procedure TForm31.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  DBEdit1.DataSource := nil;
+  DBEdit2.DataSource := nil;
+  DBEdit3.DataSource := nil;
+  DBEdit4.DataSource := nil;
+  DBEdit5.DataSource := nil;
+  DBEdit6.DataSource := nil;
+end;
+
 procedure TForm31.addclieClick(Sender: TObject);
 begin
   AdicionarProfissional;
@@ -93,13 +120,13 @@ end;
 
 procedure TForm31.AdicionarProfissional;
 begin
-DBEdit1.DataSource := nil;
-DBEdit2.DataSource := nil;
-DBEdit3.DataSource := nil;
-DBEdit4.DataSource := nil;
-DBEdit6.DataSource := nil;
-form33.show;
-form31.close;
+  DBEdit1.DataSource := nil;
+  DBEdit2.DataSource := nil;
+  DBEdit3.DataSource := nil;
+  DBEdit4.DataSource := nil;
+  DBEdit6.DataSource := nil;
+  form33.show;
+  form31.close;
 end;
 
 procedure TForm31.atualizar_grid;
@@ -137,25 +164,24 @@ SQL.Text :=
   'ORDER BY p.nome;';
 
 
-ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-Open;
-DSconexao.DataSet := DataModule1.queryprofissionais;
-dbgrid1.DataSource := dsconexao;
-dbedit1.DataSource:= dsconexao;
-dbedit2.DataSource:= dsconexao;
-dbedit3.DataSource:= dsconexao;
-dbedit5.DataSource:= dsconexao;
-dbedit4.DataSource:= dsconexao;
-dbedit6.DataSource:= dsconexao;
-DBEdit1.DataField := 'nome';
-DBEdit2.DataField := 'email';
-DBEdit3.DataField := 'nome_cargo';
-dbedit4.DataField := 'dias_semana';
-dbedit6.datafield:= 'hora_inicio';
-dbedit5.DataField := 'hora_fim';
-TimePicker1.Time := EncodeTime(12, 0, 0, 0);
-TimePicker2.Time := EncodeTime(12, 0, 0, 0);
-
+  ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+  Open;
+  DSconexao.DataSet := DataModule1.queryprofissionais;
+  dbgrid1.DataSource := dsconexao;
+  dbedit1.DataSource:= dsconexao;
+  dbedit2.DataSource:= dsconexao;
+  dbedit3.DataSource:= dsconexao;
+  dbedit5.DataSource:= dsconexao;
+  dbedit4.DataSource:= dsconexao;
+  dbedit6.DataSource:= dsconexao;
+  DBEdit1.DataField := 'nome';
+  DBEdit2.DataField := 'email';
+  DBEdit3.DataField := 'nome_cargo';
+  dbedit4.DataField := 'dias_semana';
+  dbedit6.datafield:= 'hora_inicio';
+  dbedit5.DataField := 'hora_fim';
+  TimePicker1.Time := EncodeTime(12, 0, 0, 0);
+  TimePicker2.Time := EncodeTime(12, 0, 0, 0);
 
 end;
 end;
@@ -195,16 +221,12 @@ begin
   EditsAtivos;
   EditBtn.Visible := False;
   addclie.Visible := False;
-
   CLBCargos.Visible := True;
   TrazerCargos;
-
   icones_visiveis;
   TrazerDias;
-
-  TimePicker1.Time := DataModule1.queryprofissionais.FieldByName('hora_inicio').AsDateTime;
-  TimePicker2.Time := DataModule1.queryprofissionais.FieldByName('hora_fim').AsDateTime;
-
+  TimePicker1.Time := StrToTime(DataModule1.queryprofissionais.FieldByName('hora_inicio').AsString);
+  TimePicker2.Time := StrToTime(DataModule1.queryprofissionais.FieldByName('hora_fim').AsString);
   btncancelar.Visible := True;
   DBEdit4.Visible := false;
   DBEdit5.Visible := false;
@@ -219,12 +241,12 @@ end;
 
 procedure TForm31.EditsAtivos;
 begin
-    DBEdit1.Enabled := true;
-    DBEdit2.Enabled := true;
-    DBEdit3.Enabled := true;
-    DBEdit4.Enabled := true;
-    DBEdit5.Enabled := true;
-    DBEdit6.Enabled := true;
+  DBEdit1.Enabled := true;
+  DBEdit2.Enabled := true;
+  DBEdit3.Enabled := true;
+  DBEdit4.Enabled := true;
+  DBEdit5.Enabled := true;
+  DBEdit6.Enabled := true;
 end;
 
 procedure TForm31.EditsInativos;
@@ -247,14 +269,14 @@ begin
   if Application.MessageBox('Tem certeza de que deseja excluir este Profissional? Essa ação não poderá ser desfeita.', 'Exclusão de Profissional', MB_YESNO + MB_ICONQUESTION) = IDYES then
   begin
     with datamodule1.queryprofissionais do
-  begin
-    id_pro := DataModule1.queryprofissionais.FieldByName('id_pro').AsInteger;
-    Close;
-    SQL.Text := 'DELETE FROM profissionais WHERE id_pro = :id_pro';
-    ParamByName('id_pro').AsInteger := id_pro;
-    ExecSQL;
-    atualizar_grid;
-  end;
+    begin
+      id_pro := DataModule1.queryprofissionais.FieldByName('id_pro').AsInteger;
+      Close;
+      SQL.Text := 'DELETE FROM profissionais WHERE id_pro = :id_pro';
+      ParamByName('id_pro').AsInteger := id_pro;
+      ExecSQL;
+      atualizar_grid;
+    end;
   end
   else
   begin
@@ -262,49 +284,22 @@ begin
   end;
 end;
 
-procedure TForm31.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-DBEdit1.DataSource := nil;
-DBEdit2.DataSource := nil;
-DBEdit3.DataSource := nil;
-DBEdit4.DataSource := nil;
-DBEdit5.DataSource := nil;
-DBEdit6.DataSource := nil;
-end;
-
-procedure TForm31.FormCreate(Sender: TObject);
-begin
-  WindowState:=wsMaximized;
-  Lblrequired.visible:= false;
-  EditsInativos;
-  BtnConf.Visible:= false;
-  btncancelar.Visible:= false;
-  CLBCargos.Visible:= false;
-  icones_escondidos;
-end;
-
-procedure TForm31.FormShow(Sender: TObject);
-begin
-WindowState := wsMaximized;
-atualizar_grid;
-end;
-
 procedure TForm31.icones_escondidos;
 begin
-Label7.Visible := false;
-TimePicker1.Visible := false;
-TimePicker2.Visible := false;
-Label6.Visible := false;
-CLBDias.Visible := false;
+  Label7.Visible := false;
+  TimePicker1.Visible := false;
+  TimePicker2.Visible := false;
+  Label6.Visible := false;
+  CLBDias.Visible := false;
 end;
 
 procedure TForm31.icones_visiveis;
 begin
-Label7.Visible := true;
-TimePicker1.Visible := true;
-TimePicker2.Visible := true;
-Label6.Visible := true;
-CLBDias.Visible := true;
+  Label7.Visible := true;
+  TimePicker1.Visible := true;
+  TimePicker2.Visible := true;
+  Label6.Visible := true;
+  CLBDias.Visible := true;
 end;
 
 procedure TForm31.Salvar;
@@ -392,8 +387,8 @@ end;
     icones_escondidos;
     btncancelar.Visible := false;
     DBEdit4.Visible := true;
-      DBEdit5.Visible := true;
-  DBEdit6.Visible := true;
+    DBEdit5.Visible := true;
+    DBEdit6.Visible := true;
   end;
 
 
@@ -402,7 +397,6 @@ procedure TForm31.TrazerCargos;
 var
   id_pro, i: Integer;
 begin
-
   with DataModule1.query_conexao do
   begin
     id_pro := DataModule1.queryprofissionais.FieldByName('id_pro').AsInteger;
@@ -413,15 +407,10 @@ begin
                 'ORDER BY nome_cargo';
     ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
     Open;
-
     CLBCargos.Items.Clear;
-
     while not Eof do
     begin
-      CLBCargos.Items.AddObject(
-        FieldByName('nome_cargo').AsString,
-        TObject(FieldByName('id_cargo').AsInteger)
-      );
+      CLBCargos.Items.AddObject(FieldByName('nome_cargo').AsString,TObject(FieldByName('id_cargo').AsInteger));
       Next;
     end;
   end;
@@ -445,7 +434,6 @@ begin
       Next;
     end;
   end;
-  atualizar_grid;
 end;
 
 procedure TForm31.TrazerDias;
@@ -460,9 +448,7 @@ begin
   CLBDias.Items.AddObject('Quinta-feira', TObject(4));
   CLBDias.Items.AddObject('Sexta-feira', TObject(5));
   CLBDias.Items.AddObject('Sábado', TObject(6));
-
   id_pro := DataModule1.queryprofissionais.FieldByName('id_pro').AsInteger;
-
   with DataModule1.query_conexao do
   begin
     Close;

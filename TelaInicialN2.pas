@@ -46,9 +46,9 @@ implementation
 
 {$R *.dfm}
 
-uses CAdministrador, UDataModule, n2_cclientes, relatorio_clientes,
+uses UDataModule, n2_cclientes, relatorio_clientes,
   relatorios_servicos, relatorios_profissionais, n2_profissionais,
-  n2_cagendamentos;
+  n2_cagendamentos, n2_mudar_senha;
 
 procedure TForm5.FormShow(Sender: TObject);
 begin
@@ -68,19 +68,16 @@ end;
 procedure TForm5.LbagendamentosClick(Sender: TObject);
 begin
 Form32.show;
-form5.close;
 end;
 
 procedure TForm5.LbClieClick(Sender: TObject);
 begin
 Form29.Show;
-form5.close;
 end;
 
 procedure TForm5.LbProfissionaisClick(Sender: TObject);
 begin
 Form31.Show;
-form5.close;
 end;
 
 procedure TForm5.MudarSenha;
@@ -97,16 +94,16 @@ end;
 
 procedure TForm5.Panel2Click(Sender: TObject);
 begin
-Form25 := TForm25.Create(Self);
-form25.Id_empresa := DataModule1.id_empresa;
-Form25.RelatorioServicos.Preview();
+  Form25 := TForm25.Create(Self);
+  form25.Id_empresa := DataModule1.id_empresa;
+  Form25.RelatorioServicos.Preview();
 end;
 
 procedure TForm5.Panel3Click(Sender: TObject);
 begin
-Form27 := TForm27.Create(Self);
-form27.Id_empresa := DataModule1.id_empresa;
-Form27.RelatorioProfissionais.Preview();
+  Form27 := TForm27.Create(Self);
+  form27.Id_empresa := DataModule1.id_empresa;
+  Form27.RelatorioProfissionais.Preview();
 end;
 
 end.

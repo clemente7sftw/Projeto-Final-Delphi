@@ -470,6 +470,7 @@ object Form26: TForm26
       Color = clBlack
       ParentBackground = False
       TabOrder = 4
+      OnClick = Panel1Click
       object Image1: TImage
         Left = 8
         Top = 9

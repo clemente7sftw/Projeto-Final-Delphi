@@ -54,7 +54,7 @@ implementation
 
 {$R *.dfm}
 
-uses uDmCep, UDataModule, UMetodos, Cadastro, TelaInicialN3;
+uses uDmCep, UDataModule, UMetodos, Cadastro, TelaInicialN3, Login;
 
 procedure TForm19.BtnCadClick(Sender: TObject);
 begin
@@ -81,7 +81,7 @@ try
   end;
   Form19.close;
   Form2.close;
-  Form20.show;
+  Form1.show;
   except
   erro;
   end;

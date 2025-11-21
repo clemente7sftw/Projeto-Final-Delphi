@@ -37,7 +37,6 @@ type
     Lbagendamentos: TLabel;
     BtnCad: TPanel;
     btncancelar: TImage;
-    Image3: TImage;
     LbEmail: TLabel;
     Timer1: TTimer;
     Timer2: TTimer;

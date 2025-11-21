@@ -19,7 +19,7 @@ uses
   Agendamentos in 'Agendamentos.pas' {Form13},
   CAgendamentos in 'CAgendamentos.pas' {Form21},
   TelaInicialN2 in 'TelaInicialN2.pas' {Form5},
-  CAdministrador in 'CAdministrador.pas' {Form22},
+  n2_mudar_senha in 'n2_mudar_senha.pas' {Form22},
   CadAdm in 'CadAdm.pas' {Form23},
   n1_mudar_senha in 'n1_mudar_senha.pas' {Form24},
   relatorios_servicos in 'relatorios_servicos.pas' {Form25},

@@ -27,7 +27,6 @@ type
     ExclBtn: TImage;
     addclie: TImage;
     btncancelar: TImage;
-    Image3: TImage;
     LbEmail: TLabel;
     LbErro_Sistema: TLabel;
     DBGrid1: TDBGrid;

@@ -219,8 +219,8 @@ begin
 end;
 procedure TForm8.Editar;
 begin
-  TimePicker1.Time := EncodeTime(12, 0, 0, 0);
-  TimePicker2.Time := EncodeTime(12, 0, 0, 0);
+  TimePicker1.Time := StrToTime(DataModule1.queryprofissionais.FieldByName('hora_inicio').AsString);
+  TimePicker2.Time := StrToTime(DataModule1.queryprofissionais.FieldByName('hora_fim').AsString);
   DBEdit3.Visible := False;
   BtnConf.Visible := True;
   ExclBtn.Visible := False;
@@ -337,7 +337,6 @@ end;
 
 procedure TForm8.Image1Click(Sender: TObject);
 begin
-  Form20.show;
   Form8.close;
 end;
 

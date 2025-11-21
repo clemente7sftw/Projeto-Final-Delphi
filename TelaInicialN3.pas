@@ -12,7 +12,6 @@ uses
 type
   TForm20 = class(TForm)
     Fundo: TPanel;
-    Image1: TImage;
     Image4: TImage;
     BS: TImage;
     Barra: TPanel;

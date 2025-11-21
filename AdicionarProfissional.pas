@@ -51,6 +51,7 @@ type
     procedure erro_email;
     procedure Timer1Timer(Sender: TObject);
     procedure Timer2Timer(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -69,6 +70,13 @@ var
 
 
 
+procedure TForm9.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  TimePicker1.Time := EncodeTime(12, 0, 0, 0);
+  TimePicker2.Time := EncodeTime(12, 0, 0, 0);
+  CLBdias_semana.Clear;
+end;
+
 procedure TForm9.FormCreate(Sender: TObject);
 begin
   WindowState:=wsMaximized;
@@ -84,6 +92,7 @@ begin
 edit1.Text :='';
 edit2.Text :='';
 PreencherListbox;
+Trazer_Dias;
 end;
 
 

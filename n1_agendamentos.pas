@@ -57,6 +57,9 @@ type
     procedure Image2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CLBHorariosClickCheck(Sender: TObject);
+    procedure pesquisar;
+    procedure EdPesquisaChange(Sender: TObject);
+    procedure Panel1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -118,8 +121,7 @@ begin
     Exit;
   end;
   for i := 0 to CLBServicos.Count - 1 do
-    if CLBServicos.Checked[i] then Inc(checkedCount);
-
+  if CLBServicos.Checked[i] then Inc(checkedCount);
   if checkedCount = 0 then
   begin
     erro;
@@ -168,7 +170,6 @@ begin
       end;
     end;
   end;
-
 
   for i := 0 to CheckListBoxProfissionais.Count - 1 do
   begin
@@ -304,6 +305,11 @@ begin
   end;
 end;
 
+procedure TForm26.EdPesquisaChange(Sender: TObject);
+begin
+pesquisar;
+end;
+
 procedure TForm26.erro;
 begin
   Timer1.Enabled := true;
@@ -329,9 +335,33 @@ begin
   Trazerservicos(DiaSemana, DataSelecionada);
 end;
 
+procedure TForm26.Panel1Click(Sender: TObject);
+begin
+pesquisar;
+end;
+
 procedure TForm26.Panel2Click(Sender: TObject);
 begin
   cadastrar;
+end;
+
+procedure TForm26.pesquisar;
+begin
+  with DataModule1.Queryempresa do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Add('SELECT id_empresa, nome, email FROM empresas');
+
+    if Trim(edpesquisa.Text) <> '' then
+    begin
+      SQL.Add('WHERE lower(nome) LIKE lower(:p)');
+      ParamByName('p').AsString := '%' + Trim(edpesquisa.Text) + '%';
+    end;
+
+    SQL.Add('ORDER BY nome');
+    Open;
+  end;
 end;
 
 procedure TForm26.Timer1Timer(Sender: TObject);

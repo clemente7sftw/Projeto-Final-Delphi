@@ -1,4 +1,4 @@
-unit CAdministrador;
+unit n2_mudar_senha;
 
 interface
 

@@ -368,7 +368,7 @@ object Form5: TForm5
     end
     object Image3: TImage
       Left = 24
-      Top = 600
+      Top = 872
       Width = 33
       Height = 41
       Picture.Data = {
@@ -483,10 +483,10 @@ object Form5: TForm5
       ParentBackground = False
       TabOrder = 0
       object LbClie: TLabel
-        Left = 964
+        Left = 956
         Top = 8
         Width = 74
-        Height = 30
+        Height = 33
         Cursor = crHandPoint
         Caption = 'Clientes'
         Font.Charset = ANSI_CHARSET

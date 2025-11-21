@@ -21,7 +21,6 @@ object Form22: TForm22
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitHeight = 474
     object ConfSenha: TPanel
       Left = 112
       Top = 314

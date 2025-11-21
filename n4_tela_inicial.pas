@@ -11,7 +11,6 @@ type
   TForm30 = class(TForm)
     Fundo: TPanel;
     Image4: TImage;
-    Image5: TImage;
     BS: TImage;
     Label1: TLabel;
     Image2: TImage;
@@ -19,11 +18,13 @@ type
     Barra: TPanel;
     LbProfissionais: TLabel;
     DataSource1: TDataSource;
+    Image3: TImage;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure atualizarstatus;
     procedure atualizar_grid;
     procedure Image2Click(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -163,6 +164,11 @@ end;
 procedure TForm30.Image2Click(Sender: TObject);
 begin
 form6.show;
+end;
+
+procedure TForm30.Image3Click(Sender: TObject);
+begin
+form30.Close;
 end;
 
 end.
