@@ -29,7 +29,6 @@ type
     Panel2: TPanel;
     Panel3: TPanel;
     Label2: TLabel;
-    Panel4: TPanel;
     Image3: TImage;
     procedure LbClieClick(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);

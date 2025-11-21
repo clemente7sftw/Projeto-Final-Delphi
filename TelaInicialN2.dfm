@@ -529,7 +529,7 @@ object Form5: TForm5
       end
     end
     object Panel1: TPanel
-      Left = 720
+      Left = 784
       Top = 269
       Width = 113
       Height = 28
@@ -547,9 +547,9 @@ object Form5: TForm5
       OnClick = Panel1Click
     end
     object Panel2: TPanel
-      Left = 847
+      Left = 928
       Top = 269
-      Width = 113
+      Width = 126
       Height = 28
       Cursor = crHandPoint
       Caption = 'Servi'#231'os'
@@ -565,7 +565,7 @@ object Form5: TForm5
       OnClick = Panel2Click
     end
     object Panel3: TPanel
-      Left = 976
+      Left = 1088
       Top = 269
       Width = 113
       Height = 28
@@ -581,23 +581,6 @@ object Form5: TForm5
       ParentFont = False
       TabOrder = 3
       OnClick = Panel3Click
-    end
-    object Panel4: TPanel
-      Left = 1105
-      Top = 269
-      Width = 113
-      Height = 28
-      Cursor = crHandPoint
-      Caption = 'Outro relatorio'
-      Color = 8543977
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWhite
-      Font.Height = -12
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentBackground = False
-      ParentFont = False
-      TabOrder = 4
     end
   end
 end

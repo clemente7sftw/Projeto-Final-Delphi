@@ -384,9 +384,9 @@ object Form34: TForm34
         426082}
     end
     object DBGrid1: TDBGrid
-      Left = 40
-      Top = 361
-      Width = 657
+      Left = 56
+      Top = 673
+      Width = 673
       Height = 200
       DataSource = DataSource1
       Font.Charset = DEFAULT_CHARSET
@@ -444,9 +444,9 @@ object Form34: TForm34
       TabOrder = 1
     end
     object Panel2: TPanel
-      Left = 1126
+      Left = 1158
       Top = 782
-      Width = 315
+      Width = 283
       Height = 35
       Caption = 'Marcar Hor'#225'rio'
       Color = 8543977
@@ -476,9 +476,9 @@ object Form34: TForm34
       OnClickCheck = CLBServicosClickCheck
     end
     object MonthCalendar1: TMonthCalendar
-      Left = 16
-      Top = 567
-      Width = 498
+      Left = 0
+      Top = 335
+      Width = 777
       Height = 308
       Date = 45936.000000000000000000
       TabOrder = 4
@@ -657,7 +657,7 @@ object Form34: TForm34
     Top = 96
   end
   object DataSource2: TDataSource
-    Left = 704
-    Top = 88
+    Left = 680
+    Top = 96
   end
 end

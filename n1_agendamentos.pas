@@ -12,7 +12,6 @@ type
   TForm26 = class(TForm)
     Fundo: TPanel;
     Image4: TImage;
-    Image5: TImage;
     BS: TImage;
     Label1: TLabel;
     DBGrid1: TDBGrid;
@@ -56,6 +55,8 @@ type
     procedure erro;
     procedure Timer1Timer(Sender: TObject);
     procedure Image2Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure CLBHorariosClickCheck(Sender: TObject);
   private
     { Private declarations }
   public
@@ -72,46 +73,50 @@ implementation
 
 uses UDataModule, TelaPrincipalN1;
 
+procedure TForm26.FormCreate(Sender: TObject);
+begin
+  WindowState:=wsMaximized;
+end;
+
+procedure TForm26.FormShow(Sender: TObject);
+begin
+  atualizar_grid;
+  lblrequired.Visible:= false;
+  CLBServicos.Clear;
+  CheckListBoxProfissionais.Clear;
+  CLBHorarios.Clear;
+end;
+
+procedure TForm26.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+form3.atualizar_grid;
+end;
+
 procedure TForm26.atualizar_grid;
 begin
   with DataModule1.Queryempresa do
   begin
     Close;
-    SQL.Text := 'SELECT id_empresa, nome FROM empresas ORDER BY nome';
+    SQL.Text := 'SELECT id_empresa, nome, email FROM empresas ORDER BY nome';
     Open;
-
-    DataSource1.DataSet := DataModule1.Queryempresa;
-    DBGrid1.DataSource := DataSource1;
-
-    DBGrid1.Columns.Clear;
-    DBGrid1.Columns.Add;
-    DBGrid1.Columns[0].FieldName := 'nome';
-    DBGrid1.Columns[0].Title.Caption := 'Empresas';
-    DBGrid1.Columns[0].Width := 250;
   end;
-
+  DataSource1.DataSet := DataModule1.Queryempresa;
+  DBGrid1.DataSource := DataSource1;
 end;
 
 procedure TForm26.Cadastrar;
 var
   id_clie, id_pro, id_servico, id_agendamento, id_empresa, i, checkedCount: Integer;
   dataselecionada, hora_inicio: TDateTime;
-  priceStr: string;
   preco: Double;
-  dsClientes: TDataSet;
 begin
   id_empresa := DataModule1.id_empresa;
   dataselecionada := MonthCalendar1.Date;
-
-
   if CLBHorarios.ItemIndex = -1 then
   begin
     erro;
     Exit;
   end;
-
-
-  checkedCount := 0;
   for i := 0 to CLBServicos.Count - 1 do
     if CLBServicos.Checked[i] then Inc(checkedCount);
 
@@ -120,15 +125,12 @@ begin
     erro;
     Exit;
   end;
-
-
   try
     hora_inicio := StrToTime(CLBHorarios.Items[CLBHorarios.ItemIndex]);
   except
     erro;
     Exit;
   end;
-
 
   with DataModule1.Query_conexao do
   begin
@@ -190,27 +192,37 @@ begin
 
     end;
   end;
-
-
   atualizar_grid;
   Form3.Show;
   form26.Close;
 end;
 
-
 procedure TForm26.CheckListBoxProfissionaisClickCheck(Sender: TObject);
 var
   i, id_pro: Integer;
 begin
-
   for i := 0 to CheckListBoxProfissionais.Count - 1 do
   begin
-    if CheckListBoxProfissionais.Checked[i] then
-    begin
-      id_pro := Integer(CheckListBoxProfissionais.Items.Objects[i]);
-      TrazerHorariosDisponiveis(id_pro, MonthCalendar1.Date);
-      Break;
-    end;
+    if i <> CheckListBoxProfissionais.ItemIndex then
+      CheckListBoxProfissionais.Checked[i] := False;
+  end;
+  if (CheckListBoxProfissionais.ItemIndex >= 0) and
+     (CheckListBoxProfissionais.Checked[CheckListBoxProfissionais.ItemIndex]) then
+  begin
+    id_pro := Integer(CheckListBoxProfissionais.Items.Objects[
+                      CheckListBoxProfissionais.ItemIndex]);
+    TrazerHorariosDisponiveis(id_pro, MonthCalendar1.Date);
+  end;
+end;
+
+procedure TForm26.CLBHorariosClickCheck(Sender: TObject);
+var
+  i: Integer;
+begin
+  for i := 0 to CLBHorarios.Count - 1 do
+  begin
+    if i <> CLBHorarios.ItemIndex then
+      CLBHorarios.Checked[i] := False;
   end;
 end;
 
@@ -220,7 +232,14 @@ var
 begin
   for i := 0 to CLBServicos.Count - 1 do
   begin
-    if (Sender as TCheckListBox).Checked[i] then
+    if i <> CLBServicos.ItemIndex then
+      CLBServicos.Checked[i] := False;
+  end;
+  CheckListBoxProfissionais.Clear;
+  CLBHorarios.Clear;
+  for i := 0 to CLBServicos.Count - 1 do
+  begin
+    if CLBServicos.Checked[i] then
     begin
       id_servico := Integer(CLBServicos.Items.Objects[i]);
 
@@ -242,8 +261,6 @@ begin
   end;
 end;
 
-
-
 procedure TForm26.DBGrid1CellClick(Column: TColumn);
 var
   DataSelecionada: TDate;
@@ -251,14 +268,11 @@ var
 begin
 
   DataModule1.id_empresa :=
-    DataModule1.Queryempresa.FieldByName('id_empresa').AsInteger;
-
+  DataModule1.Queryempresa.FieldByName('id_empresa').AsInteger;
   DataSelecionada := MonthCalendar1.Date;
   DiaSemana := DayOfTheWeek(DataSelecionada);
-
   if DiaSemana = 7 then
-    DiaSemana := 0;
-
+  DiaSemana := 0;
   DataModule1.Query_aux.Close;
   Trazerservicos(DiaSemana, DataSelecionada);
 end;
@@ -272,10 +286,8 @@ var
 begin
   DataSelecionada := MonthCalendar1.Date;
   DiaSemana := DayOfTheWeek(DataSelecionada);
-
   if DiaSemana = 7 then
     DiaSemana := 0;
-
   DataModule1.Query_aux.Close;
   Trazerservicos(DiaSemana, DataSelecionada);
 end;
@@ -290,7 +302,6 @@ begin
     id_servico := DataSource2.DataSet.FieldByName('id_servico').AsInteger;
     TrazerProfissionaisPorServico(id_servico);
   end;
-
 end;
 
 procedure TForm26.erro;
@@ -299,36 +310,9 @@ begin
   Lblrequired.visible := true;
 end;
 
-procedure TForm26.FormCreate(Sender: TObject);
-begin
-WindowState:=wsMaximized;
-end;
-
-procedure TForm26.FormShow(Sender: TObject);
-begin
-  with DataModule1.Queryempresa do
-  begin
-    Close;
-    SQL.Text := 'SELECT id_empresa, nome FROM empresas ORDER BY nome';
-    Open;
-
-    DataSource1.DataSet := DataModule1.Queryempresa;
-    DBGrid1.DataSource := DataSource1;
-
-    DBGrid1.Columns.Clear;
-    DBGrid1.Columns.Add;
-    DBGrid1.Columns[0].FieldName := 'nome';
-    DBGrid1.Columns[0].Title.Caption := 'Empresas';
-    DBGrid1.Columns[0].Width := 250;
-  end;
-  lblrequired.Visible:= false;
-
-end;
-
-
 procedure TForm26.Image2Click(Sender: TObject);
 begin
-form26.close;
+  form26.close;
 end;
 
 procedure TForm26.MonthCalendar1Click(Sender: TObject);
@@ -336,36 +320,24 @@ var
   DataSelecionada: TDate;
   DiaSemana: Integer;
 begin
+  CLBHorarios.Clear;
   DataSelecionada := MonthCalendar1.Date;
   DiaSemana := DayOfTheWeek(DataSelecionada);
-
   if DiaSemana = 7 then
     DiaSemana := 0;
-
   DataModule1.Query_aux.Close;
   Trazerservicos(DiaSemana, DataSelecionada);
-
-  with datamodule1.queryclientes do
-  begin
-    Close;
-    SQL.Text := 'SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie';
-    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-    Open;
-
-    DataSource3.DataSet := datamodule1.queryclientes;
-
-  end;
 end;
 
 procedure TForm26.Panel2Click(Sender: TObject);
 begin
-cadastrar;
+  cadastrar;
 end;
 
 procedure TForm26.Timer1Timer(Sender: TObject);
 begin
-Lblrequired.visible:= false;
-Timer1.Enabled := false;
+  Lblrequired.visible:= false;
+  Timer1.Enabled := false;
 end;
 
 procedure TForm26.TrazerHorariosDisponiveis(id_pro: Integer;
@@ -374,40 +346,71 @@ var
   horaAtual, horaFim: TTime;
   intervalo: TTime;
   diaSemana: Integer;
+  HorarioOcupado: string;
+  ListaOcupados: TStringList;
 begin
   CLBHorarios.Clear;
-  diaSemana := DayOfTheWeek(DataSelecionada) - 1;
-  if diaSemana < 0 then
-    diaSemana := 6;
+  diaSemana := DayOfTheWeek(DataSelecionada);
 
-  with DataModule1.Queryprofissionais do
-  begin
-    Close;
-    SQL.Text :=
-      'SELECT hora_inicio, hora_fim ' +
-      'FROM horarios_profissionais ' +
-      'WHERE id_pro = :id_pro ' +
-      'AND dia_semana = :dia_semana ' +
-      'AND id_empresa = :id_empresa';
-    ParamByName('id_pro').AsInteger := id_pro;
-    ParamByName('dia_semana').AsInteger := diaSemana;
-    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-    Open;
-
-    if not IsEmpty then
+  ListaOcupados := TStringList.Create;
+  try
+    with DataModule1.Query_aux do
     begin
-      horaAtual := FieldByName('hora_inicio').AsDateTime;
-      horaFim := FieldByName('hora_fim').AsDateTime;
-      intervalo := EncodeTime(1, 0, 0, 0);
-
-      while horaAtual < horaFim do
+      Close;
+      SQL.Text :=
+        'SELECT to_char(hora_inicio, ''HH24:MI'') AS hora ' +
+        'FROM profissionais_agendamentos ' +
+        'WHERE id_pro = :id_pro ' +
+        '  AND id_empresa = :id_empresa ' +
+        '  AND data_agendamento = :data';
+      ParamByName('id_pro').AsInteger := id_pro;
+      ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+      ParamByName('data').AsDate := DateOf(DataSelecionada);
+      Open;
+      while not EOF do
       begin
-        CLBHorarios.Items.Add(FormatDateTime('hh:nn', horaAtual));
-        horaAtual := horaAtual + intervalo;
+        ListaOcupados.Add(FieldByName('hora').AsString);
+        Next;
       end;
-    end
-    else
-      ShowMessage('Nenhum horário cadastrado para este profissional neste dia.');
+      Close;
+    end;
+
+    with DataModule1.Query_conexao do
+    begin
+      Close;
+      SQL.Text :=
+        'SELECT hora_inicio, hora_fim ' +
+        'FROM horarios_profissionais ' +
+        'WHERE id_pro = :id_pro ' +
+        '  AND dia_semana = :dia_semana ' +
+        '  AND id_empresa = :id_empresa';
+      ParamByName('id_pro').AsInteger := id_pro;
+      ParamByName('dia_semana').AsInteger := diaSemana;
+      ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+      Open;
+
+      if not IsEmpty then
+      begin
+        horaAtual := FieldByName('hora_inicio').AsDateTime;
+        horaFim := FieldByName('hora_fim').AsDateTime;
+        intervalo := EncodeTime(1, 0, 0, 0);
+
+        while horaAtual < horaFim do
+        begin
+          HorarioOcupado := FormatDateTime('HH:nn', horaAtual);
+
+          if ListaOcupados.IndexOf(HorarioOcupado) = -1 then
+            CLBHorarios.Items.Add(HorarioOcupado);
+
+          horaAtual := horaAtual + intervalo;
+        end;
+      end
+      else
+        ShowMessage('Nenhum horário cadastrado para este profissional neste dia.');
+      Close;
+    end;
+  finally
+    ListaOcupados.Free;
   end;
 end;
 
@@ -448,16 +451,9 @@ begin
   with DataModule1.Queryservicos do
   begin
     CheckListBoxProfissionais.Clear;
-    CLBServicos.Clear;
-    CLBHorarios.Clear;
-
     Close;
     SQL.Text :=
-      'SELECT DISTINCT ' +
-      '  s.id_servico, ' +
-      '  s.nome AS nome_servico, ' +
-      '  s.duracao, ' +
-      '  s.preco ' +
+      'SELECT DISTINCT s.id_servico, s.nome AS nome_servico ' +
       'FROM servicos s ' +
       'JOIN cargos_servicos cs ON s.id_servico = cs.id_servico ' +
       'JOIN profissionais_cargos pc ON cs.id_cargo = pc.id_cargo ' +
@@ -468,14 +464,12 @@ begin
       '  AND p.id_empresa = :id_empresa ' +
       '  AND s.id_empresa = :id_empresa ' +
       'ORDER BY s.nome';
-
     ParamByName('dia_semana').AsInteger := DiaSemana;
     ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
     Open;
 
-    // Preencher o CLBServicos
-    First;
-    while not EOF do
+    CLBServicos.Items.Clear;
+    while not Eof do
     begin
       CLBServicos.Items.AddObject(
         FieldByName('nome_servico').AsString,
@@ -485,6 +479,7 @@ begin
     end;
   end;
 end;
+
 
 
 end.

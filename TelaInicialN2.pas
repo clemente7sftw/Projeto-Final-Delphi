@@ -22,7 +22,6 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
-    Panel4: TPanel;
     Image3: TImage;
     procedure Image2Click(Sender: TObject);
     procedure MudarSenha;

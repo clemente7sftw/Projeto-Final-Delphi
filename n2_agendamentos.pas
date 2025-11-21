@@ -193,15 +193,17 @@ procedure TForm34.CheckListBoxProfissionaisClick(Sender: TObject);
 var
   i, id_pro: Integer;
 begin
-
   for i := 0 to CheckListBoxProfissionais.Count - 1 do
   begin
-    if CheckListBoxProfissionais.Checked[i] then
-    begin
-      id_pro := Integer(CheckListBoxProfissionais.Items.Objects[i]);
-      TrazerHorariosDisponiveis(id_pro, MonthCalendar1.Date);
-      Break;
-    end;
+    if i <> CheckListBoxProfissionais.ItemIndex then
+      CheckListBoxProfissionais.Checked[i] := False;
+  end;
+  if (CheckListBoxProfissionais.ItemIndex >= 0) and
+     (CheckListBoxProfissionais.Checked[CheckListBoxProfissionais.ItemIndex]) then
+  begin
+    id_pro := Integer(CheckListBoxProfissionais.Items.Objects[
+                      CheckListBoxProfissionais.ItemIndex]);
+    TrazerHorariosDisponiveis(id_pro, MonthCalendar1.Date);
   end;
 end;
 
@@ -221,26 +223,28 @@ var
   i, id_servico: Integer;
   total: Currency;
 begin
+  for i := 0 to CLBServicos.Count - 1 do
+  begin
+    if i <> CLBServicos.ItemIndex then
+      CLBServicos.Checked[i] := False;
+  end;
+
   total := 0;
 
   CheckListBoxProfissionais.Clear;
+  CLBHorarios.Clear;
 
-  for i := 0 to CLBServicos.Count - 1 do
+  if (CLBServicos.ItemIndex >= 0) and (CLBServicos.Checked[CLBServicos.ItemIndex]) then
   begin
-    if CLBServicos.Checked[i] then
-    begin
-      id_servico := Integer(CLBServicos.Items.Objects[i]);
-      total := total + buscarpreco(id_servico);
-
-      TrazerProfissionaisPorServico(id_servico);
-    end;
+    id_servico := Integer(CLBServicos.Items.Objects[CLBServicos.ItemIndex]);
+    total := buscarpreco(id_servico);
+    TrazerProfissionaisPorServico(id_servico);
   end;
 
-  datamodule1.query_aux.close;
+  datamodule1.query_aux.Close;
   DBEdit3.DataSource := DataSource2;
   DBEdit3.DataField := 'preco';
   DBEdit3.Text := FormatFloat('0.00', total);
-
 end;
 
 procedure TForm34.erro;

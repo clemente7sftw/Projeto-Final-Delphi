@@ -21,7 +21,6 @@ object Form20: TForm20
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitHeight = 674
     object Image1: TImage
       Left = 1792
       Top = 64
@@ -558,7 +557,7 @@ object Form20: TForm20
       end
     end
     object Panel1: TPanel
-      Left = 720
+      Left = 784
       Top = 269
       Width = 113
       Height = 28
@@ -576,9 +575,9 @@ object Form20: TForm20
       OnClick = Panel1Click
     end
     object Panel2: TPanel
-      Left = 848
+      Left = 936
       Top = 269
-      Width = 113
+      Width = 125
       Height = 28
       Cursor = crHandPoint
       Caption = 'Servi'#231'os'
@@ -594,7 +593,7 @@ object Form20: TForm20
       OnClick = Panel2Click
     end
     object Panel3: TPanel
-      Left = 976
+      Left = 1105
       Top = 269
       Width = 113
       Height = 28
@@ -610,23 +609,6 @@ object Form20: TForm20
       ParentFont = False
       TabOrder = 3
       OnClick = Panel3Click
-    end
-    object Panel4: TPanel
-      Left = 1105
-      Top = 269
-      Width = 113
-      Height = 28
-      Cursor = crHandPoint
-      Caption = 'Outro relatorio'
-      Color = 4405251
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWhite
-      Font.Height = -12
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentBackground = False
-      ParentFont = False
-      TabOrder = 4
     end
   end
   object FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink

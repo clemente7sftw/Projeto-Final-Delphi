@@ -1,4 +1,4 @@
-unit TelaPrincipalN1;
+Ôªøunit TelaPrincipalN1;
 
 interface
 
@@ -11,7 +11,6 @@ type
   TForm3 = class(TForm)
     Fundo: TPanel;
     Image4: TImage;
-    Image5: TImage;
     BS: TImage;
     Label1: TLabel;
     Panel1: TPanel;
@@ -50,6 +49,17 @@ implementation
 
 uses  n1_agendamentos, relatorios_servicos, n1_mudar_senha;
 
+procedure TForm3.FormCreate(Sender: TObject);
+begin
+   Form3.WindowState:=wsMaximized;
+end;
+
+
+procedure TForm3.FormShow(Sender: TObject);
+begin
+atualizar_grid;
+end;
+
 procedure TForm3.atualizar_grid;
 begin
 with DataModule1.Query_conexao do
@@ -74,7 +84,6 @@ SQL.Text :=
   'WHERE a.id_clie = :id_clie ' +
   'GROUP BY a.id_agendamento, e.nome, p.nome, a.data_agendamento, a.hora_inicio ' +
   'ORDER BY a.data_agendamento DESC, a.hora_inicio;';
-
  ParamByName('id_clie').AsInteger := DataModule1.id_clie;
  Open;
 
@@ -85,78 +94,71 @@ end;
 
 procedure TForm3.ExclBtnClick(Sender: TObject);
 begin
-Excluir;
+  Excluir;
 end;
 
 procedure TForm3.Excluir;
-begin
 var
   id_agendamento: Integer;
 begin
   if DataModule1.Query_conexao.IsEmpty then
-  begin
-//    ShowMessage('Nenhum agendamento selecionado.');
     Exit;
-  end;
+
   if Application.MessageBox(
-       'Tem certeza de que deseja excluir este Agendamento? Essa aÁ„o n„o poder· ser desfeita.',
-       'Exclus„o de Agendamento',
+       'Tem certeza de que deseja excluir este Agendamento? Essa a√ß√£o n√£o poder√° ser desfeita.',
+       'Exclus√£o de Agendamento',
        MB_YESNO + MB_ICONQUESTION
      ) = IDYES then
   begin
     id_agendamento := DataModule1.Query_conexao.FieldByName('id_agendamento').AsInteger;
+
     with DataModule1.Query_Aux do
     begin
       Close;
-      SQL.Text := 'DELETE FROM agendamentos WHERE id_agendamento = :id_agendamento';
-      ParamByName('id_agendamento').AsInteger := id_agendamento;
+      SQL.Text := 'DELETE FROM agendamento_servicos WHERE id_agendamento = :id';
+      ParamByName('id').AsInteger := id_agendamento;
+      ExecSQL;
+      Close;
+      SQL.Text := 'DELETE FROM profissionais_agendamentos WHERE id_agendamento = :id';
+      ParamByName('id').AsInteger := id_agendamento;
+      ExecSQL;
+
+      Close;
+      SQL.Text := 'DELETE FROM agendamentos WHERE id_agendamento = :id';
+      ParamByName('id').AsInteger := id_agendamento;
       ExecSQL;
     end;
   end;
-   with datamodule1.Query_conexao do
-begin
-  close;
-SQL.Text :=
-  'SELECT ' +
-  '    a.id_agendamento, ' +
-  '    e.nome AS empresa, ' +
-  '    p.nome AS profissional, ' +
-  '    STRING_AGG(s.nome, '', '')::varchar(500) servicos, ' +
-  '    SUM(s.preco) AS preco, ' +
-  '    a.data_agendamento, ' +
-  '    a.hora_inicio ' +
-  'FROM agendamentos a ' +
-  'INNER JOIN clientes c ON a.id_clie = c.id_clie ' +
-  'INNER JOIN agendamento_servicos ags ON a.id_agendamento = ags.id_agendamento ' +
-  'INNER JOIN servicos s ON ags.id_servico = s.id_servico ' +
-  'INNER JOIN profissionais_agendamentos pa ON pa.id_agendamento = a.id_agendamento ' +
-  'INNER JOIN profissionais p ON pa.id_pro = p.id_pro ' +
-  'INNER JOIN empresas e ON e.id_empresa = a.id_empresa ' +
-  'WHERE a.id_clie = :id_clie ' +
-  'GROUP BY a.id_agendamento, e.nome, p.nome, a.data_agendamento, a.hora_inicio ' +
-  'ORDER BY a.data_agendamento DESC, a.hora_inicio;';
-open;
-end;
-end;
-
-end;
-
-procedure TForm3.FormCreate(Sender: TObject);
-begin
-    Form3.WindowState:=wsMaximized;
-end;
-
-
-procedure TForm3.FormShow(Sender: TObject);
-begin
-atualizar_grid;
+  with DataModule1.Query_conexao do
+  begin
+    Close;
+    SQL.Text :=
+      'SELECT ' +
+      '    a.id_agendamento, ' +
+      '    c.nome_clie, ' +
+      '    c.email_clie, ' +
+      '    STRING_AGG(s.nome, '', '')::varchar(500) AS nome_servicos, ' +
+      '    a.data_agendamento, ' +
+      '    a.hora_inicio, ' +
+      '    a.status ' +
+      'FROM agendamentos a ' +
+      'INNER JOIN clientes c ON a.id_clie = c.id_clie ' +
+      'INNER JOIN agendamento_servicos ags ON a.id_agendamento = ags.id_agendamento ' +
+      'INNER JOIN servicos s ON ags.id_servico = s.id_servico ' +
+      'WHERE a.id_empresa = :id_empresa ' +
+      'GROUP BY a.id_agendamento, c.nome_clie, c.email_clie, ' +
+      '         a.data_agendamento, a.hora_inicio, a.status ' +
+      'ORDER BY a.id_agendamento;';
+    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+    Open;
+  end;
+  atualizar_grid;
 end;
 
 procedure TForm3.Image2Click(Sender: TObject);
 begin
 Form24.show;
 end;
-
 
 procedure TForm3.Image3Click(Sender: TObject);
 begin
@@ -171,7 +173,6 @@ end;
 procedure TForm3.Panel1Click(Sender: TObject);
 begin
   Form26.show;
-  form3.close;
 end;
 
 end.

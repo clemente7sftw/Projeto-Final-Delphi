@@ -445,10 +445,10 @@ object Form13: TForm13
     end
     object MonthCalendar1: TMonthCalendar
       Left = 0
-      Top = 343
+      Top = 335
       Width = 498
       Height = 308
-      Date = 45936.000000000000000000
+      Date = 45962.000000000000000000
       TabOrder = 4
       OnClick = MonthCalendar1Click
     end
