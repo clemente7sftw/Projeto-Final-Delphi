@@ -16,9 +16,6 @@ type
     Label2: TLabel;
     BtnConf: TPanel;
     Lblrequired: TLabel;
-    EdPesquisa: TEdit;
-    Panel1: TPanel;
-    Image2: TImage;
     Image4: TImage;
     BS: TImage;
     Barra: TPanel;
@@ -50,8 +47,7 @@ type
     procedure EditsAtivos;
     procedure EditsInativos;
     procedure BtnConfClick(Sender: TObject);
-    procedure Image2Click(Sender: TObject);
-    procedure Procurar;
+
     procedure Editar;
     procedure Salvar;
     procedure Cadastrar;
@@ -137,10 +133,6 @@ begin
   Voltar;
 end;
 
-procedure TForm4.Image2Click(Sender: TObject);
-begin
-  Procurar;
-end;
 
 procedure TForm4.LbagendamentosClick(Sender: TObject);
 begin
@@ -378,18 +370,6 @@ begin
   end;
 end;
 
-procedure TForm4.Procurar;
-begin
-  with DataModule1.Query_conexao do
-  begin
-    Close;
-    SQL.Text := 'SELECT * FROM clientes ' +
-                'WHERE UPPER(nome_clie) LIKE :nome ' +
-                'ORDER BY nome_clie';
-    ParamByName('nome').AsString := '%' + UpperCase(EdPesquisa.Text) + '%';
-    Open;
-  end;
-end;
 
 procedure TForm4.Salvar;
 var

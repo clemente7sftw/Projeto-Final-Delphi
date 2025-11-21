@@ -31,9 +31,6 @@ type
     LbErro_Sistema: TLabel;
     DBGrid1: TDBGrid;
     BtnConf: TPanel;
-    EdPesquisa: TEdit;
-    Panel1: TPanel;
-    Image2: TImage;
     EdEmail: TDBEdit;
     EdNome: TDBEdit;
     BtnCad: TPanel;

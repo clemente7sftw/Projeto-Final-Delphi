@@ -32,9 +32,6 @@ type
     EditBtn: TImage;
     ExclBtn: TImage;
     btncancelar: TImage;
-    EdPesquisa: TEdit;
-    Panel3: TPanel;
-    Image2: TImage;
     Image1: TImage;
     Lblrequired: TLabel;
     BtnConf: TPanel;

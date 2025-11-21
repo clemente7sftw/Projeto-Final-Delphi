@@ -25,9 +25,6 @@ type
     DBEdit1: TDBEdit;
     DBEdit2: TDBEdit;
     calendario: TMonthCalendar;
-    EdPesquisa: TEdit;
-    Panel1: TPanel;
-    Image2: TImage;
     BtnConf: TPanel;
     CLBHorarios: TCheckListBox;
     DBEdit3: TDBEdit;

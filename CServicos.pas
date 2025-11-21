@@ -25,9 +25,6 @@ type
     LbCargos: TLabel;
     LbFornecedores: TLabel;
     Lbagendamentos: TLabel;
-    EdPesquisa: TEdit;
-    Panel1: TPanel;
-    Image2: TImage;
     addclie: TImage;
     BtnEditar: TImage;
     BtnExcluir: TImage;
@@ -57,7 +54,6 @@ type
     procedure Cancelar;
     procedure Adicionar;
     procedure atualizar_grid;
-    procedure Procurar;
     procedure addclieClick(Sender: TObject);
     procedure Image3Click(Sender: TObject);
     procedure VoltarClick(Sender: TObject);
@@ -256,18 +252,7 @@ begin
   Form15.Hide;
 end;
 
-procedure TForm15.Procurar;
-begin
-  with DataModule1.Queryservicos do
-  begin
-    Close;
-    SQL.Text := 'SELECT * FROM servicos ' +
-                'WHERE UPPER(nome) LIKE :nome ' +
-                'ORDER BY nome';
-    ParamByName('nome').AsString := '%' + UpperCase(EdPesquisa.Text) + '%';
-    Open;
-  end;
-end;
+
 
 
 procedure TForm15.Cadastrar;

@@ -26,9 +26,6 @@ type
     LbCargos: TLabel;
     LbFornecedores: TLabel;
     Lbagendamentos: TLabel;
-    EdPesquisa: TEdit;
-    Panel1: TPanel;
-    Image2: TImage;
     Label4: TLabel;
     addclie: TImage;
     BtnEditar: TImage;

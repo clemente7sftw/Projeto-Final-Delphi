@@ -33,9 +33,6 @@ type
     LbCargos: TLabel;
     LbFornecedores: TLabel;
     Lbagendamentos: TLabel;
-    EdPesquisa: TEdit;
-    Panel3: TPanel;
-    Image2: TImage;
     DataSource2: TDataSource;
     CLBHorarios: TCheckListBox;
     Label4: TLabel;
@@ -88,7 +85,7 @@ begin
     dbedit2.DataField := 'email_clie';
 
   end;
-  EdPesquisa.Clear;
+
   DBEdit1.Clear;
   DBEdit2.Clear;
   DBEdit3.Clear;

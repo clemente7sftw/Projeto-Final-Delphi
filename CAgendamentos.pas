@@ -28,9 +28,6 @@ type
     Lbagendamentos: TLabel;
     Image4: TImage;
     BS: TImage;
-    EdPesquisa: TEdit;
-    Panel1: TPanel;
-    Image2: TImage;
     Label3: TLabel;
     Label4: TLabel;
     addbtn: TImage;
@@ -71,6 +68,8 @@ type
     procedure btncancelarClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure CLBHorariosClickCheck(Sender: TObject);
+
+
   private
 
     { Private declarations }
@@ -444,6 +443,9 @@ procedure TForm21.LbServicosClick(Sender: TObject);
 begin
   Form15.show;
 end;
+
+
+
 
 procedure TForm21.Timer1Timer(Sender: TObject);
 begin

@@ -32,9 +32,6 @@ type
     DBEdit1: TDBEdit;
     DBEdit2: TDBEdit;
     DBEdit3: TDBEdit;
-    EdPesquisa: TEdit;
-    Panel3: TPanel;
-    Image2: TImage;
     BtnConf: TPanel;
     CLBCargos: TCheckListBox;
     CLBDias: TCheckListBox;

@@ -24,9 +24,6 @@ type
     DBEdit3: TDBEdit;
     CheckListBoxProfissionais: TCheckListBox;
     DBEdit1: TDBEdit;
-    EdPesquisa: TEdit;
-    Panel3: TPanel;
-    Image2: TImage;
     CLBHorarios: TCheckListBox;
     Timer1: TTimer;
     DataSource1: TDataSource;
@@ -281,7 +278,6 @@ begin
     dbedit2.DataField := 'email_clie';
 
   end;
-  EdPesquisa.Clear;
   DBEdit1.Clear;
   DBEdit2.Clear;
   DBEdit3.Clear;
