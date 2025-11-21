@@ -7,6 +7,7 @@ object DataModule1: TDataModule1
       'User_Name=postgres'
       'Password=root'
       'Server=localhost'
+      'MonitorBy=FlatFile'
       'DriverID=PG')
     Left = 160
     Top = 16

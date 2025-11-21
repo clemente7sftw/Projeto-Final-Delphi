@@ -584,6 +584,7 @@ object Form20: TForm20
     FileName = 
       'C:\Users\gabri\OneDrive\Documentos\Projeto-Final-Delphi\docs\tra' +
       'cing.txt'
+    Tracing = True
     Left = 64
     Top = 288
   end
