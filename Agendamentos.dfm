@@ -351,6 +351,21 @@ object Form13: TForm13
       ParentColor = False
       ParentFont = False
     end
+    object Label5: TLabel
+      Left = 1158
+      Top = 823
+      Width = 515
+      Height = 25
+      Caption = 'Nenhum hor'#225'rio cadastrado para este profissional neste dia.'
+      Color = clDarkred
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -19
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
     object DBGrid1: TDBGrid
       Left = 24
       Top = 684
@@ -380,7 +395,7 @@ object Form13: TForm13
           Title.Font.Height = -21
           Title.Font.Name = 'Segoe UI Semibold'
           Title.Font.Style = [fsBold]
-          Width = 221
+          Width = 308
           Visible = True
         end
         item

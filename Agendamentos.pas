@@ -36,6 +36,7 @@ type
     CLBHorarios: TCheckListBox;
     Label4: TLabel;
     Timer1: TTimer;
+    Label5: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Trazerservicos(DiaSemana:Integer; DataSelecionada:Tdate);
@@ -43,7 +44,7 @@ type
     procedure TrazerHorariosDisponiveis(id_pro: Integer; DataSelecionada: TDatetime);
     procedure Cadastrar;
     procedure erro;
-    procedure erro_servicos;
+    procedure erro_pro;
     procedure Panel2Click(Sender: TObject);
     function buscarpreco(id_servico: Integer): Currency;
     procedure CLBServicosClickCheck(Sender: TObject);
@@ -109,6 +110,7 @@ begin
   WindowState:=wsMaximized;
   Lblrequired.Visible:= false;
   MonthCalendar1.MinDate:= Date;
+  Label5.Visible:= false;
 end;
 
 procedure TForm13.LbClieClick(Sender: TObject);
@@ -123,21 +125,9 @@ var
 begin
   DataSelecionada := MonthCalendar1.Date;
   DiaSemana := DayOfTheWeek(DataSelecionada);
-
   DataModule1.Query_aux.Close;
   Trazerservicos(DiaSemana, DataSelecionada);
-
-  with DataModule1.QueryClientes do
-  begin
-    Close;
-    SQL.Text := 'SELECT * FROM clientes WHERE id_empresa = :id_empresa ORDER BY nome_clie';
-    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-    Open;
-
-    DataSource1.DataSet := DataModule1.QueryClientes;
-    DBEdit1.DataField := 'nome_clie';
-    DBEdit2.DataField := 'email_clie';
-  end;
+  atualizar_grid;
 end;
 
 procedure TForm13.Panel2Click(Sender: TObject);
@@ -216,7 +206,7 @@ begin
         end;
       end
       else
-        ShowMessage('Nenhum horário cadastrado para este profissional neste dia.');
+      erro_pro;
       Close;
     end;
   finally
@@ -244,12 +234,10 @@ begin
     ParamByName('id_servico').AsInteger := id_servico;
     ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
     Open;
-
     while not Eof do
     begin
       id_pro := FieldByName('id_pro').AsInteger;
       nome   := FieldByName('nome').AsString;
-
       existe := False;
       for i := 0 to CheckListBoxProfissionais.Count - 1 do
         if Integer(CheckListBoxProfissionais.Items.Objects[i]) = id_pro then
@@ -257,7 +245,6 @@ begin
           existe := True;
           Break;
         end;
-
       if not existe then
         CheckListBoxProfissionais.Items.AddObject(nome, TObject(id_pro));
 
@@ -460,19 +447,15 @@ begin
     if i <> CLBServicos.ItemIndex then
       CLBServicos.Checked[i] := False;
   end;
-
   total := 0;
-
   CheckListBoxProfissionais.Clear;
   CLBHorarios.Clear;
-
   if (CLBServicos.ItemIndex >= 0) and (CLBServicos.Checked[CLBServicos.ItemIndex]) then
   begin
     id_servico := Integer(CLBServicos.Items.Objects[CLBServicos.ItemIndex]);
     total := buscarpreco(id_servico);
     TrazerProfissionaisPorServico(id_servico);
   end;
-
   datamodule1.query_aux.Close;
   DBEdit3.DataSource := DataSource2;
   DBEdit3.DataField := 'preco';
@@ -486,10 +469,10 @@ begin
   Label4.visible := true;
 end;
 
-procedure TForm13.erro_servicos;
+procedure TForm13.erro_pro;
 begin
   Timer1.Enabled := true;
-  Label4.visible := true;
+  Label5.visible := true;
 end;
 
 end.

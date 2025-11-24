@@ -542,7 +542,7 @@ object Form32: TForm32
           Title.Font.Height = -21
           Title.Font.Name = 'Segoe UI Semibold'
           Title.Font.Style = [fsBold]
-          Width = 483
+          Width = 489
           Visible = True
         end
         item

@@ -474,7 +474,7 @@ object Form21: TForm21
     object DBGrid1: TDBGrid
       Left = 40
       Top = 401
-      Width = 1009
+      Width = 1001
       Height = 393
       DataSource = DataSource1
       Font.Charset = DEFAULT_CHARSET
@@ -523,7 +523,7 @@ object Form21: TForm21
           Title.Font.Height = -21
           Title.Font.Name = 'Segoe UI Semibold'
           Title.Font.Style = [fsBold]
-          Width = 247
+          Width = 276
           Visible = True
         end
         item
