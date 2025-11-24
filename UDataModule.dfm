@@ -87,25 +87,6 @@ object DataModule1: TDataModule1
     Left = 357
     Top = 54
   end
-  object QueryCS: TFDQuery
-    Connection = conexao_banco
-    SQL.Strings = (
-      'SELECT * from cargos_servicos')
-    Left = 107
-    Top = 389
-    object QueryCSid_cargo: TIntegerField
-      FieldName = 'id_cargo'
-      Origin = 'id_cargo'
-    end
-    object QueryCSid_servico: TIntegerField
-      FieldName = 'id_servico'
-      Origin = 'id_servico'
-    end
-    object QueryCSid_empresa: TIntegerField
-      FieldName = 'id_empresa'
-      Origin = 'id_empresa'
-    end
-  end
   object QueryCargos: TFDQuery
     Connection = conexao_banco
     SQL.Strings = (
@@ -140,53 +121,6 @@ object DataModule1: TDataModule1
       Origin = 'data_cad'
       ProviderFlags = [pfInUpdate]
     end
-  end
-  object QueryPC: TFDQuery
-    Connection = conexao_banco
-    SQL.Strings = (
-      'select * from profissionais_cargos')
-    Left = 48
-    Top = 427
-    object QueryPCid_pro: TIntegerField
-      FieldName = 'id_pro'
-      Origin = 'id_pro'
-    end
-    object QueryPCid_cargo: TIntegerField
-      FieldName = 'id_cargo'
-      Origin = 'id_cargo'
-    end
-  end
-  object QueryRPC: TFDQuery
-    Connection = conexao_banco
-    SQL.Strings = (
-      'SELECT '
-      '    p.nome,'
-      '    p.email,'
-      '    STRING_AGG(c.nome_cargo, '#39', '#39')::varchar(500) AS nome_cargo'
-      'FROM '
-      '    profissionais p'
-      'LEFT JOIN '
-      '    profissionais_cargos pc ON p.id_pro = pc.id_pro'
-      'LEFT JOIN '
-      '    cargos c ON pc.id_cargo = c.id_cargo'
-      'GROUP BY '
-      '    p.nome,'
-      'p.email'
-      'ORDER BY '
-      '    p.nome;')
-    Left = 104
-    Top = 432
-  end
-  object QueryRCS: TFDQuery
-    Connection = conexao_banco
-    SQL.Strings = (
-      
-        'SELECT c.nome_cargo, STRING_AGG(s.nome, '#39', '#39')::varchar(500) AS n' +
-        'ome FROM cargos c LEFT JOIN cargos_servicos cp ON c.id_cargo = c' +
-        'p.id_cargo LEFT JOIN servicos s ON cp.id_servico = s.id_servico ' +
-        'group by c.nome_cargo ORDER BY c.nome_cargo;')
-    Left = 160
-    Top = 400
   end
   object QueryAg: TFDQuery
     Connection = conexao_banco
@@ -265,8 +199,8 @@ object DataModule1: TDataModule1
     Connection = conexao_banco
     SQL.Strings = (
       'select * from agendamentos')
-    Left = 366
-    Top = 294
+    Left = 350
+    Top = 270
     object QueryAgendamentosid_agendamento: TIntegerField
       FieldName = 'id_agendamento'
       Origin = 'id_agendamento'
@@ -300,64 +234,12 @@ object DataModule1: TDataModule1
       Origin = 'id_empresa'
     end
   end
-  object QueryFClientes: TFDQuery
-    Connection = conexao_banco
-    SQL.Strings = (
-      'SELECT '
-      '  EXTRACT(MONTH FROM data_cad) AS mes,'
-      '  COUNT(*) AS total'
-      'FROM clientes'
-      
-        'WHERE data_cad >= date_trunc('#39'month'#39', CURRENT_DATE) - INTERVAL '#39 +
-        '5 months'#39
-      'GROUP BY EXTRACT(MONTH FROM data_cad)'
-      'ORDER BY mes;'
-      '')
-    Left = 202
-    Top = 430
-    object QueryFClientesmes: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'mes'
-      Origin = 'mes'
-      ReadOnly = True
-      Precision = 64
-      Size = 64
-    end
-    object QueryFClientestotal: TLargeintField
-      AutoGenerateValue = arDefault
-      FieldName = 'total'
-      Origin = 'total'
-      ReadOnly = True
-    end
-  end
   object QueryUpAg: TFDQuery
     Connection = conexao_banco
     SQL.Strings = (
       '')
-    Left = 40
-    Top = 480
-  end
-  object QueryRAS: TFDQuery
-    Connection = conexao_banco
-    SQL.Strings = (
-      'select * from agendamento_servicos')
-    Left = 216
-    Top = 480
-    object QueryRASid_agendamento: TIntegerField
-      FieldName = 'id_agendamento'
-      Origin = 'id_agendamento'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object QueryRASid_servico: TIntegerField
-      FieldName = 'id_servico'
-      Origin = 'id_servico'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-  end
-  object QueryPS: TFDQuery
-    Connection = conexao_banco
-    Left = 152
-    Top = 456
+    Left = 16
+    Top = 392
   end
   object QueryAdm: TFDQuery
     Connection = conexao_banco
@@ -447,8 +329,8 @@ object DataModule1: TDataModule1
       '    S.nome '
       'ORDER BY'
       '    Total  DESC; ')
-    Left = 107
-    Top = 491
+    Left = 83
+    Top = 395
     object QueryTotalAgnome: TWideStringField
       FieldName = 'nome'
       Origin = 'nome'
@@ -508,8 +390,8 @@ object DataModule1: TDataModule1
       'ORDER BY'
       '    a.id_agendamento;'
       '')
-    Left = 248
-    Top = 272
+    Left = 224
+    Top = 232
     object Queryag_proid_agendamento: TIntegerField
       FieldName = 'id_agendamento'
       Origin = 'id_agendamento'
@@ -556,5 +438,10 @@ object DataModule1: TDataModule1
       '')
     Left = 437
     Top = 54
+  end
+  object Query_editar_ag: TFDQuery
+    Connection = conexao_banco
+    Left = 472
+    Top = 264
   end
 end

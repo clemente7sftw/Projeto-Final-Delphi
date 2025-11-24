@@ -34,11 +34,12 @@ type
     BtnConf: TPanel;
     Image1: TImage;
     LbPro: TLabel;
-    CLBHorarios: TCheckListBox;
     Timer1: TTimer;
     DBEdit3: TDBEdit;
     Label2: TLabel;
     Label8: TLabel;
+    Timer2: TTimer;
+    Label1: TLabel;
     procedure BtnAddClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -50,6 +51,7 @@ type
     procedure editsativos;
     procedure editsinativos;
     procedure erro_horario;
+    procedure erro;
     procedure cancelar;
     procedure BtnExcluirClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);
@@ -64,10 +66,9 @@ type
     procedure LbCargosClick(Sender: TObject);
     procedure LbFornecedoresClick(Sender: TObject);
     procedure addbtnClick(Sender: TObject);
-    procedure TrazerHorariosDisponiveis(id_pro: Integer; DataSelecionada: TDateTime);
     procedure btncancelarClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
-    procedure CLBHorariosClickCheck(Sender: TObject);
+    procedure Timer2Timer(Sender: TObject);
 
 
   private
@@ -158,6 +159,7 @@ procedure TForm21.FormCreate(Sender: TObject);
 begin
   WindowState:=wsMaximized;
   calendario.Visible:= false;
+  label1.Visible:= false;
 end;
 
 procedure TForm21.FormShow(Sender: TObject);
@@ -195,9 +197,9 @@ begin
 open;
 end;
   btnconf.Visible:= false;
-  CLBHorarios.Visible := false;
   label8.Visible:= false;
   editsinativos;
+  btncancelar.Visible:= false;
 end;
 
 procedure TForm21.BtnAddClick(Sender: TObject);
@@ -236,23 +238,15 @@ end;
 
 procedure TForm21.cancelar;
 begin
+btncancelar.Visible:= false;
 editsinativos;
 BtnConf.Visible:= false;
-CLBHorarios.Visible:= false;
 calendario.Visible:= false;
 addbtn.Visible := true;
 exclbtn.Visible:= true;
 editbtn.Visible:= true;
 end;
 
-procedure TForm21.CLBHorariosClickCheck(Sender: TObject);
-var
-  i: Integer;
-begin
-  for i := 0 to CLBHorarios.Items.Count - 1 do
-    if i <> CLBHorarios.ItemIndex then
-      CLBHorarios.Checked[i] := False;
-end;
 
 
 procedure TForm21.Confirmar;
@@ -262,31 +256,21 @@ var
   hora_inicio: TDateTime;
 begin
   editsinativos;
-
   DataSelecionada := calendario.Date;
-
-  if CLBHorarios.ItemIndex = -1 then
-  begin
-    erro_horario;
-    Exit;
-  end;
-
-  hora_inicio := StrToTime(CLBHorarios.Items[CLBHorarios.ItemIndex]);
-
   with DataModule1.QueryAg do
   begin
     Edit;
     FieldByName('data_agendamento').AsDateTime := DataSelecionada;
-    FieldByName('hora_inicio').AsDateTime := hora_inicio;
+
     Post;
   end;
     btnconf.Visible := False;
     calendario.Visible := False;
-    CLBHorarios.Visible := false;
     addbtn.Visible := true;
     exclbtn.Visible:= true;
     editbtn.Visible:= true;
     AtualizarStatus;
+    btncancelar.Visible:= false;
 end;
 
 procedure TForm21.Editar;
@@ -295,33 +279,12 @@ var
 begin
   btnconf.Visible := True;
   calendario.Visible := True;
-  CLBHorarios.Visible:= true;
   addbtn.Visible := false;
   exclbtn.Visible:= false;
   editbtn.Visible:= false;
-
+  btncancelar.Visible:= true;
   dataselecionada := DataModule1.QueryAg.FieldByName('data_agendamento').AsDateTime;
   Calendario.Date := dataselecionada;
-
-  with DataModule1.Query_Aux do
-  begin
-    Close;
-    SQL.Text :=
-      'SELECT a.id_pro ' +
-      'FROM profissionais_agendamentos a ' +
-      'WHERE a.id_agendamento = :id_agendamento';
-    ParamByName('id_agendamento').AsInteger :=
-      DataModule1.QueryAg.FieldByName('id_agendamento').AsInteger;
-    Open;
-
-    if not IsEmpty then
-    begin
-      id_pro := FieldByName('id_pro').AsInteger;
-      TrazerHorariosDisponiveis(id_pro, calendario.Date);
-    end
-    else
-//      ShowMessage('Não foi possível identificar o profissional deste agendamento.');
-  end;
 end;
 
 
@@ -342,6 +305,12 @@ dbedit1.Enabled := false;
 dbedit2.Enabled := false;
 end;
 
+
+procedure TForm21.erro;
+begin
+Label1.visible:= true;
+Timer2.Enabled := true;
+end;
 
 procedure TForm21.erro_horario;
 begin
@@ -453,66 +422,12 @@ label8.Visible:= false;
 Timer1.Enabled := false;
 end;
 
-procedure TForm21.TrazerHorariosDisponiveis(id_pro: Integer; DataSelecionada: TDateTime);
-var
-  horaAtual, horaFim: TTime;
-  intervalo: TTime;
-  diaSemana: Integer;
-  horarioAtualAgendado: string;
-  idx: Integer;
+procedure TForm21.Timer2Timer(Sender: TObject);
 begin
-  CLBHorarios.Clear;
-
-  diaSemana := DayOfTheWeek(DataSelecionada) - 1;
-  if diaSemana < 0 then
-    diaSemana := 6;
-
-  with DataModule1.Query_conexao do
-  begin
-    Close;
-    SQL.Text :=
-      'SELECT hora_inicio, hora_fim ' +
-      'FROM horarios_profissionais ' +
-      'WHERE id_pro = :id_pro ' +
-      'AND dia_semana = :dia_semana ' +
-      'AND id_empresa = :id_empresa';
-    ParamByName('id_pro').AsInteger := id_pro;
-    ParamByName('dia_semana').AsInteger := diaSemana;
-    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
-    Open;
-
-    if not IsEmpty then
-    begin
-      horaAtual := FieldByName('hora_inicio').AsDateTime;
-      horaFim := FieldByName('hora_fim').AsDateTime;
-      intervalo := EncodeTime(1, 0, 0, 0);
-
-      while horaAtual < horaFim do
-      begin
-        CLBHorarios.Items.Add(FormatDateTime('hh:nn', horaAtual));
-        horaAtual := horaAtual + intervalo;
-      end;
-
-      horarioAtualAgendado :=
-        FormatDateTime('hh:nn',
-          DataModule1.QueryAg.FieldByName('hora_inicio').AsDateTime);
-
-      idx := CLBHorarios.Items.IndexOf(horarioAtualAgendado);
-      if idx <> -1 then
-        CLBHorarios.Checked[idx] := True;
-
-      CLBHorarios.Visible := True;
-    end
-    else
-    begin
-      CLBHorarios.Clear;
-      CLBHorarios.Visible := False;
-      calendario.Visible := False;
-      btnconf.Visible := False;
-      editsinativos;
-    end;
-  end;
+label1.Visible:= false;
+Timer2.Enabled := false;
 end;
+
 
 
 end.

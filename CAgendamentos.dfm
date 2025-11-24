@@ -458,6 +458,19 @@ object Form21: TForm21
       Font.Style = [fsBold]
       ParentFont = False
     end
+    object Label1: TLabel
+      Left = 40
+      Top = 844
+      Width = 626
+      Height = 30
+      Caption = 'Algum Erro ocorreu do nosso lado... Tente novamente mais tarde'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
     object DBGrid1: TDBGrid
       Left = 40
       Top = 401
@@ -533,6 +546,7 @@ object Form21: TForm21
           Title.Font.Height = -21
           Title.Font.Name = 'Segoe UI Semibold'
           Title.Font.Style = [fsBold]
+          Width = 64
           Visible = True
         end
         item
@@ -579,7 +593,7 @@ object Form21: TForm21
       TabOrder = 2
     end
     object calendario: TMonthCalendar
-      Left = 1087
+      Left = 1231
       Top = 700
       Width = 267
       Height = 205
@@ -702,21 +716,6 @@ object Form21: TForm21
       TabOrder = 5
       OnClick = BtnConfClick
     end
-    object CLBHorarios: TCheckListBox
-      Left = 1360
-      Top = 724
-      Width = 241
-      Height = 165
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -19
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ItemHeight = 25
-      ParentFont = False
-      TabOrder = 6
-      OnClickCheck = CLBHorariosClickCheck
-    end
     object DBEdit3: TDBEdit
       Left = 1105
       Top = 656
@@ -731,7 +730,7 @@ object Form21: TForm21
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 6
     end
   end
   object DataSource1: TDataSource
@@ -745,5 +744,12 @@ object Form21: TForm21
     OnTimer = Timer1Timer
     Left = 448
     Top = 72
+  end
+  object Timer2: TTimer
+    Enabled = False
+    Interval = 5000
+    OnTimer = Timer2Timer
+    Left = 728
+    Top = 856
   end
 end
