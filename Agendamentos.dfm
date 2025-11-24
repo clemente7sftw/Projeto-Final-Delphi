@@ -353,7 +353,7 @@ object Form13: TForm13
     end
     object Label5: TLabel
       Left = 1158
-      Top = 823
+      Top = 847
       Width = 515
       Height = 25
       Caption = 'Nenhum hor'#225'rio cadastrado para este profissional neste dia.'
