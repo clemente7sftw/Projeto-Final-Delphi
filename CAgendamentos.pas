@@ -49,7 +49,7 @@ type
     procedure Confirmar;
     procedure editsativos;
     procedure editsinativos;
-    procedure erro_horario;
+    procedure erro_pro;
     procedure erro;
     procedure cancelar;
     procedure BtnExcluirClick(Sender: TObject);
@@ -68,6 +68,9 @@ type
     procedure btncancelarClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure Timer2Timer(Sender: TObject);
+    procedure calendarioClick(Sender: TObject);
+    function Verificar_Profissional(DataSelecionada: TDateTime): Boolean;
+
 
 
   private
@@ -235,15 +238,21 @@ begin
   AtualizarStatus;
 end;
 
+procedure TForm21.calendarioClick(Sender: TObject);
+begin
+  Verificar_Profissional(calendario.Date);
+end;
+
+
 procedure TForm21.cancelar;
 begin
-btncancelar.Visible:= false;
-editsinativos;
-BtnConf.Visible:= false;
-calendario.Visible:= false;
-addbtn.Visible := true;
-exclbtn.Visible:= true;
-editbtn.Visible:= true;
+  btncancelar.Visible:= false;
+  editsinativos;
+  BtnConf.Visible:= false;
+  calendario.Visible:= false;
+  addbtn.Visible := true;
+  exclbtn.Visible:= true;
+  editbtn.Visible:= true;
 end;
 
 
@@ -256,11 +265,15 @@ var
 begin
   editsinativos;
   DataSelecionada := calendario.Date;
+  if not Verificar_Profissional(DataSelecionada) then
+  begin
+    erro_pro;
+    Exit;
+  end;
   with DataModule1.QueryAg do
   begin
     Edit;
     FieldByName('data_agendamento').AsDateTime := DataSelecionada;
-
     Post;
   end;
     btnconf.Visible := False;
@@ -311,7 +324,7 @@ Label1.visible:= true;
 Timer2.Enabled := true;
 end;
 
-procedure TForm21.erro_horario;
+procedure TForm21.erro_pro;
 begin
 Label8.visible:= true;
 Timer1.Enabled := true;
@@ -427,6 +440,26 @@ label1.Visible:= false;
 Timer2.Enabled := false;
 end;
 
+function TForm21.Verificar_Profissional(DataSelecionada: TDateTime): Boolean;
+begin
+  with DataModule1.Query_editar_ag do
+  begin
+    Close;
+    SQL.Text :=
+      'SELECT 1 ' +
+      'FROM profissionais p ' +
+      'INNER JOIN horarios_profissionais hp ON hp.id_pro = p.id_pro ' +
+      'WHERE hp.dia_semana = :dia_semana ' +
+      '  AND p.id_empresa = :id_empresa ' +
+      'LIMIT 1';
 
+    ParamByName('dia_semana').AsInteger := DayOfTheWeek(DataSelecionada);
+    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+
+    Open;
+  end;
+
+  Result := not DataModule1.Query_editar_ag.IsEmpty;
+end;
 
 end.

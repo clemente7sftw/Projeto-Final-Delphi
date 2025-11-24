@@ -35,6 +35,8 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
+    Label1: TLabel;
+    Timer2: TTimer;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure AtualizarStatus;
@@ -43,7 +45,8 @@ type
     procedure Confirmar;
     procedure editsativos;
     procedure editsinativos;
-    procedure erro_horario;
+    procedure erro;
+    procedure erro_pro;
     procedure cancelar;
     procedure adicionar;
     procedure addbtnClick(Sender: TObject);
@@ -52,6 +55,10 @@ type
     procedure BtnConfClick(Sender: TObject);
     procedure btncancelarClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure calendarioClick(Sender: TObject);
+    function Verificar_Profissional(DataSelecionada: TDateTime): Boolean;
+    procedure Timer2Timer(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -143,6 +150,11 @@ begin
 Confirmar;
 end;
 
+procedure TForm32.calendarioClick(Sender: TObject);
+begin
+Verificar_Profissional(calendario.Date);
+end;
+
 procedure TForm32.cancelar;
 begin
 editsinativos;
@@ -165,7 +177,11 @@ begin
 
   DataSelecionada := calendario.Date;
 
-
+  if not Verificar_Profissional(DataSelecionada) then
+  begin
+    erro_pro;
+    Exit;
+  end;
   with DataModule1.QueryAg do
   begin
     Edit;
@@ -212,7 +228,13 @@ dbedit1.Enabled := false;
 dbedit2.Enabled := false;
 end;
 
-procedure TForm32.erro_horario;
+procedure TForm32.erro;
+begin
+Label1.visible:= true;
+Timer2.Enabled := true;
+end;
+
+procedure TForm32.erro_pro;
 begin
 Label8.visible:= true;
 Timer1.Enabled := true;
@@ -325,7 +347,7 @@ end;
   Label8.Visible:= false;
   editsinativos;
   btncancelar.Visible:= false;
-
+  Label1.visible:= false;
 end;
 
 procedure TForm32.Timer1Timer(Sender: TObject);
@@ -334,4 +356,31 @@ Label8.visible:= false;
 Timer1.Enabled := false;
 end;
 
+procedure TForm32.Timer2Timer(Sender: TObject);
+begin
+label1.Visible:= false;
+Timer2.Enabled := false;
+end;
+
+function TForm32.Verificar_Profissional(DataSelecionada: TDateTime): Boolean;
+begin
+  with DataModule1.Query_editar_ag do
+  begin
+    Close;
+    SQL.Text :=
+      'SELECT 1 ' +
+      'FROM profissionais p ' +
+      'INNER JOIN horarios_profissionais hp ON hp.id_pro = p.id_pro ' +
+      'WHERE hp.dia_semana = :dia_semana ' +
+      '  AND p.id_empresa = :id_empresa ' +
+      'LIMIT 1';
+
+    ParamByName('dia_semana').AsInteger := DayOfTheWeek(DataSelecionada);
+    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+
+    Open;
+  end;
+
+  Result := not DataModule1.Query_editar_ag.IsEmpty;
+end;
 end.

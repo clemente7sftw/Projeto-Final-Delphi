@@ -570,11 +570,6 @@ object Form3: TForm3
           Title.Font.Style = [fsBold]
           Width = 176
           Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'nome_servicos'
-          Visible = True
         end>
     end
     object Barra: TPanel

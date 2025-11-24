@@ -471,6 +471,7 @@ begin
     Open;
 
     CLBServicos.Items.Clear;
+    CLBHorarios.Clear;
     while not Eof do
     begin
       CLBServicos.Items.AddObject(

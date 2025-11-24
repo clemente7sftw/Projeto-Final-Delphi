@@ -293,7 +293,6 @@ begin
   atualizar_grid;
   BtnCad.Visible:= false;
   addclie.Visible:= true;
-  btncancelar.Visible:= true;
   btncancelar.Visible:= false;
   BtnEditar.visible := true;
   BtnExcluir.visible := true;

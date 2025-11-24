@@ -9,7 +9,7 @@ object DataModule1: TDataModule1
       'Server=localhost'
       'MonitorBy=FlatFile'
       'DriverID=PG')
-    Left = 160
+    Left = 168
     Top = 16
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink

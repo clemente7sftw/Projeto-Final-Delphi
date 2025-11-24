@@ -479,9 +479,22 @@ object Form32: TForm32
     object Label8: TLabel
       Left = 40
       Top = 844
-      Width = 391
+      Width = 470
       Height = 30
-      Caption = 'Selecione um hor'#225'rio antes de confirmar.'
+      Caption = 'N'#227'o h'#225' nenhum profissional dispon'#237'vel nesse dia.'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label1: TLabel
+      Left = 40
+      Top = 844
+      Width = 626
+      Height = 30
+      Caption = 'Algum Erro ocorreu do nosso lado... Tente novamente mais tarde'
       Font.Charset = ANSI_CHARSET
       Font.Color = clMaroon
       Font.Height = -21
@@ -529,7 +542,7 @@ object Form32: TForm32
           Title.Font.Height = -21
           Title.Font.Name = 'Segoe UI Semibold'
           Title.Font.Style = [fsBold]
-          Width = 278
+          Width = 483
           Visible = True
         end
         item
@@ -622,6 +635,7 @@ object Form32: TForm32
       Font.Style = []
       ParentFont = False
       TabOrder = 3
+      OnClick = calendarioClick
     end
     object BtnConf: TPanel
       Left = 1105
@@ -720,5 +734,12 @@ object Form32: TForm32
     OnTimer = Timer1Timer
     Left = 448
     Top = 72
+  end
+  object Timer2: TTimer
+    Enabled = False
+    Interval = 5000
+    OnTimer = Timer2Timer
+    Left = 728
+    Top = 856
   end
 end
