@@ -675,98 +675,6 @@ object Form8: TForm8
         ParentFont = False
         TabOrder = 3
       end
-      object Barra: TPanel
-        Left = -18
-        Top = 176
-        Width = 1936
-        Height = 41
-        Color = 4405251
-        ParentBackground = False
-        TabOrder = 4
-        object LbClie: TLabel
-          Left = 192
-          Top = 8
-          Width = 74
-          Height = 30
-          Caption = 'Clientes'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWhite
-          Font.Height = -21
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          ParentFont = False
-          OnClick = LbClieClick
-        end
-        object LbProfissionais: TLabel
-          Left = 772
-          Top = 8
-          Width = 118
-          Height = 30
-          Caption = 'Profissionais'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWhite
-          Font.Height = -21
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object LbServicos: TLabel
-          Left = 1113
-          Top = 8
-          Width = 79
-          Height = 30
-          Caption = 'Servi'#231'os'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWhite
-          Font.Height = -21
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          ParentFont = False
-          OnClick = LbServicosClick
-        end
-        object LbCargos: TLabel
-          Left = 1368
-          Top = 8
-          Width = 67
-          Height = 30
-          Caption = 'Cargos'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWhite
-          Font.Height = -21
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          ParentFont = False
-          OnClick = LbCargosClick
-        end
-        object LbFornecedores: TLabel
-          Left = 1608
-          Top = 8
-          Width = 130
-          Height = 30
-          Caption = 'Fornecedores'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWhite
-          Font.Height = -21
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          ParentFont = False
-          OnClick = LbFornecedoresClick
-        end
-        object Lbagendamentos: TLabel
-          Left = 464
-          Top = 8
-          Width = 146
-          Height = 30
-          Caption = 'Agendamentos'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWhite
-          Font.Height = -21
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          ParentFont = False
-          OnClick = LbagendamentosClick
-        end
-      end
       object BtnConf: TPanel
         Left = 1100
         Top = 953
@@ -782,7 +690,7 @@ object Form8: TForm8
         Font.Style = [fsBold]
         ParentBackground = False
         ParentFont = False
-        TabOrder = 5
+        TabOrder = 4
         OnClick = BtnConf1Click
       end
       object CLBCargos: TCheckListBox
@@ -797,7 +705,7 @@ object Form8: TForm8
         Font.Style = []
         ItemHeight = 25
         ParentFont = False
-        TabOrder = 6
+        TabOrder = 5
       end
       object CLBDias: TCheckListBox
         Left = 1103
@@ -811,7 +719,7 @@ object Form8: TForm8
         Font.Style = []
         ItemHeight = 25
         ParentFont = False
-        TabOrder = 7
+        TabOrder = 6
       end
       object TimePicker1: TTimePicker
         Left = 1638
@@ -821,7 +729,7 @@ object Form8: TForm8
         Font.Height = -16
         Font.Name = 'Segoe UI'
         Font.Style = []
-        TabOrder = 8
+        TabOrder = 7
         Time = 45972.597829027780000000
         TimeFormat = 'hh:nn'
       end
@@ -833,7 +741,7 @@ object Form8: TForm8
         Font.Height = -16
         Font.Name = 'Segoe UI'
         Font.Style = []
-        TabOrder = 9
+        TabOrder = 8
         Time = 45972.597829027780000000
         TimeFormat = 'hh:nn'
       end
@@ -850,7 +758,7 @@ object Form8: TForm8
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        TabOrder = 10
+        TabOrder = 9
       end
       object DBEdit6: TDBEdit
         Left = 1103
@@ -864,7 +772,7 @@ object Form8: TForm8
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        TabOrder = 11
+        TabOrder = 10
       end
       object DBEdit5: TDBEdit
         Left = 1434
@@ -878,7 +786,85 @@ object Form8: TForm8
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
+        TabOrder = 11
+      end
+      object Barra: TPanel
+        Left = -10
+        Top = 176
+        Width = 1928
+        Height = 41
+        Color = 4405251
+        ParentBackground = False
         TabOrder = 12
+        object LbClie: TLabel
+          Left = 192
+          Top = 8
+          Width = 74
+          Height = 30
+          Caption = 'Clientes'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -21
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          ParentFont = False
+          OnClick = LbClieClick
+        end
+        object LbProfissionais: TLabel
+          Left = 964
+          Top = 8
+          Width = 118
+          Height = 30
+          Caption = 'Profissionais'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -21
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object LbServicos: TLabel
+          Left = 1314
+          Top = 8
+          Width = 79
+          Height = 30
+          Caption = 'Servi'#231'os'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -21
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          ParentFont = False
+          OnClick = LbServicosClick
+        end
+        object LbCargos: TLabel
+          Left = 1688
+          Top = 8
+          Width = 67
+          Height = 30
+          Caption = 'Cargos'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -21
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          ParentFont = False
+          OnClick = LbCargosClick
+        end
+        object Lbagendamentos: TLabel
+          Left = 584
+          Top = 8
+          Width = 146
+          Height = 30
+          Caption = 'Agendamentos'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -21
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          ParentFont = False
+          OnClick = LbagendamentosClick
+        end
       end
     end
   end

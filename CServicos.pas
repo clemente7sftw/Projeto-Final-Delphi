@@ -18,13 +18,6 @@ type
     lbaviso: TLabel;
     Image4: TImage;
     BS: TImage;
-    Barra: TPanel;
-    LbClie: TLabel;
-    LbProfissionais: TLabel;
-    LbServicos: TLabel;
-    LbCargos: TLabel;
-    LbFornecedores: TLabel;
-    Lbagendamentos: TLabel;
     addclie: TImage;
     BtnEditar: TImage;
     BtnExcluir: TImage;
@@ -38,6 +31,12 @@ type
     Voltar: TImage;
     btncancelar: TImage;
     Timer1: TTimer;
+    Barra: TPanel;
+    LbClie: TLabel;
+    LbProfissionais: TLabel;
+    LbServicos: TLabel;
+    LbCargos: TLabel;
+    Lbagendamentos: TLabel;
     procedure Excluir;
     procedure FormCreate(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);

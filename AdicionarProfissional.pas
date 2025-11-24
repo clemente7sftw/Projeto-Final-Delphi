@@ -16,13 +16,6 @@ type
     CLBCargos: TCheckListBox;
     Image4: TImage;
     BS: TImage;
-    Barra: TPanel;
-    LbClie: TLabel;
-    LbProfissionais: TLabel;
-    LbServicos: TLabel;
-    LbCargos: TLabel;
-    LbFornecedores: TLabel;
-    Lbagendamentos: TLabel;
     Label3: TLabel;
     Label1: TLabel;
     Lblrequired: TLabel;
@@ -39,6 +32,12 @@ type
     CLBdias_semana: TCheckListBox;
     Timer1: TTimer;
     Timer2: TTimer;
+    Barra: TPanel;
+    LbClie: TLabel;
+    LbProfissionais: TLabel;
+    LbServicos: TLabel;
+    LbCargos: TLabel;
+    Lbagendamentos: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure PCadClick(Sender: TObject);

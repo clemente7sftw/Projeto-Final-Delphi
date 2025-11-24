@@ -19,13 +19,6 @@ type
     DBEdit2: TDBEdit;
     Image4: TImage;
     BS: TImage;
-    Barra: TPanel;
-    LbClie: TLabel;
-    LbProfissionais: TLabel;
-    LbServicos: TLabel;
-    LbCargos: TLabel;
-    LbFornecedores: TLabel;
-    Lbagendamentos: TLabel;
     Label4: TLabel;
     addclie: TImage;
     BtnEditar: TImage;
@@ -38,6 +31,12 @@ type
     Timer1: TTimer;
     btncancelar: TImage;
     Timer2: TTimer;
+    Barra: TPanel;
+    LbClie: TLabel;
+    LbProfissionais: TLabel;
+    LbServicos: TLabel;
+    LbCargos: TLabel;
+    Lbagendamentos: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure EditsAtivos;

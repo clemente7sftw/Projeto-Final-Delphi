@@ -31,7 +31,6 @@ type
     LbProfissionais: TLabel;
     LbServicos: TLabel;
     LbCargos: TLabel;
-    LbFornecedores: TLabel;
     Lbagendamentos: TLabel;
     DataSource2: TDataSource;
     CLBHorarios: TCheckListBox;

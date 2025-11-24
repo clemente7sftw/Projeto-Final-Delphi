@@ -610,7 +610,7 @@ object Form32: TForm32
       TabOrder = 2
     end
     object calendario: TMonthCalendar
-      Left = 1087
+      Left = 1231
       Top = 700
       Width = 267
       Height = 205
@@ -641,21 +641,6 @@ object Form32: TForm32
       TabOrder = 4
       OnClick = BtnConfClick
     end
-    object CLBHorarios: TCheckListBox
-      Left = 1360
-      Top = 724
-      Width = 241
-      Height = 165
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -19
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ItemHeight = 25
-      ParentFont = False
-      TabOrder = 5
-      OnClickCheck = CLBHorariosClickCheck
-    end
     object DBEdit3: TDBEdit
       Left = 1105
       Top = 656
@@ -670,7 +655,7 @@ object Form32: TForm32
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 5
     end
     object Panel2: TPanel
       Left = -8
@@ -679,7 +664,7 @@ object Form32: TForm32
       Height = 41
       Color = 8543977
       ParentBackground = False
-      TabOrder = 7
+      TabOrder = 6
       object Label5: TLabel
         Left = 964
         Top = 8

@@ -560,14 +560,28 @@ object Form14: TForm14
       ParentFont = False
       TabOrder = 3
     end
+    object CLBServicos: TCheckListBox
+      Left = 1105
+      Top = 576
+      Width = 496
+      Height = 134
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ItemHeight = 25
+      ParentFont = False
+      TabOrder = 4
+    end
     object Barra: TPanel
-      Left = -18
+      Left = -8
       Top = 176
-      Width = 1936
+      Width = 1928
       Height = 41
       Color = 4405251
       ParentBackground = False
-      TabOrder = 4
+      TabOrder = 5
       object LbClie: TLabel
         Left = 192
         Top = 8
@@ -583,7 +597,7 @@ object Form14: TForm14
         OnClick = LbClieClick
       end
       object LbProfissionais: TLabel
-        Left = 772
+        Left = 964
         Top = 8
         Width = 118
         Height = 30
@@ -597,7 +611,7 @@ object Form14: TForm14
         OnClick = LbProfissionaisClick
       end
       object LbServicos: TLabel
-        Left = 1113
+        Left = 1314
         Top = 8
         Width = 79
         Height = 30
@@ -611,7 +625,7 @@ object Form14: TForm14
         OnClick = LbServicosClick
       end
       object LbCargos: TLabel
-        Left = 1368
+        Left = 1688
         Top = 8
         Width = 67
         Height = 30
@@ -623,22 +637,8 @@ object Form14: TForm14
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object LbFornecedores: TLabel
-        Left = 1608
-        Top = 8
-        Width = 130
-        Height = 30
-        Caption = 'Fornecedores'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
-        Font.Height = -21
-        Font.Name = 'Segoe UI Semibold'
-        Font.Style = [fsBold]
-        ParentFont = False
-        OnClick = LbFornecedoresClick
-      end
       object Lbagendamentos: TLabel
-        Left = 464
+        Left = 584
         Top = 8
         Width = 146
         Height = 30
@@ -651,20 +651,6 @@ object Form14: TForm14
         ParentFont = False
         OnClick = LbagendamentosClick
       end
-    end
-    object CLBServicos: TCheckListBox
-      Left = 1105
-      Top = 576
-      Width = 496
-      Height = 134
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -19
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ItemHeight = 25
-      ParentFont = False
-      TabOrder = 5
     end
   end
   object DataSource1: TDataSource

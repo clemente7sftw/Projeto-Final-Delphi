@@ -18,12 +18,6 @@ type
     Lblrequired: TLabel;
     Image4: TImage;
     BS: TImage;
-    Barra: TPanel;
-    LbClie: TLabel;
-    LbProfissionais: TLabel;
-    LbServicos: TLabel;
-    LbCargos: TLabel;
-    LbFornecedores: TLabel;
     Label4: TLabel;
     DataSource1: TDataSource;
     EdEmail: TDBEdit;
@@ -31,7 +25,6 @@ type
     EditBtn: TImage;
     ExclBtn: TImage;
     addclie: TImage;
-    Lbagendamentos: TLabel;
     BtnCad: TPanel;
     btncancelar: TImage;
     LbEmail: TLabel;
@@ -39,6 +32,12 @@ type
     Timer2: TTimer;
     Timer3: TTimer;
     LbErro_Sistema: TLabel;
+    Barra: TPanel;
+    LbClie: TLabel;
+    LbProfissionais: TLabel;
+    LbServicos: TLabel;
+    LbCargos: TLabel;
+    Lbagendamentos: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);

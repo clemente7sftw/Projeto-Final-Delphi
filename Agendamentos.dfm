@@ -520,7 +520,7 @@ object Form13: TForm13
         OnClick = LbClieClick
       end
       object LbProfissionais: TLabel
-        Left = 772
+        Left = 964
         Top = 8
         Width = 118
         Height = 30
@@ -533,7 +533,7 @@ object Form13: TForm13
         ParentFont = False
       end
       object LbServicos: TLabel
-        Left = 1113
+        Left = 1314
         Top = 8
         Width = 79
         Height = 30
@@ -546,7 +546,7 @@ object Form13: TForm13
         ParentFont = False
       end
       object LbCargos: TLabel
-        Left = 1368
+        Left = 1688
         Top = 8
         Width = 67
         Height = 30
@@ -558,21 +558,8 @@ object Form13: TForm13
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object LbFornecedores: TLabel
-        Left = 1608
-        Top = 8
-        Width = 130
-        Height = 30
-        Caption = 'Fornecedores'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
-        Font.Height = -21
-        Font.Name = 'Segoe UI Semibold'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
       object Lbagendamentos: TLabel
-        Left = 464
+        Left = 584
         Top = 8
         Width = 146
         Height = 30

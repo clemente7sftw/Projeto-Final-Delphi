@@ -177,14 +177,13 @@ var
   id_empresa:integer;
   senhaHash: string;
 begin
+  LoginCorreto := False;
   if not TMetodos.ValidarEmail(EdEmail.Text) or (EdSenha.Text = '') then
   begin
     LbErro.Visible := True;
     Exit;
   end;
-
-  LoginCorreto := False;
-    senhaHash := TMetodos.MD5(Trim(EdSenha.Text) + '123');
+  senhaHash := TMetodos.MD5(Trim(EdSenha.Text) + '123');
   with DataModule1.query_conexao do
   begin
   try

@@ -19,13 +19,6 @@ type
     DBEdit3: TDBEdit;
     DSconexao: TDataSource;
     LbPro: TLabel;
-    Barra: TPanel;
-    LbClie: TLabel;
-    LbProfissionais: TLabel;
-    LbServicos: TLabel;
-    LbCargos: TLabel;
-    LbFornecedores: TLabel;
-    Lbagendamentos: TLabel;
     Image4: TImage;
     BS: TImage;
     addclie: TImage;
@@ -50,6 +43,12 @@ type
     DBEdit6: TDBEdit;
     DBEdit5: TDBEdit;
     Label9: TLabel;
+    Barra: TPanel;
+    LbClie: TLabel;
+    LbProfissionais: TLabel;
+    LbServicos: TLabel;
+    LbCargos: TLabel;
+    Lbagendamentos: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure Image6Click(Sender: TObject);
     procedure PbtnAddClick(Sender: TObject);

@@ -14,13 +14,6 @@ type
     Fundo: TPanel;
     Image4: TImage;
     BS: TImage;
-    Barra: TPanel;
-    LbClie: TLabel;
-    LbProfissionais: TLabel;
-    LbServicos: TLabel;
-    LbCargos: TLabel;
-    LbFornecedores: TLabel;
-    Lbagendamentos: TLabel;
     Image2: TImage;
     FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink;
     Panel1: TPanel;
@@ -29,6 +22,12 @@ type
     Panel3: TPanel;
     Label2: TLabel;
     Image3: TImage;
+    Barra: TPanel;
+    LbClie: TLabel;
+    LbProfissionais: TLabel;
+    LbServicos: TLabel;
+    LbCargos: TLabel;
+    Lbagendamentos: TLabel;
     procedure LbClieClick(Sender: TObject);
     procedure LbProfissionaisClick(Sender: TObject);
     procedure LbServicosClick(Sender: TObject);

@@ -430,93 +430,6 @@ object Form9: TForm9
       ParentFont = False
       TabOrder = 0
     end
-    object Barra: TPanel
-      Left = -18
-      Top = 176
-      Width = 1936
-      Height = 41
-      Color = 4405251
-      ParentBackground = False
-      TabOrder = 1
-      object LbClie: TLabel
-        Left = 192
-        Top = 8
-        Width = 74
-        Height = 30
-        Caption = 'Clientes'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
-        Font.Height = -21
-        Font.Name = 'Segoe UI Semibold'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object LbProfissionais: TLabel
-        Left = 772
-        Top = 8
-        Width = 118
-        Height = 30
-        Caption = 'Profissionais'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
-        Font.Height = -21
-        Font.Name = 'Segoe UI Semibold'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object LbServicos: TLabel
-        Left = 1113
-        Top = 8
-        Width = 79
-        Height = 30
-        Caption = 'Servi'#231'os'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
-        Font.Height = -21
-        Font.Name = 'Segoe UI Semibold'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object LbCargos: TLabel
-        Left = 1368
-        Top = 8
-        Width = 67
-        Height = 30
-        Caption = 'Cargos'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
-        Font.Height = -21
-        Font.Name = 'Segoe UI Semibold'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object LbFornecedores: TLabel
-        Left = 1608
-        Top = 8
-        Width = 130
-        Height = 30
-        Caption = 'Fornecedores'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
-        Font.Height = -21
-        Font.Name = 'Segoe UI Semibold'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Lbagendamentos: TLabel
-        Left = 464
-        Top = 8
-        Width = 146
-        Height = 30
-        Caption = 'Agendamentos'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
-        Font.Height = -21
-        Font.Name = 'Segoe UI Semibold'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-    end
     object BtnConf: TPanel
       Left = 1069
       Top = 676
@@ -532,7 +445,7 @@ object Form9: TForm9
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 1
       OnClick = BtnConfClick
     end
     object Edit1: TEdit
@@ -546,7 +459,7 @@ object Form9: TForm9
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 2
       Text = 'Edit1'
     end
     object Edit2: TEdit
@@ -560,7 +473,7 @@ object Form9: TForm9
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 3
       Text = 'Edit1'
     end
     object TimePicker2: TTimePicker
@@ -571,7 +484,7 @@ object Form9: TForm9
       Font.Height = -20
       Font.Name = 'Segoe UI'
       Font.Style = []
-      TabOrder = 5
+      TabOrder = 4
       Time = 45968.900492002310000000
       TimeFormat = 'hh:nn'
     end
@@ -583,7 +496,7 @@ object Form9: TForm9
       Font.Height = -20
       Font.Name = 'Segoe UI'
       Font.Style = []
-      TabOrder = 6
+      TabOrder = 5
       Time = 45968.900492002310000000
       TimeFormat = 'hh:nn'
     end
@@ -599,7 +512,81 @@ object Form9: TForm9
       Font.Style = []
       ItemHeight = 25
       ParentFont = False
+      TabOrder = 6
+    end
+    object Barra: TPanel
+      Left = -8
+      Top = 176
+      Width = 1928
+      Height = 41
+      Color = 4405251
+      ParentBackground = False
       TabOrder = 7
+      object LbClie: TLabel
+        Left = 192
+        Top = 8
+        Width = 74
+        Height = 30
+        Caption = 'Clientes'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -21
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object LbProfissionais: TLabel
+        Left = 964
+        Top = 8
+        Width = 118
+        Height = 30
+        Caption = 'Profissionais'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -21
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object LbServicos: TLabel
+        Left = 1314
+        Top = 8
+        Width = 79
+        Height = 30
+        Caption = 'Servi'#231'os'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -21
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object LbCargos: TLabel
+        Left = 1688
+        Top = 8
+        Width = 67
+        Height = 30
+        Caption = 'Cargos'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -21
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Lbagendamentos: TLabel
+        Left = 584
+        Top = 8
+        Width = 146
+        Height = 30
+        Caption = 'Agendamentos'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -21
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
     end
   end
   object Timer1: TTimer

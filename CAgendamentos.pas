@@ -19,13 +19,6 @@ type
     ExclBtn: TImage;
     EditBtn: TImage;
     btncancelar: TImage;
-    Barra: TPanel;
-    LbClie: TLabel;
-    LbProfissionais: TLabel;
-    LbServicos: TLabel;
-    LbCargos: TLabel;
-    LbFornecedores: TLabel;
-    Lbagendamentos: TLabel;
     Image4: TImage;
     BS: TImage;
     Label3: TLabel;
@@ -40,6 +33,12 @@ type
     Label8: TLabel;
     Timer2: TTimer;
     Label1: TLabel;
+    Barra: TPanel;
+    LbClie: TLabel;
+    LbProfissionais: TLabel;
+    LbServicos: TLabel;
+    LbCargos: TLabel;
+    Lbagendamentos: TLabel;
     procedure BtnAddClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
