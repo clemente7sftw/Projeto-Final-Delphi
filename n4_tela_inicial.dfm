@@ -278,8 +278,8 @@ object Form30: TForm30
       ParentFont = False
     end
     object Image2: TImage
-      Left = 1816
-      Top = 313
+      Left = 1736
+      Top = 318
       Width = 41
       Height = 41
       Picture.Data = {
@@ -413,6 +413,19 @@ object Form30: TForm30
         49454E44AE426082}
       Stretch = True
       OnClick = Image3Click
+    end
+    object Label2: TLabel
+      Left = 1648
+      Top = 282
+      Width = 212
+      Height = 30
+      Caption = 'Cadastrar Nova Senha'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object DBGrid1: TDBGrid
       Left = 456

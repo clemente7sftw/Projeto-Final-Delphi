@@ -27,11 +27,6 @@ type
     QueryEmpresa: TFDQuery;
     QueryServicos: TFDQuery;
     QueryCargos: TFDQuery;
-    Queryfornecedores: TFDQuery;
-    Queryfornecedoresid: TIntegerField;
-    Queryfornecedoresnome: TWideStringField;
-    Queryfornecedoresemail: TWideStringField;
-    Queryfornecedoresdata_cad: TSQLTimeStampField;
     QueryAg: TFDQuery;
     QueryAgendamentos: TFDQuery;
     QueryUpAg: TFDQuery;

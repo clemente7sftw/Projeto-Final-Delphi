@@ -11,7 +11,6 @@ object Form7: TForm7
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
-  OnShow = FormShow
   TextHeight = 15
   object Fundo: TPanel
     Left = 0
@@ -108,7 +107,6 @@ object Form7: TForm7
       Height = 41
       Caption = 'BtnConf'
       TabOrder = 0
-      OnClick = BtnConfClick
     end
     object BtnEditar: TPanel
       Left = 944
@@ -126,7 +124,6 @@ object Form7: TForm7
       Height = 41
       Caption = 'BtnExcluir'
       TabOrder = 2
-      OnClick = BtnExcluirClick
     end
     object BtnAdd: TPanel
       Left = 664
@@ -231,7 +228,6 @@ object Form7: TForm7
     end
   end
   object DataSource1: TDataSource
-    DataSet = DataModule1.Queryfornecedores
     Left = 768
     Top = 488
   end

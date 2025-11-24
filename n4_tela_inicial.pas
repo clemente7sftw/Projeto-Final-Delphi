@@ -19,6 +19,7 @@ type
     LbProfissionais: TLabel;
     DataSource1: TDataSource;
     Image3: TImage;
+    Label2: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure atualizarstatus;

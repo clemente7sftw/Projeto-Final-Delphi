@@ -397,12 +397,12 @@ object Form27: TForm27
         ParentFont = False
       end
       object RLLabel1: TRLLabel
-        Left = 270
+        Left = 209
         Top = 0
-        Width = 177
+        Width = 299
         Height = 37
         Align = faCenter
-        Caption = 'Total Servi'#231'os'
+        Caption = 'Total de Agendamentos'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -27

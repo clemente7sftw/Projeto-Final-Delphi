@@ -22,6 +22,7 @@ type
     ExclBtn: TImage;
     Lbagendamentos: TLabel;
     Image3: TImage;
+    Label2: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Image2Click(Sender: TObject);

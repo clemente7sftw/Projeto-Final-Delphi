@@ -32,9 +32,6 @@ type
     procedure Label2Click(Sender: TObject);
     procedure EditsAtivos;
     procedure EditsInativos;
-    procedure FormShow(Sender: TObject);
-    procedure BtnConfClick(Sender: TObject);
-    procedure BtnExcluirClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);
   private
     { Private declarations }
@@ -54,34 +51,12 @@ uses TelaPrincipalN1, CClientes, UDataModule, TelaInicialN3,
 
 
 
-procedure TForm7.BtnConfClick(Sender: TObject);
-begin
-  if (DBEdit1.Text <> '' ) and (DBEdit2.Text <> '' )then
-  begin
-    if not (DataModule1.QueryCargos.State in [dsEdit, dsInsert]) then
-    DataModule1.Queryfornecedores.Edit;
-    DataModule1.Queryfornecedores.Post;
-    EditsInativos;
-    BtnConf.Visible := False;
-    BtnExcluir.Visible := True;
-    BtnEditar.Visible:= true;
-    Lblrequired.visible:= false;
-  end else begin
-    Lblrequired.visible:= true;
-  end;
-end;
-
 procedure TForm7.BtnEditarClick(Sender: TObject);
 begin
   BtnConf.Visible:= true;
   BtnExcluir.Visible:= false;
   EditsAtivos;
   BtnEditar.Visible:= false;
-end;
-
-procedure TForm7.BtnExcluirClick(Sender: TObject);
-begin
-   datamodule1.Queryfornecedores.delete;
 end;
 
 procedure TForm7.EditsAtivos;
@@ -103,12 +78,6 @@ begin
   EditsInativos;
   Lblrequired.visible:= false;
 
-end;
-
-procedure TForm7.FormShow(Sender: TObject);
-begin
-  datamodule1.Queryfornecedores.Close;
-  datamodule1.Queryfornecedores.Open;
 end;
 
 procedure TForm7.Image1Click(Sender: TObject);
