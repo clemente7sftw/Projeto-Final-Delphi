@@ -24,4 +24,6 @@ O objetivo é facilitar o fluxo de trabalho, evitando conflitos de horários e o
 - 🔌 **Conexões:** FireDAC
 
 ---
+slides : https://www.canva.com/design/DAG5Kk4O8Hw/44PWaV9bSsPxlEy9qfqy9Q/edit?utm_content=DAG5Kk4O8Hw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
 
