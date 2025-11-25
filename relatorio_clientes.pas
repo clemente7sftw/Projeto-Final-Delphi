@@ -74,8 +74,6 @@ begin
     ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
     Open;
   end;
-
-
 with DataModule1.QueryEmpresa do
 begin
   Close;
