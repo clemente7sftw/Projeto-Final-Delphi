@@ -52,26 +52,23 @@ uses UDataModule;
 
 procedure TForm27.FormCreate(Sender: TObject);
 begin
-  with DataModule1.Query_conexao do
+with DataModule1.Query_conexao do
 begin
   Close;
   SQL.Text :=
     'SELECT ' +
-    '    p.nome AS profissional, ' +
-    '    s.nome AS servico, ' +
-    '    COUNT(*) AS total_servicos, ' +
-    '    SUM(s.preco) AS renda_total ' +
+    '  p.nome AS profissional, ' +
+    '  COUNT(ags.id_servico) AS total_servicos, ' +
+    '  COALESCE(SUM(s.preco), 0) AS renda_total ' +
     'FROM ' +
-    '    profissionais p ' +
+    '  profissionais p ' +
     'JOIN profissionais_agendamentos pa ON p.id_pro = pa.id_pro ' +
     'JOIN agendamento_servicos ags ON pa.id_agendamento = ags.id_agendamento ' +
     'JOIN servicos s ON ags.id_servico = s.id_servico ' +
     'WHERE p.id_empresa = :id_empresa ' +
-    'GROUP BY ' +
-    '    p.nome, s.nome ' +
-    'ORDER BY ' +
-    '    p.nome, renda_total DESC;';
-    ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
+    'GROUP BY p.nome ' +
+    'ORDER BY renda_total DESC, p.nome;';
+  ParamByName('id_empresa').AsInteger := DataModule1.id_empresa;
   Open;
 end;
 with DataModule1.QueryEmpresa do
